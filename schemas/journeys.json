@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/journeys.json",
+  "title": "User journeys (section 5)",
+  "description": "The steps each user takes to reach one goal, start to end, in order. The backbone of the story map and the end-to-end acceptance test.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "journeys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^J-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "persona": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The persona id or name from section 4."
+          },
+          "goal": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What the user wants at the end."
+          },
+          "trigger": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What starts the journey."
+          },
+          "golden_thread": {
+            "type": "boolean",
+            "description": "True for the one journey release 1 must deliver end to end."
+          },
+          "stages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "One large step of the journey. Names a person, an input, an output and a decision, and no technology.",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^ST-\\d{3}$",
+                  "description": "Stable identifier; never reused or renumbered."
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "actor": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The person who acts in this stage."
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "minItems": 1,
+                  "description": "What the user does, sees and decides, in order."
+                },
+                "inputs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "description": "What the user gives."
+                },
+                "outputs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "description": "What the user gets back."
+                },
+                "decision": {
+                  "type": "string",
+                  "description": "What the user decides here."
+                },
+                "handoff": {
+                  "type": "string",
+                  "description": "Who takes over after this stage, when anyone does."
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "actor",
+                "steps"
+              ]
+            },
+            "minItems": 2
+          },
+          "pain_points": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "What is hard today."
+          },
+          "needs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "What the product must fix."
+          },
+          "end_state": {
+            "type": "string",
+            "minLength": 1,
+            "description": "How the user knows they are done."
+          }
+        },
+        "required": [
+          "id",
+          "persona",
+          "goal",
+          "trigger",
+          "stages",
+          "pain_points",
+          "needs",
+          "end_state"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "journeys"
+  ],
+  "$defs": {
+    "stage": {
+      "type": "object",
+      "description": "One large step of the journey. Names a person, an input, an output and a decision, and no technology.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^ST-\\d{3}$",
+          "description": "Stable identifier; never reused or renumbered."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The person who acts in this stage."
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "description": "What the user does, sees and decides, in order."
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "What the user gives."
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "What the user gets back."
+        },
+        "decision": {
+          "type": "string",
+          "description": "What the user decides here."
+        },
+        "handoff": {
+          "type": "string",
+          "description": "Who takes over after this stage, when anyone does."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "actor",
+        "steps"
+      ]
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/spikes.json",
+  "title": "Spikes",
+  "description": "Time-boxed stories that end in an answer or an architecture decision record. One per PRD open question or high risk that blocks the release line.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "spikes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^SPK-\\d{3}$"
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The PRD open question (Q-nnn), risk (R-nnn) or dependency (D-nnn) id."
+          },
+          "timebox_days": {
+            "type": "number",
+            "minimum": 0.5,
+            "maximum": 15
+          },
+          "ends_in": {
+            "type": "string",
+            "enum": [
+              "answer",
+              "adr",
+              "prototype",
+              "decision"
+            ]
+          },
+          "decider": {
+            "type": "string",
+            "minLength": 1
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Story or requirement ids that cannot proceed until this is answered."
+          }
+        },
+        "required": [
+          "id",
+          "question",
+          "source",
+          "timebox_days",
+          "ends_in",
+          "decider"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "spikes"
+  ]
+}

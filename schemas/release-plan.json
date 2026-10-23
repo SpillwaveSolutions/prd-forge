@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/release-plan.json",
+  "title": "Release plan (section 13)",
+  "description": "Which outcomes come first. Outcomes and journey stages, never tasks or estimates.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "roadmap_link": {
+      "type": "string"
+    },
+    "releases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^REL-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outcomes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "What a user can do after this release that they could not before."
+          },
+          "journey_stages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Stage ids this release completes."
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Requirement ids in this release."
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Objective ids this release moves."
+          },
+          "target_date": {
+            "$ref": "common.json#/$defs/date"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "outcomes"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "releases"
+  ]
+}

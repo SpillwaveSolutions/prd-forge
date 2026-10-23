@@ -1,0 +1,6 @@
+{
+  "name": "prd-forge",
+  "owner": { "name": "Rick Hightower" },
+  "description": "An expert system for writing product requirements documents: an interviewing wizard, rubric-based adversarial grading, and a pane that steps through the document set.",
+  "plugins": [{ "name": "prd-forge", "source": "./" }]
+}

@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/common.json",
+  "title": "prd-forge common definitions",
+  "description": "Shared definitions for the YAML front matter of every prd-forge document.",
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "draft",
+        "review",
+        "final"
+      ],
+      "description": "pending: not interviewed yet. draft: written. review: with reviewers. final: approved."
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "must",
+        "should",
+        "could",
+        "wont"
+      ],
+      "description": "MoSCoW priority. Every requirement has one (test 4 of five)."
+    },
+    "docLink": {
+      "type": "object",
+      "description": "A pointer to another document of the set. The path is relative to this document.",
+      "properties": {
+        "id": {
+          "$ref": "common.json#/$defs/slug"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "prd",
+            "problem-opportunity",
+            "customer-market",
+            "objectives-metrics",
+            "personas",
+            "journeys",
+            "scenarios",
+            "scope",
+            "functional-requirements",
+            "nonfunctional-requirements",
+            "constraints",
+            "decision-rights",
+            "assumptions-risks-dependencies",
+            "open-questions",
+            "release-plan",
+            "glossary",
+            "change-log",
+            "backlog",
+            "features",
+            "epics",
+            "stories",
+            "spikes"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^\\.{1,2}/.*\\.md$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "section": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 15
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status": {
+          "$ref": "common.json#/$defs/status"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "path",
+        "title"
+      ],
+      "additionalProperties": false
+    },
+    "links": {
+      "type": "object",
+      "description": "How this document reaches the rest of the set. The whole set is navigable from these fields alone.",
+      "properties": {
+        "parent": {
+          "oneOf": [
+            {
+              "$ref": "common.json#/$defs/docLink"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "common.json#/$defs/docLink"
+          }
+        },
+        "prev": {
+          "oneOf": [
+            {
+              "$ref": "common.json#/$defs/docLink"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "next": {
+          "oneOf": [
+            {
+              "$ref": "common.json#/$defs/docLink"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "related": {
+          "type": "array",
+          "items": {
+            "$ref": "common.json#/$defs/docLink"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "base": {
+      "type": "object",
+      "description": "The front matter fields every prd-forge document carries.",
+      "properties": {
+        "id": {
+          "$ref": "common.json#/$defs/slug"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "prd",
+            "problem-opportunity",
+            "customer-market",
+            "objectives-metrics",
+            "personas",
+            "journeys",
+            "scenarios",
+            "scope",
+            "functional-requirements",
+            "nonfunctional-requirements",
+            "constraints",
+            "decision-rights",
+            "assumptions-risks-dependencies",
+            "open-questions",
+            "release-plan",
+            "glossary",
+            "change-log",
+            "backlog",
+            "features",
+            "epics",
+            "stories",
+            "spikes"
+          ]
+        },
+        "schema": {
+          "type": "string",
+          "pattern": "^prd-forge/[a-z0-9-]+@\\d+$",
+          "description": "Which schema validates this front matter, e.g. prd-forge/journeys@1."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "common.json#/$defs/status"
+        },
+        "updated": {
+          "$ref": "common.json#/$defs/date"
+        },
+        "links": {
+          "$ref": "common.json#/$defs/links"
+        },
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "The last adversarial grade of this document, 0-100. Written by the grading pass, never by hand."
+        },
+        "blocking": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "How many blocking defects the last grading pass found. A document reaches status final only at 0."
+        },
+        "graded": {
+          "$ref": "common.json#/$defs/date",
+          "description": "When the last grading pass ran."
+        },
+        "domain": {
+          "type": "string",
+          "description": "The business domain this document is written in: auditing, transportation, claims, whatever the expert's is."
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "schema",
+        "title",
+        "status",
+        "updated",
+        "links"
+      ]
+    },
+    "section": {
+      "type": "object",
+      "properties": {
+        "section": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 15
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "section",
+        "order"
+      ]
+    }
+  }
+}

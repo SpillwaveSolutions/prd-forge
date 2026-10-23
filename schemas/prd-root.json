@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/prd-root.json",
+  "title": "PRD root document",
+  "description": "The index of a PRD document set: the executive summary, the product's identity, and a link to every section.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "product": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "$ref": "common.json#/$defs/slug"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The one person accountable for this PRD."
+    },
+    "stakeholders": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "created": {
+      "$ref": "common.json#/$defs/date"
+    },
+    "summary": {
+      "type": "object",
+      "description": "The executive summary, in five answers. This is the only place the PRD repeats itself, and it is worth it.",
+      "properties": {
+        "problem": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What problem exists, for whom."
+        },
+        "users": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Who uses it."
+        },
+        "why_now": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why this is worth doing now."
+        },
+        "bet": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What we will build, in outcome terms, with no technology named."
+        },
+        "measure": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How we will know it worked."
+        }
+      },
+      "required": [
+        "problem",
+        "users",
+        "why_now",
+        "bet",
+        "measure"
+      ],
+      "additionalProperties": false
+    },
+    "golden_thread": {
+      "type": "string",
+      "description": "The id of the one journey release 1 must deliver end to end."
+    }
+  },
+  "required": [
+    "product",
+    "slug",
+    "version",
+    "owner",
+    "stakeholders",
+    "created",
+    "summary"
+  ]
+}

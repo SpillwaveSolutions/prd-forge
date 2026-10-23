@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/personas.json",
+  "title": "Users and personas (section 4)",
+  "description": "Who uses it, what they want, and what hurts today.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "personas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^PER-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The role, not a person's name: 'Audit manager at an external audit firm'."
+          },
+          "goals": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "pains": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "frequency": {
+            "type": "string",
+            "description": "How often they use the product: daily, per engagement, once."
+          },
+          "authority": {
+            "type": "string",
+            "description": "What they may approve. Feeds section 10."
+          },
+          "proficiency": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "goals",
+          "pains"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "personas"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/objectives-metrics.json",
+  "title": "Business objectives and success metrics (section 3)",
+  "description": "What business result we expect, with a baseline and a target for each.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^O-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "objective": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The business result, not the feature."
+          },
+          "metric": {
+            "type": "string",
+            "minLength": 1
+          },
+          "baseline": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What it measures today. 'unknown' is an open question, not a baseline."
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "by": {
+            "$ref": "common.json#/$defs/date"
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "objective",
+          "metric",
+          "baseline",
+          "target",
+          "owner"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "objectives"
+  ]
+}

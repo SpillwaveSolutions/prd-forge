@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/functional-requirements.json",
+  "title": "Functional requirements (section 7)",
+  "description": "What the product must do. Every entry passes the five tests: a named user, a visible outcome, a pass-or-fail test, a priority, and no technology.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^FR-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "user": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Test 1: the user or stakeholder, by persona id or role."
+          },
+          "capability": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What they can do."
+          },
+          "outcome": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Test 2: the result a person can see."
+          },
+          "acceptance": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Test 3: Given/When/Then statements that pass or fail."
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "must",
+              "should",
+              "could",
+              "wont"
+            ],
+            "description": "MoSCoW priority. Every requirement has one (test 4 of five)."
+          },
+          "journey_stage": {
+            "type": "string",
+            "pattern": "^ST-\\d{3}$",
+            "description": "Which journey stage this serves. Feeds the feature it lands in."
+          },
+          "objective": {
+            "type": "string",
+            "pattern": "^O-\\d{3}$",
+            "description": "Which business objective this serves."
+          },
+          "source": {
+            "type": "string",
+            "description": "Where it came from: a workshop, an interview, a regulation."
+          }
+        },
+        "required": [
+          "id",
+          "user",
+          "capability",
+          "outcome",
+          "acceptance",
+          "priority"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "requirements"
+  ]
+}

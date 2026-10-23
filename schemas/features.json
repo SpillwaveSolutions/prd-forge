@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/features.json",
+  "title": "Features",
+  "description": "One feature per journey stage. Features come from the journey's structure, not from the requirement list.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^FEAT-\\d{3}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "journey_stage": {
+            "type": "string",
+            "pattern": "^ST-\\d{3}$",
+            "description": "The PRD journey stage this feature is."
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "PRD persona ids."
+          },
+          "outcome": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What a user can do once this feature exists."
+          },
+          "success_metric": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Derived from the PRD objective this feature serves."
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "PRD objective ids."
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "PRD requirement ids this feature carries."
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "journey_stage",
+          "users",
+          "outcome",
+          "success_metric",
+          "requirements"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "features"
+  ]
+}

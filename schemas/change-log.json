@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/change-log.json",
+  "title": "Change log and approvals (section 15)",
+  "description": "What changed, when, and who approved it.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
+          },
+          "date": {
+            "$ref": "common.json#/$defs/date"
+          },
+          "author": {
+            "type": "string",
+            "minLength": 1
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 15
+            }
+          },
+          "approvals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "role": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "date": {
+                  "$ref": "common.json#/$defs/date"
+                },
+                "decision": {
+                  "type": "string",
+                  "enum": [
+                    "approved",
+                    "approved-with-conditions",
+                    "rejected"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "role",
+                "date",
+                "decision"
+              ]
+            }
+          }
+        },
+        "required": [
+          "version",
+          "date",
+          "author",
+          "summary"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "changes"
+  ]
+}

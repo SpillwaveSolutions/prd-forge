@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/epics.json",
+  "title": "Epics",
+  "description": "The in-scope part of a feature for one release, set by the PRD scope and the release line.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "epics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^EPIC-\\d{3}$"
+          },
+          "feature": {
+            "type": "string",
+            "pattern": "^FEAT-\\d{3}$"
+          },
+          "release": {
+            "type": "string",
+            "minLength": 1
+          },
+          "goal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "in_scope": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "out_of_scope": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "acceptance": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Epic-level acceptance: what proves the epic is done."
+          },
+          "stories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Story ids in this epic."
+          },
+          "measures": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "PRD objective ids checked after release."
+          }
+        },
+        "required": [
+          "id",
+          "feature",
+          "release",
+          "goal",
+          "in_scope",
+          "acceptance"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "epics"
+  ]
+}

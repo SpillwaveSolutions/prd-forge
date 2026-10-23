@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/glossary.json",
+  "title": "Glossary (section 14)",
+  "description": "One meaning for each term. Every story title and acceptance criterion uses these words.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string",
+            "minLength": 1
+          },
+          "meaning": {
+            "type": "string",
+            "minLength": 1
+          },
+          "see_also": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "not": {
+            "type": "string",
+            "description": "What the term does not mean, where it is confused."
+          }
+        },
+        "required": [
+          "term",
+          "meaning"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "terms"
+  ]
+}

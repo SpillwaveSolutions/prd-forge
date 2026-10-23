@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/stories.json",
+  "title": "User stories",
+  "description": "One step of a journey for one persona. The PRD functional requirement gives the content; the persona gives the 'As a'.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "stories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^US-\\d{3}$"
+          },
+          "epic": {
+            "type": "string",
+            "pattern": "^EPIC-\\d{3}$"
+          },
+          "persona": {
+            "type": "string",
+            "minLength": 1,
+            "description": "PRD persona id: the 'As a' of the story."
+          },
+          "capability": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The 'I want'."
+          },
+          "outcome": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The 'so that'."
+          },
+          "acceptance": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Given/When/Then, from the PRD requirement's acceptance criteria."
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "must",
+              "should",
+              "could",
+              "wont"
+            ]
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "PRD requirement ids this story implements."
+          },
+          "definition_of_done": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Items from PRD constraints and non-functional requirements that apply here."
+          },
+          "journey_stage": {
+            "type": "string",
+            "pattern": "^ST-\\d{3}$"
+          }
+        },
+        "required": [
+          "id",
+          "epic",
+          "persona",
+          "capability",
+          "outcome",
+          "acceptance",
+          "priority",
+          "requirements"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "stories"
+  ]
+}

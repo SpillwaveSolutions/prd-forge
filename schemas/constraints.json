@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/constraints.json",
+  "title": "Constraints (section 9)",
+  "description": "Firm, legal or regulatory rules the product must obey. Not preferences, and not design choices.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^C-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "legal",
+              "regulatory",
+              "contractual",
+              "policy",
+              "firm",
+              "standard"
+            ]
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authority": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Who imposes it: the regulation, the contract, the firm's policy, by name."
+          },
+          "applies_to": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Requirement, stage or journey ids; absent means all."
+          },
+          "verification": {
+            "type": "string",
+            "description": "How compliance is shown."
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "statement",
+          "authority"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "constraints"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/scenarios.json",
+  "title": "Scenarios (section 5)",
+  "description": "Concrete runs through a journey: the happy path, the alternates, and the exceptions.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^SC-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "journey": {
+            "type": "string",
+            "pattern": "^J-\\d{3}$"
+          },
+          "stage": {
+            "type": "string",
+            "pattern": "^ST-\\d{3}$"
+          },
+          "persona": {
+            "type": "string",
+            "minLength": 1
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "happy",
+              "alternate",
+              "exception"
+            ]
+          },
+          "context": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The state of the world when this starts."
+          },
+          "trigger": {
+            "type": "string",
+            "minLength": 1
+          },
+          "course": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "What happens, in order."
+          },
+          "expected_outcome": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What the user sees at the end. A pass or fail statement."
+          }
+        },
+        "required": [
+          "id",
+          "journey",
+          "persona",
+          "variant",
+          "context",
+          "trigger",
+          "course",
+          "expected_outcome"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "scenarios"
+  ]
+}

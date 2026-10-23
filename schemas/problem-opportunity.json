@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/problem-opportunity.json",
+  "title": "Problem and opportunity (section 1)",
+  "description": "What problem exists, for whom, and why now.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "problems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^P-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The problem in the user's words, with no solution in it."
+          },
+          "who": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "What makes this more than an opinion."
+          },
+          "why_now": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cost_of_inaction": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "statement",
+          "who",
+          "evidence",
+          "why_now"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "problems"
+  ]
+}

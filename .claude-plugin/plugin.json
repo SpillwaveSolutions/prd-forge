@@ -1,0 +1,26 @@
+{
+  "name": "prd-forge",
+  "version": "0.1.0",
+  "description": "Interview-driven PRD authoring: a wizard skill that writes a linked set of schema-checked markdown documents, and a pane that steps through them.",
+  "author": {
+    "name": "Rick Hightower"
+  },
+  "license": "MIT",
+  "keywords": [
+    "prd",
+    "product",
+    "requirements",
+    "user-journeys",
+    "wizard"
+  ],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "docs_dir": {
+      "type": "string",
+      "title": "PRD directory",
+      "description": "Where PRD document sets are written and read, relative to the working directory.",
+      "default": "docs/prd"
+    }
+  },
+  "repository": "https://github.com/SpillwaveSolutions/prd-forge"
+}

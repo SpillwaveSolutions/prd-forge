@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/customer-market.json",
+  "title": "Target customer and market (section 2)",
+  "description": "Who buys it, what competitors offer, and why we win.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^S-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "buyer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "user": {
+            "type": "string",
+            "minLength": 1
+          },
+          "size": {
+            "type": "string"
+          },
+          "willingness_to_pay": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "buyer",
+          "user"
+        ]
+      },
+      "minItems": 1
+    },
+    "competitors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "offer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "our_edge": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name",
+          "offer",
+          "our_edge"
+        ]
+      }
+    },
+    "why_we_win": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "segments",
+    "why_we_win"
+  ]
+}

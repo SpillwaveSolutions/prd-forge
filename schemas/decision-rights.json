@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/decision-rights.json",
+  "title": "Decision rights and trust rules (section 10)",
+  "description": "Who can approve what, and what is never delegated to an agent.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^TR-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "decision": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The decision being made."
+          },
+          "approver": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The role that may approve it."
+          },
+          "delegable_to_agent": {
+            "type": "boolean",
+            "description": "Whether an agent may make this decision unaided."
+          },
+          "never_delegated": {
+            "type": "boolean",
+            "description": "True when a person must decide, always, whatever the confidence."
+          },
+          "evidence_required": {
+            "type": "string",
+            "description": "What the approver must be shown before deciding."
+          },
+          "escalation": {
+            "type": "string",
+            "description": "What happens when the approver is unavailable or disagrees."
+          },
+          "acceptance": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Given/When/Then statements that prove the rule holds."
+          }
+        },
+        "required": [
+          "id",
+          "decision",
+          "approver",
+          "delegable_to_agent",
+          "never_delegated"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "decisions"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/open-questions.json",
+  "title": "Open questions (section 12)",
+  "description": "What is not decided, who decides it, and by when. Each one becomes a spike or an ADR.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^Q-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decider": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The one person or role who decides."
+          },
+          "by": {
+            "$ref": "common.json#/$defs/date"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Requirement, stage or release ids that cannot be settled until this is."
+          },
+          "spike": {
+            "type": "string",
+            "description": "The time-boxed story that answers it."
+          },
+          "answer": {
+            "type": "string",
+            "description": "Filled in when decided; the question then moves to the change log."
+          }
+        },
+        "required": [
+          "id",
+          "question",
+          "decider",
+          "by"
+        ]
+      }
+    }
+  },
+  "required": [
+    "questions"
+  ]
+}

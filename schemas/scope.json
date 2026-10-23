@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/scope.json",
+  "title": "Scope (section 6)",
+  "description": "What is in this release, what is out, and what we are deliberately not doing.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "release": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release_line": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The smallest set of journey stages that completes the golden thread."
+    },
+    "in_scope": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^IN-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "journey_stage": {
+            "type": "string",
+            "pattern": "^ST-\\d{3}$"
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "id",
+          "summary"
+        ]
+      },
+      "minItems": 1
+    },
+    "out_of_scope": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^OUT-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revisit": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "summary"
+        ]
+      }
+    },
+    "non_goals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "description": "Things a reader would reasonably expect and we are not doing, with no plan to."
+    }
+  },
+  "required": [
+    "release",
+    "release_line",
+    "in_scope",
+    "non_goals"
+  ]
+}

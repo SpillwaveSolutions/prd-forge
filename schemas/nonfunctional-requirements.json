@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/nonfunctional-requirements.json",
+  "title": "Non-functional requirements (section 8)",
+  "description": "How fast, how many, how available, how secure, how accessible, how long data is kept, as numbers.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^NFR-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "performance",
+              "scale",
+              "availability",
+              "durability",
+              "security",
+              "privacy",
+              "accessibility",
+              "retention",
+              "observability",
+              "usability",
+              "localisation",
+              "supportability"
+            ]
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "metric": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What is measured."
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": ".*\\d.*",
+            "description": "The number. A target with no digit in it is not a target."
+          },
+          "measurement": {
+            "type": "string",
+            "minLength": 1,
+            "description": "How it is measured, and where."
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "must",
+              "should",
+              "could",
+              "wont"
+            ],
+            "description": "MoSCoW priority. Every requirement has one (test 4 of five)."
+          },
+          "applies_to": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Requirement or stage ids this holds for; absent means all."
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "statement",
+          "metric",
+          "target",
+          "measurement",
+          "priority"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "requirements"
+  ]
+}

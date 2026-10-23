@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/backlog-root.json",
+  "title": "Backlog root document",
+  "description": "The index of a backlog set derived from an approved PRD. Traces every level back to PRD requirement ids.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "product": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "$ref": "common.json#/$defs/slug"
+    },
+    "prd": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Relative path to the PRD root document this set was derived from."
+    },
+    "prd_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$",
+      "description": "The PRD version this backlog was derived from. Re-derive when it changes."
+    },
+    "release": {
+      "type": "string",
+      "minLength": 1
+    },
+    "derived": {
+      "$ref": "common.json#/$defs/date"
+    },
+    "golden_thread": {
+      "type": "string",
+      "description": "The PRD journey id this release delivers end to end."
+    }
+  },
+  "required": [
+    "product",
+    "slug",
+    "prd",
+    "prd_version",
+    "release",
+    "derived"
+  ]
+}
