@@ -41,8 +41,8 @@ transportation, personal lines insurance, whatever the author stated.
 - **Terms used with the wrong meaning** are next: "exception" vs "error",
   "review" vs "sign-off", "claim" vs "loss", "load" vs "shipment".
 - **Generic where precise exists**: "the document" where the domain says
-  "workpaper"; "the item" where it says "the load"; "the form" where it says
-  "the first notice of loss".
+  "discharge summary"; "the item" where it says "the load"; "the form" where it
+  says "the first notice of loss".
 - **Role titles** that do not exist in the domain, or that do not match the
   seniority the document implies.
 

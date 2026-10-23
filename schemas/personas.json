@@ -26,7 +26,7 @@
           "name": {
             "type": "string",
             "minLength": 1,
-            "description": "The role, not a person's name: 'Audit manager at an external audit firm'."
+            "description": "The role, not a person's name: 'Discharge coordinator at a district hospital'."
           },
           "goals": {
             "type": "array",

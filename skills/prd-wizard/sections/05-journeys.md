@@ -154,6 +154,6 @@ Label any wireframe you attach as an **illustration**, not a design.
 - Say "journey", "stage", "step", "hand-off", "end state".
 - Say "golden thread" for the release-1 journey; say it once and define it in
   the glossary.
-- Write steps in the active voice with the actor first: "The preparer opens the
-  request list and sees two files overdue."
+- Write steps in the active voice with the actor first: "The coordinator opens
+  the plan and sees two medicines not yet dispensed."
 - Never "the system validates"; write what the person sees instead.

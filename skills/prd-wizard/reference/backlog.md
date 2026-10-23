@@ -72,23 +72,31 @@ agent checks exactly this list:
 
 ## The worked path, end to end
 
-1. **PRD.** Golden-thread stage "The client provides data". Requirements FR-006
-   (upload status), FR-014 (shared client requests), TR-005 (no internal content
-   shown to the client).
-2. **Feature.** Client data intake. Success metric: time from client request to
-   usable data.
-3. **Epic, release 1.** GL extract intake for the golden thread. CSV and XLSX in
-   scope; PDF out.
-4. **Stories.** (a) The client uploads a GL extract and the preparer sees
-   "Received" (FR-006). (b) The status moves through Parsing, Validating,
-   Available (FR-006). (c) A failed file shows the reason and the row (FR-006).
-   (d) The client sees only their own requests (TR-005). (e) Spike: which GL
-   formats do pilot clients send? (answers an open question)
-5. **Tasks for story (a).** Create the upload endpoint; store the original file;
-   emit the status event; add the status badge to the preparer view; write the
-   acceptance test.
-6. **Subtasks for "store the original file".** Add a checksum; make the file
-   read-only after upload; add the retention tag.
+1. **PRD.** Golden-thread journey stage ST-003 "Pharmacy prepares the medicines".
+   The requirements are FR-011 (pharmacy sees the plan and the expected transport
+   slot), FR-013 (dispensed status visible to the ward), and TR-004 (a pharmacist,
+   not the product, decides whether anything is unsafe to send home).
+2. **Feature.** Discharge medicines readiness. Success metric: share of
+   discharges where medicines were ready before the transport slot.
+3. **Epic, release 1.** Ward-dispensed medicines for the medical ward pilot.
+   Medicines dispensed on the ward are in scope; medicines collected from an
+   outpatient pharmacy are out.
+4. **Stories.**
+   1. The pharmacist sees the discharge prescription with the expected transport
+      slot. (FR-011)
+   2. The status moves through Received, Dispensing, Ready. (FR-013)
+   3. A prescription the pharmacist queries shows the reason and who to ask.
+      (FR-013)
+   4. Nothing is marked Ready until a pharmacist has recorded their check.
+      (TR-004)
+   5. Spike: how far ahead of transport do wards actually send prescriptions?
+      This answers an open question.
+5. **Tasks for story 1.** Create the prescription view; join the transport slot to
+   the prescription; emit the status event; add the readiness badge to the ward
+   view; write the acceptance test.
+6. **Subtasks for "join the transport slot to the prescription".** Handle a slot
+   that is rebooked after dispensing starts; handle a patient with no slot yet;
+   add the timezone-safe comparison.
 
 Technology appears for the first time at step 5. That is the correct place for
 it, and it is why the PRD can stay free of technology.

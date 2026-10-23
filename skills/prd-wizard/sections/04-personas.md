@@ -16,8 +16,8 @@ builds the approval rules on.
 
 ## What belongs in it
 
-- One `PER-nnn` per role, named by role: "Audit manager at an external audit
-  firm", not "Maria".
+- One `PER-nnn` per role, named by role: "Study start-up specialist, sponsor
+  side", not "Maria".
 - `goals`: what they want, in their words.
 - `pains`: what is hard today, traceable to section 1.
 - `frequency`: daily, per engagement, once at setup. This drives the
@@ -43,23 +43,31 @@ builds the approval rules on.
 Question 6 sets the accessibility and usability bar, and the expert usually knows
 the answer immediately.
 
-## Worked example (domain: external audit)
+## Worked example (domain: clinical trial site activation)
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
-> **PER-002. Preparer (audit associate, 0–3 years).** Goals: finish assigned
-> procedures without being sent back in review; understand why a test failed.
-> Pains: chasing the client for files; redoing work because a file was superseded;
-> unclear what the reviewer will ask. Frequency: daily during fieldwork.
-> Authority: may mark a procedure ready for review; may not sign off.
-> Proficiency: strong in audit basics, new to the firm's tooling; high turnover,
-> so assume no training.
+> **PER-002. Study start-up specialist, sponsor side.** Goals: get a site from
+> selected to activated without being the bottleneck; know which of 40 sites is
+> stuck and on what. Pains: chasing documents by email across time zones; no
+> single view of which document version is current; the same question answered
+> for every site separately. Frequency: daily across a portfolio of studies.
+> Authority: may mark a document received and complete; may not release a site
+> for enrolment. Proficiency: expert in start-up process, high turnover in the
+> role, so assume no training.
 >
-> **PER-004. Client finance analyst.** Goals: answer the request once and be
-> done. Pains: duplicate requests from different team members; no idea what is
-> still outstanding. Frequency: a few times per engagement. Authority: none
-> inside the audit; supplies and confirms data. Proficiency: expert in their own
-> ledger, no knowledge of audit procedure.
+> **PER-004. Site coordinator, hospital research unit.** Goals: submit what the
+> sponsor needs once, and know it landed. Pains: duplicate requests from the
+> sponsor's monitor and start-up specialist; unclear which template version is
+> accepted; no idea what is still outstanding. Frequency: a burst during
+> start-up, then rarely. Authority: supplies documents and confirms site readiness;
+> cannot approve anything on the sponsor's side. Proficiency: expert in their own
+> hospital's process, unfamiliar with the sponsor's.
+>
+> **PER-005. Medical monitor.** Goals: be confident a site is ready to enrol a
+> patient safely. Pains: cannot see the basis for a readiness decision without
+> asking. Frequency: once per site, plus exceptions. Authority: releases a site
+> for enrolment. Proficiency: clinically expert, uses the product rarely.
 
 ## Rubric
 

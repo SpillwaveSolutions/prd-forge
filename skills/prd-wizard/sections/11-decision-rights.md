@@ -47,25 +47,41 @@ be automated confidently.
 Question 3 is the heart of the section. Push on it: experts under-claim here when
 they are enthusiastic about automation, and over-claim when they are nervous.
 
-## Worked example (domain: external audit)
+## Worked example (domain: consumer credit underwriting)
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
-> **TR-001** · decision: sign off an audit conclusion ·
-> approver: PER-005 engagement partner ·
+> **TR-001** · decision: decline a credit application ·
+> approver: PER-005 underwriter ·
 > delegable_to_agent: false · never_delegated: true
-> Evidence required: the conclusion, the evidence it rests on, every unresolved
-> exception, and the reviewer's notes.
-> Escalation: no substitute signer; sign-off waits.
-> Acceptance: Given a workpaper with an unresolved exception, when the partner
-> opens sign-off, then sign-off is unavailable and the exception is named.
+> Evidence required: the application, the specific factors that drove the
+> assessment, and the applicant's own stated circumstances.
+> Escalation: no substitute approver below the credit committee; the decision waits.
+> Acceptance: Given an assessment that recommends decline, when the underwriter
+> opens it, then they see each factor that drove it and may override with a
+> recorded reason; and no decline reaches the applicant without a named approver.
 >
-> **TR-004** · decision: select the sample for a test of detail ·
-> approver: PER-002 preparer · delegable_to_agent: true · never_delegated: false
-> Evidence required: the population, the method, and the resulting selection.
-> Escalation: the manager may re-select, and the change is recorded.
-> Acceptance: Given a prepared selection, when the preparer accepts it, then the
-> population, method and selection are recorded against the procedure.
+> **TR-003** · decision: approve an application inside policy ·
+> approver: PER-005 underwriter · delegable_to_agent: true ·
+> never_delegated: false
+> Evidence required: the policy rules applied and the values they were applied to.
+> Escalation: the underwriter may re-open any approval within the cooling period,
+> and the change is recorded.
+> Acceptance: Given an application inside every policy rule, when it is approved
+> without an underwriter, then the rules applied and their inputs are recorded
+> against the decision and are visible to the underwriter.
+>
+> **TR-006** · decision: tell the applicant why ·
+> approver: PER-005 underwriter · delegable_to_agent: false ·
+> never_delegated: true
+> Evidence required: the reasons as they will be sent, in the applicant's language.
+> Escalation: the reasons wait for an approver; a decline is never communicated
+> without them.
+> Acceptance: Given a declined application, when the notice is prepared, then the
+> reasons name the factors that actually drove the decision, and an underwriter
+> has approved the wording.
+> (Many jurisdictions require a declined applicant to be told why. Find the rule
+> that binds you, write it as a constraint in section 9, and cite it there.)
 
 ## Rubric
 

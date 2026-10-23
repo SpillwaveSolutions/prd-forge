@@ -41,17 +41,18 @@ depends", or "we haven't decided", that is an entry. At the end of each section:
 3. "When do we need the answer — what does it hold up?"
 4. "Could we answer it in a week of focused work? What would that work be?"
 
-## Worked example (domain: public accounting)
+## Worked example (domain: municipal building permits)
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
-> **Q-003.** Which general-ledger export formats do the pilot clients actually
-> send? Decider: Head of Audit Innovation. By: 2027-01-15. Blocks: FR-006,
-> IN-002, OUT-001. Spike: sample 20 engagements from the last two years and
-> count formats by volume.
+> **Q-003.** Which application types can be decided by a single reviewer, and
+> which need building, fire and zoning together? Decider: Chief Building Official.
+> By: 2027-01-15. Blocks: FR-012, IN-002, OUT-001. Spike: sample 200 decided
+> applications from the last two years and count how many reviewers actually
+> touched each.
 >
-> **Q-007.** Does the firm's independence policy permit the client to see
-> preparer notes attached to a request? Decider: General Counsel. By: 2026-12-10.
+> **Q-007.** May an applicant see a reviewer's internal notes, or only the
+> published reason for a hold? Decider: City Attorney. By: 2026-12-10.
 > Blocks: FR-014, TR-005.
 
 ## Rubric

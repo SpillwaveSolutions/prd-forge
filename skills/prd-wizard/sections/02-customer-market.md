@@ -36,21 +36,23 @@ the real competitor is usually a spreadsheet and a person who knows the job.
    what would make them pick us?"
 6. "What would make a buyer reject this outright?"
 
-## Worked example (domain: public accounting)
+## Worked example (domain: industrial equipment maintenance)
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
-> **S-001.** Mid-market audit firms, 50–400 staff. Buyer: managing partner or
-> head of audit quality. User: preparers and managers. Size: `<count>` such firms
-> in the US, per `<the named census or register, with its year>` — cite the real
-> source you have, or make it an open question in section 12. Willingness to pay:
-> already paying per-seat for working-paper software.
-> **Competitors.** Incumbent working-paper suites — offer the file structure and
-> sign-off trail; our edge: the evidence chain is reproducible per conclusion,
-> not per file. Excel plus shared drives — offer total flexibility; our edge:
-> the review trail survives staff turnover.
-> **Why we win.** A reviewer can reproduce any conclusion without asking the
-> preparer what they did.
+> **S-001.** Mid-size manufacturers running 20–200 production assets on one or
+> two sites. Buyer: plant manager or head of maintenance. User: maintenance
+> planners and technicians. Size: `<count>` such plants in the region, per `<the
+> named industry register, with its year>` — cite the real source you have, or
+> make it an open question in section 12. Willingness to pay: already paying for
+> a computerised maintenance management system, per seat.
+> **Competitors.** Incumbent maintenance management suites — offer the work-order
+> trail and spares inventory; our edge: a planner can see why an asset is at risk
+> before it stops, not only what was done after. Spreadsheets plus a long-serving
+> planner's memory — offer total flexibility and zero cost; our edge: the
+> knowledge survives that planner retiring.
+> **Why we win.** A planner can justify pulling an asset out of production
+> tomorrow, with the evidence, to a plant manager who does not want to.
 
 ## Rubric
 

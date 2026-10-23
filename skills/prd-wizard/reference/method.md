@@ -58,8 +58,8 @@ Then, for the rest of the session:
 
 - Use **their** unit of work in every question. Say "the load", not "the item".
 - Use their words, and put each one in the glossary the first time it appears.
-- Where the domain has standard terminology (GAAP, PCAOB, HIPAA, FMCSA, ICD-10,
-  Incoterms, SWIFT, HL7), prefer the standard term and cite it. If you are not
+- Where the domain has standard terminology (HIPAA, FMCSA, ICD-10, Incoterms,
+  SWIFT, HL7, IFRS, NEC), prefer the standard term and cite it. If you are not
   sure a term is standard, say so and ask — do not guess a regulation name or a
   clause number, ever.
 - Where the domain has a conventional document form (an audit programme, a bill

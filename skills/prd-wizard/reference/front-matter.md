@@ -49,7 +49,7 @@ schema: prd-forge/journeys@1     # which schema validates this front matter
 title: User journeys
 status: draft                    # pending | draft | review | final
 updated: 2026-10-23
-domain: external audit           # the expert's domain; same across the set
+domain: retail returns           # the expert's domain; same across the set
 score: 72                        # written by the grading pass only
 blocking: 1                      # written by the grading pass only
 graded: 2026-10-23

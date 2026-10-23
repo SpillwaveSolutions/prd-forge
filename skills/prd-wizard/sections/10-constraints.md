@@ -40,27 +40,29 @@ requirement gets prioritised, deferred, and then discovered during an audit.
 5. "Who must never be able to see what?"
 6. "If an auditor asked you to prove this, what would you show them?"
 
-## Worked example (domain: external audit)
+## Worked example (domain: clinical trial site activation)
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
-> **C-002** · regulatory · authority: PCAOB AS 1215, Audit Documentation
-> Statement: audit documentation supporting a conclusion must be retained and
-> retrievable for at least seven years, and must not be altered after the
-> documentation completion date.
-> (AS 1215 and the seven-year minimum are real — the minimum is statutory, under
-> Sarbanes-Oxley s.103(a)(2)(A)(i). When you write a constraint like this, read
-> the current standard yourself for the date the period runs from and for the
-> completion deadline, which has changed: do not copy them from here.)
+> **C-002** · regulatory · authority: FDA 21 CFR Part 11, Electronic Records and
+> Electronic Signatures
+> Statement: where a site readiness decision is recorded and signed
+> electronically, the record must be attributable to its signer and must remain
+> readable and unaltered for the retention period.
+> (21 CFR Part 11 is real and governs electronic records and electronic
+> signatures. When you write a constraint like this, read the current regulation
+> and your own sponsor's interpretation of it yourself for what it requires of a
+> signature, a copy and an audit trail: do not copy the specifics from here.)
 > Applies to: FR-040, ST-006.
-> Verification: quarterly restore test; immutability demonstrated by the
-> evidence chain export.
+> Verification: signature attribution and change history shown in the activation
+> export, tested once per release.
 >
-> **C-004** · contractual · authority: master services agreement, clause 11.3
-> Statement: client-supplied data is processed and stored only within the
-> client's stated jurisdiction.
+> **C-004** · contractual · authority: clinical trial agreement, schedule 3
+> Statement: patient-identifying data is never transmitted to or stored by the
+> sponsor; only de-identified readiness evidence leaves the site.
 > Applies to: all.
-> Verification: residency attestation included in the engagement close pack.
+> Verification: field-level review of everything the site submits, signed off at
+> each release by the data protection officer.
 
 ## Rubric
 

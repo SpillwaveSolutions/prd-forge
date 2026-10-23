@@ -13,7 +13,7 @@ These become acceptance criteria on stories, items in the definition of done, or
 separate platform stories. They are also the main driver of architecture, which
 is why they must be stated as measurable targets and not as adjectives: an
 engineer can build for "95th percentile under 2 seconds at 500 concurrent
-preparers"; nobody can build for "fast".
+caseworkers"; nobody can build for "fast".
 
 ## What belongs in each entry
 
@@ -48,31 +48,33 @@ confirm:
 
 For each answer, ask: "What is the number, and how would we measure it?"
 
-## Worked example (domain: external audit)
+## Worked example (domain: government benefits claims)
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
 > **NFR-003** · performance · priority: must
-> Statement: a preparer sees the request list without waiting.
-> Metric: 95th percentile time to first meaningful render of the request list.
-> Target: under 1.5 seconds at 300 concurrent preparers.
+> Statement: a caseworker sees a claimant's full case without waiting.
+> Metric: 95th percentile time to first meaningful render of the case view.
+> Target: under 1.5 seconds at 2,000 concurrent caseworkers.
 > Measurement: synthetic journey run every 5 minutes against production, plus
 > real-user timing reported weekly.
 >
 > **NFR-007** · retention · priority: must · applies_to: FR-040
-> Statement: a signed-off workpaper and its evidence chain remain retrievable for
-> the statutory period.
-> Metric: retrievability of a signed-off record and its evidence.
-> Target: 7 years from sign-off, 100% retrievable.
-> Measurement: quarterly restore test of a sampled record from each quarter.
+> Statement: a decided claim and the evidence behind it remain retrievable for the
+> statutory period.
+> Metric: retrievability of a decided claim and its evidence.
+> Target: 7 years from the decision date, 100% retrievable.
+> Measurement: quarterly restore test of a sampled claim from each quarter.
 >
 > **NFR-011** · accessibility · priority: must
-> Statement: every journey in section 5 is completable without a mouse and with
-> a screen reader.
+> Statement: every journey in section 5 is completable without a mouse and with a
+> screen reader. Claimants include people whose disability is the reason for the
+> claim, so this is the product, not a compliance overlay.
 > Metric: WCAG 2.2 AA conformance on the golden-thread journey.
 > Target: zero level-A or level-AA violations on the golden-thread path.
 > Measurement: automated axe scan in CI plus one manual screen-reader pass per
-> release.
+> release, and one session per release with a claimant who uses assistive
+> technology.
 
 ## Rubric
 

@@ -35,20 +35,20 @@ or the golden thread changes.
 When an open question in section 12 is answered, record the answer there and the
 change here.
 
-## Worked example (domain: external audit)
+## Worked example (domain: clinical trial site activation)
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
 > **0.4.0** · 2026-10-20 · R. Hightower · Sections 5, 6, 7
-> Added the golden-thread journey (J-001) from the practitioner workshops;
-> set the release line to ST-001…ST-006; rewrote 14 functional requirements
-> against the stages and dropped 3 that served no stage.
-> Approvals: A. Okafor, Head of Audit Innovation, 2026-10-22, approved with
+> Added the golden-thread journey (J-001) from the start-up workshops; set the
+> release line to ST-001…ST-006; rewrote 14 functional requirements against the
+> stages and dropped 3 that served no stage.
+> Approvals: A. Okafor, Head of Study Start-Up, 2026-10-22, approved with
 > conditions — conditional on Q-003 answered by 2027-01-15.
 >
 > **0.3.0** · 2026-09-02 · R. Hightower · Sections 3, 10
-> Added baselines to O-001 and O-002 from the claims warehouse; added TR-001
-> through TR-006 after the independence review. Approvals: none sought.
+> Added baselines to O-001 and O-002 from the start-up metrics report; added
+> TR-001 through TR-006 after the data protection review. Approvals: none sought.
 
 ## Rubric
 

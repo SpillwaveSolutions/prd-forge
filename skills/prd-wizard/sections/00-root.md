@@ -46,19 +46,22 @@ again at the end, when the sections have taught you what the product really is.
 If they cannot answer 5, write it into section 12 as an open question with a
 decider and a date. Do not invent a baseline.
 
-## Worked example (domain: external audit)
+## Worked example (domain: municipal building permits)
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
-> **Problem.** Audit teams spend more time chasing and reconciling client data
-> than testing it, and reviewers cannot see which version of a file a conclusion
-> rests on. **Users.** Preparers, managers and partners at audit firms, plus the
-> client staff who supply data. **Why now.** Regulators now require the evidence
-> chain for a conclusion to be reproducible on request. **Bet.** A preparer can
-> take a revenue procedure from data request to signed-off workpaper without
-> leaving the product, and every conclusion names the evidence it rests on.
-> **Measure.** Median days from first data request to signed-off workpaper;
-> today 19 days on pilot engagements.
+> **Problem.** Homeowners and small builders cannot tell where a permit
+> application stands or what is blocking it, so they phone the counter, and plan
+> reviewers lose a third of their week to status calls instead of reviewing.
+> **Users.** Applicants (homeowners and small builders), permit technicians at
+> the counter, and plan reviewers in building, fire and zoning.
+> **Why now.** The council has committed to a published median decision time from
+> the next fiscal year, and the current intake cannot report one.
+> **Bet.** An applicant can see exactly what stage their application is at and
+> what is needed from them, and a reviewer sees only applications that are ready
+> for their review.
+> **Measure.** Median calendar days from a complete application to a decision;
+> today 34 days for residential alterations.
 
 ## Rubric
 

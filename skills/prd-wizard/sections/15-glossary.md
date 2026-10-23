@@ -42,20 +42,21 @@ would have to guess at, stop and ask:
 Then read your own draft requirements back and flag every domain word that is
 not in here.
 
-## Worked example (domain: external audit)
+## Worked example (domain: clinical trial site activation)
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
-> **Exception.** A result from a test that does not match what was expected and
-> has not yet been explained or resolved.
-> See also: finding, misstatement.
-> Not: an error. An exception may turn out to be correct once explained.
+> **Activation.** The point at which a site may begin screening patients, after
+> every readiness condition has been met and released.
+> See also: initiation, screening.
+> Not: initiation. The initiation visit is a meeting that may happen before or
+> after activation; activation is the permission to begin.
 >
-> **Review.** A second person examining completed work and either accepting it
-> or returning it with notes.
-> See also: sign-off.
-> Not: sign-off. Review is performed by the manager; sign-off is the partner's
-> final acceptance of the conclusion.
+> **Screening.** Assessing a patient against the study's criteria to decide
+> whether they may be enrolled.
+> See also: enrolment.
+> Not: enrolment. A screened patient may fail screening and never enrol; counts
+> of the two are different numbers and are reported separately.
 
 ## Rubric
 
