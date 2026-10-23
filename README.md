@@ -46,8 +46,16 @@ docs/prd/<slug>/
   16-change-log.md                       section 15
 ```
 
-`examples/acme-returns/` is a working five-document subset that passes the
-validator. Read it to see the front matter, the link chain and the id references.
+Two worked sets ship with the plugin:
+
+- `docs/prd/prd-forge/` — prd-forge's own PRD, all seventeen documents, written
+  with these conventions and graded by the adversarial agents. The scores and
+  blocking counts in its front matter are real. Read this one to see what a full
+  set looks like, including what a graded set looks like when it has not yet
+  passed.
+- `examples/acme-returns/` — a five-document subset, small enough to read in one
+  sitting. Read this one for the front matter, the link chain and the id
+  references.
 
 ## Using it
 
