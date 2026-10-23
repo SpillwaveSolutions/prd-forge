@@ -52,8 +52,8 @@
           "target": {
             "type": "string",
             "minLength": 1,
-            "pattern": ".*\\d.*",
-            "description": "The number. A target with no digit in it is not a target."
+            "pattern": "(\\d|[Zz]ero|[Nn]one)",
+            "description": "The number. A target with no quantity in it is not a target. 'zero' and 'none' count: an absolute of nought is a number, and is often the right target for violations, data loss or leaked destinations."
           },
           "measurement": {
             "type": "string",

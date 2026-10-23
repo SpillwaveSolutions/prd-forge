@@ -23,7 +23,8 @@ caseworkers"; nobody can build for "fast".
   supportability.
 - `statement`: the requirement in a sentence.
 - `metric`: what is measured.
-- `target`: the number, with its unit and percentile.
+- `target`: the number, with its unit and percentile. `zero` and `none` count:
+  an absolute of nought is a number, and is often the right target.
 - `measurement`: how and where it is measured.
 - `priority`, and `applies_to` when it holds only for certain requirements.
 
@@ -80,7 +81,7 @@ _The figures, citations and organisations in this example are invented, to show 
 
 | Dimension | 0 | 2 | 4 |
 | --- | --- | --- | --- |
-| Numbers | Adjectives only | Some numbers | Every entry has a figure and a unit |
+| Numbers | Adjectives only | Some numbers | Every entry has a quantity and a unit (`zero` counts) |
 | Percentiles | Averages | Mixed | Percentiles where latency matters |
 | Measurement | Absent | Named loosely | A method and a place, repeatable |
 | Category coverage | One or two | Several | Performance, scale, availability, security, privacy, accessibility, retention, observability all considered or explicitly N/A |
@@ -90,7 +91,8 @@ _The figures, citations and organisations in this example are invented, to show 
 
 ## Blocking defects
 
-- A `target` with no digit in it.
+- A `target` that names no quantity (an adjective, not a number; `zero` and
+  `none` are quantities).
 - A `measurement` that nobody could actually run.
 - No accessibility entry, and no explicit statement that it does not apply.
 - No retention entry where section 9 names a retention constraint.

@@ -465,8 +465,9 @@ function structural(docs, dir) {
     }
   }
   for (const nfr of docs.find(d => d.front.kind === 'nonfunctional-requirements')?.front?.requirements ?? []) {
-    if (typeof nfr?.target === 'string' && !/\d/.test(nfr.target)) {
-      errors.push(`nonfunctional-requirements: ${nfr.id} target "${nfr.target}" has no number in it`)
+    // 'zero' and 'none' are quantities; the rule is against adjectives, not words.
+    if (typeof nfr?.target === 'string' && !/\d|[Zz]ero|[Nn]one/.test(nfr.target)) {
+      errors.push(`nonfunctional-requirements: ${nfr.id} target "${nfr.target}" names no quantity`)
     }
   }
   for (const rule of docs.find(d => d.front.kind === 'decision-rights')?.front?.decisions ?? []) {
