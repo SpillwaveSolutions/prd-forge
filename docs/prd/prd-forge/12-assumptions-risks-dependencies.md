@@ -1,0 +1,188 @@
+---
+id: prd-forge-assumptions-risks-dependencies
+kind: assumptions-risks-dependencies
+schema: prd-forge/assumptions-risks-dependencies@1
+title: Assumptions, risks and dependencies
+status: draft
+updated: 2026-10-23
+domain: product management tooling
+section: 11
+order: 120
+assumptions:
+  - id: A-001
+    assumption: >-
+      A domain expert will answer fifty to a hundred questions about their own
+      field across a few sittings, if each one is clearly worth answering.
+    if_false: >-
+      The whole method fails. The product would have to produce a usable partial
+      PRD from perhaps fifteen answers, which changes sections 5, 6 and 7
+      completely and makes the grading thresholds meaningless.
+    validated_by: >-
+      Observed sessions with 10 first-time experts, counting where they stop - the
+      same sessions NFR-005 uses.
+    owner: Richard Hightower
+  - id: A-002
+    assumption: >-
+      An expert will act on a grade they did not produce, rather than dismissing it.
+    if_false: >-
+      The grading is decoration and sections 3 and 7 are measuring something nobody
+      uses. The product reduces to a structured interview.
+    validated_by: >-
+      In the same observed sessions, whether the expert answers the one question or
+      moves on regardless.
+    owner: Richard Hightower
+  - id: A-003
+    assumption: >-
+      An engineering lead will accept a PRD that names no technology, rather than
+      reading the absence as incompleteness.
+    if_false: >-
+      Test 5 becomes a liability rather than a discipline, and the candidate
+      architecture decisions list in FR-007 has to become a first-class output
+      rather than a hand-over note.
+    validated_by: >-
+      Three engineering leads reading a completed set cold and saying what they
+      would ask for first.
+    owner: Richard Hightower
+  - id: A-004
+    assumption: >-
+      Organisations will let a specification for their product be drafted inside an
+      assistant session.
+    if_false: >-
+      C-001 and C-003 are unacceptable as written and the delivery model has to
+      change, which invalidates most of section 7's assumptions about immediacy.
+    validated_by: >-
+      The information security review of the first three customer engagements.
+    owner: Richard Hightower
+risks:
+  - id: R-001
+    risk: >-
+      The expert accepts a weak PRD because the score was high. The grade becomes
+      false assurance, which is worse than no grade.
+    likelihood: high
+    impact: high
+    mitigation: >-
+      Blocking defects are counted and reported separately from the score and no
+      score clears them (FR-009); the non-goal in section 6 says explicitly that a
+      grade is evidence, not a warrant; FR-012 puts a buildability verdict in front
+      of the expert before approval.
+    owner: Richard Hightower
+  - id: R-002
+    risk: >-
+      The grading reports findings that are not in the document. The expert catches
+      one, stops trusting all of them, and the grading becomes noise they skip.
+    likelihood: high
+    impact: high
+    mitigation: >-
+      Every finding must quote the document, and anything unsupported is dropped
+      before the expert sees it (FR-009, TR-003, TR-006); a refuted finding is
+      acknowledged as dropped rather than defended (SC-004).
+    owner: Richard Hightower
+  - id: R-003
+    risk: >-
+      A fluent, well-structured, well-graded PRD is produced for the wrong product,
+      and the structure makes the error harder to see rather than easier.
+    likelihood: medium
+    impact: high
+    mitigation: >-
+      Section 3 asks what would move the objectives without this product at all;
+      section 1 requires evidence per problem and names what is unmeasured. Neither
+      is sufficient - this risk is not closed, and a reviewer should say so.
+    owner: Richard Hightower
+  - id: R-004
+    risk: >-
+      The interview is too long to finish, so sets are abandoned half-written and
+      the product is remembered as the thing that asked a hundred questions.
+    likelihood: medium
+    impact: medium
+    mitigation: >-
+      FR-005 lets the expert end any section and records what was left; FR-002 makes
+      resumption cheap; the working order in the method puts the sections that
+      unlock the others first, so an abandoned set is still useful.
+    owner: Richard Hightower
+  - id: R-005
+    risk: >-
+      A set written by one version cannot be read or graded by a later one, and an
+      expert loses weeks of thinking to an upgrade.
+    likelihood: low
+    impact: high
+    mitigation: >-
+      NFR-004 makes every set readable with no part of the product running;
+      NFR-009 requires older sets to stay gradable within a major version.
+    owner: Richard Hightower
+dependencies:
+  - id: D-001
+    need: >-
+      An assistant session the expert is already working in, able to carry a long
+      interview and read and write the documents.
+    from: The assistant platform the customer already uses
+    by: 2027-01-31
+    status: committed
+    blocks:
+      - ST-001
+      - ST-002
+  - id: D-002
+    need: >-
+      Ten first-time domain experts willing to be observed completing a PRD.
+    from: Early customers and the professional network
+    by: 2027-03-31
+    status: requested
+    blocks:
+      - A-001
+      - A-002
+      - NFR-005
+  - id: D-003
+    need: >-
+      Three engineering leads willing to read a completed set cold and report what
+      they would ask for first.
+    from: Early customers
+    by: 2027-03-31
+    status: requested
+    blocks:
+      - A-003
+      - O-001
+links:
+  parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
+  prev: { id: prd-forge-decision-rights, kind: decision-rights, path: ./11-decision-rights.md, title: Decision rights and trust rules }
+  next: { id: prd-forge-open-questions, kind: open-questions, path: ./13-open-questions.md, title: Open questions }
+---
+
+# Assumptions, risks and dependencies
+
+## Assumptions
+
+| ID | Assumption | If false |
+| --- | --- | --- |
+| A-001 | An expert will answer 50-100 questions across a few sittings | The method fails; sections 5-7 change completely |
+| A-002 | An expert will act on a grade they did not produce | The grading is decoration |
+| A-003 | An engineering lead accepts a PRD naming no technology | Test 5 becomes a liability |
+| A-004 | Organisations permit drafting inside an assistant session | C-001 and C-003 have to change |
+
+A-001 and A-002 are the two the product stands on, and neither has been tested.
+Both are validated by the same ten observed sessions (D-002), which makes D-002
+the single most load-bearing dependency in this PRD.
+
+## Risks
+
+| ID | Risk | L | I | Owner |
+| --- | --- | --- | --- | --- |
+| R-001 | High score becomes false assurance | high | high | Richard Hightower |
+| R-002 | Unsupported findings destroy trust in all findings | high | high | Richard Hightower |
+| R-003 | A beautifully graded PRD for the wrong product | medium | high | Richard Hightower |
+| R-004 | Interview too long; sets abandoned | medium | medium | Richard Hightower |
+| R-005 | A version change strands an expert's set | low | high | Richard Hightower |
+
+**R-003 is not closed.** The mitigations listed reduce it and do not solve it.
+Nothing in this product checks whether the product being specified should exist.
+That is stated here rather than hidden behind a mitigation that sounds adequate.
+
+## Dependencies
+
+| ID | Need | From | By | Status |
+| --- | --- | --- | --- | --- |
+| D-001 | An assistant session able to carry the interview | The customer's platform | 2027-01-31 | committed |
+| D-002 | 10 observed first-time experts | Early customers | 2027-03-31 | requested |
+| D-003 | 3 engineering leads to read a set cold | Early customers | 2027-03-31 | requested |
+
+D-002 and D-003 are both merely requested, and both are dated after R1's target in
+section 13. That is a real schedule problem: R1 ships before the assumptions it
+rests on are tested. Recorded, not resolved.
