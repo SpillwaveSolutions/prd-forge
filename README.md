@@ -19,6 +19,7 @@ derive a backlog from and build.
 | The mod (a pane) | `/prd` opens a pane beside the chat that steps through the set, showing each section's text, status and grade |
 | `schemas/` | A JSON Schema per document kind, validating the YAML front matter |
 | `scripts/prd-validate.mjs` | Checks front matter, the link graph, and cross-section id references. No dependencies |
+| `scripts/prd_export.py` | Exports the whole set as one Word document and one PDF, formatted for reading and printing |
 
 ## The document set
 
@@ -87,6 +88,32 @@ node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-validate.mjs" docs/prd/<slug> --json
 Exit code 1 on any error. It checks each document against its schema, the
 parent/prev/next/children graph, and every cross-section id — persona, stage,
 objective, requirement — plus the mechanically checkable parts of the five tests.
+
+## Exporting
+
+The set is markdown, which is right for authoring and wrong for sending to an
+approver. Export it as one document:
+
+```bash
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/prd_export.py" docs/prd/<slug>
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/prd_export.py" docs/prd/<slug> --pdf --out ./out
+```
+
+Both files are written beside the set as `<slug>-prd.docx` and `<slug>-prd.pdf`.
+They carry a title page, the executive summary, a contents table with each
+section's grade and blocking count, and then every section in reading order: its
+prose, and the full detail of every requirement, journey, persona and constraint
+its front matter holds. `docs/prd/prd-forge/prd-forge-prd.pdf` is this plugin's
+own PRD exported that way — look at it before you run this on your own set.
+
+| Needs | For |
+| --- | --- |
+| PyYAML | Both. `pip install pyyaml` |
+| python-docx | The Word file. `pip install python-docx` |
+| Chromium, or Playwright | The PDF. Playwright also puts page numbers in the footer |
+
+Pass `--docx` or `--pdf` to produce only one of them, so a missing dependency for
+the other does not stop you.
 
 ## Configuration
 
