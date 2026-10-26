@@ -94,6 +94,12 @@
                 "handoff": {
                   "type": "string",
                   "description": "Who takes over after this stage, when anyone does."
+                },
+                "satisfaction": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 5,
+                  "description": "How this stage feels to the person today, 1 (worst) to 5 (best), as the domain expert scores it. Never estimated by the wizard. Drawn as the journey's satisfaction diagram."
                 }
               },
               "required": [

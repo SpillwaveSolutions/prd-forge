@@ -520,6 +520,8 @@ function structural(docs, dir) {
     }
   }
 
+  // the release line: the stages section 6 puts in scope
+  const lineStages = new Set((scope?.in_scope ?? []).map(item => item?.journey_stage).filter(Boolean))
   const scenarios = docs.find(d => d.front.kind === 'scenarios')?.front?.scenarios ?? []
   const journeyIds = new Set(journeys.map(j => j?.id).filter(Boolean))
   for (const sc of scenarios) {
@@ -528,6 +530,9 @@ function structural(docs, dir) {
     }
     if (sc?.stage && stages.size > 0 && !stages.has(sc.stage)) {
       errors.push(`scenarios: ${sc.id} stage ${sc.stage} does not exist`)
+    }
+    if (sc?.priority === 'must' && sc?.stage && lineStages.size > 0 && !lineStages.has(sc.stage)) {
+      errors.push(`scenarios: ${sc.id} is a must, but its stage ${sc.stage} is not on the release line in section 6`)
     }
   }
 

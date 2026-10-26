@@ -11,7 +11,7 @@ import { cpSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, existsSy
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { decisionsMermaid, drawSet, journeyMermaid, releaseMermaid, scenarioMermaid } from './prd-diagrams.mjs'
+import { decisionsMermaid, drawSet, journeyMermaid, releaseMermaid, satisfactionMermaid, scenarioMermaid } from './prd-diagrams.mjs'
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -68,16 +68,33 @@ test('a journey renders with every awkward name at each hand-off', { skip: !hasM
   assert.equal(renderError(journeyMermaid(journey)), '')
 })
 
-test('a scenario renders as a sequence with awkward names and steps', { skip: !hasMmdc }, () => {
+test('a scenario renders as a flowchart: what the user sees slanted, what they do plain', { skip: !hasMmdc }, () => {
   const scenario = {
-    id: 'SC-009', variant: 'exception', context: HOSTILE.join(', '), trigger: HOSTILE[1],
+    id: 'SC-009', variant: 'exception', priority: 'must', context: HOSTILE.join(', '), trigger: HOSTILE[1],
     course: [...HOSTILE.map(name => `They see ${name}`), ...HOSTILE.map(name => `They say ${name}`)],
     expected_outcome: HOSTILE[2],
   }
-  const mermaid = scenarioMermaid(scenario, HOSTILE[0], HOSTILE[3])
+  const mermaid = scenarioMermaid(scenario)
   assert.equal(renderError(mermaid), '')
-  assert.match(mermaid, /S->>P: They see/)
-  assert.match(mermaid, /P->>S: They say/)
+  assert.match(mermaid, /^flowchart TB$/m)
+  assert.doesNotMatch(mermaid, /sequenceDiagram/)
+  assert.match(mermaid, /s0\[\/"They see /)
+  assert.match(mermaid, /s6\["They say /)
+  assert.match(mermaid, /exception, must/)
+})
+
+test('a journey with every stage scored draws its satisfaction curve', { skip: !hasMmdc }, () => {
+  const stages = HOSTILE.map((name, i) => ({ id: `ST-00${i + 1}`, name: `${name}: step, one`, actor: name, satisfaction: (i % 5) + 1 }))
+  const mermaid = satisfactionMermaid({ id: 'J-009', stages })
+  assert.match(mermaid, /^journey$/m)
+  const text = shown(render(mermaid))
+  for (const name of HOSTILE) assert.ok(text.includes(`${name}: step, one`), `"${name}" is missing from: ${text.slice(0, 300)}`)
+})
+
+test('a journey with any stage unscored draws no satisfaction curve, rather than invent a score', () => {
+  const stages = [{ id: 'ST-001', name: 'A', actor: 'X', satisfaction: 3 }, { id: 'ST-002', name: 'B', actor: 'X' }]
+  assert.equal(satisfactionMermaid({ id: 'J-001', stages }), undefined)
+  assert.equal(satisfactionMermaid({ id: 'J-002', stages: [] }), undefined)
 })
 
 test('the release line renders, with stages in no release in a column of their own', { skip: !hasMmdc }, () => {
@@ -127,7 +144,7 @@ test('every awkward name reads exactly as written in each kind of diagram', { sk
   const stages = HOSTILE.map((name, i) => ({ id: `ST-00${i + 1}`, name, actor: name }))
   const decisions = HOSTILE.map((name, i) => ({ id: `TR-00${i + 1}`, decision: name, approver: 'PER-001' }))
   const drawn = [
-    shown(render(scenarioMermaid(scenario, 'Expert', 'Product'))),
+    shown(render(scenarioMermaid(scenario))),
     shown(render(journeyMermaid({ id: 'J-009', trigger: 't', end_state: 'e', stages }))),
     shown(render(releaseMermaid([{ id: 'REL-001', name: 'R', journey_stages: stages.map(s => s.id) }], [{ id: 'J-009', stages }], []))),
     shown(render(decisionsMermaid(decisions, {}))),
@@ -136,4 +153,20 @@ test('every awkward name reads exactly as written in each kind of diagram', { sk
     for (const name of HOSTILE) assert.ok(text.includes(name), `"${name}" is missing from: ${text.slice(0, 300)}`)
     assert.doesNotMatch(text, /#\d+;|#quot;|<b>/)
   }
+})
+
+test('drawSet draws, links, and sizes a satisfaction curve once every stage is scored', { skip: !hasMmdc }, () => {
+  const dir = join(mkdtempSync(join(tmpdir(), 'prd-set-')), 'set')
+  cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
+  const file = join(dir, '05-user-journeys.md')
+  let score = 0
+  writeFileSync(file, readFileSync(file, 'utf8').replace(/(\n {6}- id: ST-\d{3}\n)/g, m => `${m}        satisfaction: ${(score++ % 5) + 1}\n`))
+  assert.deepEqual(drawSet(dir), [])
+  assert.match(readFileSync(file, 'utf8'), /^!\[J-001 satisfaction\]\(diagrams\/J-001-satisfaction\.svg\)$/m)
+  // Rendered at its own width, the curve is wide and short, not a small
+  // drawing at the top of an empty page.
+  const png = readFileSync(join(dir, 'diagrams/J-001-satisfaction.png'))
+  const [width, height] = [png.readUInt32BE(16), png.readUInt32BE(20)]
+  assert.ok(width > 2 * height, `${width} x ${height}`)
+  assert.doesNotMatch(readFileSync(join(dir, 'diagrams/J-001-satisfaction.svg'), 'utf8').slice(0, 600), /<svg[^>]* height="/)
 })

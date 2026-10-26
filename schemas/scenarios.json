@@ -43,6 +43,10 @@
               "exception"
             ]
           },
+          "priority": {
+            "$ref": "common.json#/$defs/priority",
+            "description": "Whether release 1 must handle this scenario. A must scenario sits on a release-line stage."
+          },
           "context": {
             "type": "string",
             "minLength": 1,

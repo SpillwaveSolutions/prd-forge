@@ -102,7 +102,8 @@ Each set keeps its diagrams in `diagrams/`, beside the documents:
 | Diagram | Source | Made by |
 | --- | --- | --- |
 | Each journey, `J-nnn` | Mermaid flowchart, `J-nnn.mmd` | Generated from the journey's front matter. Do not edit |
-| Each scenario, `SC-nnn` | Mermaid sequence, `SC-nnn.mmd` | Generated from the scenario's front matter. Do not edit |
+| Each journey's satisfaction curve | Mermaid user journey, `J-nnn-satisfaction.mmd` | Generated when the expert has scored every stage from 1 to 5. Do not edit |
+| Each scenario, `SC-nnn` | Mermaid flowchart, `SC-nnn.mmd` | Generated from the scenario's front matter. What the user sees is a slanted box, and what the user does is a plain box. Do not edit |
 | The release line | Mermaid flowchart, `release-line.mmd` | Generated from the release plan, the journeys, and the requirements. Do not edit |
 | The decision rights | Mermaid flowchart, `decision-rights.mmd` | Generated from the decision rights and the personas. Do not edit |
 | Each wireframe, `WF-nnn` | PlantUML Salt, `WF-nnn.puml` | Drawn by the wizard from the confirmed text sketch |

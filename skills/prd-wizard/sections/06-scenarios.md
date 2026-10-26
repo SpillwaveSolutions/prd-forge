@@ -19,6 +19,9 @@ release 1.
 
 - One `SC-nnn` per scenario, each bound to a `journey` and usually a `stage`.
 - `variant`: `happy`, `alternate` or `exception`.
+- `priority`: `must`, `should`, `could` or `wont`, as for a requirement. A `must`
+  scenario sits on a release-line stage; the validator fails the set when it
+  does not.
 - `context`: the state of the world when it starts, with concrete values.
 - `course`: what happens, in order, as the user experiences it.
 - `expected_outcome`: what the user sees at the end — a pass-or-fail statement.
@@ -35,9 +38,9 @@ expert says actually happen.
 ## How to interview for it
 
 Write each `course` step from the user's side, starting with "They" and a verb:
-"They see …", "They are asked …", "They say …". The scenario's diagram draws a
-step that starts "They see", "They read", or "They are" as the product speaking
-to the user, and every other step as the user acting.
+"They see …", "They are asked …", "They say …". The scenario's flowchart draws a
+step that starts "They see", "They read", or "They are" as what the product shows
+(a slanted box), and every other step as what the user does (a plain box).
 
 1. "Give me a normal run of this journey last month. Actual numbers."
 2. "Now the most common way it goes wrong. What does the user see?"
@@ -45,6 +48,8 @@ to the user, and every other step as the user acting.
 4. "What happens when two people do this at the same time?"
 5. "What happens when someone leaves halfway through and comes back next week?"
 6. "What is the worst case you have actually seen?"
+7. "Must release 1 handle this, or could it wait?" Record the answer as
+   `priority`.
 
 Questions 4 and 5 find the requirements teams discover late and expensively.
 
@@ -52,7 +57,7 @@ Questions 4 and 5 find the requirements teams discover late and expensively.
 
 _The figures, citations and organisations in this example are invented, to show the form. Never copy a number or a citation from it into a real PRD._
 
-> **SC-003** · journey J-001 · stage ST-004 · variant: exception
+> **SC-003** · journey J-001 · stage ST-004 · variant: exception · priority: must
 > **Context.** Load 48213 is two hours from a 14:00 appointment at a receiver
 > that closes at 15:00. The driver has not moved for 40 minutes.
 > **Course.** 1. The dispatcher sees the load flagged as at risk, with the reason

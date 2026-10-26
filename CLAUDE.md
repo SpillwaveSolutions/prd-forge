@@ -71,7 +71,7 @@ A PRD is one directory, `<docs_dir>/<slug>/`, of markdown files. Each file has Y
 
 ### Diagrams
 
-`prd-diagrams.mjs` generates Mermaid sources from the front matter for journeys (`J-nnn.mmd`), scenarios (`SC-nnn.mmd`), `release-line.mmd`, and `decision-rights.mmd`. Never edit a generated `.mmd` file. Wireframes are different:
+`prd-diagrams.mjs` generates Mermaid sources from the front matter for journeys (`J-nnn.mmd`), each journey's satisfaction curve (`J-nnn-satisfaction.mmd`, only when every stage has a `satisfaction` score), scenarios as flowcharts (`SC-nnn.mmd`), `release-line.mmd`, and `decision-rights.mmd`. Never edit a generated `.mmd` file. Wireframes are different:
 
 - The text sketch in a `wireframe` fence in `08-wireframes.md` is what the pane shows.
 - The hand-written PlantUML Salt drawing, `diagrams/WF-nnn.puml`, replaces the sketch in the export.
@@ -87,7 +87,7 @@ The script renders every source to `.svg` and `.png` and writes the image links 
 
 ### PRD content rules
 
-These rules are in `skills/prd-wizard/reference/boundaries.md`. A PRD never says how to build: it names no technology, vendor, component, screen, data model, or estimate. Every functional requirement passes five tests and has `shown_in`. When a person meets a requirement's outcome on a screen or in a report, the requirement needs a wireframe, and the validator enforces it.
+These rules are in `skills/prd-wizard/reference/boundaries.md`. A PRD never says how to build: it names no technology, vendor, component, screen, data model, or estimate. Every functional requirement passes five tests and has `shown_in`. A stage's `satisfaction` (1 to 5) and a scenario's `priority` come only from the expert; never estimate them. A `must` scenario must sit on a release-line stage. When a person meets a requirement's outcome on a screen or in a report, the requirement needs a wireframe, and the validator enforces it.
 
 ## Working conventions
 

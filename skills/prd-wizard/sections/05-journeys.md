@@ -36,6 +36,7 @@ epics and stories cannot be derived from the PRD at all.
 | `inputs` / `outputs` | What the user gives, and gets back |
 | `handoff` | Where another person takes over |
 | `pain_points` / `needs` | What is hard today, and what the product must fix |
+| `satisfaction` on each stage | How the stage feels to the user today, 1 (worst) to 5 (best), as the expert scores it |
 | `end_state` | How the user knows they are done |
 
 Every stage names **a person, an input, an output and a decision, and no
@@ -71,8 +72,12 @@ Interview one journey at a time. Do the golden thread first.
 5. "What do they have to provide at this stage, and what do they get back?"
 6. "Does anyone else take over here? Who, and what do they receive?"
 7. "What is hard about this stage today?"
-8. "At the very end — how does the user know they are finished?"
-9. "If we built only steps 1 through N, would anyone get value? Where is the
+8. "From 1 to 5, how does this stage feel to the user today? 1 is the worst it
+   gets, 5 is fine as it is." Record the answer as the stage's `satisfaction`.
+   Never estimate it: a stage the expert does not score stays without one. A 1
+   or a 2 almost always has a pain point behind it; ask for it.
+9. "At the very end — how does the user know they are finished?"
+10. "If we built only steps 1 through N, would anyone get value? Where is the
    smallest complete path?" — that answer is the release line for section 6.
 
 If the expert gives you a system step ("the file is validated"), convert it:
@@ -122,6 +127,8 @@ _The figures, citations and organisations in this example are invented, to show 
 > the community team notified when the plan is made, not when the patient leaves.
 > end state: the patient has left with their medicines, their documents and a
 > booked follow-up, and the community team has accepted the handover.
+> satisfaction today, ST-001 to ST-006: 4, 2, 1, 2, 3, 3. The coordinator's
+> stages score low because the plan lives in three places.
 
 Do not draw the journey by hand: `prd-diagrams.mjs` generates its diagram from the front matter. Do not draw screens here. Sketches of screens and reports go in `08-wireframes.md`, after section 7.
 
@@ -137,6 +144,7 @@ Do not draw the journey by hand: `prd-diagrams.mjs` generates its diagram from t
 | Handoffs | Implicit | Mentioned | Every change of actor is explicit |
 | No technology | Names systems | Occasional leak | No system, vendor or component anywhere |
 | End state | Absent | Vague | A condition the user can observe |
+| Satisfaction | No stage scored | Some stages scored, or scores the expert did not give | Every stage scored by the expert, and every stage at 1 or 2 has a pain point and a need that answers it |
 | Golden thread | None marked | Marked arbitrarily | Exactly one, and it is the smallest complete path to value |
 | Steps outside the product | Omitted | Mentioned | Included, including other people's work |
 

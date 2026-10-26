@@ -7,10 +7,11 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
-import { readFileSync, readdirSync } from 'node:fs'
+import { cpSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { parseYaml, splitFrontMatter } from './prd-validate.mjs'
+import { parseYaml, splitFrontMatter, validateSet } from './prd-validate.mjs'
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..')
 const PYYAML = 'import json,sys,yaml; print(json.dumps(yaml.safe_load(sys.stdin.read()), default=str))'
@@ -46,3 +47,24 @@ for (const set of ['docs/prd/prd-forge', 'examples/acme-returns']) {
     })
   }
 }
+
+/** A copy of prd-forge's own set with `edit` applied to one file, validated. */
+function validateEdited(file, edit) {
+  const dir = join(mkdtempSync(join(tmpdir(), 'prd-validate-')), 'set')
+  cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
+  const path = join(dir, file)
+  writeFileSync(path, edit(readFileSync(path, 'utf8')))
+  return validateSet(dir).errors
+}
+
+test('a must scenario off the release line fails the set', () => {
+  const errors = validateEdited('06-scenarios.md', text =>
+    text.replace('    stage: ST-002\n    persona: PER-001\n    variant: happy\n', '    stage: ST-007\n    persona: PER-001\n    variant: happy\n    priority: must\n'))
+  assert.ok(errors.some(e => /SC-001 is a must, but its stage ST-007 is not on the release line/.test(e)), errors.join('\n'))
+})
+
+test('a stage satisfaction outside 1 to 5 fails the set', () => {
+  const errors = validateEdited('05-user-journeys.md', text =>
+    text.replace(/(      - id: ST-001\n)/, '$1        satisfaction: 7\n'))
+  assert.ok(errors.some(e => /satisfaction: above 5/.test(e)), errors.join('\n'))
+})
