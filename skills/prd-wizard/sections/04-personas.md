@@ -18,6 +18,9 @@ builds the approval rules on.
 
 - One `PER-nnn` per role, named by role: "Study start-up specialist, sponsor
   side", not "Maria".
+- `short_name`: the role in one or two words with no spaces, such as
+  `StartupSpecialist`. Required and unique in the set. Every diagram names the
+  persona by it, never by its id.
 - `goals`: what they want, in their words.
 - `pains`: what is hard today, traceable to section 1.
 - `frequency`: daily, per engagement, once at setup. This drives the
@@ -39,6 +42,8 @@ builds the approval rules on.
 4. "How often do they do this — every day, once a quarter, once ever?"
 5. "What can they approve or sign off that others cannot?"
 6. "Who is the least experienced person who will ever do this job?"
+7. "What does your team call this role in one or two words?" Record it as
+   `short_name`.
 
 Question 6 sets the accessibility and usability bar, and the expert usually knows
 the answer immediately.

@@ -12,7 +12,7 @@ actually use. It is also the input to the `prd-to-backlog` skill.
 
 | Level | Comes from in the PRD | Contains |
 | --- | --- | --- |
-| Feature | A stage of the user journey, plus the business objectives | Name, users, outcome, success metric, links to PRD requirement ids |
+| Feature | A stage of the user journey, plus the business objectives | Name, users, outcome, success metric, acceptance from the stage's Given/When/Then, links to PRD requirement ids |
 | Epic | The in-scope part of a feature for one release, set by the scope and the release line | Goal, in and out of scope, epic-level acceptance, a story list |
 | User story | One step in the journey for one persona; the functional requirement gives the content | "As a `<persona>`, I want `<capability>`, so that `<outcome>`", Given/When/Then criteria, a priority |
 | Task | **Not from the PRD.** Engineering design and ADRs, applied to one story | One build step, an owner, a size in hours |

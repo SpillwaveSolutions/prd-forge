@@ -86,6 +86,8 @@ links:
 
 # Release plan
 
+![The release line](diagrams/release-line.svg)
+
 | ID | Release | Stages | Target |
 | --- | --- | --- | --- |
 | REL-001 | Single-expert PRD authoring | ST-001..ST-006 | 2027-03-31 |

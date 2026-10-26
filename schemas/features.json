@@ -47,6 +47,14 @@
             "minLength": 1,
             "description": "Derived from the PRD objective this feature serves."
           },
+          "acceptance": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^Given\\b.*\\bwhen\\b.*\\bthen\\b"
+            },
+            "description": "The journey stage's Given/When/Then acceptance, copied as written: when the feature is done."
+          },
           "objectives": {
             "type": "array",
             "items": {

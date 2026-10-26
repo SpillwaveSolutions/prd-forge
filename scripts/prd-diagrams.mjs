@@ -3,8 +3,12 @@
 //
 //   node prd-diagrams.mjs <set directory> [--check]
 //
-// - Each journey in section 5 becomes J-nnn.mmd, generated from the front
-//   matter, so the diagram cannot drift from the stages it draws.
+// - Generated from the front matter, so a diagram cannot drift from what it
+//   draws: each journey (J-nnn.mmd), its satisfaction curve when every stage
+//   has a score (J-nnn-satisfaction.mmd), each scenario (SC-nnn.mmd), each
+//   lifecycle as a state diagram (LC-nnn.mmd),
+//   the release line (release-line.mmd), and the decision rights
+//   (decision-rights.mmd).
 // - Each wireframe in section 7 is drawn by hand as WF-nnn.puml, a PlantUML Salt
 //   drawing of its text sketch. The wizard writes it; this script renders it.
 // - Every source is rendered to .svg (linked from the documents) and .png (what
@@ -18,7 +22,19 @@ import { spawnSync } from 'node:child_process'
 import { join, resolve } from 'node:path'
 import { parseYaml, splitFrontMatter } from './prd-validate.mjs'
 
-const label = text => String(text ?? '').replace(/"/g, '#quot;').replace(/\s+/g, ' ').trim()
+const ENTITY = { '#': '#35;', ';': '#59;', '"': '#quot;', '<': '#lt;', '>': '#gt;' }
+
+/**
+ * Text made safe inside a Mermaid label. One pass, so an entity is never
+ * escaped twice: `#` and `;` would otherwise break each other's escapes. `;`
+ * can end a Mermaid statement, and `"`, `<`, and `>` end a label or open a
+ * tag.
+ */
+const label = text =>
+  String(text ?? '')
+    .replace(/[#;"<>]/g, c => ENTITY[c])
+    .replace(/\s+/g, ' ')
+    .trim()
 
 /**
  * A journey as a top-to-bottom flowchart: trigger, each stage and its actor,
@@ -44,7 +60,7 @@ export function journeyMermaid(journey) {
   for (let i = 0; i + 1 < chain.length; i++) {
     const [from, to] = [stages[i - 1], stages[i]]
     const handoff = from !== undefined && to !== undefined && from.actor !== to.actor
-    lines.push(`  ${chain[i]} -->${handoff ? `|hand-off to ${label(to.actor)}|` : ''} ${chain[i + 1]}`)
+    lines.push(`  ${chain[i]} -->${handoff ? `|"hand-off to ${label(to.actor)}"|` : ''} ${chain[i + 1]}`)
   }
   lines.push(
     '  classDef stage fill:#F5F7FA,stroke:#8A94A6,color:#1F2430',
@@ -63,77 +79,342 @@ const newer = (out, src) => existsSync(out) && statSync(out).mtimeMs >= statSync
 
 function render(src, tool) {
   const base = src.replace(/\.(mmd|puml)$/, '')
+  // A user journey diagram draws at a fixed height in a page of mmdc's
+  // default width, so it shrinks and leaves the rest of the height empty.
+  // Render it at its own width instead, read from the SVG's viewBox.
+  const journey = tool === 'mmdc' && /^journey$/m.test(readFileSync(src, 'utf8'))
+  let width = []
   for (const ext of ['svg', 'png']) {
+    if (journey && ext === 'png' && existsSync(`${base}.svg`)) {
+      const box = /viewBox="[-\d.]+ [-\d.]+ ([\d.]+)/.exec(readFileSync(`${base}.svg`, 'utf8'))
+      if (box !== null) width = ['-w', String(Math.ceil(Number(box[1])))]
+    }
     if (newer(`${base}.${ext}`, src)) continue
     const run =
       tool === 'mmdc'
-        ? spawnSync('mmdc', ['-q', '-i', src, '-o', `${base}.${ext}`, '-b', 'white', ...(ext === 'png' ? ['-s', '2'] : [])], { encoding: 'utf8' })
+        ? spawnSync('mmdc', ['-q', '-i', src, '-o', `${base}.${ext}`, '-b', 'white', ...width, ...(ext === 'png' ? ['-s', '2'] : [])], { encoding: 'utf8' })
         : spawnSync('plantuml', [`-t${ext}`, src], { encoding: 'utf8' })
     if (run.error !== undefined || run.status !== 0) {
       throw new Error(`${tool} failed on ${src}: ${run.error?.message ?? run.stderr}`)
     }
+    // Without its fixed height, a browser sizes the SVG by its viewBox.
+    if (journey && ext === 'svg') {
+      writeFileSync(`${base}.svg`, readFileSync(`${base}.svg`, 'utf8').replace(/(<svg[^>]*?) height="[\d.]+"/, '$1'))
+    }
   }
 }
 
-/** Adds `line` after the first line of `body` that `after` matches, unless it is there. */
-function ensureLink(body, after, line) {
-  if (body.includes(line)) return body
+/** A Mermaid node id for any string: letters and digits only. */
+const nodeId = text => String(text).replace(/[^A-Za-z0-9]/g, '') || 'n'
+
+/** Breaks a label into lines of about `width` characters, for diagrams that do not wrap. */
+const wrap = (text, width = 46) => {
+  const out = []
+  let line = ''
+  for (const word of String(text ?? '').split(/\s+/).filter(Boolean)) {
+    if (line !== '' && line.length + word.length + 1 > width) {
+      out.push(line)
+      line = word
+    } else line = line === '' ? word : `${line} ${word}`
+  }
+  if (line !== '') out.push(line)
+  return out.map(label).join('<br/>')
+}
+
+// A course step that is what the product shows the user, not what the user
+// does: "They see …", "They are asked …", "They read …".
+const USER_SEES = /^(they|the [a-z -]+?) (see|sees|read|reads|are|is|get|gets|hear|hears|find|finds|receive|receives)\b/i
+
+const VARIANT = { happy: 'happy path', alternate: 'alternate path', exception: 'exception' }
+
+/**
+ * A scenario as a top-to-bottom flowchart: Given the context, When the trigger
+ * and each step of the course in order, Then the expected outcome. A step the user sees is a
+ * slanted box; a step the user takes is a plain box. The variant colors the
+ * border of the start and the end.
+ */
+export function scenarioMermaid(scenario) {
+  const variant = VARIANT[scenario.variant] ?? scenario.variant ?? ''
+  const tags = [variant, scenario.priority].filter(Boolean).map(label).join(', ')
+  const lines = [
+    '%% Generated by prd-diagrams.mjs from the scenario front matter. Do not edit.',
+    '%%{init: {"flowchart": {"wrappingWidth": 300}}}%%',
+    'flowchart TB',
+    `  start(["<b>${label(scenario.id)}</b> ${tags}<br/><b>Given</b> ${label(scenario.context)}"])`,
+  ]
+  const chain = ['start']
+  if (scenario.trigger) {
+    lines.push(`  trigger["<b>When</b> ${label(scenario.trigger)}"]`)
+    chain.push('trigger')
+  }
+  ;(scenario.course ?? []).forEach((step, i) => {
+    const text = label(step)
+    lines.push(USER_SEES.test(step) ? `  s${i}[/"${text}"/]` : `  s${i}["${text}"]`)
+    chain.push(`s${i}`)
+  })
+  lines.push(`  done(["<b>Then</b> ${label(scenario.expected_outcome)}"])`)
+  chain.push('done')
+  lines.push(`  ${chain.join(' --> ')}`)
+  const border = { happy: '#2F855A', alternate: '#B7791F', exception: '#C53030' }[scenario.variant] ?? '#8A94A6'
+  lines.push(
+    `  classDef ends fill:#FFFFFF,stroke:${border},stroke-width:2px,color:#1F2430`,
+    '  classDef sees fill:#F5F7FA,stroke:#8A94A6,color:#1F2430',
+    '  classDef does fill:#FFFFFF,stroke:#8A94A6,color:#1F2430',
+    '  class start,done ends',
+  )
+  ;(scenario.course ?? []).forEach((step, i) => lines.push(`  class s${i} ${USER_SEES.test(step) ? 'sees' : 'does'}`))
+  if (scenario.trigger) lines.push('  class trigger does')
+  return `${lines.join('\n')}\n`
+}
+
+/**
+ * A lifecycle as a state diagram: each state the subject can be in, and each
+ * transition labeled with what moves it, the business rule in brackets, and
+ * who makes the move, by the persona's short name.
+ */
+export function lifecycleMermaid(lifecycle, roleNames = {}) {
+  const states = lifecycle.states ?? []
+  const id = name => `s${states.findIndex(state => state.name === name)}`
+  const lines = [
+    '%% Generated by prd-diagrams.mjs from the scenarios front matter. Do not edit.',
+    'stateDiagram-v2',
+    ...states.map((state, i) => `  state "${label(state.name)}" as s${i}`),
+  ]
+  if (lifecycle.initial !== undefined) lines.push(`  [*] --> ${id(lifecycle.initial)}`)
+  for (const move of lifecycle.transitions ?? []) {
+    const who = move.by === undefined ? '' : ` (${label(roleNames[move.by] ?? move.by)})`
+    const rule = move.rule === undefined ? '' : ` [${label(move.rule)}]`
+    lines.push(`  ${id(move.from)} --> ${id(move.to)} : ${label(move.when)}${rule}${who}`)
+  }
+  for (const name of lifecycle.final ?? []) lines.push(`  ${id(name)} --> [*]`)
+  return `${lines.join('\n')}\n`
+}
+
+/** Text safe in a Mermaid journey task or actor, where `:` and `,` are syntax. */
+const taskText = text => label(text).replace(/:/g, '#58;').replace(/,/g, '#44;')
+
+/**
+ * A journey's satisfaction curve, as Mermaid's user journey diagram: one
+ * section per stage, the stage as its task, with the expert's 1-to-5 score and
+ * the stage's actor. Undefined unless every stage has a score, because a
+ * missing score would have to be invented.
+ */
+export function satisfactionMermaid(journey) {
+  const stages = journey.stages ?? []
+  if (stages.length === 0 || !stages.every(stage => Number.isInteger(stage.satisfaction))) return undefined
+  const lines = [
+    '%% Generated by prd-diagrams.mjs from the journey front matter. Do not edit.',
+    // Boxes that fit a stage name of about 60 characters. Taller boxes hide
+    // the score faces, which Mermaid draws at fixed heights.
+    '%%{init: {"journey": {"width": 160, "height": 95, "taskMargin": 20, "leftMargin": 130, "taskFontSize": 17}}}%%',
+    'journey',
+    `  title ${label(journey.id)}, how each stage feels today`,
+  ]
+  for (const stage of stages) {
+    lines.push(`  section ${label(stage.id)}`, `    ${taskText(stage.name)}: ${stage.satisfaction}: ${taskText(stage.actor ?? 'User')}`)
+  }
+  return `${lines.join('\n')}\n`
+}
+
+/**
+ * The release line: each release as a column, first release on the left,
+ * holding the journey stages it delivers, each with its count of `must`
+ * requirements. Stages no release names stand in a column of their own.
+ */
+export function releaseMermaid(releases, journeys, requirements) {
+  const stages = journeys.flatMap(j => (j.stages ?? []).map(stage => ({ ...stage, journey: j.id })))
+  const musts = id => requirements.filter(r => r.journey_stage === id && r.priority === 'must').length
+  const lines = [
+    '%% Generated by prd-diagrams.mjs from the release plan front matter. Do not edit.',
+    '%%{init: {"flowchart": {"wrappingWidth": 220}}}%%',
+    'flowchart LR',
+  ]
+  const placed = new Set()
+  const heads = []
+  const rows = []
+  // One column per release. The release's name sits in a header box, not the
+  // subgraph title, which Mermaid draws on one line and clips.
+  const column = (key, title, ids) => {
+    const lines = []
+    rows.push(lines)
+    lines.push(`  subgraph ${key}[" "]`, '    direction TB', `    ${key}head(["${title}"])`)
+    heads.push(`${key}head`)
+    const here = stages.filter(stage => ids.includes(stage.id))
+    if (here.length === 0) lines.push(`    ${key}head --> ${key}none["Nothing planned yet"]`)
+    else lines.push(`    ${key}head --> ${nodeId(here[0].id)}`)
+    for (const stage of here) {
+      placed.add(stage.id)
+      const n = musts(stage.id)
+      lines.push(`    ${nodeId(stage.id)}["<b>${stage.id}</b> ${label(stage.name)}<br/><i>${n} must ${n === 1 ? 'requirement' : 'requirements'}</i>"]`)
+    }
+    // Consecutive stages of one journey, in order, inside this release only.
+    here.forEach((stage, i) => {
+      const next = here[i + 1]
+      if (next !== undefined && next.journey === stage.journey) lines.push(`    ${nodeId(stage.id)} --> ${nodeId(next.id)}`)
+    })
+    lines.push('  end')
+  }
+  for (const release of releases) {
+    const when = release.target_date ? `<br/>by ${label(release.target_date)}` : ''
+    column(nodeId(release.id), `<b>${release.id}</b><br/>${label(release.name)}${when}`, release.journey_stages ?? [])
+  }
+  const rest = stages.filter(stage => !placed.has(stage.id)).map(stage => stage.id)
+  if (rest.length > 0) column('unplanned', '<b>In no release</b>', rest)
+  for (const row of rows) lines.push(...row)
+  // Hidden links between the groups, not their nodes, set the columns left to
+  // right in order and keep each column top to bottom. Columns, not rows, keep
+  // a long release readable on a printed page.
+  const groups = heads.map(head => head.replace(/head$/, ''))
+  for (let i = 0; i + 1 < groups.length; i++) lines.push(`  ${groups[i]} ~~~ ${groups[i + 1]}`)
+  lines.push('  classDef head fill:#FFFFFF,stroke:#8A94A6,color:#1F2430')
+  if (heads.length > 0) lines.push(`  class ${heads.join(',')} head`)
+  return `${lines.join('\n')}\n`
+}
+
+/**
+ * Decision rights: who decides what. Each approver points at the decisions
+ * they own. A solid border marks a decision never delegated, and a dashed one
+ * a decision an agent may make.
+ */
+export function decisionsMermaid(decisions, roleNames = {}) {
+  const lines = [
+    '%% Generated by prd-diagrams.mjs from the decision rights front matter. Do not edit.',
+    // Wide, short boxes packed close keep a dozen decisions on one printed page.
+    '%%{init: {"flowchart": {"wrappingWidth": 420, "nodeSpacing": 14, "rankSpacing": 70}}}%%',
+    'flowchart LR',
+  ]
+  const approvers = [...new Set(decisions.map(d => String(d.approver ?? 'Unassigned')))]
+  for (const who of approvers) {
+    lines.push(`  A${nodeId(who)}(["<b>${label(roleNames[who] ?? who)}</b>"])`)
+  }
+  for (const d of decisions) {
+    const tag = d.never_delegated === true ? 'never delegated' : d.delegable_to_agent === true ? 'an agent may decide' : 'delegable to a person'
+    lines.push(`  D${nodeId(d.id)}["<b>${label(d.id)}</b> ${label(d.decision)} <i>(${tag})</i>"]`)
+    lines.push(`  A${nodeId(d.approver ?? 'Unassigned')} --> D${nodeId(d.id)}`)
+  }
+  lines.push(
+    '  classDef never fill:#FFFFFF,stroke:#1F2430,stroke-width:2px,color:#1F2430',
+    '  classDef agent fill:#F5F7FA,stroke:#8A94A6,stroke-dasharray:5 4,color:#1F2430',
+    '  classDef person fill:#F5F7FA,stroke:#8A94A6,color:#1F2430',
+  )
+  for (const d of decisions) {
+    const kind = d.never_delegated === true ? 'never' : d.delegable_to_agent === true ? 'agent' : 'person'
+    lines.push(`  class D${nodeId(d.id)} ${kind}`)
+  }
+  return `${lines.join('\n')}\n`
+}
+
+/**
+ * Puts each of `links` on its own line after the first line `anchor` matches,
+ * in order, skipping any already there. Returns the body unchanged when no line
+ * matches.
+ */
+function ensureLinks(body, anchor, links) {
   const lines = body.split('\n')
-  const at = lines.findIndex(after)
+  let at = lines.findIndex(anchor)
   if (at === -1) return body
-  lines.splice(at + 1, 0, '', line)
+  for (const link of links) {
+    const found = lines.indexOf(link)
+    if (found !== -1) {
+      at = found
+      continue
+    }
+    lines.splice(at + 1, 0, '', link)
+    at += 2
+  }
   return lines.join('\n')
+}
+
+const isTitle = line => /^#\s/.test(line)
+
+/** Writes a generated Mermaid source when it changed, then renders it. */
+function generate(out, id, mermaid, check) {
+  const src = join(out, `${id}.mmd`)
+  if (check) return
+  if (!existsSync(src) || readFileSync(src, 'utf8') !== mermaid) writeFileSync(src, mermaid)
+  render(src, 'mmdc')
 }
 
 export function drawSet(dir, { check = false } = {}) {
   const problems = []
   const out = join(dir, 'diagrams')
   if (!check) mkdirSync(out, { recursive: true })
-  const files = readdirSync(dir).filter(f => f.endsWith('.md'))
-  for (const file of files) {
-    const path = join(dir, file)
-    const text = readFileSync(path, 'utf8')
-    const { front: raw, rest } = splitFrontMatter(text)
-    const front = parseYaml(raw)
-    let body = rest
+
+  const docs = readdirSync(dir)
+    .filter(f => f.endsWith('.md'))
+    .map(file => {
+      const text = readFileSync(join(dir, file), 'utf8')
+      const { front: raw, rest } = splitFrontMatter(text)
+      return { file, text, rest, body: rest, front: parseYaml(raw) }
+    })
+  const ofKind = kind => docs.find(d => d.front.kind === kind)
+  // Diagrams name a persona by its short name, never by its id.
+  const roleNames = Object.fromEntries((ofKind('personas')?.front.personas ?? []).map(p => [p.id, p.short_name ?? p.name]))
+  const journeys = ofKind('journeys')?.front.journeys ?? []
+  const requirements = ofKind('functional-requirements')?.front.requirements ?? []
+
+  for (const doc of docs) {
+    const front = doc.front
 
     if (front.kind === 'journeys') {
-      for (const journey of front.journeys ?? []) {
-        const src = join(out, `${journey.id}.mmd`)
-        if (!check) {
-          const mmd = journeyMermaid(journey)
-          if (!existsSync(src) || readFileSync(src, 'utf8') !== mmd) writeFileSync(src, mmd)
-          render(src, 'mmdc')
+      for (const journey of journeys) {
+        generate(out, journey.id, journeyMermaid(journey), check)
+        const links = [`![${journey.id} journey diagram](diagrams/${journey.id}.svg)`]
+        const curve = satisfactionMermaid(journey)
+        if (curve !== undefined) {
+          generate(out, `${journey.id}-satisfaction`, curve, check)
+          links.push(`![${journey.id} satisfaction](diagrams/${journey.id}-satisfaction.svg)`)
         }
-        const link = `![${journey.id} journey diagram](diagrams/${journey.id}.svg)`
-        const heading = line => /^#{2,3}\s/.test(line) && line.includes(journey.id)
-        body = ensureLink(body, heading, link)
-        if (!body.includes(link)) problems.push(`${file}: no heading names ${journey.id}, so its diagram is not linked`)
+        doc.body = ensureLinks(doc.body, line => /^#{2,3}\s/.test(line) && line.includes(journey.id), links)
+        if (!doc.body.includes(links[0])) problems.push(`${doc.file}: no heading names ${journey.id}, so its diagram is not linked`)
       }
+    }
+
+    if (front.kind === 'scenarios') {
+      const links = []
+      for (const scenario of front.scenarios ?? []) {
+        generate(out, scenario.id, scenarioMermaid(scenario), check)
+        links.push(`![${scenario.id} scenario](diagrams/${scenario.id}.svg)`)
+      }
+      for (const lifecycle of front.lifecycles ?? []) {
+        generate(out, lifecycle.id, lifecycleMermaid(lifecycle, roleNames), check)
+        links.push(`![${lifecycle.id} lifecycle of ${String(lifecycle.subject).replace(/[[\]]/g, '')}](diagrams/${lifecycle.id}.svg)`)
+      }
+      doc.body = ensureLinks(doc.body, isTitle, links)
+    }
+
+    if (front.kind === 'release-plan' && (front.releases ?? []).length > 0) {
+      generate(out, 'release-line', releaseMermaid(front.releases, journeys, requirements), check)
+      doc.body = ensureLinks(doc.body, isTitle, ['![The release line](diagrams/release-line.svg)'])
+    }
+
+    if (front.kind === 'decision-rights' && (front.decisions ?? []).length > 0) {
+      generate(out, 'decision-rights', decisionsMermaid(front.decisions, roleNames), check)
+      doc.body = ensureLinks(doc.body, isTitle, ['![Who decides what](diagrams/decision-rights.svg)'])
     }
 
     if (front.kind === 'wireframes') {
       for (const wf of front.wireframes ?? []) {
         const src = join(out, `${wf.id}.puml`)
         if (!existsSync(src)) {
-          problems.push(`${file}: ${wf.id} has no PlantUML Salt drawing at diagrams/${wf.id}.puml`)
+          problems.push(`${doc.file}: ${wf.id} has no PlantUML Salt drawing at diagrams/${wf.id}.puml`)
           continue
         }
         if (!check) render(src, 'plantuml')
         // The drawing goes after the sketch's closing fence, under its heading.
-        const lines = body.split('\n')
+        const lines = doc.body.split('\n')
         const head = lines.findIndex(line => /^#{2,4}\s/.test(line) && line.includes(wf.id))
         const open = lines.findIndex((line, i) => i > head && /^```wireframe\s*$/.test(line))
         const close = lines.findIndex((line, i) => i > open && /^```\s*$/.test(line))
         const link = `![${wf.id} drawing](diagrams/${wf.id}.svg)`
-        if (head !== -1 && open !== -1 && close !== -1) body = ensureLink(body, (_, i) => i === close, link)
-        if (!body.includes(link)) problems.push(`${file}: ${wf.id}'s drawing is not linked under its sketch`)
+        if (head !== -1 && open !== -1 && close !== -1) doc.body = ensureLinks(doc.body, (_, i) => i === close, [link])
+        if (!doc.body.includes(link)) problems.push(`${doc.file}: ${wf.id}'s drawing is not linked under its sketch`)
       }
     }
 
-    if (body !== rest) {
-      if (check) problems.push(`${file}: diagram links are missing; run without --check`)
-      else writeFileSync(path, text.slice(0, text.length - rest.length) + body)
+    if (doc.body !== doc.rest) {
+      if (check) problems.push(`${doc.file}: diagram links are missing; run without --check`)
+      else writeFileSync(join(dir, doc.file), doc.text.slice(0, doc.text.length - doc.rest.length) + doc.body)
     }
   }
   return problems

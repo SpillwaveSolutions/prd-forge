@@ -151,7 +151,7 @@ questions:
       whether they wanted a technology named. Time-boxed to 1 day.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
-  prev: { id: prd-forge-assumptions-risks-dependencies, kind: assumptions-risks-dependencies, path: ./12-assumptions-risks-dependencies.md, title: Assumptions, risks and dependencies }
+  prev: { id: prd-forge-assumptions-risks-dependencies, kind: assumptions-risks-dependencies, path: ./12-assumptions-risks-dependencies.md, title: "Assumptions, risks and dependencies" }
   next: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
 ---
 

@@ -139,6 +139,20 @@ function blockScalar(lines, at, indent, style) {
   return { text, next: i }
 }
 
+/**
+ * A plain or quoted scalar that runs on over lines indented past `indent`:
+ * YAML folds those lines into the first with single spaces.
+ */
+function runOn(lines, from, indent, first) {
+  let text = first
+  let i = from
+  while (i < lines.length && lines[i].trim() !== '' && indentOf(lines[i]) > indent) {
+    text = `${text} ${lines[i].trim()}`
+    i += 1
+  }
+  return { text, next: i }
+}
+
 function parseBlock(lines, from, indent) {
   let i = from
   while (i < lines.length && isBlank(lines[i])) i += 1
@@ -169,7 +183,13 @@ function parseBlock(lines, from, indent) {
         }
         const nested = parseBlock(inner, 0, own + 2)
         list.push(nested.node); i = j
-      } else { list.push(value(after)); i += 1 }
+      } else if (/^[|>][-+]?\d*$/.test(after.trim())) {
+        const folded = blockScalar(lines, i + 1, own, after.trim())
+        list.push(folded.text); i = folded.next
+      } else {
+        const run = runOn(lines, i + 1, own, after)
+        list.push(value(run.text)); i = run.next
+      }
     }
     return { node: list, next: i }
   }
@@ -190,7 +210,10 @@ function parseBlock(lines, from, indent) {
     } else if (raw === '') {
       const nested = parseBlock(lines, i + 1, own + 1)
       map[cut.key] = nested.node; i = nested.next
-    } else { map[cut.key] = value(raw); i += 1 }
+    } else {
+      const run = runOn(lines, i + 1, own, raw)
+      map[cut.key] = value(run.text); i = run.next
+    }
   }
   return { node: map, next: i }
 }
@@ -409,6 +432,10 @@ function structural(docs, dir) {
 
   // cross-section ids
   const personas = idsOf(docs, 'personas', 'personas')
+  const shortNames = (docs.find(d => d.front.kind === 'personas')?.front?.personas ?? []).map(p => p?.short_name).filter(Boolean)
+  for (const name of new Set(shortNames.filter((name, i) => shortNames.indexOf(name) !== i))) {
+    errors.push(`personas: short_name ${name} is used by more than one persona`)
+  }
   const objectives = idsOf(docs, 'objectives-metrics', 'objectives')
   const journeys = docs.find(d => d.front.kind === 'journeys')?.front?.journeys ?? []
   const stages = new Set()
@@ -497,7 +524,10 @@ function structural(docs, dir) {
     }
   }
 
+  // the release line: the stages section 6 puts in scope
+  const lineStages = new Set((scope?.in_scope ?? []).map(item => item?.journey_stage).filter(Boolean))
   const scenarios = docs.find(d => d.front.kind === 'scenarios')?.front?.scenarios ?? []
+  const wfIds = new Set((wfDoc?.front?.wireframes ?? []).map(wf => wf?.id).filter(Boolean))
   const journeyIds = new Set(journeys.map(j => j?.id).filter(Boolean))
   for (const sc of scenarios) {
     if (sc?.journey && journeyIds.size > 0 && !journeyIds.has(sc.journey)) {
@@ -505,6 +535,51 @@ function structural(docs, dir) {
     }
     if (sc?.stage && stages.size > 0 && !stages.has(sc.stage)) {
       errors.push(`scenarios: ${sc.id} stage ${sc.stage} does not exist`)
+    }
+    if (sc?.priority === 'must' && sc?.stage && lineStages.size > 0 && !lineStages.has(sc.stage)) {
+      errors.push(`scenarios: ${sc.id} is a must, but its stage ${sc.stage} is not on the release line in section 6`)
+    }
+    if (sc?.priority === undefined) warnings.push(`scenarios: ${sc?.id} has no priority`)
+    for (const id of sc?.wireframes ?? []) {
+      if (wfIds.size > 0 && !wfIds.has(id)) errors.push(`scenarios: ${sc.id} links wireframe ${id}, which does not exist`)
+    }
+  }
+  // lifecycles: every transition joins declared states, and every state but
+  // a final one has a way out
+  const lifecycles = docs.find(d => d.front.kind === 'scenarios')?.front?.lifecycles ?? []
+  const lcIds = new Set(lifecycles.map(lc => lc?.id).filter(Boolean))
+  for (const lc of lifecycles) {
+    const names = new Set((lc?.states ?? []).map(state => state?.name))
+    const finals = new Set(lc?.final ?? [])
+    for (const name of [lc?.initial, ...finals]) {
+      if (name !== undefined && !names.has(name)) errors.push(`scenarios: ${lc.id} names state "${name}", which it does not declare`)
+    }
+    for (const move of lc?.transitions ?? []) {
+      for (const end of [move?.from, move?.to]) {
+        if (!names.has(end)) errors.push(`scenarios: ${lc.id} has a transition with state "${end}", which it does not declare`)
+      }
+      if (move?.by && /^PER-\d{3}$/.test(move.by) && personas.size > 0 && !personas.has(move.by)) {
+        errors.push(`scenarios: ${lc.id} transition by ${move.by} is not a persona in section 4`)
+      }
+    }
+    for (const name of names) {
+      if (!finals.has(name) && !(lc?.transitions ?? []).some(move => move?.from === name)) {
+        warnings.push(`scenarios: ${lc.id} state "${name}" is not final and has no way out`)
+      }
+    }
+  }
+  for (const sc of scenarios) {
+    for (const id of sc?.lifecycles ?? []) {
+      if (!lcIds.has(id)) errors.push(`scenarios: ${sc.id} names lifecycle ${id}, which does not exist`)
+    }
+  }
+  // two unhappy paths for every happy path, per journey
+  for (const journey of journeys) {
+    const of = scenarios.filter(sc => sc?.journey === journey?.id)
+    const happy = of.filter(sc => sc?.variant === 'happy').length
+    const unhappy = of.filter(sc => sc?.variant === 'alternate' || sc?.variant === 'exception').length
+    if (happy > 0 && unhappy < 2 * happy) {
+      warnings.push(`scenarios: ${journey.id} has ${happy} happy ${happy === 1 ? 'path' : 'paths'} and ${unhappy} unhappy; aim for at least ${2 * happy}, or record the gap as an open question`)
     }
   }
 

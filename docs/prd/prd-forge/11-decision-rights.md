@@ -261,10 +261,12 @@ decisions:
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-constraints, kind: constraints, path: ./10-constraints.md, title: Constraints }
-  next: { id: prd-forge-assumptions-risks-dependencies, kind: assumptions-risks-dependencies, path: ./12-assumptions-risks-dependencies.md, title: Assumptions, risks and dependencies }
+  next: { id: prd-forge-assumptions-risks-dependencies, kind: assumptions-risks-dependencies, path: ./12-assumptions-risks-dependencies.md, title: "Assumptions, risks and dependencies" }
 ---
 
 # Decision rights and trust rules
+
+![Who decides what](diagrams/decision-rights.svg)
 
 | ID | Decision | Approver | Agent may decide | Never delegated |
 | --- | --- | --- | --- | --- |

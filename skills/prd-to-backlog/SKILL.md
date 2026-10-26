@@ -38,6 +38,7 @@ re-deriving when the PRD changes.
 order. Each becomes one feature. Its `users` are the stage's actor plus anyone
 receiving a hand-off; its `outcome` is what the stage achieves for the user; its
 `success_metric` comes from the PRD objective its requirements serve; its
+`acceptance` is the stage's Given/When/Then, copied as written; its
 `requirements` are every PRD requirement whose `journey_stage` is this stage.
 
 A stage with no requirements is a hole in the PRD, not a feature with no stories.

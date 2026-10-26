@@ -18,6 +18,11 @@ journeys:
       - id: ST-001
         name: Associate identifies the purchase
         actor: Store associate
+        acceptance:
+          - >-
+            Given a customer at the counter with a receipt, an order number, or
+            the payment card, when the associate looks up the purchase, then
+            they see the purchase, its date, and what was paid.
         steps:
           - Asks the customer for a receipt, an order number, or the card used
           - Sees the purchase, its date, and what was paid
@@ -30,6 +35,11 @@ journeys:
       - id: ST-002
         name: Associate sees the returns decision
         actor: Store associate
+        acceptance:
+          - >-
+            Given an identified purchase and the item in front of them, when the
+            associate checks the return, then they see whether it may be
+            returned, on what terms, and the reason when it may not.
         steps:
           - Sees whether the item may be returned, and on what terms
           - Sees the reason when it may not
@@ -42,6 +52,11 @@ journeys:
       - id: ST-003
         name: Agent decides an exception
         actor: Contact-centre agent
+        acceptance:
+          - >-
+            Given a return the associate escalated with a reason, when the agent
+            approves or refuses it, then the associate sees the decision and a
+            reason to tell the customer.
         steps:
           - Sees the request, the purchase, and why the associate escalated
           - Approves or refuses, and records the reason
@@ -54,6 +69,11 @@ journeys:
       - id: ST-004
         name: Associate completes the return
         actor: Store associate
+        acceptance:
+          - >-
+            Given an accepted return, when the associate confirms the refund
+            method with the customer, then the return is complete and the reason
+            it came back is recorded.
         steps:
           - Confirms the refund method with the customer
           - Records the reason the item came back
@@ -84,6 +104,8 @@ links:
 # User journeys
 
 ## J-001 — A return resolved at the counter (golden thread)
+
+![J-001 journey diagram](diagrams/J-001.svg)
 
 Persona PER-001, store associate. Trigger: a customer arrives with an item.
 Stages ST-001 to ST-004. End state: the customer has left knowing the outcome

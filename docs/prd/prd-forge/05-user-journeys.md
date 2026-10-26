@@ -25,6 +25,12 @@ journeys:
       - id: ST-001
         name: Expert states the idea and their domain
         actor: Domain expert
+        acceptance:
+          - >-
+            Given an expert with an idea and nothing written down, when they
+            state the idea, the domain, and three words an outsider would
+            misread, then they see a document set with every section listed and
+            marked as not yet started.
         steps:
           - Says what they want built, in their own words, however roughly
           - Is asked what the business domain is and what the unit of work is
@@ -40,6 +46,12 @@ journeys:
       - id: ST-002
         name: Expert is taught a section, then interviewed on it
         actor: Domain expert
+        acceptance:
+          - >-
+            Given a section not yet interviewed, when the expert reads what it
+            is for and answers its questions one or two at a time, then the
+            section has enough material to be drafted, or the expert has said
+            they have nothing more to add.
         steps:
           - Reads what the section is, why it matters, and what belongs in it, in
             under ten lines, with an example from their own domain
@@ -54,6 +66,11 @@ journeys:
       - id: ST-003
         name: Expert reads the draft and its grade
         actor: Domain expert
+        acceptance:
+          - >-
+            Given a drafted and graded section, when the expert opens it, then
+            they read it as prose and see its score, each blocking defect, and
+            its weakest part.
         steps:
           - Reads the drafted section as prose, not as a form
           - Sees a score, how many blocking defects there are, and what each one is
@@ -67,6 +84,11 @@ journeys:
       - id: ST-004
         name: Expert answers the one question that improves it most
         actor: Domain expert
+        acceptance:
+          - >-
+            Given one question about the weakest part of a section, when the
+            expert answers it, then they see the section re-graded against the
+            same rubric.
         steps:
           - Reads a single question, not a list of twelve
           - Answers it, or says why the premise is wrong
@@ -85,6 +107,12 @@ journeys:
       - id: ST-005
         name: Expert sees what a development team could not build
         actor: Domain expert
+        acceptance:
+          - >-
+            Given a set with every section written at least once, when the
+            expert asks for a buildability review, then they see what a builder
+            could not build and which release-line stages have no requirement
+            behind them.
         steps:
           - Asks for the whole set to be reviewed as a builder would read it
           - Sees what a builder could not build, and what they would have to guess
@@ -99,6 +127,11 @@ journeys:
       - id: ST-006
         name: Approver approves the PRD for a release
         actor: Sponsor or approver
+        acceptance:
+          - >-
+            Given a set offered for approval, when the approver approves,
+            approves with conditions, or rejects it, then they see the decision
+            recorded against the set's version.
         steps:
           - Reads the summary, the scope, and what is still open
           - Sees each section's grade and whether anything is still blocking
@@ -137,6 +170,11 @@ journeys:
       - id: ST-007
         name: Delivery lead checks the PRD can carry a backlog
         actor: Delivery lead
+        acceptance:
+          - >-
+            Given an approved set and the release it is mapped for, when the
+            delivery lead checks it, then they see whether a golden-thread
+            journey exists and what would block deriving a backlog.
         steps:
           - Sees whether a journey exists and which one is the golden thread
           - Sees which release-line stages have requirements behind them
@@ -149,6 +187,12 @@ journeys:
       - id: ST-008
         name: Delivery lead derives features, epics and stories
         actor: Delivery lead
+        acceptance:
+          - >-
+            Given an approved set, when the delivery lead derives a backlog from
+            it, then they see one feature per journey stage, epics scoped by the
+            release line, and a story per requirement, each naming the id it
+            came from.
         steps:
           - Sees one feature per journey stage, with the requirement ids it carries
           - Sees epics scoped by the release line

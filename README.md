@@ -101,7 +101,12 @@ Each set keeps its diagrams in `diagrams/`, beside the documents:
 
 | Diagram | Source | Made by |
 | --- | --- | --- |
-| Each journey, `J-nnn` | Mermaid, `J-nnn.mmd` | Generated from the journey's front matter. Do not edit |
+| Each journey, `J-nnn` | Mermaid flowchart, `J-nnn.mmd` | Generated from the journey's front matter. Do not edit |
+| Each journey's satisfaction curve | Mermaid user journey, `J-nnn-satisfaction.mmd` | Generated when the expert has scored every stage from 1 to 5. Do not edit |
+| Each lifecycle, `LC-nnn` | Mermaid state diagram, `LC-nnn.mmd` | Generated from the lifecycles in the scenarios document: each state, and each transition with its rule and who makes it. Do not edit |
+| Each scenario, `SC-nnn` | Mermaid flowchart, `SC-nnn.mmd` | Generated from the scenario's front matter. What the user sees is a slanted box, and what the user does is a plain box. Do not edit |
+| The release line | Mermaid flowchart, `release-line.mmd` | Generated from the release plan, the journeys, and the requirements. Do not edit |
+| The decision rights | Mermaid flowchart, `decision-rights.mmd` | Generated from the decision rights and the personas. Do not edit |
 | Each wireframe, `WF-nnn` | PlantUML Salt, `WF-nnn.puml` | Drawn by the wizard from the confirmed text sketch |
 
 Draw them, render them, and link them from the documents:
@@ -174,6 +179,10 @@ Every requirement passes five tests: it names a user, states an outcome a person
 can see, has a pass-or-fail acceptance test, carries a priority, and does not name
 the component or technology that delivers it.
 
+Every journey stage also has acceptance in Given/When/Then form: when the stage
+is done, as the person acting in it can observe. The validator requires it, and
+`prd-to-backlog` copies it to the feature that stage becomes.
+
 ## Grading
 
 Each section has a rubric of five to ten dimensions scored 0–4, a blocking-defect
@@ -198,9 +207,16 @@ recorded approval.
 ```bash
 claude plugin validate <this directory>
 claude plugin test <this directory>
+node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs
 node scripts/prd-validate.mjs examples/acme-returns
 tsc -p <this directory>
 ```
+
+`prd-validate.test.mjs` checks the validator's YAML reader against PyYAML for
+every document in both shipped sets. `prd-diagrams.test.mjs` renders every kind
+of diagram with names that hold Mermaid's own punctuation, and checks that a
+reader sees each name exactly as written. Both need `python3` with PyYAML, and
+`mmdc`.
 
 The top-level `tsconfig.json` extends `.claude-plugin/types/tsconfig.json`, which
 Claude Code writes the first time it loads the mod — so in a fresh clone, run the

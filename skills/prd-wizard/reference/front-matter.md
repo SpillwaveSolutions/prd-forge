@@ -78,6 +78,11 @@ Rules for `links`:
 Keep all four of `id`, `kind`, `path` and `title` on every link. The pane and the
 validator both read links without opening the target.
 
+Quote a `title` that holds a comma, a colon, or a `#`. Inside `{ … }` a comma
+ends the value, so `title: Assumptions, risks and dependencies` is read as the
+title `Assumptions` and a stray key. Write `title: "Assumptions, risks and
+dependencies"`.
+
 ## The root document
 
 ```yaml
