@@ -1,0 +1,21 @@
+@startsalt
+title WF-003 The grade, explained
+{+
+  {/ <b>Functional requirements: graded 84/100</b> }
+  Buildable with questions. <1>
+  Graded 2026-10-26. 0 blocking defects. <2>
+  › See the rubric for functional requirements <3>
+  ==
+  {#
+    <b>Dimension | <b>Score | <b>Why <4>
+    Named user | 4 | All sixteen name a persona
+    Visible outcome | 3 | FR-007 ends on a feeling
+    Atomicity | 2 | FR-001 joins two abilities
+    … | . | .
+  }
+  ==
+  <b>How to raise the grade <5>
+  • Atomicity 2 to 4: split FR-001 and FR-007
+  • Test 3 3 to 4: put a number on "short tables"
+}
+@endsalt

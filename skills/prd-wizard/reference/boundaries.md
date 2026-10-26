@@ -34,8 +34,13 @@ PRD never defines. That is why the PRD can stay free of it.
 
 ## Wireframes and mockups
 
-Optional. Add them when they make a requirement clear. Label them as
-**illustrations**, not designs.
+Required for every screen and report. Each functional requirement says where the
+user meets its outcome (`shown_in`), and each `screen` or `report` requirement is
+illustrated by a text sketch in `08-wireframes.md`. Label each one an
+**illustration, not a design**. A sketch shows what a person sees and does. It
+never picks colors, fonts, a platform, or a component, and a requirement never
+names a screen: the wireframe cites the requirement, not the other way round.
+The drawing rules are in `sections/08-wireframes.md`.
 
 ## The conversion move
 

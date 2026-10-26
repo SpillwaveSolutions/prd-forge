@@ -94,6 +94,7 @@ answers unlock later sections.
 | 6 | 3 Objectives and metrics | Now they can see what moves |
 | 7 | 6 Scope and the release line | Needs journeys and objectives |
 | 8 | 7 Functional requirements | Walk the release-line stages |
+| 8a | 7 Wireframes | Sketch each `screen` and `report` requirement; finds missing ones |
 | 9 | 10 Decision rights | Every decision in the journeys |
 | 10 | 9 Constraints | Often found while writing 7 and 10 |
 | 11 | 8 Non-functional requirements | Derived from persona frequency and segment size |

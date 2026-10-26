@@ -32,6 +32,7 @@ requirements:
         Given an expert who has not stated a domain, when they ask to begin a
         section, then they are asked for the domain and the unit of work first.
     priority: must
+    shown_in: conversation
     journey_stage: ST-001
     objective: O-003
   - id: FR-002
@@ -54,6 +55,7 @@ requirements:
         Given a set where no section has been started, when the expert asks where
         things stand, then every section is listed and shown as not started.
     priority: must
+    shown_in: screen
     journey_stage: ST-001
     objective: O-002
   - id: FR-003
@@ -76,6 +78,7 @@ requirements:
         Given an expert who says they already know the section, when they ask to
         skip the teaching, then the questions begin and the teaching is not forced.
     priority: must
+    shown_in: conversation
     journey_stage: ST-002
     objective: O-003
   - id: FR-004
@@ -98,6 +101,7 @@ requirements:
         with no blocking defects, when further questions remain unasked on the
         list, then the interview stops rather than continuing to the end of it.
     priority: must
+    shown_in: conversation
     journey_stage: ST-002
     objective: O-003
   - id: FR-005
@@ -117,6 +121,7 @@ requirements:
         Given an expert who ends a section early, when they are told what was left
         behind, then the statement names the specific gap, not just a score.
     priority: must
+    shown_in: conversation
     journey_stage: ST-002
     objective: O-002
   - id: FR-006
@@ -139,6 +144,7 @@ requirements:
         is drafted, then no regulation number appears that the expert did not
         supply.
     priority: must
+    shown_in: conversation
     journey_stage: ST-002
     objective: O-001
   - id: FR-007
@@ -163,6 +169,7 @@ requirements:
         they have been told once why it does not, then their decision is recorded
         and is not argued again at the next grading pass.
     priority: must
+    shown_in: conversation
     journey_stage: ST-002
     objective: O-001
   - id: FR-008
@@ -181,6 +188,7 @@ requirements:
         when either is read, then the disagreement is reported to the expert
         rather than silently resolved.
     priority: must
+    shown_in: screen
     journey_stage: ST-003
     objective: O-003
   - id: FR-009
@@ -204,6 +212,7 @@ requirements:
         Given a graded section, when the expert reads the grade, then the weakest
         part is named and why it is weak is stated in no more than three lines.
     priority: must
+    shown_in: screen
     journey_stage: ST-003
     objective: O-001
   - id: FR-010
@@ -223,6 +232,7 @@ requirements:
         Given that one question, when it is asked, then it addresses the weakest
         part that was just named, and not a different part.
     priority: must
+    shown_in: conversation
     journey_stage: ST-004
     objective: O-003
   - id: FR-011
@@ -243,6 +253,7 @@ requirements:
         re-graded, then the expert is offered the state `review`, and is told that
         `review` means the section is ready for someone else to read.
     priority: must
+    shown_in: screen
     journey_stage: ST-004
     objective: O-003
   - id: FR-012
@@ -271,6 +282,7 @@ requirements:
         checked against the document and anything not supported by the document has
         been dropped.
     priority: must
+    shown_in: report
     journey_stage: ST-005
     objective: O-001
   - id: FR-013
@@ -291,6 +303,7 @@ requirements:
         Given a set with any blocking defect anywhere, when the approver opens it,
         then they see that, with the sections it is in.
     priority: must
+    shown_in: report
     journey_stage: ST-006
     objective: O-001
   - id: FR-014
@@ -315,6 +328,7 @@ requirements:
         then a new version is recorded and the earlier approval is not represented
         as covering it.
     priority: must
+    shown_in: report
     journey_stage: ST-006
     objective: O-001
   - id: FR-015
@@ -337,6 +351,7 @@ requirements:
         Given an expert who answered a question in a section before stopping, when
         they resume that section, then that question is not put to them again.
     priority: must
+    shown_in: conversation
     journey_stage: ST-001
     objective: O-002
   - id: FR-016
@@ -358,12 +373,13 @@ requirements:
         Given a decision the expert reaffirmed after an objection, when the
         section is graded again, then the objection is not raised as a new finding.
     priority: must
+    shown_in: conversation
     journey_stage: ST-003
     objective: O-001
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-scope, kind: scope, path: ./07-scope.md, title: Scope }
-  next: { id: prd-forge-nonfunctional-requirements, kind: nonfunctional-requirements, path: ./09-nonfunctional-requirements.md, title: Non-functional requirements }
+  next: { id: prd-forge-wireframes, kind: wireframes, path: ./08-wireframes.md, title: Wireframes }
 ---
 
 # Functional requirements

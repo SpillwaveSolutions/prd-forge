@@ -1,0 +1,24 @@
+@startsalt
+title WF-005 The buildability review
+{+
+  {/ <b>What a team could not build from this set</b> }
+  prd-forge PRD, version 0.2.0 <1>
+  9 of 11 derivability checks pass <2>
+  ==
+  <b>CANNOT BUILD <3>
+  1. O-001 to O-003 have no baseline, so no feature
+     can carry a measure. "unknown - not measured;
+     see Q-001." <4>
+  …
+  ==
+  <b>BACKLOG DERIVABILITY <5>
+  {
+    ✓ | 1 | One journey is the golden thread: J-001
+    ✗ | 7 | Objectives have a baseline and a target
+    … | . | .
+  }
+  ==
+  <b>WHAT I WOULD ASK FOR FIRST <6>
+  1. Answer Q-001 before setting O-001's target
+}
+@endsalt

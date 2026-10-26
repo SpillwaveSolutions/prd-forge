@@ -34,6 +34,9 @@ that fails test 5 freezes an architecture decision before anyone has made it.
 - `user`: a persona id or role (test 1).
 - `capability`: what they can do.
 - `outcome`: what they can then see or have (test 2).
+- `shown_in`: where they meet that outcome: `screen`, `report`, `conversation`,
+  or `none`. A `screen` or `report` requirement needs a wireframe in
+  `08-wireframes.md`; the validator fails the set without one.
 - `acceptance`: one or more Given/When/Then statements (test 3).
 - `priority`: `must`, `should`, `could`, `wont` (test 4).
 - `journey_stage`: the `ST-nnn` it serves. This is what puts it in a feature.
@@ -57,6 +60,8 @@ Work stage by stage through the golden thread. For each stage:
    see this'."
 5. "Must release 1 have this, or should it, or could it?"
 6. "Which business objective does this move?"
+7. "Where do they see the result: on a screen, in a report, in a reply, or
+   nowhere?" Record it as `shown_in`.
 
 Then challenge: "Could a reviewer tell pass from fail without asking you?" If
 not, the acceptance criteria are not finished.

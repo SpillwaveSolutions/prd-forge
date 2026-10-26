@@ -123,7 +123,7 @@ _The figures, citations and organisations in this example are invented, to show 
 > end state: the patient has left with their medicines, their documents and a
 > booked follow-up, and the community team has accepted the handover.
 
-Label any wireframe you attach as an **illustration**, not a design.
+Do not draw the journey by hand: `prd-diagrams.mjs` generates its diagram from the front matter. Do not draw screens here. Sketches of screens and reports go in `08-wireframes.md`, after section 7.
 
 ## Rubric
 

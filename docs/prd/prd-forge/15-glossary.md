@@ -262,6 +262,14 @@ terms:
       set uses MoSCoW and not RFC 2119's MUST and SHOULD.
     see_also:
       - the five tests
+  - term: Wireframe
+    meaning: >-
+      A text sketch of one screen a person works in or one report a person reads,
+      drawn in characters and labeled an illustration, not a design. It shows what
+      the person sees and does there, and names the requirements it makes concrete.
+      Every requirement shown in a screen or a report has one, in section 7.
+    see_also:
+      - the five tests
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }

@@ -11,7 +11,7 @@ detail of every item its front matter carries.
 Needs PyYAML and python-docx for the Word file, and Chromium for the PDF.
 """
 
-import argparse, html, os, re, shutil, subprocess, sys, tempfile
+import argparse, base64, html, os, re, shutil, subprocess, sys, tempfile
 from datetime import date
 
 try:
@@ -24,7 +24,7 @@ except ImportError:
 SECTION_OF_KIND = {
     "problem-opportunity": 1, "customer-market": 2, "objectives-metrics": 3,
     "personas": 4, "journeys": 5, "scenarios": 5, "scope": 6,
-    "functional-requirements": 7, "nonfunctional-requirements": 8,
+    "functional-requirements": 7, "wireframes": 7, "nonfunctional-requirements": 8,
     "constraints": 9, "decision-rights": 10,
     "assumptions-risks-dependencies": 11, "open-questions": 12,
     "release-plan": 13, "glossary": 14, "change-log": 15,
@@ -40,6 +40,7 @@ ITEM_LISTS = {
     "scenarios": [("scenarios", "context")],
     "scope": [("in_scope", "summary"), ("out_of_scope", "summary")],
     "functional-requirements": [("requirements", "capability")],
+    "wireframes": [("wireframes", "title")],
     "nonfunctional-requirements": [("requirements", "statement")],
     "constraints": [("constraints", "statement")],
     "decision-rights": [("decisions", "decision")],
@@ -98,6 +99,17 @@ def read_set(directory):
 
 # ---------------------------------------------------------- markdown subset
 
+# ponytail: the set being exported, so an image path in a body resolves; set once in main
+SET_DIR = "."
+
+
+def image_file(path):
+    """The PNG to embed for a body image link: the link's own file, or its .png twin."""
+    full = os.path.join(SET_DIR, path)
+    png = re.sub(r"\.svg$", ".png", full)
+    return png if os.path.exists(png) else (full if os.path.exists(full) else None)
+
+
 INLINE = re.compile(r"(\*\*.+?\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|_[^_]+_)")
 
 
@@ -126,6 +138,21 @@ def blocks(md):
     while i < len(lines):
         line = lines[i]
         if not line.strip():
+            i += 1
+            continue
+        fence = re.match(r"^\s*```\s*([\w-]*)\s*$", line)
+        if fence:
+            pre = []
+            i += 1
+            while i < len(lines) and not re.match(r"^\s*```\s*$", lines[i]):
+                pre.append(lines[i])
+                i += 1
+            out.append({"type": "pre", "lang": fence.group(1), "lines": pre})
+            i += 1
+            continue
+        image = re.match(r"^!\[([^\]]*)\]\(([^)\s]+)\)\s*$", line)
+        if image:
+            out.append({"type": "image", "alt": image.group(1), "path": image.group(2)})
             i += 1
             continue
         head = re.match(r"^(#{1,4})\s+(.*)$", line)
@@ -170,7 +197,7 @@ def blocks(md):
             out.append({"type": "quote", "text": " ".join(q.strip() for q in quote if q.strip())})
             continue
         para = []
-        while i < len(lines) and lines[i].strip() and not re.match(r"^(#{1,4}\s|\s*[-*]\s|\s*\d+\.\s|\s*>)", lines[i]) \
+        while i < len(lines) and lines[i].strip() and not re.match(r"^(#{1,4}\s|\s*[-*]\s|\s*\d+\.\s|\s*>|\s*```|!\[)", lines[i]) \
                 and not lines[i].lstrip().startswith("|"):
             para.append(lines[i].strip())
             i += 1
@@ -182,7 +209,10 @@ def blocks(md):
             # loop does not terminate.
             out.append({"type": "para", "text": lines[i].strip()})
             i += 1
-    return out
+    # A wireframe's drawing stands in for its text sketch on the page.
+    return [b for n, b in enumerate(out)
+            if not (b["type"] == "pre" and b["lang"] == "wireframe" and n + 1 < len(out)
+                    and out[n + 1]["type"] == "image" and image_file(out[n + 1]["path"]))]
 
 
 def flatten(value):
@@ -247,6 +277,12 @@ h3{font-size:11pt;margin:5mm 0 1.5mm;font-weight:600;break-after:avoid}
 h4{font-size:10pt;margin:4mm 0 1mm;font-weight:600;color:var(--mute);break-after:avoid}
 ul,ol{margin:.2em 0 .7em;padding-left:1.15em}
 li{margin:.18em 0}
+pre{font-family:"DejaVu Sans Mono","Menlo",monospace;font-size:8.6pt;line-height:1.25;
+    margin:.4em 0 1em;padding:3mm 4mm;background:var(--chip);white-space:pre;break-inside:avoid}
+figure.diagram{margin:.6em 0 1.2em;text-align:center;break-inside:avoid}
+figure.diagram img{max-width:100%;max-height:215mm}
+figure.diagram figcaption{font-family:"Inter",sans-serif;font-size:8pt;color:var(--faint);margin-top:1.5mm}
+pre.wireframe{border:1px dashed var(--rule);line-height:1.02}
 blockquote{margin:.4em 0 .8em;padding:2mm 0 2mm 4mm;border-left:2px solid var(--rule);
            color:var(--mute)}
 
@@ -320,6 +356,15 @@ def h_blocks(bs, demote=1):
             out.append("<ol>" + "".join(f"<li>{h_runs(i)}</li>" for i in b["items"]) + "</ol>")
         elif t == "quote":
             out.append(f"<blockquote>{h_runs(b['text'])}</blockquote>")
+        elif t == "image":
+            found = image_file(b["path"])
+            if found:
+                data = base64.b64encode(open(found, "rb").read()).decode()
+                out.append(f'<figure class="diagram"><img src="data:image/png;base64,{data}" alt="{e(b["alt"])}">'
+                           f'<figcaption>{e(b["alt"])}</figcaption></figure>')
+        elif t == "pre":
+            klass = ' class="wireframe"' if b["lang"] == "wireframe" else ""
+            out.append(f"<pre{klass}>{e(chr(10).join(b['lines']))}</pre>")
         elif t == "table":
             head = "".join(f"<th>{h_runs(c)}</th>" for c in b["header"])
             rows = "".join("<tr>" + "".join(f"<td>{h_runs(c)}</td>" for c in r) + "</tr>"
@@ -588,6 +633,27 @@ def build_docx(root, rest, out_path, title):
                 border(p._p, "left", sz=10)
             elif t == "table":
                 md_table(b)
+            elif t == "image":
+                found = image_file(b["path"])
+                if found:
+                    doc.add_picture(found)
+                    pic = doc.inline_shapes[-1]
+                    # Fit the page: 6 inches wide, 8 tall, whichever binds first.
+                    scale = min(1.0, Inches(6.0) / pic.width, Inches(8.0) / pic.height)
+                    pic.width, pic.height = int(pic.width * scale), int(pic.height * scale)
+                    doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    para(b["alt"], size=8, colour=MUTE, space_after=10).alignment = WD_ALIGN_PARAGRAPH.CENTER
+            elif t == "pre":
+                # One paragraph, lines joined by breaks, so Word keeps the sketch whole.
+                p = doc.add_paragraph()
+                p.paragraph_format.space_after = Pt(8)
+                p.paragraph_format.keep_together = True
+                for n, text in enumerate(b["lines"]):
+                    r = p.add_run(text if text else " ")
+                    r.font.name, r.font.size = MONO, Pt(8)
+                    if n < len(b["lines"]) - 1:
+                        r.add_break()
+                p._p.get_or_add_pPr().append(xml("w:shd", val="clear", color="auto", fill="F3F4F6"))
 
     PAGE_W = 6.5          # inches between the margins
     PAD = 0.06            # the cell padding set below, per side
@@ -819,6 +885,8 @@ def main():
     want_pdf = args.pdf or not (args.docx or args.pdf)
 
     directory = os.path.abspath(args.directory)
+    global SET_DIR
+    SET_DIR = directory
     root, rest = read_set(directory)
     out_dir = os.path.abspath(args.out or directory)
     os.makedirs(out_dir, exist_ok=True)

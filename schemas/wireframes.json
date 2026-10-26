@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/wireframes.json",
+  "title": "Wireframes (section 7)",
+  "description": "Text sketches of every screen and report the requirements put in front of a user. Illustrations, not designs: each one shows what a person sees and does, never how it is built.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "wireframes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^WF-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered. The body holds a heading with this id and a wireframe fence under it."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What the person is looking at, in their words."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "screen",
+              "report"
+            ],
+            "description": "A screen the person works in, or a report the person reads."
+          },
+          "persona": {
+            "type": "string",
+            "pattern": "^PER-\\d{3}$",
+            "description": "Who looks at it."
+          },
+          "journey_stage": {
+            "type": "string",
+            "pattern": "^ST-\\d{3}$",
+            "description": "The journey stage where they look at it."
+          },
+          "illustrates": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^(FR|NFR)-\\d{3}$"
+            },
+            "description": "The requirements this sketch makes concrete."
+          },
+          "shows": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "What each marked part of the sketch is for, in the order the marks appear."
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "type",
+          "persona",
+          "illustrates",
+          "shows"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "wireframes"
+  ]
+}

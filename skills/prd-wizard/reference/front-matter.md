@@ -12,7 +12,9 @@ alone, which is what lets the stepper pane and the validator work.
 ```
 
 `docs_dir` is the plugin's `docs_dir` option, `docs/prd` by default. `slug` is
-the product's slug. One directory, one PRD, no nesting below it.
+the product's slug. One directory, one PRD. Two folders sit inside it and hold no
+documents: `grades/`, the reasons for each grade, and `diagrams/`, each diagram's
+source (`.mmd` or `.puml`) with its rendered `.svg` and `.png`.
 
 ## The files
 
@@ -27,6 +29,7 @@ the product's slug. One directory, one PRD, no nesting below it.
 | `06-scenarios.md` | `scenarios` | 5 | 60 |
 | `07-scope.md` | `scope` | 6 | 70 |
 | `08-functional-requirements.md` | `functional-requirements` | 7 | 80 |
+| `08-wireframes.md` | `wireframes` | 7 | 85 |
 | `09-nonfunctional-requirements.md` | `nonfunctional-requirements` | 8 | 90 |
 | `10-constraints.md` | `constraints` | 9 | 100 |
 | `11-decision-rights.md` | `decision-rights` | 10 | 110 |
@@ -36,7 +39,7 @@ the product's slug. One directory, one PRD, no nesting below it.
 | `15-glossary.md` | `glossary` | 14 | 150 |
 | `16-change-log.md` | `change-log` | 15 | 160 |
 
-Create all seventeen at the start, each at `status: pending` with an empty body
+Create all eighteen at the start, each at `status: pending` with an empty body
 and a one-line note saying it has not been interviewed yet. The set is then
 navigable from the first minute, and the pane shows progress honestly.
 

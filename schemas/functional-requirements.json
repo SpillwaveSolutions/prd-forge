@@ -38,6 +38,16 @@
             "minLength": 1,
             "description": "Test 2: the result a person can see."
           },
+          "shown_in": {
+            "type": "string",
+            "enum": [
+              "screen",
+              "report",
+              "conversation",
+              "none"
+            ],
+            "description": "Where the user meets the outcome. A screen or a report needs a wireframe in the wireframes document that illustrates this requirement."
+          },
           "acceptance": {
             "type": "array",
             "items": {

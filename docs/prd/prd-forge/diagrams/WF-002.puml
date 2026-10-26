@@ -1,0 +1,11 @@
+@startsalt
+title WF-002 The empty state
+{+
+  {/ <b>No set loaded</b> }
+  <b>No PRD set loaded <1>
+  Looked under docs/prd.
+  Ask for the prd-wizard skill: it interviews you
+  and writes the set.
+  [Rescan] <2>
+}
+@endsalt

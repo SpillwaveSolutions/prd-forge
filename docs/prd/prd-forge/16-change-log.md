@@ -9,6 +9,22 @@ domain: product management tooling
 section: 15
 order: 160
 changes:
+  - version: 0.3.0
+    date: 2026-10-26
+    author: Richard Hightower
+    summary: >-
+      Adds wireframes to section 7. Each functional requirement now says where its
+      user meets the outcome, and the seven shown on a screen or in a report are
+      illustrated by six text sketches: the set with a section open, the empty
+      state, a grade explained, the rubric, the buildability review, and the
+      approval pack. Re-grades user journeys and non-functional requirements with
+      recorded reasons; their scores moved from 90 to 88 and from 79 to 82 with no
+      change to either document. Adds the term "wireframe" to the glossary.
+    sections:
+      - 5
+      - 7
+      - 8
+      - 14
   - version: 0.2.0
     date: 2026-10-26
     author: Richard Hightower
@@ -78,6 +94,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for every screen and report, and recorded reasons for the grades |
 | 0.2.0 | 2026-10-26 | Richard Hightower | Every defect the grading and the buildability review found, over two rounds |
 | 0.1.0 | 2026-10-23 | Richard Hightower | First draft of all sixteen sections |
 

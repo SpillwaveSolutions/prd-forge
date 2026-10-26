@@ -298,6 +298,7 @@ const SCHEMA_FILE = {
   scenarios: 'scenarios.json',
   scope: 'scope.json',
   'functional-requirements': 'functional-requirements.json',
+  wireframes: 'wireframes.json',
   'nonfunctional-requirements': 'nonfunctional-requirements.json',
   constraints: 'constraints.json',
   'decision-rights': 'decision-rights.json',
@@ -314,6 +315,23 @@ const SCHEMA_FILE = {
 }
 
 // ------------------------------------------------------------ structural rules
+
+/** The widest a sketch may be: it must fit the pane and a printed page. */
+const SKETCH_COLUMNS = 60
+
+/** The lines of the `wireframe` fence under the body heading that names `id`. */
+function sketchOf(body, id) {
+  const lines = body.split('\n')
+  const head = lines.findIndex(line => /^#{2,4}\s/.test(line) && line.includes(id))
+  if (head === -1) return undefined
+  for (let i = head + 1; i < lines.length && !/^#{1,4}\s/.test(lines[i]); i++) {
+    if (/^```wireframe\s*$/.test(lines[i])) {
+      const end = lines.findIndex((line, j) => j > i && /^```\s*$/.test(line))
+      return end === -1 ? undefined : lines.slice(i + 1, end)
+    }
+  }
+  return undefined
+}
 
 const idsOf = (docs, kind, list, field = 'id') =>
   new Set((docs.find(d => d.front.kind === kind)?.front?.[list] ?? [])
@@ -426,6 +444,49 @@ function structural(docs, dir) {
     }
   }
 
+  // wireframes: what they illustrate exists, each has its sketch, and every
+  // requirement shown on a screen or in a report has one
+  const nfrIds = idsOf(docs, 'nonfunctional-requirements', 'requirements')
+  const wfDoc = docs.find(d => d.front.kind === 'wireframes')
+  const illustrated = new Set()
+  for (const wf of wfDoc?.front?.wireframes ?? []) {
+    for (const id of wf?.illustrates ?? []) {
+      illustrated.add(id)
+      const known = id.startsWith('NFR-') ? nfrIds : frIds
+      if (known.size > 0 && !known.has(id)) errors.push(`wireframes: ${wf.id} illustrates ${id}, which does not exist`)
+    }
+    if (wf?.persona && personas.size > 0 && !personas.has(wf.persona)) {
+      errors.push(`wireframes: ${wf.id} persona ${wf.persona} is not a persona in section 4`)
+    }
+    if (wf?.journey_stage && stages.size > 0 && !stages.has(wf.journey_stage)) {
+      errors.push(`wireframes: ${wf.id} journey_stage ${wf.journey_stage} is not a stage in section 5`)
+    }
+    if (!existsSync(join(dir, 'diagrams', `${wf?.id}.puml`))) {
+      errors.push(`wireframes: ${wf?.id} has no PlantUML Salt drawing at diagrams/${wf?.id}.puml`)
+    }
+    const sketch = sketchOf(wfDoc.body ?? '', wf?.id ?? '')
+    if (sketch === undefined) {
+      errors.push(`wireframes: ${wf?.id} has no wireframe fence under a heading naming it`)
+    } else {
+      const wide = sketch.findIndex(line => [...line].length > SKETCH_COLUMNS)
+      if (wide !== -1) errors.push(`wireframes: ${wf.id} sketch line ${wide + 1} is wider than ${SKETCH_COLUMNS} columns`)
+    }
+  }
+  for (const req of frs) {
+    if ((req?.shown_in === 'screen' || req?.shown_in === 'report') && !illustrated.has(req.id)) {
+      errors.push(`functional-requirements: ${req.id} is shown in a ${req.shown_in}, and no wireframe illustrates it`)
+    }
+  }
+
+  // every image a body links to is on disk
+  for (const doc of docs) {
+    for (const [, path] of (doc.body ?? '').matchAll(/^!\[[^\]]*\]\(([^)\s]+)\)\s*$/gm)) {
+      if (!/^[a-z]+:/.test(path) && !existsSync(join(dir, path))) {
+        errors.push(`${doc.file}: links to ${path}, which does not exist; run prd-diagrams.mjs`)
+      }
+    }
+  }
+
   const scope = docs.find(d => d.front.kind === 'scope')?.front
   for (const item of scope?.in_scope ?? []) {
     if (item?.journey_stage && stages.size > 0 && !stages.has(item.journey_stage)) {
@@ -503,8 +564,8 @@ export function validateSet(dir) {
   const docs = []
   for (const file of files) {
     const text = readFileSync(join(dir, file), 'utf8')
-    const { front: raw } = splitFrontMatter(text)
-    const entry = { file, front: {}, errors: [] }
+    const { front: raw, rest: body } = splitFrontMatter(text)
+    const entry = { file, front: {}, body, errors: [] }
     if (raw.trim() === '') {
       entry.errors.push(`${file}: no YAML front matter`)
     } else {

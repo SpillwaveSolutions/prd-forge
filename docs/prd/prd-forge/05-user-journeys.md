@@ -182,6 +182,8 @@ links:
 
 ## J-001 - A domain expert reaches an approved PRD whose gaps are known (golden thread)
 
+![J-001 journey diagram](diagrams/J-001.svg)
+
 Persona PER-001. Trigger: they have been asked to specify a product and have
 nothing written. Stages ST-001 to ST-006.
 
@@ -207,6 +209,8 @@ something the release line cannot deliver. A lead's own recorded confirmation is
 OUT-004, deferred to release 2 with J-002.
 
 ## J-002 - A delivery lead derives a backlog (not the golden thread)
+
+![J-002 journey diagram](diagrams/J-002.svg)
 
 Persona PER-004, stages ST-007 and ST-008. Release 1 does not have to complete
 this journey — see section 6 — but the PRD must carry what it needs, which is what

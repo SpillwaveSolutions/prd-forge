@@ -1,0 +1,27 @@
+@startsalt
+title WF-006 The approval pack
+{+
+  {/ <b>prd-forge PRD</b> }
+  Version 0.3.0 · draft · Richard Hightower <1>
+  ==
+  {#
+    <b>Sec | <b>Document | <b>Grade | <b>Blocking <2>
+    5 | User journeys | 88 | 0
+    7 | Functional requirements | 84 | 0
+    8 | Non-functional requirements | 82 | 0
+    … | . | . | .
+  }
+  ==
+  <b>Still undecided <3>
+  {
+    Q-001 | Baseline pass rate | Richard Hightower, by 2027-03-31
+    … | . | .
+  }
+  ==
+  <b>Approvals <4>
+  {#
+    <b>Version | <b>Date | <b>Approver | <b>Decision | <b>Conditions
+  }
+  None sought. The set is at draft.
+}
+@endsalt

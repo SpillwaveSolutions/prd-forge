@@ -185,7 +185,7 @@ requirements:
     priority: must
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
-  prev: { id: prd-forge-functional-requirements, kind: functional-requirements, path: ./08-functional-requirements.md, title: Functional requirements }
+  prev: { id: prd-forge-wireframes, kind: wireframes, path: ./08-wireframes.md, title: Wireframes }
   next: { id: prd-forge-constraints, kind: constraints, path: ./10-constraints.md, title: Constraints }
 ---
 

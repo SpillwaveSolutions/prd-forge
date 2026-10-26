@@ -8,7 +8,7 @@ updated: 2026-10-26
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.2.0
+version: 0.3.0
 owner: Richard Hightower
 stakeholders:
   - Domain experts who must specify software for their own field
@@ -46,6 +46,7 @@ links:
     - { id: prd-forge-scenarios, kind: scenarios, path: ./06-scenarios.md, title: Scenarios, section: 5, order: 60, status: draft }
     - { id: prd-forge-scope, kind: scope, path: ./07-scope.md, title: Scope, section: 6, order: 70, status: draft }
     - { id: prd-forge-functional-requirements, kind: functional-requirements, path: ./08-functional-requirements.md, title: Functional requirements, section: 7, order: 80, status: draft }
+    - { id: prd-forge-wireframes, kind: wireframes, path: ./08-wireframes.md, title: Wireframes, section: 7, order: 85, status: draft }
     - { id: prd-forge-nonfunctional-requirements, kind: nonfunctional-requirements, path: ./09-nonfunctional-requirements.md, title: Non-functional requirements, section: 8, order: 90, status: draft }
     - { id: prd-forge-constraints, kind: constraints, path: ./10-constraints.md, title: Constraints, section: 9, order: 100, status: draft }
     - { id: prd-forge-decision-rights, kind: decision-rights, path: ./11-decision-rights.md, title: Decision rights and trust rules, section: 10, order: 110, status: draft }
@@ -83,6 +84,7 @@ first submission.
 | 5 | [Scenarios](./06-scenarios.md) |
 | 6 | [Scope](./07-scope.md) |
 | 7 | [Functional requirements](./08-functional-requirements.md) |
+| 7 | [Wireframes](./08-wireframes.md) |
 | 8 | [Non-functional requirements](./09-nonfunctional-requirements.md) |
 | 9 | [Constraints](./10-constraints.md) |
 | 10 | [Decision rights and trust rules](./11-decision-rights.md) |

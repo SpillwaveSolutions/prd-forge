@@ -1,6 +1,6 @@
 ---
 name: prd-wizard
-description: Interview a domain expert and turn a product idea into a usable, buildable PRD — a linked set of schema-checked markdown documents graded against rubrics by adversarial reviewers. Use when someone has a product idea, feature idea, or business problem and wants a PRD, product requirements document, product spec, or requirements written; when they ask to refine or review an existing PRD; or when they need user journeys, personas, functional or non-functional requirements, scope, a release line, or decision rights written down so a development team can build from them. The expert supplies the domain — auditing, transportation, insurance, logistics, healthcare, anything — and this skill supplies the product management.
+description: Interview a domain expert and turn a product idea into a usable, buildable PRD — a linked set of schema-checked markdown documents graded against rubrics by adversarial reviewers. Use when someone has a product idea, feature idea, or business problem and wants a PRD, product requirements document, product spec, or requirements written; when they ask to refine, review, or continue an existing PRD ("continue the PRD", "continue prd", "what questions are left", /prd-q); or when they need user journeys, personas, functional or non-functional requirements, scope, a release line, or decision rights written down so a development team can build from them. The expert supplies the domain — auditing, transportation, insurance, logistics, healthcare, anything — and this skill supplies the product management.
 ---
 
 # PRD wizard
@@ -13,8 +13,8 @@ product manager. You are the product manager, the teacher, and the grader.
 
 ## What you produce
 
-One directory of seventeen linked markdown documents: a root index and sixteen
-section documents covering the fifteen PRD sections. The links between them live
+One directory of eighteen linked markdown documents: a root index and seventeen
+section documents covering the fifteen PRD sections, wireframes among them. The links between them live
 in the YAML front matter, which a JSON Schema validates. The `prd-forge` mod's
 pane steps through them; `scripts/prd-validate.mjs` checks them.
 
@@ -28,13 +28,35 @@ pane steps through them; `scripts/prd-validate.mjs` checks them.
 2. **If there is no set**, read `reference/method.md` and `reference/boundaries.md`
    now. Then establish the domain and the vocabulary — the four questions are in
    `method.md` — and agree the product name and slug.
-3. **Create all seventeen files** at `status: pending`, with front matter, links,
+3. **Create all eighteen files** at `status: pending`, with front matter, links,
    and a one-line body saying the section has not been interviewed. The layout,
    the file names, the link rules and worked front matter are in
    `reference/front-matter.md`. Tell the person the set exists and that
    `/prd` opens the stepper pane on it.
 4. **Then work the sections** in the order `method.md` gives — which is not the
    reading order — one section per pass of the loop below.
+
+## Continue a PRD: ask the remaining questions
+
+When the person says "continue the PRD", "continue prd", "what is left", or runs
+`/prd-q`, do not report and stop. Collect the questions only they can answer,
+then ask them, one per message, most important first:
+
+1. **Blocking defects** in any section's front matter or `grades/` notes that
+   need a fact or a decision from them.
+2. **Sections at `pending`**: the next interview question from that section's
+   guide, in the order `reference/method.md` gives.
+3. **Requirements with no `shown_in`**, and `screen` or `report` requirements
+   with no wireframe: "At this stage, what is in front of you?"
+4. **Open questions** in section 12 that name them as the decider and have no
+   answer yet.
+5. **How to raise the grade** items in `grades/` that need their knowledge, not
+   your rewriting.
+
+Say how many questions there are before the first one. Where an answer has a
+few likely values, use the AskUserQuestion tool with those values as options.
+After each answer, write it to the document it belongs in, run the validator,
+and go to the next question. Stop when they say stop, and say how many remain.
 
 ## The loop, per section
 
@@ -75,7 +97,7 @@ rubric, the blocking-defect list, and the standard wording for that section.
 - **Push back once, then record.** Their product, their call; note the dissent.
 - **Keep the glossary live** — every domain word goes in as it first appears.
 - Write files with the Write tool, one document at a time, and run the validator
-  after each. Do not batch seventeen writes and hope.
+  after each. Do not batch eighteen writes and hope.
 
 ## Files in this skill
 
@@ -87,6 +109,7 @@ rubric, the blocking-defect list, and the standard wording for that section.
 | `reference/grading.md` | Before the first grade, and before any adversarial pass |
 | `reference/backlog.md` | Before section 5 and before declaring the set done |
 | `sections/00-root.md` … `sections/16-change-log.md` | Before each section's pass |
+| `sections/08-wireframes.md` | After section 7 is drafted, and whenever a requirement is `shown_in` a screen or a report |
 
 ## Validating
 
@@ -98,6 +121,17 @@ It checks each document's front matter against its schema, the link graph, and
 the cross-section id references. Run it after writing each document. A document
 cannot reach `review` while it has validator errors.
 
+After you write or change journeys or wireframes, draw the diagrams:
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-diagrams.mjs" <set directory>
+```
+
+It generates a Mermaid diagram of each journey from its front matter, renders
+each wireframe's PlantUML Salt drawing, writes both to `<set>/diagrams/` as
+source, `.svg`, and `.png`, and links each one from its document. It needs `mmdc`
+and `plantuml` on the PATH.
+
 ## When the set is done
 
 - Run `prd-forge:prd-engineer-review` over the whole set and report what it says
@@ -106,7 +140,8 @@ cannot reach `review` while it has validator errors.
 - Offer the `prd-forge:prd-to-backlog` skill, which derives features, epics and
   stories from the approved set.
 - Tell them `/prd` reopens the pane and `/prd-step` moves through it.
-- Offer the export, which is what an approver and a sponsor will actually read:
+- Run `prd-diagrams.mjs` so every diagram is current, then offer the export,
+  which is what an approver and a sponsor will actually read:
 
   ```bash
   python3 "${CLAUDE_PLUGIN_ROOT}/scripts/prd_export.py" <set directory>
@@ -116,4 +151,4 @@ cannot reach `review` while it has validator errors.
   the executive summary, a contents table carrying each section's grade and
   blocking count, then every section's prose and the full detail of its items.
   Offer it before an approval is sought, since PER-003 reads a handful of pages
-  and will not read seventeen markdown files.
+  and will not read eighteen markdown files.

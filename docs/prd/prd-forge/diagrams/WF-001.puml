@@ -1,0 +1,23 @@
+@startsalt
+title WF-001 The set and one section
+{+
+  {/ <b>prd-forge</b> }
+  9/18   section 7   draft   graded 84/100 <1>
+  { [< Prev] | [Next >] | [Rescan] | [Back] | <2> }
+  ==
+  {
+    Problem and opportunity
+    User journeys (88) <3>
+    Scenarios
+    <b>> Functional requirements (84)
+    Wireframes (pending) <4>
+    …
+  }
+  ==
+  <b>Functional requirements <5>
+  The expert reads each requirement as a sentence:
+  who can do what, what they then see, and the test
+  that tells pass from fail. FR-009 › <6>
+  …
+}
+@endsalt

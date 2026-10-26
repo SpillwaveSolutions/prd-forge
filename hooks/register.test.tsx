@@ -29,6 +29,14 @@ order: 0`)}
 # Demo PRD
 
 The root body.
+
+\`\`\`wireframe
+┌─ Returns desk ─┐
+│ [ Accept ] <1> │
+└────────────────┘
+\`\`\`
+
+![WF-001 drawing](diagrams/WF-001.svg)
 `
 
 const JOURNEYS = `${front(`id: demo-journeys
@@ -242,5 +250,18 @@ test('on the desktop an ID is a markdown link a press follows', async ($, on) =>
   await ui.press({ key: 'body', link: { href } })
 
   expect(await ui.find({ type: 'Markdown', text: /Not interviewed yet/ })).toBeTruthy()
+  await ui.unmount()
+})
+
+test('a wireframe fence draws as the sketch itself, line for line, under a caption', async ($, on) => {
+  servesTheSet(on)
+  await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+
+  expect(await ui.find({ type: 'Text', text: /illustration, not a design/ })).toBeTruthy()
+  expect(await ui.find({ type: 'Text', text: '│ [ Accept ] <1> │' })).toBeTruthy()
+  expect(await ui.find({ text: /```/ })).toBeFalsy()
+  expect(await ui.find({ type: 'Text', text: 'WF-001 drawing, drawn in the exported Word and PDF' })).toBeTruthy()
+  expect(await ui.find({ text: /diagrams\// })).toBeFalsy()
   await ui.unmount()
 })

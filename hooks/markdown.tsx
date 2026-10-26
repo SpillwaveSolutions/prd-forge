@@ -80,8 +80,9 @@ type Block = { space: boolean } & (
   | { kind: 'heading'; level: number; text: string }
   | { kind: 'para' | 'quote'; text: string }
   | { kind: 'item'; indent: number; marker: string; text: string }
-  | { kind: 'code'; lines: string[] }
+  | { kind: 'code'; lang: string; lines: string[] }
   | { kind: 'rule' }
+  | { kind: 'image'; alt: string }
   | { kind: 'table'; head: string[]; rows: string[][] }
 )
 
@@ -106,7 +107,7 @@ const blocksOf = (md: string): Block[] => {
     if (FENCE.test(line)) {
       const code: string[] = []
       while (++at < lines.length && !FENCE.test(lines[at] ?? '')) code.push(lines[at] ?? '')
-      blocks.push({ space: was, kind: 'code', lines: code })
+      blocks.push({ space: was, kind: 'code', lang: line.replace(FENCE, '').trim(), lines: code })
       continue
     }
     if (/^\s*\|/.test(line) && TABLE_RULE.test(lines[at + 1] ?? '')) {
@@ -115,6 +116,11 @@ const blocksOf = (md: string): Block[] => {
       while (at < lines.length && /^\s*\|/.test(lines[at] ?? '')) rows.push(cellsOf(lines[at++] ?? ''))
       at -= 1
       blocks.push({ space: was, kind: 'table', head: cellsOf(line), rows })
+      continue
+    }
+    const image = /^!\[([^\]]*)\]\([^)]*\)\s*$/.exec(line)
+    if (image !== null) {
+      blocks.push({ space: was, kind: 'image', alt: image[1] ?? 'diagram' })
       continue
     }
     const heading = /^(#{1,6})\s+(.*)$/.exec(line)
@@ -288,6 +294,20 @@ export const drawMarkdown = (ui: Ui, md: string, columns: number, link: Linker, 
           </Box>
         )
       case 'code':
+        // A wireframe is a sketch: drawn whole, cut at the pane's edge rather
+        // than wrapped, since a wrapped line breaks the drawing.
+        if (block.lang === 'wireframe') {
+          return (
+            <Box key={k} flexDirection="column">
+              <Text dimColor>wireframe · illustration, not a design</Text>
+              {block.lines.map((line, l) => (
+                <Text key={`${k}-${l}`} wrap="truncate-end">
+                  {line === '' ? ' ' : line}
+                </Text>
+              ))}
+            </Box>
+          )
+        }
         return (
           <Box key={k} flexDirection="column" paddingLeft={2}>
             {block.lines.map((line, l) => (
@@ -296,6 +316,13 @@ export const drawMarkdown = (ui: Ui, md: string, columns: number, link: Linker, 
               </Text>
             ))}
           </Box>
+        )
+      case 'image':
+        // The terminal cannot draw the picture; say where it is drawn instead.
+        return (
+          <Text key={k} dimColor>
+            {`▣ ${block.alt}, drawn in the exported Word and PDF`}
+          </Text>
         )
       case 'rule':
         return (
