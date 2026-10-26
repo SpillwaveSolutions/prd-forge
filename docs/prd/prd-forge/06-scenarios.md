@@ -168,6 +168,7 @@ lifecycles:
       - from: pending
         to: draft
         when: The expert finishes the section's interview and it is written
+        rule: The expert decides the interview is finished (TR-008)
         by: PER-001
       - from: draft
         to: review

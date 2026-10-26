@@ -31,6 +31,9 @@ be automated confidently.
   Required when an agent may decide; `evidence_required` is required when the
   decision is never delegated.
 - `acceptance`: Given/When/Then statements proving the rule holds.
+- `agent_role`: what an agent does: `none`, `proposes`,
+  `acts-person-may-reverse`, or `acts`. The validator fails a never-delegated rule
+  whose agent acts, and an agent-delegable rule whose agent does nothing.
 
 ## What does not belong
 
@@ -48,6 +51,8 @@ be automated confidently.
 6. "If software proposes and the person disagrees, what happens to the proposal?
    Is the disagreement recorded?"
 7. "Who is accountable if the decision turns out wrong?"
+8. "Who may withdraw this delegation, and what happens to work already done?"
+   Record the answer as a decision right, not as a mechanism.
 
 Question 3 is the heart of the section. Push on it: experts under-claim here when
 they are enthusiastic about automation, and over-claim when they are nervous.
@@ -99,6 +104,7 @@ _The figures, citations and organisations in this example are invented, to show 
 | Escalation | Absent | Partial | Stated, including the unavailable-approver case |
 | Testability | Prose | Some criteria | Given/When/Then per rule |
 | No design | Names models or thresholds | One leak | None |
+| Reversal | Not addressed | Override mentioned | Every rule an agent may decide says how a person sees the decision, overrides or reverses it, and that the override is recorded |
 
 ## Blocking defects
 

@@ -65,6 +65,38 @@
           },
           "target_date": {
             "$ref": "common.json#/$defs/date"
+          },
+          "exit_criteria": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Pass-or-fail conditions that show the release did what it promised, ideally an objective threshold."
+          },
+          "date_status": {
+            "type": "string",
+            "enum": [
+              "committed",
+              "indicative"
+            ],
+            "description": "Whether the target date is a commitment."
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^(A|D|R|Q)-\\d{3}$"
+            },
+            "description": "The assumptions, dependencies, risks, and questions this release waits on."
+          },
+          "readiness": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "What must be true outside the build team at launch: support, training, communications, legal sign-off."
           }
         },
         "required": [

@@ -21,8 +21,11 @@ requirement gets prioritised, deferred, and then discovered during an audit.
 - `statement`: the rule.
 - `authority`: who imposes it — the regulation, the contract clause, the firm
   policy, by name. "Compliance said so" is not an authority.
-- `applies_to`: requirement, stage or journey ids; absent means everywhere.
-- `verification`: how compliance is shown.
+- `applies_to`: requirement, stage or journey ids; absent, or `all`, means
+  everywhere. The ids must exist.
+- `verification`: how compliance is shown. Required.
+- `nfr`: the `NFR-nnn` requirements that make the constraint measurable, such as
+  the retention requirement behind a retention rule.
 
 Test each one: **could the team change this by agreeing among themselves?** If
 yes, it is not a constraint. A product decision goes in section 6 as scope; a

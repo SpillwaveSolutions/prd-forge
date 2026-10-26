@@ -64,6 +64,12 @@ Work stage by stage through the golden thread. For each stage:
 6. "Which business objective does this move?"
 7. "Where do they see the result: on a screen, in a report, in a reply, or
    nowhere?" Record it as `shown_in`.
+8. "What do they see when it goes wrong?" Write that as a criterion too.
+
+The validator warns about a criterion that is not Given/When/Then, a criterion
+that names a control such as a button or a menu, and a section where more than
+60% of requirements are `must`. A `must` is the minimum the release is useless
+without; ask about each one past that share.
 
 Then challenge: "Could a reviewer tell pass from fail without asking you?" If
 not, the acceptance criteria are not finished.
@@ -101,7 +107,7 @@ service name.
 | --- | --- | --- | --- |
 | Test 1 — named user | "The system" / "users" | A role | A persona id that exists in section 4 |
 | Test 2 — visible outcome | Internal behaviour | An outcome, vague | A state the user can observe |
-| Test 3 — acceptance | None | Prose criteria | Given/When/Then, each pass-or-fail |
+| Test 3 — acceptance | None | Prose criteria | Given/When/Then, each pass-or-fail, with at least one for an error, exception, or empty case |
 | Test 4 — priority | Absent | Present | Present, and the `must` set matches the release line |
 | Test 5 — no technology | Names a component | One leak | No technology, vendor, component or screen |
 | Atomicity | Several requirements in one | Mostly single | One capability per requirement |

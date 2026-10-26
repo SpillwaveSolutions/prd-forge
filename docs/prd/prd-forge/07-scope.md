@@ -8,7 +8,7 @@ updated: 2026-10-26
 domain: product management tooling
 section: 6
 order: 70
-release: R1, single-expert PRD authoring
+release: REL-001, single-expert PRD authoring
 release_line: >-
   ST-001 through ST-006 for one expert writing one PRD with one golden-thread
   journey. The expert reaches an approved set that a buildability review has

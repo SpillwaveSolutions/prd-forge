@@ -40,6 +40,43 @@
           },
           "willingness_to_pay": {
             "type": "string"
+          },
+          "user_personas": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^PER-\\d{3}$"
+            },
+            "description": "The personas in section 4 who use the product in this segment."
+          },
+          "buyer_persona": {
+            "type": "string",
+            "pattern": "^PER-\\d{3}$",
+            "description": "The persona who buys, when the buyer is also a persona."
+          },
+          "size_source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Where the size comes from."
+          },
+          "size_as_of": {
+            "$ref": "common.json#/$defs/date"
+          },
+          "size_method": {
+            "type": "string",
+            "enum": [
+              "top-down",
+              "bottom-up"
+            ],
+            "description": "How the size was reached."
+          },
+          "size_unit": {
+            "type": "string",
+            "enum": [
+              "organizations",
+              "people"
+            ],
+            "description": "What the size counts."
           }
         },
         "required": [

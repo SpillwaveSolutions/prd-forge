@@ -96,7 +96,7 @@
                   "minItems": 1,
                   "items": {
                     "type": "string",
-                    "pattern": "^Given\\b.*\\bwhen\\b.*\\bthen\\b",
+                    "pattern": "^Given\\b.*\\b[Ww]hen\\b.*\\b[Tt]hen\\b",
                     "description": "One Given/When/Then statement: the starting state, what the actor does, and what they can then observe."
                   },
                   "description": "When this stage is done, from the actor's side: pass-or-fail statements a person can observe. Each becomes acceptance for the feature derived from this stage."
@@ -117,7 +117,8 @@
                 "name",
                 "actor",
                 "steps",
-                "acceptance"
+                "acceptance",
+                "decision"
               ]
             },
             "minItems": 2
@@ -125,8 +126,34 @@
           "pain_points": {
             "type": "array",
             "items": {
-              "type": "string",
-              "minLength": 1
+              "oneOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "pain": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "stage": {
+                      "type": "string",
+                      "pattern": "^ST-\\d{3}$"
+                    },
+                    "need": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "The entry in needs that answers this pain, as written."
+                    }
+                  },
+                  "required": [
+                    "pain"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
             },
             "minItems": 1,
             "description": "What is hard today."
@@ -144,6 +171,14 @@
             "type": "string",
             "minLength": 1,
             "description": "How the user knows they are done."
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^O-\\d{3}$"
+            },
+            "description": "The objectives in section 3 that show this journey works."
           }
         },
         "required": [
@@ -162,66 +197,5 @@
   },
   "required": [
     "journeys"
-  ],
-  "$defs": {
-    "stage": {
-      "type": "object",
-      "description": "One large step of the journey. Names a person, an input, an output and a decision, and no technology.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "pattern": "^ST-\\d{3}$",
-          "description": "Stable identifier; never reused or renumbered."
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "actor": {
-          "type": "string",
-          "minLength": 1,
-          "description": "The person who acts in this stage."
-        },
-        "steps": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "minItems": 1,
-          "description": "What the user does, sees and decides, in order."
-        },
-        "inputs": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "description": "What the user gives."
-        },
-        "outputs": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "description": "What the user gets back."
-        },
-        "decision": {
-          "type": "string",
-          "description": "What the user decides here."
-        },
-        "handoff": {
-          "type": "string",
-          "description": "Who takes over after this stage, when anyone does."
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "actor",
-        "steps"
-      ]
-    }
-  }
+  ]
 }

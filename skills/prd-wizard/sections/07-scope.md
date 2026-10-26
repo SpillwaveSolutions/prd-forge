@@ -17,7 +17,10 @@ save the team from re-litigating the same argument every sprint.
 
 ## What belongs in it
 
-- `release`: which release this scope describes.
+- `release`: which release this scope describes, starting with its `REL-nnn` id
+  from section 13.
+- `outside_product`: a release-line stage a person does outside the product for
+  now, with the `workaround`. It counts as part of the release line.
 - `release_line`: the smallest set of journey stages that completes the golden
   thread, stated plainly.
 - `in_scope`: one `IN-nnn` per item, each tied to a journey stage and the

@@ -59,6 +59,37 @@
           },
           "proficiency": {
             "type": "string"
+          },
+          "primary": {
+            "type": "boolean",
+            "description": "The persona the product serves first. At most one."
+          },
+          "external": {
+            "type": "boolean",
+            "description": "Outside the organization that owns the product."
+          },
+          "population": {
+            "type": "string",
+            "minLength": 1,
+            "description": "How many people hold this role, per organization."
+          },
+          "context": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The conditions of use, such as interruptions or noise. No device or platform."
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Research, with its source, or assumed."
+          },
+          "problems": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^P-\\d{3}$"
+            },
+            "description": "The problems in section 1 this persona has."
           }
         },
         "required": [

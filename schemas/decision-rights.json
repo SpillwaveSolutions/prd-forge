@@ -64,6 +64,16 @@
               "minLength": 1
             },
             "description": "Given/When/Then statements that prove the rule holds."
+          },
+          "agent_role": {
+            "type": "string",
+            "enum": [
+              "none",
+              "proposes",
+              "acts-person-may-reverse",
+              "acts"
+            ],
+            "description": "What an agent does for this decision."
           }
         },
         "required": [

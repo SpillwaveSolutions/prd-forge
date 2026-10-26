@@ -15,7 +15,8 @@
   "properties": {
     "release": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "The release this scope is for, starting with its REL-nnn id from section 13."
     },
     "release_line": {
       "type": "string",
@@ -87,6 +88,29 @@
       },
       "minItems": 1,
       "description": "Things a reader would reasonably expect and we are not doing, with no plan to."
+    },
+    "outside_product": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stage": {
+            "type": "string",
+            "pattern": "^ST-\\d{3}$"
+          },
+          "workaround": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What the person does outside the product for now."
+          }
+        },
+        "required": [
+          "stage",
+          "workaround"
+        ],
+        "additionalProperties": false
+      },
+      "description": "Release-line stages a person does outside the product for now."
     }
   },
   "required": [

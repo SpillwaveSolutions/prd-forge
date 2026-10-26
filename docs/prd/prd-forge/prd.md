@@ -8,7 +8,7 @@ updated: 2026-10-26
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.6.0
+version: 0.7.0
 owner: Richard Hightower
 stakeholders:
   - Domain experts who must specify software for their own field
@@ -16,6 +16,8 @@ stakeholders:
   - Delivery leads who run story-mapping workshops
 created: 2026-10-23
 golden_thread: J-001
+primary_persona: PER-001
+approvers: [PER-003]
 summary:
   problem: >-
     A domain expert knows exactly what their product must do, but what they can
@@ -32,6 +34,7 @@ summary:
     A domain expert, with no product management training, can reach a PRD that an
     engineering lead confirms is buildable, and can see for themselves where it is
     still weak before anyone starts work.
+  objective: O-001
   measure: >-
     Share of PRDs that pass an engineering buildability review on the first
     submission: 80% by 2027-09-30, from a baseline Q-001 will establish.

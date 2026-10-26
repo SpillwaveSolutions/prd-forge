@@ -444,7 +444,7 @@ function structural(docs, dir) {
     if (journey?.golden_thread === true) goldenThreads += 1
     for (const stage of journey?.stages ?? []) if (stage?.id) stages.add(stage.id)
     if (journey?.persona && personas.size > 0 && !personas.has(journey.persona)) {
-      warnings.push(`journeys: ${journey.id} persona ${journey.persona} is not a persona id in section 4`)
+      errors.push(`journeys: ${journey.id} persona ${journey.persona} is not a persona id in section 4`)
     }
   }
   if (journeys.length > 0 && goldenThreads !== 1) {
@@ -525,7 +525,10 @@ function structural(docs, dir) {
   }
 
   // the release line: the stages section 6 puts in scope
-  const lineStages = new Set((scope?.in_scope ?? []).map(item => item?.journey_stage).filter(Boolean))
+  const lineStages = new Set([
+    ...(scope?.in_scope ?? []).map(item => item?.journey_stage),
+    ...(scope?.outside_product ?? []).map(item => item?.stage),
+  ].filter(Boolean))
   const scenarios = docs.find(d => d.front.kind === 'scenarios')?.front?.scenarios ?? []
   const wfIds = new Set((wfDoc?.front?.wireframes ?? []).map(wf => wf?.id).filter(Boolean))
   const journeyIds = new Set(journeys.map(j => j?.id).filter(Boolean))
@@ -796,6 +799,163 @@ function structural(docs, dir) {
   const approved = (changes ?? []).some(c => (c?.approvals ?? []).some(a => a?.decision === 'approved' || a?.decision === 'approved-with-conditions'))
   for (const doc of docs) {
     if (doc.front.status === 'final' && !approved) errors.push(`${doc.file}: status final with no approval recorded in the change log`)
+  }
+
+  // Checks from the 0.7.0 medium-priority review.
+  const personaList = frontOf('personas')?.personas ?? []
+  const objectiveIds = new Set(objectiveList.map(o => o?.id).filter(Boolean))
+  const mustExist = (ids, known, where) => {
+    for (const id of ids ?? []) if (known.size > 0 && !known.has(id)) errors.push(`${where} names ${id}, which does not exist`)
+  }
+
+  // the root names a real objective, primary persona, and approvers
+  mustExist([root?.front?.summary?.objective].filter(Boolean), objectiveIds, `${root?.file}: summary.objective`)
+  mustExist([root?.front?.primary_persona].filter(Boolean), personas, `${root?.file}: primary_persona`)
+  mustExist(root?.front?.approvers, personas, `${root?.file}: approvers`)
+
+  // sections 2 and 4: segments name real personas; one primary persona at most
+  for (const segment of frontOf('customer-market')?.segments ?? []) {
+    mustExist([...(segment?.user_personas ?? []), segment?.buyer_persona].filter(Boolean), personas, `customer-market: ${segment?.id}`)
+  }
+  if (personaList.filter(p => p?.primary === true).length > 1) errors.push('personas: more than one persona is primary')
+  for (const persona of personaList) mustExist(persona?.problems, problemIds, `personas: ${persona?.id}`)
+
+  // section 5: journey objectives exist; a pain point names a real stage and a
+  // need that answers it; a low-scored stage has a pain point
+  for (const journey of journeys) {
+    mustExist(journey?.objectives, objectiveIds, `journeys: ${journey?.id}`)
+    const own = new Set((journey?.stages ?? []).map(st => st?.id))
+    const pains = (journey?.pain_points ?? []).filter(p => p !== null && typeof p === 'object')
+    for (const pain of pains) {
+      if (pain.stage && !own.has(pain.stage)) errors.push(`journeys: ${journey.id} pain point names stage ${pain.stage}, which is not in the journey`)
+      if (pain.need && !(journey.needs ?? []).includes(pain.need)) errors.push(`journeys: ${journey.id} pain point names a need that is not in its needs: "${pain.need}"`)
+    }
+    if (pains.length > 0) {
+      for (const st of journey?.stages ?? []) {
+        if (Number.isInteger(st?.satisfaction) && st.satisfaction <= 2 && !pains.some(p => p.stage === st.id)) {
+          warnings.push(`journeys: ${st.id} scores ${st.satisfaction} and no pain point names it`)
+        }
+      }
+    }
+  }
+
+  // scenarios: a branch starts from a real step; lifecycles reach every state,
+  // end somewhere, and state each move's rule and who makes it
+  for (const sc of scenarios) {
+    const from = sc?.branches_from
+    if (from) {
+      const base = scenarios.find(other => other?.id === from.scenario)
+      if (base === undefined) errors.push(`scenarios: ${sc.id} branches from ${from.scenario}, which does not exist`)
+      else if (from.step > (base.course ?? []).length) errors.push(`scenarios: ${sc.id} branches from step ${from.step} of ${from.scenario}, which has ${(base.course ?? []).length} steps`)
+    }
+  }
+  for (const lc of lifecycles) {
+    if ((lc?.final ?? []).length === 0) warnings.push(`scenarios: ${lc?.id} has no final state`)
+    const reached = new Set([lc?.initial])
+    for (let grew = true; grew;) {
+      grew = false
+      for (const move of lc?.transitions ?? []) {
+        if (reached.has(move?.from) && !reached.has(move?.to)) { reached.add(move.to); grew = true }
+      }
+    }
+    for (const state of lc?.states ?? []) {
+      if (!reached.has(state?.name)) warnings.push(`scenarios: ${lc.id} state "${state.name}" cannot be reached from "${lc.initial}"`)
+    }
+    for (const move of lc?.transitions ?? []) {
+      if (!move?.rule || !move?.by) warnings.push(`scenarios: ${lc.id} transition ${move?.from} to ${move?.to} has no ${!move?.rule ? 'rule' : 'by'}`)
+    }
+  }
+
+  // section 6: outside-product stages exist; the scope names its release by id
+  mustExist((scope?.outside_product ?? []).map(item => item?.stage), stages, 'scope: outside_product')
+  const releaseIds = new Set(releases.map(rel => rel?.id).filter(Boolean))
+  if (typeof scope?.release === 'string' && releaseIds.size > 0) {
+    const named = /^(REL-\d{3})\b/.exec(scope.release)?.[1]
+    if (named === undefined) warnings.push(`scope: release "${scope.release}" does not start with its REL-nnn id from section 13`)
+    else if (!releaseIds.has(named)) errors.push(`scope: release names ${named}, which is not a release in section 13`)
+  }
+
+  // section 13: the first release delivers exactly the release line, and every
+  // release says how you know it worked and how firm its date is
+  const firstRelease = releases[0]
+  if (firstRelease && lineStages.size > 0) {
+    const stagesOf = new Set(firstRelease.journey_stages ?? [])
+    if (stagesOf.size !== lineStages.size || ![...lineStages].every(st => stagesOf.has(st))) {
+      errors.push(`release-plan: ${firstRelease.id}'s stages differ from the release line in section 6`)
+    }
+  }
+  for (const rel of releases) {
+    mustExist(rel?.objectives, objectiveIds, `release-plan: ${rel?.id}`)
+    mustExist(rel?.depends_on, allIds, `release-plan: ${rel?.id} depends_on`)
+    if ((rel?.exit_criteria ?? []).length === 0 && (rel?.journey_stages ?? []).length > 0) warnings.push(`release-plan: ${rel.id} has no exit_criteria`)
+    if (rel?.target_date && !rel?.date_status) warnings.push(`release-plan: ${rel.id} has a target date and no date_status`)
+  }
+
+  // section 7: criteria are Given/When/Then about what the user observes, and
+  // must is the minimum
+  const UI_WORDS = /\b(button|click|tap|drop-?down|checkbox|modal|pop-?up|menu|tab)s?\b/i
+  for (const req of frs) {
+    for (const criterion of req?.acceptance ?? []) {
+      if (!/\bgiven\b[\s\S]*\bwhen\b[\s\S]*\bthen\b/i.test(criterion)) warnings.push(`functional-requirements: ${req.id} has a criterion that is not Given/When/Then`)
+      const ui = UI_WORDS.exec(criterion)
+      if (ui) warnings.push(`functional-requirements: ${req.id} has a criterion that names a control: "${ui[0]}"`)
+    }
+  }
+  if (frs.length >= 5) {
+    const share = frs.filter(r => r?.priority === 'must').length / frs.length
+    if (share > 0.6) warnings.push(`functional-requirements: ${Math.round(share * 100)}% of requirements are must; ask whether each is the minimum the release is useless without`)
+  }
+
+  // wireframes: the marks run 1 to n and match the shows lines and the drawing
+  for (const wf of wfDoc?.front?.wireframes ?? []) {
+    const sketch = sketchOf(wfDoc.body ?? '', wf?.id ?? '')
+    if (sketch === undefined) continue
+    const marksIn = text => [...new Set([...text.matchAll(/<(\d+)>/g)].map(m => Number(m[1])))].sort((a, b) => a - b)
+    const marks = marksIn(sketch.join('\n'))
+    const shows = (wf?.shows ?? []).length
+    if (marks.length !== shows || marks.some((n, i) => n !== i + 1)) {
+      errors.push(`wireframes: ${wf.id} has marks ${marks.join(', ') || 'none'} for ${shows} shows lines; they must run 1 to ${shows}`)
+    }
+    const puml = join(dir, 'diagrams', `${wf.id}.puml`)
+    if (existsSync(puml)) {
+      const drawn = marksIn(readFileSync(puml, 'utf8'))
+      if (drawn.join() !== marks.join()) errors.push(`wireframes: ${wf.id} drawing has marks ${drawn.join(', ')}, and its sketch has ${marks.join(', ')}`)
+    }
+  }
+
+  // sections 8 and 9: what a requirement or constraint applies to exists
+  const appliesTo = (ids, where) => mustExist((ids ?? []).filter(id => id !== 'all'), allIds, where)
+  for (const nfr of frontOf('nonfunctional-requirements')?.requirements ?? []) appliesTo(nfr?.applies_to, `nonfunctional-requirements: ${nfr?.id} applies_to`)
+  for (const c of frontOf('constraints')?.constraints ?? []) {
+    appliesTo(c?.applies_to, `constraints: ${c?.id} applies_to`)
+    mustExist(c?.nfr, nfrIds, `constraints: ${c?.id} nfr`)
+  }
+
+  // section 10: an agent's role agrees with how the decision is delegated
+  for (const rule of rules) {
+    if (rule?.never_delegated === true && ['acts', 'acts-person-may-reverse'].includes(rule?.agent_role)) {
+      errors.push(`decision-rights: ${rule.id} is never delegated, but its agent_role is ${rule.agent_role}`)
+    }
+    if (rule?.delegable_to_agent === true && rule?.agent_role === 'none') {
+      errors.push(`decision-rights: ${rule.id} is delegable to an agent, but its agent_role is none`)
+    }
+  }
+
+  // sections 12 and 15: an answered question is recorded in the change log
+  const resolved = new Set((changes ?? []).flatMap(c => c?.resolves ?? []))
+  for (const change of changes ?? []) mustExist(change?.resolves, questionIds, `change-log: ${change?.version} resolves`)
+  for (const q of frontOf('open-questions')?.questions ?? []) {
+    if (q?.answer && !resolved.has(q.id)) warnings.push(`open-questions: ${q.id} is answered, and no change log entry resolves it`)
+  }
+
+  // section 14: a synonym the glossary says to avoid does not appear
+  for (const t of terms) {
+    for (const word of t?.avoid ?? []) {
+      const pattern = new RegExp(`\\b${String(word).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i')
+      for (const doc of docs) {
+        if (doc.front.kind !== 'glossary' && pattern.test(doc.body ?? '')) warnings.push(`${doc.file}: uses "${word}"; the glossary says to say "${t.term}"`)
+      }
+    }
   }
 
   // gates

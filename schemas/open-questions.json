@@ -50,6 +50,10 @@
           "answer": {
             "type": "string",
             "description": "Filled in when decided; the question then moves to the change log."
+          },
+          "answered": {
+            "$ref": "common.json#/$defs/date",
+            "description": "When the question was answered."
           }
         },
         "required": [

@@ -28,6 +28,10 @@ requirement that moves O-001 beats the one that moves nothing.
   question.
 - `target` and `by`: the value we expect and when. The target has a number.
 - `owner`: the one person accountable for the number, not a committee.
+- `indicator`: `leading` (moves before the outcome) or `lagging` (moves after).
+- `measurement`: which record, who computes it, and how often. No tool names.
+- `baseline_as_of` and `baseline_source`: when the baseline was true, and where it
+  comes from.
 
 Add `guardrails` for the section: what must not get worse while the objectives
 move, each with a `metric`, a `threshold` with a number, and an `owner`. Ask:

@@ -26,7 +26,10 @@ caseworkers"; nobody can build for "fast".
 - `target`: the number, with its unit and percentile. `zero` and `none` count:
   an absolute of nought is a number, and is often the right target.
 - `measurement`: how and where it is measured.
-- `priority`, and `applies_to` when it holds only for certain requirements.
+- `priority`, and `applies_to` when it holds only for certain requirements. The
+  ids must exist.
+- `source`: where the number comes from: a persona, a segment, an expert answer,
+  an open question, or a constraint. Ask: "Where does that number come from?"
 
 A category that does not apply goes in `not_applicable`, with its `reason`. The
 validator warns when performance, scale, availability, security, privacy,

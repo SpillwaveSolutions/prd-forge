@@ -5,7 +5,7 @@ stateDiagram-v2
   state "review" as s2
   state "final" as s3
   [*] --> s0
-  s0 --> s1 : The expert finishes the section's interview and it is written (DomainExpert)
+  s0 --> s1 : The expert finishes the section's interview and it is written [The expert decides the interview is finished (TR-008)] (DomainExpert)
   s1 --> s2 : The expert accepts the offer of review [A grade of 70 or more, zero blocking defects, and a set that checks clean, unless the expert overrides the gate and the override is recorded in section 15] (DomainExpert)
   s2 --> s3 : The expert sets the section to final [An independent grading pass with zero blocking defects, and an approval recorded in section 15, unless the expert overrides the gate and the override is recorded in section 15] (DomainExpert)
   s3 --> [*]

@@ -27,6 +27,16 @@ builds the approval rules on.
   non-functional requirements more than anything else in the document.
 - `authority`: what they may approve or sign. Feeds section 10.
 - `proficiency`: how expert they are in the domain and in software.
+- `primary`: true on the one persona the product serves first.
+- `external`: true when the persona is outside the organization that owns the
+  product.
+- `population`: how many people hold this role, per organization. With
+  `frequency`, it sizes the load requirements in section 8.
+- `context`: the conditions of use, such as interruptions or noise. No device or
+  platform.
+- `basis`: research, with its source, or assumed. An assumed persona is a
+  hypothesis to test.
+- `problems`: the `P-nnn` problems in section 1 this persona has.
 
 ## What does not belong
 

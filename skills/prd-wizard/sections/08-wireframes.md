@@ -70,7 +70,8 @@ the pane and the printed page are both about that wide.
 | Mark that `shows` explains | `<1>`, `<2>`, in reading order |
 
 Put a mark on each part a person decides with or reads a number from. Do not
-mark the frame.
+mark the frame. The marks run `<1>` to `<n>` with one `shows` line each, and the
+Salt drawing carries the same marks; the validator checks all three.
 
 ## Draw it again in PlantUML Salt
 

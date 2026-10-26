@@ -35,6 +35,8 @@ release 1.
   not describe the screen in prose. Wireframes stay one shared set in section 7,
   traced to the requirements they show, and each scenario links the ones it
   passes through.
+- `branches_from`: on an alternate or exception, the `scenario` and `step` it
+  branches from, numbered from 1.
 - `stages`: for a scenario that runs across several stages, the stages it spans,
   in order. The golden thread's happy path should span the whole release line;
   the validator warns when none does.
@@ -69,8 +71,9 @@ scenario that moves through it:
   move).
 
 `prd-diagrams.mjs` draws each lifecycle as a state diagram. The validator fails
-the set when a transition names a state the lifecycle does not declare, and
-warns about a state that is not final and has no way out. A lifecycle states
+the set when a transition names a state the lifecycle does not declare. It warns
+about a state with no way out, a state that cannot be reached from `initial`, a
+lifecycle with no `final`, and a transition with no `rule` or `by`. A lifecycle states
 business rules, not a data model: no fields, no tables, no status codes.
 
 ## What does not belong

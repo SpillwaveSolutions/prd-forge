@@ -29,8 +29,38 @@
     "stakeholders": {
       "type": "array",
       "items": {
-        "type": "string",
-        "minLength": 1
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "object",
+            "properties": {
+              "role": {
+                "type": "string",
+                "minLength": 1
+              },
+              "interest": {
+                "type": "string",
+                "minLength": 1
+              },
+              "influence": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ],
+                "description": "How much they can change the outcome."
+              }
+            },
+            "required": [
+              "role"
+            ],
+            "additionalProperties": false
+          }
+        ]
       },
       "minItems": 1
     },
@@ -65,6 +95,11 @@
           "type": "string",
           "minLength": 1,
           "description": "How we will know it worked."
+        },
+        "objective": {
+          "type": "string",
+          "pattern": "^O-\\d{3}$",
+          "description": "The objective in section 3 that the measure tracks."
         }
       },
       "required": [
@@ -79,6 +114,19 @@
     "golden_thread": {
       "type": "string",
       "description": "The id of the one journey release 1 must deliver end to end."
+    },
+    "primary_persona": {
+      "type": "string",
+      "pattern": "^PER-\\d{3}$",
+      "description": "The persona the product serves first."
+    },
+    "approvers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^PER-\\d{3}$"
+      },
+      "description": "The roles whose approval section 15 must record before the set is final."
     }
   },
   "required": [

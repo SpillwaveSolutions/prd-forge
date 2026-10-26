@@ -105,6 +105,46 @@
                 "decision"
               ]
             }
+          },
+          "resolves": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^Q-\\d{3}$"
+            },
+            "description": "The open questions this change answers."
+          },
+          "overrides": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "section": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "blocking": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "section",
+                "status"
+              ],
+              "additionalProperties": false
+            },
+            "description": "Gates the expert overrode, with the score at the time."
           }
         },
         "required": [

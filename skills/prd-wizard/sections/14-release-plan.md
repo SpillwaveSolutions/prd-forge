@@ -23,7 +23,16 @@ merged into the next one.
 - `journey_stages`: the stage ids it completes.
 - `requirements`: the requirement ids it carries.
 - `objectives`: the objective ids it is expected to move.
-- `target_date`: where one is committed.
+- `target_date`: where one is committed, with `date_status`: `committed` or
+  `indicative`.
+- `exit_criteria`: pass-or-fail conditions that show the release did what it
+  promised, ideally an objective's threshold. The validator warns about a
+  release without them.
+- `depends_on`: the assumptions, dependencies, risks, and questions it waits on.
+- `readiness`: what must be true outside the build team at launch, such as
+  support, training, communications, and legal sign-off.
+
+The first release's stages must be exactly the release line in section 6.
 
 ## What does not belong
 

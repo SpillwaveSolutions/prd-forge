@@ -24,6 +24,11 @@ accept a document with known gaps when the gaps have owners and dates.
 - `blocks`: requirement, stage or release ids that cannot be settled until this is.
 - `spike`: the time-boxed story that answers it, where there is one.
 - `answer`: filled in when decided; the question then moves to the change log.
+- `answered`: the date it was answered. The change log entry that records it
+  names it in `resolves`; the validator warns when none does.
+
+A question whose answer is a technology or a design choice is not a PRD question.
+It goes to the candidate ADR list.
 
 ## What does not belong
 

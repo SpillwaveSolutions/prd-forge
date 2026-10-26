@@ -51,7 +51,7 @@
             "type": "array",
             "items": {
               "type": "string",
-              "pattern": "^Given\\b.*\\bwhen\\b.*\\bthen\\b"
+              "pattern": "^Given\\b.*\\b[Ww]hen\\b.*\\b[Tt]hen\\b"
             },
             "description": "The journey stage's Given/When/Then acceptance, copied as written: when the feature is done."
           },
