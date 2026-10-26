@@ -106,3 +106,14 @@ cannot reach `review` while it has validator errors.
 - Offer the `prd-forge:prd-to-backlog` skill, which derives features, epics and
   stories from the approved set.
 - Tell them `/prd` reopens the pane and `/prd-step` moves through it.
+- Offer the export, which is what an approver and a sponsor will actually read:
+
+  ```bash
+  python3 "${CLAUDE_PLUGIN_ROOT}/scripts/prd_export.py" <set directory>
+  ```
+
+  It writes one Word document and one PDF holding the whole set — a title page,
+  the executive summary, a contents table carrying each section's grade and
+  blocking count, then every section's prose and the full detail of its items.
+  Offer it before an approval is sought, since PER-003 reads a handful of pages
+  and will not read seventeen markdown files.

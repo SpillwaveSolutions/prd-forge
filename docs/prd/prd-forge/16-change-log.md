@@ -1,0 +1,115 @@
+---
+id: prd-forge-change-log
+kind: change-log
+schema: prd-forge/change-log@1
+title: Change log and approvals
+status: draft
+updated: 2026-10-26
+domain: product management tooling
+section: 15
+order: 160
+changes:
+  - version: 0.2.0
+    date: 2026-10-26
+    author: Richard Hightower
+    summary: >-
+      Fixes every defect the adversarial grading and the buildability review found
+      in 0.1.0. J-001's goal no longer claims an engineering lead's confirmation,
+      which no stage of the release line produced; that confirmation becomes
+      OUT-004, deferred to release 2. FR-003 and FR-004 now state outcomes a person
+      can see rather than internal mental states. FR-015 and FR-016 are split out
+      of FR-002 and FR-009, each having a failure mode of its own. The threshold is
+      stated as a number, 70, everywhere it is used. FR-013's approver page is the
+      set's own root document, which resolves its contradiction with OUT-003.
+      NFR-006 and NFR-008 no longer name a component or the delivery mechanism, and
+      NFR-010, NFR-011 and NFR-012 add the retention, availability and security
+      targets that were simply absent, with NFR-010 answering the half of C-003
+      that no measurable requirement stood behind. TR-007 to TR-012 close the six
+      stage decisions that had no rule, and every rule now says what happens when
+      its approver is away, not only when they disagree. PER-001's authority is
+      widened to cover the decisions section 10 gives them. Seventeen glossary
+      terms are added, five of which existed only as pointers to nothing, and the
+      five tests are numbered because the set cites test 5 by number. The root
+      document now states how the set is numbered, which three reviewers misread.
+    sections:
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 10
+      - 13
+      - 14
+  - version: 0.1.0
+    date: 2026-10-23
+    author: Richard Hightower
+    summary: >-
+      First draft of the whole set, written with prd-forge's own conventions as the
+      product's first real exercise. Sixteen sections drafted, the golden thread
+      J-001 set to the expert's path from idea to approved PRD, and the release line
+      set to ST-001 through ST-006. All three objectives recorded with unknown
+      baselines and matching open questions rather than invented figures. C-001
+      records the one tension found while writing: the product is delivered inside
+      an assistant, which would fail test 5 if named in a requirement, so it is a
+      constraint instead.
+    sections:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+links:
+  parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
+  prev: { id: prd-forge-glossary, kind: glossary, path: ./15-glossary.md, title: Glossary }
+  next: null
+---
+
+# Change log and approvals
+
+| Version | Date | Author | What changed |
+| --- | --- | --- | --- |
+| 0.2.0 | 2026-10-26 | Richard Hightower | Every defect the grading and the buildability review found, over two rounds |
+| 0.1.0 | 2026-10-23 | Richard Hightower | First draft of all sixteen sections |
+
+## 0.2.0 — what the grading changed
+
+The reviewers that graded 0.1.0 were the product's own, run against its own PRD.
+They found twelve blocking defects and four failed derivability checks. The
+largest single finding was that FR-009, FR-010 and FR-011 were written against
+"its rubric" and "its threshold" with neither defined anywhere in the set: the
+threshold is now stated as 70 in the requirements themselves, and the rubric, the
+section states and the derivability checks are defined in section 14 as the
+product content they are.
+
+Two findings were checked and **rejected**: the claim that "see section 6" pointed
+at the wrong document, and the claim that the section count was contradicted. Both
+came from reading file numbers as section numbers. The references were right; the
+numbering was unexplained, which is now fixed in the root document.
+
+## 0.1.0 — what to know
+
+Written as prd-forge's own first exercise. Three things a reader should carry
+forward:
+
+1. **No baselines.** All three objectives carry an explicit unknown with a matching
+   open question (Q-001 to Q-003). The targets are intentions, not commitments.
+2. **C-001 is the tension.** The product is delivered inside an assistant session.
+   Naming that in a requirement would fail test 5, so it is recorded as a
+   constraint. A reviewer may fairly call it architecture.
+3. **R-003 is not closed.** Nothing in this product checks whether the product
+   being specified should exist at all.
+
+## Approvals
+
+None sought. This set is at `draft` and has not been offered for approval. It
+cannot reach `final` without an approval recorded here, per TR-001.
