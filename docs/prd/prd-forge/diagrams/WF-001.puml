@@ -1,23 +1,25 @@
 @startsalt
-title WF-001 The set and one section
+title WF-001 The set with one section open
 {+
   {/ <b>prd-forge</b> }
-  9/18   section 7   draft   graded 84/100 <1>
-  { [< Prev] | [Next >] | [Rescan] | [Back] | <2> }
+  {
+    9/18 | section 7 | draft | graded 84/100 <1>
+  }
+  { [< Prev] | [Next >] | [Refresh] | [Back] | <2> }
   ==
   {
-    Problem and opportunity
-    User journeys (88) <3>
-    Scenarios
-    <b>> Functional requirements (84)
-    Wireframes (pending) <4>
-    …
+    Problem and opportunity | draft
+    User journeys | 88 · 0 blocking <3>
+    Scenarios | draft
+    <b>Functional requirements | 84 · 0 blocking
+    Wireframes | 84 · 0 blocking
   }
+  …
   ==
-  <b>Functional requirements <5>
-  The expert reads each requirement as a sentence:
-  who can do what, what they then see, and the test
-  that tells pass from fail. FR-009 › <6>
+  Functional requirements <4>
+  FR-017. The domain expert can move from the section
+  in front of them to any other section without
+  losing their place. See FR-009 › <5>
   …
 }
 @endsalt

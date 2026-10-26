@@ -1,0 +1,10 @@
+@startsalt
+title WF-007 Before any set exists
+{+
+  {/ <b>PRD</b> }
+  No PRD has been started yet. <1>
+  Ask to start one, and you will be interviewed
+  section by section.
+  { [Refresh] | <2> }
+}
+@endsalt

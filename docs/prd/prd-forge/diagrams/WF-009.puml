@@ -1,0 +1,16 @@
+@startsalt
+title WF-009 A buildability review that finds gaps
+{+
+  {/ <b>What a team could not build from this set</b> }
+  Buildable with gaps. <1>
+  ==
+  {
+    ✗ ST-004 | no must requirement <2>
+    ✗ ST-005 | no must requirement
+  }
+  ✓ ST-001, ST-002, ST-003, ST-006
+  ==
+  Each gap becomes a requirement, or an open question
+  with a decider and a date. <3>
+}
+@endsalt

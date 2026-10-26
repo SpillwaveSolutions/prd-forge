@@ -311,7 +311,7 @@ export const register: Register = (on, options) => {
           <Text dimColor>
             Ask for the prd-wizard skill: it interviews you and writes the set.
           </Text>
-          <Button key="rescan" label="Rescan" hotkey="r" onPress={() => void rescan($, home)} />
+          <Button key="rescan" label="Refresh" hotkey="r" onPress={() => void rescan($, home)} />
         </Box>
       )
     }
@@ -321,8 +321,8 @@ export const register: Register = (on, options) => {
     if (doc === undefined) {
       return (
         <Box flexDirection="column">
-          <Text dimColor>The set changed while the pane was open. Press Rescan.</Text>
-          <Button key="rescan" label="Rescan" hotkey="r" onPress={() => void rescan($, home)} />
+          <Text dimColor>The set changed while the pane was open. Press Refresh.</Text>
+          <Button key="rescan" label="Refresh" hotkey="r" onPress={() => void rescan($, home)} />
         </Box>
       )
     }
@@ -452,7 +452,7 @@ export const register: Register = (on, options) => {
             variant="primary"
             onPress={() => void go($, at + 1, 'doc')}
           />
-          <Button key="rescan" label="Rescan" hotkey="r" onPress={() => void rescan($, home)} />
+          <Button key="rescan" label="Refresh" hotkey="r" onPress={() => void rescan($, home)} />
           <Button
             key="back"
             label="Back"

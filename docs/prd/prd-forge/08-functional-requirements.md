@@ -44,9 +44,9 @@ requirements:
       started, without opening any section.
     acceptance:
       - >-
-        Given a set where four section documents are drafted and twelve are
+        Given a set where four section documents are drafted and thirteen are
         untouched, when the expert asks where things stand, then they see all
-        sixteen section documents with each one's state, and the untouched ones
+        seventeen section documents with each one's state, and the untouched ones
         are shown as not started rather than omitted.
       - >-
         Given a section that has been graded, when the expert sees the set's state,
@@ -376,6 +376,52 @@ requirements:
     shown_in: conversation
     journey_stage: ST-003
     objective: O-001
+  - id: FR-017
+    user: PER-001
+    capability: >-
+      Move from the section in front of them to any other section of the set
+      without losing their place
+    outcome: >-
+      They reach the section they want in one step, and can always return to the
+      view they were on before.
+    acceptance:
+      - >-
+        Given a section in front of them, when they ask for the next or the
+        previous section, then the section after or before it in reading order is
+        shown, and at the first or the last section the view does not change.
+      - >-
+        Given a section that cites an ID another section defines, such as Q-001,
+        when they follow that ID, then the section that defines it is shown and
+        the ID is named above it.
+      - >-
+        Given they have moved through three views, a section, its grade, and its
+        rubric, when they ask to go back three times, then they see the grade,
+        then the section, then the view they started from.
+    priority: must
+    shown_in: screen
+    journey_stage: ST-003
+    objective: O-002
+  - id: FR-018
+    user: PER-001
+    capability: >-
+      See the set as it now stands after it was changed outside the view in front
+      of them
+    outcome: >-
+      What they read is never older than the last change written to the set.
+    acceptance:
+      - >-
+        Given a section changed after they opened the set, when they ask to
+        refresh, then that section shows its new text and its new state.
+      - >-
+        Given a section that is graded again while the set is open, when the new
+        grade is written, then the new grade is shown without them asking.
+      - >-
+        Given no set existed when they looked, when a set is written and they ask
+        to refresh, then every section of it is listed.
+    priority: must
+    shown_in: screen
+    journey_stage: ST-003
+    objective: O-002
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-scope, kind: scope, path: ./07-scope.md, title: Scope }
@@ -402,6 +448,8 @@ links:
 | FR-014 | PER-003 | Approve, with conditions, against a version | must | ST-006 |
 | FR-015 | PER-001 | Stop and resume without being asked anything twice | must | ST-001 |
 | FR-016 | PER-001 | Refute a finding and have it withdrawn | must | ST-003 |
+| FR-017 | PER-001 | Move to any section without losing their place | must | ST-003 |
+| FR-018 | PER-001 | See the set as it now stands | must | ST-003 |
 
 Every release-line stage has at least one `must` requirement. There are no
 `should` or `could` requirements in R1: the release line is already the smallest

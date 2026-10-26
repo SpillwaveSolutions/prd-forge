@@ -1,32 +1,34 @@
 ---
 doc: ../08-wireframes.md
-score: 66
-blocking: 1
+score: 91
+blocking: 0
 graded: 2026-10-26
 grader: prd-forge:prd-adversary
+previous_score: 84
 ---
 
-# Why wireframes scored 66
+# Why wireframes scored 91
+
+This grade follows the fixes the previous grade asked for. It replaces an 84.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 3 | Every `screen` and `report` requirement appears in an `illustrates` list. WF-003 claims FR-011 but shows one score, where FR-011 says "both scores are visible". WF-006 claims FR-013 but draws neither the summary nor the scope. |
-| Traceability | 3 | Every sketch names its requirements, persona, and stage. WF-001 sits at ST-001 but illustrates FR-008, which is at ST-003. WF-003 sits at ST-003 but illustrates FR-011, which is at ST-004. Four headings differ from their front-matter titles. |
-| The person's view | 3 | Each sketch shows what a person reads. WF-006 has nothing for the ST-006 decision "Approve, approve with conditions, or reject", and its approvals table leaves out the approver's role. WF-001 shows a set in progress at ST-001, where every section is "not yet started". |
-| Real content | 4 | The content is the set's own: version 0.2.0, Q-001 due 2027-03-31, the grades 88, 84, and 82, and the quoted baseline text. |
-| Marks explained | 4 | Every sketch has exactly as many marks as `shows` lines, in order. |
-| No design | 1 | WF-002 names a component and a storage location: "Ask for the prd-wizard skill" and "Looked under docs/prd." Section 7 says these are "deliberately absent everywhere". WF-001's "a click opens why" assumes a pointer. |
-| States | 2 | WF-002 draws "No PRD set loaded", a state no scenario names. The empty state FR-002 names, every section listed as not started, is not drawn. SC-002's "two blocking defects, both named" and SC-005's "two stages that have no requirement behind them" are not drawn. |
-| Every control earns its place | 1 | WF-001's Prev, Next, Rescan, and Back buttons and its "FR-009 ›" link trace to no requirement. WF-002's Rescan button traces to none either. |
+| Coverage | 4 | Every `screen` and `report` requirement has a sketch, from FR-002 (WF-001, WF-002, WF-010) to FR-018 (WF-001, WF-002, WF-007). |
+| Traceability | 3 | Every sketch names its requirements, persona, and stage. WF-010 lists only FR-002 and FR-009, but its next question comes from FR-015 and FR-010, and its navigation row from FR-017 and FR-018. |
+| The person's view | 3 | WF-006 shows a decision already chosen, "(•) With conditions", on a set it calls "draft", where FR-013 applies to "a set offered for approval". WF-001 and WF-010 go from "Problem and opportunity" to "User journeys" with no "…", so three sections seem to disappear. |
+| Real content | 4 | The content is the set's own: FR-018's "shown without them asking", Q-009 with its decider and date, SC-001's "78 → 88", and the journeys rubric's ten dimensions. |
+| Marks explained | 4 | Every wireframe has as many marks as `shows` lines, in order, and the Salt drawings carry the same marks. |
+| No design | 4 | No colors, fonts, platform, component library, or vendor. |
+| States | 4 | No section started (WF-002), no set at all (WF-007), SC-005's gaps (WF-009), and SC-002's return after eight days (WF-010) are all drawn. |
+| Every control earns its place | 3 | Every control maps to a requirement, but two conflict with scope. WF-006 draws approval as on-screen input and WF-008 draws a "Mark as review" button, while OUT-003 excludes "any view of the document set other than reading the documents themselves and stepping through them", and Q-011 still asks how an approver records a decision. |
 
 ## Blocking defects
 
-- WF-002 names a component of the product and its storage location: "Ask for the prd-wizard skill: it interviews you" and "Looked under docs/prd."
+None.
 
 ## How to raise the grade
 
-- **No design (1 to 4), which also clears the blocking defect:** In WF-002, replace both lines with what the person does, such as "Nothing written yet. Say what you want built to begin." In WF-001's `shows` <3>, replace "a click opens why" with "and the reasons behind it".
-- **Every control earns its place (1 to 4):** Remove the buttons and the "FR-009 ›" link from WF-001, and Rescan from WF-002. If the expert needs them, first write the requirement in section 7 that asks for them.
-- **States (2 to 4):** Redraw WF-002 as FR-002's empty state: every section listed, each marked not started. Add a sketch of SC-002's "two blocking defects, both named". Add SC-005's two stages with no requirement to WF-005.
-- **Coverage and traceability (3 to 4):** Show the before and after scores and the offer of `review` in WF-003, or give FR-011 its own wireframe at ST-004. Move WF-001 to ST-003, or drop FR-008 from it. Make each heading match its title.
-- **The person's view (3 to 4):** In WF-006, add the summary and scope lines FR-013 asks for, a role column for FR-014, and where the approver makes the ST-006 choice.
+- **Traceability (3 to 4):** In WF-010, add FR-010, FR-015, FR-017, and FR-018 to `illustrates`, and to the line above the sketch.
+- **The person's view (3 to 4):** In WF-006, show the set at `review` with no decision chosen. In WF-001 and WF-010, add a "…" row after "Problem and opportunity".
+- **Every control earns its place (3 to 4):** Draw the approval and the offer of `review` as what the person says beside the document, with no buttons or field, and note in WF-006 that Q-011 is open. Or narrow OUT-003 so a decision control is in scope, and record that in section 6.
+- **Coverage (criterion gaps):** Draw FR-017's "the ID is named above it" as a small sketch of the section that opens from "See FR-009 ›". Show one non-zero blocking count in WF-006 for FR-013's second criterion.

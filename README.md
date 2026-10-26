@@ -79,7 +79,7 @@ Commands the mod adds:
 | `/prd-step [next\|prev\|first\|last\|<n>]` | Moves the pane to another section |
 | `/prd-q [directory]` | Continues the PRD: asks the questions still open, one at a time, and writes each answer into the set. Saying "continue the PRD" does the same |
 
-In the pane: `p` previous, `n` next, `r` rescan, `b` back, and a button per section.
+In the pane: `p` previous, `n` next, `r` refresh, `b` back, and a button per section.
 IDs such as `Q-001` and links to other sections are blue: click one to open that
 document. Click a grade to see why the section got it and how to raise it, and
 follow its link to the section's rubric. A wireframe draws as the sketch itself.

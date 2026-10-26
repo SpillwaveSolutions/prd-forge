@@ -1,27 +1,33 @@
 @startsalt
-title WF-006 The approval pack
+title WF-006 What the approver is asked to approve
 {+
   {/ <b>prd-forge PRD</b> }
-  Version 0.3.0 · draft · Richard Hightower <1>
+  Version 0.4.0 · draft · Richard Hightower <1>
+  An expert with no product training reaches a PRD
+  an engineering lead confirms is buildable.
   ==
-  {#
-    <b>Sec | <b>Document | <b>Grade | <b>Blocking <2>
-    5 | User journeys | 88 | 0
-    7 | Functional requirements | 84 | 0
-    8 | Non-functional requirements | 82 | 0
-    … | . | . | .
-  }
+  Scope: ST-001 to ST-006, one expert, one PRD <2>
   ==
-  <b>Still undecided <3>
   {
-    Q-001 | Baseline pass rate | Richard Hightower, by 2027-03-31
-    … | . | .
+    Sec Document | State Grade Blocking <3>
+    7 | Functional requirements | draft 84 | 0
+    8 | Non-functional reqs. | draft 82 | 0
   }
+  …
   ==
-  <b>Approvals <4>
-  {#
-    <b>Version | <b>Date | <b>Approver | <b>Decision | <b>Conditions
+  Still undecided <4>
+  {
+    Q-001 | Baseline pass rate | Richard Hightower
   }
-  None sought. The set is at draft.
+  by 2027-03-31
+  …
+  ==
+  { () Approve | (X) With conditions | () Reject <5> }
+  "Q-001 answered by 2027-03-31            "
+  ==
+  {
+    Version | Date | Approver | Role | Decision <6>
+  }
+  None recorded. The set is at draft.
 }
 @endsalt

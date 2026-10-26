@@ -1,21 +1,25 @@
 @startsalt
-title WF-003 The grade, explained
+title WF-003 Why a section got its grade
 {+
-  {/ <b>Functional requirements: graded 84/100</b> }
-  Buildable with questions. <1>
-  Graded 2026-10-26. 0 blocking defects. <2>
-  › See the rubric for functional requirements <3>
+  {/ <b>Wireframes: graded 69/100</b> }
+  1 blocking defect. Not ready for review. <1>
   ==
-  {#
-    <b>Dimension | <b>Score | <b>Why <4>
-    Named user | 4 | All sixteen name a persona
-    Visible outcome | 3 | FR-007 ends on a feeling
-    Atomicity | 2 | FR-001 joins two abilities
-    … | . | .
+  Blocking <2>
+  • WF-002 names a part of the product and where
+  files are kept. In WF-002, lines 3 and 4.
+  ==
+  Weakest: no design, 1 of 4 <3>
+  WF-002 names a part of the product, which section 7
+  keeps out of every sketch.
+  ==
+  {
+    Dimension | Score <4>
+    Marks explained | 4
+    Every control earns... | 4
+    The person's view | 2
   }
-  ==
-  <b>How to raise the grade <5>
-  • Atomicity 2 to 4: split FR-001 and FR-007
-  • Test 3 3 to 4: put a number on "short tables"
+  WF-001 shows ST-003 content at ST-001
+  …
+  › The rubric for wireframes <5>
 }
 @endsalt
