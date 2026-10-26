@@ -1,24 +1,26 @@
 @startsalt
-title WF-005 The buildability review
+title WF-005 What a team could not build from this set
 {+
   {/ <b>What a team could not build from this set</b> }
-  prd-forge PRD, version 0.2.0 <1>
-  9 of 11 derivability checks pass <2>
+  prd-forge PRD 0.4.0. Buildable with gaps. <1>
   ==
-  <b>CANNOT BUILD <3>
-  1. O-001 to O-003 have no baseline, so no feature
-     can carry a measure. "unknown - not measured;
-     see Q-001." <4>
+  Release line <2>
+  {
+    ✓ ST-001 | FR-001, FR-002, FR-015
+    ✓ ST-003 | FR-008, FR-009, FR-016, FR-017, FR-018
+    ✓ ST-006 | FR-013, FR-014
+  }
   …
   ==
-  <b>BACKLOG DERIVABILITY <5>
-  {
-    ✓ | 1 | One journey is the golden thread: J-001
-    ✗ | 7 | Objectives have a baseline and a target
-    … | . | .
-  }
+  Cannot write a test from <3>
+  1. FR-018: “shown without them asking”, no time
+  2. FR-008: “in sentences and short tables”
   ==
-  <b>WHAT I WOULD ASK FOR FIRST <6>
-  1. Answer Q-001 before setting O-001's target
+  Blocked by an open question <4>
+  Q-009 blocks FR-012: where the rubric lives.
+  Richard Hightower, by 2027-01-31
+  ==
+  Ask for first <5>
+  1. A time limit for FR-018
 }
 @endsalt

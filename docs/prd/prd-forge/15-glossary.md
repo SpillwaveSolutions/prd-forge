@@ -136,8 +136,9 @@ terms:
   - term: Section
     meaning: >-
       One of the fifteen numbered parts of a PRD, each held in its own document.
-      Section 5 holds two documents, journeys and scenarios, so a set has sixteen
-      section documents numbered 01 to 16 against fifteen section numbers.
+      Section 5 holds two documents, journeys and scenarios, and section 7 holds
+      two, functional requirements and wireframes, so a set has seventeen section
+      documents, prefixed 01 to 16, against fifteen section numbers.
     see_also:
       - document set
     not: >-

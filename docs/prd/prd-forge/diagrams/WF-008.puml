@@ -1,0 +1,17 @@
+@startsalt
+title WF-008 A section re-graded after one answer
+{+
+  {/ <b>User journeys: re-graded</b> }
+  {
+    78 | → | 88 <1>
+  }
+  Same rubric, ten dimensions <2>
+  ==
+  Changed: ST-003 now names its decision <3>
+  ==
+  88 and no blocking defects. <4>
+  Mark the section review? Review means it is ready
+  for someone else to read.
+  { [Mark as review] | [Not yet] }
+}
+@endsalt

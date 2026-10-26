@@ -8,7 +8,7 @@ updated: 2026-10-26
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.3.0
+version: 0.4.0
 owner: Richard Hightower
 stakeholders:
   - Domain experts who must specify software for their own field
@@ -96,8 +96,10 @@ first submission.
 
 ## How this document set is numbered
 
-A PRD has **fifteen numbered sections** and this set has **sixteen section
-documents**, because section 5 holds two of them: journeys and scenarios. So from
+A PRD has **fifteen numbered sections** and this set has **seventeen section
+documents**, because section 5 holds two of them, journeys and scenarios, and
+section 7 holds two, functional requirements and wireframes. The two section 7
+files share the prefix `08`. So from
 section 5 onward the file prefix and the section number differ — `07-scope.md` is
 section 6, `16-change-log.md` is section 15. **Every cross-reference in this set
 is by section number, never by file number.** Three independent reviewers misread

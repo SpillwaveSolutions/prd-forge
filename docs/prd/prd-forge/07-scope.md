@@ -47,6 +47,8 @@ in_scope:
       - FR-008
       - FR-009
       - FR-016
+      - FR-017
+      - FR-018
   - id: IN-005
     summary: Ask one question that most improves the section, and re-grade after it
     journey_stage: ST-004
@@ -124,7 +126,7 @@ ST-001 through ST-006 for one expert, one PRD, one golden-thread journey.
 | IN-001 | Idea, domain, vocabulary, a visible empty set, and resumption | ST-001 | FR-001, FR-002, FR-015 |
 | IN-002 | Teach then interview, in their vocabulary | ST-002 | FR-003, FR-004, FR-005 |
 | IN-003 | No invented facts; convert technology talk | ST-002 | FR-006, FR-007 |
-| IN-004 | Draft as prose, with grade, blocking defects, and refutable findings | ST-003 | FR-008, FR-009, FR-016 |
+| IN-004 | Draft as prose, with grade, blocking defects, and refutable findings, reached from any section | ST-003 | FR-008, FR-009, FR-016, FR-017, FR-018 |
 | IN-005 | One question, then re-grade | ST-004 | FR-010, FR-011 |
 | IN-006 | Buildability review of the whole set | ST-005 | FR-012 |
 | IN-007 | Approval recorded against a version | ST-006 | FR-013, FR-014 |

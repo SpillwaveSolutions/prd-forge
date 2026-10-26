@@ -1,11 +1,21 @@
 @startsalt
-title WF-002 The empty state
+title WF-002 A new set, before the first interview
 {+
-  {/ <b>No set loaded</b> }
-  <b>No PRD set loaded <1>
-  Looked under docs/prd.
-  Ask for the prd-wizard skill: it interviews you
-  and writes the set.
-  [Rescan] <2>
+  {/ <b>prd-forge</b> }
+  {
+    1/18 | root | not started <1>
+  }
+  { [< Prev] | [Next >] | [Refresh] | [Back] }
+  ==
+  {
+    <b>prd-forge PRD | not started <2>
+    Problem and opportunity | not started
+    Target customer and market | not started
+    Business objectives | not started
+    … | 14 more, all not started
+  }
+  ==
+  Nothing is written yet. The interview starts with
+  your idea and the words your team uses. <3>
 }
 @endsalt

@@ -1,17 +1,19 @@
 @startsalt
-title WF-004 The rubric
+title WF-004 The standard a section is graded against
 {+
   {/ <b>Rubric for functional requirements</b> }
   Each dimension scores 0, 2 or 4. <1>
   ==
-  {#
-    <b>Dimension | <b>0 | <b>2 | <b>4 <2>
-    Atomicity | Several in one | Mostly single | One capability
-    Coverage | Stages with none | Most covered | Every stage has a must
-    … | . | . | .
+  {
+    Dimension | 0 | 2 | 4 <2>
+    Atomicity | Several in | Mostly | One
+    one | single | capability
+    Coverage | Stages | Most | Every stage
+    with none | covered | has a must
   }
+  …
   ==
-  <b>Blocking defects <3>
+  Blocking defects <3>
   • A requirement that names a technology
   …
 }

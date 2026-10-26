@@ -23,7 +23,7 @@ requirements:
     target: under 20 seconds at p95, and under 60 seconds at p99
     measurement: >-
       At least 300 timed observations per release, taken across five scripted runs
-      of all sixteen section documents on a set already holding 60 requirements,
+      of all seventeen section documents on a set already holding 60 requirements,
       from the expert's own side of the conversation rather than from inside the
       product.
     priority: must
@@ -40,7 +40,7 @@ requirements:
       per grading pass on the section just drafted.
     target: under 90 seconds at p95 for a single section
     measurement: >-
-      At least 200 grading passes per release, spread across all sixteen section
+      At least 200 grading passes per release, spread across all seventeen section
       documents and across sets of 20, 60 and 120 requirements.
     priority: must
     applies_to:
@@ -166,7 +166,7 @@ requirements:
       within 3 minutes at p99
     measurement: >-
       Interrupt a session mid-section 100 times per release, spread across all
-      sixteen section documents, and count answers lost and seconds to resume.
+      seventeen section documents, and count answers lost and seconds to resume.
     priority: must
     applies_to:
       - FR-015

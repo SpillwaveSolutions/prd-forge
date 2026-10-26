@@ -1,0 +1,25 @@
+@startsalt
+title WF-010 Resuming a set after a week away
+{+
+  {/ <b>prd-forge 0.1.0</b> }
+  You stopped in section 7, eight days ago. <1>
+  { [< Prev] | [Next >] | [Refresh] | [Back] }
+  ==
+  {
+    Problem and opportunity | draft
+    User journeys | 80 · 1 blocking <2>
+    <b>Functional requirements | 84 · 2 blocking
+    Non-functional requirements | 75 · 2 blocking
+  }
+  …
+  ==
+  Section 7 is not ready for review: <3>
+  • FR-009 to FR-011 grade against “its rubric”,
+  which no section defines
+  • They pass at “its threshold”, stated nowhere
+  ==
+  Next question, section 7: <4>
+  What grade must a section reach before it is
+  offered for review?
+}
+@endsalt

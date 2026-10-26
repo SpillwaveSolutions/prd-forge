@@ -46,6 +46,8 @@ releases:
       - FR-014
       - FR-015
       - FR-016
+      - FR-017
+      - FR-018
     objectives:
       - O-001
       - O-002

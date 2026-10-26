@@ -9,6 +9,23 @@ domain: product management tooling
 section: 15
 order: 160
 changes:
+  - version: 0.4.0
+    date: 2026-10-26
+    author: Richard Hightower
+    summary: >-
+      Adds FR-017, moving between sections without losing one's place, and FR-018,
+      seeing the set as it now stands, the requirements behind the navigation and
+      refresh controls the wireframes drew. Rewrites the wireframes from the
+      grading findings: no sketch names a part of the product, every stage matches
+      what its sketch shows, and new sketches draw a new set, no set at all, a
+      re-grade, a review with gaps, and the return after a week away. Corrects the
+      count of section documents to seventeen wherever it appeared.
+    sections:
+      - 6
+      - 7
+      - 8
+      - 13
+      - 14
   - version: 0.3.0
     date: 2026-10-26
     author: Richard Hightower
@@ -94,6 +111,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.4.0 | 2026-10-26 | Richard Hightower | Navigation and refresh requirements; wireframes rewritten from their grading |
 | 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for every screen and report, and recorded reasons for the grades |
 | 0.2.0 | 2026-10-26 | Richard Hightower | Every defect the grading and the buildability review found, over two rounds |
 | 0.1.0 | 2026-10-23 | Richard Hightower | First draft of all sixteen sections |
