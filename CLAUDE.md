@@ -87,7 +87,7 @@ The script renders every source to `.svg` and `.png` and writes the image links 
 
 ### PRD content rules
 
-These rules are in `skills/prd-wizard/reference/boundaries.md`. A PRD never says how to build: it names no technology, vendor, component, screen, data model, or estimate. Every functional requirement passes five tests and has `shown_in`. A stage's `satisfaction` (1 to 5) and a scenario's `priority` come only from the expert; never estimate them. A `must` scenario must sit on a release-line stage. When a person meets a requirement's outcome on a screen or in a report, the requirement needs a wireframe, and the validator enforces it.
+These rules are in `skills/prd-wizard/reference/boundaries.md`. A PRD never says how to build: it names no technology, vendor, component, screen, data model, or estimate. Every functional requirement passes five tests and has `shown_in`. Every journey stage has required Given/When/Then `acceptance`, which becomes the acceptance of the feature derived from that stage. A stage's `satisfaction` (1 to 5) and a scenario's `priority` come only from the expert; never estimate them. A `must` scenario must sit on a release-line stage. When a person meets a requirement's outcome on a screen or in a report, the requirement needs a wireframe, and the validator enforces it.
 
 ## Working conventions
 

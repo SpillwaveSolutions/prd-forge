@@ -91,6 +91,16 @@
                   "type": "string",
                   "description": "What the user decides here."
                 },
+                "acceptance": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^Given\\b.*\\bwhen\\b.*\\bthen\\b",
+                    "description": "One Given/When/Then statement: the starting state, what the actor does, and what they can then observe."
+                  },
+                  "description": "When this stage is done, from the actor's side: pass-or-fail statements a person can observe. Each becomes acceptance for the feature derived from this stage."
+                },
                 "handoff": {
                   "type": "string",
                   "description": "Who takes over after this stage, when anyone does."
@@ -106,7 +116,8 @@
                 "id",
                 "name",
                 "actor",
-                "steps"
+                "steps",
+                "acceptance"
               ]
             },
             "minItems": 2

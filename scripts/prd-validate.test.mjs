@@ -68,3 +68,15 @@ test('a stage satisfaction outside 1 to 5 fails the set', () => {
     text.replace(/(      - id: ST-001\n)/, '$1        satisfaction: 7\n'))
   assert.ok(errors.some(e => /satisfaction: above 5/.test(e)), errors.join('\n'))
 })
+
+test('a journey stage with no acceptance fails the set', () => {
+  const errors = validateEdited('05-user-journeys.md', text =>
+    text.replace(/(      - id: ST-002\n.*\n.*\n)        acceptance:\n          - >-\n(            .*\n)+/, '$1'))
+  assert.ok(errors.some(e => /stages\[1\]: missing acceptance/.test(e)), errors.join('\n'))
+})
+
+test('a journey stage acceptance not written as Given/When/Then fails the set', () => {
+  const errors = validateEdited('05-user-journeys.md', text =>
+    text.replace('            Given a drafted and graded section, when the expert opens it, then\n', '            The expert reads the draft and agrees with it, which shows it is\n'))
+  assert.ok(errors.some(e => /acceptance\[0\].*does not match/.test(e)), errors.join('\n'))
+})

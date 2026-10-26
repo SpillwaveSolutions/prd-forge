@@ -33,14 +33,20 @@ epics and stories cannot be derived from the PRD at all.
 | `trigger` | What starts the journey |
 | `stages` | The large steps, in order |
 | steps in each stage | What the user does, sees and decides |
+| `acceptance` on each stage | When the stage is done: one or more "Given …, when …, then …" statements the actor can observe. Required |
 | `inputs` / `outputs` | What the user gives, and gets back |
 | `handoff` | Where another person takes over |
 | `pain_points` / `needs` | What is hard today, and what the product must fix |
 | `satisfaction` on each stage | How the stage feels to the user today, 1 (worst) to 5 (best), as the expert scores it |
 | `end_state` | How the user knows they are done |
 
-Every stage names **a person, an input, an output and a decision, and no
-technology**.
+Every stage names **a person, an input, an output, a decision, and its
+acceptance, and no technology**.
+
+A stage's acceptance says when the stage is done, from the actor's side. It is
+not a requirement's acceptance: a requirement tests one capability, and a stage
+tests the whole step of the journey. Each stage's acceptance becomes the
+acceptance of the feature `prd-to-backlog` derives from that stage.
 
 Exactly one journey carries `golden_thread: true`: the one journey release 1 must
 deliver end to end.
@@ -71,13 +77,17 @@ Interview one journey at a time. Do the golden thread first.
    do they decide?"
 5. "What do they have to provide at this stage, and what do they get back?"
 6. "Does anyone else take over here? Who, and what do they receive?"
-7. "What is hard about this stage today?"
-8. "From 1 to 5, how does this stage feel to the user today? 1 is the worst it
+7. "How would you know this stage is done? Given what is true when it starts,
+   when the actor does what, then what can they see?" Write the answer as
+   "Given …, when …, then …". Add a second statement for a different way the
+   stage can end, such as a refusal.
+8. "What is hard about this stage today?"
+9. "From 1 to 5, how does this stage feel to the user today? 1 is the worst it
    gets, 5 is fine as it is." Record the answer as the stage's `satisfaction`.
    Never estimate it: a stage the expert does not score stays without one. A 1
    or a 2 almost always has a pain point behind it; ask for it.
-9. "At the very end — how does the user know they are finished?"
-10. "If we built only steps 1 through N, would anyone get value? Where is the
+10. "At the very end — how does the user know they are finished?"
+11. "If we built only steps 1 through N, would anyone get value? Where is the
    smallest complete path?" — that answer is the release line for section 6.
 
 If the expert gives you a system step ("the file is validated"), convert it:
@@ -127,6 +137,9 @@ _The figures, citations and organisations in this example are invented, to show 
 > the community team notified when the plan is made, not when the patient leaves.
 > end state: the patient has left with their medicines, their documents and a
 > booked follow-up, and the community team has accepted the handover.
+> acceptance, ST-003: given a discharge prescription and an expected transport
+> time, when the pharmacist dispenses, then the ward sees the medicines ready
+> and the counselling note recorded before the transport slot.
 > satisfaction today, ST-001 to ST-006: 4, 2, 1, 2, 3, 3. The coordinator's
 > stages score low because the plan lives in three places.
 
@@ -140,6 +153,7 @@ Do not draw the journey by hand: `prd-diagrams.mjs` generates its diagram from t
 | Ordered stages | Unordered list | Ordered, gaps | 5–8 ordered stages with no missing step |
 | Person per stage | No actor | Actor on some | Every stage names its actor |
 | Decision per stage | None | Some | Every stage names what the user decides |
+| Stage acceptance | None, or prose | Given/When/Then on some stages, or outcomes the actor cannot observe | Every stage has Given/When/Then, each pass-or-fail and observable by the actor |
 | Inputs and outputs | Absent | Partial | Each stage says what is given and what comes back |
 | Handoffs | Implicit | Mentioned | Every change of actor is explicit |
 | No technology | Names systems | Occasional leak | No system, vendor or component anywhere |
@@ -152,6 +166,7 @@ Do not draw the journey by hand: `prd-diagrams.mjs` generates its diagram from t
 
 - No journey carries `golden_thread: true`, or more than one does.
 - A stage with no actor, or with a system as its actor.
+- A stage with no acceptance, or with acceptance not written as Given/When/Then.
 - A stage that names a technology, vendor, component or screen.
 - A journey whose `persona` matches no `PER-nnn` in section 4.
 - Fewer than two stages, or a journey that never reaches its stated goal.

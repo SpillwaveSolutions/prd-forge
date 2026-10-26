@@ -178,6 +178,10 @@ Every requirement passes five tests: it names a user, states an outcome a person
 can see, has a pass-or-fail acceptance test, carries a priority, and does not name
 the component or technology that delivers it.
 
+Every journey stage also has acceptance in Given/When/Then form: when the stage
+is done, as the person acting in it can observe. The validator requires it, and
+`prd-to-backlog` copies it to the feature that stage becomes.
+
 ## Grading
 
 Each section has a rubric of five to ten dimensions scored 0–4, a blocking-defect
