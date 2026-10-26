@@ -34,6 +34,8 @@ that fails test 5 freezes an architecture decision before anyone has made it.
 - `user`: a persona id or role (test 1).
 - `capability`: what they can do.
 - `outcome`: what they can then see or have (test 2).
+- `journey_stage`, `objective`, and `shown_in` warn while the section is a
+  draft and are required once it is offered for review.
 - `shown_in`: where they meet that outcome: `screen`, `report`, `conversation`,
   or `none`. A `screen` or `report` requirement needs a wireframe in
   `08-wireframes.md`; the validator fails the set without one.

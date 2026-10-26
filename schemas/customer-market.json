@@ -60,6 +60,16 @@
             "type": "string",
             "minLength": 1
           },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "direct",
+              "indirect",
+              "status-quo",
+              "build-in-house"
+            ],
+            "description": "What kind of alternative it is. At least one competitor is the status quo: what customers do today."
+          },
           "offer": {
             "type": "string",
             "minLength": 1

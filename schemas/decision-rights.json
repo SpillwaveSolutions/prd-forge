@@ -28,6 +28,14 @@
             "minLength": 1,
             "description": "The decision being made."
           },
+          "stages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^ST-\\d{3}$"
+            },
+            "description": "The journey stages whose decision this rule governs."
+          },
           "approver": {
             "type": "string",
             "minLength": 1,

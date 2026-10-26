@@ -12,8 +12,10 @@ scenarios:
   - id: SC-001
     journey: J-001
     stage: ST-002
+    stages: [ST-002, ST-003, ST-004]
     persona: PER-001
     variant: happy
+    shown_in: screen
     lifecycles: [LC-001]
     wireframes: [WF-008]
     context: >-
@@ -42,6 +44,7 @@ scenarios:
     stage: ST-004
     persona: PER-001
     variant: alternate
+    shown_in: screen
     lifecycles: [LC-001]
     wireframes: [WF-010]
     context: >-
@@ -63,6 +66,7 @@ scenarios:
     stage: ST-002
     persona: PER-001
     variant: exception
+    shown_in: conversation
     context: >-
       A claims manager is answering questions about section 7. They have strong
       views about how it should be built.
@@ -86,6 +90,7 @@ scenarios:
     stage: ST-003
     persona: PER-001
     variant: exception
+    shown_in: conversation
     context: >-
       The grading reviewer has reported that a requirement names a component. The
       expert reads the finding and believes it is wrong.
@@ -107,6 +112,7 @@ scenarios:
     stage: ST-005
     persona: PER-001
     variant: exception
+    shown_in: report
     wireframes: [WF-009]
     context: >-
       Every section is at `review`. The expert asks whether a team could build the
@@ -129,6 +135,7 @@ scenarios:
     stage: ST-002
     persona: PER-001
     variant: exception
+    shown_in: conversation
     context: >-
       The expert is on section 3 and does not know the current value of the metric
       they have just named.
@@ -188,7 +195,13 @@ links:
 
 ![SC-001 scenario](diagrams/SC-001.svg)
 
+![LC-001 lifecycle of a section of the PRD](diagrams/LC-001.svg)
+
+![WF-008 drawing](diagrams/WF-008.svg)
+
 ![SC-002 scenario](diagrams/SC-002.svg)
+
+![WF-010 drawing](diagrams/WF-010.svg)
 
 ![SC-003 scenario](diagrams/SC-003.svg)
 
@@ -196,9 +209,9 @@ links:
 
 ![SC-005 scenario](diagrams/SC-005.svg)
 
-![SC-006 scenario](diagrams/SC-006.svg)
+![WF-009 drawing](diagrams/WF-009.svg)
 
-![LC-001 lifecycle of a section of the PRD](diagrams/LC-001.svg)
+![SC-006 scenario](diagrams/SC-006.svg)
 
 | ID | Stage | Variant | What it covers |
 | --- | --- | --- | --- |

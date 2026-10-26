@@ -18,7 +18,12 @@ domains this section is also evidence.
 - `version`, `date`, `author`, `summary`.
 - `sections`: which section numbers changed.
 - `approvals`: name, role, date, and decision (approved,
-  approved-with-conditions, rejected).
+  approved-with-conditions, rejected). An approval with conditions lists each in
+  `conditions`: the `condition`, what it `depends_on` (open questions or
+  requirements), the date it is due `by`, and whether it is `cleared`.
+
+The validator fails the set when the root's version has no entry, or when a
+section is `final` with no approval recorded.
 
 ## What does not belong
 

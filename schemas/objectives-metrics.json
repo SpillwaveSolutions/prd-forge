@@ -28,6 +28,14 @@
             "minLength": 1,
             "description": "The business result, not the feature."
           },
+          "problems": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^P-\\d{3}$"
+            },
+            "description": "The problems in section 1 this objective addresses."
+          },
           "metric": {
             "type": "string",
             "minLength": 1
@@ -36,6 +44,11 @@
             "type": "string",
             "minLength": 1,
             "description": "What it measures today. 'unknown' is an open question, not a baseline."
+          },
+          "baseline_question": {
+            "type": "string",
+            "pattern": "^Q-\\d{3}$",
+            "description": "The open question in section 12 that will establish an unknown baseline."
           },
           "target": {
             "type": "string",
@@ -59,6 +72,34 @@
         ]
       },
       "minItems": 1
+    },
+    "guardrails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "metric": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What must not get worse while the objectives move."
+          },
+          "threshold": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The level it must stay at, with a number."
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "metric",
+          "threshold"
+        ],
+        "additionalProperties": false
+      },
+      "description": "Guardrail (counter) metrics: what must not get worse."
     }
   },
   "required": [

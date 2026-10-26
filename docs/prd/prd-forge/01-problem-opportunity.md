@@ -15,6 +15,7 @@ problems:
       they write down is a feature list: no named user, no outcome anyone could
       check, and a technology already chosen for reasons they cannot defend.
     who: Domain expert specifying software for their own field
+    persona: PER-001
     evidence:
       - >-
         Specifications arriving at delivery teams are commonly feature lists;
@@ -38,6 +39,7 @@ problems:
       written at all, and nobody notices until the team tries to assemble a
       working path through the product.
     who: Engineering lead building from the specification
+    persona: PER-002
     evidence:
       - >-
         A specification with no user journey gives a story-mapping workshop no
@@ -56,6 +58,7 @@ problems:
       Nobody can tell a buildable specification from a readable one until the team
       has already started building from it.
     who: Sponsor or approver signing the specification off
+    persona: PER-003
     evidence:
       - >-
         Approval is given on readability and completeness of headings, because
@@ -74,6 +77,7 @@ problems:
       An expert has nowhere to learn what a section of a PRD is for at the moment
       they are being asked to fill it in.
     who: Domain expert specifying software for their own field
+    persona: PER-001
     evidence:
       - >-
         Templates name the sections and not their purpose, so a heading like

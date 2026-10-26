@@ -20,10 +20,19 @@ requirement that moves O-001 beats the one that moves nothing.
 - One `O-nnn` per business result. Three to five is usually right.
 - `metric`: what is measured, precisely enough that two people would compute it
   the same way.
+- `problems`: the `P-nnn` problems in section 1 this objective addresses. A
+  problem that reaches no requirement through an objective draws a warning.
 - `baseline`: the value today. If it is unknown, that is an open question in
-  section 12 with a decider and a date — not a blank.
-- `target` and `by`: the value we expect and when.
+  section 12 with a decider and a date — not a blank. Name it in
+  `baseline_question`; the validator fails a baseline with no number and no
+  question.
+- `target` and `by`: the value we expect and when. The target has a number.
 - `owner`: the one person accountable for the number, not a committee.
+
+Add `guardrails` for the section: what must not get worse while the objectives
+move, each with a `metric`, a `threshold` with a number, and an `owner`. Ask:
+"What must not get worse?" A support load, an error rate, or a satisfaction score
+are typical.
 
 ## What does not belong
 

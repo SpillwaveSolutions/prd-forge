@@ -20,11 +20,16 @@ be automated confidently.
 
 - `id`: `TR-nnn`.
 - `decision`: the decision being made, stated as a decision.
-- `approver`: the role that may approve it, from section 4.
+- `stages`: the `ST-nnn` journey stages whose decision this rule governs. Once
+  any rule names its stages, the validator warns about a stage with a decision
+  and no rule.
+- `approver`: the role that may approve it, as a `PER-nnn` id from section 4.
 - `delegable_to_agent`: may software make this call unaided?
 - `never_delegated`: must a person decide, always, whatever the confidence?
 - `evidence_required`: what the approver must be shown before deciding.
 - `escalation`: what happens when the approver is unavailable or disagrees.
+  Required when an agent may decide; `evidence_required` is required when the
+  decision is never delegated.
 - `acceptance`: Given/When/Then statements proving the rule holds.
 
 ## What does not belong

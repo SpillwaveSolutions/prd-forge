@@ -24,6 +24,12 @@ requirement gets prioritised, deferred, and then discovered during an audit.
 - `applies_to`: requirement, stage or journey ids; absent means everywhere.
 - `verification`: how compliance is shown.
 
+Test each one: **could the team change this by agreeing among themselves?** If
+yes, it is not a constraint. A product decision goes in section 6 as scope; a
+rule nobody has confirmed goes in section 11 as an assumption with an owner. A
+`firm` constraint is a binding rule of the organization, set outside the product
+team.
+
 ## What does not belong
 
 - Preferences ("we prefer to keep data in one place").

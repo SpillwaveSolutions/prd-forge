@@ -85,6 +85,10 @@ The script renders every source to `.svg` and `.png` and writes the image links 
 - `types/index.d.ts` is the `$.state` contract. Bump the `shape` tag on the `set` atom whenever `PrdSet` changes.
 - A mod command cannot start a model turn. `/prd-q`, which continues an interview, is a prompt command in `commands/prd-q.md`.
 
+### Validator rules follow the guides
+
+Each section guide's blocking defects are checked by `structural()` in `scripts/prd-validate.mjs` wherever a script can check them. When you add a blocking defect to a guide, add its check and a test in `scripts/prd-validate.test.mjs` (the `failsWith` helper edits a copy of the reference set). A field a guide requires at review uses `gate()`: a warning while the section is a draft, an error at `review` or `final`. A number check ignores IDs, so "see Q-001" is not a number.
+
 ### PRD content rules
 
 These rules are in `skills/prd-wizard/reference/boundaries.md`. A PRD never says how to build: it names no technology, vendor, component, screen, data model, or estimate. Every functional requirement passes five tests and has `shown_in`. Every journey stage has required Given/When/Then `acceptance`, which becomes the acceptance of the feature derived from that stage. A stage's `satisfaction` (1 to 5) and a scenario's `priority` come only from the expert; never estimate them. A `must` scenario must sit on a release-line stage. When a person meets a requirement's outcome on a screen or in a report, the requirement needs a wireframe, and the validator enforces it.
@@ -92,6 +96,7 @@ These rules are in `skills/prd-wizard/reference/boundaries.md`. A PRD never says
 ## Working conventions
 
 - Work on a branch and open a PR. Cut releases from `main` after the merge. Bump `version` in `.claude-plugin/plugin.json`, then run `gh release create vX.Y.Z`.
+- prd-forge's own PRD carries the plugin's version. When you bump `plugin.json`, set the same `version` in `docs/prd/prd-forge/prd.md` and add a matching entry to its change log. A test fails when they differ.
 - Before you open a PR, run every command in the commands section above. Test any changed script with awkward input, such as names that hold `(`, `[`, `"`, `;`, `#`, or `<`.
 - Look at rendered diagrams and PDF pages. A diagram can parse and still drop steps, print escape codes, or shrink below a readable size, and the visual check has found faults like these that no test caught.
 - After you change journeys, scenarios, the release plan, decision rights, or wireframes in the reference set, run `prd-diagrams.mjs`, then the export, and commit the regenerated files.

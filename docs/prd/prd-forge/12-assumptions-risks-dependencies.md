@@ -183,6 +183,7 @@ That is stated here rather than hidden behind a mitigation that sounds adequate.
 | D-002 | 10 observed first-time experts | Early customers | 2027-03-31 | requested |
 | D-003 | 3 engineering leads to read a set cold | Early customers | 2027-03-31 | requested |
 
-D-002 and D-003 are both merely requested, and both are dated after R1's target in
-section 13. That is a real schedule problem: R1 ships before the assumptions it
-rests on are tested. Recorded, not resolved.
+D-002 and D-003 are both merely requested, and both are dated on R1's target day in
+section 13. That is a real schedule problem: R1 ships on the day the assumptions
+it rests on are due to be tested, so it cannot use the results. Recorded, not
+resolved.

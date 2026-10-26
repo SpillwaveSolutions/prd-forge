@@ -8,7 +8,7 @@ updated: 2026-10-26
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.4.0
+version: 0.6.0
 owner: Richard Hightower
 stakeholders:
   - Domain experts who must specify software for their own field
@@ -34,7 +34,7 @@ summary:
     still weak before anyone starts work.
   measure: >-
     Share of PRDs that pass an engineering buildability review on the first
-    submission.
+    submission: 80% by 2027-09-30, from a baseline Q-001 will establish.
 links:
   parent: null
   children:
