@@ -139,6 +139,20 @@ function blockScalar(lines, at, indent, style) {
   return { text, next: i }
 }
 
+/**
+ * A plain or quoted scalar that runs on over lines indented past `indent`:
+ * YAML folds those lines into the first with single spaces.
+ */
+function runOn(lines, from, indent, first) {
+  let text = first
+  let i = from
+  while (i < lines.length && lines[i].trim() !== '' && indentOf(lines[i]) > indent) {
+    text = `${text} ${lines[i].trim()}`
+    i += 1
+  }
+  return { text, next: i }
+}
+
 function parseBlock(lines, from, indent) {
   let i = from
   while (i < lines.length && isBlank(lines[i])) i += 1
@@ -169,7 +183,13 @@ function parseBlock(lines, from, indent) {
         }
         const nested = parseBlock(inner, 0, own + 2)
         list.push(nested.node); i = j
-      } else { list.push(value(after)); i += 1 }
+      } else if (/^[|>][-+]?\d*$/.test(after.trim())) {
+        const folded = blockScalar(lines, i + 1, own, after.trim())
+        list.push(folded.text); i = folded.next
+      } else {
+        const run = runOn(lines, i + 1, own, after)
+        list.push(value(run.text)); i = run.next
+      }
     }
     return { node: list, next: i }
   }
@@ -190,7 +210,10 @@ function parseBlock(lines, from, indent) {
     } else if (raw === '') {
       const nested = parseBlock(lines, i + 1, own + 1)
       map[cut.key] = nested.node; i = nested.next
-    } else { map[cut.key] = value(raw); i += 1 }
+    } else {
+      const run = runOn(lines, i + 1, own, raw)
+      map[cut.key] = value(run.text); i = run.next
+    }
   }
   return { node: map, next: i }
 }

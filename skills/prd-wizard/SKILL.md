@@ -127,10 +127,12 @@ After you write or change journeys or wireframes, draw the diagrams:
 node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-diagrams.mjs" <set directory>
 ```
 
-It generates a Mermaid diagram of each journey from its front matter, renders
-each wireframe's PlantUML Salt drawing, writes both to `<set>/diagrams/` as
-source, `.svg`, and `.png`, and links each one from its document. It needs `mmdc`
-and `plantuml` on the PATH.
+From the front matter it generates Mermaid diagrams of each journey, each
+scenario (as a sequence), the release line, and the decision rights. It renders
+each wireframe's PlantUML Salt drawing. It writes all of them to
+`<set>/diagrams/` as source, `.svg`, and `.png`, and links each one from its
+document. It needs `mmdc` and `plantuml` on the PATH. Run it after you change
+journeys, scenarios, the release plan, decision rights, or wireframes.
 
 ## When the set is done
 

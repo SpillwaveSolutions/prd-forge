@@ -101,7 +101,10 @@ Each set keeps its diagrams in `diagrams/`, beside the documents:
 
 | Diagram | Source | Made by |
 | --- | --- | --- |
-| Each journey, `J-nnn` | Mermaid, `J-nnn.mmd` | Generated from the journey's front matter. Do not edit |
+| Each journey, `J-nnn` | Mermaid flowchart, `J-nnn.mmd` | Generated from the journey's front matter. Do not edit |
+| Each scenario, `SC-nnn` | Mermaid sequence, `SC-nnn.mmd` | Generated from the scenario's front matter. Do not edit |
+| The release line | Mermaid flowchart, `release-line.mmd` | Generated from the release plan, the journeys, and the requirements. Do not edit |
+| The decision rights | Mermaid flowchart, `decision-rights.mmd` | Generated from the decision rights and the personas. Do not edit |
 | Each wireframe, `WF-nnn` | PlantUML Salt, `WF-nnn.puml` | Drawn by the wizard from the confirmed text sketch |
 
 Draw them, render them, and link them from the documents:
@@ -198,9 +201,16 @@ recorded approval.
 ```bash
 claude plugin validate <this directory>
 claude plugin test <this directory>
+node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs
 node scripts/prd-validate.mjs examples/acme-returns
 tsc -p <this directory>
 ```
+
+`prd-validate.test.mjs` checks the validator's YAML reader against PyYAML for
+every document in both shipped sets. `prd-diagrams.test.mjs` renders every kind
+of diagram with names that hold Mermaid's own punctuation, and checks that a
+reader sees each name exactly as written. Both need `python3` with PyYAML, and
+`mmdc`.
 
 The top-level `tsconfig.json` extends `.claude-plugin/types/tsconfig.json`, which
 Claude Code writes the first time it loads the mod — so in a fresh clone, run the

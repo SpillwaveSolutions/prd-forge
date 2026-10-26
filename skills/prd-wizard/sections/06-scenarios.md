@@ -34,6 +34,11 @@ expert says actually happen.
 
 ## How to interview for it
 
+Write each `course` step from the user's side, starting with "They" and a verb:
+"They see …", "They are asked …", "They say …". The scenario's diagram draws a
+step that starts "They see", "They read", or "They are" as the product speaking
+to the user, and every other step as the user acting.
+
 1. "Give me a normal run of this journey last month. Actual numbers."
 2. "Now the most common way it goes wrong. What does the user see?"
 3. "What does the user do about it? Who do they have to involve?"

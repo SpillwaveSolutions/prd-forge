@@ -85,6 +85,8 @@ links:
 
 ## J-001 — A return resolved at the counter (golden thread)
 
+![J-001 journey diagram](diagrams/J-001.svg)
+
 Persona PER-001, store associate. Trigger: a customer arrives with an item.
 Stages ST-001 to ST-004. End state: the customer has left knowing the outcome
 and the reason, and the return is recorded with its reason.

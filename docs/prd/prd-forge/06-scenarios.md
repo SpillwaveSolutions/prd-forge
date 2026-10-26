@@ -146,6 +146,18 @@ links:
 
 # Scenarios
 
+![SC-001 scenario](diagrams/SC-001.svg)
+
+![SC-002 scenario](diagrams/SC-002.svg)
+
+![SC-003 scenario](diagrams/SC-003.svg)
+
+![SC-004 scenario](diagrams/SC-004.svg)
+
+![SC-005 scenario](diagrams/SC-005.svg)
+
+![SC-006 scenario](diagrams/SC-006.svg)
+
 | ID | Stage | Variant | What it covers |
 | --- | --- | --- | --- |
 | SC-001 | ST-002 | happy | A section taught, interviewed, drafted, graded, improved |
