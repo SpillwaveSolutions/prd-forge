@@ -6,7 +6,7 @@ title: User journeys
 status: draft
 updated: 2026-10-26
 domain: product management tooling
-score: 90
+score: 88
 blocking: 0
 graded: 2026-10-26
 section: 5

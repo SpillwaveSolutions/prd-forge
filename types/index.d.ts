@@ -23,7 +23,15 @@ export type PrdDocRef = {
   score: number | null
   /** Blocking defects the last grading pass found; null when never graded. */
   blocking: number | null
+  /** The date of the last grading pass; null when never graded. */
+  graded: string | null
 }
+
+/** What the pane shows of a document: its text, its grade, or its rubric. */
+export type PrdPage = 'doc' | 'grade' | 'rubric'
+
+/** One screen of the pane, as Back returns to it. */
+export type PrdView = { at: number; page: PrdPage }
 
 /** One PRD document set: its root document and every section below it. */
 export type PrdSet = {
@@ -35,6 +43,8 @@ export type PrdSet = {
   product: string
   /** The root first, then the sections in reading order. */
   docs: PrdDocRef[]
+  /** Each ID a document's front matter defines (`Q-001`), to that document's path. */
+  ids: Record<string, string>
 }
 
 declare module 'claude-code' {
@@ -44,6 +54,10 @@ declare module 'claude-code' {
       set: Shaped<PrdSet | null>
       /** Which document of `set.docs` the pane shows. */
       cursor: number
+      /** Which page of the document at `cursor` the pane shows. */
+      page: PrdPage
+      /** The screens shown before this one, oldest first, for Back. */
+      history: PrdView[]
       /** One line under the buttons: what the last scan or step came to. */
       notice: string | null
     }

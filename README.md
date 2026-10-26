@@ -76,7 +76,10 @@ Commands the mod adds:
 | `/prd [directory]` | Opens the stepper pane on a set, scanning for one if no directory is given |
 | `/prd-step [next\|prev\|first\|last\|<n>]` | Moves the pane to another section |
 
-In the pane: `p` previous, `n` next, `r` rescan, and a button per section.
+In the pane: `p` previous, `n` next, `r` rescan, `b` back, and a button per section.
+IDs such as `Q-001` and links to other sections are blue: click one to open that
+document. Click a grade to see why the section got it and how to raise it, and
+follow its link to the section's rubric.
 
 Validate a set at any time:
 
@@ -139,7 +142,8 @@ Each section has a rubric of five to ten dimensions scored 0–4, a blocking-def
 list, and a list of industry-standard wording. The skill self-grades every
 section; the adversarial agents grade sections 5, 7, 8 and 10 always, anything
 below 70, and the whole set before it is circulated. Scores and blocking counts
-are written into the front matter and shown in the pane.
+are written into the front matter and shown in the pane. The reasons for each
+grade are written to `grades/<file>` beside the section.
 
 A section reaches `review` at a score of 70 or more with zero blocking defects and
 a clean validator run. It reaches `final` only with an adversarial pass and a

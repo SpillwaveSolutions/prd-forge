@@ -5,11 +5,11 @@ section that reads well and cannot be built from has failed.
 
 ## Two levels of grading
 
-**Self-grade** — you, after drafting a section. Score each rubric dimension in
+**Self-grade**, you, after drafting a section. Score each rubric dimension in
 `sections/<n>-<kind>.md`, check the blocking-defect list, and report. Do this
 every time. It is cheap and catches most of it.
 
-**Adversarial pass** — subagents whose job is to find fault. They do not see your
+**Adversarial pass**, subagents whose job is to find fault. They do not see your
 reasoning, only the document, so they cannot be talked round by it. Run the
 adversarial pass:
 
@@ -34,11 +34,43 @@ Write `score`, `blocking` and `graded` into the document's front matter. They ar
 the grading pass's fields: never set them by hand, and never raise a score
 without a change to the document.
 
+Write the reasons beside the document too, in `grades/<the document's file name>`
+in the set's directory. The PRD pane opens this file when the expert clicks a
+grade, and it replaces the previous grade's file. Use this shape:
+
+```markdown
+---
+doc: ../08-functional-requirements.md
+score: 74
+blocking: 1
+graded: 2026-10-26
+grader: prd-forge:prd-adversary
+---
+
+# Why functional requirements scored 74
+
+| Dimension | Score | Why |
+| --- | --- | --- |
+| Atomicity | 2 | FR-001 and FR-007 each join two capabilities with "and". |
+
+## Blocking defects
+
+- FR-009 names the warehouse management system, so it fails test 5.
+
+## How to raise the grade
+
+- **Atomicity (2 to 4):** Split FR-001 into "state the idea" and "establish
+  vocabulary once".
+```
+
+One row per rubric dimension, in rubric order, each reason citing the document.
+Each "how to raise" bullet names the dimension, the place, and the change.
+
 | Score | Meaning | What to do |
 | --- | --- | --- |
-| 85–100 | Buildable | Offer `review` status |
-| 70–84 | Buildable with questions | Name the weakest dimension and ask one question |
-| 50–69 | Not yet buildable | Return to the interview for this section |
+| 85, 100 | Buildable | Offer `review` status |
+| 70, 84 | Buildable with questions | Name the weakest dimension and ask one question |
+| 50, 69 | Not yet buildable | Return to the interview for this section |
 | under 50 | Not started in earnest | Re-teach the section and interview again |
 
 **Blocking defects are not points.** A section with a 92 and one blocking defect
@@ -51,10 +83,10 @@ All three are read-only: they report, they never edit the document.
 | Agent | What it does | When |
 | --- | --- | --- |
 | `prd-forge:prd-adversary` | Grades one section against its rubric, hunting for defects | Per section |
-| `prd-forge:prd-engineer-review` | Reads the whole set as the engineering lead who has to build it, and reports what cannot be built | Before `final`, and after sections 5–8 exist |
+| `prd-forge:prd-engineer-review` | Reads the whole set as the engineering lead who has to build it, and reports what cannot be built | Before `final`, and after sections 5, 8 exist |
 | `prd-forge:prd-domain-voice` | Checks terminology and standard references against the stated domain | Per section for 1, 2, 9, 14; once over the set before `final` |
 
-Dispatch them in parallel when more than one applies — they are independent.
+Dispatch them in parallel when more than one applies, they are independent.
 
 ### Briefing them
 
@@ -71,7 +103,7 @@ A good brief:
 > Domain: retail returns. The set's other sections are in the same directory;
 > read what you need for cross-references.
 
-A bad brief: "I think the acceptance criteria are weak — check whether you agree."
+A bad brief: "I think the acceptance criteria are weak, check whether you agree."
 
 ### Reading what comes back
 
@@ -86,10 +118,10 @@ objection once and record their decision. Do not re-litigate it every pass.
 
 Report in plain language, in this shape, and keep it under about fifteen lines:
 
-> **Functional requirements — 74/100, 1 blocking.**
+> **Functional requirements, 74/100, 1 blocking.**
 > Strong: every requirement names a persona and carries a priority, and the
 > `must` set matches the release line.
-> Blocking: FR-009 names the warehouse management system — that is a component,
+> Blocking: FR-009 names the warehouse management system, that is a component,
 > so it fails test 5.
 > Weakest dimension: acceptance criteria. Six of nineteen requirements have one
 > criterion each, all happy-path.

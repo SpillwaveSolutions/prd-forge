@@ -43,7 +43,12 @@ score: 81
 blocking: 0`)}
 # User journeys
 
-The golden thread runs from counter to hub.
+The golden thread runs from counter to hub. The targets are therefore
+intentions, not commitments.
+
+| ID | Persona | Note |
+| --- | --- | --- |
+| J-001 | PER-001 | starts at the counter |
 `
 
 const PERSONAS = `${front(`id: demo-personas
@@ -53,13 +58,42 @@ title: Users and personas
 status: pending
 updated: 2026-10-23
 section: 4
-order: 40`)}
+order: 40
+personas:
+  - id: PER-001
+    name: Ana`)}
 # Users and personas
 
 Not interviewed yet.
 `
 
+const NOTES = `${front(`doc: ../05-user-journeys.md
+score: 81`)}
+# Why user journeys scored 81
+
+The hand-off at the hub is implicit. See PER-001.
+`
+
+const RUBRIC = `# Journeys
+
+## Rubric
+
+| Dimension | 0 | 2 | 4 |
+| --- | --- | --- | --- |
+| Handoffs | Implicit | Mentioned | Every change of actor is explicit |
+
+## Blocking defects
+
+- A stage with no actor.
+
+## Industry-standard wording
+
+Not part of the rubric.
+`
+
 const FILES: Record<string, string> = {
+  'docs/prd/grades/05-user-journeys.md': NOTES,
+  'skills/prd-wizard/sections/05-journeys.md': RUBRIC,
   'docs/prd/prd.md': ROOT,
   'docs/prd/04-personas.md': PERSONAS,
   'docs/prd/05-user-journeys.md': JOURNEYS,
@@ -73,12 +107,15 @@ const servesTheSet = (on: On) => {
   on('command.register', (_, e) => ({ value: { command: e.name } }))
   on('ui.open', () => ({ value: { isPlaced: true } }))
   on('session.start', (_, e) => ({ cwd: e.cwd }))
+  on('session.cwd', () => ({ value: '/w' }))
   // The engine resolves a relative path against the working directory before it
   // raises the event, so these match by suffix.
   on('fs.list', (_, e) => ({
     value: e.path.endsWith('docs/prd')
       ? [entry('prd.md'), entry('04-personas.md'), entry('05-user-journeys.md')]
-      : [],
+      : e.path.endsWith('skills/prd-wizard/sections')
+        ? [entry('05-journeys.md')]
+        : [],
   }))
   on('fs.read', (_, e) => {
     const found = Object.entries(FILES).find(([path]) => e.path.endsWith(path))
@@ -97,7 +134,8 @@ test('the pane opens on the set and draws the root first, on every surface', asy
 
     expect((await ui.find({ type: 'Text', text: /Demo Returns/ }))?.text).toContain('Demo Returns')
     expect(await ui.find({ type: 'Text', text: /1\/3/ })).toBeTruthy()
-    expect(await ui.find({ type: 'Markdown', text: /The root body/ })).toBeTruthy()
+    const body = surface === 'terminal' ? 'Text' : 'Markdown'
+    expect(await ui.find({ type: body, text: /The root body/ })).toBeTruthy()
     await ui.unmount()
   }
 })
@@ -108,6 +146,7 @@ test('Next moves to the following document in order', async ($, on) => {
   const ui = await $.ui.mount({ ...PANE, surface: 'desktop' })
 
   await ui.press({ key: 'next' })
+
 
   expect(await ui.find({ type: 'Text', text: /2\/3/ })).toBeTruthy()
   expect(await ui.find({ type: 'Markdown', text: /Not interviewed yet/ })).toBeTruthy()
@@ -149,5 +188,59 @@ test('a value an earlier version of the mod stored is declined', async ($, on) =
   const ui = await $.ui.mount({ ...PANE, surface: 'desktop' })
 
   expect(await ui.find({ type: 'Text', text: /No PRD set loaded/ })).toBeTruthy()
+  await ui.unmount()
+})
+
+test('the terminal draws joined lines, a grid, and an ID a click follows; Back returns', async ($, on) => {
+  servesTheSet(on)
+  await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'go-demo-journeys' })
+
+  expect(await ui.find({ type: 'Text', text: /therefore intentions/ })).toBeTruthy()
+  expect(await ui.find({ text: /\| ID \|/ })).toBeFalsy()
+  expect(await ui.find({ type: 'Text', text: /^Persona$/ })).toBeTruthy()
+  expect(await ui.find({ text: /file:/ })).toBeFalsy()
+  const id = (await ui.findAll({ type: 'Button', text: 'PER-001' }))[0]
+
+  await ui.press({ key: id?.key ?? '' })
+
+  expect(await ui.find({ type: 'Text', text: /Not interviewed yet/ })).toBeTruthy()
+  await ui.press({ key: 'back' })
+  expect(await ui.find({ type: 'Text', text: /therefore intentions/ })).toBeTruthy()
+  await ui.unmount()
+})
+
+test('a grade opens its reasons, the reasons open the rubric, and Back steps out', async ($, on) => {
+  servesTheSet(on)
+  await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+
+  await ui.press({ key: 'grade-demo-journeys' })
+
+  expect(await ui.find({ type: 'Text', text: /User journeys: graded 81\/100/ })).toBeTruthy()
+  expect(await ui.find({ type: 'Text', text: /Why user journeys scored 81/ })).toBeTruthy()
+  await ui.press({ key: 'rubric' })
+  expect(await ui.find({ type: 'Text', text: /Every change of actor is explicit/ })).toBeTruthy()
+  expect(await ui.find({ type: 'Text', text: /A stage with no actor/ })).toBeTruthy()
+  expect(await ui.find({ type: 'Text', text: /Not part of the rubric/ })).toBeFalsy()
+  await ui.press({ key: 'back' })
+  expect(await ui.find({ type: 'Text', text: /Why user journeys scored 81/ })).toBeTruthy()
+  await ui.press({ key: 'back' })
+  expect(await ui.find({ type: 'Text', text: /The root body/ })).toBeTruthy()
+  await ui.unmount()
+})
+
+test('on the desktop an ID is a markdown link a press follows', async ($, on) => {
+  servesTheSet(on)
+  await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
+  const ui = await $.ui.mount({ ...PANE, surface: 'desktop' })
+  await ui.press({ key: 'go-demo-journeys' })
+  const href = 'file:///w/docs/prd/04-personas.md#PER-001'
+
+  expect(await ui.find({ type: 'Markdown', text: `[PER-001](${href})` })).toBeTruthy()
+  await ui.press({ key: 'body', link: { href } })
+
+  expect(await ui.find({ type: 'Markdown', text: /Not interviewed yet/ })).toBeTruthy()
   await ui.unmount()
 })

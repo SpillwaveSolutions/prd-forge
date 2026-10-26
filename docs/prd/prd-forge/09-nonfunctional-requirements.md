@@ -6,7 +6,7 @@ title: Non-functional requirements
 status: draft
 updated: 2026-10-26
 domain: product management tooling
-score: 79
+score: 82
 blocking: 0
 graded: 2026-10-26
 section: 8
