@@ -4,11 +4,11 @@ kind: prd
 schema: prd-forge/prd-root@1
 title: prd-forge PRD
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.1.0
+version: 0.2.0
 owner: Richard Hightower
 stakeholders:
   - Domain experts who must specify software for their own field
@@ -92,6 +92,15 @@ first submission.
 | 14 | [Glossary](./15-glossary.md) |
 | 15 | [Change log and approvals](./16-change-log.md) |
 
+## How this document set is numbered
+
+A PRD has **fifteen numbered sections** and this set has **sixteen section
+documents**, because section 5 holds two of them: journeys and scenarios. So from
+section 5 onward the file prefix and the section number differ — `07-scope.md` is
+section 6, `16-change-log.md` is section 15. **Every cross-reference in this set
+is by section number, never by file number.** Three independent reviewers misread
+this, so it is stated here rather than left to be inferred.
+
 ## A note on this PRD
 
 This is prd-forge's PRD, written with prd-forge's own conventions. Writing it
@@ -99,3 +108,16 @@ surfaced one real tension, recorded as C-001: the product is delivered inside an
 assistant the expert already uses, and naming that delivery mechanism in a
 requirement would fail test 5. The platform is therefore a constraint, and the
 requirements in section 7 describe only what a person does and sees.
+
+Grading it with its own adversarial reviewers found twelve blocking defects
+across four sections, and a buildability review found four failed derivability
+checks. Version 0.2.0 fixes them: every graded section is now at zero blocking
+defects, and nine of the eleven derivability checks pass. What that grading
+found, and what it changed, is in section 15.
+
+**On the scores in this set.** Each graded section carries the score from its last
+grading pass, with the date. Sections 5, 7 and 8 were graded before the second
+round of corrections, and section 10 before its last two, so each score is the
+last one measured and not a reading of the words as they now stand. Treat them as
+a floor. A score never rises without a change to the document, and never rises
+without a grading pass; the two gaps here are in the other direction.

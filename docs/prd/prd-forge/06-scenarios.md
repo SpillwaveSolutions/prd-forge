@@ -4,7 +4,7 @@ kind: scenarios
 schema: prd-forge/scenarios@1
 title: Scenarios
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
 section: 5
 order: 60
@@ -101,11 +101,11 @@ scenarios:
   - id: SC-005
     journey: J-001
     stage: ST-005
-    persona: PER-002
+    persona: PER-001
     variant: exception
     context: >-
-      The set is complete and every section is at review. The expert asks whether
-      a team could build it. Two release-line stages have no `must` requirement.
+      Every section is at `review`. The expert asks whether a team could build the
+      set. Two release-line stages have no `must` requirement.
     trigger: They ask for the buildability review.
     course:
       - They see a verdict of buildable with gaps
@@ -155,7 +155,9 @@ links:
 | SC-005 | ST-005 | exception | Buildability review finds holes |
 | SC-006 | ST-002 | exception | The expert has no baseline for a metric |
 
-SC-001 is the end-to-end acceptance test for release 1.
+SC-001 is the end-to-end acceptance test for release 1. SC-005 is the expert's
+own run of the buildability review, which is why its persona is PER-001 and not
+the engineering lead: no engineering lead is in release 1 at all, per OUT-004.
 
 The four exceptions are the ones that decide whether this product is trustworthy.
 SC-003 and SC-006 are where a specification quietly acquires a technology choice

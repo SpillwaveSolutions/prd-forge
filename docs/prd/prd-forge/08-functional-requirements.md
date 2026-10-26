@@ -4,11 +4,11 @@ kind: functional-requirements
 schema: prd-forge/functional-requirements@1
 title: Functional requirements
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
 score: 84
-blocking: 2
-graded: 2026-10-23
+blocking: 0
+graded: 2026-10-26
 section: 7
 order: 80
 requirements:
@@ -37,24 +37,22 @@ requirements:
   - id: FR-002
     user: PER-001
     capability: >-
-      See every section of the set and what state each one is in, at any point,
-      including after stopping and returning days later
+      See every section of the set and what state each one is in, at any point
     outcome: >-
-      They always know what is done, what is weak and what has not been started,
-      and they never have to remember where they were.
+      They can see at a glance what is done, what is weak and what has not been
+      started, without opening any section.
     acceptance:
       - >-
-        Given a set where four sections are drafted and twelve are untouched, when
-        the expert asks where things stand, then they see all sixteen with each
-        one's state, and the untouched ones are shown as not started rather than
-        omitted.
-      - >-
-        Given an expert returning after eight days, when they say they want to
-        carry on, then work resumes at the first section not yet at review and no
-        question they have already answered is asked again.
+        Given a set where four section documents are drafted and twelve are
+        untouched, when the expert asks where things stand, then they see all
+        sixteen section documents with each one's state, and the untouched ones
+        are shown as not started rather than omitted.
       - >-
         Given a section that has been graded, when the expert sees the set's state,
         then that section shows its score and how many blocking defects it has.
+      - >-
+        Given a set where no section has been started, when the expert asks where
+        things stand, then every section is listed and shown as not started.
     priority: must
     journey_stage: ST-001
     objective: O-002
@@ -64,8 +62,8 @@ requirements:
       Be taught what a section is, why it matters and what belongs in it, before
       being asked anything about it
     outcome: >-
-      They understand what the section is for well enough to answer from their own
-      knowledge, rather than guessing at what the heading wants.
+      Before the first question of a section reaches them, what the section is for
+      and what belongs in it is in front of them, in their own domain's terms.
     acceptance:
       - >-
         Given a section the expert has not done before, when they begin it, then
@@ -84,19 +82,21 @@ requirements:
     user: PER-001
     capability: Be asked one or two questions at a time, never a questionnaire
     outcome: >-
-      They answer each question properly instead of giving one line to each of
-      twelve.
+      No message puts more than two questions to them, so each answer they give
+      addresses one thing.
     acceptance:
       - >-
         Given any section's interview, when the expert is asked for input, then at
         most two questions are put to them at once.
       - >-
-        Given an answer that is thin or ambiguous, when it is received, then a
-        follow-up is asked about that answer before the next topic is opened.
+        Given an answer that leaves a field the section needs still unfillable, or
+        that could be written into the section in two ways differing in meaning,
+        when it is received, then a follow-up is asked about that answer before
+        the next topic is opened.
       - >-
-        Given an expert who has answered enough for the section to pass its rubric,
-        when further questions remain unasked on the list, then the interview stops
-        rather than continuing to the end of the list.
+        Given an expert whose answers would already score the section 70 or more
+        with no blocking defects, when further questions remain unasked on the
+        list, then the interview stops rather than continuing to the end of it.
     priority: must
     journey_stage: ST-002
     objective: O-003
@@ -173,12 +173,13 @@ requirements:
       record they have no way to assess.
     acceptance:
       - >-
-        Given a drafted section, when the expert reviews it, then they are shown
-        its content as prose or a short table, and not as the raw structured
-        record, unless they ask for that.
+        Given a drafted section, when the expert reviews it, then what they are
+        shown reads as written English, in sentences and short tables, and they
+        are not asked to read the section's machine-readable form to judge it.
       - >-
-        Given a section whose prose and structured record disagree, when either is
-        read, then the disagreement is reported rather than silently resolved.
+        Given a section whose readable form and machine-readable form disagree,
+        when either is read, then the disagreement is reported to the expert
+        rather than silently resolved.
     priority: must
     journey_stage: ST-003
     objective: O-003
@@ -196,16 +197,12 @@ requirements:
         score, a count of blocking defects, and each blocking defect stated with
         where it is.
       - >-
-        Given a section with a high score and one blocking defect, when the grade
+        Given a section scoring 70 or more with one blocking defect, when the grade
         is reported, then the section is not offered as ready, and the defect is
         named.
       - >-
         Given a graded section, when the expert reads the grade, then the weakest
         part is named and why it is weak is stated in no more than three lines.
-      - >-
-        Given a finding the expert refutes by pointing at the document, when it is
-        checked, then a finding not supported by the document is dropped and the
-        expert is told it was dropped.
     priority: must
     journey_stage: ST-003
     objective: O-001
@@ -219,8 +216,9 @@ requirements:
       instead of stalling under a list.
     acceptance:
       - >-
-        Given a graded section below its threshold, when the expert is asked to
-        improve it, then exactly one question is put to them.
+        Given a graded section scoring under 70, or carrying any blocking defect,
+        when the expert is asked to improve it, then exactly one question is put
+        to them.
       - >-
         Given that one question, when it is asked, then it addresses the weakest
         part that was just named, and not a different part.
@@ -241,9 +239,9 @@ requirements:
         Given a re-grade, when the score has risen, then the document has changed;
         a score never rises without a change to the document.
       - >-
-        Given a section that has reached its threshold with no blocking defects,
-        when it is re-graded, then the expert is offered the next state and told
-        what that means.
+        Given a section scoring 70 or more with no blocking defects, when it is
+        re-graded, then the expert is offered the state `review`, and is told that
+        `review` means the section is ready for someone else to read.
     priority: must
     journey_stage: ST-004
     objective: O-003
@@ -257,11 +255,13 @@ requirements:
       fix, rather than at iteration three.
     acceptance:
       - >-
-        Given a complete set, when the expert asks for a buildability review, then
-        they see a verdict and, for each release-line stage, whether a requirement
-        covers it or it is a gap.
+        Given a set in which every section has been written at least once, when
+        the expert asks for a buildability review, then they see a verdict and,
+        for each release-line stage, whether a requirement covers it or it is a
+        gap.
       - >-
-        Given a requirement an engineer could not write a test for, when the review
+        Given a requirement whose acceptance criteria an engineer who was not in
+        the interview judges insufficient to write a test from, when the review
         reports it, then the requirement is named and the document is quoted.
       - >-
         Given an open question that blocks a `must` requirement, when the review
@@ -276,16 +276,17 @@ requirements:
   - id: FR-013
     user: PER-003
     capability: >-
-      See, on one page, what is being approved, what is still undecided and who
-      owns each undecided thing
+      See, in the set's own root document, what is being approved, what is still
+      undecided and who owns each undecided thing
     outcome: >-
       They can commit budget and a date knowing what they are committing to and
       what is still open.
     acceptance:
       - >-
-        Given a set offered for approval, when the approver opens it, then they see
-        the summary, the scope, every section's state and grade, and every open
-        question with its decider and date.
+        Given a set offered for approval, when the approver opens its root
+        document, then that one document carries the summary, the scope, every
+        section's state and grade, and every open question with its decider and
+        date, without the approver opening any other document.
       - >-
         Given a set with any blocking defect anywhere, when the approver opens it,
         then they see that, with the sections it is in.
@@ -316,6 +317,49 @@ requirements:
     priority: must
     journey_stage: ST-006
     objective: O-001
+  - id: FR-015
+    user: PER-001
+    capability: >-
+      Stop in the middle of a set and resume days later without being asked
+      anything twice
+    outcome: >-
+      They pick up at the first unfinished section, and nothing they have already
+      told the product is asked for again.
+    acceptance:
+      - >-
+        Given an expert returning after eight days, when they say they want to
+        carry on, then work resumes at the first section not yet at `review`.
+      - >-
+        Given an expert who has already stated their domain and vocabulary, when
+        they resume, then they are not asked for either again and the vocabulary
+        in use is unchanged.
+      - >-
+        Given an expert who answered a question in a section before stopping, when
+        they resume that section, then that question is not put to them again.
+    priority: must
+    journey_stage: ST-001
+    objective: O-002
+  - id: FR-016
+    user: PER-001
+    capability: >-
+      Refute a grading finding by pointing at the document, and have it withdrawn
+    outcome: >-
+      They are told the finding was dropped, and it does not reappear at the next
+      grading pass.
+    acceptance:
+      - >-
+        Given a finding the expert refutes, when it is checked against the
+        document and the document does not support it, then it is dropped and the
+        expert is told it was dropped.
+      - >-
+        Given a finding the document does support, when the expert disputes it,
+        then the reason is stated once and their decision is recorded.
+      - >-
+        Given a decision the expert reaffirmed after an objection, when the
+        section is graded again, then the objection is not raised as a new finding.
+    priority: must
+    journey_stage: ST-003
+    objective: O-001
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-scope, kind: scope, path: ./07-scope.md, title: Scope }
@@ -327,7 +371,7 @@ links:
 | ID | User | Capability | Priority | Stage |
 | --- | --- | --- | --- | --- |
 | FR-001 | PER-001 | State the idea; establish the vocabulary once | must | ST-001 |
-| FR-002 | PER-001 | See the whole set's state, including after a break | must | ST-001 |
+| FR-002 | PER-001 | See the whole set's state at a glance | must | ST-001 |
 | FR-003 | PER-001 | Be taught the section before being asked | must | ST-002 |
 | FR-004 | PER-001 | Be asked one or two questions at a time | must | ST-002 |
 | FR-005 | PER-001 | End a section and see what was left behind | must | ST-002 |
@@ -340,17 +384,33 @@ links:
 | FR-012 | PER-001 | See what a team could not build from it | must | ST-005 |
 | FR-013 | PER-003 | See what is approved and what is open, on one page | must | ST-006 |
 | FR-014 | PER-003 | Approve, with conditions, against a version | must | ST-006 |
+| FR-015 | PER-001 | Stop and resume without being asked anything twice | must | ST-001 |
+| FR-016 | PER-001 | Refute a finding and have it withdrawn | must | ST-003 |
 
 Every release-line stage has at least one `must` requirement. There are no
 `should` or `could` requirements in R1: the release line is already the smallest
 path, and anything that could be dropped has been dropped into section 6.
 
+FR-015 and FR-016 were split out of FR-002 and FR-009 at version 0.2.0, because
+each has a failure mode of its own: a build could deliver perfect set-state
+visibility and still re-ask three answered questions, and could report a grade
+perfectly and still defend a finding the document does not support. Ids are never
+renumbered, so they sit at the end rather than in stage order.
+
 ## A judgement call worth challenging
 
-FR-002, FR-008 and FR-014 refer to "the set", "the section" and "prose". A
-reviewer may read those as naming an output format and therefore failing test 5.
-The judgement taken here is that a written specification is the product's subject,
-not its delivery technology, so these words name the artifact rather than the
-mechanism. What is deliberately absent everywhere: the assistant the product runs
-inside, how grading is performed, who or what reviews the set, and what the
-documents are stored as. Those are in section 9 as constraints, or nowhere.
+FR-002, FR-008 and FR-013 refer to "the set", "the section", "written English"
+and "the root document". A reviewer may read those as naming an output format and
+therefore failing test 5. The judgement taken here is that a written
+specification is the product's subject, not its delivery technology, so these
+words name the artifact rather than the mechanism. What is deliberately absent
+everywhere: the assistant the product runs inside, how grading is performed, who
+or what reviews the set, and what the documents are stored as. Those are in
+section 9 as constraints, or nowhere.
+
+FR-001, FR-009, FR-013 and FR-014 each read as more than one capability, and a
+reviewer has called them out for it. They are left whole deliberately: each is one
+act with several parts, and a build delivering half of one would be visibly
+unfinished rather than arguably done. FR-015 and FR-016 were split precisely
+because they were not like that — each had a failure mode the other half could
+hide.

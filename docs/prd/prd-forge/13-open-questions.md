@@ -4,7 +4,7 @@ kind: open-questions
 schema: prd-forge/open-questions@1
 title: Open questions
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
 section: 12
 order: 130
@@ -60,13 +60,62 @@ questions:
       Will a sponsor accept a specification that carries a machine-produced grade,
       or does the grade reduce their confidence rather than raise it?
     decider: Richard Hightower, with the first three sponsors
-    by: 2027-05-31
+    by: 2027-01-31
     blocks:
       - FR-013
       - TR-001
     spike: >-
       Show three sponsors the same set with and without grades and ask which they
       would approve. Time-boxed to 2 days.
+  - id: Q-009
+    question: >-
+      Where do the rubric and the eleven derivability checks live, who owns them,
+      and how is a set told which version it was graded against?
+    decider: Richard Hightower
+    by: 2027-01-31
+    blocks:
+      - FR-004
+      - FR-009
+      - FR-010
+      - FR-011
+      - FR-012
+      - NFR-007
+    spike: >-
+      Decide whether they ship as documents of the product, name their owner, and
+      decide whether a grade records the version it was made against. Time-boxed
+      to 2 days. Until it is answered, ST-003 and ST-004 can be scaffolded and not
+      finished.
+  - id: Q-010
+    question: >-
+      Where does an answer live between the moment the expert gives it and the
+      moment the section is drafted, given that C-003 forbids retaining content
+      outside the documents and NFR-004 requires the set readable with no part of
+      the product running?
+    decider: Richard Hightower
+    by: 2027-01-31
+    blocks:
+      - FR-015
+      - NFR-011
+    spike: >-
+      Decide whether an in-progress interview is itself a document of the set, or
+      whether answers before a draft are not retained at all and FR-015 holds only
+      within a session. Time-boxed to 2 days. Guessing this one breaches a stated
+      policy constraint rather than merely costing rework.
+  - id: Q-011
+    question: >-
+      How does an approver record a decision, given that C-001 puts the product
+      inside the expert's session and OUT-003 excludes any view of our own, and who
+      owns NFR-006's accessibility and NFR-012's access control, which describe
+      things C-001 and C-002 say we do not own?
+    decider: Richard Hightower
+    by: 2027-02-28
+    blocks:
+      - FR-014
+      - NFR-006
+      - NFR-012
+    spike: >-
+      Walk one approval end to end with a real sponsor and record every step they
+      take that the product does not provide. Time-boxed to 3 days.
   - id: Q-006
     question: >-
       How many sections will an expert complete in one sitting before stopping, and
@@ -114,10 +163,13 @@ links:
 | Q-002 | Today's idea-to-approval elapsed time | R. Hightower | 2027-03-31 | O-002 |
 | Q-003 | Today's share of testable requirements | R. Hightower | 2027-03-31 | O-003 |
 | Q-004 | Segment sizes, and which converts | R. Hightower | 2027-06-30 | S-001..S-003 |
-| Q-005 | Will a sponsor accept a graded specification | R. Hightower + 3 sponsors | 2027-05-31 | FR-013, TR-001 |
+| Q-005 | Will a sponsor accept a graded specification | R. Hightower + 3 sponsors | 2027-01-31 | FR-013, TR-001 |
 | Q-006 | Sections completed per sitting, and where they stop | R. Hightower | 2027-03-31 | R-004, NFR-005 |
 | Q-007 | Is the working order right, and how does looping back feel | R. Hightower | 2027-03-31 | ST-004 |
 | Q-008 | Disciplined or incomplete, to an engineering lead | R. Hightower + 3 leads | 2027-03-31 | A-003 |
+| Q-009 | Where the rubric and the checks live, and who owns them | R. Hightower | 2027-01-31 | FR-004, FR-009..FR-012, NFR-007 |
+| Q-010 | Where an answer lives before its section is drafted | R. Hightower | 2027-01-31 | FR-015, NFR-011 |
+| Q-011 | How an approver records a decision, and who owns NFR-006/012 | R. Hightower | 2027-02-28 | FR-014, NFR-006, NFR-012 |
 
 ## The three that matter most
 
@@ -125,7 +177,16 @@ links:
 answered, section 3's targets are intentions. Nothing should be committed to a
 plan on the strength of them.
 
-**Q-005 is the one that could invalidate the product's central idea.** If showing
+**Q-009, Q-010 and Q-011 came from the buildability review at 0.2.0**, and all
+three block `must` requirements on the release line. Q-009 is the largest: four
+requirements are written against a rubric whose shape the set defines but whose
+content it does not contain, so two of the six release-line stages can be
+scaffolded and not finished until it is answered. Q-010 is the one where guessing
+breaches a stated constraint rather than costing rework.
+
+**Q-005 is the one that could invalidate the product's central idea.** It was
+dated after the release it blocks until 0.2.0 moved it to 2027-01-31; it is a
+two-day question and there was no defence for asking it late. If showing
 a sponsor a grade reduces their confidence rather than raising it, then FR-013 is
 wrong and the grading becomes an author's private tool rather than part of the
 approval. That is a cheap two-day question and it should be asked early.

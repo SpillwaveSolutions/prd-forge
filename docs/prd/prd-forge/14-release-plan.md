@@ -4,7 +4,7 @@ kind: release-plan
 schema: prd-forge/release-plan@1
 title: Release plan
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
 section: 13
 order: 140
@@ -44,6 +44,8 @@ releases:
       - FR-012
       - FR-013
       - FR-014
+      - FR-015
+      - FR-016
     objectives:
       - O-001
       - O-002

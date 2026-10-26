@@ -4,18 +4,19 @@ kind: journeys
 schema: prd-forge/journeys@1
 title: User journeys
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
-score: 80
-blocking: 1
-graded: 2026-10-23
+score: 90
+blocking: 0
+graded: 2026-10-26
 section: 5
 order: 50
 journeys:
   - id: J-001
     persona: PER-001
     goal: >-
-      An approved PRD that an engineering lead confirms can be built from.
+      An approved PRD whose buildability gaps have been found and either closed or
+      given an owner and a date, before anyone estimates it.
     trigger: >-
       The expert has been asked to specify a product, or has an idea they want
       built, and has nothing written down.
@@ -82,13 +83,15 @@ journeys:
           Back into ST-002 for the next section, until every section has been
           through this loop.
       - id: ST-005
-        name: Expert sees whether a development team could build it
+        name: Expert sees what a development team could not build
         actor: Domain expert
         steps:
           - Asks for the whole set to be reviewed as a builder would read it
           - Sees what a builder could not build, and what they would have to guess
           - Sees which release-line stages have no requirement behind them
           - Fixes the holes, or records them as open questions with a decider
+        inputs:
+          - Every section written at least once, so there is something to review
         outputs:
           - A list of what is not buildable, and a set with those holes closed
         decision: Is this ready to be read by someone who will commit to it
@@ -122,8 +125,8 @@ journeys:
       - Show me, before anyone builds, what a builder cannot build
     end_state: >-
       The set is approved at a named version, every section has a grade with no
-      blocking defects, every open question has a decider and a date, and an
-      engineering lead has said it can be built from.
+      blocking defects, every open question has a decider and a date, and the
+      buildability review reports no gap that is neither closed nor owned.
   - id: J-002
     persona: PER-004
     goal: >-
@@ -138,6 +141,8 @@ journeys:
           - Sees whether a journey exists and which one is the golden thread
           - Sees which release-line stages have requirements behind them
           - Sees what would block deriving a backlog, before the workshop
+        inputs:
+          - An approved set, and the release it is being mapped for
         outputs:
           - A go or no-go on holding the story-mapping workshop
         decision: Is there a backbone to map against
@@ -150,6 +155,8 @@ journeys:
           - Sees a story per requirement, in the persona's own words, with the
             requirement's criteria as its acceptance criteria
           - Sees spikes for the open questions that block the release line
+        inputs:
+          - The approved set, and the team's sizing of the stories
         outputs:
           - A backlog whose every level names what it came from
         decision: Which epics come first, and why
@@ -173,7 +180,7 @@ links:
 
 # User journeys
 
-## J-001 - A domain expert reaches an approved, buildable PRD (golden thread)
+## J-001 - A domain expert reaches an approved PRD whose gaps are known (golden thread)
 
 Persona PER-001. Trigger: they have been asked to specify a product and have
 nothing written. Stages ST-001 to ST-006.
@@ -184,15 +191,20 @@ nothing written. Stages ST-001 to ST-006.
 | ST-002 Taught a section, then interviewed | Domain expert | Have the questions reached the end of what they know |
 | ST-003 Reads the draft and its grade | Domain expert | Accept, correct, or dispute the grade |
 | ST-004 Answers the one question that matters most | Domain expert | Is this section done enough to leave |
-| ST-005 Sees whether a team could build it | Domain expert | Is it ready for someone who will commit |
+| ST-005 Sees what a team could not build | Domain expert | Is it ready for someone who will commit |
 | ST-006 Approver approves for a release | Sponsor or approver | Approve, approve with conditions, or reject |
 
 ST-002 to ST-004 are a loop, run once per section. That is the whole product: the
 expert is taught, asked, shown a draft, shown a grade, and asked one more thing.
 
 End state: approved at a named version, every section graded with nothing
-blocking, every open question owned and dated, and an engineering lead has said it
-can be built from.
+blocking, every open question owned and dated, and no buildability gap left that
+is neither closed nor owned.
+
+The goal deliberately does not claim an engineering lead's confirmation. No stage
+in ST-001 to ST-006 puts one in the actor seat, so claiming it would promise
+something the release line cannot deliver. A lead's own recorded confirmation is
+OUT-004, deferred to release 2 with J-002.
 
 ## J-002 - A delivery lead derives a backlog (not the golden thread)
 

@@ -4,7 +4,7 @@ kind: assumptions-risks-dependencies
 schema: prd-forge/assumptions-risks-dependencies@1
 title: Assumptions, risks and dependencies
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
 section: 11
 order: 120
@@ -74,7 +74,7 @@ risks:
     impact: high
     mitigation: >-
       Every finding must quote the document, and anything unsupported is dropped
-      before the expert sees it (FR-009, TR-003, TR-006); a refuted finding is
+      before the expert sees it (FR-016, TR-003, TR-006); a refuted finding is
       acknowledged as dropped rather than defended (SC-004).
     owner: Richard Hightower
   - id: R-003
@@ -95,8 +95,8 @@ risks:
     likelihood: medium
     impact: medium
     mitigation: >-
-      FR-005 lets the expert end any section and records what was left; FR-002 makes
-      resumption cheap; the working order in the method puts the sections that
+      FR-005 lets the expert end any section and records what was left; FR-015
+      makes resumption cheap; the working order in the method puts the sections that
       unlock the others first, so an abandoned set is still useful.
     owner: Richard Hightower
   - id: R-005

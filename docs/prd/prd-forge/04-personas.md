@@ -4,7 +4,7 @@ kind: personas
 schema: prd-forge/personas@1
 title: Users and personas
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
 section: 4
 order: 40
@@ -24,8 +24,13 @@ personas:
       Intensively for one to three weeks per product, then almost never until the
       next one.
     authority: >-
-      Decides what the product must do and what is out of scope; may not approve
-      the PRD for a release on their own where a sponsor exists.
+      Decides what the product must do and what is out of scope; decides the
+      domain's own terms; decides when a section's interview is finished and when
+      a section may be left at draft; accepts or corrects a drafted section; sets
+      a section to final; accepts or refutes a grade; decides the set is ready to
+      be offered for approval; and is the only one who may state a domain fact as
+      true. May not
+      approve the PRD for a release on their own where a sponsor exists.
     proficiency: >-
       Deep in their domain, often decades. No product management training. Assume
       no familiarity with MoSCoW, Given/When/Then, or the word "persona".
@@ -69,7 +74,8 @@ personas:
       - Stories that trace to nothing, so nobody can say why they exist
     frequency: Once per release, plus refinement.
     authority: >-
-      Decides the backlog's shape and order; does not decide scope.
+      Decides the backlog's shape and order, and decides whether a backlog can be
+      mapped from a set at all; does not decide scope.
     proficiency: >-
       Expert in agile delivery; depends entirely on the PRD for the domain.
 links:
@@ -82,7 +88,7 @@ links:
 
 | ID | Role | Frequency | May approve |
 | --- | --- | --- | --- |
-| PER-001 | Domain expert specifying their own field | Weeks per product, then rarely | Scope; not the PRD itself |
+| PER-001 | Domain expert specifying their own field | Weeks per product, then rarely | Scope, terms, drafts, section states, facts, and offering the set; not the PRD itself |
 | PER-002 | Engineering lead building from it | A handful of intensive reads | May reject as not buildable |
 | PER-003 | Sponsor or approver | Once per version | The PRD for a release |
 | PER-004 | Delivery lead running story mapping | Once per release | Backlog shape and order |
@@ -93,7 +99,7 @@ Everything is designed around someone with deep domain knowledge, no product
 training, and a burst of intense use followed by months away. Two consequences
 run through the rest of this PRD: nothing may assume prior knowledge of product
 vocabulary, and the work must survive being put down for a week and picked back
-up — see FR-002 and NFR-004.
+up — see FR-015 and NFR-004.
 
 ## Who is deliberately not a persona
 

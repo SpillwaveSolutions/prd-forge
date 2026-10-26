@@ -4,11 +4,11 @@ kind: nonfunctional-requirements
 schema: prd-forge/nonfunctional-requirements@1
 title: Non-functional requirements
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
-score: 75
-blocking: 2
-graded: 2026-10-23
+score: 79
+blocking: 0
+graded: 2026-10-26
 section: 8
 order: 90
 requirements:
@@ -22,8 +22,10 @@ requirements:
       question or the drafted section appearing.
     target: under 20 seconds at p95, and under 60 seconds at p99
     measurement: >-
-      Timed across a scripted run of all sixteen sections, repeated per release, in
-      the same conditions a user has.
+      At least 300 timed observations per release, taken across five scripted runs
+      of all sixteen section documents on a set already holding 60 requirements,
+      from the expert's own side of the conversation rather than from inside the
+      product.
     priority: must
     applies_to:
       - FR-004
@@ -33,9 +35,13 @@ requirements:
     statement: >-
       A grading pass does not make the expert wait so long that they stop asking
       for one.
-    metric: 95th percentile elapsed time for a section's grade to be reported
+    metric: >-
+      95th percentile elapsed time for one section's grade to be reported, measured
+      per grading pass on the section just drafted.
     target: under 90 seconds at p95 for a single section
-    measurement: Timed per release across all sixteen sections.
+    measurement: >-
+      At least 200 grading passes per release, spread across all sixteen section
+      documents and across sets of 20, 60 and 120 requirements.
     priority: must
     applies_to:
       - FR-009
@@ -45,8 +51,8 @@ requirements:
     statement: >-
       A set stays workable at the size real products reach.
     metric: >-
-      Number of requirements, journey stages and glossary terms in one set at which
-      every function in section 7 still meets its targets.
+      The size of one set at which every requirement in section 7 still passes its
+      acceptance criteria and every target in this section still holds.
     target: >-
       120 functional requirements, 10 journeys of 10 stages, and 200 glossary terms
     measurement: >-
@@ -67,7 +73,7 @@ requirements:
       editor, once per release.
     priority: must
     applies_to:
-      - FR-002
+      - FR-015
   - id: NFR-005
     category: usability
     statement: >-
@@ -88,12 +94,12 @@ requirements:
       Everything the expert and the approver read is usable with a screen reader
       and without a mouse.
     metric: >-
-      Conformance of the output documents and the stepping view to WCAG 2.2 AA on
-      the golden-thread journey.
+      Conformance to WCAG 2.2 AA of everything the product puts in front of the
+      expert or the approver along the golden-thread journey.
     target: zero level-A or level-AA violations on the golden-thread path
     measurement: >-
       One manual screen-reader pass of the golden-thread journey per release, plus
-      an automated check of the stepping view in the release pipeline.
+      an automated check in the release pipeline of everything that journey shows.
     priority: must
   - id: NFR-007
     category: observability
@@ -115,8 +121,7 @@ requirements:
       What the expert says about their domain stays within whatever boundary their
       organisation already works in; this product adds no new place for it to go.
     metric: >-
-      Number of destinations the product sends set content to beyond the assistant
-      session the expert is already using.
+      Number of destinations set content reaches beyond the boundary C-001 names.
     target: zero
     measurement: >-
       Review of every outbound destination per release, recorded against C-003.
@@ -134,6 +139,50 @@ requirements:
       Keep one set per released version and run the current version against all of
       them, per release.
     priority: should
+  - id: NFR-010
+    category: retention
+    statement: >-
+      A set remains readable and retrievable for as long as the organisation keeps
+      the specifications it builds from, without this product being involved.
+    metric: >-
+      Share of a set retrievable and readable from the organisation's own document
+      store, with no part of this product present.
+    target: 100%, for as long as the organisation retains the set; no expiry imposed by us
+    measurement: >-
+      Retrieve a set written one release ago from the organisation's own store and
+      read it with a text editor, once per release.
+    priority: must
+    applies_to:
+      - FR-014
+  - id: NFR-011
+    category: availability
+    statement: >-
+      An interview in progress survives the product being unavailable; no session
+      loses an answer the expert has already given.
+    metric: >-
+      Answers lost per interruption, and time to resume after one.
+    target: >-
+      Zero answers lost, on every interruption; resume within 1 minute at p95 and
+      within 3 minutes at p99
+    measurement: >-
+      Interrupt a session mid-section 100 times per release, spread across all
+      sixteen section documents, and count answers lost and seconds to resume.
+    priority: must
+    applies_to:
+      - FR-015
+  - id: NFR-012
+    category: security
+    statement: >-
+      Nobody but the people the organisation has already given access to its
+      documents can read a set.
+    metric: >-
+      Number of ways to read a set that the organisation's own document access
+      rules do not govern.
+    target: zero
+    measurement: >-
+      Enumerate every read path to a set per release and check each against the
+      organisation's own access rules; recorded against C-002 and C-003.
+    priority: must
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-functional-requirements, kind: functional-requirements, path: ./08-functional-requirements.md, title: Functional requirements }
@@ -153,6 +202,9 @@ links:
 | NFR-007 | observability | 100% of grades reconstructable after the session |
 | NFR-008 | privacy | Zero destinations beyond the session the expert already uses |
 | NFR-009 | supportability | 100% of older sets readable within a major version |
+| NFR-010 | retention | 100% retrievable from the organisation's own store, no expiry imposed by us |
+| NFR-011 | availability | Zero answers lost per interruption; resume within 1 minute |
+| NFR-012 | security | Zero read paths the organisation's own access rules do not govern |
 
 ## Where these came from
 
@@ -171,3 +223,21 @@ whether P-004 was solved.
 
 NFR-006 covers the approver too, not only the expert: PER-003 reads this once and
 must not need a mouse to do it.
+
+There is no concurrency target, and that is a decision rather than an omission.
+Under C-001 the product reaches one expert inside a session they are already in,
+so simultaneous users are the host's load and not ours; NFR-003 therefore reads
+scale as the size of one set, which is the dimension we do control. If C-001 ever
+changes, concurrency comes back and this paragraph goes.
+
+NFR-006 and NFR-012 set targets on things C-001 and C-002 say we do not own — what
+the host renders, and where the customer keeps its documents. They are kept as
+`must` because a target nobody owns is how accessibility and access control get
+lost; who owns them is Q-011.
+
+NFR-010, NFR-011 and NFR-012 were added at version 0.2.0. Retention, availability
+and security had simply not been reached, and C-003 states a retention rule that
+no measurable requirement stood behind. NFR-010 is the one that answers C-003's
+second half: the product retains nothing of its own, so the only retention
+question is how long the organisation keeps the documents, and the answer must be
+that we impose no expiry on them.

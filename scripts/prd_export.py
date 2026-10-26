@@ -176,6 +176,12 @@ def blocks(md):
             i += 1
         if para:
             out.append({"type": "para", "text": " ".join(para)})
+        else:
+            # A line no branch claimed - a table row whose header is elsewhere, say.
+            # Take it as its own paragraph: never leave `i` where it was, or this
+            # loop does not terminate.
+            out.append({"type": "para", "text": lines[i].strip()})
+            i += 1
     return out
 
 

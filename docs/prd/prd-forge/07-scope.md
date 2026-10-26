@@ -4,7 +4,7 @@ kind: scope
 schema: prd-forge/scope@1
 title: Scope
 status: draft
-updated: 2026-10-23
+updated: 2026-10-26
 domain: product management tooling
 section: 6
 order: 70
@@ -22,6 +22,7 @@ in_scope:
     requirements:
       - FR-001
       - FR-002
+      - FR-015
   - id: IN-002
     summary: >-
       Teach a section, then interview on it one or two questions at a time, in the
@@ -45,6 +46,7 @@ in_scope:
     requirements:
       - FR-008
       - FR-009
+      - FR-016
   - id: IN-005
     summary: Ask one question that most improves the section, and re-grade after it
     journey_stage: ST-004
@@ -74,6 +76,14 @@ out_of_scope:
       More than one expert working on the same set at the same time
     revisit: >-
       Once a single expert's path is proven on three real engagements.
+  - id: OUT-004
+    summary: >-
+      An engineering lead reading the set and recording their own confirmation that
+      it can be built from
+    revisit: >-
+      Release 2, with J-002. Release 1 gives the expert the buildability report
+      (FR-012) so the gaps are found before anyone estimates; a named lead's own
+      confirmation is a second person's time, which R1 does not ask for.
   - id: OUT-003
     summary: >-
       Any view of the document set other than reading the documents themselves and
@@ -111,10 +121,10 @@ ST-001 through ST-006 for one expert, one PRD, one golden-thread journey.
 
 | ID | In scope | Stage | Requirements |
 | --- | --- | --- | --- |
-| IN-001 | Idea, domain, vocabulary, and a visible empty set | ST-001 | FR-001, FR-002 |
+| IN-001 | Idea, domain, vocabulary, a visible empty set, and resumption | ST-001 | FR-001, FR-002, FR-015 |
 | IN-002 | Teach then interview, in their vocabulary | ST-002 | FR-003, FR-004, FR-005 |
 | IN-003 | No invented facts; convert technology talk | ST-002 | FR-006, FR-007 |
-| IN-004 | Draft as prose, with grade and blocking defects | ST-003 | FR-008, FR-009 |
+| IN-004 | Draft as prose, with grade, blocking defects, and refutable findings | ST-003 | FR-008, FR-009, FR-016 |
 | IN-005 | One question, then re-grade | ST-004 | FR-010, FR-011 |
 | IN-006 | Buildability review of the whole set | ST-005 | FR-012 |
 | IN-007 | Approval recorded against a version | ST-006 | FR-013, FR-014 |
@@ -126,6 +136,7 @@ ST-001 through ST-006 for one expert, one PRD, one golden-thread journey.
 | OUT-001 | Deriving the backlog (J-002) | R2; the PRD already carries what it needs |
 | OUT-002 | Two experts on one set at once | After three real engagements |
 | OUT-003 | Any view beyond the documents and a stepper beside the conversation | When an approver asks |
+| OUT-004 | An engineering lead's own recorded confirmation | R2, with J-002 |
 
 ## Non-goals
 
