@@ -265,3 +265,17 @@ test('a wireframe fence draws as the sketch itself, line for line, under a capti
   expect(await ui.find({ text: /diagrams\// })).toBeFalsy()
   await ui.unmount()
 })
+
+test('a table too narrow for a grid draws one record per row, each cell under its heading', async ($, on) => {
+  servesTheSet(on)
+  await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
+  // A heading named `h` once hid the JSX factory here, and the pane drew nothing.
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal', props: { ...PANE.props, bodyColumns: 8 } })
+  // The contents list needs 40 columns, so step to the journeys instead.
+  await ui.press({ key: 'next' })
+  await ui.press({ key: 'next' })
+
+  expect(await ui.find({ type: 'Text', text: 'Persona: ' })).toBeTruthy()
+  expect(await ui.find({ type: 'Text', text: 'Note: ' })).toBeTruthy()
+  await ui.unmount()
+})

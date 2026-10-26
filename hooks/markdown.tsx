@@ -339,9 +339,9 @@ export const drawMarkdown = (ui: Ui, md: string, columns: number, link: Linker, 
               {block.rows.map((row, r) => (
                 <Box key={`${k}-${r}`} flexDirection="column">
                   {drawInline(ui, row[0] ?? '', { bold: true }, link, `${k}-${r}-0`)}
-                  {block.head.slice(1).map((h, c) => (
+                  {block.head.slice(1).map((name, c) => (
                     <Box key={`${k}-${r}-${c + 1}`}>
-                      <Text dimColor>{`${h}: `}</Text>
+                      <Text dimColor>{`${name}: `}</Text>
                       <Box flexShrink={1}>{drawInline(ui, row[c + 1] ?? '', {}, link, `${k}-${r}-${c + 1}-v`)}</Box>
                     </Box>
                   ))}
