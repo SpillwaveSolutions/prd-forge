@@ -37,7 +37,7 @@ ITEM_LISTS = {
     "objectives-metrics": [("objectives", "objective")],
     "personas": [("personas", "name")],
     "journeys": [("journeys", "goal")],
-    "scenarios": [("scenarios", "context")],
+    "scenarios": [("scenarios", "context"), ("lifecycles", "subject")],
     "scope": [("in_scope", "summary"), ("out_of_scope", "summary")],
     "functional-requirements": [("requirements", "capability")],
     "wireframes": [("wireframes", "title")],

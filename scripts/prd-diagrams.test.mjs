@@ -11,7 +11,7 @@ import { cpSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, existsSy
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { decisionsMermaid, drawSet, journeyMermaid, releaseMermaid, satisfactionMermaid, scenarioMermaid } from './prd-diagrams.mjs'
+import { decisionsMermaid, drawSet, journeyMermaid, lifecycleMermaid, releaseMermaid, satisfactionMermaid, scenarioMermaid } from './prd-diagrams.mjs'
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -81,6 +81,7 @@ test('a scenario renders as a flowchart: what the user sees slanted, what they d
   assert.match(mermaid, /s0\[\/"They see /)
   assert.match(mermaid, /s6\["They say /)
   assert.match(mermaid, /exception, must/)
+  assert.match(mermaid, /<b>Given<\/b>[\s\S]*<b>When<\/b>[\s\S]*<b>Then<\/b>/)
 })
 
 test('a journey with every stage scored draws its satisfaction curve', { skip: !hasMmdc }, () => {
@@ -117,7 +118,10 @@ test('the decision rights render, with approvers that are not persona ids', { sk
     id: `TR-00${i + 1}`, decision: name, approver: i % 2 === 0 ? 'PER-001' : name,
     never_delegated: i % 3 === 0, delegable_to_agent: i % 3 === 1,
   }))
-  assert.equal(renderError(decisionsMermaid(decisions, { 'PER-001': HOSTILE[0] })), '')
+  const mermaid = decisionsMermaid(decisions, { 'PER-001': 'DomainExpert' })
+  assert.equal(renderError(mermaid), '')
+  assert.match(mermaid, /<b>DomainExpert<\/b>/)
+  assert.doesNotMatch(mermaid, /PER-001/)
 })
 
 for (const set of ['docs/prd/prd-forge', 'examples/acme-returns']) {
@@ -169,4 +173,20 @@ test('drawSet draws, links, and sizes a satisfaction curve once every stage is s
   const [width, height] = [png.readUInt32BE(16), png.readUInt32BE(20)]
   assert.ok(width > 2 * height, `${width} x ${height}`)
   assert.doesNotMatch(readFileSync(join(dir, 'diagrams/J-001-satisfaction.svg'), 'utf8').slice(0, 600), /<svg[^>]* height="/)
+})
+
+test('a lifecycle draws as a state diagram, every name and rule as written', { skip: !hasMmdc }, () => {
+  const states = HOSTILE.map(name => ({ name, meaning: 'm' }))
+  const transitions = HOSTILE.slice(1).map((name, i) => ({ from: HOSTILE[i], to: name, when: `move ${i}`, rule: `rule ${name}`, by: 'PER-001' }))
+  const mermaid = lifecycleMermaid({ id: 'LC-009', subject: 's', states, initial: HOSTILE[0], final: [HOSTILE[5]], transitions }, { 'PER-001': 'DomainExpert' })
+  assert.match(mermaid, /\(DomainExpert\)/)
+  assert.doesNotMatch(mermaid, /PER-001/)
+  assert.match(mermaid, /^stateDiagram-v2$/m)
+  assert.match(mermaid, /\[\*\] --> s0/)
+  assert.match(mermaid, /s5 --> \[\*\]/)
+  const text = shown(render(mermaid))
+  for (const name of HOSTILE) {
+    assert.ok(text.includes(name), `state "${name}" is missing`)
+    if (name !== HOSTILE[0]) assert.ok(text.includes(`rule ${name}`), `rule for "${name}" is missing`)
+  }
 })

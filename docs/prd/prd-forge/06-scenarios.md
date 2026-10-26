@@ -14,6 +14,8 @@ scenarios:
     stage: ST-002
     persona: PER-001
     variant: happy
+    lifecycles: [LC-001]
+    wireframes: [WF-008]
     context: >-
       A freight operations manager is on section 5 of their first PRD. Sections 1
       and 4 are drafted and graded. They have 40 minutes before a meeting.
@@ -40,6 +42,8 @@ scenarios:
     stage: ST-004
     persona: PER-001
     variant: alternate
+    lifecycles: [LC-001]
+    wireframes: [WF-010]
     context: >-
       The same manager stopped mid-way through section 7 eight days ago. They
       remember almost nothing about where they were.
@@ -103,6 +107,7 @@ scenarios:
     stage: ST-005
     persona: PER-001
     variant: exception
+    wireframes: [WF-009]
     context: >-
       Every section is at `review`. The expert asks whether a team could build the
       set. Two release-line stages have no `must` requirement.
@@ -138,6 +143,41 @@ scenarios:
     expected_outcome: >-
       No baseline is invented, the objective carries an explicit unknown, and
       section 12 holds a question with a named decider and a date.
+lifecycles:
+  - id: LC-001
+    subject: a section of the PRD
+    states:
+      - name: pending
+        meaning: Listed in the set and not yet interviewed.
+      - name: draft
+        meaning: Interviewed and written, and graded or waiting for a grade.
+      - name: review
+        meaning: Ready for someone other than the expert to read.
+      - name: final
+        meaning: Approved, with the approval recorded in section 15.
+    initial: pending
+    final: [final]
+    transitions:
+      - from: pending
+        to: draft
+        when: The expert finishes the section's interview and it is written
+        by: PER-001
+      - from: draft
+        to: review
+        when: The expert accepts the offer of review
+        rule: >-
+          A grade of 70 or more, zero blocking defects, and a set that checks
+          clean, unless the expert overrides the gate and the override is
+          recorded in section 15
+        by: PER-001
+      - from: review
+        to: final
+        when: The expert sets the section to final
+        rule: >-
+          An independent grading pass with zero blocking defects, and an
+          approval recorded in section 15, unless the expert overrides the gate
+          and the override is recorded in section 15
+        by: PER-001
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-journeys, kind: journeys, path: ./05-user-journeys.md, title: User journeys }
@@ -157,6 +197,8 @@ links:
 ![SC-005 scenario](diagrams/SC-005.svg)
 
 ![SC-006 scenario](diagrams/SC-006.svg)
+
+![LC-001 lifecycle of a section of the PRD](diagrams/LC-001.svg)
 
 | ID | Stage | Variant | What it covers |
 | --- | --- | --- | --- |

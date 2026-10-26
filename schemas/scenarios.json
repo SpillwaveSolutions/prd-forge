@@ -69,6 +69,22 @@
             "type": "string",
             "minLength": 1,
             "description": "What the user sees at the end. A pass or fail statement."
+          },
+          "wireframes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^WF-\\d{3}$"
+            },
+            "description": "The wireframes that show what the user sees in this scenario, by id."
+          },
+          "lifecycles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^LC-\\d{3}$"
+            },
+            "description": "The lifecycles this scenario moves through, by id."
           }
         },
         "required": [
@@ -83,6 +99,104 @@
         ]
       },
       "minItems": 1
+    },
+    "lifecycles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^LC-\\d{3}$"
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The thing the user works on, in the domain's words."
+          },
+          "states": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "meaning": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "What the user can tell from this state."
+                }
+              },
+              "required": [
+                "name",
+                "meaning"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "initial": {
+            "type": "string",
+            "minLength": 1
+          },
+          "final": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "transitions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "to": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "when": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "What happens, as the user sees it, to move the subject on."
+                },
+                "rule": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The business rule that must hold for the move."
+                },
+                "by": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Who makes the move, by persona id or role."
+                }
+              },
+              "required": [
+                "from",
+                "to",
+                "when"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "subject",
+          "states",
+          "initial",
+          "transitions"
+        ],
+        "additionalProperties": false
+      },
+      "description": "The lifecycles of what users work on: the states, and the business rules that move it from one to the next. Drawn as state diagrams."
     }
   },
   "required": [

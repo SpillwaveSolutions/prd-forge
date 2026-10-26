@@ -11,6 +11,7 @@ order: 40
 personas:
   - id: PER-001
     name: Domain expert specifying software for their own field
+    short_name: DomainExpert
     goals:
       - Get what is in my head into a form the development team can build from
       - Stop being asked the same question by four different engineers
@@ -36,6 +37,7 @@ personas:
       no familiarity with MoSCoW, Given/When/Then, or the word "persona".
   - id: PER-002
     name: Engineering lead who must build from the PRD
+    short_name: EngineerLead
     goals:
       - Estimate without first interviewing the author
       - Know which decisions are mine and which have been made for me
@@ -53,6 +55,7 @@ personas:
       Expert in delivery, usually knows nothing about the expert's domain.
   - id: PER-003
     name: Sponsor or approver
+    short_name: Sponsor
     goals:
       - Be confident enough to commit budget and a date
       - Know what is still undecided, and who is deciding it
@@ -66,6 +69,7 @@ personas:
       Senior in the business, not in product or engineering.
   - id: PER-004
     name: Delivery lead running the story-mapping workshop
+    short_name: DeliveryLead
     goals:
       - Walk into the workshop with a backbone already agreed
       - Trace every story back to something the expert actually said

@@ -11,6 +11,7 @@ order: 40
 personas:
   - id: PER-001
     name: Store associate, Acme retail store
+    short_name: StoreAssociate
     goals:
       - Resolve the return in front of me without leaving the counter
       - Tell the customer the outcome and the reason, confidently
@@ -22,6 +23,7 @@ personas:
     proficiency: knows the shop floor; high turnover, so assume no training
   - id: PER-002
     name: Contact-centre agent, returns queue
+    short_name: ContactAgent
     goals:
       - Answer the associate's question once and correctly
       - Approve or refuse exceptions with a reason the customer can be told
@@ -33,6 +35,7 @@ personas:
     proficiency: expert in policy, trained
   - id: PER-003
     name: Returns-processing clerk, regional hub
+    short_name: ReturnsClerk
     goals:
       - Know what is arriving and why it was returned
     pains:

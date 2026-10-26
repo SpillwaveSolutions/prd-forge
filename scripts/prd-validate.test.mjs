@@ -80,3 +80,26 @@ test('a journey stage acceptance not written as Given/When/Then fails the set', 
     text.replace('            Given a drafted and graded section, when the expert opens it, then\n', '            The expert reads the draft and agrees with it, which shows it is\n'))
   assert.ok(errors.some(e => /acceptance\[0\].*does not match/.test(e)), errors.join('\n'))
 })
+
+test('a scenario that links a wireframe that does not exist fails the set', () => {
+  const errors = validateEdited('06-scenarios.md', text =>
+    text.replace('    wireframes: [WF-008]\n', '    wireframes: [WF-099]\n'))
+  assert.ok(errors.some(e => /SC-001 links wireframe WF-099, which does not exist/.test(e)), errors.join('\n'))
+})
+
+test('a lifecycle transition to a state it does not declare fails the set', () => {
+  const errors = validateEdited('06-scenarios.md', text => text.replace('        to: final\n', '        to: archived\n'))
+  assert.ok(errors.some(e => /LC-001 has a transition with state "archived", which it does not declare/.test(e)), errors.join('\n'))
+})
+
+test('a scenario that names a lifecycle that does not exist fails the set', () => {
+  const errors = validateEdited('06-scenarios.md', text => text.replace('    lifecycles: [LC-001]\n', '    lifecycles: [LC-009]\n'))
+  assert.ok(errors.some(e => /names lifecycle LC-009, which does not exist/.test(e)), errors.join('\n'))
+})
+
+test('a persona short name with a space, or used twice, fails the set', () => {
+  const spaced = validateEdited('04-personas.md', text => text.replace('short_name: Sponsor\n', 'short_name: The Sponsor\n'))
+  assert.ok(spaced.some(e => /short_name.*does not match/.test(e)), spaced.join('\n'))
+  const twice = validateEdited('04-personas.md', text => text.replace('short_name: Sponsor\n', 'short_name: DomainExpert\n'))
+  assert.ok(twice.some(e => /short_name DomainExpert is used by more than one persona/.test(e)), twice.join('\n'))
+})
