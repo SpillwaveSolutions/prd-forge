@@ -36,12 +36,13 @@ epics and stories cannot be derived from the PRD at all.
 | `acceptance` on each stage | When the stage is done: one or more "Given …, when …, then …" statements the actor can observe. Required |
 | `inputs` / `outputs` | What the user gives, and gets back |
 | `handoff` | Where another person takes over |
-| `pain_points` / `needs` | What is hard today, and what the product must fix |
+| `pain_points` / `needs` | What is hard today, and what the product must fix. A pain point may be `{pain, stage, need}`, naming its stage and the need that answers it |
+| `objectives` | The `O-nnn` objectives that show this journey works |
 | `satisfaction` on each stage | How the stage feels to the user today, 1 (worst) to 5 (best), as the expert scores it |
 | `end_state` | How the user knows they are done |
 
 Every stage names **a person, an input, an output, a decision, and its
-acceptance, and no technology**.
+acceptance, and no technology**. The schema requires the `decision`.
 
 A stage's acceptance says when the stage is done, from the actor's side. It is
 not a requirement's acceptance: a requirement tests one capability, and a stage

@@ -22,6 +22,14 @@ the real competitor is usually a spreadsheet and a person who knows the job.
   least one is the status quo, what customers do today; the validator fails the
   set without one.
 - `why_we_win`: the single reason a buyer picks this, in the buyer's language.
+- On each segment, `user_personas` and `buyer_persona` name the personas in
+  section 4, and `size_source`, `size_as_of`, `size_method` (top-down or
+  bottom-up), and `size_unit` (organizations or people) say where a size comes
+  from. Non-functional requirements are sized from it, so the unit matters.
+
+For an internal product, the buyer is the budget holder, a segment is a business
+unit, and the competitors are the status quo plus buying or building something
+else.
 
 ## What does not belong
 

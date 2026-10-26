@@ -103,6 +103,25 @@
               "pattern": "^LC-\\d{3}$"
             },
             "description": "The lifecycles this scenario moves through, by id."
+          },
+          "branches_from": {
+            "type": "object",
+            "properties": {
+              "scenario": {
+                "type": "string",
+                "pattern": "^SC-\\d{3}$"
+              },
+              "step": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "scenario",
+              "step"
+            ],
+            "additionalProperties": false,
+            "description": "The happy-path step this alternate or exception branches from."
           }
         },
         "required": [

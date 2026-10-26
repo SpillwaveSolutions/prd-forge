@@ -25,6 +25,10 @@ because they never agreed what hurts.
   volumes, cycle times, audit findings, lost deals, regulatory letters.
 - `why_now`: the change that makes this urgent.
 - `cost_of_inaction`: what it costs to leave it alone, in money, time or risk.
+- `status_quo`: what they do today instead, and why it fails.
+- `desired_outcome`: the outcome they want, with no solution in it.
+- An `evidence` item may be `{claim, source, as_of}`, so it shows where a number
+  comes from and when it was true.
 
 ## What does not belong
 

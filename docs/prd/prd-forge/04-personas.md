@@ -12,6 +12,7 @@ personas:
   - id: PER-001
     name: Domain expert specifying software for their own field
     short_name: DomainExpert
+    primary: true
     goals:
       - Get what is in my head into a form the development team can build from
       - Stop being asked the same question by four different engineers

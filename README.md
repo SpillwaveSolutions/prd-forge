@@ -136,7 +136,12 @@ requirement through an objective, the status quo is named among the competitors,
 an unknown baseline names its open question, the release line is one unbroken
 run of the golden thread, every `must` requirement is in scope, decision rules
 name real personas and stages, nothing a release needs is due after it, and a
-`final` section has a recorded approval. A field a guide requires at review,
+`final` section has a recorded approval. It also checks that the first release
+delivers exactly the release line, that lifecycles reach every state, that
+wireframe marks match their `shows` lines and drawings, and that `applies_to`,
+`depends_on`, and `resolves` name real ids. It warns about criteria that name a
+control, a section where more than 60% of requirements are `must`, a release
+with no exit criteria, and a synonym the glossary says to avoid. A field a guide requires at review,
 such as a requirement's `shown_in`, warns while its section is a draft and fails
 once the section is offered for review. It checks each document against its schema, the
 parent/prev/next/children graph, and every cross-section id — persona, stage,

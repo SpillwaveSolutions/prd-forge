@@ -40,8 +40,34 @@
           "evidence": {
             "type": "array",
             "items": {
-              "type": "string",
-              "minLength": 1
+              "oneOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "claim": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "source": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "Where it comes from."
+                    },
+                    "as_of": {
+                      "$ref": "common.json#/$defs/date"
+                    }
+                  },
+                  "required": [
+                    "claim",
+                    "source"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
             },
             "minItems": 1,
             "description": "What makes this more than an opinion."
@@ -53,6 +79,16 @@
           "cost_of_inaction": {
             "type": "string",
             "minLength": 1
+          },
+          "status_quo": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What they do today instead, and why it fails."
+          },
+          "desired_outcome": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The outcome they want, with no solution in it."
           }
         },
         "required": [

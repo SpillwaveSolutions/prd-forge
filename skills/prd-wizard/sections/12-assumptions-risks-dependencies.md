@@ -20,7 +20,15 @@ the release line is a schedule risk the team can see early.
 will be validated and who owns that.
 
 **Risks** (`R-nnn`): the risk, `likelihood` and `impact` (low/medium/high),
-`mitigation`, and one named `owner`.
+`mitigation`, and one named `owner`. Add the `trigger` that shows it is
+happening, the `response` (avoid, reduce, transfer, share, or accept), the date
+the mitigation is due (`mitigation_by`), and its `status` (open, occurred, or
+closed).
+
+Each assumption can carry its `category` (value, usability, feasibility, or
+viability), the `evidence` behind it today (none, some, or strong), and the date
+to validate it by (`validate_by`). Rank assumptions by importance against
+evidence: an important assumption with no evidence is tested first.
 
 **Dependencies** (`D-nnn`): what we need, `from` whom, `by` when, `status`
 (requested, committed, at-risk, delivered), and what it `blocks`.

@@ -36,6 +36,23 @@
           "not": {
             "type": "string",
             "description": "What the term does not mean, where it is confused."
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The standard or authority that defines the term."
+          },
+          "unverified": {
+            "type": "boolean",
+            "description": "The source was checked and could not be confirmed."
+          },
+          "avoid": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Synonyms not to use for this term."
           }
         },
         "required": [

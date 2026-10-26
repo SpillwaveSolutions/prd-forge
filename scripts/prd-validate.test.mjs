@@ -186,3 +186,76 @@ test('prd-forge\'s own PRD carries the plugin\'s version', () => {
   const { front } = splitFrontMatter(readFileSync(join(REPO, 'docs/prd/prd-forge/prd.md'), 'utf8'))
   assert.equal(parseYaml(front).version, plugin)
 })
+
+// Checks from the 0.7.0 medium-priority review.
+const warnsWith = (file, edit, pattern) => {
+  const warnings = warningsEdited(file, edit)
+  assert.ok(warnings.some(w => pattern.test(w)), `no warning matching ${pattern}:\n${warnings.join('\n')}`)
+}
+
+test('the root names a real objective, primary persona, and approvers', () => {
+  failsWith('prd.md', t => t.replace('  objective: O-001\n', '  objective: O-099\n'), /summary\.objective names O-099/)
+  failsWith('prd.md', t => t.replace('primary_persona: PER-001', 'primary_persona: PER-099'), /primary_persona names PER-099/)
+  failsWith('prd.md', t => t.replace('approvers: [PER-003]', 'approvers: [PER-099]'), /approvers names PER-099/)
+})
+
+test('segments name real personas, and only one persona is primary', () => {
+  failsWith('02-customer-market.md', t => t.replace('  - id: S-001\n', '  - id: S-001\n    user_personas: [PER-099]\n'), /S-001 names PER-099/)
+  failsWith('04-personas.md', t => t.replace('short_name: Sponsor\n', 'short_name: Sponsor\n    primary: true\n'), /more than one persona is primary/)
+})
+
+test('a journey names real objectives and persona, and its pain points name real stages and needs', () => {
+  failsWith('05-user-journeys.md', t => t.replace('  - id: J-001\n', '  - id: J-001\n    objectives: [O-099]\n'), /J-001 names O-099/)
+  failsWith('05-user-journeys.md', t => t.replace('  - id: J-001\n    persona: PER-001\n', '  - id: J-001\n    persona: PER-099\n'), /J-001 persona PER-099 is not a persona/)
+  const pain = need => t => t.replace('    pain_points:\n', `    pain_points:\n      - pain: Slow\n        stage: ST-002\n        need: ${need}\n`)
+  failsWith('05-user-journeys.md', pain('Not one of its needs'), /names a need that is not in its needs/)
+})
+
+test('every stage has a decision, and Gherkin capitals are accepted', () => {
+  failsWith('05-user-journeys.md', t => t.replace("        decision: What this product is, and what the domain's own words are\n", ''), /stages\[0\]: missing decision/)
+  const errors = validateEdited('05-user-journeys.md', t => t.replace('when the expert opens it, then', 'When the expert opens it, Then'))
+  assert.deepEqual(errors, [])
+})
+
+test('a scenario branches from a step that exists', () =>
+  failsWith('06-scenarios.md', t => t.replace('  - id: SC-002\n', '  - id: SC-002\n    branches_from: { scenario: SC-001, step: 99 }\n'), /SC-002 branches from step 99 of SC-001/))
+
+test('a lifecycle state that cannot be reached, or a transition with no by, draws a warning', () => {
+  const extra = t => t.replace('      - name: final\n', '      - name: archived\n        meaning: Kept for the record.\n      - name: final\n')
+  warnsWith('06-scenarios.md', extra, /LC-001 state "archived" cannot be reached/)
+  warnsWith('06-scenarios.md', t => t.replace('        rule: The expert decides the interview is finished (TR-008)\n        by: PER-001\n', '        rule: The expert decides the interview is finished (TR-008)\n'), /transition pending to draft has no by/)
+})
+
+test('the scope names a real release, and outside-product stages exist', () => {
+  failsWith('07-scope.md', t => t.replace('release: REL-001,', 'release: REL-099,'), /release names REL-099/)
+  failsWith('07-scope.md', t => t.replace('\nin_scope:\n', '\noutside_product:\n  - stage: ST-099\n    workaround: By hand.\nin_scope:\n'), /outside_product names ST-099/)
+})
+
+test('the first release delivers exactly the release line, and names real objectives and waits', () => {
+  failsWith('14-release-plan.md', t => t.replace(/(journey_stages:\n(?: +- ST-00\d\n)*?) +- ST-006\n/, '$1'), /REL-001's stages differ from the release line/)
+  failsWith('14-release-plan.md', t => t.replace('  - id: REL-002\n', '  - id: REL-002\n    depends_on: [Q-099]\n'), /REL-002 depends_on names Q-099/)
+})
+
+test('a criterion that names a control, or is not Given/When/Then, draws a warning', () => {
+  warnsWith('08-functional-requirements.md', t => t.replace('when the expert asks where things stand', 'when the expert clicks the status button'), /FR-002 has a criterion that names a control/)
+  warnsWith('08-functional-requirements.md', t => t.replace('Given a set where four section documents', 'For a set where four section documents'), /criterion that is not Given\/When\/Then/)
+})
+
+test('wireframe marks run 1 to n and match the drawing', () =>
+  failsWith('08-wireframes.md', t => t.replace('losing their place. See FR-009 › <5>', 'losing their place. See FR-009 › <6>'), /WF-001 has marks 1, 2, 3, 4, 6 for 5 shows lines/))
+
+test('what an NFR or a constraint applies to exists', () => {
+  failsWith('09-nonfunctional-requirements.md', t => t.replace('    applies_to:\n      - FR-004\n', '    applies_to:\n      - FR-099\n'), /applies_to names FR-099/)
+  failsWith('10-constraints.md', t => t.replace('      - FR-006\n', '      - FR-099\n'), /C-004 applies_to names FR-099/)
+})
+
+test('an agent role agrees with how the decision is delegated', () =>
+  failsWith('11-decision-rights.md', t => t.replace('stages: [ST-006]', 'stages: [ST-006]\n    agent_role: acts'), /TR-001 is never delegated, but its agent_role is acts/))
+
+test('the change log resolves real questions, and an answered question is resolved', () => {
+  failsWith('16-change-log.md', t => t.replace('  - version: 0.7.0\n', '  - version: 0.7.0\n    resolves: [Q-099]\n'), /0\.7\.0 resolves names Q-099/)
+  warnsWith('13-open-questions.md', t => t.replace('  - id: Q-001\n', '  - id: Q-001\n    answer: Forty percent.\n'), /Q-001 is answered, and no change log entry resolves it/)
+})
+
+test('a synonym the glossary avoids draws a warning where a section uses it', () =>
+  warnsWith('15-glossary.md', t => t.replace('  - term: PRD\n', '  - term: PRD\n    avoid: [specification]\n'), /uses "specification"; the glossary says to say "PRD"/))

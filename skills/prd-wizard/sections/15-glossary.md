@@ -22,6 +22,9 @@ actually build the right thing.
 - `see_also`: related terms.
 - `not`: what the term does *not* mean, where it is commonly confused. This field
   earns its keep more than `meaning` does.
+- `source`: the standard or authority that defines the term, with `unverified:
+  true` when the source was checked and could not be confirmed.
+- `avoid`: synonyms not to use. The validator warns when a section uses one.
 
 ## What does not belong
 

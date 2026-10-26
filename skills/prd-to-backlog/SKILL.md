@@ -54,14 +54,17 @@ PRD scenario for that stage.
 requirement in the epic, write a story: `As a <persona>, I want <capability>, so
 that <outcome>`, with the requirement's acceptance criteria as the story's
 Given/When/Then. The persona comes from the requirement's `user`; use the persona
-name from section 4, not the id, in the story text.
+name from section 4, not the id, in the story text. Attach the wireframes that
+illustrate the requirement (`illustrates` in the wireframes document), so the team
+sees the screen beside the story.
 
 Where one requirement covers several steps, split it into several stories and say
 you did. Where several requirements are really one story, keep them separate —
 the trace matters more than tidiness.
 
-**4. Definition of done, per story.** From the PRD: every constraint (section 9)
-becomes a definition-of-done item applying to every story. Non-functional
+**4. Definition of done, per story.** From the PRD: each constraint (section 9)
+becomes a definition-of-done item on the stories it `applies_to`, and on every
+story when `applies_to` is absent or `all`. Non-functional
 requirements (section 8) become either acceptance criteria on the stories they
 `applies_to`, definition-of-done items where they are universal, or separate
 platform stories where they need building. Decision rights (section 10) become

@@ -54,13 +54,22 @@
           "verification": {
             "type": "string",
             "description": "How compliance is shown."
+          },
+          "nfr": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^NFR-\\d{3}$"
+            },
+            "description": "The non-functional requirements that make this constraint measurable."
           }
         },
         "required": [
           "id",
           "category",
           "statement",
-          "authority"
+          "authority",
+          "verification"
         ]
       },
       "minItems": 1

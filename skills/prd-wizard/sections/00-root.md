@@ -21,6 +21,12 @@ PRD has already failed: people will build from the summary.
 - `product`, `slug`, `version`, `owner`, `stakeholders`, `created`.
 - `summary`: `problem`, `users`, `why_now`, `bet`, `measure`. One sentence each.
 - `golden_thread`: the id of the one journey release 1 must deliver end to end.
+- `summary.objective`: the `O-nnn` the measure tracks, so the summary cannot drift
+  from section 3.
+- `primary_persona`: the `PER-nnn` the product serves first.
+- `approvers`: the `PER-nnn` roles whose approval section 15 must record.
+- `stakeholders` may be objects with `role`, `interest`, and `influence` (high,
+  medium, or low), not only names.
 - `links.children`: every section document, in reading order.
 - In the body: the five summary sentences as prose, then the contents table.
 

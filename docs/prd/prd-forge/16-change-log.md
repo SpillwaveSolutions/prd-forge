@@ -9,6 +9,18 @@ domain: product management tooling
 section: 15
 order: 160
 changes:
+  - version: 0.7.0
+    date: 2026-10-27
+    author: Richard Hightower
+    summary: >-
+      Names the root's objective, primary persona, and approver, from section 3,
+      the personas document, and TR-001. Marks PER-001 as the primary persona.
+      Names release 1 by its id in the scope, and gives LC-001's first transition
+      the rule TR-008 already states.
+    sections:
+      - 4
+      - 5
+      - 6
   - version: 0.6.0
     date: 2026-10-27
     author: Richard Hightower
@@ -130,6 +142,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
 | 0.6.0 | 2026-10-27 | Richard Hightower | Links from the specification review: problems, objectives, competitors, decision stages, and scenario views |
 | 0.4.0 | 2026-10-26 | Richard Hightower | Navigation and refresh requirements; wireframes rewritten from their grading |
 | 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for every screen and report, and recorded reasons for the grades |

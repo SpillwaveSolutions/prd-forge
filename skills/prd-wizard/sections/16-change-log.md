@@ -22,6 +22,10 @@ domains this section is also evidence.
   `conditions`: the `condition`, what it `depends_on` (open questions or
   requirements), the date it is due `by`, and whether it is `cleared`.
 
+Name the questions a change answers in `resolves`, and record each gate the
+expert overrode in `overrides`: the section, the status set, and the score and
+blocking count at the time.
+
 The validator fails the set when the root's version has no entry, or when a
 section is `final` with no approval recorded.
 

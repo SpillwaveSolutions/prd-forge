@@ -77,6 +77,11 @@
               "minLength": 1
             },
             "description": "Requirement or stage ids this holds for; absent means all."
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Where the number comes from: a persona, a segment, an expert answer, an open question, or a constraint."
           }
         },
         "required": [
