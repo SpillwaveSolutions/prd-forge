@@ -13,12 +13,14 @@ objectives:
     objective: >-
       A specification handed to a development team can be built from without the
       team re-deriving it first.
+    problems: [P-001, P-002, P-003]
     metric: >-
       Share of PRDs that pass an engineering buildability review on first
       submission, where the review is the eleven derivability checks.
     baseline: >-
       unknown - not measured; see Q-001. Do not set a target against this until
       Q-001 is answered.
+    baseline_question: Q-001
     target: >-
       80% of PRDs pass on first submission.
     by: 2027-09-30
@@ -27,11 +29,13 @@ objectives:
     objective: >-
       A domain expert reaches an approved specification in days rather than the
       weeks a product manager's discovery cycle takes.
+    problems: [P-004]
     metric: >-
       Median elapsed working days from the first interview question to an approval
       recorded in section 15.
     baseline: >-
       unknown - not measured; see Q-002.
+    baseline_question: Q-002
     target: >-
       Under 5 working days for a single-journey product.
     by: 2027-09-30
@@ -40,11 +44,13 @@ objectives:
     objective: >-
       Requirements are testable as written, so a team can close them without
       asking the author what they meant.
+    problems: [P-001]
     metric: >-
       Share of functional requirements whose acceptance criteria an engineer who
       was not in the interview judges sufficient to write a test.
     baseline: >-
       unknown - not measured; see Q-003.
+    baseline_question: Q-003
     target: >-
       95% of `must` requirements.
     by: 2027-09-30

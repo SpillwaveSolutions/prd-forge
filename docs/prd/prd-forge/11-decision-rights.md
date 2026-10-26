@@ -14,6 +14,7 @@ order: 110
 decisions:
   - id: TR-001
     decision: Approve a PRD for a release
+    stages: [ST-006]
     approver: PER-003
     delegable_to_agent: false
     never_delegated: true
@@ -43,6 +44,7 @@ decisions:
         every condition is cleared by that same approver.
   - id: TR-002
     decision: Set a section's state to final
+    stages: [ST-004]
     approver: PER-001
     delegable_to_agent: false
     never_delegated: true
@@ -62,6 +64,7 @@ decisions:
         was an override and the score at the time.
   - id: TR-003
     decision: Accept or refute a section's score against its rubric
+    stages: [ST-003]
     approver: PER-001
     delegable_to_agent: true
     never_delegated: false
@@ -81,6 +84,7 @@ decisions:
         it is checked, then it is dropped and the expert is told it was dropped.
   - id: TR-004
     decision: Decide what the product is for and what is out of scope
+    stages: [ST-001]
     approver: PER-001
     delegable_to_agent: false
     never_delegated: true
@@ -139,6 +143,7 @@ decisions:
         Given a reported gap, when it is stated, then the document is quoted for it.
   - id: TR-007
     decision: Decide the domain's own terms, and what each one means
+    stages: [ST-001]
     approver: PER-001
     delegable_to_agent: false
     never_delegated: true
@@ -157,6 +162,7 @@ decisions:
         recorded, then both are stated and the expert says which the set uses.
   - id: TR-008
     decision: Decide the interview on a section is finished
+    stages: [ST-002]
     approver: PER-001
     delegable_to_agent: false
     never_delegated: true
@@ -174,6 +180,7 @@ decisions:
         missing is named to the expert, not hidden behind a score.
   - id: TR-009
     decision: Decide a section may be left at draft and moved on from
+    stages: [ST-004]
     approver: PER-001
     delegable_to_agent: false
     never_delegated: true
@@ -190,6 +197,7 @@ decisions:
         is recorded as an open question or named plainly to them.
   - id: TR-010
     decision: Decide the set is ready to be offered for approval
+    stages: [ST-005]
     approver: PER-001
     delegable_to_agent: false
     never_delegated: true
@@ -209,6 +217,7 @@ decisions:
         the expert was shown under this rule is what the approver sees.
   - id: TR-011
     decision: Decide a backlog can be mapped from the set
+    stages: [ST-007]
     approver: PER-004
     delegable_to_agent: true
     never_delegated: false
@@ -225,6 +234,7 @@ decisions:
         backlog cannot be derived, and names that as the reason.
   - id: TR-012
     decision: Decide which epics come first
+    stages: [ST-008]
     approver: PER-004
     delegable_to_agent: false
     never_delegated: true
@@ -241,6 +251,7 @@ decisions:
         value, dependency or the release line drove it.
   - id: TR-013
     decision: Accept a drafted section as saying what the expert meant, or correct it
+    stages: [ST-003]
     approver: PER-001
     delegable_to_agent: false
     never_delegated: true

@@ -31,6 +31,14 @@
             "type": "string",
             "pattern": "^ST-\\d{3}$"
           },
+          "stages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^ST-\\d{3}$"
+            },
+            "description": "The stages an end-to-end scenario spans, in order."
+          },
           "persona": {
             "type": "string",
             "minLength": 1
@@ -69,6 +77,16 @@
             "type": "string",
             "minLength": 1,
             "description": "What the user sees at the end. A pass or fail statement."
+          },
+          "shown_in": {
+            "type": "string",
+            "enum": [
+              "screen",
+              "report",
+              "conversation",
+              "none"
+            ],
+            "description": "Where the user meets this scenario. A screen or report scenario links at least one wireframe."
           },
           "wireframes": {
             "type": "array",

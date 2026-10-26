@@ -38,12 +38,14 @@ segments:
       domain, which this does not supply.
 competitors:
   - name: A blank PRD template in the team's document tool
+    kind: indirect
     offer: >-
       The section headings, immediately, free, in a tool everyone already has.
     our_edge: >-
       A heading asks a question the expert cannot answer; this teaches the section
       first and then asks the questions that produce an answer.
   - name: A general-purpose assistant conversation with no structure
+    kind: indirect
     offer: >-
       Fluent prose on any section, instantly, with no setup at all.
     our_edge: >-
@@ -51,6 +53,7 @@ competitors:
       the expert is told where the document is weak, against a stated rubric, by a
       reviewer that did not write it.
   - name: Contracting a product manager for the engagement
+    kind: indirect
     offer: >-
       Genuine product judgement, and someone accountable for the outcome.
     our_edge: >-
@@ -58,6 +61,7 @@ competitors:
       is typing, and that the expert keeps the understanding afterwards rather
       than renting it.
   - name: The status quo - a smart practitioner, a document, and a willing engineer
+    kind: status-quo
     offer: >-
       No tool, no cost, no adoption, and it does sometimes work.
     our_edge: >-

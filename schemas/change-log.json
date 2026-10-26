@@ -64,6 +64,38 @@
                     "approved-with-conditions",
                     "rejected"
                   ]
+                },
+                "conditions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "condition": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "depends_on": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "pattern": "^[A-Z]{1,4}-\\d{3}$"
+                        },
+                        "description": "The open questions or requirements the condition depends on."
+                      },
+                      "by": {
+                        "$ref": "common.json#/$defs/date"
+                      },
+                      "cleared": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "condition",
+                      "by"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "description": "The conditions of an approval with conditions: each names what it depends on and a date."
                 }
               },
               "required": [

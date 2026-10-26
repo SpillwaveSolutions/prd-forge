@@ -327,6 +327,22 @@ function ensureLinks(body, anchor, links) {
 
 const isTitle = line => /^#\s/.test(line)
 
+const GENERATED = /^!\[(SC|LC|WF)-\d{3}[^\]]*\]\(diagrams\/(SC|LC|WF)-\d{3}\.svg\)$/
+
+/**
+ * Rewrites a body's generated image block: drops every generated scenario,
+ * lifecycle, and wireframe image line, then puts `links` after the title, one
+ * paragraph each. Rewriting the whole block keeps the order when one wireframe
+ * is linked from several scenarios, which `ensureLinks` cannot.
+ */
+function generatedBlock(body, links) {
+  const lines = body.split('\n').filter(line => !GENERATED.test(line))
+  const title = lines.findIndex(isTitle)
+  if (title === -1) return body
+  lines.splice(title + 1, 0, '', ...links.flatMap(link => [link, '']))
+  return lines.filter((line, i) => !(line.trim() === '' && i > 0 && lines[i - 1].trim() === '')).join('\n')
+}
+
 /** Writes a generated Mermaid source when it changed, then renders it. */
 function generate(out, id, mermaid, check) {
   const src = join(out, `${id}.mmd`)
@@ -371,16 +387,28 @@ export function drawSet(dir, { check = false } = {}) {
     }
 
     if (front.kind === 'scenarios') {
+      // Each scenario's views together: its flowchart, the lifecycles it moves
+      // through, and the wireframes of what it shows. A lifecycle shows once,
+      // under the first scenario that names it; one no scenario names, at the end.
+      const lifecycles = front.lifecycles ?? []
+      const lcLink = lc => `![${lc.id} lifecycle of ${String(lc.subject).replace(/[[\]]/g, '')}](diagrams/${lc.id}.svg)`
+      const byId = new Map(lifecycles.map(lc => [lc.id, lc]))
+      const placed = new Set()
       const links = []
       for (const scenario of front.scenarios ?? []) {
         generate(out, scenario.id, scenarioMermaid(scenario), check)
         links.push(`![${scenario.id} scenario](diagrams/${scenario.id}.svg)`)
+        for (const id of scenario.lifecycles ?? []) {
+          if (byId.has(id) && !placed.has(id)) links.push(lcLink(byId.get(id)))
+          placed.add(id)
+        }
+        for (const id of scenario.wireframes ?? []) links.push(`![${id} drawing](diagrams/${id}.svg)`)
       }
-      for (const lifecycle of front.lifecycles ?? []) {
+      for (const lifecycle of lifecycles) {
         generate(out, lifecycle.id, lifecycleMermaid(lifecycle, roleNames), check)
-        links.push(`![${lifecycle.id} lifecycle of ${String(lifecycle.subject).replace(/[[\]]/g, '')}](diagrams/${lifecycle.id}.svg)`)
+        if (!placed.has(lifecycle.id)) links.push(lcLink(lifecycle))
       }
-      doc.body = ensureLinks(doc.body, isTitle, links)
+      doc.body = generatedBlock(doc.body, links)
     }
 
     if (front.kind === 'release-plan' && (front.releases ?? []).length > 0) {

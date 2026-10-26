@@ -32,6 +32,11 @@
             "type": "string",
             "minLength": 1
           },
+          "persona": {
+            "type": "string",
+            "pattern": "^PER-\\d{3}$",
+            "description": "The persona in section 4 who has this problem."
+          },
           "evidence": {
             "type": "array",
             "items": {

@@ -9,6 +9,25 @@ domain: product management tooling
 section: 15
 order: 160
 changes:
+  - version: 0.6.0
+    date: 2026-10-27
+    author: Richard Hightower
+    summary: >-
+      Adds the links the specification review asked for. Each problem names its
+      persona, and each objective names the problems it addresses and the open
+      question that will establish its baseline. Competitors have a kind, with the
+      status quo named. Each decision rule names the stages it governs. Scenarios
+      say where the user meets them, SC-001 names the stages it spans, and each
+      screen or report scenario links its wireframes. The root's measure states
+      its target. Section 11 now says D-002 and D-003 fall on R1's target day, not
+      after it.
+    sections:
+      - 1
+      - 2
+      - 3
+      - 5
+      - 10
+      - 11
   - version: 0.4.0
     date: 2026-10-26
     author: Richard Hightower
@@ -111,6 +130,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.6.0 | 2026-10-27 | Richard Hightower | Links from the specification review: problems, objectives, competitors, decision stages, and scenario views |
 | 0.4.0 | 2026-10-26 | Richard Hightower | Navigation and refresh requirements; wireframes rewritten from their grading |
 | 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for every screen and report, and recorded reasons for the grades |
 | 0.2.0 | 2026-10-26 | Richard Hightower | Every defect the grading and the buildability review found, over two rounds |

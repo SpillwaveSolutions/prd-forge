@@ -57,9 +57,24 @@ function validateEdited(file, edit) {
   return validateSet(dir).errors
 }
 
+/** The same, returning the warnings. */
+function warningsEdited(file, edit) {
+  const dir = join(mkdtempSync(join(tmpdir(), 'prd-validate-')), 'set')
+  cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
+  const path = join(dir, file)
+  writeFileSync(path, edit(readFileSync(path, 'utf8')))
+  return validateSet(dir).warnings
+}
+
+/** Asserts that editing `file` makes the set fail with an error matching `pattern`. */
+function failsWith(file, edit, pattern) {
+  const errors = validateEdited(file, edit)
+  assert.ok(errors.some(e => pattern.test(e)), `no error matching ${pattern}:\n${errors.join('\n')}`)
+}
+
 test('a must scenario off the release line fails the set', () => {
   const errors = validateEdited('06-scenarios.md', text =>
-    text.replace('    stage: ST-002\n    persona: PER-001\n    variant: happy\n', '    stage: ST-007\n    persona: PER-001\n    variant: happy\n    priority: must\n'))
+    text.replace('    stage: ST-002\n    stages: [ST-002, ST-003, ST-004]\n', '    stage: ST-007\n').replace('    variant: happy\n', '    variant: happy\n    priority: must\n'))
   assert.ok(errors.some(e => /SC-001 is a must, but its stage ST-007 is not on the release line/.test(e)), errors.join('\n'))
 })
 
@@ -102,4 +117,72 @@ test('a persona short name with a space, or used twice, fails the set', () => {
   assert.ok(spaced.some(e => /short_name.*does not match/.test(e)), spaced.join('\n'))
   const twice = validateEdited('04-personas.md', text => text.replace('short_name: Sponsor\n', 'short_name: DomainExpert\n'))
   assert.ok(twice.some(e => /short_name DomainExpert is used by more than one persona/.test(e)), twice.join('\n'))
+})
+
+test('the specification-review checks hold on prd-forge\'s own set', () => {
+  assert.deepEqual(validateSet(join(REPO, 'docs/prd/prd-forge')).errors, [])
+})
+
+test('the root measure needs a number', () =>
+  failsWith('prd.md', t => t.replace(': 80% by 2027-09-30, from a baseline Q-001 will establish.', '.'), /summary\.measure has no number/))
+
+test('the status quo must be named among the competitors', () =>
+  failsWith('02-customer-market.md', t => t.replace('kind: status-quo', 'kind: indirect'), /no competitor has kind status-quo/))
+
+test('an unknown baseline must name its question, and the question must exist', () => {
+  failsWith('03-objectives-metrics.md', t => t.replace('    baseline_question: Q-002\n', ''), /O-002 baseline has no number and names no baseline_question/)
+  failsWith('03-objectives-metrics.md', t => t.replace('baseline_question: Q-002', 'baseline_question: Q-099'), /O-002 baseline_question Q-099 does not exist/)
+})
+
+test('an objective may name only problems that exist', () =>
+  failsWith('03-objectives-metrics.md', t => t.replace('problems: [P-004]', 'problems: [P-099]'), /O-002 names problem P-099/))
+
+test('a problem reached by no requirement draws a warning', () => {
+  const warnings = warningsEdited('03-objectives-metrics.md', t => t.replace('problems: [P-004]', 'problems: []'))
+  assert.ok(warnings.some(w => /P-004 reaches no requirement/.test(w)), warnings.join('\n'))
+})
+
+test('the golden thread needs a happy scenario', () =>
+  failsWith('06-scenarios.md', t => t.replace('    variant: happy\n', '    variant: alternate\n'), /golden thread J-001 has no happy scenario/))
+
+test('a scenario shown on a screen must link a wireframe', () =>
+  failsWith('06-scenarios.md', t => t.replace('    wireframes: [WF-010]\n', ''), /SC-002 is shown in a screen and links no wireframe/))
+
+test('every must requirement must be in scope', () =>
+  failsWith('07-scope.md', t => t.replace('      - FR-018\n', ''), /must requirement FR-018 is in no in-scope item/))
+
+test('the release line must be a run of golden-thread stages', () =>
+  failsWith('07-scope.md', t => t.replace('journey_stage: ST-006', 'journey_stage: ST-007'), /release line names a stage that is not in the golden thread/))
+
+test('a decision rule\'s approver and stages must exist', () => {
+  failsWith('11-decision-rights.md', t => t.replace('approver: PER-003', 'approver: PER-009'), /approver PER-009 is not a persona/)
+  failsWith('11-decision-rights.md', t => t.replace('stages: [ST-006]', 'stages: [ST-099]'), /names stage ST-099, which does not exist/)
+})
+
+test('a dependency that blocks a missing id, or is due after the release it blocks, fails', () => {
+  failsWith('12-assumptions-risks-dependencies.md', t => t.replace('      - A-001\n', '      - A-099\n'), /blocks A-099, which does not exist/)
+  failsWith('12-assumptions-risks-dependencies.md', t => t.replace('    by: 2027-03-31\n    status: requested\n    blocks:\n      - A-001\n', '    by: 2027-04-30\n    status: requested\n    blocks:\n      - FR-001\n      - A-001\n'), /D-002 is due 2027-04-30, after REL-001's target/)
+})
+
+test('a glossary term may be defined once', () =>
+  failsWith('15-glossary.md', t => t.replace('  - term: MoSCoW\n', '  - term: PRD\n'), /the term "prd" is defined more than once/))
+
+test('the root version needs a change entry, and a final section an approval', () => {
+  failsWith('prd.md', t => t.replace(/^version: .*$/m, 'version: 9.9.9'), /root's version 9.9.9 has no change entry/)
+  failsWith('10-constraints.md', t => t.replace('status: draft', 'status: final'), /status final with no approval recorded/)
+})
+
+test('a requirement missing shown_in warns at draft and fails at review', () => {
+  const drop = t => t.replace('    shown_in: conversation\n', '')
+  assert.ok(warningsEdited('08-functional-requirements.md', drop).some(w => /FR-001 has no shown_in/.test(w)))
+  failsWith('08-functional-requirements.md', t => drop(t).replace('status: draft', 'status: review'), /FR-001 has no shown_in/)
+})
+
+test('an id is not a number', () =>
+  failsWith('prd.md', t => t.replace(': 80% by 2027-09-30, from a baseline Q-001 will establish.', ', as Q-001 records.'), /summary\.measure has no number/))
+
+test('prd-forge\'s own PRD carries the plugin\'s version', () => {
+  const plugin = JSON.parse(readFileSync(join(REPO, '.claude-plugin/plugin.json'), 'utf8')).version
+  const { front } = splitFrontMatter(readFileSync(join(REPO, 'docs/prd/prd-forge/prd.md'), 'utf8'))
+  assert.equal(parseYaml(front).version, plugin)
 })

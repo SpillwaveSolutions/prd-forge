@@ -19,6 +19,8 @@ because they never agreed what hurts.
 
 - One entry per distinct problem, with its own `P-nnn` id.
 - `who`: the role that suffers it, matching a persona in section 4.
+- `persona`: that persona's `PER-nnn` id, once section 4 exists. The validator
+  checks it.
 - `evidence`: what makes it more than an opinion — interview counts, support
   volumes, cycle times, audit findings, lost deals, regulatory letters.
 - `why_now`: the change that makes this urgent.

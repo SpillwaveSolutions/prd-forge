@@ -28,8 +28,19 @@ release 1.
   in order.
 - `expected_outcome`: the **Then**. What the user sees at the end, as a
   pass-or-fail statement with a number wherever a number decides it.
-- `wireframes`: the `WF-nnn` sketches that show what the user sees, where a
-  screen or report is involved. Link them; do not describe the screen in prose.
+- `shown_in`: where the user meets this scenario: `screen`, `report`,
+  `conversation`, or `none`. A `screen` or `report` scenario must link at least
+  one wireframe.
+- `wireframes`: the `WF-nnn` sketches that show what the user sees. Link them; do
+  not describe the screen in prose. Wireframes stay one shared set in section 7,
+  traced to the requirements they show, and each scenario links the ones it
+  passes through.
+- `stages`: for a scenario that runs across several stages, the stages it spans,
+  in order. The golden thread's happy path should span the whole release line;
+  the validator warns when none does.
+
+`prd-diagrams.mjs` draws each scenario's views together: its flowchart, the
+lifecycles it moves through, and the wireframes it links.
 
 Keep each scenario to one user goal. A scenario that does two things is two
 scenarios.

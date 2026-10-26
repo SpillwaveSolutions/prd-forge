@@ -28,6 +28,11 @@ caseworkers"; nobody can build for "fast".
 - `measurement`: how and where it is measured.
 - `priority`, and `applies_to` when it holds only for certain requirements.
 
+A category that does not apply goes in `not_applicable`, with its `reason`. The
+validator warns when performance, scale, availability, security, privacy,
+accessibility, retention, or observability has neither a requirement nor a
+reason.
+
 ## What does not belong
 
 - "Scalable", "performant", "secure", "robust", "user-friendly" with no number.

@@ -18,6 +18,9 @@ the real competitor is usually a spreadsheet and a person who knows the job.
 
 - One segment per `S-nnn`: name, `buyer`, `user`, size if known, willingness to pay.
 - `competitors`: each with what they offer and `our_edge` — one sentence, honest.
+  Give each a `kind`: `direct`, `indirect`, `status-quo`, or `build-in-house`. At
+  least one is the status quo, what customers do today; the validator fails the
+  set without one.
 - `why_we_win`: the single reason a buyer picks this, in the buyer's language.
 
 ## What does not belong

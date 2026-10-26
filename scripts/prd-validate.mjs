@@ -612,6 +612,192 @@ function structural(docs, dir) {
     }
   }
 
+  // Checks from the 0.6.0 specification review. Each one makes a rule that a
+  // section guide already states checkable.
+  const frontOf = kind => docs.find(d => d.front.kind === kind)?.front
+  const atReview = kind => ['review', 'final'].includes(frontOf(kind)?.status)
+  // A field the guide requires: a warning while the document is a draft, an
+  // error once it is offered for review.
+  const gate = (kind, message) => (atReview(kind) ? errors : warnings).push(message)
+  // A number, not the digits of an id such as Q-001.
+  const hasNumber = text => /\d/.test(String(text ?? '').replace(/\b[A-Z]{1,4}-\d+\b/g, ''))
+
+  // the root: the summary's measure carries a number
+  const measure = root?.front?.summary?.measure
+  if (typeof measure === 'string' && !hasNumber(measure)) {
+    errors.push(`${root.file}: summary.measure has no number in it`)
+  }
+
+  // sections 1 and 3: each problem has its persona, and reaches a requirement
+  // through an objective
+  const problems = frontOf('problem-opportunity')?.problems ?? []
+  const problemIds = new Set(problems.map(p => p?.id).filter(Boolean))
+  for (const problem of problems) {
+    if (problem?.persona && personas.size > 0 && !personas.has(problem.persona)) {
+      errors.push(`problem-opportunity: ${problem.id} persona ${problem.persona} is not a persona in section 4`)
+    }
+  }
+  const objectiveList = frontOf('objectives-metrics')?.objectives ?? []
+  const questionIds = idsOf(docs, 'open-questions', 'questions')
+  for (const objective of objectiveList) {
+    for (const id of objective?.problems ?? []) {
+      if (problemIds.size > 0 && !problemIds.has(id)) errors.push(`objectives-metrics: ${objective.id} names problem ${id}, which does not exist`)
+    }
+    if (!hasNumber(objective?.target)) errors.push(`objectives-metrics: ${objective?.id} target has no number in it`)
+    if (!hasNumber(objective?.baseline) && !objective?.baseline_question) {
+      errors.push(`objectives-metrics: ${objective?.id} baseline has no number and names no baseline_question`)
+    }
+    if (objective?.baseline_question && questionIds.size > 0 && !questionIds.has(objective.baseline_question)) {
+      errors.push(`objectives-metrics: ${objective.id} baseline_question ${objective.baseline_question} does not exist`)
+    }
+  }
+  if (problems.length > 0 && objectiveList.length > 0) {
+    const servedObjectives = new Set(frs.map(r => r?.objective).filter(Boolean))
+    const reached = new Set(objectiveList.filter(o => servedObjectives.has(o?.id)).flatMap(o => o?.problems ?? []))
+    for (const id of problemIds) {
+      if (!reached.has(id)) warnings.push(`problem-opportunity: ${id} reaches no requirement through an objective`)
+    }
+  }
+
+  // section 2: the status quo is named among the alternatives
+  const competitors = frontOf('customer-market')?.competitors ?? []
+  if (competitors.length > 0 && !competitors.some(c => c?.kind === 'status-quo')) {
+    errors.push('customer-market: no competitor has kind status-quo; name what customers do today')
+  }
+
+  // section 5: the golden thread has a happy path, an exception exists, and a
+  // screen or report scenario links a wireframe
+  const golden = journeys.find(j => j?.golden_thread === true)
+  if (scenarios.length > 0) {
+    const goldenHappy = scenarios.filter(sc => sc?.journey === golden?.id && sc?.variant === 'happy')
+    if (golden !== undefined && goldenHappy.length === 0) errors.push(`scenarios: the golden thread ${golden.id} has no happy scenario`)
+    if (!scenarios.some(sc => sc?.variant === 'exception')) errors.push('scenarios: no scenario is an exception')
+    if (lineStages.size > 0 && goldenHappy.length > 0 &&
+        !goldenHappy.some(sc => [...lineStages].every(st => (sc?.stages ?? [sc?.stage]).includes(st)))) {
+      warnings.push('scenarios: no happy scenario of the golden thread spans every release-line stage; give one a stages list')
+    }
+    const wfStage = new Map((wfDoc?.front?.wireframes ?? []).map(wf => [wf?.id, wf?.journey_stage]))
+    for (const sc of scenarios) {
+      if (sc?.priority === undefined && atReview('scenarios')) errors.push(`scenarios: ${sc?.id} has no priority`)
+      if ((sc?.shown_in === 'screen' || sc?.shown_in === 'report') && (sc?.wireframes ?? []).length === 0) {
+        errors.push(`scenarios: ${sc.id} is shown in a ${sc.shown_in} and links no wireframe`)
+      }
+      for (const id of sc?.wireframes ?? []) {
+        const at = wfStage.get(id)
+        if (at && sc?.stage && at !== sc.stage && !(sc?.stages ?? []).includes(at)) {
+          warnings.push(`scenarios: ${sc.id} is at ${sc.stage}, but its wireframe ${id} is at ${at}`)
+        }
+      }
+    }
+  }
+
+  // sections 6 and 7: the release line is one unbroken run of the golden
+  // thread to its end, each of its stages has a must, and every must is in scope
+  if (golden !== undefined && lineStages.size > 0) {
+    const order = (golden.stages ?? []).map(st => st?.id)
+    const at = [...lineStages].map(st => order.indexOf(st))
+    if (at.includes(-1)) {
+      errors.push(`scope: the release line names a stage that is not in the golden thread ${golden.id}`)
+    } else if (Math.max(...at) !== order.length - 1 || Math.max(...at) - Math.min(...at) + 1 !== lineStages.size) {
+      errors.push(`scope: the release line is not one unbroken run of ${golden.id}'s stages ending at its last stage`)
+    }
+    for (const st of lineStages) {
+      if (!frs.some(r => r?.journey_stage === st && r?.priority === 'must')) errors.push(`functional-requirements: release-line stage ${st} has no must requirement`)
+    }
+  }
+  if (scope !== undefined) {
+    const inScope = new Set((scope.in_scope ?? []).flatMap(item => item?.requirements ?? []))
+    for (const req of frs) {
+      if (req?.priority === 'must' && !inScope.has(req.id)) errors.push(`scope: must requirement ${req.id} is in no in-scope item`)
+    }
+  }
+  for (const req of frs) {
+    for (const field of ['journey_stage', 'objective', 'shown_in']) {
+      if (req?.[field] === undefined) gate('functional-requirements', `functional-requirements: ${req?.id} has no ${field}`)
+    }
+  }
+
+  // section 8: every category the rubric asks about has a requirement or a reason
+  const nfrDoc = frontOf('nonfunctional-requirements')
+  if (nfrDoc !== undefined) {
+    const covered = new Set([...(nfrDoc.requirements ?? []).map(r => r?.category), ...(nfrDoc.not_applicable ?? []).map(n => n?.category)])
+    for (const category of ['performance', 'scale', 'availability', 'security', 'privacy', 'accessibility', 'retention', 'observability']) {
+      if (!covered.has(category)) warnings.push(`nonfunctional-requirements: no ${category} requirement, and no not_applicable reason`)
+    }
+  }
+
+  // section 10: approvers are personas, each stage's decision has a rule, and
+  // what a rule needs follows from how it is delegated
+  const rules = frontOf('decision-rights')?.decisions ?? []
+  const ruled = new Set(rules.flatMap(rule => rule?.stages ?? []))
+  for (const rule of rules) {
+    if (typeof rule?.approver === 'string' && personas.size > 0) {
+      if (!/^PER-\d{3}$/.test(rule.approver)) warnings.push(`decision-rights: ${rule.id} approver "${rule.approver}" is not a persona id`)
+      else if (!personas.has(rule.approver)) errors.push(`decision-rights: ${rule.id} approver ${rule.approver} is not a persona in section 4`)
+    }
+    for (const st of rule?.stages ?? []) {
+      if (stages.size > 0 && !stages.has(st)) errors.push(`decision-rights: ${rule.id} names stage ${st}, which does not exist`)
+    }
+    if (rule?.never_delegated === true && !rule?.evidence_required) errors.push(`decision-rights: ${rule.id} is never delegated and has no evidence_required`)
+    if (rule?.delegable_to_agent === true && !rule?.escalation) errors.push(`decision-rights: ${rule.id} is delegable to an agent and has no escalation`)
+  }
+  if (ruled.size > 0) {
+    for (const journey of journeys) {
+      for (const st of journey?.stages ?? []) {
+        if (st?.decision && !ruled.has(st.id)) warnings.push(`decision-rights: stage ${st.id} has a decision and no rule names it`)
+      }
+    }
+  }
+
+  // sections 11 and 12: what blocks exists, and nothing a release needs is due
+  // after the release
+  const allIds = new Set()
+  const collect = node => {
+    if (Array.isArray(node)) node.forEach(collect)
+    else if (node !== null && typeof node === 'object') {
+      if (typeof node.id === 'string') allIds.add(node.id)
+      Object.values(node).forEach(collect)
+    }
+  }
+  docs.forEach(doc => collect(doc.front))
+  const releases = frontOf('release-plan')?.releases ?? []
+  const dueAfterRelease = (by, blocks) => releases.find(rel =>
+    rel?.target_date && String(by) > String(rel.target_date) &&
+    blocks.some(id => (rel.requirements ?? []).includes(id) || (rel.journey_stages ?? []).includes(id)))
+  const blockers = [
+    ...(frontOf('assumptions-risks-dependencies')?.dependencies ?? []).map(d => ['assumptions-risks-dependencies', d]),
+    ...(frontOf('open-questions')?.questions ?? []).map(q => ['open-questions', q]),
+  ]
+  for (const [kind, item] of blockers) {
+    for (const id of item?.blocks ?? []) {
+      if (!allIds.has(id)) errors.push(`${kind}: ${item.id} blocks ${id}, which does not exist`)
+    }
+    const late = item?.by === undefined || item?.answer ? undefined : dueAfterRelease(item.by, item.blocks ?? [])
+    if (late !== undefined) errors.push(`${kind}: ${item.id} is due ${item.by}, after ${late.id}'s target ${late.target_date}, and ${late.id} needs what it blocks`)
+  }
+
+  // section 14: no term twice, and every see_also names a term
+  const terms = frontOf('glossary')?.terms ?? []
+  const termNames = terms.map(t => String(t?.term ?? '').toLowerCase())
+  for (const name of new Set(termNames.filter((name, i) => termNames.indexOf(name) !== i))) {
+    errors.push(`glossary: the term "${name}" is defined more than once`)
+  }
+  for (const t of terms) {
+    for (const ref of t?.see_also ?? []) {
+      if (!termNames.includes(String(ref).toLowerCase())) warnings.push(`glossary: "${t.term}" sees also "${ref}", which is not a term`)
+    }
+  }
+
+  // section 15: the root's version is logged, and a final section has an approval
+  const changes = frontOf('change-log')?.changes
+  if (Array.isArray(changes) && root?.front?.version && !changes.some(c => String(c?.version) === String(root.front.version))) {
+    errors.push(`change-log: the root's version ${root.front.version} has no change entry`)
+  }
+  const approved = (changes ?? []).some(c => (c?.approvals ?? []).some(a => a?.decision === 'approved' || a?.decision === 'approved-with-conditions'))
+  for (const doc of docs) {
+    if (doc.front.status === 'final' && !approved) errors.push(`${doc.file}: status final with no approval recorded in the change log`)
+  }
+
   // gates
   for (const doc of docs) {
     if (doc.front.status === 'final' && (doc.front.blocking ?? 0) > 0) {

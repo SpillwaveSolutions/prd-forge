@@ -130,7 +130,15 @@ node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-validate.mjs" docs/prd/<slug>
 node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-validate.mjs" docs/prd/<slug> --json
 ```
 
-Exit code 1 on any error. It checks each document against its schema, the
+Exit code 1 on any error. Beyond the schemas, the validator checks the blocking
+defects the section guides state wherever a script can: every problem reaches a
+requirement through an objective, the status quo is named among the competitors,
+an unknown baseline names its open question, the release line is one unbroken
+run of the golden thread, every `must` requirement is in scope, decision rules
+name real personas and stages, nothing a release needs is due after it, and a
+`final` section has a recorded approval. A field a guide requires at review,
+such as a requirement's `shown_in`, warns while its section is a draft and fails
+once the section is offered for review. It checks each document against its schema, the
 parent/prev/next/children graph, and every cross-section id — persona, stage,
 objective, requirement — plus the mechanically checkable parts of the five tests.
 

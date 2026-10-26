@@ -190,3 +190,12 @@ test('a lifecycle draws as a state diagram, every name and rule as written', { s
     if (name !== HOSTILE[0]) assert.ok(text.includes(`rule ${name}`), `rule for "${name}" is missing`)
   }
 })
+
+test('each scenario is followed by its lifecycles and wireframes, and no lifecycle shows twice', { skip: !hasMmdc }, () => {
+  const dir = join(mkdtempSync(join(tmpdir(), 'prd-set-')), 'set')
+  cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
+  assert.deepEqual(drawSet(dir), [])
+  const images = readFileSync(join(dir, '06-scenarios.md'), 'utf8').match(/^!\[([A-Z]{2}-\d{3})/gm).map(m => m.slice(2))
+  assert.deepEqual(images.slice(0, 5), ['SC-001', 'LC-001', 'WF-008', 'SC-002', 'WF-010'])
+  assert.equal(images.filter(id => id === 'LC-001').length, 1)
+})
