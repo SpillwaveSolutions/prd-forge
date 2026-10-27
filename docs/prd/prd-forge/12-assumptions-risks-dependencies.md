@@ -64,7 +64,7 @@ assumptions:
       as written and the delivery model has to change, which invalidates FR-002,
       FR-015, and FR-018, because each assumes the expert's own session.
     validated_by: >-
-      The information security review of the first three customer engagements.
+      The information security review of the first three client contracts.
     owner: Richard Hightower
     category: viability
     evidence: none
@@ -78,7 +78,7 @@ assumptions:
       the product as written, and NFR-008, NFR-010, and NFR-012, which are
       measured against this boundary, have to change.
     validated_by: >-
-      The information security review of the first three customer engagements,
+      The information security review of the first three client contracts,
       the same review that tests A-004.
     owner: Richard Hightower
     category: viability
@@ -256,5 +256,6 @@ assistant session, which carried the interview and read and wrote the documents.
 
 D-002 and D-003 are both requested and both due by 2027-01-31, two months
 before REL-001's target in section 13. The questions they answer are due by
-2027-02-28, so REL-001 can use the results. Q-019 decides, by 2027-01-31, what
-happens to REL-001 if either slips.
+2027-02-28, so REL-001 can use the results. Q-019 and Q-022 decide, by
+2027-01-31, whether REL-001 keeps its date and what happens to it if either
+slips.

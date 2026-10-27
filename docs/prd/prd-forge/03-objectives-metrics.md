@@ -33,7 +33,7 @@ objectives:
     baseline_question: Q-001
     target: >-
       80% of the pilot PRDs, at least 4 of 5, pass on first submission.
-      Provisional until Q-001 is answered, by 2027-03-31.
+      Provisional until Q-001 is answered, by 2027-02-28.
     by: 2027-09-30
     owner: Richard Hightower
   - id: O-002
@@ -53,7 +53,7 @@ objectives:
     baseline_question: Q-002
     target: >-
       Under 5 working days for a single-journey product. Provisional until Q-002
-      is answered, by 2027-03-31.
+      is answered, by 2027-02-28.
     by: 2027-09-30
     owner: Richard Hightower
   - id: O-003
@@ -76,7 +76,7 @@ objectives:
     baseline_question: Q-003
     target: >-
       95% of `must` requirements. Provisional until Q-003 is answered, by
-      2027-03-31.
+      2027-02-28.
     by: 2027-09-30
     owner: Richard Hightower
 links:
@@ -98,7 +98,7 @@ links:
 All three baselines are unknown, and each has a matching open question with a
 decider and a date. This is deliberate and it is the honest state: this product
 has not run against a real engagement yet. Each target is provisional until its
-question is answered, by 2027-03-31, and section 15 records the moment each
+question is answered, by 2027-02-28, and section 15 records the moment each
 baseline arrives and each target is either confirmed or changed.
 
 The pilot PRDs are the first 5 PRDs written with release 1 by people other than

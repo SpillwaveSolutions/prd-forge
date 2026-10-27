@@ -115,8 +115,8 @@ personas:
     external: false
     problems: [P-002]
     basis: >-
-      Assumed, not researched, as section 1's evidence note says. No dependency
-      tests it yet.
+      Assumed, not researched, as section 1's evidence note says. Q-023 tests it
+      with three delivery leads.
     context: >-
       Runs the story-mapping workshop from the approved set (ST-007, ST-008).
     goals:
@@ -148,7 +148,7 @@ links:
 | PER-003 | Sponsor: the budget holder (director or partner), who is also the approver | One | Once per version, about 6 a year | Approves the PRD for a release, with or without conditions, or rejects it (TR-001) |
 | PER-004 | Delivery lead (delivery manager or product owner) on the delivery team | One | Once per release, about 6 a year | The backlog's shape and order, and whether a backlog can be mapped at all |
 
-No persona is external. In a consultancy engagement, segment S-001, the
+No persona is external. Under a client contract, in segment S-001, the
 sponsor, the engineering lead, and the delivery lead all work for the
 consultancy. The client's staff only supply domain knowledge to the expert, and
 they do not use the product.

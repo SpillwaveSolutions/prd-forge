@@ -267,13 +267,13 @@ requirements:
         gap.
       - >-
         Given a requirement whose acceptance criteria an engineer who was not in
-        the interview judges insufficient to write a test from, when the review
-        reports it, then the requirement is named and the document is quoted.
+        the interview judges insufficient to write a test from, when the
+        buildability review reports it, then the requirement is named and the document is quoted.
       - >-
-        Given an open question that blocks a `must` requirement, when the review
-        runs, then that requirement's wait on the question is reported.
+        Given an open question that blocks a `must` requirement, when the
+        buildability review runs, then that requirement's wait on the question is reported.
       - >-
-        Given a review finding, when it is reported to the expert, then it has been
+        Given a buildability review finding, when it is reported to the expert, then it has been
         checked against the document and anything not supported by the document has
         been dropped.
     priority: must

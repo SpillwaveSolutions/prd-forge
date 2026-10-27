@@ -120,6 +120,12 @@ changes:
       - 5
       - 10
       - 11
+  - version: 0.5.0
+    date: 2026-10-26
+    author: Richard Hightower
+    summary: >-
+      No change to the set. The product changed, and the set and the product
+      share one version number.
   - version: 0.4.0
     date: 2026-10-26
     author: Richard Hightower
@@ -145,12 +151,9 @@ changes:
       user meets the outcome, and the seven shown on a screen or in a report are
       illustrated by six text sketches: the set with a section open, the empty
       state, a grade explained, the rubric, the buildability review, and the
-      approval pack. Re-grades user journeys and non-functional requirements and
-      records the reasons, with no change to either document. Adds the term "wireframe" to the glossary.
+      approval pack. Adds the term "wireframe" to the glossary.
     sections:
-      - 5
       - 7
-      - 8
       - 14
   - version: 0.2.0
     date: 2026-10-26
@@ -226,9 +229,10 @@ links:
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
 | 0.6.0 | 2026-10-27 | Richard Hightower | Links from the specification review: problems, objectives, competitors, decision stages, and scenario views |
+| 0.5.0 | 2026-10-26 | Richard Hightower | No change to the set; the product changed |
 | 0.4.0 | 2026-10-26 | Richard Hightower | Navigation and refresh requirements; wireframes rewritten from their grading |
 | 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for every screen and report, and recorded reasons for the grades |
-| 0.2.0 | 2026-10-26 | Richard Hightower | Every defect the grading and the buildability review found, over two rounds |
+| 0.2.0 | 2026-10-26 | Richard Hightower | J-001's goal without the engineering lead's confirmation; FR-003 and FR-004 outcomes; FR-015 and FR-016 split out; the threshold stated as 70; NFR-010 to NFR-012; TR-007 to TR-012 |
 | 0.1.0 | 2026-10-23 | Richard Hightower | First draft of sixteen section documents across fifteen sections |
 
 ## 0.9.0, what changed
@@ -237,8 +241,9 @@ links:
   each why-now claim cites the General Assembly survey of product managers.
   Desired outcomes name no mechanism, and Q-018 asks for one counted cost per
   problem.
-- **Section 2:** ChatPRD is the direct competitor. Why-we-win is stated per
-  segment in the buyer's terms, and each segment names its personas.
+- **Section 2:** ChatPRD is the direct competitor. Why-we-win is one sentence in
+  the sponsor's words, each buyer is PER-003, and "client contract" names the
+  contract where "engagement" did.
 - **Section 3:** O-001 counts the 5 pilot PRDs and defines a pass, O-002 counts
   the pilot PRDs with one journey, and O-003 counts a requirement testable when
   two of three engineering leads agree.
@@ -258,18 +263,21 @@ links:
 - **Section 8:** the NFRs name what they time, and NFR-010 and NFR-012 are
   measured in a test organization.
 - **Section 9:** on the expert's decision, C-004 leaves, and the section may be
-  empty.
+  empty. Its rule now lives in TR-005 in section 10 and FR-006 in section 7.
 - **Section 10:** TR-003 only produces a score, and TR-014 has the expert accept
   or refute it. TR-001 covers a rejection. The three delegable rules propose and
   never decide.
 - **Section 11:** R-001 and R-002 are mitigated by 2027-01-31, and D-002 and
   D-003 report by 2027-01-31.
-- **Section 12:** each question is single, and those that block REL-001 are due
-  by 2027-02-28. Q-011 is answered.
-- **Section 13:** REL-001 depends on D-002, D-003, and Q-019.
+- **Section 12:** each question is single, and those that block REL-001,
+  including the baselines Q-001 to Q-003, are due by 2027-02-28. Q-011 is
+  answered. Q-019 splits into Q-019 and Q-022, and Q-023 tests PER-004.
+- **Section 13:** REL-001 depends on D-002, D-003, Q-019, and Q-022.
 - **Section 14:** eight terms cite a verified source, and review, pass, refute,
-  and approval each have one meaning.
-- **Section 15:** the versioning policy.
+  approval, and engagement each have one meaning. Host and the general sense of
+  specification are defined.
+- **Section 15:** the versioning policy, a 0.5.0 entry, and the date the set is
+  offered for approval, 2027-03-15.
 
 None of this is structural under the policy. No stage is added, removed, or
 reordered, and the golden thread's goal and end state are unchanged. The
@@ -281,7 +289,8 @@ release line, done outside the product.
 The set and the product share one version number. The number changes by these
 rules:
 
-- A patch, such as 0.9.0 to 0.9.1, is for fixes that add no content.
+- A patch, such as 0.9.0 to 0.9.1, is for a correction that changes what a
+  sentence means. A typo fix gets no version.
 - A minor version, such as 0.8 to 0.9, is for new content in the set or in the
   product.
 - A change to the release line or to the golden thread takes the set to the
@@ -292,16 +301,17 @@ removing, or reordering a stage, or changing the journey's goal or end state.
 Rewording a stage's text or its acceptance is not such a change, and it takes
 a minor version at most.
 
-The expert set this policy at 0.9.0, and it applies from 0.9.0 onward. Earlier
-version numbers stay as recorded. Two earlier versions do not follow it, and
+The expert set this policy at 0.9.0, and it applies from 0.9.0 onward. From
+0.9.0, a reader can rely on the version number to follow it. Earlier version
+numbers stay as recorded. Two earlier versions do not follow it, and
 neither is reissued:
 
 - 0.8.1 added stage ST-009 and moved items between sections. Under this
   policy it would have been the next minor version.
 - 0.2.0 changed the golden thread. Under this policy it takes the set to 1.0.
 
-Version 0.5.0 changed the product and not this PRD, so the log has no entry for
-it.
+Version 0.5.0 changed the product and not this PRD. Its entry says so, because
+the set and the product share one version number.
 
 ## 0.2.0, what the grading changed
 
@@ -337,5 +347,5 @@ forward:
 
 None sought. This set is at `draft` and has not been offered for approval. It
 cannot be approved for a release without an approval recorded here, under
-TR-001. When it is offered, the sponsor, PER-003, is the approver who will be
-asked. A section reaches `final` when the expert sets it final, under TR-002.
+TR-001. The set is offered for approval by 2027-03-15. Richard Hightower, the
+sponsor, PER-003, is the approver who will be asked. A section reaches `final` when the expert sets it final, under TR-002.

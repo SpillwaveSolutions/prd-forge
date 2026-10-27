@@ -36,7 +36,7 @@ journeys:
         steps:
           - Says what they want built, in their own words, however roughly
           - Is asked what the business domain is and what the unit of work is
-            called - an engagement, a load, a claim, a case
+            called, such as a load, a claim, or a case
           - Names three words their team uses that an outsider would misread
           - Sees that a set of documents now exists, every section listed and
             marked as not yet started
@@ -132,7 +132,7 @@ journeys:
             could not build and which release-line stages have no requirement
             behind them.
           - >-
-            Given a gap the review reports, when the expert does not close it,
+            Given a gap the buildability review reports, when the expert does not close it,
             then they see it recorded as an open question with a decider and a
             date.
         steps:

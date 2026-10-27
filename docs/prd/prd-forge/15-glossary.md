@@ -47,7 +47,7 @@ terms:
     not: >-
       A date or a deadline. It is a line across the journey, not across a calendar.
   - term: Stage
-    meaning: One large step of a journey, naming a person, an input, an output and a decision.
+    meaning: One part of a journey, naming a person, an input, an output and a decision, and holding its steps.
     see_also:
       - journey
       - step
@@ -129,8 +129,8 @@ terms:
       revisited. A non-goal means not ever, with a reason.
   - term: Journey
     meaning: >-
-      The steps one user takes to reach one goal with the product, from start to
-      end, in order.
+      The stages one user goes through to reach one goal with the product, from
+      start to end, in order.
     see_also:
       - stage
       - golden thread
@@ -235,8 +235,8 @@ terms:
     meaning: >-
       What a buildability review concludes, one of three: `buildable`, `buildable
       with gaps`, `not buildable`. In ST-009 the engineering lead may record their
-      own verdict, and where it differs, theirs is the verdict and the review's is
-      kept beside it.
+      own verdict, and where it differs, theirs is the verdict and the buildability
+      review's is kept beside it.
     see_also:
       - derivability checks
   - term: Derivability checks
@@ -260,6 +260,9 @@ terms:
       What the expert's domain counts one piece of work as: a load, a claim, a
       case, a patient. Every question the expert is asked uses their
       word for it.
+    not: >-
+      An engagement. An engagement is the writing of one set with this product,
+      and the unit of work is what the expert's own domain counts.
   - term: Unverified
     meaning: >-
       A citation that was checked and could not be confirmed against its source.
@@ -518,7 +521,9 @@ terms:
     meaning: >-
       A group of backlog items that one release delivers. The source defines an
       epic as a large user story. This set keeps that it is large, and fixes its
-      size by the release rather than by judgment.
+      size by the release rather than by judgment, so that each release's backlog
+      is one group a delivery lead can plan, as ST-008's epics scoped by the
+      release line need.
     see_also:
       - backlog
       - release line
@@ -654,8 +659,9 @@ terms:
       for a release, under TR-001, and is the decider of that one rule.
   - term: Release
     meaning: >-
-      A numbered group of journey stages delivered together, such as REL-001,
-      with its exit criteria. The first release holds exactly the release line.
+      A numbered release, such as REL-001, with its outcomes, its exit criteria,
+      and the journey stages it completes when it has any. The first release
+      holds exactly the release line.
     see_also:
       - release line
       - scope
@@ -1025,12 +1031,12 @@ terms:
       - verdict
       - first submission
     not: >-
-      Meeting the gate. A section meets the gate, and a PRD passes the
-      buildability review.
+      Meeting the gate, or a grading pass. A section meets the gate, a grading
+      pass is one run of the rubric, and a PRD passes the buildability review.
   - term: Indicative
     meaning: >-
       Said of a release date the plan aims at and has not committed to, marked
-      `date_status: indicative` in section 13.
+      indicative in section 13.
     see_also:
       - release
   - term: Follow-up
@@ -1041,6 +1047,21 @@ terms:
     see_also:
       - interview
       - topic
+  - term: Host
+    meaning: >-
+      The assistant session the expert already works in, which renders what the
+      product shows and carries its load, as dependency D-001 records.
+    see_also:
+      - session
+      - dependency
+  - term: Specification
+    meaning: >-
+      In the general sense only: a requirements document written without this
+      method, as section 1 and Q-001 use the word. This set calls its own
+      documents the set, or the PRD.
+    see_also:
+      - prd
+      - document set
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -1105,6 +1126,11 @@ links:
 | Vocabulary | The glossary |
 | Persona | A user |
 | Buyer | The user |
+| Risk | An assumption |
+| Decider | The approver |
+| Review | The buildability review |
+| Exit criteria | Acceptance criteria |
+| Unit of work | An engagement |
 
 The "Most often confused with" column above is the one that earns its keep. Three
 of them, golden thread, blocking defect and

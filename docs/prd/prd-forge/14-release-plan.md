@@ -62,6 +62,7 @@ releases:
       - D-002
       - D-003
       - Q-019
+      - Q-022
     exit_criteria:
       - >-
         At least 4 of the 5 pilot PRDs, 80%, pass the buildability review on first
@@ -166,8 +167,9 @@ REL-001 targets 2027-03-31. D-002 and D-003 in section 11, the ten observed
 experts and the three engineering leads, are due by 2027-01-31 and are only
 *requested*. The questions they answer are due by 2027-02-28, a month before
 REL-001, so REL-001 can use what they find. If either slips, REL-001 moves or
-ships knowingly as an experiment. Q-019 decides which, and Richard Hightower
-decides it by 2027-01-31.
+ships knowingly as an experiment. Q-019 decides whether the date holds, Q-022
+decides what happens if it does not, and Richard Hightower decides both by
+2027-01-31.
 
 REL-002 carries no requirements yet. Section 7 holds none for ST-007, ST-008, or
 ST-009, and they are written when REL-002 is planned.

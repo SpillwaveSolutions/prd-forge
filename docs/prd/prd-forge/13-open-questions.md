@@ -17,7 +17,7 @@ questions:
       What share of specifications reaching a development team today pass a
       buildability review on first submission?
     decider: Richard Hightower
-    by: 2027-03-31
+    by: 2027-02-28
     blocks:
       - O-001
     spike: >-
@@ -29,7 +29,7 @@ questions:
       How many working days does it take today from the first question put to the
       domain expert about a product to an approved specification?
     decider: Richard Hightower
-    by: 2027-03-31
+    by: 2027-02-28
     blocks:
       - O-002
     spike: >-
@@ -40,7 +40,7 @@ questions:
       What share of `must` functional requirements in today's specifications can an
       engineer who was not in the interview write a test from?
     decider: Richard Hightower
-    by: 2027-03-31
+    by: 2027-02-28
     blocks:
       - O-003
     spike: >-
@@ -77,7 +77,6 @@ questions:
     by: 2027-02-28
     blocks:
       - R-004
-      - NFR-005
     spike: >-
       Count in D-002's ten observed sessions, held by 2027-01-31. Time-boxed to 1
       day after the sessions.
@@ -89,6 +88,7 @@ questions:
     blocks:
       - ST-004
       - FR-010
+      - R-004
     spike: >-
       Count loop-backs in D-002's ten observed sessions, held by 2027-01-31.
       Time-boxed to 1 day after the sessions.
@@ -133,9 +133,9 @@ questions:
       - FR-015
       - NFR-011
     spike: >-
-      Trace one recorded interview from the first answer to the drafted section,
-      and mark each place an answer sits before the draft, checked against A-005
-      and NFR-004. Time-boxed to 2 days. Guessing this one breaks assumption A-005,
+      List what an expert must find when they come back after a break (FR-015),
+      and check each item against A-005's boundary. The answer is yes if any item
+      the expert must find is an answer not yet drafted. Time-boxed to 2 days. Guessing this one breaks assumption A-005,
       which customers rely on, rather than merely costing rework.
   - id: Q-011
     question: >-
@@ -160,12 +160,12 @@ questions:
       - S-001
       - S-002
     spike: >-
-      Compare the segments against the first ten conversations with buyers.
-      Time-boxed to 2 days.
+      For the first ten buyers spoken to in each segment, count how many buy by
+      2027-06-30, and compare the two counts. Time-boxed to 1 day at that date.
   - id: Q-013
     question: >-
-      What day rate does a buyer pay to contract a product manager for an
-      engagement?
+      What day rate does a buyer pay to contract a product manager for the
+      writing of one set?
     decider: Richard Hightower
     by: 2027-06-30
     blocks:
@@ -189,9 +189,14 @@ questions:
     question: >-
       Who owns the rubric and the eleven derivability checks?
     decider: Richard Hightower
-    by: 2027-01-31
+    by: 2027-01-15
     blocks:
-      - Q-009
+      - FR-004
+      - FR-009
+      - FR-010
+      - FR-011
+      - FR-012
+      - FR-019
     spike: >-
       Name the person accountable for the content of the rubric and the checks,
       and confirm with that person that they accept it, before Q-009 fixes a
@@ -208,15 +213,17 @@ questions:
       readers whether they need to tell the two grades apart. Time-boxed to 1 day.
   - id: Q-017
     question: >-
-      Who owns NFR-006's accessibility, given that the product's output is read in
-      places the non-goals in section 6 say we do not own?
+      Whom does the decider record as owner of NFR-006's accessibility, given that
+      the product's output is read in places the non-goals in section 6 say we do
+      not own?
     decider: Richard Hightower
     by: 2027-02-28
     blocks:
       - NFR-006
     spike: >-
-      List each place the product's output is read and who controls it, and
-      confirm the owner with that party. Time-boxed to 2 days.
+      List each place the product's output is read and who controls it, and get
+      that party's written confirmation that they own it. The decider then
+      records the owner. Time-boxed to 2 days.
   - id: Q-018
     question: >-
       What does each problem in section 1 cost, as one counted case per problem?
@@ -233,15 +240,15 @@ questions:
       approval. Time-boxed to 2 days.
   - id: Q-019
     question: >-
-      Does REL-001 keep 2027-03-31 if D-002 and D-003 report by 2027-01-31, and
-      does it move or ship as an experiment if they slip?
+      Does REL-001 keep 2027-03-31 if D-002 and D-003 report by 2027-01-31?
     decider: Richard Hightower
     by: 2027-01-31
     blocks:
       - REL-001
     spike: >-
-      Check the dates D-002 and D-003 commit to, and compare them with REL-001's
-      target date. Time-boxed to 1 day.
+      Get the date each party behind D-002 and D-003 commits to in writing. The
+      answer is yes only if both commit to 2027-01-31 or earlier. Time-boxed to
+      1 day.
   - id: Q-020
     question: >-
       Which section do experts stop at most often?
@@ -254,15 +261,39 @@ questions:
       2027-01-31. Time-boxed to 1 day after the sessions.
   - id: Q-021
     question: >-
-      Who owns NFR-012's access control, given that a set is stored where the
-      organization already stores documents?
+      Whom does the decider record as owner of NFR-012's access control, given
+      that a set is stored where the organization already stores documents?
     decider: Richard Hightower
     by: 2027-02-28
     blocks:
       - NFR-012
     spike: >-
       List every path by which someone can read a set and who grants access to
-      it, and confirm the owner with that party. Time-boxed to 2 days.
+      it, and get that party's written confirmation that they own it. The decider
+      then records the owner. Time-boxed to 2 days.
+  - id: Q-022
+    question: >-
+      If D-002 or D-003 reports after 2027-01-31, does REL-001 move or ship as an
+      experiment?
+    decider: Richard Hightower
+    by: 2027-01-31
+    blocks:
+      - REL-001
+    spike: >-
+      For each outcome, list which of REL-001's exit criteria can still be judged
+      with the late results, and choose the outcome that leaves more of them
+      judgeable. Time-boxed to 1 day.
+  - id: Q-023
+    question: >-
+      Do delivery leads run a story-mapping workshop about once per release and
+      want a backbone agreed before it, as PER-004 assumes?
+    decider: Richard Hightower
+    by: 2027-05-31
+    blocks:
+      - PER-004
+    spike: >-
+      Ask three delivery leads how often they run the workshop and what they need
+      agreed before it. Time-boxed to 2 days.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-assumptions-risks-dependencies, kind: assumptions-risks-dependencies, path: ./12-assumptions-risks-dependencies.md, title: "Assumptions, risks and dependencies" }
@@ -273,31 +304,34 @@ links:
 
 | ID | Question | Decider | By | Blocks |
 | --- | --- | --- | --- | --- |
-| Q-001 | Today's first-pass buildability rate | R. Hightower | 2027-03-31 | O-001 |
-| Q-002 | Today's days from the first question to an approval | R. Hightower | 2027-03-31 | O-002 |
-| Q-003 | Today's share of testable `must` requirements | R. Hightower | 2027-03-31 | O-003 |
+| Q-001 | Today's first-pass buildability rate | R. Hightower | 2027-02-28 | O-001 |
+| Q-002 | Today's days from the first question to an approval | R. Hightower | 2027-02-28 | O-002 |
+| Q-003 | Today's share of testable `must` requirements | R. Hightower | 2027-02-28 | O-003 |
 | Q-004 | How many organizations are in each segment | R. Hightower | 2027-06-30 | S-001, S-002 |
 | Q-005 | Does FR-013 stay `must`, given what sponsors say about grades | R. Hightower | 2027-01-31 | FR-013, TR-001, OUT-003 |
-| Q-006 | Sections completed per sitting | R. Hightower | 2027-02-28 | R-004, NFR-005 |
-| Q-007 | Does writing the requirements send an expert back to the journeys | R. Hightower | 2027-02-28 | ST-004, FR-010 |
+| Q-006 | Sections completed per sitting | R. Hightower | 2027-02-28 | R-004 |
+| Q-007 | Does writing the requirements send an expert back to the journeys | R. Hightower | 2027-02-28 | ST-004, FR-010, R-004 |
 | Q-008 | Disciplined or incomplete, to an engineering lead | R. Hightower | 2027-02-28 | A-003 |
 | Q-009 | Which version of the rubric and the checks release 1 grades against | R. Hightower | 2027-01-31 | FR-004, FR-009, FR-010, FR-011, FR-012, FR-019 |
 | Q-010 | Must an answer survive the session before its section is drafted | R. Hightower | 2027-01-31 | FR-015, NFR-011 |
 | Q-012 | Which segment converts first | R. Hightower | 2027-06-30 | S-001, S-002 |
 | Q-013 | The day rate a buyer pays for a contracted product manager | R. Hightower | 2027-06-30 | S-002 |
 | Q-014 | Does ST-004 keep its loop-back, given what experts say | R. Hightower | 2027-02-28 | ST-004, FR-010 |
-| Q-015 | Who owns the rubric and the checks | R. Hightower | 2027-01-31 | Q-009 |
+| Q-015 | Who owns the rubric and the checks | R. Hightower | 2027-01-15 | FR-004, FR-009 to FR-012, FR-019 |
 | Q-016 | Must a grade show the rubric version it was made against | R. Hightower | 2027-01-31 | NFR-007 |
 | Q-017 | Who owns NFR-006's accessibility | R. Hightower | 2027-02-28 | NFR-006 |
 | Q-018 | One counted cost per problem in section 1 | R. Hightower | 2027-01-31 | P-001 to P-004 |
-| Q-019 | Does REL-001 keep its date, or move if D-002 and D-003 slip | R. Hightower | 2027-01-31 | REL-001 |
+| Q-019 | Does REL-001 keep its date if D-002 and D-003 report on time | R. Hightower | 2027-01-31 | REL-001 |
 | Q-020 | Which section experts stop at most | R. Hightower | 2027-02-28 | R-004 |
 | Q-021 | Who owns NFR-012's access control | R. Hightower | 2027-02-28 | NFR-012 |
+| Q-022 | Does REL-001 move or ship as an experiment if D-002 or D-003 is late | R. Hightower | 2027-01-31 | REL-001 |
+| Q-023 | Does the delivery lead persona hold | R. Hightower | 2027-05-31 | PER-004 |
 
 ## The ones that matter most
 
-**Q-001 to Q-003 are the baselines for all three objectives.** Until they are
-answered, section 3's targets are provisional. Nothing should be committed to a
+**Q-001 to Q-003 are the baselines for all three objectives.** They are due by
+2027-02-28, a month before REL-001, so its exit criteria are fixed before it
+ships. Until they are answered, section 3's targets are provisional. Nothing should be committed to a
 plan on the strength of them.
 
 **Q-009 and Q-010 block the most.** Q-009 blocks four `must` requirements, FR-004, FR-009, FR-010, and FR-012, and two `should`
@@ -311,11 +345,12 @@ a sponsor a grade reduces their confidence rather than raising it, then FR-013 i
 wrong and the grading becomes an author's private tool rather than part of the
 approval. It takes two days, and it should be asked early.
 
-**Q-019 is the schedule.** D-002 and D-003 now report by 2027-01-31, and the
-questions they answer are due by 2027-02-28, a month before REL-001. Q-019
-decides what happens to REL-001 if they slip.
+**Q-019 and Q-022 are the schedule.** D-002 and D-003 report by 2027-01-31, and
+the questions they answer are due by 2027-02-28, a month before REL-001. Q-019
+decides whether REL-001 keeps its date, and Q-022 decides what happens if either
+dependency is late.
 
-**Q-008 tests test 5.** If engineering leads read the absence of technology as
+**Q-008 tests the fifth of the five tests in the glossary: a requirement names no technology.** If engineering leads read the absence of technology as
 incompleteness, the discipline this whole product enforces is a liability, and
 A-003 fails.
 

@@ -14,7 +14,7 @@ graded: 2026-10-27
 segments:
   - id: S-001
     name: Consultancies and advisory firms turning client domain knowledge into PRDs
-    buyer: Principal or practice lead, as the sponsor
+    buyer: Partner or director of the consultancy, the budget holder, as the sponsor
     buyer_persona: PER-003
     user: The consultant with the domain knowledge, as the product manager
     user_personas:
@@ -27,10 +27,10 @@ segments:
       saved, not a software budget.
     adoption_barriers:
       - A sponsor may trust a machine-produced grade less, not more (Q-005).
-      - The product runs only inside an assistant session the expert already uses (D-001).
+      - We must approve client knowledge going into the assistant session our consultants already use before anyone works that way (A-004).
   - id: S-002
     name: Regulated-industry organizations where practitioners specify their own internal software
-    buyer: Head of product or head of transformation, as the sponsor
+    buyer: Director of product or transformation, the budget holder, as the sponsor
     buyer_persona: PER-003
     user: The practitioner, as the product manager or domain expert
     user_personas:
@@ -69,9 +69,9 @@ competitors:
     offer: >-
       Fluent prose on any section, instantly, with no setup at all.
     our_edge: >-
-      Fluency is the failure mode in P-003. After one engagement, the buyer sees a
-      grade and its blocking defects for each section, so a fluent section that
-      cannot be built is marked before approval.
+      Before approving, the buyer can see which sections are not yet ready, each
+      with the quoted defect that holds it back, so a fluent section that cannot
+      be built is not offered as ready. Fluency is the failure mode in P-003.
   - name: Contracting a product manager without the domain for the engagement
     kind: indirect
     offer: >-
@@ -79,8 +79,8 @@ competitors:
     our_edge: >-
       The PRD is written by the person closest to the domain knowledge, and the
       buyer sees each section's grade and blocking defects before approving. In
-      S-001 the consultant already stands between the client and the page, so
-      the edge there is availability and cost, not fewer hands.
+      S-001 the consultant already stands between the client and the page, and
+      any cost advantage there is unproven until Q-013 gives the day rate.
   - name: "The status quo: a smart practitioner, a document, and a willing engineer"
     kind: status-quo
     offer: >-
@@ -91,12 +91,8 @@ competitors:
       expert could not supply as an open question with a named decider and a
       date, so they can estimate without first interviewing the author.
 why_we_win: >-
-  For a consultancy, S-001, the consultant's billable hours on a PRD end in a set
-  an engineer can estimate from without coming back with questions. For a
-  regulated organization, S-002, the practitioner writes the PRD themselves
-  instead of the organization contracting a product manager without the domain.
-  In both, the buyer sees before approving which parts a team could not build
-  from. The day rate behind the S-002 comparison is Q-013.
+  "Before I approve the budget, I can see which parts of a PRD my own expert
+  wrote my team could not build from yet."
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-problem-opportunity, kind: problem-opportunity, path: ./01-problem-opportunity.md, title: Problem and opportunity }
@@ -107,8 +103,8 @@ links:
 
 | ID | Segment | Buyer | User |
 | --- | --- | --- | --- |
-| S-001 | Consultancies and advisory firms turning client domain knowledge into PRDs | Principal or practice lead, as the sponsor | The consultant with the domain knowledge, as the product manager |
-| S-002 | Regulated-industry organizations where practitioners specify their own internal software | Head of product or head of transformation, as the sponsor | The practitioner, as the product manager or domain expert |
+| S-001 | Consultancies and advisory firms turning client domain knowledge into PRDs | Partner or director of the consultancy, the budget holder, as the sponsor | The consultant with the domain knowledge, as the product manager |
+| S-002 | Regulated-industry organizations where practitioners specify their own internal software | Director of product or transformation, the budget holder, as the sponsor | The practitioner, as the product manager or domain expert |
 
 Neither segment is sized yet. Both count organizations, and Q-004 asks for the
 count and its source.
@@ -128,12 +124,12 @@ The id S-003 is not reused.
 
 ## Why we win
 
-For a consultancy, S-001, the consultant's billable hours on a PRD end in a set
-an engineer can estimate from without coming back with questions. For a
-regulated organization, S-002, the practitioner writes the PRD themselves instead
-of the organization contracting a product manager without the domain. In both,
-the buyer sees before approving which parts a team could not build from. The day
-rate behind the S-002 comparison is Q-013.
+"Before I approve the budget, I can see which parts of a PRD my own expert wrote
+my team could not build from yet."
+
+The sponsor in either segment says this. In S-001 they weigh it against the
+consultant's billable hours, and in S-002 against contracting a product manager
+without the domain, whose day rate is Q-013.
 
 **Honest weakness.** Against a product manager who already holds the domain, we
 have no quality edge, only availability and cost. A skeptical buyer is right to
