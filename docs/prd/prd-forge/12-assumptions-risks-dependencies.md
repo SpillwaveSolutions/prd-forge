@@ -48,7 +48,7 @@ assumptions:
     owner: Richard Hightower
   - id: A-004
     assumption: >-
-      Organisations will let a specification for their product be drafted inside an
+      Organisations will let a PRD for their product be drafted inside an
       assistant session.
     if_false: >-
       The separate-application non-goal in section 6 and A-005 are unacceptable

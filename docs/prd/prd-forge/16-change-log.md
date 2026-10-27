@@ -51,16 +51,26 @@ changes:
       spike, says `wont` means won't have this time, and defines segment, buyer,
       status quo, delegated, and definition of done. WF-001 draws FR-020's list
       of differences, section 10 calls each rule's decider the Decider, and the
-      versioning policy applies from 0.9.0 onward. The set states its
-      versioning policy before 1.0. This is a minor version because the policy
+      versioning policy applies from 0.9.0 onward. On the expert's decision,
+      TR-003 now only produces a section's score, and the new TR-014 asks the
+      expert to accept or refute it, with a refutation recorded. FR-009 asks
+      for that decision after each grade. The policy defines a change to the
+      golden thread as structural, and "PRD" or "set" replaces "specification"
+      wherever it meant this set. The set states its versioning policy before
+      1.0. This is a minor version because the policy
       and the evidence are new content.
     sections:
       - 1
       - 2
+      - 3
+      - 4
       - 5
       - 6
       - 7
+      - 8
       - 9
+      - 10
+      - 11
       - 12
       - 13
       - 14
@@ -243,7 +253,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; FR-008 checks the set for one item stated two ways; final set by the expert; ten more glossary terms; FR-019 and FR-020 split out; sources cited for standard terms; the versioning policy; FR-020 drawn in WF-001; Decider for trust rules |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; FR-008 checks the set for one item stated two ways; final set by the expert; ten more glossary terms; FR-019 and FR-020 split out; sources cited for standard terms; the versioning policy; FR-020 drawn in WF-001; Decider for trust rules; TR-014 to accept or refute a score; PRD or set in place of specification |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
@@ -263,6 +273,11 @@ rules:
   product.
 - A change to the release line or to the golden thread takes the set to the
   next major version. From 0.x, the next major version is 1.0.
+
+A change to the golden thread or to the release line is structural: adding,
+removing, or reordering a stage, or changing the journey's goal or end state.
+Rewording a stage's text or its acceptance is not such a change, and it takes
+a minor version at most.
 
 The expert set this policy at 0.9.0, and it applies from 0.9.0 onward. Earlier
 version numbers stay as recorded. Two earlier versions do not follow it, and

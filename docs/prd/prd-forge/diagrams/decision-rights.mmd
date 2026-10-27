@@ -9,7 +9,7 @@ flowchart LR
   APER003 --> DTR001
   DTR002["<b>TR-002</b> Set a section's state to final <i>(never delegated)</i>"]
   APER001 --> DTR002
-  DTR003["<b>TR-003</b> Accept or refute a section's score against its rubric <i>(an agent may decide)</i>"]
+  DTR003["<b>TR-003</b> Produce a section's score and findings against its rubric <i>(an agent may decide)</i>"]
   APER001 --> DTR003
   DTR004["<b>TR-004</b> Decide what the product is for and what is out of scope <i>(never delegated)</i>"]
   APER001 --> DTR004
@@ -31,6 +31,8 @@ flowchart LR
   APER004 --> DTR012
   DTR013["<b>TR-013</b> Accept a drafted section as saying what the expert meant, or correct it <i>(never delegated)</i>"]
   APER001 --> DTR013
+  DTR014["<b>TR-014</b> Accept or refute a section's score <i>(never delegated)</i>"]
+  APER001 --> DTR014
   classDef never fill:#FFFFFF,stroke:#1F2430,stroke-width:2px,color:#1F2430
   classDef agent fill:#F5F7FA,stroke:#8A94A6,stroke-dasharray:5 4,color:#1F2430
   classDef person fill:#F5F7FA,stroke:#8A94A6,color:#1F2430
@@ -47,3 +49,4 @@ flowchart LR
   class DTR011 agent
   class DTR012 never
   class DTR013 never
+  class DTR014 never

@@ -674,8 +674,8 @@ terms:
   - term: Engineer
     meaning: >-
       Anyone on the team who builds from the set and was not in the interview.
-      The engineering lead is one. An acceptance criterion passes the five tests
-      only when an engineer could write a test from it.
+      The engineering lead is one. An acceptance criterion is good only when an
+      engineer could write a test from it.
     see_also:
       - engineering lead
       - acceptance criteria
@@ -1007,7 +1007,7 @@ The "Most often confused with" column above is the one that earns its keep. Ever
 been confused in practice, and three of them, golden thread, blocking defect and
 score, carry a cost when confused: a team picks the wrong journey for release 1,
 ships a section with a known fault because the number looked good, or believes a
-well-written specification means a sound product.
+well-written PRD means a sound product.
 
 ## References
 

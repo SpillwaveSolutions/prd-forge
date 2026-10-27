@@ -14,7 +14,7 @@ graded: 2026-10-26
 objectives:
   - id: O-001
     objective: >-
-      A specification handed to a development team can be built from without the
+      A PRD handed to a development team can be built from without the
       team re-deriving it first.
     problems: [P-001, P-002, P-003]
     metric: >-
@@ -30,7 +30,7 @@ objectives:
     owner: Richard Hightower
   - id: O-002
     objective: >-
-      A domain expert reaches an approved specification in days rather than the
+      A domain expert reaches an approved PRD in days rather than the
       weeks a product manager's discovery cycle takes.
     problems: [P-004]
     metric: >-

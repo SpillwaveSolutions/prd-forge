@@ -143,7 +143,7 @@ requirements:
     category: retention
     statement: >-
       A set remains readable and retrievable for as long as the organisation keeps
-      the specifications it builds from, without this product being involved.
+      the PRDs it builds from, without this product being involved.
     metric: >-
       Share of a set retrievable and readable from the organisation's own document
       store, with no part of this product present.

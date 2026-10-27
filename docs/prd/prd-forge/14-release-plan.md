@@ -21,7 +21,7 @@ releases:
         approved PRD without leaving the session they started in.
       - >-
         The expert can see, before anyone estimates, which parts of their own
-        specification a development team could not build from.
+        PRD a development team could not build from.
       - >-
         A sponsor can see what they are approving, what is still open and who owns
         each open thing, on one page.
@@ -97,7 +97,7 @@ releases:
     name: More than one author
     outcomes:
       - >-
-        Two experts can work on different sections of the same specification
+        Two experts can work on different sections of the same set
         without overwriting each other.
       - >-
         A reviewer can comment on a section without being able to change it.

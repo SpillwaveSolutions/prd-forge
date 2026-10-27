@@ -63,7 +63,7 @@ decisions:
         Given an override, when it is applied, then the change log records that it
         was an override and the score at the time.
   - id: TR-003
-    decision: Accept or refute a section's score against its rubric
+    decision: Produce a section's score and findings against its rubric
     stages: [ST-003]
     approver: PER-001
     delegable_to_agent: true
@@ -72,16 +72,16 @@ decisions:
       The rubric's dimensions and a quotation from the document for every score
       below full marks.
     escalation: >-
-      The expert may refute any finding by pointing at the document; a finding the
-      document does not support is dropped (FR-016). While the expert is away a
-      grade stands unaccepted, and the section does not advance.
+      The score runs by itself after each draft, and nobody has to start it. The
+      score does not count until the expert accepts it under TR-014, and a finding
+      the document does not support is dropped (FR-016).
     acceptance:
+      - >-
+        Given a section that has just been drafted, when the draft is written,
+        then its score and findings are produced without anyone asking for them.
       - >-
         Given a score below full marks on a dimension, when it is reported, then a
         quotation from the document is given for it.
-      - >-
-        Given a finding the expert refutes and the document does not support, when
-        it is checked, then it is dropped and the expert is told it was dropped.
   - id: TR-004
     decision: Decide what the product is for and what is out of scope
     stages: [ST-001]
@@ -270,6 +270,32 @@ decisions:
         Given an expert who corrects a drafted section, when the correction is
         applied, then it is their words that are kept, and the section is graded
         again before it advances.
+  - id: TR-014
+    decision: Accept or refute a section's score
+    stages: [ST-003]
+    approver: PER-001
+    delegable_to_agent: false
+    never_delegated: true
+    evidence_required: >-
+      The score, each finding with the quotation behind it, and the section's
+      weakest part. The product asks as soon as the score is produced, so the
+      expert's only action is to accept or to refute.
+    escalation: >-
+      None, and no substitute. While the expert is away the score waits,
+      unaccepted, and the section does not advance. Nobody accepts a score on the
+      expert's behalf.
+    acceptance:
+      - >-
+        Given a score that has just been produced, when the expert sees it, then
+        they are asked whether they accept it or refute it, and need take no
+        other action.
+      - >-
+        Given an expert who accepts a score, when they accept it, then the
+        acceptance is recorded and the section may advance on that score.
+      - >-
+        Given an expert who refutes a finding, when they give their reason, then
+        the refutation and the reason are recorded, and the finding is checked
+        against the document under FR-016.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-constraints, kind: constraints, path: ./10-constraints.md, title: Constraints }
@@ -284,7 +310,7 @@ links:
 | --- | --- | --- | --- | --- |
 | TR-001 | Approve a PRD for a release | PER-003 | no | yes |
 | TR-002 | Set a section to final | PER-001 | no | yes |
-| TR-003 | Accept or refute a section's score | PER-001 | **yes** | no |
+| TR-003 | Produce a section's score and findings | PER-001 | **yes** | no |
 | TR-004 | Decide scope | PER-001 | no | yes |
 | TR-005 | State a domain fact as true | PER-001 | no | yes |
 | TR-006 | Judge buildability, and report the gaps | PER-002 | **yes** | no |
@@ -295,19 +321,22 @@ links:
 | TR-011 | Decide a backlog can be mapped | PER-004 | **yes** | no |
 | TR-012 | Decide which epics come first | PER-004 | no | yes |
 | TR-013 | Accept or correct a drafted section | PER-001 | no | yes |
+| TR-014 | Accept or refute a section's score | PER-001 | no | yes |
 
 Every decision named in a stage of section 5 appears here. TR-007 to TR-013 were
 added at version 0.2.0 to close that: five release-line stage decisions and both
 of J-002's had no rule, which meant gates an engineering team would have had to
 invent. TR-013 covers the one in the middle of the loop, the expert accepting
 that a draft says what they meant, which is distinct from scoring it (TR-003),
+from accepting or refuting the score (TR-014),
 from leaving it at draft (TR-009) and from setting it final (TR-002).
 
 ## The shape of the trust boundary
 
-Only three of thirteen are delegable, and all three are **assessments**, not
+Only three of fourteen are delegable, and all three are **assessments**, not
 decisions:
-TR-003 produces a document's score, TR-006 judges whether it can be built from, and TR-011
+TR-003 produces a document's score, which the expert then accepts or refutes
+under TR-014, TR-006 judges whether it can be built from, and TR-011
 judges whether a backlog can be mapped from it. All three produce evidence for a
 person. None changes a document, and none can set a state.
 

@@ -67,7 +67,7 @@ competitors:
       date, so they can estimate without first interviewing the author.
 why_we_win: >-
   The expert can see, before anyone starts building, which parts of their own
-  specification a development team will not be able to build from, and what to
+  PRD a development team will not be able to build from, and what to
   answer to fix it.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
@@ -90,7 +90,7 @@ id S-003 is not reused.
 ## Why we win
 
 The expert can see, before anyone starts building, which parts of their own
-specification a development team will not be able to build from, and what to
+PRD a development team will not be able to build from, and what to
 answer to fix it. No competitor above tells them that.
 
 **Honest weakness.** Against a contracted product manager we have no quality edge,

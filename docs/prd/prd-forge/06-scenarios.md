@@ -175,7 +175,7 @@ scenarios:
       A freight operations manager has an idea for a tool that recovers late
       loads. They have never written a PRD, and the quarterly planning meeting is
       one week away.
-    trigger: They say they want to turn the idea into a specification.
+    trigger: They say they want to turn the idea into a PRD.
     course:
       - They state the idea in their own words and name their domain, freight
         operations
@@ -292,7 +292,7 @@ The priorities follow the requirements. SC-002 and SC-004 are `should`, because
 FR-015 and FR-016, which they exercise, are `should`.
 
 The four exceptions are the ones that decide whether this product is trustworthy.
-SC-003 and SC-006 are where a specification quietly acquires a technology choice
+SC-003 and SC-006 are where a PRD quietly acquires a technology choice
 or an invented fact. SC-004 is where the grading either earns the expert's trust
 or loses it: a reviewer that cannot be refuted is a reviewer nobody believes.
 SC-005 is the moment the product is supposed to pay for itself.

@@ -59,7 +59,7 @@ questions:
       first ten conversations. Time-boxed to 5 days.
   - id: Q-005
     question: >-
-      Will a sponsor accept a specification that carries a machine-produced grade,
+      Will a sponsor accept a PRD that carries a machine-produced grade,
       or does the grade reduce their confidence rather than raise it?
     decider: Richard Hightower
     consulted: the first three sponsors
@@ -168,7 +168,7 @@ links:
 | Q-002 | Today's idea-to-approval elapsed time | R. Hightower | 2027-03-31 | O-002 |
 | Q-003 | Today's share of testable requirements | R. Hightower | 2027-03-31 | O-003 |
 | Q-004 | Segment sizes, and which converts | R. Hightower | 2027-06-30 | S-001, S-002 |
-| Q-005 | Will a sponsor accept a graded specification | R. Hightower | 2027-01-31 | FR-013, TR-001 |
+| Q-005 | Will a sponsor accept a graded PRD | R. Hightower | 2027-01-31 | FR-013, TR-001 |
 | Q-006 | Sections completed per sitting, and where they stop | R. Hightower | 2027-03-31 | R-004, NFR-005 |
 | Q-007 | Is the working order right, and how does looping back feel | R. Hightower | 2027-03-31 | ST-004 |
 | Q-008 | Disciplined or incomplete, to an engineering lead | R. Hightower | 2027-03-31 | A-003 |

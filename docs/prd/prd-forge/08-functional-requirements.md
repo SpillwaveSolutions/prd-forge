@@ -202,6 +202,9 @@ requirements:
       - >-
         Given a graded section, when the expert reads the grade, then the weakest
         part is named and why it is weak is stated in no more than three lines.
+      - >-
+        Given a grade that has just been reported, when the expert reads it, then
+        they are asked to accept it or refute it, under TR-014.
     priority: must
     shown_in: screen
     journey_stage: ST-003
@@ -253,7 +256,7 @@ requirements:
       See what a development team would not be able to build from the set, before
       anyone has estimated it
     outcome: >-
-      They learn where their own specification fails while it is still cheap to
+      They learn where their own PRD fails while it is still cheap to
       fix, rather than at iteration three.
     acceptance:
       - >-
@@ -496,7 +499,7 @@ FR-004, FR-009, FR-010, and FR-012 wait on Q-009, where the rubric and the
 derivability checks live and who owns them. FR-010 also waits on Q-007, whether
 the working order is right and how looping back to the journeys feels, because
 Q-007 blocks ST-004. FR-013 waits on Q-005, whether a
-sponsor accepts a specification that carries a grade. FR-014 waits on Q-011, how
+sponsor accepts a PRD that carries a grade. FR-014 waits on Q-011, how
 an approver records a decision.
 
 FR-015 and FR-016 were split out of FR-002 and FR-009 at version 0.2.0, because
@@ -515,7 +518,7 @@ mode of their own, and each needs its own priority. The expert set both to
 FR-002, FR-008 and FR-013 refer to "the set", "the section", "a table row" and
 "the root document". A reviewer may read those as naming an output format and
 therefore failing test 5. The judgement taken here is that a written
-specification is the product's subject, not its delivery technology, so these
+PRD is the product's subject, not its delivery technology, so these
 words name the artifact rather than the mechanism. What is deliberately absent
 everywhere: the assistant the product runs inside, how grading is performed, who
 or what reviews the set, and what the documents are stored as. Those are in
