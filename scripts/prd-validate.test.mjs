@@ -143,13 +143,13 @@ test('a problem reached by no requirement draws a warning', () => {
 })
 
 test('the golden thread needs a happy scenario', () =>
-  failsWith('06-scenarios.md', t => t.replace('    variant: happy\n', '    variant: alternate\n'), /golden thread J-001 has no happy scenario/))
+  failsWith('06-scenarios.md', t => t.replaceAll('    variant: happy\n', '    variant: alternate\n'), /golden thread J-001 has no happy scenario/))
 
 test('a scenario shown on a screen must link a wireframe', () =>
   failsWith('06-scenarios.md', t => t.replace('    wireframes: [WF-010]\n', ''), /SC-002 is shown in a screen and links no wireframe/))
 
 test('every must requirement must be in scope', () =>
-  failsWith('07-scope.md', t => t.replace('      - FR-018\n', ''), /must requirement FR-018 is in no in-scope item/))
+  failsWith('07-scope.md', t => t.replace('      - FR-014\n', ''), /must requirement FR-014 is in no in-scope item/))
 
 test('the release line must be a run of golden-thread stages', () =>
   failsWith('07-scope.md', t => t.replace('journey_stage: ST-006', 'journey_stage: ST-007'), /release line names a stage that is not in the golden thread/))
@@ -259,3 +259,56 @@ test('the change log resolves real questions, and an answered question is resolv
 
 test('a synonym the glossary avoids draws a warning where a section uses it', () =>
   warnsWith('15-glossary.md', t => t.replace('  - term: PRD\n', '  - term: PRD\n    avoid: [specification]\n'), /uses "specification"; the glossary says to say "PRD"/))
+
+test('a release-line stage outside the product needs no must requirement', () => {
+  const dir = join(mkdtempSync(join(tmpdir(), 'prd-validate-')), 'set')
+  cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
+  const edit = (file, fn) => writeFileSync(join(dir, file), fn(readFileSync(join(dir, file), 'utf8')))
+  edit('08-functional-requirements.md', t => t.replace(/(  - id: FR-012\n(?:.*\n)*?    priority: )must/, '$1should'))
+  assert.ok(validateSet(dir).errors.some(e => /release-line stage ST-005 has no must/.test(e)))
+  edit('07-scope.md', t => t.replace('\nin_scope:\n', '\noutside_product:\n  - stage: ST-005\n    workaround: The expert asks an engineer.\nin_scope:\n'))
+  const errors = validateSet(dir).errors
+  assert.ok(!errors.some(e => /ST-005 has no must/.test(e)), errors.join('\n'))
+})
+
+// Checks from the 0.8.0 low-priority review.
+test('a problem with no cost of inaction draws a warning', () =>
+  warnsWith('01-problem-opportunity.md', t => t.replace(/    cost_of_inaction: >-\n(?: {6}.*\n)+/, ''), /P-001 has no cost_of_inaction/))
+
+test('one objective is primary, and it is the one the root names', () => {
+  failsWith('03-objectives-metrics.md', t => t.replace('  - id: O-002\n', '  - id: O-002\n    primary: true\n'), /O-002 is primary, but the root's summary\.objective is O-001/)
+  failsWith('03-objectives-metrics.md', t => t.replace('  - id: O-002\n', '  - id: O-002\n    primary: true\n').replace('  - id: O-003\n', '  - id: O-003\n    primary: true\n'), /more than one objective is primary/)
+})
+
+test('a scenario stage outside its journey, or an unknown persona, draws a warning', () => {
+  warnsWith('06-scenarios.md', t => t.replace('    stage: ST-004\n    persona: PER-001\n    variant: alternate\n', '    stage: ST-007\n    persona: PER-001\n    variant: alternate\n'), /SC-002 stage ST-007 is not in its journey J-001/)
+  warnsWith('06-scenarios.md', t => t.replace(/(  - id: SC-003\n(?:.*\n)*?    persona: )PER-001/, '$1PER-099'), /SC-003 persona PER-099 is not a persona/)
+})
+
+test('an out-of-scope item with no revisit draws a warning', () =>
+  warnsWith('07-scope.md', t => t.replace(/    revisit: >-\n(?: {6}.*\n)+/, ''), /has no revisit/))
+
+test('a Given that states an action draws a warning', () =>
+  warnsWith('08-functional-requirements.md', t => t.replace('Given a set where four section documents', 'Given the expert types a set where four section documents'), /FR-002 has a Given that states an action, "types"/))
+
+test('a functional requirement must name its journey stage', () =>
+  failsWith('08-functional-requirements.md', t => t.replace('    journey_stage: ST-001\n', ''), /missing journey_stage/))
+
+test('a state sketch belongs to another sketch that exists', () => {
+  failsWith('08-wireframes.md', t => t.replace('  - id: WF-007\n', '  - id: WF-007\n    state_of: WF-099\n'), /WF-007 state_of names WF-099/)
+  failsWith('08-wireframes.md', t => t.replace('  - id: WF-007\n', '  - id: WF-007\n    state_of: WF-007\n'), /WF-007 is a state of itself/)
+})
+
+test('a target that holds only a standard\'s version names no quantity', () =>
+  failsWith('09-nonfunctional-requirements.md', t => t.replace('    target: under 20 seconds at p95, and under 60 seconds at p99\n', '    target: conforms to WCAG 2.2 AA\n'), /target "conforms to WCAG 2\.2 AA" names no quantity/))
+
+test('a second approver is a persona, and not the first approver', () => {
+  failsWith('11-decision-rights.md', t => t.replace('approver: PER-003', 'approver: PER-003\n    second_approver: PER-003'), /TR-001 second_approver is the approver/)
+  failsWith('11-decision-rights.md', t => t.replace('approver: PER-003', 'approver: PER-003\n    second_approver: PER-099'), /TR-001 second_approver names PER-099/)
+})
+
+test('an open question with more than one decider draws a warning', () =>
+  warnsWith('13-open-questions.md', t => t.replace('    decider: Richard Hightower\n    consulted: the first three sponsors\n', '    decider: Richard Hightower and the first three sponsors\n'), /Q-005 decider .* names more than one person/))
+
+test('a rejection with no note fails the set', () =>
+  failsWith('16-change-log.md', t => t.replace('  - version: 0.7.0\n', '  - version: 0.7.0\n    approvals:\n      - { name: A Sponsor, role: Sponsor, date: 2026-10-26, decision: rejected }\n'), /0\.7\.0 rejection by A Sponsor has no note/))

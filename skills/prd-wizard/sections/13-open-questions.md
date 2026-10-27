@@ -19,7 +19,12 @@ accept a document with known gaps when the gaps have owners and dates.
 
 - `id`: `Q-nnn`.
 - `question`: one question, answerable.
-- `decider`: one person or role. Not "the team".
+- `decider`: one person or role. Not "the team", and not two people (DACI's
+  single decider). The validator warns when `decider` names more than one person,
+  joined by "and", "with", "or", "/", "&", or "+".
+- `consulted`: optional. The people the decider asks before deciding. They
+  advise; the decider decides.
+- `options`: optional. The candidate answers known so far.
 - `by`: a date.
 - `blocks`: requirement, stage or release ids that cannot be settled until this is.
 - `spike`: the time-boxed story that answers it, where there is one.
@@ -64,7 +69,7 @@ _The figures, citations and organisations in this example are invented, to show 
 
 | Dimension | 0 | 2 | 4 |
 | --- | --- | --- | --- |
-| Decider | Absent or "the team" | A role | One named role who can actually decide |
+| Decider | Absent or "the team" | A role, or more than one person | One named role who can actually decide |
 | Date | Absent | Present | Present, and before what it blocks |
 | Blocks | Absent | Named loosely | Ids that exist |
 | Answerability | Rhetorical | Answerable | Answerable, with a spike that would answer it |

@@ -26,6 +26,9 @@ the real competitor is usually a spreadsheet and a person who knows the job.
   section 4, and `size_source`, `size_as_of`, `size_method` (top-down or
   bottom-up), and `size_unit` (organizations or people) say where a size comes
   from. Non-functional requirements are sized from it, so the unit matters.
+- `adoption_barriers`: optional, per segment. What stops this segment from
+  adopting, in the customer's words: switching cost, an approval, habit, or trust.
+  Interview question 6 fills it.
 
 For an internal product, the buyer is the budget holder, a segment is a business
 unit, and the competitors are the status quo plus buying or building something

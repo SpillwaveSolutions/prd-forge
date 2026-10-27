@@ -1,0 +1,12 @@
+@startsalt
+title WF-004 Items arriving at the hub today
+{+
+  {/ <b>Arriving today</b> }
+  {#
+    Item | From store | Reason <1>
+    Trail running shoe | Store 112 | Wrong size
+    Rain jacket, M | Store 087 | Faulty zip
+    Water bottle | Store 112 | Changed mind
+  }
+}
+@endsalt

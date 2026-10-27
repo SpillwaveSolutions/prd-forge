@@ -12,7 +12,7 @@ release: R1, counter returns pilot
 release_line: >-
   ST-001 through ST-004 for purchases made in an Acme store in the last 12
   months. An associate reaches a completed return, with a reason recorded, without
-  calling the contact centre.
+  calling the contact centre. An exception (ST-003) stays a phone call in R1.
 in_scope:
   - id: IN-001
     summary: Identify a purchase from a receipt, an order number, or the payment card
@@ -24,16 +24,16 @@ in_scope:
     journey_stage: ST-002
     requirements:
       - FR-002
-  - id: IN-003
-    summary: Request and decide an exception without a phone call
-    journey_stage: ST-003
-    requirements:
-      - FR-003
   - id: IN-004
     summary: Complete the return with the reason recorded for the hub
     journey_stage: ST-004
     requirements:
       - FR-004
+outside_product:
+  - stage: ST-003
+    workaround: >-
+      The associate phones the contact centre, and an agent decides the exception
+      on the call, as today.
 out_of_scope:
   - id: OUT-001
     summary: Returns of items bought from Acme wholesale partners rather than in an Acme store
@@ -41,6 +41,10 @@ out_of_scope:
   - id: OUT-002
     summary: Returns initiated online and completed in store
     revisit: After the R1 pilot closes
+  - id: OUT-003
+    summary: Requesting and deciding an exception in the product (FR-003)
+    revisit: >-
+      After the R1 pilot closes, if exceptions are still more than 1 in 10 returns
 non_goals:
   - We are not replacing the point-of-sale system.
   - We are not becoming the system of record for inventory disposition; the hub keeps that.

@@ -8,7 +8,25 @@ updated: 2026-10-26
 domain: product management tooling
 section: 15
 order: 160
+score: 63
+blocking: 0
+graded: 2026-10-26
 changes:
+  - version: 0.8.0
+    date: 2026-10-27
+    author: Richard Hightower
+    summary: >-
+      Sets the expert's priorities. Ten requirements stay must and eight become
+      should; SC-002 and SC-004 become should with the requirements they exercise,
+      and the other scenarios are must. Adds SC-007, the golden thread from the
+      first sentence to an approved set. Gives REL-001 and REL-002 exit criteria
+      from the objective targets, with indicative dates. Names one decider for
+      Q-005 and Q-008, with the people they consult.
+    sections:
+      - 5
+      - 7
+      - 12
+      - 13
   - version: 0.7.0
     date: 2026-10-27
     author: Richard Hightower
@@ -142,6 +160,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
 | 0.6.0 | 2026-10-27 | Richard Hightower | Links from the specification review: problems, objectives, competitors, decision stages, and scenario views |
 | 0.4.0 | 2026-10-26 | Richard Hightower | Navigation and refresh requirements; wireframes rewritten from their grading |

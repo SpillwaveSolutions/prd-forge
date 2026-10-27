@@ -80,6 +80,10 @@
           "baseline_source": {
             "type": "string",
             "minLength": 1
+          },
+          "primary": {
+            "type": "boolean",
+            "description": "True for the one objective the root's summary.objective names."
           }
         },
         "required": [

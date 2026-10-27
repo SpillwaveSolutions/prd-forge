@@ -23,7 +23,9 @@ will be validated and who owns that.
 `mitigation`, and one named `owner`. Add the `trigger` that shows it is
 happening, the `response` (avoid, reduce, transfer, share, or accept), the date
 the mitigation is due (`mitigation_by`), and its `status` (open, occurred, or
-closed).
+closed). A risk that happens gets `status: occurred`; keep it, so the record
+shows it was foreseen. The `owner` is one person, by name or role, the answer to
+interview question 5.
 
 Each assumption can carry its `category` (value, usability, feasibility, or
 viability), the `evidence` behind it today (none, some, or strong), and the date
@@ -31,11 +33,14 @@ to validate it by (`validate_by`). Rank assumptions by importance against
 evidence: an important assumption with no evidence is tested first.
 
 **Dependencies** (`D-nnn`): what we need, `from` whom, `by` when, `status`
-(requested, committed, at-risk, delivered), and what it `blocks`.
+(requested, committed, at-risk, delivered), and what it `blocks`. Add an `owner`,
+the person on our side who chases it.
 
 ## What does not belong
 
 - Risks with no owner. An unowned risk is a wish that it goes away.
+- Issues: problems already happening now. An issue goes in the project's RAID
+  log, not in the PRD.
 - Engineering implementation risks ("the framework might not scale"). Those live
   in architecture documents.
 - Assumptions that are actually open questions. If somebody could decide it,

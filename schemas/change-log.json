@@ -96,6 +96,11 @@
                     "additionalProperties": false
                   },
                   "description": "The conditions of an approval with conditions: each names what it depends on and a date."
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Why the approver decided as they did. Required for a rejection."
                 }
               },
               "required": [

@@ -29,6 +29,8 @@ requirements:
         three routes, then they see that it was not found and what to do next.
     priority: must
     journey_stage: ST-001
+    objective: O-001
+    shown_in: screen
   - id: FR-002
     user: PER-001
     capability: See whether the item may be returned, on what terms, and why
@@ -49,6 +51,8 @@ requirements:
         records the condition, then the decision and the reason update to match.
     priority: must
     journey_stage: ST-002
+    objective: O-001
+    shown_in: screen
   - id: FR-003
     user: PER-002
     capability: Decide an exception request, recording the reason
@@ -67,8 +71,10 @@ requirements:
       - >-
         Given a request above the agent's value limit, when the agent opens it,
         then they see that it is above their limit and who may decide it.
-    priority: must
+    priority: wont
     journey_stage: ST-003
+    objective: O-001
+    shown_in: screen
   - id: FR-004
     user: PER-001
     capability: Complete the return, recording why the item came back
@@ -84,10 +90,13 @@ requirements:
         Given a completed return, when the hub clerk views the incoming item, then
         they see the reason the associate recorded.
       - >-
-        Given an associate who selects no reason, when they try to confirm, then
-        they cannot complete the return until a reason is selected.
+        Given an accepted return with no reason selected, when the associate tries
+        to confirm, then they cannot complete the return until a reason is
+        selected.
     priority: must
     journey_stage: ST-004
+    objective: O-001
+    shown_in: screen
   - id: FR-005
     user: PER-003
     capability: See the reasons recorded against items arriving at the hub
@@ -98,10 +107,12 @@ requirements:
         each item shows the reason recorded at the counter.
     priority: should
     journey_stage: ST-004
+    objective: O-001
+    shown_in: report
 links:
   parent: { id: acme-returns, kind: prd, path: ./prd.md, title: Acme Returns PRD }
   prev: { id: acme-returns-scope, kind: scope, path: ./07-scope.md, title: Scope }
-  next: null
+  next: { id: acme-returns-wireframes, kind: wireframes, path: ./08-wireframes.md, title: Wireframes }
   related:
     - { id: acme-returns-journeys, kind: journeys, path: ./05-user-journeys.md, title: User journeys }
 ---
@@ -112,9 +123,13 @@ links:
 | --- | --- | --- | --- | --- |
 | FR-001 | PER-001 | Identify the purchase | must | ST-001 |
 | FR-002 | PER-001 | See the decision, terms and reason | must | ST-002 |
-| FR-003 | PER-002 | Decide an exception | must | ST-003 |
+| FR-003 | PER-002 | Decide an exception | wont | ST-003 |
 | FR-004 | PER-001 | Complete the return with a reason | must | ST-004 |
 | FR-005 | PER-003 | See reasons at the hub | should | ST-004 |
+
+FR-003 is `wont` for R1. In the pilot an exception stays a phone call, which
+section 6 records as the workaround for ST-003. The requirement stays in the set,
+so the pilot can bring it back without writing it again.
 
 Note what is absent from every entry: no point-of-sale system, no database, no
 screen, no service. Those are decisions for the architecture, not the PRD.

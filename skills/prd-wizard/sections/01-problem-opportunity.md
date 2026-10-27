@@ -25,6 +25,7 @@ because they never agreed what hurts.
   volumes, cycle times, audit findings, lost deals, regulatory letters.
 - `why_now`: the change that makes this urgent.
 - `cost_of_inaction`: what it costs to leave it alone, in money, time or risk.
+  The validator warns when a problem has none.
 - `status_quo`: what they do today instead, and why it fails.
 - `desired_outcome`: the outcome they want, with no solution in it.
 - An `evidence` item may be `{claim, source, as_of}`, so it shows where a number
@@ -45,6 +46,9 @@ because they never agreed what hurts.
 4. "What does it cost when it happens — hours, rework, a fine, a lost client?"
 5. "What do they do today instead? Why does that not work?"
 6. "What changed recently that makes this worth fixing now rather than last year?"
+
+When the expert names a cause, ask "And why does that happen?" until the answer
+is something the product can change. Record that root cause in the statement.
 
 When the expert answers with a solution, ask: "If you had that, what would stop
 being painful?" Record the answer, not the solution.

@@ -100,6 +100,11 @@
           "type": "string",
           "pattern": "^O-\\d{3}$",
           "description": "The objective in section 3 that the measure tracks."
+        },
+        "not_building": {
+          "type": "string",
+          "minLength": 1,
+          "description": "One sentence on what this product will not do, pointing to the non-goals in section 6."
         }
       },
       "required": [

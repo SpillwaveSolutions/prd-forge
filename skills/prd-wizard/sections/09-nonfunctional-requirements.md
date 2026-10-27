@@ -20,12 +20,18 @@ caseworkers"; nobody can build for "fast".
 - `id`: `NFR-nnn`.
 - `category`: performance, scale, availability, durability, security, privacy,
   accessibility, retention, observability, usability, localisation,
-  supportability.
+  supportability, accuracy, safety. Accuracy and safety follow ISO/IEC
+  25010:2023: how often a result is correct, and what harm the product must not
+  cause.
 - `statement`: the requirement in a sentence.
 - `metric`: what is measured.
 - `target`: the number, with its unit and percentile. `zero` and `none` count:
-  an absolute of nought is a number, and is often the right target.
-- `measurement`: how and where it is measured.
+  an absolute of nought is a number, and is often the right target. A
+  standard's version is not a quantity: the validator ignores "2.2" in "WCAG 2.2
+  AA", so that target alone fails. Write "zero level-A or level-AA failures on
+  the golden-thread path".
+- `measurement`: how it is measured, naming its place (where the reading is
+  taken), its window (over what period), and which events count (Google SRE).
 - `priority`, and `applies_to` when it holds only for certain requirements. The
   ids must exist.
 - `source`: where the number comes from: a persona, a segment, an expert answer,
@@ -54,6 +60,12 @@ confirm:
 5. "How long must records be kept, and who says so?" (Cross-check section 9.)
 6. "Does anyone using this rely on a screen reader, keyboard only, or magnification?"
 7. "When it breaks, what must someone be able to find out?"
+8. "What is the least data this needs to do its job? Who sees it by default,
+   before anyone grants access?" (GDPR Article 25, data protection by design and
+   by default.)
+9. "Which languages, regions, date formats, and currencies must it handle?"
+10. "Is it a web page? If not, which accessibility standard applies?" For a
+    product that is not a web page, name WCAG2ICT.
 
 For each answer, ask: "What is the number, and how would we measure it?"
 
@@ -81,9 +93,9 @@ _The figures, citations and organisations in this example are invented, to show 
 > claim, so this is the product, not a compliance overlay.
 > Metric: WCAG 2.2 AA conformance on the golden-thread journey.
 > Target: zero level-A or level-AA violations on the golden-thread path.
-> Measurement: automated axe scan in CI plus one manual screen-reader pass per
-> release, and one session per release with a claimant who uses assistive
-> technology.
+> Measurement: an automated accessibility check of every build, plus one manual
+> screen-reader pass per release, and one session per release with a claimant
+> who uses assistive technology.
 
 ## Rubric
 

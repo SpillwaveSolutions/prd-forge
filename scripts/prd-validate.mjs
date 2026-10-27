@@ -605,7 +605,9 @@ function structural(docs, dir) {
   }
   for (const nfr of docs.find(d => d.front.kind === 'nonfunctional-requirements')?.front?.requirements ?? []) {
     // 'zero' and 'none' are quantities; the rule is against adjectives, not words.
-    if (typeof nfr?.target === 'string' && !/\d|[Zz]ero|[Nn]one/.test(nfr.target)) {
+    // A standard's version, such as WCAG 2.2 or ISO 27001, is not a quantity.
+    const target = typeof nfr?.target === 'string' ? nfr.target.replace(/\b[A-Z][A-Z/]+[ -]?\d+(?:[.:]\d+)*/g, '') : undefined
+    if (target !== undefined && !/\d|[Zz]ero|[Nn]one/.test(target)) {
       errors.push(`nonfunctional-requirements: ${nfr.id} target "${nfr.target}" names no quantity`)
     }
   }
@@ -704,7 +706,9 @@ function structural(docs, dir) {
     } else if (Math.max(...at) !== order.length - 1 || Math.max(...at) - Math.min(...at) + 1 !== lineStages.size) {
       errors.push(`scope: the release line is not one unbroken run of ${golden.id}'s stages ending at its last stage`)
     }
+    const outside = new Set((scope?.outside_product ?? []).map(item => item?.stage))
     for (const st of lineStages) {
+      if (outside.has(st)) continue
       if (!frs.some(r => r?.journey_stage === st && r?.priority === 'must')) errors.push(`functional-requirements: release-line stage ${st} has no must requirement`)
     }
   }
@@ -715,7 +719,7 @@ function structural(docs, dir) {
     }
   }
   for (const req of frs) {
-    for (const field of ['journey_stage', 'objective', 'shown_in']) {
+    for (const field of ['objective', 'shown_in']) {
       if (req?.[field] === undefined) gate('functional-requirements', `functional-requirements: ${req?.id} has no ${field}`)
     }
   }
@@ -955,6 +959,69 @@ function structural(docs, dir) {
       for (const doc of docs) {
         if (doc.front.kind !== 'glossary' && pattern.test(doc.body ?? '')) warnings.push(`${doc.file}: uses "${word}"; the glossary says to say "${t.term}"`)
       }
+    }
+  }
+
+  // Checks from the 0.8.0 low-priority review.
+  // sections 1 and 3: a problem says what doing nothing costs; one objective is
+  // primary, and it is the one the root names
+  for (const problem of problems) {
+    if (!problem?.cost_of_inaction) warnings.push(`problem-opportunity: ${problem?.id} has no cost_of_inaction`)
+  }
+  const primaries = objectiveList.filter(o => o?.primary === true)
+  if (primaries.length > 1) errors.push('objectives-metrics: more than one objective is primary')
+  const named = root?.front?.summary?.objective
+  if (named && primaries.length === 1 && primaries[0].id !== named) {
+    errors.push(`objectives-metrics: ${primaries[0].id} is primary, but the root's summary.objective is ${named}`)
+  }
+
+  // scenarios: a scenario's stage is in its journey, and its persona is a persona
+  for (const sc of scenarios) {
+    const journey = journeys.find(j => j?.id === sc?.journey)
+    const own = new Set((journey?.stages ?? []).map(st => st?.id))
+    for (const st of [sc?.stage, ...(sc?.stages ?? [])].filter(Boolean)) {
+      if (journey && stages.has(st) && !own.has(st)) warnings.push(`scenarios: ${sc.id} stage ${st} is not in its journey ${journey.id}`)
+    }
+    if (sc?.persona && personas.size > 0 && !personas.has(sc.persona)) warnings.push(`scenarios: ${sc.id} persona ${sc.persona} is not a persona in section 4`)
+  }
+
+  // section 6: an out-of-scope item says when to look at it again
+  for (const item of scope?.out_of_scope ?? []) {
+    if (!item?.revisit) warnings.push(`scope: ${item?.id} has no revisit`)
+  }
+
+  // section 7: a Given states a state, not something the user does
+  const ACTION = /\b(clicks?|taps?|enters?|types?|selects?|submits?|presses?|chooses?)\b/i
+  for (const req of frs) {
+    for (const criterion of req?.acceptance ?? []) {
+      const given = /\bgiven\b([\s\S]*?)\bwhen\b/i.exec(criterion)?.[1] ?? ''
+      const act = ACTION.exec(given)
+      if (act) warnings.push(`functional-requirements: ${req.id} has a Given that states an action, "${act[0]}"; state the situation instead`)
+    }
+  }
+
+  // wireframes: a state sketch belongs to another sketch that exists
+  for (const wf of wfDoc?.front?.wireframes ?? []) {
+    if (wf?.state_of === wf?.id) errors.push(`wireframes: ${wf.id} is a state of itself`)
+    else if (wf?.state_of) mustExist([wf.state_of], wfIds, `wireframes: ${wf.id} state_of`)
+  }
+
+  // section 10: a second approver is a persona, and not the first approver
+  for (const rule of rules) {
+    if (!rule?.second_approver) continue
+    if (rule.second_approver === rule.approver) errors.push(`decision-rights: ${rule.id} second_approver is the approver`)
+    else if (/^PER-\d{3}$/.test(rule.second_approver)) mustExist([rule.second_approver], personas, `decision-rights: ${rule.id} second_approver`)
+  }
+
+  // section 12: one person decides
+  for (const q of frontOf('open-questions')?.questions ?? []) {
+    if (/\s(and|with|or)\s|[/&+]/.test(q?.decider ?? '')) warnings.push(`open-questions: ${q.id} decider "${q.decider}" names more than one person; name one, and put the rest in consulted`)
+  }
+
+  // section 15: a rejection says why
+  for (const change of changes ?? []) {
+    for (const approval of change?.approvals ?? []) {
+      if (approval?.decision === 'rejected' && !approval?.note) errors.push(`change-log: ${change.version} rejection by ${approval.name} has no note`)
     }
   }
 

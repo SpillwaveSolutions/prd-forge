@@ -54,6 +54,19 @@
           "answered": {
             "$ref": "common.json#/$defs/date",
             "description": "When the question was answered."
+          },
+          "consulted": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Who the decider asks before deciding. They advise; the decider decides."
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "The candidate answers known so far."
           }
         },
         "required": [

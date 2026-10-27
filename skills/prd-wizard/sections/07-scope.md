@@ -25,10 +25,12 @@ save the team from re-litigating the same argument every sprint.
   thread, stated plainly.
 - `in_scope`: one `IN-nnn` per item, each tied to a journey stage and the
   requirement ids it covers.
-- `out_of_scope`: one `OUT-nnn` per item, with `revisit` where there is a plan.
+- `out_of_scope`: one `OUT-nnn` per item, with `revisit`: what would have to be
+  true to look at it again. The validator warns about an item with no `revisit`.
 - `non_goals`: things a reasonable reader would expect and we are not doing, with
   no plan to. These differ from out-of-scope: out-of-scope is "not yet",
-  a non-goal is "not ever, and here is why".
+  a non-goal is "not ever, and here is why". Each non-goal may be a sentence, or
+  `{statement, reason}` to keep the why beside it.
 
 ## What does not belong
 

@@ -49,7 +49,9 @@ requirements.
   fence opened with ` ```wireframe ` holding the sketch.
 - Real content from the domain: the expert's own names, numbers, and dates.
 - The empty state, or the exception state, where a scenario names one. Draw it
-  as a second, smaller sketch with its own ID.
+  as a second, smaller sketch with its own ID, and set `state_of` to the `WF-nnn`
+  of the screen or report it is a state of. The validator fails the set when
+  `state_of` names a sketch that does not exist, or the sketch itself.
 
 ## How to draw the sketch
 

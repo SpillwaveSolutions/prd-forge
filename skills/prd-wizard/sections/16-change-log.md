@@ -20,7 +20,9 @@ domains this section is also evidence.
 - `approvals`: name, role, date, and decision (approved,
   approved-with-conditions, rejected). An approval with conditions lists each in
   `conditions`: the `condition`, what it `depends_on` (open questions or
-  requirements), the date it is due `by`, and whether it is `cleared`.
+  requirements), the date it is due `by`, and whether it is `cleared`. Add a
+  `note` with the approver's reason. A rejection needs one; the validator fails
+  the set without it.
 
 Name the questions a change answers in `resolves`, and record each gate the
 expert overrode in `overrides`: the section, the status set, and the score and
@@ -31,14 +33,16 @@ section is `final` with no approval recorded.
 
 ## What does not belong
 
-- Editorial changes. Typos do not get a version.
+- Typo fixes. A change that does not change what a reader understands gets no
+  version.
 - A change log generated from commit messages. Say what changed for a *reader*.
 
 ## How to maintain it
 
 Add an entry whenever a section's `status` reaches `review` or `final`, or
 whenever an approved document changes. Bump the minor version for new content,
-the patch version for corrections, and the major version when the release line
+the patch version for a correction that changes what a sentence means, and the
+major version when the release line
 or the golden thread changes.
 
 When an open question in section 12 is answered, record the answer there and the
@@ -74,6 +78,7 @@ _The figures, citations and organisations in this example are invented, to show 
 
 - The document is at `status: final` with no approval recorded.
 - An approval with no date or no decision.
+- A rejection with no `note`.
 - A version in the root document that has no entry here.
 - An approved-with-conditions entry whose conditions name no id or date.
 

@@ -77,6 +77,14 @@
               "people"
             ],
             "description": "What the size counts."
+          },
+          "adoption_barriers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "What stops this segment from adopting, in the customer's words: switching cost, approval, habit, or trust."
           }
         },
         "required": [

@@ -6,11 +6,11 @@ title: Decision rights and trust rules
 status: draft
 updated: 2026-10-26
 domain: product management tooling
-score: 86
-blocking: 0
-graded: 2026-10-26
 section: 10
 order: 110
+score: 81
+blocking: 0
+graded: 2026-10-26
 decisions:
   - id: TR-001
     decision: Approve a PRD for a release

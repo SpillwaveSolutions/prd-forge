@@ -39,6 +39,7 @@ epics and stories cannot be derived from the PRD at all.
 | `pain_points` / `needs` | What is hard today, and what the product must fix. A pain point may be `{pain, stage, need}`, naming its stage and the need that answers it |
 | `objectives` | The `O-nnn` objectives that show this journey works |
 | `satisfaction` on each stage | How the stage feels to the user today, 1 (worst) to 5 (best), as the expert scores it |
+| `moment_of_truth` on a stage | Optional. True for the stage where the user decides whether the product is worth it |
 | `end_state` | How the user knows they are done |
 
 Every stage names **a person, an input, an output, a decision, and its
@@ -48,6 +49,11 @@ A stage's acceptance says when the stage is done, from the actor's side. It is
 not a requirement's acceptance: a requirement tests one capability, and a stage
 tests the whole step of the journey. Each stage's acceptance becomes the
 acceptance of the feature `prd-to-backlog` derives from that stage.
+
+The stages describe the future state: the journey as it runs with the product.
+`satisfaction` is today's experience, laid over those stages. A low score marks
+where the product must do better than today, not a fault in the new stage
+(NN/g).
 
 Exactly one journey carries `golden_thread: true`: the one journey release 1 must
 deliver end to end.

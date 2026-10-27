@@ -1,0 +1,13 @@
+@startsalt
+title WF-001 Finding the purchase
+{+
+  {/ <b>Return an item</b> }
+  Find the purchase by: <1>
+  { () Receipt | (X) Order number | () Card }
+  { Order number: | "4471-0932   " | [Find] }
+  ==
+  Trail running shoe, size 9 <2>
+  Bought 2026-10-04 · Paid $129.00 · Card
+  { [This is the purchase] | [Not this one] }
+}
+@endsalt

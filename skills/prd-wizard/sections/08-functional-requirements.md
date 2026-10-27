@@ -34,12 +34,16 @@ that fails test 5 freezes an architecture decision before anyone has made it.
 - `user`: a persona id or role (test 1).
 - `capability`: what they can do.
 - `outcome`: what they can then see or have (test 2).
-- `journey_stage`, `objective`, and `shown_in` warn while the section is a
-  draft and are required once it is offered for review.
+- `journey_stage` is required by the schema. `objective` and `shown_in` warn
+  while the section is a draft and are required once it is offered for review.
 - `shown_in`: where they meet that outcome: `screen`, `report`, `conversation`,
   or `none`. A `screen` or `report` requirement needs a wireframe in
-  `08-wireframes.md`; the validator fails the set without one.
-- `acceptance`: one or more Given/When/Then statements (test 3).
+  `08-wireframes.md`; the validator fails the set without one. For a
+  `conversation` requirement, a short sample dialog in the body is its
+  illustration: two to six lines of what the user says and what they get back.
+- `acceptance`: one or more Given/When/Then statements (test 3). The Given
+  states a situation, such as "Given an accepted return with no reason", not
+  something the user does. The user's action belongs in the When.
 - `priority`: `must`, `should`, `could`, `wont` (test 4).
 - `journey_stage`: the `ST-nnn` it serves. This is what puts it in a feature.
 - `objective`: the `O-nnn` it moves.
@@ -67,7 +71,9 @@ Work stage by stage through the golden thread. For each stage:
 8. "What do they see when it goes wrong?" Write that as a criterion too.
 
 The validator warns about a criterion that is not Given/When/Then, a criterion
-that names a control such as a button or a menu, and a section where more than
+that names a control such as a button or a menu, a Given that states an action
+(clicks, taps, enters, types, selects, submits, presses, or chooses), and a
+section where more than
 60% of requirements are `must`. A `must` is the minimum the release is useless
 without; ask about each one past that share.
 

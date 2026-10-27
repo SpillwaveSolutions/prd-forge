@@ -8,6 +8,9 @@ updated: 2026-10-26
 domain: product management tooling
 section: 11
 order: 120
+score: 79
+blocking: 0
+graded: 2026-10-26
 assumptions:
   - id: A-001
     assumption: >-

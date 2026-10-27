@@ -24,9 +24,15 @@ be automated confidently.
   any rule names its stages, the validator warns about a stage with a decision
   and no rule.
 - `approver`: the role that may approve it, as a `PER-nnn` id from section 4.
+- `second_approver`: optional. A second role that must also agree, for a
+  four-eyes decision (the Agree role in Bain's RAPID). The validator fails the
+  set when it is the same as `approver`, or names a persona that does not exist.
 - `delegable_to_agent`: may software make this call unaided?
 - `never_delegated`: must a person decide, always, whatever the confidence?
-- `evidence_required`: what the approver must be shown before deciding.
+- `evidence_required`: what the approver must be shown before deciding. When an
+  agent proposes, the evidence names the agent's reasons and its known limits,
+  so the person can see why it proposed and when not to trust it (Microsoft HAX
+  guideline G11).
 - `escalation`: what happens when the approver is unavailable or disagrees.
   Required when an agent may decide; `evidence_required` is required when the
   decision is never delegated.
