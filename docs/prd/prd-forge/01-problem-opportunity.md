@@ -27,7 +27,7 @@ problems:
         source: >-
           prd-forge repository, commits 5ba59cb (version 0.1.0) and 5d4d936
           (version 0.2.0)
-        as_of: 2026-10-23
+        as_of: 2026-10-26
       - >-
         Specifications arriving at delivery teams are commonly feature lists;
         teams report re-deriving the user and the acceptance criteria themselves

@@ -24,8 +24,8 @@ terms:
       being a PRD and has started being an architecture sketch.
   - term: Document set
     meaning: >-
-      One directory of documents that together are one PRD: an index and one
-      document per section, each linking to the others.
+      The documents that together are one PRD: a root document and one document
+      per section, each linking to the others.
     see_also:
       - PRD
   - term: Golden thread
@@ -141,12 +141,10 @@ terms:
       One of the fifteen numbered parts of a PRD, each held in its own document.
       Section 5 holds two documents, journeys and scenarios, and section 7 holds
       two, functional requirements and wireframes, so a set has seventeen section
-      documents, prefixed 01 to 16, against fifteen section numbers.
+      documents across fifteen sections. Cross-references in a set are by section
+      number.
     see_also:
       - document set
-    not: >-
-      A file number. The file prefix and the section number differ from section 5
-      onward; cross-references in this set are by section number.
   - term: Scope
     meaning: >-
       What a release contains and what it does not, set against the journey stages
@@ -176,16 +174,7 @@ terms:
       The part of a section a person reads: its prose, its headings and its
       tables, written to be judged by the expert who gave the answers.
     see_also:
-      - machine-readable form
-  - term: Machine-readable form
-    meaning: >-
-      The part of a section a tool reads: the structured record of its items, each
-      with its id, its fields and its links to other sections. Every item in it has
-      a counterpart in the readable form, and the two disagree when an item's id,
-      priority or link differs between them.
-    see_also:
-      - readable form
-    not: A storage format. It says what is recorded, not how or where.
+      - section
   - term: Threshold
     meaning: >-
       The score at or above which a section may advance, provided it also carries
@@ -268,8 +257,8 @@ terms:
       - the five tests
   - term: Wireframe
     meaning: >-
-      A text sketch of one screen a person works in or one report a person reads,
-      drawn in characters and labeled an illustration, not a design. It shows what
+      A sketch of one screen a person works in or one report a person reads,
+      labeled an illustration, not a design. It shows what
       the person sees and does there, and names the requirements it makes concrete.
       Every requirement shown in a screen or a report has one, in section 7.
     see_also:
@@ -434,9 +423,40 @@ terms:
     see_also:
       - section
       - root document
+  - term: Interview
+    meaning: >-
+      The questions the expert answers about one section, in stage ST-002. It
+      starts after the expert reads what the section is for, puts one or two
+      questions at a time, and ends when the section has enough material to be
+      drafted, when the expert says they have nothing more to add, or when their
+      answers would already score the section 70 or more with no blocking defect.
+      Only the expert answers in it. An engineer who reads the set later was not
+      in the interview.
+    see_also:
+      - section
+      - candidate architecture decision
+  - term: Handover
+    meaning: >-
+      The point at which the approved set reaches the engineering lead who has to
+      build from it. Journey J-002 starts there: its trigger is that the PRD has
+      been approved for a release, and its first stage, ST-009, takes the approved
+      set and its buildability report. A set is handed over only once it is
+      approved.
+    see_also:
+      - approver
+      - candidate architecture decision
+  - term: Dependency
+    meaning: >-
+      Something outside the product that the product relies on, recorded in
+      section 11 with what happens if it is not there, such as D-001, an assistant
+      session the expert is already working in.
+    see_also:
+      - assumption
+      - risk
     not: >-
-      The file numbers. File prefixes and section numbers differ from section 5
-      onward, but both put the documents in the same order.
+      A requirement's wait on an open question. A requirement that waits on a
+      question names the question, and the question lists the requirement in what
+      it blocks.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -461,8 +481,6 @@ links:
 | State | Threshold |
 | Assumption | Open question, risk |
 | Candidate architecture decision | A requirement |
-| Section | A file number |
-| Machine-readable form | A storage format |
 | Buildability review | A grading pass |
 | Finding | A blocking defect |
 | Root document | Section 1 |
@@ -472,7 +490,7 @@ links:
 | Objective | A requirement |
 | Baseline | A target |
 | Version | A release of the product |
-| Reading order | The file numbers |
+| Dependency | A requirement's wait on an open question |
 
 Seventeen terms were added at version 0.2.0. Five of them existed only as
 `see_also` pointers to nothing, which is this set's own named blocking defect; the

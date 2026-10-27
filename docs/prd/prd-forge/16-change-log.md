@@ -25,8 +25,11 @@ changes:
       handover. Each problem in section 1 has one counted case, with its
       source and date. C-004 leaves section 9, which now holds no constraints.
       Its rule lives in TR-005 and FR-006, and its id is not reused. The
-      plugin's constraints schema accepts an empty list. The set states its
-      versioning policy before 1.0. This is a minor version because the policy
+      constraints section may now be empty. After the 0.9.0 regrade, FR-008
+      states the expert's need with no second form of a section, FR-012 reports
+      a requirement's wait on an open question, and the glossary defines
+      interview, handover, and dependency and names no storage or drawing
+      format. The set states its versioning policy before 1.0. This is a minor version because the policy
       and the evidence are new content.
     sections:
       - 1
@@ -213,7 +216,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; the versioning policy |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
@@ -225,7 +228,7 @@ links:
 
 ## Versioning policy before 1.0
 
-The set and the plugin share one version number. The number changes by these
+The set and the product share one version number. The number changes by these
 rules:
 
 - A patch, such as 0.9.0 to 0.9.1, is for fixes that add no content.
@@ -238,7 +241,7 @@ The expert set this policy at 0.9.0. Two earlier versions do not follow it, and
 neither is reissued:
 
 - 0.8.1 added stage ST-009 and moved items between sections. Under this
-  policy it is a minor version, 0.9.0.
+  policy it would have been the next minor version.
 - 0.2.0 changed the golden thread. Under this policy it takes the set to 1.0.
 
 ## 0.2.0, what the grading changed

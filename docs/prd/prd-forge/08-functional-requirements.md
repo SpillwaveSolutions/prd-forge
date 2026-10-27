@@ -176,17 +176,18 @@ requirements:
     user: PER-001
     capability: Read the drafted section as prose rather than as a filled-in form
     outcome: >-
-      They can judge whether it says what they meant, without reading a structured
-      record they have no way to assess.
+      They can judge from the prose alone whether it says what they meant, and
+      every id, priority and link the team builds from is the one they read.
     acceptance:
       - >-
         Given a drafted section, when the expert reviews it, then what they are
         shown reads as written English, in sentences and short tables, and they
-        are not asked to read the section's machine-readable form to judge it.
+        can judge every item in the section from it alone.
       - >-
-        Given a section whose readable form and machine-readable form disagree,
-        when either is read, then the disagreement is reported to the expert
-        rather than silently resolved.
+        Given an item whose id, priority or link differs between what the team
+        builds from and what the expert reads in the prose, when the section is
+        read, then the expert is told of the difference rather than it being
+        silently resolved.
     priority: should
     shown_in: screen
     journey_stage: ST-003
@@ -276,7 +277,7 @@ requirements:
         reports it, then the requirement is named and the document is quoted.
       - >-
         Given an open question that blocks a `must` requirement, when the review
-        runs, then that dependency is reported.
+        runs, then that requirement's wait on the question is reported.
       - >-
         Given a review finding, when it is reported to the expert, then it has been
         checked against the document and anything not supported by the document has
