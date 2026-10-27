@@ -13,7 +13,9 @@ owner: Richard Hightower
 stakeholders:
   - Product managers who are, or speak for, the domain expert
   - Engineering leads who build from the resulting PRD
-  - Sponsors who approve the PRD for a release
+  - Sponsors who approve the PRD for a release. For this PRD the approver is
+    Richard Hightower, the owner of the place where it is kept, named under
+    FR-021.
   - Delivery leads who run story-mapping workshops
 created: 2026-10-23
 golden_thread: J-001
@@ -48,7 +50,7 @@ summary:
     submission, where a pass is the verdict `buildable`, or `buildable with gaps`
     with every gap closed or owned. The pilot PRDs are written between REL-001,
     on 2027-03-31, and 2027-09-30. Target: 80%, at least 4 of 5, by 2027-09-30,
-    provisional until Q-001 sets the baseline, by 2027-03-31.
+    provisional until Q-001 sets the baseline, by 2027-02-28.
 links:
   parent: null
   children:
@@ -91,7 +93,7 @@ worked when at least 4 of the 5 pilot PRDs, 80%, pass the buildability review on
 first submission by 2027-09-30. The pilot PRDs are the first 5 written with
 release 1, between REL-001 on 2027-03-31 and 2027-09-30, by people other than the
 product's author. The target is provisional until Q-001 sets the baseline, by
-2027-03-31.
+2027-02-28.
 
 ## Contents
 

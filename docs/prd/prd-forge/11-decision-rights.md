@@ -343,6 +343,10 @@ that a draft says what they meant, which is distinct from scoring it (TR-003),
 from accepting or refuting the score (TR-014),
 from leaving it at draft (TR-009) and from setting it final (TR-002).
 
+TR-001's decider is the sponsor's role, PER-003. FR-021 names the person: before
+a set is offered for approval, the expert names each approver by name and role,
+and only a named approver's decision counts as an approval.
+
 ## The shape of the trust boundary
 
 Only three of fourteen are delegable, and all three are **assessments**, not

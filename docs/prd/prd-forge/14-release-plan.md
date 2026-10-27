@@ -54,6 +54,7 @@ releases:
       - FR-018
       - FR-019
       - FR-020
+      - FR-021
     objectives:
       - O-001
       - O-002
@@ -113,7 +114,7 @@ releases:
         Two experts can work on different sections of the same set
         without overwriting each other.
       - >-
-        A second reader, such as the engineering lead (PER-002), can comment on a
+        A reviewer, such as the engineering lead (PER-002), can comment on a
         section without being able to change it.
     objectives:
       - O-002

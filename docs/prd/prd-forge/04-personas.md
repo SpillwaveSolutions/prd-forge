@@ -22,7 +22,7 @@ personas:
     problems: [P-001, P-004]
     basis: >-
       Assumed, not researched. Section 1's evidence note says the evidence comes
-      from one engagement. The ten observed sessions in D-002 test it.
+      from one engagement. The ten observed sittings in D-002 test it.
     context: >-
       Works inside the session they already use, as section 11 records (D-001),
       in bursts weeks apart (NFR-004).
@@ -36,8 +36,8 @@ personas:
       - I reach for the names of software I have used, because that is the only
         requirements language I have
     frequency: >-
-      Three working sessions a week of 1 to 2 hours each, for one to three weeks
-      per PRD, about 6 to 9 sessions per PRD, then rarely until the next one.
+      Three working sittings a week of 1 to 2 hours each, for one to three weeks
+      per PRD, about 6 to 9 sittings per PRD, then rarely until the next one.
     authority: >-
       Decides what the product must do and what is out of scope; decides the
       domain's own terms; decides when a section's interview is finished and when
@@ -51,7 +51,7 @@ personas:
       manager who speaks for such an expert. The product assumes the first: no
       familiarity with MoSCoW, Given/When/Then, or the word "persona".
   - id: PER-002
-    name: Engineering lead (staff or principal engineer) on the delivery team, who must build from the PRD
+    name: Engineering lead (staff or principal engineer) on the development team, who must build from the PRD
     short_name: EngineerLead
     population: >-
       One or two per PRD, so 2 to 4 at once in an organization running 2 PRDs at
@@ -108,7 +108,7 @@ personas:
     proficiency: >-
       Senior in the business, not in product or engineering.
   - id: PER-004
-    name: Delivery lead (delivery manager or product owner) on the delivery team, who runs the story-mapping workshop
+    name: Delivery lead (delivery manager or product owner) on the development team, who runs the story-mapping workshop
     short_name: DeliveryLead
     population: >-
       One per PRD, and one organization starts 6 PRDs a year.
@@ -143,10 +143,10 @@ links:
 
 | ID | Role | Per PRD | Frequency | Decides |
 | --- | --- | --- | --- | --- |
-| PER-001 | Senior product manager in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one | One; 2 PRDs at once and 6 a year per organization | 3 sessions a week of 1 to 2 hours, for 1 to 3 weeks per PRD | What the product must do, scope, the domain's terms, when an interview ends, drafts, section states, whether to accept or refute a grade, domain facts, and when the set is offered; not the PRD itself where a sponsor exists |
-| PER-002 | Engineering lead (staff or principal engineer) on the delivery team | One or two | At estimation and at each release planning | How it is built, and whether a set can be built from, with its gaps (TR-006) |
+| PER-001 | Senior product manager in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one | One; 2 PRDs at once and 6 a year per organization | 3 working sittings a week of 1 to 2 hours, for 1 to 3 weeks per PRD | What the product must do, scope, the domain's terms, when an interview ends, drafts, section states, whether to accept or refute a grade, domain facts, and when the set is offered; not the PRD itself where a sponsor exists |
+| PER-002 | Engineering lead (staff or principal engineer) on the development team | One or two | At estimation and at each release planning | How it is built, and whether a set can be built from, with its gaps (TR-006) |
 | PER-003 | Sponsor: the budget holder (director or partner), who is also the approver | One | Once per version, about 6 a year | Approves the PRD for a release, with or without conditions, or rejects it (TR-001) |
-| PER-004 | Delivery lead (delivery manager or product owner) on the delivery team | One | Once per release, about 6 a year | The backlog's shape and order, and whether a backlog can be mapped at all |
+| PER-004 | Delivery lead (delivery manager or product owner) on the development team | One | Once per release, about 6 a year | The backlog's shape and order, and whether a backlog can be mapped at all |
 
 No persona is external. Under a client contract, in segment S-001, the
 sponsor, the engineering lead, and the delivery lead all work for the

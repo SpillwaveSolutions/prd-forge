@@ -79,13 +79,15 @@ in_scope:
       - FR-012
   - id: IN-007
     summary: >-
-      Give the sponsor one document with the summary, the scope, the grades, and
-      the open questions, and let the expert record the sponsor's decision, given
-      outside the product, with any conditions, against a named version
+      Let the expert name each approver, give the sponsor one document with the
+      summary, the scope, the grades, and the open questions, and let the expert
+      record the sponsor's decision, given outside the product, with any
+      conditions, against a named version
     journey_stage: ST-006
     requirements:
       - FR-013
       - FR-014
+      - FR-021
 out_of_scope:
   - id: OUT-001
     summary: >-
@@ -179,7 +181,7 @@ section 15 under FR-014, with the sponsor's name, role, and date.
 | IN-004 | Read the draft with its grade, refute a finding, move to any section, refresh, and see one item stated two ways | ST-003 | FR-008, FR-009, FR-016, FR-017, FR-018, FR-020 |
 | IN-005 | Answer one question, see the section re-graded, and resume without repeating an answer | ST-004 | FR-010, FR-011, FR-015 |
 | IN-006 | See which release-line stages no requirement covers and which requirements cannot be tested | ST-005 | FR-012 |
-| IN-007 | Give the sponsor one document, and let the expert record their decision against a named version | ST-006 | FR-013, FR-014 |
+| IN-007 | Name each approver, give the sponsor one document, and let the expert record their decision against a named version | ST-006 | FR-013, FR-014, FR-021 |
 
 ## Out of scope for REL-001
 

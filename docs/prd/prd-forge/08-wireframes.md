@@ -376,7 +376,7 @@ After one answer the section is graded again against the same rubric. Both score
 
 Illustration, not a design. Illustrates FR-012. PER-001 sees it at ST-005.
 
-SC-005 is the buildability review that finds work missing: two release-line stages have no must requirement behind them. The gaps are named first, before anything else in the review.
+SC-005 is the buildability review that finds work missing: two release-line stages have no must requirement behind them. The gaps are named first, before anything else in the buildability review.
 
 ```wireframe
 ┌─ What a team could not build from this set ──────────┐

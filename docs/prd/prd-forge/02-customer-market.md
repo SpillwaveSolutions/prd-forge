@@ -26,7 +26,7 @@ segments:
       Already pays for the consultant's time; the comparison is billable hours
       saved, not a software budget.
     adoption_barriers:
-      - A sponsor may trust a machine-produced grade less, not more (Q-005).
+      - We may trust a machine's grade less than our own partner review (Q-005).
       - We must approve client knowledge going into the assistant session our consultants already use before anyone works that way (A-004).
   - id: S-002
     name: Regulated-industry organizations where practitioners specify their own internal software
@@ -42,8 +42,9 @@ segments:
       Compared against contracting a product manager for the engagement. The day
       rate is Q-013.
     adoption_barriers:
-      - A sponsor may trust a machine-produced grade less, not more (Q-005).
-      - An engineering lead may read a PRD that names no technology as incomplete (A-003).
+      - We may trust a machine's grade less than our own review (Q-005).
+      - Our engineering leads may send back a PRD that names no technology (A-003).
+      - We cannot circulate a PRD that cites a regulation nobody checked (FR-006).
 competitors:
   - name: ChatPRD, an AI tool that drafts PRDs from a chat
     kind: direct
@@ -52,47 +53,48 @@ competitors:
       ChatPRD docs, https://www.chatprd.ai/docs/writing-your-first-prd, accessed
       2026-10-27.
     our_edge: >-
-      Before anyone estimates, the buyer holds a report that names each
-      release-line stage no requirement covers and quotes each requirement an
-      engineer could not write a test from. The buyer can check a ChatPRD draft
-      for the same report.
+      Before the budget is committed, the sponsor gets a list of each step in the
+      user's path that nothing in the PRD covers, and each requirement an
+      engineer could not test, quoted. The sponsor can ask for the same list
+      from a ChatPRD draft and compare.
   - name: A blank PRD template in the team's document tool
     kind: indirect
     offer: >-
       The section headings, immediately, free, in a tool everyone already has.
     our_edge: >-
-      After one engagement, each fact the expert could not supply is an open
-      question with a named decider and a date, and the set holds no figure or
+      When the PRD is done, each fact the expert could not supply is listed with
+      a named person and a date to settle it, and the PRD states no figure or
       citation that nobody can stand behind.
   - name: A general-purpose assistant conversation with no structure
     kind: indirect
     offer: >-
       Fluent prose on any section, instantly, with no setup at all.
     our_edge: >-
-      Before approving, the buyer can see which sections are not yet ready, each
-      with the quoted defect that holds it back, so a fluent section that cannot
-      be built is not offered as ready. Fluency is the failure mode in P-003.
+      Before approving, the sponsor sees which sections are not ready and the
+      quoted reason for each, so a well-written section that cannot be built is
+      not offered as ready. Writing that reads well is the failure P-003 names.
   - name: Contracting a product manager without the domain for the engagement
     kind: indirect
     offer: >-
       Genuine product judgement, and someone accountable for the outcome.
     our_edge: >-
-      The PRD is written by the person closest to the domain knowledge, and the
-      buyer sees each section's grade and blocking defects before approving. In
-      S-001 the consultant already stands between the client and the page, and
-      any cost advantage there is unproven until Q-013 gives the day rate.
+      The PRD is written by the person who holds the domain knowledge, and each
+      fact they could not supply is listed as an open question rather than filled
+      in by someone without the domain. In S-001 the consultant already stands
+      between the client and the page. Any cost advantage is unproven until Q-013
+      gives the day rate.
   - name: "The status quo: a smart practitioner, a document, and a willing engineer"
     kind: status-quo
     offer: >-
       No tool, no cost, no adoption, and it does sometimes work.
     our_edge: >-
-      At handover, an engineer who was not in the room receives a set that names
-      each release-line stage no requirement covers and holds each fact the
-      expert could not supply as an open question with a named decider and a
-      date, so they can estimate without first interviewing the author.
+      At handover, an engineer who was not in the room gets a list of each step
+      in the user's path that nothing in the PRD covers, and each unknown fact
+      with a named person and a date, so they can estimate without first
+      interviewing the author.
 why_we_win: >-
-  "Before I approve the budget, I can see which parts of a PRD my own expert
-  wrote my team could not build from yet."
+  "Before I approve the budget, I can see which parts of the PRD my team could
+  not build from."
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-problem-opportunity, kind: problem-opportunity, path: ./01-problem-opportunity.md, title: Problem and opportunity }
@@ -124,12 +126,16 @@ The id S-003 is not reused.
 
 ## Why we win
 
-"Before I approve the budget, I can see which parts of a PRD my own expert wrote
-my team could not build from yet."
+"Before I approve the budget, I can see which parts of the PRD my team could not
+build from."
 
 The sponsor in either segment says this. In S-001 they weigh it against the
 consultant's billable hours, and in S-002 against contracting a product manager
 without the domain, whose day rate is Q-013.
+
+In S-002 the organization works under regulation, so its PRDs may cite
+regulations. The set states no regulation the expert did not supply or that was
+not checked (FR-006, TR-005), which is what lets such a PRD be circulated.
 
 **Honest weakness.** Against a product manager who already holds the domain, we
 have no quality edge, only availability and cost. A skeptical buyer is right to

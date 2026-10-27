@@ -103,7 +103,7 @@ terms:
       A piece of the product. A spike produces knowledge, not a feature. This set
       departs from the source, where a spike is a technical investigation. Here
       a spike may be research with people, as in Q-005, and some run inside a
-      dependency's sessions, as Q-006 and Q-007 run in D-002's.
+      dependency's observed sittings, as Q-006 and Q-007 run in D-002's.
     source: >-
       Spike Solutions, The Art of Agile Development, 1st ed., James Shore and
       Shane Warden, 3 Jun 2010,
@@ -283,12 +283,15 @@ terms:
       2026-10-27, https://www.agilebusiness.org/?p=1907
   - term: Wireframe
     meaning: >-
-      A sketch of one screen a person works in or one report a person reads,
-      labeled an illustration, not a design. It shows what
-      the person sees and does there, and names the requirements it makes concrete.
-      Every requirement shown in a screen or a report has one, in section 7.
+      A sketch of one screen a person works in or one report a person reads. It
+      shows what the person sees and does there, and names the requirements it
+      makes concrete. Every requirement shown in a screen or a report has one, in
+      section 7.
     see_also:
       - the five tests
+    not: >-
+      A design. A wireframe is labeled an illustration, and the development team
+      decides how the screen looks.
   - term: Buildability review
     meaning: >-
       A reading of the whole set as the engineering lead who has to build it. It
@@ -331,8 +334,9 @@ terms:
     meaning: >-
       The one person who approves, approves with conditions, or rejects the whole
       set for a release under TR-001: the sponsor, or the expert when no sponsor
-      exists. A set approved with conditions reads that way until the approver
-      clears every condition.
+      exists. Each set names its approvers, by name and role, under FR-021, and
+      only a named approver's decision counts. A set approved with conditions
+      reads that way until the approver clears every condition.
     see_also:
       - condition
       - root document
@@ -412,7 +416,9 @@ terms:
       passes, and exit criteria decide whether a whole release is done. This set
       also departs from the source: North writes acceptance criteria as
       scenarios, and in this set a scenario is a different thing, a path through
-      journey stages in section 5.
+      journey stages in section 5. The set departs because it writes Given/When/Then
+      on one stage or one requirement, and it needs a separate word for a walk
+      across several stages with real values, which section 5 calls a scenario.
     source: >-
       Introducing BDD, Dan North, 20 Sep 2006,
       https://dannorth.net/blog/introducing-bdd/
@@ -426,6 +432,10 @@ terms:
       - buildability review
       - release line
       - open question
+    not: >-
+      A finding or a blocking defect. A finding is anything a review reports,
+      and a blocking defect is a finding that stops a section moving on. A gap is
+      a thing the set leaves unsaid.
   - term: Version
     meaning: >-
       A numbered state of the set, recorded in section 15 with its date, its
@@ -726,8 +736,9 @@ terms:
   - term: Backbone
     meaning: >-
       The ordered journey stages that a story-mapping workshop maps features
-      against. A set with no journey gives the workshop no backbone, so the
-      workshop invents one in the room. This set departs from the source, where
+      against, because a story map needs an order of work to hang its stories on.
+      A set with no journey gives the workshop no backbone, so the workshop
+      invents one in the room. This set departs from the source, where
       the backbone is the capabilities the system needs. In this set the backbone
       is the journey stages, including stages that happen outside the product.
     see_also:
@@ -799,10 +810,16 @@ terms:
   - term: Session
     meaning: >-
       The assistant conversation the expert is already working in, which the
-      product works inside, as dependency D-001 records. A session ends when that
-      conversation ends, and the set stays where it was written.
+      product works inside, as dependency D-001 records. The session shows what
+      the product shows, and it carries any number of people working at once. A
+      session ends when that conversation ends, and the set stays where it was
+      written.
     see_also:
       - dependency
+    not: >-
+      A sitting. An expert's working sitting, or an observed sitting in D-002,
+      is a stretch of time spent on the work, and one sitting can span more than
+      one session.
   - term: Change log
     meaning: >-
       Section 15, which records each version of the set with its date, its author,
@@ -1000,15 +1017,15 @@ terms:
       - pilot PRD
   - term: Reviewer
     meaning: >-
-      A second reader who comments on a section without being able to change it,
-      as REL-003 plans. No persona in release 1 is a reviewer.
+      A person who comments on a section without being able to change it, as
+      REL-003 plans. No persona in release 1 is a reviewer.
     see_also:
       - review
     not: >-
       A grading pass. The grading pass that scores a section is not a person.
   - term: Iteration
     meaning: >-
-      One fixed period of the delivery team's work after the PRD is approved.
+      One fixed period of the development team's work after the PRD is approved.
       "Iteration three" means late in the build, after the plan is made.
     see_also:
       - release
@@ -1047,13 +1064,6 @@ terms:
     see_also:
       - interview
       - topic
-  - term: Host
-    meaning: >-
-      The assistant session the expert already works in, which renders what the
-      product shows and carries its load, as dependency D-001 records.
-    see_also:
-      - session
-      - dependency
   - term: Specification
     meaning: >-
       In the general sense only: a requirements document written without this
@@ -1062,6 +1072,22 @@ terms:
     see_also:
       - prd
       - document set
+  - term: Development team
+    meaning: >-
+      The people who build from an approved set: the engineering lead, the
+      delivery lead, and the engineers, as section 4 names them.
+    see_also:
+      - engineering lead
+      - delivery lead
+      - engineer
+  - term: Buildable
+    meaning: >-
+      Said of a set a development team can estimate and build from without
+      re-deriving it, which a buildability review reports as the verdict
+      `buildable`.
+    see_also:
+      - verdict
+      - buildability review
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -1131,6 +1157,9 @@ links:
 | Review | The buildability review |
 | Exit criteria | Acceptance criteria |
 | Unit of work | An engagement |
+| Gap | A finding, a blocking defect |
+| Wireframe | A design |
+| Session | A sitting |
 
 The "Most often confused with" column above is the one that earns its keep. Three
 of them, golden thread, blocking defect and

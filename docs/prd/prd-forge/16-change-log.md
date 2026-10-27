@@ -16,16 +16,12 @@ changes:
     date: 2026-10-27
     author: Richard Hightower
     summary: >-
-      Adds counted evidence and sourced why-now claims, and a versioning policy.
-      Personas get named roles, populations, and frequencies, and every journey
-      stage gets the expert's satisfaction score. ST-006 happens outside the
-      product. FR-019 and FR-020 split out of FR-004 and FR-008, FR-014 records a
-      rejection, TR-014 has the expert accept or refute each score, and LC-001
-      lets a section go back to draft. C-004 leaves section 9, and teams without
-      the domain are a non-goal. Eight glossary terms cite a verified source, and
-      each defined word has one meaning. Open questions are single and due before
-      REL-001. The body lists the change by section. This is a minor version: new
-      content, with no structural change.
+      Problems carry counted, sourced evidence. Personas have named roles and
+      frequencies, and every journey stage has the expert's satisfaction score.
+      ST-006 happens outside the product. New requirements FR-019 to FR-021, the
+      last naming each approver. The expert accepts or refutes each score, and a
+      section can go back to draft. Section 9 is empty, and the set states a
+      versioning policy. A minor version: new content, nothing structural.
     sections:
       - 1
       - 2
@@ -124,8 +120,16 @@ changes:
     date: 2026-10-26
     author: Richard Hightower
     summary: >-
-      No change to the set. The product changed, and the set and the product
-      share one version number.
+      Every journey stage gains Given/When/Then acceptance. The scenarios
+      document gains LC-001, the lifecycle of a section, and scenarios can link
+      their wireframes. Each persona gains a short name for diagrams. The set's
+      own version still read 0.4.0 when this shipped.
+    sections:
+      - 4
+      - 5
+      - 10
+      - 12
+      - 13
   - version: 0.4.0
     date: 2026-10-26
     author: Richard Hightower
@@ -229,9 +233,9 @@ links:
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
 | 0.6.0 | 2026-10-27 | Richard Hightower | Links from the specification review: problems, objectives, competitors, decision stages, and scenario views |
-| 0.5.0 | 2026-10-26 | Richard Hightower | No change to the set; the product changed |
+| 0.5.0 | 2026-10-26 | Richard Hightower | Given/When/Then acceptance on every stage; LC-001; scenario wireframe links; persona short names |
 | 0.4.0 | 2026-10-26 | Richard Hightower | Navigation and refresh requirements; wireframes rewritten from their grading |
-| 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for every screen and report, and recorded reasons for the grades |
+| 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for the requirements shown on a screen or in a report, and the term wireframe |
 | 0.2.0 | 2026-10-26 | Richard Hightower | J-001's goal without the engineering lead's confirmation; FR-003 and FR-004 outcomes; FR-015 and FR-016 split out; the threshold stated as 70; NFR-010 to NFR-012; TR-007 to TR-012 |
 | 0.1.0 | 2026-10-23 | Richard Hightower | First draft of sixteen section documents across fifteen sections |
 
@@ -274,10 +278,13 @@ links:
   answered. Q-019 splits into Q-019 and Q-022, and Q-023 tests PER-004.
 - **Section 13:** REL-001 depends on D-002, D-003, Q-019, and Q-022.
 - **Section 14:** eight terms cite a verified source, and review, pass, refute,
-  approval, and engagement each have one meaning. Host and the general sense of
-  specification are defined.
+  approval, and engagement each have one meaning. Session, buildable,
+  development team, and the general sense of specification are defined.
 - **Section 15:** the versioning policy, a 0.5.0 entry, and the date the set is
   offered for approval, 2027-03-15.
+- **Section 7 and section 10:** on the expert's decision, FR-021, a `must`,
+  lets the expert name each approver by name and role before offering the set.
+  TR-001's decider stays the sponsor's role.
 
 None of this is structural under the policy. No stage is added, removed, or
 reordered, and the golden thread's goal and end state are unchanged. The
@@ -310,8 +317,10 @@ neither is reissued:
   policy it would have been the next minor version.
 - 0.2.0 changed the golden thread. Under this policy it takes the set to 1.0.
 
-Version 0.5.0 changed the product and not this PRD. Its entry says so, because
-the set and the product share one version number.
+Before 0.9.0, the set's version number lagged the product's. Set 0.3.0 shipped
+in product 0.4.0, set 0.4.0 in product 0.4.1, and the 0.5.0 changes to the set
+shipped in product 0.5.0 while the set still read 0.4.0. Product 0.5.1 changed
+only the product, so the log has no entry for it.
 
 ## 0.2.0, what the grading changed
 
@@ -347,5 +356,16 @@ forward:
 
 None sought. This set is at `draft` and has not been offered for approval. It
 cannot be approved for a release without an approval recorded here, under
-TR-001. The set is offered for approval by 2027-03-15. Richard Hightower, the
-sponsor, PER-003, is the approver who will be asked. A section reaches `final` when the expert sets it final, under TR-002.
+TR-001. A section reaches `final` when the expert sets it final, under TR-002.
+
+The set is offered for approval by 2027-03-15. Under FR-021 its one named
+approver is Richard Hightower, the owner of the place where this PRD is kept,
+in the sponsor's role, PER-003. He is also its author and owner, so this is a
+self-approval, and the entry will say so. When an outside reader reviews the
+set, their review is recorded beside the approval.
+
+Each approval is recorded with the version, the approver's name and role, the
+date, and the decision. An approval with conditions records each condition as
+"conditional on <id> by <date>", where the id is the open question or
+requirement the condition depends on, as FR-014 requires. A rejection records
+its reason.

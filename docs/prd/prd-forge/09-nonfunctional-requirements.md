@@ -86,7 +86,7 @@ requirements:
     target: >-
       90% of sections, measured over 10 first-time experts
     measurement: >-
-      Observed sessions with 10 first-time experts before release, questions to the
+      Observed sittings with 10 first-time experts before release, questions to the
       observer counted and categorised.
     priority: must
   - id: NFR-006
@@ -233,13 +233,13 @@ must not need a mouse to do it.
 
 There is no concurrency target, and that is a decision rather than an omission.
 Under D-001 the product reaches one expert inside a session they are already in,
-so simultaneous users are the host's load and not ours; NFR-003 therefore reads
+so the session, not the product, carries simultaneous users; NFR-003 therefore reads
 scale as the size of one set, which is the dimension we do control. If D-001 or the
 separate-application non-goal in section 6 ever changes, concurrency comes back
 and this paragraph goes.
 
 NFR-006 and NFR-012 set targets on things the non-goals in section 6 say we do not own: what
-the host renders, and where the customer keeps its documents. They are kept as
+the session renders, and where the customer keeps its documents. They are kept as
 `must` because a target nobody owns is how accessibility and access control get
 lost. Who owns them is Q-017 for NFR-006 and Q-021 for NFR-012.
 

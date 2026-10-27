@@ -22,7 +22,7 @@ questions:
       - O-001
     spike: >-
       Run the eleven derivability checks against ten specifications collected from
-      real engagements, and count. Time-boxed to 3 days. It depends on Q-009,
+      real client projects done without this product, and count. Time-boxed to 3 days. It depends on Q-009,
       because the version of the checks must be fixed first.
   - id: Q-002
     question: >-
@@ -34,7 +34,7 @@ questions:
       - O-002
     spike: >-
       Reconstruct the timeline from the first question put to the expert to the
-      approval, for five recent engagements. Time-boxed to 2 days.
+      approval, for five recent projects done without this product. Time-boxed to 2 days.
   - id: Q-003
     question: >-
       What share of `must` functional requirements in today's specifications can an
@@ -67,6 +67,7 @@ questions:
       - FR-013
       - TR-001
       - OUT-003
+      - PER-003
     spike: >-
       Show three sponsors the same set with and without grades and ask which they
       would approve. Time-boxed to 2 days.
@@ -78,8 +79,8 @@ questions:
     blocks:
       - R-004
     spike: >-
-      Count in D-002's ten observed sessions, held by 2027-01-31. Time-boxed to 1
-      day after the sessions.
+      Count in D-002's ten observed sittings, held by 2027-01-31. Time-boxed to 1
+      day after the sittings.
   - id: Q-007
     question: >-
       Does writing the requirements send an expert back to the journeys?
@@ -90,8 +91,9 @@ questions:
       - FR-010
       - R-004
     spike: >-
-      Count loop-backs in D-002's ten observed sessions, held by 2027-01-31.
-      Time-boxed to 1 day after the sessions.
+      Count loop-backs in D-002's ten observed sittings, held by 2027-01-31. The
+      answer is yes if at least 3 of the 10 sittings loop back. Time-boxed to 1
+      day after the sittings.
   - id: Q-008
     question: >-
       Does an engineering lead read a PRD that names no technology as disciplined
@@ -175,7 +177,7 @@ questions:
       Time-boxed to 1 day.
   - id: Q-014
     question: >-
-      Given how experts describe a loop-back in D-002's sessions, does ST-004
+      Given how experts describe a loop-back in D-002's sittings, does ST-004
       keep its step that sends the expert back to an earlier section?
     decider: Richard Hightower
     by: 2027-02-28
@@ -183,8 +185,8 @@ questions:
       - ST-004
       - FR-010
     spike: >-
-      Ask each expert after a loop-back, in D-002's ten observed sessions, held by
-      2027-01-31. Time-boxed to 1 day after the sessions.
+      Ask each expert after a loop-back, in D-002's ten observed sittings, held by
+      2027-01-31. Time-boxed to 1 day after the sittings.
   - id: Q-015
     question: >-
       Who owns the rubric and the eleven derivability checks?
@@ -235,20 +237,21 @@ questions:
       - P-003
       - P-004
     spike: >-
-      For one recent engagement, count the engineer days spent re-deriving the
+      For one recent project done without this product, count the engineer days spent re-deriving the
       specification, the gaps found during build, and the plans changed after
       approval. Time-boxed to 2 days.
   - id: Q-019
     question: >-
-      Does REL-001 keep 2027-03-31 if D-002 and D-003 report by 2027-01-31?
+      Will both parties behind D-002 and D-003 commit in writing to report by
+      2027-01-31, so that REL-001 keeps 2027-03-31?
     decider: Richard Hightower
     by: 2027-01-31
     blocks:
       - REL-001
     spike: >-
-      Get the date each party behind D-002 and D-003 commits to in writing. The
-      answer is yes only if both commit to 2027-01-31 or earlier. Time-boxed to
-      1 day.
+      Ask each party behind D-002 and D-003 for a written date. The answer is yes
+      if both written dates are 2027-01-31 or earlier, and no otherwise, in which
+      case Q-022 decides. Time-boxed to 1 day.
   - id: Q-020
     question: >-
       Which section do experts stop at most often?
@@ -257,8 +260,8 @@ questions:
     blocks:
       - R-004
     spike: >-
-      Note the section at each stop in D-002's ten observed sessions, held by
-      2027-01-31. Time-boxed to 1 day after the sessions.
+      Note the section at each stop in D-002's ten observed sittings, held by
+      2027-01-31. Time-boxed to 1 day after the sittings.
   - id: Q-021
     question: >-
       Whom does the decider record as owner of NFR-012's access control, given
@@ -321,7 +324,7 @@ links:
 | Q-016 | Must a grade show the rubric version it was made against | R. Hightower | 2027-01-31 | NFR-007 |
 | Q-017 | Who owns NFR-006's accessibility | R. Hightower | 2027-02-28 | NFR-006 |
 | Q-018 | One counted cost per problem in section 1 | R. Hightower | 2027-01-31 | P-001 to P-004 |
-| Q-019 | Does REL-001 keep its date if D-002 and D-003 report on time | R. Hightower | 2027-01-31 | REL-001 |
+| Q-019 | Will D-002 and D-003 commit in writing to report by 2027-01-31 | R. Hightower | 2027-01-31 | REL-001 |
 | Q-020 | Which section experts stop at most | R. Hightower | 2027-02-28 | R-004 |
 | Q-021 | Who owns NFR-012's access control | R. Hightower | 2027-02-28 | NFR-012 |
 | Q-022 | Does REL-001 move or ship as an experiment if D-002 or D-003 is late | R. Hightower | 2027-01-31 | REL-001 |
@@ -334,7 +337,9 @@ links:
 ships. Until they are answered, section 3's targets are provisional. Nothing should be committed to a
 plan on the strength of them.
 
-**Q-009 and Q-010 block the most.** Q-009 blocks four `must` requirements, FR-004, FR-009, FR-010, and FR-012, and two `should`
+**Q-015, Q-009, and Q-010 block the most.** Q-015, who owns the rubric and the
+checks, is due first, by 2027-01-15, because Q-009 cannot fix a version without
+an owner. It blocks the same six requirements as Q-009. Q-009 blocks four `must` requirements, FR-004, FR-009, FR-010, and FR-012, and two `should`
 requirements, FR-011 and FR-019. Those six requirements sit on four release-line
 stages, ST-002 to ST-005, which can be scaffolded and not finished until Q-009
 is answered. Q-010 blocks FR-015, a `should`, and NFR-011. It is the one where

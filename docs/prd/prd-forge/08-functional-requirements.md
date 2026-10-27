@@ -467,6 +467,30 @@ requirements:
     shown_in: screen
     journey_stage: ST-003
     objective: O-003
+  - id: FR-021
+    user: PER-001
+    capability: >-
+      Name each approver of a set, by name and role, before offering it for
+      approval
+    outcome: >-
+      The set records who will approve it, and nobody else's decision counts as
+      an approval.
+    acceptance:
+      - >-
+        Given a set the expert is about to offer for approval, when they name an
+        approver, then the set records that approver's name and role, and the
+        root document shows them.
+      - >-
+        Given a set with no approver named, when the expert asks to offer it for
+        approval, then it is not offered, and they are told an approver must be
+        named first.
+      - >-
+        Given a decision from someone the set does not name as an approver, when
+        the expert records it, then it is not recorded as an approval.
+    priority: must
+    shown_in: conversation
+    journey_stage: ST-006
+    objective: O-002
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-scope, kind: scope, path: ./07-scope.md, title: Scope }
@@ -497,16 +521,19 @@ links:
 | FR-018 | PER-001 | See the set as it now stands | should | ST-003 |
 | FR-019 | PER-001 | Stop being asked once the section would meet the gate | should | ST-002 |
 | FR-020 | PER-001 | Be told when the set states one item two ways | should | ST-003 |
+| FR-021 | PER-001 | Name each approver before offering the set | must | ST-006 |
 
-Every release-line stage has at least one `must` requirement. Ten of the 20
+Every release-line stage has at least one `must` requirement. Eleven of the 21
 are `must`: without any one of them, REL-001 does not do what it promises. The
 ten `should` requirements make the work faster or easier to follow, and the
 expert can still reach an approved set without them. The expert set this split
-at version 0.8.0.
+at version 0.8.0, and set FR-021 to `must` at version 0.9.0.
 
 Five of the `must` requirements wait on an open question in section 12.
 FR-004, FR-009, FR-010, and FR-012 wait on Q-009, which version of the rubric
-and the derivability checks release 1 grades against. FR-010 also waits on Q-007 and Q-014, whether writing
+and the derivability checks release 1 grades against. The same four also wait
+on Q-015, who owns the rubric and the checks, because Q-009 cannot fix a
+version until Q-015 names its owner. FR-010 also waits on Q-007 and Q-014, whether writing
 the requirements sends the expert back to the journeys and how that feels,
 because both block ST-004. FR-013 waits on Q-005, whether a sponsor accepts a
 PRD that carries a grade. FR-014 no longer waits: Q-011 is answered, and in
@@ -523,6 +550,10 @@ FR-019 and FR-020 were split out of FR-004 and FR-008 at version 0.9.0, for the
 same reason. The early stop and the check across the set each have a failure
 mode of their own, and each needs its own priority. The expert set both to
 `should`. FR-019 also waits on Q-009, because the early stop applies the rubric.
+
+FR-021 was added at version 0.9.0 on the expert's decision. A set records who
+will approve it before it is offered, so an approval names a person, not only
+the sponsor's role in section 10.
 
 ## A judgement call worth challenging
 

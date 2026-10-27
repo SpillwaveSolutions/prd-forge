@@ -21,8 +21,8 @@ assumptions:
       PRD from perhaps fifteen answers, which changes sections 5, 6 and 7
       completely and makes the grading thresholds meaningless.
     validated_by: >-
-      Observed sessions with 10 first-time experts, counting where they stop, the
-      same sessions NFR-005 uses (D-002).
+      Observed sittings with 10 first-time experts, counting where they stop, the
+      same sittings NFR-005 uses (D-002).
     owner: Richard Hightower
     category: usability
     evidence: none
@@ -34,7 +34,7 @@ assumptions:
       The grading is decoration, and O-001 to O-003 and FR-009 to FR-011 measure
       something nobody uses. The product reduces to a structured interview.
     validated_by: >-
-      In the same observed sessions, whether the expert answers the one question or
+      In the same observed sittings, whether the expert answers the one question or
       moves on regardless (D-002).
     owner: Richard Hightower
     category: value
@@ -219,7 +219,7 @@ links:
 | A-005 | Organizations accept that domain content stays in the session and the documents | NFR-008, NFR-010, and NFR-012 have to change |
 
 A-001 and A-002 are the two the product stands on, and neither has been tested.
-Both are validated by the same ten observed sessions (D-002), which makes D-002
+Both are validated by the same ten observed sittings (D-002), which makes D-002
 the single most load-bearing dependency in this PRD.
 
 A-005 was constraint C-003 in section 9 until 0.8.1. It moved here because it is
