@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 5
 order: 60
-score: 75
-blocking: 2
-graded: 2026-10-26
+score: 78
+blocking: 0
+graded: 2026-10-27
 scenarios:
   - id: SC-001
     journey: J-001

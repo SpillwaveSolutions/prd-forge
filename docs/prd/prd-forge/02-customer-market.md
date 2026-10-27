@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 2
 order: 20
-score: 55
-blocking: 3
-graded: 2026-10-26
+score: 50
+blocking: 1
+graded: 2026-10-27
 segments:
   - id: S-001
     name: Consultancies and advisory firms turning client domain knowledge into specifications

@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 8
 order: 90
-score: 79
+score: 82
 blocking: 0
-graded: 2026-10-26
+graded: 2026-10-27
 requirements:
   - id: NFR-001
     category: performance

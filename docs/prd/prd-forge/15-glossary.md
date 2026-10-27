@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 14
 order: 150
-score: 60
-blocking: 7
-graded: 2026-10-26
+score: 55
+blocking: 6
+graded: 2026-10-27
 terms:
   - term: PRD
     meaning: >-

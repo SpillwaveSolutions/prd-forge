@@ -2,34 +2,31 @@
 doc: ../13-open-questions.md
 score: 79
 blocking: 1
-graded: 2026-10-26
+graded: 2026-10-27
 grader: prd-forge:prd-adversary
+previous_score: 79
 ---
 
 # Why open questions scored 79
 
+The earlier blocking defect is fixed: section 7 now names the questions FR-004, FR-009, FR-010, FR-012, FR-013, and FR-014 wait on. The grader found one more.
+
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Decider | 3 | One decider in the front matter, but the body table says "R. Hightower + 3 sponsors". Q-005 and Q-008 ask about other people's behavior, which no decider can decide. |
-| Date | 3 | Q-001 to Q-003, Q-006, and Q-007 fall on REL-001's own date, not before it. |
+| Decider | 3 | Q-005 and Q-008 ask about other people's behavior, which the decider cannot decide. |
+| Date | 3 | Q-006 and Q-007 fall on REL-001's own date. |
 | Blocks | 4 | Every blocked id exists. |
-| Answerability | 3 | Q-009 and Q-011 each ask three things. Q-009 and Q-010 ask where things live, which is a design choice. Q-006 and Q-007 have no time box. |
-| Honesty | 3 | The REL-001 schedule clash in sections 11 and 13 has no question, decider, or date. |
-| Hygiene | 3 | The body says Q-010 blocks a `must` requirement on the release line, and FR-015 is now `should`. It also miscounts Q-009's requirements and stages. |
+| Answerability | 3 | Q-009, Q-011, Q-004, and Q-007 each ask more than one thing; Q-009 and Q-010 ask where things live. Q-002 measures from a different start than O-002. |
+| Honesty | 3 | The move-or-ship decision for REL-001 has no question. |
+| Hygiene | 3 | The body still says Q-010 blocks a `must` on the release line, and that Q-009 touches two stages; it touches four. |
 
 ## Blocking defects
 
-- Six `must` requirements depend on unanswered questions, and section 7 does not say so: FR-004, FR-009, FR-010, and FR-012 wait on Q-009, FR-013 on Q-005, and FR-014 on Q-011.
+- Q-007 blocks ST-004, where FR-010 is `must`, and section 7 does not say FR-010 waits on Q-007.
 
 ## How to raise the grade
 
-- **Blocking defect:** In section 7, name the question each of the six requirements waits on.
-- **Hygiene (3 to 4):** Rewrite "The three that matter most" against the 0.8.0 priorities, and make the table's decider column match the front matter.
+- **Blocking defect:** Add Q-007 to section 7's list of waits, or correct Q-007's `blocks`.
+- **Answerability (3 to 4):** Split the compound questions, rephrase Q-009 and Q-010 as product decisions, time-box Q-006 and Q-007, and align Q-002 with O-002.
 - **Honesty (3 to 4):** Add a question on whether REL-001 moves or ships as an experiment, decided by the TR-001 approver before 2027-03-31.
-- **Answerability (3 to 4):** Split the compound questions, move the "where it lives" parts to the candidate architecture list, and time-box Q-006 and Q-007.
-- **Date (3 to 4):** Date the questions before the release they block.
-- **Decider (3 to 4):** Reword Q-005 and Q-008 as decisions the decider owns.
-
-## Fixed after this grade
-
-- The body table's decider column now names one decider for Q-005 and Q-008, as the front matter does. The 0.8.0 change caused the mismatch.
+- **Date, decider, hygiene (3 to 4):** Date questions before the release they inform, reword Q-005 and Q-008 as decisions, and correct the stale body claims.

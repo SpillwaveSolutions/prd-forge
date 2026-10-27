@@ -18,7 +18,7 @@ created: 2026-10-23
 golden_thread: J-001
 score: 75
 blocking: 0
-graded: 2026-10-26
+graded: 2026-10-27
 primary_persona: PER-001
 approvers: [PER-003]
 summary:
