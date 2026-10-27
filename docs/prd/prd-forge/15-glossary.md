@@ -748,6 +748,63 @@ terms:
       - target
     not: >-
       A requirement in section 7. A requirement names a user and what they can do.
+  - term: Summary
+    meaning: >-
+      The opening of the root document, which states in a few sentences the
+      problem, the users, why now, the bet, the one objective that proves it, and
+      how it is measured. An approver reads it first.
+    see_also:
+      - root document
+      - objective
+  - term: Glossary
+    meaning: >-
+      Section 14, this section. It gives each domain term one meaning, and every
+      requirement and acceptance criterion uses those words.
+    see_also:
+      - vocabulary
+  - term: View
+    meaning: >-
+      What the expert has in front of them at one moment, such as one section or
+      its grade.
+    see_also:
+      - section
+  - term: Topic
+    meaning: >-
+      One subject inside a section's interview, such as one requirement or one
+      stage. A follow-up question finishes a topic before the next one opens.
+    see_also:
+      - interview
+      - question list
+  - term: Ready
+    meaning: >-
+      At `review`: a section that scores 70 or more with no blocking defect and is
+      fit for someone else to read.
+    see_also:
+      - state
+      - gate
+  - term: Capability
+    meaning: >-
+      The first part of a requirement: what one named user can do with the
+      product, in their own words.
+    see_also:
+      - requirement
+      - outcome
+  - term: Outcome
+    meaning: >-
+      The second part of a requirement: what the user sees or has once the
+      capability exists, stated so that someone else could check it.
+    see_also:
+      - requirement
+      - capability
+    not: >-
+      A feeling. "They feel confident" is not an outcome a tester can check.
+  - term: Problem
+    meaning: >-
+      A condition a named persona suffers today, recorded in section 1 with
+      counted evidence, why it matters now, and what it costs to leave it.
+    see_also:
+      - persona
+      - objective
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -794,6 +851,7 @@ links:
 | Objection | A refuted finding |
 | Gate | The threshold |
 | Out of scope | A non-goal |
+| Outcome | A feeling |
 
 Seventeen terms were added at version 0.2.0. Five of them existed only as
 `see_also` pointers to nothing, which is this set's own named blocking defect; the
