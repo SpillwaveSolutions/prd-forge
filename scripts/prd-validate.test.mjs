@@ -80,13 +80,13 @@ test('a must scenario off the release line fails the set', () => {
 
 test('a stage satisfaction outside 1 to 5 fails the set', () => {
   const errors = validateEdited('05-user-journeys.md', text =>
-    text.replace(/(      - id: ST-001\n)/, '$1        satisfaction: 7\n'))
+    text.replace(/(      - id: ST-001\n(?:.*\n)*?        )satisfaction: 3\n/, '$1satisfaction: 7\n'))
   assert.ok(errors.some(e => /satisfaction: above 5/.test(e)), errors.join('\n'))
 })
 
 test('a journey stage with no acceptance fails the set', () => {
   const errors = validateEdited('05-user-journeys.md', text =>
-    text.replace(/(      - id: ST-002\n.*\n.*\n)        acceptance:\n          - >-\n(            .*\n)+/, '$1'))
+    text.replace(/(      - id: ST-002\n(?:.*\n)*?)        acceptance:\n          - >-\n(            .*\n)+/, '$1'))
   assert.ok(errors.some(e => /stages\[1\]: missing acceptance/.test(e)), errors.join('\n'))
 })
 
@@ -124,7 +124,7 @@ test('the specification-review checks hold on prd-forge\'s own set', () => {
 })
 
 test('the root measure needs a number', () =>
-  failsWith('prd.md', t => t.replace(': 80% by 2027-09-30, from a baseline Q-001 will establish.', '.'), /summary\.measure has no number/))
+  failsWith('prd.md', t => t.replace(/  measure: >-\n(?: {4}.*\n)+/, '  measure: Share of the pilot PRDs that pass.\n'), /summary\.measure has no number/))
 
 test('the status quo must be named among the competitors', () =>
   failsWith('02-customer-market.md', t => t.replace('kind: status-quo', 'kind: indirect'), /no competitor has kind status-quo/))
@@ -138,7 +138,7 @@ test('an objective may name only problems that exist', () =>
   failsWith('03-objectives-metrics.md', t => t.replace('problems: [P-004]', 'problems: [P-099]'), /O-002 names problem P-099/))
 
 test('a problem reached by no requirement draws a warning', () => {
-  const warnings = warningsEdited('03-objectives-metrics.md', t => t.replace('problems: [P-004]', 'problems: []'))
+  const warnings = warningsEdited('03-objectives-metrics.md', t => t.replace('problems: [P-004]', 'problems: []').replace('problems: [P-001, P-004]', 'problems: [P-001]'))
   assert.ok(warnings.some(w => /P-004 reaches no requirement/.test(w)), warnings.join('\n'))
 })
 
@@ -161,7 +161,7 @@ test('a decision rule\'s approver and stages must exist', () => {
 
 test('a dependency that blocks a missing id, or is due after the release it blocks, fails', () => {
   failsWith('12-assumptions-risks-dependencies.md', t => t.replace('      - A-001\n', '      - A-099\n'), /blocks A-099, which does not exist/)
-  failsWith('12-assumptions-risks-dependencies.md', t => t.replace('    by: 2027-03-31\n    status: requested\n    blocks:\n      - A-001\n', '    by: 2027-04-30\n    status: requested\n    blocks:\n      - FR-001\n      - A-001\n'), /D-002 is due 2027-04-30, after REL-001's target/)
+  failsWith('12-assumptions-risks-dependencies.md', t => t.replace('    by: 2027-03-31\n    status: requested\n    owner: Richard Hightower\n    blocks:\n      - A-001\n', '    by: 2027-04-30\n    status: requested\n    owner: Richard Hightower\n    blocks:\n      - FR-001\n      - A-001\n'), /D-002 is due 2027-04-30, after REL-001's target/)
 })
 
 test('a glossary term may be defined once', () =>
@@ -179,7 +179,7 @@ test('a requirement missing shown_in warns at draft and fails at review', () => 
 })
 
 test('an id is not a number', () =>
-  failsWith('prd.md', t => t.replace(': 80% by 2027-09-30, from a baseline Q-001 will establish.', ', as Q-001 records.'), /summary\.measure has no number/))
+  failsWith('prd.md', t => t.replace(/  measure: >-\n(?: {4}.*\n)+/, '  measure: Share of the pilot PRDs that pass, as Q-001 records.\n'), /summary\.measure has no number/))
 
 test('prd-forge\'s own PRD carries the plugin\'s version', () => {
   const plugin = JSON.parse(readFileSync(join(REPO, '.claude-plugin/plugin.json'), 'utf8')).version
@@ -200,12 +200,12 @@ test('the root names a real objective, primary persona, and approvers', () => {
 })
 
 test('segments name real personas, and only one persona is primary', () => {
-  failsWith('02-customer-market.md', t => t.replace('  - id: S-001\n', '  - id: S-001\n    user_personas: [PER-099]\n'), /S-001 names PER-099/)
+  failsWith('02-customer-market.md', t => t.replace('    user_personas:\n      - PER-001\n', '    user_personas:\n      - PER-099\n'), /S-001 names PER-099/)
   failsWith('04-personas.md', t => t.replace('short_name: Sponsor\n', 'short_name: Sponsor\n    primary: true\n'), /more than one persona is primary/)
 })
 
 test('a journey names real objectives and persona, and its pain points name real stages and needs', () => {
-  failsWith('05-user-journeys.md', t => t.replace('  - id: J-001\n', '  - id: J-001\n    objectives: [O-099]\n'), /J-001 names O-099/)
+  failsWith('05-user-journeys.md', t => t.replace('objectives: [O-001, O-002, O-003]', 'objectives: [O-099]'), /J-001 names O-099/)
   failsWith('05-user-journeys.md', t => t.replace('  - id: J-001\n    persona: PER-001\n', '  - id: J-001\n    persona: PER-099\n'), /J-001 persona PER-099 is not a persona/)
   const pain = need => t => t.replace('    pain_points:\n', `    pain_points:\n      - pain: Slow\n        stage: ST-002\n        need: ${need}\n`)
   failsWith('05-user-journeys.md', pain('Not one of its needs'), /names a need that is not in its needs/)
@@ -218,7 +218,7 @@ test('every stage has a decision, and Gherkin capitals are accepted', () => {
 })
 
 test('a scenario branches from a step that exists', () =>
-  failsWith('06-scenarios.md', t => t.replace('  - id: SC-002\n', '  - id: SC-002\n    branches_from: { scenario: SC-001, step: 99 }\n'), /SC-002 branches from step 99 of SC-001/))
+  failsWith('06-scenarios.md', t => t.replace('  - id: SC-002\n    branches_from: { scenario: SC-007, step: 3 }\n', '  - id: SC-002\n    branches_from: { scenario: SC-001, step: 99 }\n'), /SC-002 branches from step 99 of SC-001/))
 
 test('a lifecycle state that cannot be reached, or a transition with no by, draws a warning', () => {
   const extra = t => t.replace('      - name: final\n', '      - name: archived\n        meaning: Kept for the record.\n      - name: final\n')
@@ -228,7 +228,7 @@ test('a lifecycle state that cannot be reached, or a transition with no by, draw
 
 test('the scope names a real release, and outside-product stages exist', () => {
   failsWith('07-scope.md', t => t.replace('release: REL-001,', 'release: REL-099,'), /release names REL-099/)
-  failsWith('07-scope.md', t => t.replace('\nin_scope:\n', '\noutside_product:\n  - stage: ST-099\n    workaround: By hand.\nin_scope:\n'), /outside_product names ST-099/)
+  failsWith('07-scope.md', t => t.replace('  - stage: ST-006\n', '  - stage: ST-099\n'), /outside_product names ST-099/)
 })
 
 test('the first release delivers exactly the release line, and names real objectives and waits', () => {
@@ -242,7 +242,7 @@ test('a criterion that names a control, or is not Given/When/Then, draws a warni
 })
 
 test('wireframe marks run 1 to n and match the drawing', () =>
-  failsWith('08-wireframes.md', t => t.replace('losing their place. See FR-009 › <5>', 'losing their place. See FR-009 › <6>'), /WF-001 has marks 1, 2, 3, 4, 6 for 6 shows lines/))
+  failsWith('08-wireframes.md', t => t.replace('losing their place. See Q-009 › <5>', 'losing their place. See Q-009 › <6>'), /WF-001 has marks 1, 2, 3, 4, 6 for 6 shows lines/))
 
 // A constraint with characters that YAML treats as special.
 const C_099 = `  - id: C-099
@@ -279,7 +279,7 @@ test('a release-line stage outside the product needs no must requirement', () =>
   const edit = (file, fn) => writeFileSync(join(dir, file), fn(readFileSync(join(dir, file), 'utf8')))
   edit('08-functional-requirements.md', t => t.replace(/(  - id: FR-012\n(?:.*\n)*?    priority: )must/, '$1should'))
   assert.ok(validateSet(dir).errors.some(e => /release-line stage ST-005 has no must/.test(e)))
-  edit('07-scope.md', t => t.replace('\nin_scope:\n', '\noutside_product:\n  - stage: ST-005\n    workaround: The expert asks an engineer.\nin_scope:\n'))
+  edit('07-scope.md', t => t.replace('outside_product:\n', 'outside_product:\n  - stage: ST-005\n    workaround: The expert asks an engineer.\n'))
   const errors = validateSet(dir).errors
   assert.ok(!errors.some(e => /ST-005 has no must/.test(e)), errors.join('\n'))
 })
@@ -308,8 +308,8 @@ test('a functional requirement must name its journey stage', () =>
   failsWith('08-functional-requirements.md', t => t.replace('    journey_stage: ST-001\n', ''), /missing journey_stage/))
 
 test('a state sketch belongs to another sketch that exists', () => {
-  failsWith('08-wireframes.md', t => t.replace('  - id: WF-007\n', '  - id: WF-007\n    state_of: WF-099\n'), /WF-007 state_of names WF-099/)
-  failsWith('08-wireframes.md', t => t.replace('  - id: WF-007\n', '  - id: WF-007\n    state_of: WF-007\n'), /WF-007 is a state of itself/)
+  failsWith('08-wireframes.md', t => t.replace('    state_of: WF-001\n    illustrates: [FR-018]\n', '    state_of: WF-099\n    illustrates: [FR-018]\n'), /WF-007 state_of names WF-099/)
+  failsWith('08-wireframes.md', t => t.replace('    state_of: WF-001\n    illustrates: [FR-018]\n', '    state_of: WF-007\n    illustrates: [FR-018]\n'), /WF-007 is a state of itself/)
 })
 
 test('a target that holds only a standard\'s version names no quantity', () =>

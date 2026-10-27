@@ -4,7 +4,7 @@ kind: problem-opportunity
 schema: prd-forge/problem-opportunity@1
 title: Problem and opportunity
 status: draft
-updated: 2026-10-23
+updated: 2026-10-27
 domain: product management tooling
 section: 1
 order: 10
@@ -17,7 +17,7 @@ problems:
       A domain expert can describe what their product must do out loud, but what
       they write down is a feature list: no named user, no outcome anyone could
       check, and a technology already chosen for reasons they cannot defend.
-    who: Domain expert specifying software for their own field
+    who: Product manager who is, or speaks for, the domain expert
     persona: PER-001
     evidence:
       - claim: >-
@@ -29,26 +29,32 @@ problems:
           (version 0.2.0)
         as_of: 2026-10-26
       - >-
-        Specifications arriving at delivery teams are commonly feature lists;
-        teams report re-deriving the user and the acceptance criteria themselves
-        before they can estimate.
+        A team that receives a feature list re-derives the user and the
+        acceptance criteria itself before it can estimate.
       - >-
         Experts asked to write requirements reach for the words of the software
         they have used, because that is the only requirements language they have
         been exposed to.
     why_now: >-
-      Specifications are now commonly drafted with an assistant, which makes them
-      fluent. Fluent and unbuildable is a worse failure than rough and
-      unbuildable, because nobody queries it.
+      In October 2025, 98% of 117 product managers surveyed said they use AI at
+      work (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025). A draft written with an assistant is fluent. Fluent and
+      unbuildable is a worse failure than rough and unbuildable, because nobody
+      queries it.
     cost_of_inaction: >-
       The gap is closed by an engineer guessing, during build, at what the expert
-      meant, and the guess is discovered at review or in production.
+      meant, and the guess is discovered at review or in production. Q-018 asks
+      for one counted cost.
+    status_quo: >-
+      The expert writes a feature list from a template, and an engineer
+      re-derives the user and the criteria before estimating.
+    desired_outcome: >-
+      Every requirement names a user and an outcome that someone else can check.
   - id: P-002
     statement: >-
       Requirements are written one at a time, so the steps between them are never
       written at all, and nobody notices until the team tries to assemble a
       working path through the product.
-    who: Engineering lead building from the specification
+    who: Engineering lead building from the PRD
     persona: PER-002
     evidence:
       - claim: >-
@@ -65,16 +71,24 @@ problems:
         Gaps surface as mid-iteration questions about what happens between two
         requirements that both looked complete.
     why_now: >-
-      Teams are committing to outcomes per release, which needs a complete path
-      through the product, not a complete list of features.
+      In the same survey, 44% of product managers use AI for backlog grooming and
+      QA support (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025). Backlog items now multiply faster than anyone checks the
+      path between them.
     cost_of_inaction: >-
-      The release line is drawn across a feature list rather than a journey, so a
-      release ships features and no user can complete anything with them.
+      The release line is drawn across a feature list rather than a journey, and a
+      release ships features that no user can complete anything with. Q-018 asks
+      for one counted cost.
+    status_quo: >-
+      Gaps between requirements surface as questions in the middle of an
+      iteration.
+    desired_outcome: >-
+      Every release-line stage has a requirement behind it, and every gap is
+      closed or owned before build.
   - id: P-003
     statement: >-
       Nobody can tell a buildable specification from a readable one until the team
       has already started building from it.
-    who: Sponsor or approver signing the specification off
+    who: Sponsor signing the PRD off
     persona: PER-003
     evidence:
       - claim: >-
@@ -90,16 +104,25 @@ problems:
         The first real assessment of buildability happens when an engineer
         estimates, which is after approval and after the plan was made.
     why_now: >-
-      Where the document was drafted with an assistant, readability is no longer
-      any evidence at all of buildability.
+      In the same survey, only 39% of product managers had received
+      comprehensive, job-specific AI training (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025). A fluent draft is no
+      evidence that it can be built.
     cost_of_inaction: >-
       Plans and commitments are made on an approved document whose defects are
-      found by the people asked to deliver against them.
+      found by the people asked to deliver against them. Q-018 asks for one
+      counted cost.
+    status_quo: >-
+      The sponsor signs off on readability, and buildability is first assessed
+      when an engineer estimates.
+    desired_outcome: >-
+      The sponsor sees the grade, every blocking defect, and every open question
+      before deciding.
   - id: P-004
     statement: >-
-      An expert has nowhere to learn what a section of a PRD is for at the moment
-      they are being asked to fill it in.
-    who: Domain expert specifying software for their own field
+      An expert filling in a section of a PRD does not know what the section is
+      for, so they fill it with what they have seen elsewhere: adjectives,
+      feature names, and headings copied from a template.
+    who: Product manager who is, or speaks for, the domain expert
     persona: PER-001
     evidence:
       - claim: >-
@@ -114,14 +137,22 @@ problems:
           https://productschool.com/blog/product-strategy/product-template-requirements-document-prd
         as_of: 2026-10-26
       - >-
-        The craft exists in books and in experienced product managers, neither of
-        which is available at the moment the expert is typing.
+        The craft exists in books and in experienced product managers, and
+        neither is at hand at the moment the expert is typing.
     why_now: >-
-      Organisations are asking domain experts to specify directly, without routing
-      the work through a product manager first.
+      In the same survey, 47% of product managers want to prototype and validate
+      products without engineering, and 38% can (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025). More of the specifying
+      falls on the person with the domain knowledge, with no specialist between
+      them and the page.
     cost_of_inaction: >-
-      Each expert reinvents the form badly, and the organisation's specifications
-      cannot be compared to one another or improved as a body of work.
+      Each expert reinvents the form badly, and the organization's PRDs cannot be
+      compared to one another or improved as a body of work. Q-018 asks for one
+      counted cost.
+    status_quo: >-
+      The expert fills a template whose headings say what to write but not what
+      makes an entry good.
+    desired_outcome: >-
+      The expert is taught what each section is for before being asked about it.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
@@ -132,10 +163,10 @@ links:
 
 | ID | Problem | Who |
 | --- | --- | --- |
-| P-001 | What the expert writes is a feature list with no user and no testable outcome | Domain expert |
+| P-001 | What the expert writes is a feature list with no user and no testable outcome | Product manager or domain expert |
 | P-002 | The steps between requirements are never written, so paths have gaps | Engineering lead |
-| P-003 | Buildability is invisible until the team starts building | Sponsor or approver |
-| P-004 | No source of PRD craft at the moment the expert needs it | Domain expert |
+| P-003 | Buildability is invisible until the team starts building | Sponsor |
+| P-004 | The expert does not know what a section is for, so they fill it badly | Product manager or domain expert |
 
 The four compound. P-004 means the expert does not know what good looks like;
 P-001 is what they produce as a result; P-002 is the specific gap that costs the
@@ -146,5 +177,7 @@ date. The counts for P-001 to P-003 come from one engagement, this product's own
 PRD, written and graded with prd-forge. The count for P-004 comes from two
 public templates. One engagement shows that each problem occurs. It does not
 show how often. The other evidence items describe a pattern and are not
-measured. Three of the objectives in section 3 still have no baseline. See
+measured. Each why-now claim cites the General Assembly survey of 117 product
+managers, run in October 2025. No cost has a number yet, and Q-018 asks for
+one per problem. All three objectives in section 3 still have no baseline. See
 Q-001, Q-002, and Q-003.

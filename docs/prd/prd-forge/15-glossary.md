@@ -59,8 +59,7 @@ terms:
       requirement. Test 1, it names a user or a stakeholder. Test 2, it states an
       outcome a person can see. Test 3, it has a pass-or-fail acceptance test.
       Test 4, it has a priority. Test 5, it does not name the component or the
-      technology that delivers it. The numbers are part of the term: the set
-      refers to "test 5" by number.
+      technology that delivers it.
     see_also:
       - blocking defect
   - term: Rubric
@@ -95,8 +94,8 @@ terms:
       section is written, nothing else.
   - term: Spike
     meaning: >-
-      A time-boxed piece of work whose only output is an answer to an open question,
-      or a recorded decision.
+      A piece of work, usually time-boxed, whose only output is an answer to an
+      open question, or a recorded decision.
     see_also:
       - open question
     not: >-
@@ -176,6 +175,9 @@ terms:
     see_also:
       - assumption
       - spike
+    not: >-
+      An assumption. An assumption is believed true and must be tested. A risk is
+      an event that may happen, and it is mitigated.
   - term: Readable form
     meaning: >-
       The part of a section a person reads: its prose, its headings and its
@@ -193,9 +195,8 @@ terms:
   - term: Grade
     meaning: >-
       A section's score together with its blocking-defect count and its weakest
-      dimension, the rubric dimension that scored lowest, which the set also calls
-      the section's weakest part. A grade is what an expert is shown; a score is
-      one number inside it.
+      part, the rubric dimension that scored lowest. A grade is what an expert is
+      shown, and a score is one number inside it.
     see_also:
       - score
       - grading pass
@@ -209,14 +210,11 @@ terms:
       - rubric
   - term: State
     meaning: >-
-      Where a section stands, one of four in this order: `pending` (not yet
-      interviewed, and shown to the expert as not started), `draft` (written),
-      `review` (ready for someone else to read), `final` (decided by the expert).
-      A section is offered `review` at a score of 70 or more with no blocking
-      defects in a set that checks clean, and moves there when the expert
-      accepts. It reaches `final` when the expert sets it final under TR-002,
-      after an independent grading pass with no blocking defect. Approval under TR-001 covers the
-      whole set, not one section.
+      Where a section stands: `pending`, shown to the expert as not started;
+      `draft`, written; `review`, ready for someone else to read, reached through
+      the gate, a score of 70 or more with no blocking defect in a set that
+      checks clean; or `final`, set by the expert under TR-002. LC-001 in section
+      5 shows each move.
     not: >-
       A threshold. The threshold is the score a gate needs. The state is where
       the section stands.
@@ -244,9 +242,8 @@ terms:
   - term: Derivability checks
     meaning: >-
       The eleven checks a buildability review runs to decide whether a backlog can
-      be derived from a set. They are product content, shipped and versioned with
-      the product, and the set states their count and their verdict vocabulary
-      rather than restating the list.
+      be derived from a set. Q-009 asks which version of them release 1 grades
+      against.
     see_also:
       - verdict
       - rubric
@@ -268,7 +265,7 @@ terms:
       A citation that was checked and could not be confirmed against its source.
       It is marked as such and never stated as fact.
     see_also:
-      - the five tests
+      - expert
   - term: MoSCoW
     meaning: >-
       The priority scale this set uses: `must`, `should`, `could`, `wont`. This
@@ -329,12 +326,10 @@ terms:
       problem and opportunity.
   - term: Approver
     meaning: >-
-      The one person who decides whether a set is approved for a release: the
-      sponsor, or the expert when no sponsor exists. They approve, approve with
-      conditions, or reject, and the decision is recorded in section 15 against a
-      named version. An approver who approves with conditions approves the set
-      on the conditions they state, and the set reads as approved with conditions
-      until that same approver clears every one.
+      The one person who approves, approves with conditions, or rejects the whole
+      set for a release under TR-001: the sponsor, or the expert when no sponsor
+      exists. A set approved with conditions reads that way until the approver
+      clears every condition.
     see_also:
       - condition
       - root document
@@ -411,7 +406,10 @@ terms:
       - the five tests
     not: >-
       Exit criteria. Acceptance criteria decide whether one requirement or stage
-      passes, and exit criteria decide whether a whole release is done.
+      passes, and exit criteria decide whether a whole release is done. This set
+      also departs from the source: North writes acceptance criteria as
+      scenarios, and in this set a scenario is a different thing, a path through
+      journey stages in section 5.
     source: >-
       Introducing BDD, Dan North, 20 Sep 2006,
       https://dannorth.net/blog/introducing-bdd/
@@ -512,16 +510,17 @@ terms:
       - backlog
       - stage
     not: >-
-      A requirement. A feature holds every requirement of one stage.
+      A requirement. A feature holds every requirement of one stage. Also not the
+      everyday sense in section 1, where a "feature list" is a list of features
+      with no named user.
     source: >-
       Epics, Features and User Stories, Mountain Goat Software, updated 28 Apr
       2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
   - term: Epic
     meaning: >-
-      A group of backlog items scoped by the release line, so one epic holds the
-      items that one release delivers. The source defines an epic as a large
-      user story. This set keeps that it is large, and fixes its size by the
-      release line rather than by judgment.
+      A group of backlog items that one release delivers. The source defines an
+      epic as a large user story. This set keeps that it is large, and fixes its
+      size by the release rather than by judgment.
     see_also:
       - backlog
       - release line
@@ -548,10 +547,11 @@ terms:
       2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
   - term: Expert
     meaning: >-
-      The person with the domain knowledge, persona PER-001, who answers the
-      interviews and owns the set. The expert decides what the product must do,
-      the domain's own terms and the state of each section, and is the only one
-      who may state a domain fact as true.
+      The person who holds the domain knowledge in the interview, persona PER-001:
+      the domain expert, or a product manager who speaks for one. The expert
+      answers the interviews, owns the set, decides what the product must do, the
+      domain's own terms, and the state of each section, and is the only one who
+      may state a domain fact as true.
     see_also:
       - domain
       - interview
@@ -633,7 +633,7 @@ terms:
       How much a requirement or a scenario matters to a release, stated in MoSCoW
       terms. Only the expert gives a priority.
     see_also:
-      - moscow
+      - MoSCoW
   - term: Teaching
     meaning: >-
       What the expert is told about a section before its interview: what it is,
@@ -723,8 +723,8 @@ terms:
       The ordered journey stages that a story-mapping workshop maps features
       against. A set with no journey gives the workshop no backbone, so the
       workshop invents one in the room. This set departs from the source, where
-      the backbone is the capabilities the system needs. Here it is the journey
-      stages, including stages that happen outside the product.
+      the backbone is the capabilities the system needs. In this set the backbone
+      is the journey stages, including stages that happen outside the product.
     see_also:
       - journey
       - story-mapping workshop
@@ -773,11 +773,12 @@ terms:
       - finding
       - grading pass
     not: >-
-      A refuted finding the document does not support. That finding is dropped,
-      not kept as an objection.
+      A refuted finding the document does not support. A finding of this kind is
+      dropped, not kept as an objection.
   - term: Refute
     meaning: >-
-      To challenge a finding. The finding is then checked against the document.
+      To challenge a finding, or a score through its findings. The finding is
+      then checked against the document.
       If the document does not support it, it is dropped and the expert is told.
       If the document supports it, it stays as an objection, and the expert's
       decision is recorded.
@@ -865,6 +866,10 @@ terms:
     see_also:
       - state
       - gate
+    not: >-
+      A set ready to be offered for approval. Ready describes one section. The
+      expert decides that the whole set is offered for approval, under TR-010.
+      Ready is also not a verdict of the buildability review.
   - term: Capability
     meaning: >-
       The first part of a requirement: what one named user can do with the
@@ -966,6 +971,51 @@ terms:
     see_also:
       - backlog
       - constraint
+  - term: Checks clean
+    meaning: >-
+      Every id and every link in the set resolves to an item or a document that
+      exists, and every document has the parts its section needs.
+    see_also:
+      - gate
+      - link
+  - term: Pilot PRD
+    meaning: >-
+      One of the first 5 PRDs written with release 1 by people other than the
+      product's author. O-001 and REL-001's exit criteria count them.
+    see_also:
+      - first submission
+      - release
+  - term: First submission
+    meaning: >-
+      The first time a PRD goes through the buildability review. A PRD passes on
+      first submission when that first verdict is a pass, with no gap fixed
+      between two reviews.
+    see_also:
+      - buildability review
+      - pilot PRD
+  - term: Reviewer
+    meaning: >-
+      A person who reads a section and comments on it without being able to
+      change it, as REL-003 plans. No persona in release 1 is a reviewer.
+    see_also:
+      - review
+    not: >-
+      A grading pass. The grading pass that scores a section is not a person.
+  - term: Iteration
+    meaning: >-
+      One fixed period of the delivery team's work after the PRD is approved.
+      "Iteration three" means late in the build, after the plan is made.
+    see_also:
+      - release
+  - term: Review
+    meaning: >-
+      A word with three uses in this set: the state `review`, a section ready for
+      someone else to read; the buildability review of the whole set at ST-005;
+      and the act of reading a draft, as in FR-008, when the expert reviews it.
+    see_also:
+      - state
+      - buildability review
+      - reviewer
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -1014,6 +1064,8 @@ links:
 | Gate | The threshold |
 | Out of scope | A non-goal |
 | Outcome | A feeling |
+| Ready | A set ready to be offered for approval |
+| Reviewer | A grading pass |
 | Approval | An override |
 | Engagement | A unit of work |
 | Handoff | The handover |
@@ -1028,8 +1080,8 @@ links:
 | Persona | A user |
 | Buyer | The user |
 
-The "Most often confused with" column above is the one that earns its keep. Every one of these has
-been confused in practice, and three of them, golden thread, blocking defect and
+The "Most often confused with" column above is the one that earns its keep. Three
+of them, golden thread, blocking defect and
 score, carry a cost when confused: a team picks the wrong journey for release 1,
 ships a section with a known fault because the number looked good, or believes a
 well-written PRD means a sound product.

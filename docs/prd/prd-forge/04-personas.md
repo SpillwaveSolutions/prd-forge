@@ -13,9 +13,18 @@ blocking: 0
 graded: 2026-10-27
 personas:
   - id: PER-001
-    name: Domain expert specifying software for their own field
+    name: "Product manager: the domain expert, or a proxy who speaks for one"
     short_name: DomainExpert
     primary: true
+    population: One per PRD.
+    external: false
+    problems: [P-001, P-004]
+    basis: >-
+      Assumed, not researched. Section 1's evidence note says the evidence comes
+      from one engagement. The ten observed sessions in D-002 test it.
+    context: >-
+      Works inside an assistant session they already use (D-001), in bursts
+      weeks apart (NFR-004).
     goals:
       - Get what is in my head into a form the development team can build from
       - Stop being asked the same question by four different engineers
@@ -37,11 +46,21 @@ personas:
       true. May not
       approve the PRD for a release on their own where a sponsor exists.
     proficiency: >-
-      Deep in their domain, often decades. No product management training. Assume
-      no familiarity with MoSCoW, Given/When/Then, or the word "persona".
+      Either deep in the domain with no product management training, or a product
+      manager who speaks for such an expert. The product assumes the first: no
+      familiarity with MoSCoW, Given/When/Then, or the word "persona".
   - id: PER-002
-    name: Engineering lead who must build from the PRD
+    name: Engineering lead (staff or principal engineer) on the delivery team, who must build from the PRD
     short_name: EngineerLead
+    population: One or two per PRD.
+    external: false
+    problems: [P-002]
+    basis: >-
+      Assumed, not researched, as section 1's evidence note says. The three
+      engineering leads in D-003 test it.
+    context: >-
+      Reads the set cold at estimation and at each release planning, without
+      having been in the interview.
     goals:
       - Estimate without first interviewing the author
       - Know which decisions are mine and which have been made for me
@@ -54,12 +73,23 @@ personas:
       Reads a given PRD a handful of times, intensively, at estimation and at each
       release planning.
     authority: >-
-      Decides how it is built; may reject a PRD as not buildable.
+      Decides how it is built. Judges whether a set can be built from and reports
+      the gaps, under TR-006, and records a verdict that a set is not buildable
+      when it is not.
     proficiency: >-
       Expert in delivery, usually knows nothing about the expert's domain.
   - id: PER-003
-    name: Sponsor or approver
+    name: "Sponsor: the budget holder (director or partner), who is also the approver"
     short_name: Sponsor
+    population: One per PRD.
+    external: false
+    problems: [P-003]
+    basis: >-
+      Assumed, not researched, as section 1's evidence note says. Q-005 tests it
+      with three sponsors.
+    context: >-
+      Reads the root document or the exported PDF outside the product, once per
+      version (ST-006).
     goals:
       - Be confident enough to commit budget and a date
       - Know what is still undecided, and who is deciding it
@@ -72,8 +102,16 @@ personas:
     proficiency: >-
       Senior in the business, not in product or engineering.
   - id: PER-004
-    name: Delivery lead running the story-mapping workshop
+    name: Delivery lead (delivery manager or product owner) on the delivery team, who runs the story-mapping workshop
     short_name: DeliveryLead
+    population: One per PRD.
+    external: false
+    problems: [P-002]
+    basis: >-
+      Assumed, not researched, as section 1's evidence note says. No dependency
+      tests it yet.
+    context: >-
+      Runs the story-mapping workshop from the approved set (ST-007, ST-008).
     goals:
       - Walk into the workshop with a backbone already agreed
       - Trace every story back to something the expert actually said
@@ -94,17 +132,23 @@ links:
 
 # Users and personas
 
-| ID | Role | Frequency | May approve |
-| --- | --- | --- | --- |
-| PER-001 | Domain expert specifying their own field | Weeks per product, then rarely | Scope, terms, drafts, section states, facts, and offering the set; not the PRD itself |
-| PER-002 | Engineering lead building from it | A handful of intensive reads | May reject as not buildable |
-| PER-003 | Sponsor or approver | Once per version | The PRD for a release |
-| PER-004 | Delivery lead running story mapping | Once per release | Backlog shape and order |
+| ID | Role | Per PRD | Frequency | Decides |
+| --- | --- | --- | --- | --- |
+| PER-001 | Product manager: the domain expert, or a proxy who speaks for one | One | Weeks per product, then rarely | What the product must do, scope, the domain's terms, when an interview ends, drafts, section states, scores, domain facts, and when the set is offered; not the PRD itself where a sponsor exists |
+| PER-002 | Engineering lead (staff or principal engineer) on the delivery team | One or two | A handful of intensive reads | How it is built, and whether a set can be built from, with its gaps (TR-006) |
+| PER-003 | Sponsor: the budget holder (director or partner), who is also the approver | One | Once per version | Approves the PRD for a release, with or without conditions, or rejects it (TR-001) |
+| PER-004 | Delivery lead (delivery manager or product owner) on the delivery team | One | Once per release | The backlog's shape and order, and whether a backlog can be mapped at all |
+
+No persona is external. In segment S-001 the client's staff supply domain
+knowledge to the expert, but they do not use the product.
 
 ## PER-001 is the primary persona
 
-Everything is designed around someone with deep domain knowledge, no product
-training, and a burst of intense use followed by months away. Two consequences
+PER-001 is the product manager who writes the PRD: either the domain expert, or a
+product manager who speaks for one. The set calls this person the expert,
+because they hold the domain knowledge in the interview. Everything is designed
+around someone with deep domain knowledge, no product training, and a burst of
+intense use followed by months away. Two consequences
 run through the rest of this PRD: nothing may assume prior knowledge of product
 vocabulary, and the work must survive being put down for a week and picked back
 up. See FR-015 and NFR-004.

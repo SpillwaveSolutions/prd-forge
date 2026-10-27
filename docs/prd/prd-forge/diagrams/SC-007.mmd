@@ -9,9 +9,10 @@ flowchart TB
   s3["After each section, they read the draft as prose and see its grade and every blocking defect by name"]
   s4["They answer the one question that most improves each weak section, and see it re-graded"]
   s5["With every section at review, they ask for the buildability review and see that no release-line stage lacks a must requirement"]
-  s6[/"The sponsor reads the root document, sees what is still open and who owns each open item, and approves the set at version 1.0.0"/]
-  done(["<b>Then</b> Every section is at final, every gap the buildability review found is closed or owned by a named decider, and the change log records the sponsor's approval against a named version."])
-  start --> trigger --> s0 --> s1 --> s2 --> s3 --> s4 --> s5 --> s6 --> done
+  s6["They set each section final under TR-002, after its grading pass shows no blocking defect"]
+  s7[/"The sponsor reads the root document, sees what is still open and who decides each open item, and approves the set at version 1.0.0, which the expert records in section 15"/]
+  done(["<b>Then</b> Every section is at final, every gap the buildability review found is closed or has a named decider, and the change log records the sponsor's approval against a named version."])
+  start --> trigger --> s0 --> s1 --> s2 --> s3 --> s4 --> s5 --> s6 --> s7 --> done
   classDef ends fill:#FFFFFF,stroke:#2F855A,stroke-width:2px,color:#1F2430
   classDef sees fill:#F5F7FA,stroke:#8A94A6,color:#1F2430
   classDef does fill:#FFFFFF,stroke:#8A94A6,color:#1F2430
@@ -22,5 +23,6 @@ flowchart TB
   class s3 does
   class s4 does
   class s5 does
-  class s6 sees
+  class s6 does
+  class s7 sees
   class trigger does

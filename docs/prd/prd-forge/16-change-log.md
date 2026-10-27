@@ -16,27 +16,57 @@ changes:
     date: 2026-10-27
     author: Richard Hightower
     summary: >-
-      Section 1: each problem has one counted case, with its source and date.
-      Section 2: the status-quo competitor's edge states a prd-forge outcome.
-      Section 5: the first state is pending, shown as not started; the expert
-      refutes a grade; LC-001 makes final the expert's
-      decision under TR-002. Section 6: the scope says "an engineer" for the
-      person who builds from the set. Section 7: FR-019 and FR-020, both
+      Section 1: each problem has one counted case, with its source and date,
+      each why-now claim cites the General Assembly survey of product managers,
+      P-004 states the condition the expert suffers, and Q-018 asks for one
+      counted cost per problem. Section 2: ChatPRD is the direct competitor, the
+      buyer's case is stated against the cost of a contracted product manager,
+      each segment names its personas, and the status-quo competitor's edge
+      states a prd-forge outcome. Section 3: O-001 counts the 5 pilot PRDs and
+      defines a pass between REL-001 and 2027-09-30, O-002 counts the pilot PRDs
+      with one journey, O-003 counts a requirement testable when two of three
+      engineering leads agree, and each target is provisional until its question
+      is answered. Section 4: on the expert's decision, PER-001 is the product
+      manager who is, or speaks for, the domain expert, PER-003 is the sponsor,
+      and each persona has a population, a basis, a context, and its problems.
+      Section 5: the first
+      state is pending, shown as not started; the expert refutes a grade; LC-001
+      makes final the expert's decision under TR-002; each stage carries the
+      expert's satisfaction score, and each pain point names its stage; ST-006
+      happens outside the product; SC-004 is split into SC-004 and SC-008; and
+      each alternate and exception scenario names the step of SC-007 it leaves.
+      Section 6: the scope says "an engineer" for the person who builds from the
+      set, ST-006 is outside the product, the release line uses J-001's end
+      state, and product teams new to a domain move to OUT-005. Section 7: FR-019 and FR-020, both
       `should` on the expert's decision, split the early stop out of FR-004 and
       the check across the set out of FR-008, and an unclear answer gets its
       follow-up before the early stop. FR-008 tests that every item is shown in
       a sentence or a table row, FR-018 shows a change within 10 seconds of a
       request to refresh, FR-009 asks the expert to accept or refute each grade,
       FR-010 waits on Q-007, and FR-004 and FR-017 name no field and no view.
-      WF-001 draws FR-020, and the wireframes name no drawing tool. Section 9:
+      FR-011 offers review only in a set that checks clean. WF-001 draws FR-020 as
+      a requirement's stage stated two ways, WF-008 counts twelve dimensions,
+      WF-007, WF-009, and WF-010 name the screen they are a state of, and the
+      wireframes name no drawing tool. Section 8: NFR-001, NFR-002, and NFR-011
+      name what they time, NFR-004 and NFR-010 apply to the whole set, and NFR-010
+      and NFR-012 are measured in a test organization. Section 9:
       on the expert's decision, C-004 leaves, its rule lives in TR-005 and
       FR-006, and the section may be empty. Section 10: TR-003 only produces a
       section's score, the new TR-014 has the expert accept or refute it, and
-      each rule's decider is called the Decider. Section 12: Q-009 also blocks
-      FR-019. Section 13: REL-001 carries FR-019 and FR-020. Section 14: every
+      each rule's decider is called the Decider. Section 11: R-001 and R-002 are
+      mitigated by 2027-01-31, each risk has a trigger, a response, and a
+      status, each dependency has an owner, and D-001 is delivered. Section 12: Q-009 also blocks FR-019; Q-004, Q-007, Q-009, and
+      Q-011 are split into single questions; Q-011 is answered; Q-018 asks for
+      costs; Q-019 asks whether REL-001 moves; and the design choices inside
+      Q-009, Q-010, and Q-016 become candidate architecture decisions. Section 13:
+      REL-001 carries FR-019 and FR-020, its exit criteria use the pilot PRDs and
+      the defined pass, REL-001 and REL-003 name what they depend on, and REL-002
+      gives the engineering lead an outcome. Section 14: every
       word in the requirements' acceptance has an entry, including refute and
       approval; eight terms cite a verified source and state where the set
-      departs from it; `wont` means won't have this time. Section 15: the
+      departs from it; `wont` means won't have this time; pilot PRD, first
+      submission, reviewer, iteration, review, and checks clean are defined.
+      Section 15: the
       versioning policy before 1.0, which applies from 0.9.0 onward and defines
       a change to the golden thread as structural. Across the set, "set" or
       "PRD" replaces "specification" where it meant this set. This is a minor
@@ -57,6 +87,8 @@ changes:
       - 13
       - 14
       - 15
+    resolves:
+      - Q-011
   - version: 0.8.1
     date: 2026-10-27
     author: Richard Hightower
@@ -235,7 +267,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence; FR-019 and FR-020 split out; TR-014 for accepting a score; C-004 out of section 9; refute and approval defined; sourced glossary terms; the versioning policy |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence; FR-019 and FR-020 split out; TR-014 for accepting a score; C-004 out of section 9; refute and approval defined; sourced glossary terms; satisfaction scores; ST-006 outside the product; ChatPRD; pilot PRDs; Q-011 answered; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |

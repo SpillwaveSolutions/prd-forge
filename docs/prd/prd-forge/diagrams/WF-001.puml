@@ -9,8 +9,10 @@ title WF-001 The set with one section open
   ==
   {
     Problem and opportunity | draft
+    … | .
     User journeys | 88 · 0 blocking <3>
     Scenarios | draft
+    Scope | draft
     <b>Functional requirements | 84 · 0 blocking
     Wireframes | 84 · 0 blocking
   }
@@ -19,10 +21,10 @@ title WF-001 The set with one section open
   Functional requirements <4>
   FR-017. The domain expert can move from the section
   in front of them to any other section without
-  losing their place. See FR-009 › <5>
+  losing their place. See Q-009 › <5>
   …
   ==
   Differs <6>
-  FR-008 priority: should here, must in section 6 ›
+  FR-020 stage: ST-003 here, ST-002 in section 6 ›
 }
 @endsalt

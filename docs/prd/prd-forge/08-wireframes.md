@@ -87,6 +87,7 @@ wireframes:
     type: screen
     persona: PER-001
     journey_stage: ST-001
+    state_of: WF-001
     illustrates: [FR-018]
     shows:
       - That nothing has been started
@@ -107,6 +108,7 @@ wireframes:
     type: report
     persona: PER-001
     journey_stage: ST-005
+    state_of: WF-005
     illustrates: [FR-012]
     shows:
       - The verdict
@@ -117,7 +119,8 @@ wireframes:
     type: screen
     persona: PER-001
     journey_stage: ST-004
-    illustrates: [FR-002, FR-009]
+    state_of: WF-001
+    illustrates: [FR-002, FR-009, FR-015, FR-017, FR-018]
     shows:
       - Where they stopped
       - Every section's grade and blocking count
@@ -161,8 +164,10 @@ The expert reads a drafted section with the whole set beside it. Every graded se
 │ [ < Prev ] [ Next > ] [ Refresh ] [ Back ] <2>       │
 ├──────────────────────────────────────────────────────┤
 │   Problem and opportunity      draft                 │
+│   …                                                  │
 │   User journeys                88 · 0 blocking <3>   │
 │   Scenarios                    draft                 │
+│   Scope                        draft                 │
 │ > Functional requirements      84 · 0 blocking       │
 │   Wireframes                   84 · 0 blocking       │
 │   …                                                  │
@@ -171,11 +176,11 @@ The expert reads a drafted section with the whole set beside it. Every graded se
 │ ───────────────────────                              │
 │ FR-017. The domain expert can move from the section  │
 │ in front of them to any other section without        │
-│ losing their place. See FR-009 › <5>                 │
+│ losing their place. See Q-009 › <5>                  │
 │ …                                                    │
 ├──────────────────────────────────────────────────────┤
 │ Differs <6>                                          │
-│ FR-008 priority: should here, must in section 6 ›    │
+│ FR-020 stage: ST-003 here, ST-002 in section 6 ›     │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -266,7 +271,7 @@ A grade against a stated standard is only fair if the expert can read the standa
 
 Illustration, not a design. Illustrates FR-012. PER-001 sees it at ST-005.
 
-The expert reads this before anyone has estimated anything, while a fix is still a sentence. Every finding quotes the set, so the expert can check it rather than trust it.
+The values are prd-forge's own at version 0.4.0, a snapshot. The expert reads this before anyone has estimated anything, while a fix is still a sentence. Every finding quotes the set, so the expert can check it rather than trust it.
 
 ```wireframe
 ┌─ What a team could not build from this set ──────────┐
@@ -283,7 +288,7 @@ The expert reads this before anyone has estimated anything, while a fix is still
 │ 2. FR-014: no test for a rejection                   │
 ├──────────────────────────────────────────────────────┤
 │ Blocked by an open question <4>                      │
-│ Q-009 blocks FR-012: where the rubric lives.         │
+│ Q-009 blocks FR-012: which rubric version applies.   │
 │ Richard Hightower, by 2027-01-31                     │
 ├──────────────────────────────────────────────────────┤
 │ Ask for first <5>                                    │
@@ -297,7 +302,7 @@ The expert reads this before anyone has estimated anything, while a fix is still
 
 Illustration, not a design. Illustrates FR-013 and FR-014. PER-003 sees it at ST-006.
 
-The approver reads one document, not eighteen. It says what they are committing to, what is still open and who owns it, and where their decision is recorded.
+The values are prd-forge's own at version 0.4.0, a snapshot. The approver reads one document, not eighteen. It says what they are committing to, what is still open and who owns it, and where their decision is recorded.
 
 ```wireframe
 ┌─ prd-forge PRD ──────────────────────────────────────┐
@@ -354,7 +359,7 @@ After one answer the section is graded again against the same rubric. Both score
 ```wireframe
 ┌─ User journeys: re-graded ───────────────────────────┐
 │ 78  →  88 <1>                                        │
-│ Same rubric, ten dimensions <2>                      │
+│ Same rubric, twelve dimensions <2>                   │
 ├──────────────────────────────────────────────────────┤
 │ Changed: ST-003 now names its decision <3>           │
 ├──────────────────────────────────────────────────────┤
@@ -390,7 +395,7 @@ SC-005 is the review that finds work missing: two release-line stages have no mu
 
 ## WF-010 Resuming a set after a week away
 
-Illustration, not a design. Illustrates FR-002 and FR-009. PER-001 sees it at ST-004.
+Illustration, not a design. Illustrates FR-002, FR-009, FR-015, FR-017, and FR-018. PER-001 sees it at ST-004.
 
 SC-002 is the expert who returns after eight days and remembers nothing. The values are prd-forge's own at version 0.1.0, when section 7 scored 84 with two blocking defects: a grade of 70 or more that is still not offered as ready.
 

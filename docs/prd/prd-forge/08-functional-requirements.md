@@ -243,8 +243,9 @@ requirements:
         Given a re-grade, when the score has risen, then the document has changed;
         a score never rises without a change to the document.
       - >-
-        Given a section scoring 70 or more with no blocking defects, when it is
-        re-graded, then the expert is offered the state `review`, and is told that
+        Given a section scoring 70 or more with no blocking defects, in a set that
+        checks clean, when it is re-graded, then the expert is offered the state
+        `review`, and is told that
         `review` means the section is ready for someone else to read.
     priority: should
     shown_in: screen
@@ -499,13 +500,14 @@ ten `should` requirements make the work faster or easier to follow, and the
 expert can still reach an approved set without them. The expert set this split
 at version 0.8.0.
 
-Six of the `must` requirements wait on an open question in section 12.
-FR-004, FR-009, FR-010, and FR-012 wait on Q-009, where the rubric and the
-derivability checks live and who owns them. FR-010 also waits on Q-007, whether
-the working order is right and how looping back to the journeys feels, because
-Q-007 blocks ST-004. FR-013 waits on Q-005, whether a
-sponsor accepts a PRD that carries a grade. FR-014 waits on Q-011, how
-an approver records a decision.
+Five of the `must` requirements wait on an open question in section 12.
+FR-004, FR-009, FR-010, and FR-012 wait on Q-009, which version of the rubric
+and the derivability checks release 1 grades against. FR-010 also waits on Q-007 and Q-014, whether writing
+the requirements sends the expert back to the journeys and how that feels,
+because both block ST-004. FR-013 waits on Q-005, whether a sponsor accepts a
+PRD that carries a grade. FR-014 no longer waits: Q-011 is answered, and in
+release 1 the expert records the sponsor's decision under FR-014. Two `should`
+requirements also wait: FR-011 on Q-009, and FR-015 on Q-010.
 
 FR-015 and FR-016 were split out of FR-002 and FR-009 at version 0.2.0, because
 each has a failure mode of its own: a build could deliver perfect set-state

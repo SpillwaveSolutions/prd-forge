@@ -210,7 +210,7 @@ decisions:
       them.
     acceptance:
       - >-
-        Given a buildability gap that is neither closed nor given an owner and a
+        Given a buildability gap that is neither closed nor given a decider and a
         date, when the expert offers the set for approval, then that gap is stated
         to them first.
       - >-

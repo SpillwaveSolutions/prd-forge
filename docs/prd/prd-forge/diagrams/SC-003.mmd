@@ -7,7 +7,7 @@ flowchart TB
   s1["They say the adjuster is in the field and cannot wait until they are back at a desk"]
   s2[/"They see a requirement recorded as the adjuster being able to act on the claim away from their desk, with criteria about what they can do and see"/]
   s3[/"They see that #quot;push to the phone#quot; was kept on a list of candidate architecture decisions, to hand to the engineering lead"/]
-  s4["No argument is had about whether a notification is the right design"]
+  s4[/"They are not asked to argue about whether a notification is the right design"/]
   done(["<b>Then</b> The recorded requirement names no technology, the adjuster's need to act on the claim away from a desk is recorded, #quot;push to the phone#quot; appears on the list of candidate architecture decisions, and the expert is not asked to defend or withdraw it."])
   start --> trigger --> s0 --> s1 --> s2 --> s3 --> s4 --> done
   classDef ends fill:#FFFFFF,stroke:#C53030,stroke-width:2px,color:#1F2430
@@ -18,5 +18,5 @@ flowchart TB
   class s1 does
   class s2 sees
   class s3 sees
-  class s4 does
+  class s4 sees
   class trigger does

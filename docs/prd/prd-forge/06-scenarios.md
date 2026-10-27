@@ -19,6 +19,7 @@ scenarios:
     persona: PER-001
     variant: happy
     priority: must
+    situation: first-use
     shown_in: screen
     lifecycles: [LC-001]
     wireframes: [WF-008]
@@ -34,6 +35,7 @@ scenarios:
       - They say "a dispatcher getting a late load recovered"
       - They are asked for the big steps, names only, and give five
       - They are asked, per stage, who acts, what they see and what they decide
+      - They are asked which journey is the golden thread, and mark this one
       - They see a drafted journey with five stages, and a grade of 78 with no
         blocking defects
       - They are asked one question - what the dispatcher decides at stage three -
@@ -44,11 +46,13 @@ scenarios:
       defects, one journey is marked as the golden thread, and every stage names
       an actor and a decision.
   - id: SC-002
+    branches_from: { scenario: SC-007, step: 3 }
     journey: J-001
     stage: ST-004
     persona: PER-001
     variant: alternate
     priority: should
+    situation: return
     shown_in: screen
     lifecycles: [LC-001]
     wireframes: [WF-010]
@@ -67,6 +71,7 @@ scenarios:
       Work resumes at the first section that is not yet at review, no earlier
       answer is requested again, and the domain vocabulary is unchanged.
   - id: SC-003
+    branches_from: { scenario: SC-007, step: 3 }
     journey: J-001
     stage: ST-002
     persona: PER-001
@@ -86,13 +91,14 @@ scenarios:
         claim away from their desk, with criteria about what they can do and see
       - They see that "push to the phone" was kept on a list of candidate
         architecture decisions, to hand to the engineering lead
-      - No argument is had about whether a notification is the right design
+      - They are not asked to argue about whether a notification is the right design
     expected_outcome: >-
       The recorded requirement names no technology, the adjuster's need to act on
       the claim away from a desk is recorded, "push to the phone" appears on the
       list of candidate architecture decisions, and the expert is not asked to
       defend or withdraw it.
   - id: SC-004
+    branches_from: { scenario: SC-007, step: 4 }
     journey: J-001
     stage: ST-003
     persona: PER-001
@@ -100,30 +106,51 @@ scenarios:
     priority: should
     shown_in: conversation
     context: >-
-      The grading reviewer has reported that a requirement names a component. The
-      expert reads the finding and believes it is wrong.
-    trigger: They say the finding is wrong - the word is their domain's own term.
+      A freight operations manager reads the grade of section 7. A finding says
+      that a requirement names a component, "consignment".
+    trigger: >-
+      They refute the finding: "consignment" is their domain's word for one
+      shipment, not a part of the product.
     course:
-      - The finding is checked against the document rather than defended
-      - Where the word is indeed a domain term and not a component, the finding is
-        dropped and the expert is told it was dropped
-      - Where it is genuinely a component, the reason is stated once, and if the
-        expert still disagrees their decision is recorded with the dissent noted
-      - The grade reflects what the document says after that decision, not what the
-        reviewer first claimed
+      - They see the finding checked against the document
+      - They see that the glossary defines "consignment" as a domain term
+      - They see the finding dropped, and a line telling them it was dropped
+      - They see the grade without that finding
     expected_outcome: >-
-      A refuted finding the document does not support does not survive into the
-      report, the expert is
-      told so plainly, and a disagreement the expert insists on is recorded rather
-      than re-argued at the next grading pass.
+      The refuted finding, which the document does not support, is not in the
+      report, the expert sees that it was dropped, and the grade no longer counts
+      it.
+  - id: SC-008
+    branches_from: { scenario: SC-007, step: 4 }
+    journey: J-001
+    stage: ST-003
+    persona: PER-001
+    variant: exception
+    priority: should
+    shown_in: conversation
+    context: >-
+      The same manager reads another finding on section 7: a requirement names
+      "the dispatch database", which is a part of the product.
+    trigger: They refute the finding and say the requirement should keep the words.
+    course:
+      - They see the finding checked against the document, and the document
+        supports it
+      - They see the reason stated once
+      - They keep their decision, and see it recorded as an objection
+      - At the next grading pass, they see no new finding about the same words
+    expected_outcome: >-
+      The objection and the expert's decision are recorded, the reason is stated
+      only once, and the next grading pass does not raise the same finding as
+      new.
   - id: SC-005
+    branches_from: { scenario: SC-007, step: 6 }
     journey: J-001
     stage: ST-005
     persona: PER-001
     variant: exception
     priority: must
     shown_in: report
-    wireframes: [WF-009]
+    wireframes: [WF-009, WF-005]
     context: >-
       Every section is at `review`. The expert asks whether a team could build the
       set. Two release-line stages have no `must` requirement.
@@ -142,6 +169,7 @@ scenarios:
       could not write a test for, and every gap is either closed or owned by a
       named decider with a date.
   - id: SC-006
+    branches_from: { scenario: SC-007, step: 3 }
     journey: J-001
     stage: ST-002
     persona: PER-001
@@ -149,19 +177,20 @@ scenarios:
     priority: must
     shown_in: conversation
     context: >-
-      The expert is on section 3 and does not know the current value of the metric
-      they have just named.
+      The expert is on section 3 of this PRD and has just named O-002's metric,
+      the median working days from the first interview question to an approval.
+      They do not know today's value.
     trigger: They are asked for the baseline and say they would have to check.
     course:
       - They are not offered a plausible-looking number
       - They are asked who could find out, and by when
-      - They see an open question recorded with that person and that date, and the
-        objective linked to it
-      - They see that the target is marked as an intention until the baseline
+      - They see an open question recorded with that person and that date, as
+        Q-002 is, and the objective linked to it
+      - They see that the target is marked as provisional until the baseline
         arrives
     expected_outcome: >-
-      No baseline is invented, the objective carries an explicit unknown, and
-      section 12 holds a question with a named decider and a date.
+      No baseline is invented, O-002 carries an explicit unknown, and section 12
+      holds a question, Q-002, with a named decider and a date.
   - id: SC-007
     journey: J-001
     stage: ST-001
@@ -169,6 +198,7 @@ scenarios:
     persona: PER-001
     variant: happy
     priority: must
+    situation: first-use
     shown_in: screen
     lifecycles: [LC-001]
     wireframes: [WF-007, WF-002, WF-001, WF-008, WF-005, WF-006]
@@ -189,12 +219,15 @@ scenarios:
         it re-graded
       - With every section at review, they ask for the buildability review and see
         that no release-line stage lacks a must requirement
-      - The sponsor reads the root document, sees what is still open and who owns
-        each open item, and approves the set at version 1.0.0
+      - They set each section final under TR-002, after its grading pass shows no
+        blocking defect
+      - The sponsor reads the root document, sees what is still open and who
+        decides each open item, and approves the set at version 1.0.0, which the
+        expert records in section 15
     expected_outcome: >-
       Every section is at final, every gap the buildability review found is closed
-      or owned by a named decider, and the change log records the sponsor's
-      approval against a named version.
+      or has a named decider, and the change log records the sponsor's approval
+      against a named version.
 lifecycles:
   - id: LC-001
     subject: a section of the PRD
@@ -253,9 +286,13 @@ links:
 
 ![SC-004 scenario](diagrams/SC-004.svg)
 
+![SC-008 scenario](diagrams/SC-008.svg)
+
 ![SC-005 scenario](diagrams/SC-005.svg)
 
 ![WF-009 drawing](diagrams/WF-009.svg)
+
+![WF-005 drawing](diagrams/WF-005.svg)
 
 ![SC-006 scenario](diagrams/SC-006.svg)
 
@@ -278,10 +315,11 @@ links:
 | SC-001 | ST-002 | happy | must | A section taught, interviewed, drafted, graded, improved |
 | SC-002 | ST-004 | alternate | should | Resuming after eight days away |
 | SC-003 | ST-002 | exception | must | The expert states a technology |
-| SC-004 | ST-003 | exception | should | The expert refutes a grading finding |
-| SC-005 | ST-005 | exception | must | Buildability review finds holes |
+| SC-004 | ST-003 | exception | should | The expert refutes a finding that the document does not support |
+| SC-005 | ST-005 | exception | must | The buildability review finds gaps |
 | SC-006 | ST-002 | exception | must | The expert has no baseline for a metric |
 | SC-007 | ST-001 to ST-006 | happy | must | One idea, from the first sentence to an approved set |
+| SC-008 | ST-003 | exception | should | The expert refutes a finding that the document supports |
 
 SC-007 is the end-to-end acceptance test for release 1: it follows the golden
 thread through every release-line stage. SC-001 is the same path inside one
@@ -289,11 +327,14 @@ section. SC-005 is the expert's
 own run of the buildability review, which is why its persona is PER-001 and not
 the engineering lead: no engineering lead is in release 1 at all, per OUT-004.
 
-The priorities follow the requirements. SC-002 and SC-004 are `should`, because
-FR-015 and FR-016, which they exercise, are `should`.
+The priorities follow the requirements. SC-002, SC-004, and SC-008 are
+`should`, because FR-015 and FR-016, which they exercise, are `should`.
 
-The four exceptions are the ones that decide whether this product is trustworthy.
+SC-001 and SC-007 are first use, and SC-002 is a return after time away.
+
+The five exceptions are the ones that decide whether this product is trustworthy.
 SC-003 and SC-006 are where a PRD quietly acquires a technology choice
-or an invented fact. SC-004 is where the grading either earns the expert's trust
-or loses it: a reviewer that cannot be refuted is a reviewer nobody believes.
+or an invented fact. SC-004 and SC-008 are where the grading either earns the
+expert's trust or loses it: a reviewer that cannot be refuted is a reviewer
+nobody believes.
 SC-005 is the moment the product is supposed to pay for itself.

@@ -8,11 +8,12 @@ flowchart TB
   s2["They say #quot;a dispatcher getting a late load recovered#quot;"]
   s3[/"They are asked for the big steps, names only, and give five"/]
   s4[/"They are asked, per stage, who acts, what they see and what they decide"/]
-  s5[/"They see a drafted journey with five stages, and a grade of 78 with no blocking defects"/]
-  s6[/"They are asked one question - what the dispatcher decides at stage three - and answer it"/]
-  s7[/"They see the journey re-graded at 88"/]
+  s5[/"They are asked which journey is the golden thread, and mark this one"/]
+  s6[/"They see a drafted journey with five stages, and a grade of 78 with no blocking defects"/]
+  s7[/"They are asked one question - what the dispatcher decides at stage three - and answer it"/]
+  s8[/"They see the journey re-graded at 88"/]
   done(["<b>Then</b> The journeys section is at status draft with a score of 88 and no blocking defects, one journey is marked as the golden thread, and every stage names an actor and a decision."])
-  start --> trigger --> s0 --> s1 --> s2 --> s3 --> s4 --> s5 --> s6 --> s7 --> done
+  start --> trigger --> s0 --> s1 --> s2 --> s3 --> s4 --> s5 --> s6 --> s7 --> s8 --> done
   classDef ends fill:#FFFFFF,stroke:#2F855A,stroke-width:2px,color:#1F2430
   classDef sees fill:#F5F7FA,stroke:#8A94A6,color:#1F2430
   classDef does fill:#FFFFFF,stroke:#8A94A6,color:#1F2430
@@ -25,4 +26,5 @@ flowchart TB
   class s5 sees
   class s6 sees
   class s7 sees
+  class s8 sees
   class trigger does

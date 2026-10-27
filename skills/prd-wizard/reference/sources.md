@@ -35,3 +35,18 @@ All five were read on 2026-10-27.
   the release line, so an epic groups the items one release delivers.
 - **`wont`.** The method keeps the source's meaning, won't have this time. A
   `wont` item is out of scope and revisited later, not a non-goal.
+
+## Market and evidence sources
+
+These sources back claims in prd-forge's own PRD, not terms of the method. Both
+were read on 2026-10-27. Cite a market or evidence source in a set only for what
+its page says, and reword the claim when the page says less.
+
+| Claim it backs | Source | Defining text | Cited by |
+| --- | --- | --- | --- |
+| Product managers use AI at work, few are trained for it, and many want to build without engineering | "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", General Assembly, 6 Nov 2025, https://resource-center.generalassemb.ly/blog/ai-and-product-management-survey/. A survey of 117 product managers in the United States, the United Kingdom, Canada, and Singapore, run October 2 to 13, 2025. | "Nearly every product manager surveyed (98%) said they use AI at work." "only 39% of PMs say they've received comprehensive, job-specific AI training." "47% want to prototype and validate products without engineering (aka they want to vibe code), but just 38% can." A top use is "Backlog grooming and QA support (44%)". | `docs/prd/prd-forge/prd.md`, `docs/prd/prd-forge/01-problem-opportunity.md` |
+| An AI tool drafts PRDs for product managers | ChatPRD docs, "Writing your first PRD", https://www.chatprd.ai/docs/writing-your-first-prd | The docs say it helps users write structured PRDs quickly with AI, from a chat. | `docs/prd/prd-forge/02-customer-market.md` |
+
+The survey does not mention PRDs or requirements writing. A claim that cites it
+says only what it supports: how many product managers use AI, how many are
+trained, and how many want to build without engineering.
