@@ -1,6 +1,6 @@
 {
   "name": "prd-forge",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "Interview-driven PRD authoring: a wizard skill that writes a linked set of schema-checked markdown documents, and a pane that steps through them.",
   "author": {
     "name": "Rick Hightower"

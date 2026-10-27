@@ -12,7 +12,7 @@ score: 58
 blocking: 0
 graded: 2026-10-27
 changes:
-  - version: 0.8.2
+  - version: 0.9.0
     date: 2026-10-27
     author: Richard Hightower
     summary: >-
@@ -22,11 +22,13 @@ changes:
       the expert sees when they go back, and names no view. Section 7 says that
       FR-010 waits on Q-007, which blocks ST-004. The status-quo competitor's
       edge states what an engineer who was not in the room receives at
-      handover.
+      handover. The set states its versioning policy before 1.0. This is a
+      minor version because the policy is new content.
     sections:
       - 2
       - 7
       - 14
+      - 15
   - version: 0.8.1
     date: 2026-10-27
     author: Richard Hightower
@@ -205,7 +207,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.8.2 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
@@ -214,6 +216,24 @@ links:
 | 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for every screen and report, and recorded reasons for the grades |
 | 0.2.0 | 2026-10-26 | Richard Hightower | Every defect the grading and the buildability review found, over two rounds |
 | 0.1.0 | 2026-10-23 | Richard Hightower | First draft of all sixteen sections |
+
+## Versioning policy before 1.0
+
+The set and the plugin share one version number. The number changes by these
+rules:
+
+- A patch, such as 0.9.0 to 0.9.1, is for fixes that add no content.
+- A minor version, such as 0.8 to 0.9, is for new content in the set or in the
+  plugin.
+- A change to the golden thread takes the set to the next major version. From
+  0.x, the next major version is 1.0.
+
+The expert set this policy at 0.9.0. Two earlier versions do not follow it, and
+neither is reissued:
+
+- 0.8.1 added stage ST-009 and moved items between sections. Under this
+  policy it is a minor version, 0.9.0.
+- 0.2.0 changed the golden thread. Under this policy it takes the set to 1.0.
 
 ## 0.2.0, what the grading changed
 
