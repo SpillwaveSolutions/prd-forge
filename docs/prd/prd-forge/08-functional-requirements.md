@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 7
 order: 80
-score: 81
-blocking: 0
-graded: 2026-10-26
+score: 78
+blocking: 1
+graded: 2026-10-27
 requirements:
   - id: FR-001
     user: PER-001

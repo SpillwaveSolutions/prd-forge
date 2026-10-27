@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 5
 order: 50
-score: 75
+score: 77
 blocking: 0
-graded: 2026-10-26
+graded: 2026-10-27
 journeys:
   - id: J-001
     persona: PER-001

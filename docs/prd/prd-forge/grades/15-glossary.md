@@ -1,38 +1,36 @@
 ---
 doc: ../15-glossary.md
-score: 60
-blocking: 7
-graded: 2026-10-26
+score: 55
+blocking: 6
+graded: 2026-10-27
 grader: prd-forge:prd-adversary
+previous_score: 60
 ---
 
-# Why the glossary scored 60
+# Why the glossary scored 55
+
+The seven terms 0.8.1 added now resolve their defects. The grader read every acceptance criterion again and found six more undefined words.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 2 | Words used in acceptance criteria have no entry: buildability review, finding, root document, approver, constraint, objective, and baseline. |
-| Author's voice | 4 | The expert's own words: "A stage survives a redesign." |
-| Disambiguation | 3 | 17 of 32 entries have `not`. State, Risk, Threshold, Verdict, Scope, and Wireframe have none. |
-| Consistency | 2 | Two words for one thing: "weakest dimension" and "weakest part", "an index" and "root document". No entry has `avoid`. |
-| Authority | 1 | No entry has `source`. MoSCoW and Spike have known origins, and neither is cited. |
+| Coverage | 2 | Words used in acceptance criteria are missing, and so are the backlog terms ST-008 relies on. |
+| Author's voice | 3 | Some meanings read as notes about the set: "the set refers to 'test 5' by number". |
+| Disambiguation | 3 | The body table promises State against Threshold, and the State entry has no `not`. |
+| Consistency | 2 | "Document set" is defined and not used; "weakest dimension" and "weakest part", and "buildability review" and "buildability report", alternate. No entry has `avoid`. |
+| Authority | 1 | No entry has `source`, although MoSCoW and Spike have known origins. |
 
 ## Blocking defects
 
-- "buildability review" is used in FR-012's acceptance and has no entry.
-- "finding" is used in FR-012 and FR-016 and has no entry.
-- "root document" is used in FR-013 and has no entry.
-- "approver", "approves with conditions", and "condition" are used in FR-014 and have no entry.
-- "constraint" is used in FR-006 and has no entry.
-- "objective" is used in FR-006 and has no entry.
-- "baseline" is used in FR-006 and has no entry.
+- "requirement" is used in FR-012 and FR-014 and has no entry.
+- "acceptance criteria" is used in FR-012 and has no entry.
+- "gap" is used in FR-012 and has no entry.
+- "version" is used in FR-014 and has no entry.
+- "domain" is used in FR-001 and FR-003 and has no entry.
+- "reading order" is used in FR-017 and has no entry, and the set's file order and section order differ.
 
 ## How to raise the grade
 
-- **Coverage (2 to 4):** Add an entry for each word above, then for backlog, lifecycle, trust rule, out of scope, and release.
-- **Authority (1 to 4):** Add `source` to MoSCoW and Spike.
-- **Consistency (2 to 4):** Pick one of each pair, put the other in `avoid`, and make the body table match.
-- **Disambiguation (3 to 4):** Add `not` to the six entries above.
-
-## Notes
-
-- The paragraph on terms added at 0.2.0 is change history, which belongs in section 15.
+- **Coverage (2 to 4):** Add the six terms, then backlog, feature, epic, story, story-mapping workshop, release, persona, segment, and pilot.
+- **Authority (1 to 4):** Add `source` to MoSCoW and Spike, and say what `wont` means.
+- **Consistency (2 to 4):** Pick one word of each pair and put the other in `avoid`.
+- **Disambiguation and voice (3 to 4):** Add the `not` fields the table promises, and remove notes about the set from meanings.

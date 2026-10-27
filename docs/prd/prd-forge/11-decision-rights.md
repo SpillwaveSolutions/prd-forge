@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 10
 order: 110
-score: 81
+score: 88
 blocking: 0
-graded: 2026-10-26
+graded: 2026-10-27
 decisions:
   - id: TR-001
     decision: Approve a PRD for a release

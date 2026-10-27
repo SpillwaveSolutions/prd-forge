@@ -1,35 +1,30 @@
 ---
 doc: ../09-nonfunctional-requirements.md
-score: 79
+score: 82
 blocking: 0
-graded: 2026-10-26
+graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 82
+previous_score: 79
 ---
 
-# Why non-functional requirements scored 79
+# Why non-functional requirements scored 82
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Numbers | 3 | NFR-010's target has no period: "for as long as the organisation retains the set". |
-| Percentiles | 4 | "under 20 seconds at p95, and under 60 seconds at p99". |
-| Measurement | 3 | NFR-002 names no place for the timing, NFR-010 tests only "a set written one release ago", and NFR-012 needs "the organisation's own access rules". |
-| Category coverage | 4 | All eight categories are present, and the missing concurrency target is a stated decision. |
-| Derivation | 2 | No entry has `source`. Nothing traces "under 90 seconds", the set size, "90% of sections", or the resume time. NFR-001's own reasoning argues against its 20-second target. |
-| No technology | 3 | NFR-006 names "the release pipeline", and the body says "the host". |
-| Scope | 3 | NFR-001's metric includes the drafted section appearing, and its `applies_to` leaves out FR-008. NFR-004 covers the whole set and applies only to FR-015. |
+| Numbers | 4 | Every target has a quantity and a unit. |
+| Percentiles | 4 | Every latency target uses p95 or p99. |
+| Measurement | 3 | NFR-002 does not say where the clock starts. NFR-005's ten experts are due on the release date. NFR-010 tests only one release back. |
+| Category coverage | 4 | All eight categories, with concurrency left out as a stated decision. |
+| Derivation | 2 | No entry has `source`. NFR-001's own reasoning argues against its 20-second target. |
+| No technology | 3 | "read the whole set with nothing but a text editor" and "in the release pipeline". |
+| Scope | 3 | NFR-010 covers the whole set but applies only to FR-014. |
 
 ## Blocking defects
 
-None. NFR-012's measurement is close to one that nobody could run.
+None.
 
 ## How to raise the grade
 
-- **Derivation (2 to 4):** Add `source` to every entry, naming a persona, an expert answer, or a question. Fix the NFR-001 reasoning so it supports its number. Only the expert can say where the numbers came from.
-- **Numbers and measurement (3 to 4):** Give NFR-010 a period, give NFR-002 a place, and make NFR-012 runnable against the product's own read paths.
-- **No technology (3 to 4):** Write "an automated accessibility check of every release" and "the assistant session".
-- **Scope (3 to 4):** Add FR-008 to NFR-001, and widen or drop NFR-004's `applies_to`.
-
-## Notes
-
-- C-004 calls invented citations "the failure this product must not have", and no `accuracy` requirement measures it.
+- **Derivation (2 to 4):** Add `source` to every entry, and fix NFR-001's reasoning. Only the expert knows where the numbers came from.
+- **Measurement (3 to 4):** Say where NFR-002's clock starts and stops, date NFR-005's sessions before the release, and consider WCAG2ICT for NFR-006.
+- **No technology and scope (3 to 4):** State readability as an outcome, write "on every release", and widen NFR-010's `applies_to`.

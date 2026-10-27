@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 9
 order: 100
-score: 35
-blocking: 4
-graded: 2026-10-26
+score: 30
+blocking: 2
+graded: 2026-10-27
 constraints:
   - id: C-004
     category: legal
