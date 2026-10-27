@@ -1,31 +1,33 @@
 ---
 doc: ../15-glossary.md
-score: 70
-blocking: 0
+score: 60
+blocking: 3
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 75
+previous_score: 70
 ---
 
-# Why glossary scored 70
+# Why glossary scored 60
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 3 | Every word in the requirements' acceptance is defined. Pilot PRD, first submission, reviewer, feature list, and adversarial grade are not. |
-| Author's voice | 3 | Interview and State restate rules in several sentences. |
-| Disambiguation | 3 | "Review" has no entry. Gate and Feature have no `not` against their everyday senses in section 1. |
-| Consistency | 2 | Sections 1 and 13 say "specification" and "PRD" for the set, with no `avoid`. Engineer says an acceptance criterion passes the five tests, and test 4 needs a priority. Q-006 and Q-007 are spikes with no time box. |
-| Authority | 3 | Eight terms carry a `source`. Spike, Backbone, and Story depart from their sources without saying so. |
+| Coverage | 3 | Pilot, first submission, iteration, refute, and reviewer have no entry. |
+| Author's voice | 3 | Derivability checks and The five tests hold editorial notes. State and Approver run to several sentences. |
+| Disambiguation | 3 | Ready has no `not` against the set being ready. Refute and dispute are never told apart. |
+| Consistency | 1 | Grade concedes a synonym. Other sections use "final", "gate", "ready", and "spike" in other senses, and use "owner", "holes", and "dispute" for defined terms. Only one entry uses `avoid`. |
+| Authority | 2 | Eight entries carry a `source`. Spike, Backbone, and Story depart from their sources without saying so. |
 
 ## Blocking defects
 
-None.
+- "Refute" is in the acceptance of FR-009 and FR-016 and has no entry. The set uses it both for a challenge that may fail and for one that succeeded, and FR-016 also says "disputes".
+- Spike departs from its source, "a technical investigation", without saying so. Q-005 is not technical, Q-009's output is a decision, and Q-006 and Q-007 have no time box.
+- Backbone departs from its source, "the essential capabilities the system needs to have", without saying so. The set's backbone is journey stages, some of them outside the product.
 
 ## How to raise the grade
 
-- **Consistency (2 to 4):** Choose one word for the set, and put the others in `avoid`. Fix the Engineer entry's claim about the five tests.
-- **Authority (3 to 4):** State the departures for Spike, Backbone, and Story.
+- **Blocking:** Define Refute with one meaning, and state the departures for Spike, Backbone, and Story.
+- **Consistency (1 to 4):** Use one word for each defined term in every section, and add `avoid` entries.
 
 ## Notes
 
-- Section 13's exit criteria rest on "pilot PRD" and "first submission", which no entry defines.
+- LC-001 gives "final" and the review gate meanings that the glossary does not.

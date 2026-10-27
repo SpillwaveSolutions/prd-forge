@@ -1,24 +1,24 @@
 ---
 doc: ../11-decision-rights.md
-score: 81
+score: 84
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 88
+previous_score: 81
 ---
 
-# Why decision rights scored 81
+# Why decision rights scored 84
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Decision coverage | 3 | Every stage has a rule, but TR-001 does not cover ST-006's rejection. |
+| Decision coverage | 3 | LC-001's draft-to-review move has no rule, and its review-to-final rule needs an approval that TR-002 does not ask for. |
 | Approver | 4 | Every decider is a persona whose authority names the decision. |
-| Delegation stance | 3 | TR-003's decision, "Accept or refute a section's score", is delegable, so software could accept a score without the expert. No delegable rule has `agent_role`. |
-| Evidence | 3 | TR-004's evidence is vague, and the delegable rules name no limits of their assessment. |
-| Escalation | 3 | TR-001 has no rejection path, TR-006 covers only release 1, and TR-008 leaves the expert-absent case unstated. |
-| Testability | 3 | TR-011 tests only the failure path, and TR-012's never-delegated claim has no criterion. |
+| Delegation stance | 3 | Both flags are set on all 14 rules, and no rule declares `agent_role`. |
+| Evidence | 3 | The delegable rules name no limits, TR-011 names no reasons, TR-004's evidence is loose, and TR-014's evidence field holds a behavior. |
+| Escalation | 4 | Every rule covers the absent decider. |
+| Testability | 3 | TR-001's "not presented as ready" is vague and has no rejection case. TR-011 has one criterion. |
 | No design | 4 | No model, confidence threshold, agent design, or technology. |
-| Reversal | 3 | TR-003 does not record a refutation, and TR-011's override has no criterion or record. |
+| Reversal | 3 | TR-011's override is not recorded. |
 
 ## Blocking defects
 
@@ -26,9 +26,9 @@ None.
 
 ## How to raise the grade
 
-- **Delegation stance (3 to 4):** Split TR-003 into producing the score, which software may do, and accepting or refuting it, which only the expert does. Only the expert can decide this.
-- **Decision coverage and escalation (3 to 4):** Add rejection to TR-001.
+- **Decision coverage (3 to 4):** Make LC-001 say that the expert sets `final` under TR-002.
+- **Evidence (3 to 4):** Name the limits of each delegable assessment, and move TR-014's behavior out of its evidence field.
 
 ## Notes
 
-- The paragraph about rules added at 0.2.0 is change history.
+- TR-006 lists only ST-009, but its gap report comes from ST-005.
