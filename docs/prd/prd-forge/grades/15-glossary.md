@@ -1,33 +1,32 @@
 ---
 doc: ../15-glossary.md
-score: 55
-blocking: 2
+score: 60
+blocking: 1
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
 previous_score: 55
 ---
 
-# Why glossary scored 55
+# Why glossary scored 60
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 2 | Persona, Release, and Id are new. Scenario, decision rule, story-mapping workshop, backbone, vocabulary, engineer, and question list have no entry. |
+| Coverage | 3 | About 70 entries. Session, non-functional requirement, target, exit criteria, change log, and objection have no entry. |
 | Author's voice | 3 | Most entries argue their point. Epic, Link, and Decider read like a dictionary. |
-| Disambiguation | 3 | 33 of 64 entries carry `not`. Epic, Risk, Release, Gap, and Scope have none, and State has none although the body table pairs it with Threshold. |
-| Consistency | 2 | State says a section reaches `review` at 70, and FR-011 says it is offered. The table calls Score "A verdict", which is a defined term. Non-goal uses "condition", which only an approver states. Persona says "decision rule", and section 10 says "trust rules". |
+| Disambiguation | 3 | Gate and Threshold, Release and Release line, Out of scope, and Override have no `not`. |
+| Consistency | 2 | Section 9 says "decision rule", ST-009 says "buildability report", and FR-009 says "ready". "Engagement" and "session" each have two meanings. |
 | Authority | 1 | No entry has `source` or `unverified`, and `wont` is never defined. |
 
 ## Blocking defects
 
-- FR-015's acceptance uses "vocabulary", and the glossary does not define it. A tester cannot judge "the vocabulary in use is unchanged".
-- FR-012's acceptance uses "an engineer who was not in the interview", and the glossary does not say who that is. ST-005 says "a builder" for the same person.
+- FR-016's acceptance uses "objection", and the glossary does not define it. A tester cannot tell what an objection is, what "reaffirmed" requires, or when a later finding is the same objection.
 
 ## How to raise the grade
 
-- **Coverage (2 to 4):** Define Vocabulary and Engineer, and use one word for the person who builds. Add the other missing terms.
-- **Consistency (2 to 4):** Align State with FR-011, and use defined terms only in their defined sense.
-- **Authority (1 to 4):** Cite MoSCoW, Given/When/Then, epic, story, and spike, and define `wont`.
+- **Coverage (3 to 4):** Define Objection, Session, Non-functional requirement, Target, Exit criteria, and Change log.
+- **Consistency (2 to 4):** Add `avoid` entries for "decision rule", "buildability report", and "ready", and replace them in the other sections.
+- **Authority (1 to 4):** Cite MoSCoW, Given/When/Then, spike, epic, story, and story mapping, and say what `wont` means.
 
 ## Notes
 
-- The body's count of "test 5" citations is out of date.
+- The body's history paragraph and its count of "test 5" citations are out of date.

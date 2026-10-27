@@ -4,21 +4,19 @@ score: 79
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 83
+previous_score: 79
 ---
 
 # Why scope scored 79
 
-The blocking defect is gone: the OUT-003 row names no component. The score fell because the rubric's non-goal dimension now reads the moved items.
-
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Release line | 3 | "a buildability review has passed" contradicts J-001's end state, and ST-006's actor is the sponsor. |
-| Completeness of value | 3 | Q-011 asks how an approver records a decision at all, and no workaround is recorded. |
-| In-scope traceability | 3 | IN-004's summary omits FR-016 to FR-018; IN-001's omits resumption. |
-| Out of scope | 3 | OUT-002's "proven" and OUT-003's "When an approver asks" cannot be judged. |
-| Non-goals | 3 | Two reasons give provenance, not a why: "A product decision by Richard Hightower, recorded at 0.1.0". The S-003 item is "in release 1", so it is out of scope, not a non-goal. |
-| Honesty | 4 | It says no to things that matter. |
+| Release line | 3 | ST-001 to ST-006 match REL-001, but "an approved set that a buildability review has passed" promises more than J-001's end state, and "passed" is undefined. |
+| Completeness of value | 3 | ST-006's actor is the approver, and Q-011, which asks how an approver records a decision, is still open and blocks FR-014. Scope gives no `outside_product` workaround for ST-006. |
+| In-scope traceability | 3 | IN-004 and IN-001 list requirements that their front-matter summaries do not mention. |
+| Out of scope | 3 | OUT-002's "proven" is undefined. OUT-003's reason contradicts FR-013. |
+| Non-goals | 3 | Two non-goals give history in place of a reason, and one is limited to release 1, which makes it out of scope. |
+| Honesty | 4 | The section turns down things that matter, such as backlog derivation and the engineering lead's confirmation. |
 
 ## Blocking defects
 
@@ -26,7 +24,10 @@ None.
 
 ## How to raise the grade
 
-- **Non-goals (3 to 4):** Give the two moved non-goals a real reason, and move the "in release 1" segment item to `out_of_scope` with a `revisit`.
-- **Completeness of value (3 to 4):** Decide where the sponsor approves in release 1, and record a workaround for ST-006 if it is outside the product.
-- **Release line (3 to 4):** End the line in J-001's own words.
-- **Traceability and out of scope (3 to 4):** Rewrite IN-001 and IN-004, and give OUT-002 and OUT-003 conditions a person can judge.
+- **Completeness of value (3 to 4):** Say where the approver records approval in release 1. If it is outside the product, record ST-006 as an outside stage with its workaround.
+- **Release line (3 to 4):** Use J-001's end-state wording in place of "passed".
+- **Out of scope and non-goals (3 to 4):** Define "proven" in OUT-002, align OUT-003 with FR-013, and move the release-1 non-goal to out of scope.
+
+## Notes
+
+- The body says "R1" and "R2", and the front matter says "Release 2". Section 13 uses REL-002.

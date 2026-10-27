@@ -40,7 +40,8 @@ changes:
       glossary also defines engineering lead, delivery lead, persona, item, id,
       link, priority, teaching, decider, release, vocabulary, engineer,
       scenario, trust rule, story-mapping workshop, backbone, question list,
-      gate, and out of scope, and FR-004 names no field. Journeys and the scope
+      gate, out of scope, objection, session, change log, target, exit
+      criteria, and non-functional requirement, and FR-004 names no field. Journeys and the scope
       say "an engineer" for the person who builds from the set. The set states its
       versioning policy before 1.0. This is a minor version because the policy
       and the evidence are new content.

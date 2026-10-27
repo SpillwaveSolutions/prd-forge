@@ -8,8 +8,8 @@ updated: 2026-10-27
 domain: product management tooling
 section: 14
 order: 150
-score: 55
-blocking: 2
+score: 60
+blocking: 1
 graded: 2026-10-27
 terms:
   - term: PRD
@@ -221,6 +221,9 @@ terms:
     see_also:
       - state
       - threshold
+    not: >-
+      An approval. An override moves one section past its gate, and an approval
+      covers the whole set.
   - term: Verdict
     meaning: >-
       What a buildability review concludes, one of three: `buildable`, `buildable
@@ -605,6 +608,11 @@ terms:
     see_also:
       - release line
       - scope
+      - exit criteria
+    not: >-
+      The release line. The release line is the smallest set of stages that
+      completes the golden thread, and a release is what ships. Release 1 ships
+      exactly the release line.
   - term: Vocabulary
     meaning: >-
       The unit of work and the words the expert says an outsider would misread,
@@ -645,7 +653,7 @@ terms:
       - override
   - term: Story-mapping workshop
     meaning: >-
-      The session in which the delivery lead and the team map a backlog against
+      The meeting in which the delivery lead and the team map a backlog against
       the journeys of an approved set. It needs a backbone agreed before it
       starts.
     see_also:
@@ -669,13 +677,16 @@ terms:
       - interview
   - term: Gate
     meaning: >-
-      A condition a section must meet to move to its next state, such as a score
-      of 70 or more with no blocking defect for `review`. The expert may override
-      a gate, and the override is recorded.
+      What a section must pass to move to its next state, such as a score of 70
+      or more with no blocking defect for `review`. The expert may override a
+      gate, and the override is recorded.
     see_also:
       - state
       - override
       - threshold
+    not: >-
+      The threshold. The threshold is the score alone, and a gate also needs no
+      blocking defect.
   - term: Out of scope
     meaning: >-
       Something the product will not do in a release, with a point at which it is
@@ -683,6 +694,60 @@ terms:
     see_also:
       - non-goal
       - scope
+    not: >-
+      A non-goal. A non-goal is never done, and an out-of-scope item is not done
+      yet.
+  - term: Objection
+    meaning: >-
+      A finding that the document supports and that the expert disputes. Its
+      reason is stated to the expert once, and the expert's decision is recorded.
+      The decision is reaffirmed when the expert keeps it after hearing the
+      reason. A finding that names the same item for the same reason is the same
+      objection, and a later grading pass does not raise it again as new.
+    see_also:
+      - finding
+      - grading pass
+    not: >-
+      A refuted finding. A finding the document does not support is dropped, not
+      kept as an objection.
+  - term: Session
+    meaning: >-
+      The assistant conversation the expert is already working in, which the
+      product works inside, as dependency D-001 records. A session ends when that
+      conversation ends, and the set stays where it was written.
+    see_also:
+      - dependency
+  - term: Change log
+    meaning: >-
+      Section 15, which records each version of the set with its date, its author,
+      and the sections it changed, and every approval and override.
+    see_also:
+      - version
+      - approver
+      - override
+  - term: Target
+    meaning: >-
+      The value a measure must reach: where an objective says it will be, or what
+      a non-functional requirement must meet, such as under 20 seconds at p95.
+    see_also:
+      - objective
+      - baseline
+  - term: Exit criteria
+    meaning: >-
+      What must be true before a release counts as done, stated with each release
+      in section 13.
+    see_also:
+      - release
+  - term: Non-functional requirement
+    meaning: >-
+      A quality the product must have, such as speed, accessibility, or retention,
+      recorded in section 8 with a measure and a target. It applies across
+      requirements, not to one user's capability.
+    see_also:
+      - requirement
+      - target
+    not: >-
+      A requirement in section 7. A requirement names a user and what they can do.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -726,6 +791,9 @@ links:
 | Delivery lead | The engineering lead |
 | Item | A line or a field of an entry |
 | Scenario | A journey |
+| Objection | A refuted finding |
+| Gate | The threshold |
+| Out of scope | A non-goal |
 
 Seventeen terms were added at version 0.2.0. Five of them existed only as
 `see_also` pointers to nothing, which is this set's own named blocking defect; the
