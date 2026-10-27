@@ -80,7 +80,7 @@ journeys:
           - Nothing; this is where they read
         outputs:
           - A judgement on whether the draft says what they meant
-        decision: Accept the draft, correct it, or dispute the grade
+        decision: Accept the draft, correct it, or refute the grade
       - id: ST-004
         name: Expert answers the one question that improves it most
         actor: Domain expert
@@ -258,7 +258,7 @@ nothing written. Stages ST-001 to ST-006.
 | --- | --- | --- |
 | ST-001 States the idea and the domain | Domain expert | What this is, and the domain's own words |
 | ST-002 Taught a section, then interviewed | Domain expert | Have the questions reached the end of what they know |
-| ST-003 Reads the draft and its grade | Domain expert | Accept, correct, or dispute the grade |
+| ST-003 Reads the draft and its grade | Domain expert | Accept, correct, or refute the grade |
 | ST-004 Answers the one question that matters most | Domain expert | Is this section done enough to leave |
 | ST-005 Sees what a team could not build | Domain expert | Is it ready for someone who will commit |
 | ST-006 Approver approves for a release | Sponsor or approver | Approve, approve with conditions, or reject |

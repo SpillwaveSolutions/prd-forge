@@ -112,7 +112,8 @@ scenarios:
       - The grade reflects what the document says after that decision, not what the
         reviewer first claimed
     expected_outcome: >-
-      A finding the expert refutes does not survive into the report, the expert is
+      A refuted finding the document does not support does not survive into the
+      report, the expert is
       told so plainly, and a disagreement the expert insists on is recorded rather
       than re-argued at the next grading pass.
   - id: SC-005
@@ -205,7 +206,7 @@ lifecycles:
       - name: review
         meaning: Ready for someone other than the expert to read.
       - name: final
-        meaning: Approved, with the approval recorded in section 15.
+        meaning: Set final by the expert under TR-002.
     initial: pending
     final: [final]
     transitions:
@@ -226,9 +227,9 @@ lifecycles:
         to: final
         when: The expert sets the section to final
         rule: >-
-          An independent grading pass with zero blocking defects, and an
-          approval recorded in section 15, unless the expert overrides the gate
-          and the override is recorded in section 15
+          The expert's decision under TR-002, after an independent grading pass
+          with zero blocking defects, unless the expert overrides the gate and
+          the override is recorded in section 15. No other approval is needed.
         by: PER-001
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }

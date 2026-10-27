@@ -91,8 +91,8 @@ risks:
     impact: high
     mitigation: >-
       Every finding must quote the document, and anything unsupported is dropped
-      before the expert sees it (FR-016, TR-003, TR-006); a refuted finding is
-      acknowledged as dropped rather than defended (SC-004).
+      before the expert sees it (FR-016, TR-003, TR-006); a refuted finding the
+      document does not support is acknowledged as dropped rather than defended (SC-004).
     owner: Richard Hightower
   - id: R-003
     risk: >-

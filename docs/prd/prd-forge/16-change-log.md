@@ -16,49 +16,31 @@ changes:
     date: 2026-10-27
     author: Richard Hightower
     summary: >-
-      Fixes the blocking defects the 0.8.1 grading found that do not wait on
-      the expert. The glossary defines requirement, acceptance criteria, gap,
-      version, domain, and reading order. FR-017's third criterion states what
-      the expert sees when they go back, and names no view. Section 7 says that
-      FR-010 waits on Q-007, which blocks ST-004. The status-quo competitor's
-      edge states what an engineer who was not in the room receives at
-      handover. Each problem in section 1 has one counted case, with its
-      source and date. On the expert's decision, C-004 leaves section 9, which now
-      holds no constraints.
-      Its rule lives in TR-005 and FR-006, and its id is not reused. The
-      constraints section may now be empty. After the 0.9.0 regrade, FR-008
-      states the expert's need, FR-012 reports
-      a requirement's wait on an open question, and the glossary defines
-      interview, handover, and dependency and names no storage or drawing
-      format. After the second regrade, FR-018 shows a changed section and a new
-      grade within 10 seconds of a request to refresh, FR-008 tests that every
-      item is shown in a sentence or a table row, and the glossary defines
-      backlog, feature, epic, story, expert, and sponsor. After the third
-      regrade, FR-008 reports an id, priority or link that two places in the
-      set state differently, FR-002 calls the first state pending, and the
-      glossary says that the expert sets a section final under TR-002. The
-      glossary also defines engineering lead, delivery lead, persona, item, id,
-      link, priority, teaching, decider, release, vocabulary, engineer,
-      scenario, trust rule, story-mapping workshop, backbone, question list,
-      gate, out of scope, objection, session, change log, target, exit
-      criteria, non-functional requirement, summary, glossary, view, topic,
-      ready, capability, outcome, problem, approval, engagement, lifecycle, and
-      handoff, and FR-004 names no field. Journeys and the scope
-      say "an engineer" for the person who builds from the set. FR-019 and FR-020
-      split the early stop out of FR-004 and the check across the set out of
-      FR-008, both `should` on the expert's decision. The glossary cites a source
-      for MoSCoW, Given/When/Then, story, epic, feature, story map, backbone, and
-      spike, says `wont` means won't have this time, and defines segment, buyer,
-      status quo, delegated, and definition of done. WF-001 draws FR-020's list
-      of differences, section 10 calls each rule's decider the Decider, and the
-      versioning policy applies from 0.9.0 onward. On the expert's decision,
-      TR-003 now only produces a section's score, and the new TR-014 asks the
-      expert to accept or refute it, with a refutation recorded. FR-009 asks
-      for that decision after each grade. The policy defines a change to the
-      golden thread as structural, and "PRD" or "set" replaces "specification"
-      wherever it meant this set. The set states its versioning policy before
-      1.0. This is a minor version because the policy
-      and the evidence are new content.
+      Section 1: each problem has one counted case, with its source and date.
+      Section 2: the status-quo competitor's edge states a prd-forge outcome.
+      Section 5: the first state is pending, shown as not started; the expert
+      refutes a grade; LC-001 makes final the expert's
+      decision under TR-002. Section 6: the scope says "an engineer" for the
+      person who builds from the set. Section 7: FR-019 and FR-020, both
+      `should` on the expert's decision, split the early stop out of FR-004 and
+      the check across the set out of FR-008, and an unclear answer gets its
+      follow-up before the early stop. FR-008 tests that every item is shown in
+      a sentence or a table row, FR-018 shows a change within 10 seconds of a
+      request to refresh, FR-009 asks the expert to accept or refute each grade,
+      FR-010 waits on Q-007, and FR-004 and FR-017 name no field and no view.
+      WF-001 draws FR-020, and the wireframes name no drawing tool. Section 9:
+      on the expert's decision, C-004 leaves, its rule lives in TR-005 and
+      FR-006, and the section may be empty. Section 10: TR-003 only produces a
+      section's score, the new TR-014 has the expert accept or refute it, and
+      each rule's decider is called the Decider. Section 12: Q-009 also blocks
+      FR-019. Section 13: REL-001 carries FR-019 and FR-020. Section 14: every
+      word in the requirements' acceptance has an entry, including refute and
+      approval; eight terms cite a verified source and state where the set
+      departs from it; `wont` means won't have this time. Section 15: the
+      versioning policy before 1.0, which applies from 0.9.0 onward and defines
+      a change to the golden thread as structural. Across the set, "set" or
+      "PRD" replaces "specification" where it meant this set. This is a minor
+      version because the policy and the evidence are new content.
     sections:
       - 1
       - 2
@@ -253,7 +235,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; FR-008 checks the set for one item stated two ways; final set by the expert; ten more glossary terms; FR-019 and FR-020 split out; sources cited for standard terms; the versioning policy; FR-020 drawn in WF-001; Decider for trust rules; TR-014 to accept or refute a score; PRD or set in place of specification |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence; FR-019 and FR-020 split out; TR-014 for accepting a score; C-004 out of section 9; refute and approval defined; sourced glossary terms; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |

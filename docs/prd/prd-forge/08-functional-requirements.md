@@ -361,7 +361,7 @@ requirements:
         document and the document does not support it, then it is dropped and the
         expert is told it was dropped.
       - >-
-        Given a finding the document does support, when the expert disputes it,
+        Given a finding the document does support, when the expert refutes it,
         then the reason is stated once and their decision is recorded.
       - >-
         Given a decision the expert reaffirmed after an objection, when the
@@ -434,6 +434,11 @@ requirements:
         Given an expert whose answers would score the section under 70, or with a
         blocking defect, when questions remain on the question list, then the next
         question is put to them.
+      - >-
+        Given an answer that FR-004 says needs a follow-up, when the answers would
+        already score the section 70 or more with no blocking defects, then the
+        follow-up is asked first, and the interview stops only after it is
+        answered.
     priority: should
     shown_in: conversation
     journey_stage: ST-002

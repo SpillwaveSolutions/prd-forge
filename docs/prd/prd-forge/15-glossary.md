@@ -100,7 +100,10 @@ terms:
     see_also:
       - open question
     not: >-
-      A piece of the product. A spike produces knowledge, not a feature.
+      A piece of the product. A spike produces knowledge, not a feature. This set
+      departs from the source, where a spike is a technical investigation. Here
+      a spike may be research with people, as in Q-005, and some take no extra
+      work beyond a dependency that already exists, as in Q-006 and Q-007.
     source: >-
       Spike Solutions, The Art of Agile Development, 1st ed., James Shore and
       Shane Warden, 3 Jun 2010,
@@ -210,8 +213,9 @@ terms:
       interviewed, and shown to the expert as not started), `draft` (written),
       `review` (ready for someone else to read), `final` (decided by the expert).
       A section is offered `review` at a score of 70 or more with no blocking
-      defects, and moves there when the expert accepts. It reaches `final` when
-      the expert sets it final under TR-002. Approval under TR-001 covers the
+      defects in a set that checks clean, and moves there when the expert
+      accepts. It reaches `final` when the expert sets it final under TR-002,
+      after an independent grading pass with no blocking defect. Approval under TR-001 covers the
       whole set, not one section.
     not: >-
       A threshold. The threshold is the score a gate needs. The state is where
@@ -537,6 +541,8 @@ terms:
       - acceptance criteria
     not: >-
       A requirement. The requirement is in the set; the story is derived from it.
+      This set departs from the source, where a story is anything a user wants.
+      Here each story is bound to exactly one requirement.
     source: >-
       Epics, Features and User Stories, Mountain Goat Software, updated 28 Apr
       2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
@@ -716,7 +722,9 @@ terms:
     meaning: >-
       The ordered journey stages that a story-mapping workshop maps features
       against. A set with no journey gives the workshop no backbone, so the
-      workshop invents one in the room.
+      workshop invents one in the room. This set departs from the source, where
+      the backbone is the capabilities the system needs. Here it is the journey
+      stages, including stages that happen outside the product.
     see_also:
       - journey
       - story-mapping workshop
@@ -733,15 +741,17 @@ terms:
   - term: Gate
     meaning: >-
       What a section must pass to move to its next state, such as a score of 70
-      or more with no blocking defect for `review`. The expert may override a
-      gate, and the override is recorded.
+      or more with no blocking defect, in a set that checks clean, for `review`.
+      The expert may override a gate, and the override is recorded.
     see_also:
       - state
       - override
       - threshold
     not: >-
       The threshold. The threshold is the score alone, and a gate also needs no
-      blocking defect.
+      blocking defect. Also not the everyday sense in sections 1 and 10, where
+      "gates an engineer would have to invent" means decision points the set
+      left unstated.
   - term: Out of scope
     meaning: >-
       Something the product will not do in a release, with a point at which it is
@@ -754,7 +764,7 @@ terms:
       yet.
   - term: Objection
     meaning: >-
-      A finding that the document supports and that the expert disputes. Its
+      A finding that the document supports and that the expert refutes. Its
       reason is stated to the expert once, and the expert's decision is recorded.
       The decision is reaffirmed when the expert keeps it after hearing the
       reason. A finding that names the same item for the same reason is the same
@@ -763,8 +773,22 @@ terms:
       - finding
       - grading pass
     not: >-
-      A refuted finding. A finding the document does not support is dropped, not
-      kept as an objection.
+      A refuted finding the document does not support. That finding is dropped,
+      not kept as an objection.
+  - term: Refute
+    meaning: >-
+      To challenge a finding. The finding is then checked against the document.
+      If the document does not support it, it is dropped and the expert is told.
+      If the document supports it, it stays as an objection, and the expert's
+      decision is recorded.
+    see_also:
+      - finding
+      - objection
+    avoid:
+      - dispute
+    not: >-
+      Showing a finding wrong. A refuted finding can still stand, when the
+      document supports it.
   - term: Session
     meaning: >-
       The assistant conversation the expert is already working in, which the
@@ -985,7 +1009,8 @@ links:
 | Delivery lead | The engineering lead |
 | Item | A line or a field of an entry |
 | Scenario | A journey |
-| Objection | A refuted finding |
+| Objection | A refuted finding the document does not support |
+| Refute | Showing a finding wrong |
 | Gate | The threshold |
 | Out of scope | A non-goal |
 | Outcome | A feeling |
