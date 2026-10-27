@@ -8,4 +8,6 @@ stateDiagram-v2
   s0 --> s1 : The expert finishes the section's interview and it is written [The expert decides the interview is finished (TR-008)] (DomainExpert)
   s1 --> s2 : The expert accepts the offer of review [A grade of 70 or more, zero blocking defects, and a set that checks clean, unless the expert overrides the gate and the override is recorded in section 15] (DomainExpert)
   s2 --> s3 : The expert sets the section to final [The expert's decision under TR-002, after an independent grading pass with zero blocking defects, unless the expert overrides the gate and the override is recorded in section 15. No other approval is needed.] (DomainExpert)
+  s2 --> s1 : The expert changes the section, because a later section shows it is incomplete [The expert's decision under TR-002. The section is graded again before it returns to review.] (DomainExpert)
+  s3 --> s1 : The expert changes the section after it was set final [The expert's decision under TR-002. If the set was approved, the change records a new version that the earlier approval does not cover (FR-014). A section is never retired, because ids are never reused.] (DomainExpert)
   s3 --> [*]

@@ -31,7 +31,9 @@ changes:
       and each persona has a population, a basis, a context, and its problems.
       Section 5: the first
       state is pending, shown as not started; the expert refutes a grade; LC-001
-      makes final the expert's decision under TR-002; each stage carries the
+      makes final the expert's decision under TR-002, and on the expert's
+      decision lets a section at review or final go back to draft when the
+      expert changes it; each stage carries the
       expert's satisfaction score, and each pain point names its stage; ST-006
       happens outside the product; SC-004 is split into SC-004 and SC-008; and
       each alternate and exception scenario names the step of SC-007 it leaves.

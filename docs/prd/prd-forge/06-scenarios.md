@@ -264,6 +264,19 @@ lifecycles:
           with zero blocking defects, unless the expert overrides the gate and
           the override is recorded in section 15. No other approval is needed.
         by: PER-001
+      - from: review
+        to: draft
+        when: The expert changes the section, because a later section shows it is incomplete
+        rule: The expert's decision under TR-002. The section is graded again before it returns to review.
+        by: PER-001
+      - from: final
+        to: draft
+        when: The expert changes the section after it was set final
+        rule: >-
+          The expert's decision under TR-002. If the set was approved, the change
+          records a new version that the earlier approval does not cover
+          (FR-014). A section is never retired, because ids are never reused.
+        by: PER-001
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-journeys, kind: journeys, path: ./05-user-journeys.md, title: User journeys }
