@@ -9,7 +9,7 @@ domain: product management tooling
 section: 7
 order: 80
 score: 81
-blocking: 1
+blocking: 0
 graded: 2026-10-27
 requirements:
   - id: FR-001

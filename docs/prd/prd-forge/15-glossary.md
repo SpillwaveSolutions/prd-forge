@@ -9,7 +9,7 @@ domain: product management tooling
 section: 14
 order: 150
 score: 55
-blocking: 1
+blocking: 2
 graded: 2026-10-27
 terms:
   - term: PRD
@@ -118,8 +118,8 @@ terms:
     see_also:
       - scope
     not: >-
-      Out of scope. Out of scope means not yet, with a condition for revisiting; a
-      non-goal means not ever, with a reason.
+      Out of scope. Out of scope means not yet, with a point at which it is
+      revisited. A non-goal means not ever, with a reason.
   - term: Journey
     meaning: >-
       The steps one user takes to reach one goal with the product, from start to
@@ -204,9 +204,13 @@ terms:
       Where a section stands, one of four in this order: `pending` (not yet
       interviewed, and shown to the expert as not started), `draft` (written),
       `review` (ready for someone else to read), `final` (decided by the expert).
-      A section reaches `review` at a score of 70 or more with no blocking
-      defects. It reaches `final` when the expert sets it final under TR-002.
-      Approval under TR-001 covers the whole set, not one section.
+      A section is offered `review` at a score of 70 or more with no blocking
+      defects, and moves there when the expert accepts. It reaches `final` when
+      the expert sets it final under TR-002. Approval under TR-001 covers the
+      whole set, not one section.
+    not: >-
+      A threshold. The threshold is the score a gate needs. The state is where
+      the section stands.
     see_also:
       - threshold
       - blocking defect
@@ -524,7 +528,7 @@ terms:
     meaning: >-
       The person who has to build from the approved set, persona PER-002. The
       engineering lead receives the set at handover, records their own verdict on
-      its buildability review in ST-009, and decides each candidate architecture
+      its buildability review in ST-009, and receives each candidate architecture
       decision.
     see_also:
       - handover
@@ -546,7 +550,7 @@ terms:
   - term: Persona
     meaning: >-
       A named role from section 4, such as PER-001, the expert. Every
-      requirement, journey, and decision rule names the persona it serves or who
+      requirement, journey, and trust rule names the persona it serves or who
       acts.
     see_also:
       - expert
@@ -601,6 +605,84 @@ terms:
     see_also:
       - release line
       - scope
+  - term: Vocabulary
+    meaning: >-
+      The unit of work and the words the expert says an outsider would misread,
+      each with the expert's own meaning. The expert states it once, before the
+      first section. Every later question uses it, and it does not change when
+      the expert resumes.
+    see_also:
+      - unit of work
+      - domain
+  - term: Engineer
+    meaning: >-
+      Anyone on the team who builds from the set and was not in the interview.
+      The engineering lead is one. An acceptance criterion passes the five tests
+      only when an engineer could write a test from it.
+    see_also:
+      - engineering lead
+      - acceptance criteria
+    avoid:
+      - builder
+  - term: Scenario
+    meaning: >-
+      One concrete path a persona takes through one or more journey stages,
+      recorded in section 5 with its steps and the outcome they see. A scenario
+      shows a stage working, or failing, with real content.
+    see_also:
+      - journey
+      - stage
+    not: >-
+      A journey. The journey names the stages, and a scenario walks one path
+      through them.
+  - term: Trust rule
+    meaning: >-
+      A rule in section 10 that names who decides one decision, at which stages,
+      on what evidence, and what happens when that person is away. A rule marked
+      never delegated is always decided by a person.
+    see_also:
+      - approver
+      - override
+  - term: Story-mapping workshop
+    meaning: >-
+      The session in which the delivery lead and the team map a backlog against
+      the journeys of an approved set. It needs a backbone agreed before it
+      starts.
+    see_also:
+      - backbone
+      - backlog
+      - delivery lead
+  - term: Backbone
+    meaning: >-
+      The ordered journey stages that a story-mapping workshop maps features
+      against. A set with no journey gives the workshop no backbone, so the
+      workshop invents one in the room.
+    see_also:
+      - journey
+      - story-mapping workshop
+  - term: Question list
+    meaning: >-
+      The questions an interview may put for one section. The interview ends
+      before the list does when the expert's answers would already pass the
+      section.
+    see_also:
+      - interview
+  - term: Gate
+    meaning: >-
+      A condition a section must meet to move to its next state, such as a score
+      of 70 or more with no blocking defect for `review`. The expert may override
+      a gate, and the override is recorded.
+    see_also:
+      - state
+      - override
+      - threshold
+  - term: Out of scope
+    meaning: >-
+      Something the product will not do in a release, with a point at which it is
+      revisited, recorded in section 6.
+    see_also:
+      - non-goal
+      - scope
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -617,7 +699,7 @@ links:
 | Stage | A screen |
 | Rubric | A checklist |
 | Blocking defect | A low score |
-| Score | A verdict on the product idea |
+| Score | A judgement on the product idea |
 | Spike | A piece of the product |
 | Open question | A risk |
 | Non-goal | Out of scope |
@@ -643,6 +725,7 @@ links:
 | Engineering lead | The expert |
 | Delivery lead | The engineering lead |
 | Item | A line or a field of an entry |
+| Scenario | A journey |
 
 Seventeen terms were added at version 0.2.0. Five of them existed only as
 `see_also` pointers to nothing, which is this set's own named blocking defect; the
@@ -651,7 +734,7 @@ threshold, grade, grading pass, state, verdict, override, unit of work and the
 rest. The five tests are now numbered, because the set cites "test 5" by number
 five times.
 
-The `not` column above is the one that earns its keep. Every one of these has
+The "Most often confused with" column above is the one that earns its keep. Every one of these has
 been confused in practice, and three of them, golden thread, blocking defect and
 score, carry a cost when confused: a team picks the wrong journey for release 1,
 ships a section with a known fault because the number looked good, or believes a

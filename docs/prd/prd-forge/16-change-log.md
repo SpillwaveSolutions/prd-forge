@@ -38,8 +38,10 @@ changes:
       set state differently, FR-002 calls the first state pending, and the
       glossary says that the expert sets a section final under TR-002. The
       glossary also defines engineering lead, delivery lead, persona, item, id,
-      link, priority, teaching, decider, and release, and FR-004 names no
-      field. The set states its
+      link, priority, teaching, decider, release, vocabulary, engineer,
+      scenario, trust rule, story-mapping workshop, backbone, question list,
+      gate, and out of scope, and FR-004 names no field. Journeys and the scope
+      say "an engineer" for the person who builds from the set. The set states its
       versioning policy before 1.0. This is a minor version because the policy
       and the evidence are new content.
     sections:

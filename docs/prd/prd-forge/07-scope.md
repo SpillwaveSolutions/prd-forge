@@ -59,7 +59,7 @@ in_scope:
       - FR-010
       - FR-011
   - id: IN-006
-    summary: Review the whole set as a builder would, and report what cannot be built
+    summary: Review the whole set as an engineer would, and report what cannot be built
     journey_stage: ST-005
     requirements:
       - FR-012

@@ -1,34 +1,33 @@
 ---
 doc: ../15-glossary.md
 score: 55
-blocking: 1
+blocking: 2
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 65
+previous_score: 55
 ---
 
 # Why glossary scored 55
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 2 | 54 entries. Persona, Scenario, Decision rule, Release, Story-mapping workshop, Backbone, and ID have no entry, and the glossary itself uses "persona". |
-| Author's voice | 3 | Most entries argue their point. Epic and Risk read like a dictionary. |
-| Disambiguation | 3 | 33 of 54 entries carry `not`. Epic, Requirement, Acceptance criteria, Risk, Wireframe, and Scope have none. |
-| Consistency | 2 | State names the first state `pending`, and FR-002, ST-001, and three other sections say "not started" or "untouched". State says `final` needs an approval, but TR-002 lets the expert set a section final with no approval. |
-| Authority | 1 | No entry has `source` or `unverified`. MoSCoW, spike, epic, story, and Given/When/Then come from recognized practice, and none is cited. |
+| Coverage | 2 | Persona, Release, and Id are new. Scenario, decision rule, story-mapping workshop, backbone, vocabulary, engineer, and question list have no entry. |
+| Author's voice | 3 | Most entries argue their point. Epic, Link, and Decider read like a dictionary. |
+| Disambiguation | 3 | 33 of 64 entries carry `not`. Epic, Risk, Release, Gap, and Scope have none, and State has none although the body table pairs it with Threshold. |
+| Consistency | 2 | State says a section reaches `review` at 70, and FR-011 says it is offered. The table calls Score "A verdict", which is a defined term. Non-goal uses "condition", which only an approver states. Persona says "decision rule", and section 10 says "trust rules". |
+| Authority | 1 | No entry has `source` or `unverified`, and `wont` is never defined. |
 
 ## Blocking defects
 
-- FR-002's acceptance says "thirteen are untouched" and "shown as not started". The State entry defines `pending`, `draft`, `review`, and `final`, and no state is "not started". A tester cannot tell whether a display that shows `pending` passes FR-002.
+- FR-015's acceptance uses "vocabulary", and the glossary does not define it. A tester cannot judge "the vocabulary in use is unchanged".
+- FR-012's acceptance uses "an engineer who was not in the interview", and the glossary does not say who that is. ST-005 says "a builder" for the same person.
 
 ## How to raise the grade
 
-- **Consistency (2 to 4):** Use one name for the first state in every section. Say which act moves a section to `final`: the expert under TR-002, or the approver under TR-001.
-- **Authority (1 to 4):** Cite the source of MoSCoW, Given/When/Then, epic, story, and spike, and say what `wont` means.
-- **Coverage (2 to 4):** Add Persona, Scenario, Decision rule, Release, and ID.
-- **Disambiguation (3 to 4):** Add `not` to Epic, Requirement, Acceptance criteria, Risk, Wireframe, and Scope.
+- **Coverage (2 to 4):** Define Vocabulary and Engineer, and use one word for the person who builds. Add the other missing terms.
+- **Consistency (2 to 4):** Align State with FR-011, and use defined terms only in their defined sense.
+- **Authority (1 to 4):** Cite MoSCoW, Given/When/Then, epic, story, and spike, and define `wont`.
 
 ## Notes
 
-- FR-017 uses "ID" with no entry. A stricter grader can count it as a second blocking defect.
-- In common MoSCoW use, "won't" means "not this time". That is close to this set's "out of scope", not to "non-goal".
+- The body's count of "test 5" citations is out of date.

@@ -110,12 +110,12 @@ journeys:
         acceptance:
           - >-
             Given a set with every section written at least once, when the
-            expert asks for a buildability review, then they see what a builder
+            expert asks for a buildability review, then they see what an engineer
             could not build and which release-line stages have no requirement
             behind them.
         steps:
-          - Asks for the whole set to be reviewed as a builder would read it
-          - Sees what a builder could not build, and what they would have to guess
+          - Asks for the whole set to be reviewed as an engineer would read it
+          - Sees what an engineer could not build, and what they would have to guess
           - Sees which release-line stages have no requirement behind them
           - Fixes the holes, or records them as open questions with a decider
         inputs:
@@ -155,7 +155,7 @@ journeys:
       - Tell me where it is weak, against a stated standard, and ask me one thing
       - Convert my technology talk into the need underneath it, without arguing
       - Let me stop and resume without starting over
-      - Show me, before anyone builds, what a builder cannot build
+      - Show me, before anyone builds, what an engineer cannot build
     end_state: >-
       The set is approved at a named version, every section has a grade with no
       blocking defects, every open question has a decider and a date, and the
