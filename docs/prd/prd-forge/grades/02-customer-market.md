@@ -1,35 +1,28 @@
 ---
 doc: ../02-customer-market.md
-score: 55
+score: 70
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 50
+previous_score: 55
 ---
 
-# Why customer and market scored 55
+# Why customer and market scored 70
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Buyer vs user | 2 | Both roles are named, but no segment has `user_personas` or `buyer_persona`. S-002 puts the delivery lead on both sides: "The practitioner, plus the delivery lead who reviews what they write". |
-| Sizing | 1 | Neither segment has a size, source, date, method, or unit. S-001 still holds the guide's template slot, "`<count>` firms, per `<a named register, with its year>`". Q-004 owns the gap. |
-| Substitutes | 3 | The status quo is named and typed. No `direct` competitor is named, and the section does not say that none exists. |
-| Honest edge | 3 | Three of four edges are outcomes a buyer can check. The contracted-PM edge, "the expert keeps the understanding afterwards rather than renting it", is not. |
-| Why we win | 2 | The sentence is in the user's words, not the buyer's. S-001's buyer framing, "billable hours saved", is not in it. |
+| Buyer vs user | 4 | Both segments map buyer and user to personas. |
+| Sizing | 1 | Neither segment is sized, sourced, or dated. Q-004 owns the gap. |
+| Substitutes | 4 | Direct, indirect, and status-quo alternatives are named. |
+| Honest edge | 3 | The ChatPRD edge opens with a feature and repeats the assistant edge. The contracted-PM edge does not hold for S-001. |
+| Why we win | 2 | Framed against S-002's comparison only, half of it is true of the status quo, and "every gap" cannot be verified. |
 
 ## Blocking defects
 
-None. The status-quo edge now states an outcome of prd-forge.
+None.
 
 ## How to raise the grade
 
-- **Sizing (1 to 4):** Replace the template slot in S-001 with "Not yet measured; see Q-004", and give each segment a unit.
-- **Buyer vs user (2 to 4):** Add `user_personas` and `buyer_persona` to each segment.
-- **Why we win (2 to 4):** State it in the buyer's terms, with the figure the buyer compares against.
-- **Substitutes (3 to 4):** Name a direct competitor, or say that none exists.
-
-## Notes
-
-- The body says "No competitor above tells them that", but the section concedes a contracted PM offers "Genuine product judgement".
-- The S-002 row in the body table drops part of the buyer and the user from the front matter.
-- Neither segment records `adoption_barriers`.
+- **Why we win (2 to 4):** State it per segment in the buyer's terms, and drop the absolute claim.
+- **Honest edge (3 to 4):** Make each edge an outcome the buyer can check against that competitor.
+- **Sizing (1 to 4):** Give a rough count with its source.

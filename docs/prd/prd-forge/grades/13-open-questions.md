@@ -1,22 +1,22 @@
 ---
 doc: ../13-open-questions.md
-score: 71
+score: 75
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 79
+previous_score: 71
 ---
 
-# Why open questions scored 71
+# Why open questions scored 75
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Decider | 3 | Q-005 and Q-008 ask about other people's behavior, which research answers. Q-008 repeats A-003. |
-| Date | 3 | Q-007 is due on the day of REL-001, and the spikes for Q-006 to Q-008 depend on D-002 and D-003, due the same day. |
-| Blocks | 4 | Every id in `blocks` exists. |
-| Answerability | 2 | Q-004, Q-007, Q-009, and Q-011 are compound. Q-006 and Q-007 have no time box. Q-009 and Q-010 restate the decision as the spike. Q-002 measures from a different start than O-002. |
-| Honesty | 3 | The release plan leaves the REL-001 schedule decision open with no question. |
-| Hygiene | 2 | The body says all of Q-009 to Q-011 block `must` requirements, and that Q-009 affects two stages. The front matter shows otherwise. |
+| Decider | 3 | Q-005 and Q-014 ask about other people's behavior. |
+| Date | 2 | Questions that block REL-001 are due on its date, and their spikes rest on sessions not yet arranged. |
+| Blocks | 3 | Q-015 blocks nothing, and Q-014, Q-005, and Q-004 miss items that cite them. |
+| Answerability | 3 | Some spikes would not answer their question, and Q-006 and Q-017 are compound. |
+| Honesty | 4 | Every hedge points here. |
+| Hygiene | 3 | Answered Q-011 still sits in the table, and the body contradicts Q-009's spike. |
 
 ## Blocking defects
 
@@ -24,6 +24,5 @@ None.
 
 ## How to raise the grade
 
-- **Answerability (2 to 4):** Split the compound questions, give every spike a time box, and align Q-002 with O-002.
-- **Hygiene (2 to 4):** Make the body's claims match the front matter.
-- **Honesty (3 to 4):** Add a question for the REL-001 schedule decision.
+- **Date (2 to 4):** Date D-002's sessions, then move the blocking questions before REL-001.
+- **Blocks and hygiene (3 to 4):** Complete the `blocks` lists and move Q-011 out.

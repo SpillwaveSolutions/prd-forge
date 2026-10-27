@@ -17,7 +17,7 @@ stakeholders:
   - Delivery leads who run story-mapping workshops
 created: 2026-10-23
 golden_thread: J-001
-score: 75
+score: 83
 blocking: 0
 graded: 2026-10-27
 primary_persona: PER-001

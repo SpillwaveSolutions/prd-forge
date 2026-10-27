@@ -1,22 +1,22 @@
 ---
 doc: ../16-change-log.md
-score: 83
+score: 79
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 88
+previous_score: 83
 ---
 
-# Why change log scored 83
+# Why change log scored 79
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Entries | 4 | Every version has an entry, and the 0.5.0 gap is explained. |
-| Reader-facing | 2 | The 0.9.0 entry narrates editing rounds, contradicts itself about FR-008 and FR-020, and its table row does not match its summary. |
-| Section linkage | 4 | Every entry lists its sections by number. |
-| Approvals | 4 | None sought, and the rules are cited correctly. |
-| Conditions | 4 | No conditions exist to record. |
-| Versioning | 2 | 0.9.0 took in new content after its own grading, which the policy it introduces does not allow. |
+| Entries | 4 | Every version has an entry. |
+| Reader-facing | 3 | The 0.9.0 summary is one long paragraph, and 0.3.0 records grade noise. |
+| Section linkage | 3 | 0.1.0 says sixteen sections and lists fifteen. |
+| Approvals | 3 | No entry records approvals in its front matter, and the approver is not named. |
+| Conditions | 4 | None to record. |
+| Versioning | 2 | 0.9.0 records release-line changes without saying why they are not structural. |
 
 ## Blocking defects
 
@@ -24,8 +24,5 @@ None.
 
 ## How to raise the grade
 
-- **Reader-facing and versioning (2 to 4):** Rewrite the 0.9.0 entry as its net change since 0.8.1, ordered by section. 0.9.0 is not released, so no reader saw an earlier form of it.
-
-## Notes
-
-- The 0.6.0 entry cites "the specification review", which no document defines.
+- **Versioning (2 to 4):** Say why the 0.9.0 release-line changes are not structural under the policy.
+- **Linkage (3 to 4):** Fix the 0.1.0 count.

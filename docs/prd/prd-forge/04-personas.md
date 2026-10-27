@@ -8,7 +8,7 @@ updated: 2026-10-27
 domain: product management tooling
 section: 4
 order: 40
-score: 68
+score: 79
 blocking: 0
 graded: 2026-10-27
 personas:

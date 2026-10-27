@@ -1,24 +1,22 @@
 ---
 doc: ../04-personas.md
-score: 68
+score: 79
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
 previous_score: 68
 ---
 
-# Why users and personas scored 68
-
-The blocking defect is gone: PER-002 is now the actor of ST-009 in J-002.
+# Why personas scored 79
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Role naming | 2 | Job titles with no organization or seniority, and one joins two roles: "Sponsor or approver". |
-| Goals | 4 | In the persona's voice: "Stop being asked the same question by four different engineers". |
-| Pains | 3 | Specific, but no persona has `problems`, so the link to section 1 is never recorded. |
-| Frequency | 2 | "Reads a given PRD a handful of times, intensively"; no `population`. |
-| Authority | 3 | Stated for all four, but the body table contradicts the front matter on PER-001. |
-| External users | 1 | No persona has `external`, although segment S-001 works from "client domain knowledge". |
+| Role naming | 3 | PER-001 has no seniority or organization, and joins two roles. |
+| Goals | 4 | In each persona's voice. |
+| Pains | 3 | PER-002's pains are P-001's content, but it links only P-002. |
+| Frequency | 2 | Adjectives stand in for numbers, and population is per PRD, not per organization. |
+| Authority | 3 | The body table gives PER-001 "scores", which TR-003 makes delegable. |
+| External users | 3 | Explicit, but silent on where the delivery team sits in S-001. |
 | Count | 4 | Four personas, each in a journey. |
 
 ## Blocking defects
@@ -27,7 +25,5 @@ None.
 
 ## How to raise the grade
 
-- **External users (1 to 4):** Set `external` on every persona, and say which roles sit with the client in a consultancy engagement.
-- **Role naming and frequency (2 to 4):** Add organization and seniority, split "Sponsor or approver", and give counts and `population`.
-- **Pains (3 to 4):** Add `problems` and `basis` to each persona.
-- **Authority (3 to 4):** Make the body table match the front matter and TR-001.
+- **Pains and authority (3 to 4):** Link PER-002 to P-001, and match the body table to the front matter.
+- **Frequency (2 to 4):** Give PRDs per organization and sessions per expert.
