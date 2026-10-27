@@ -26,6 +26,7 @@ terms:
     meaning: >-
       The documents that together are one PRD: a root document and one document
       per section, each linking to the others.
+    abbreviation: set
     see_also:
       - PRD
   - term: Golden thread
@@ -211,7 +212,7 @@ terms:
       - rubric
   - term: State
     meaning: >-
-      Where a section stands: `pending`, shown to the expert as not started;
+      Where a section stands: the state pending, shown to the expert as not started;
       `draft`, written; `review`, ready for someone else to read, reached through
       the gate; or `final`, set by the expert under TR-002. LC-001 in section
       5 shows each move.
@@ -239,6 +240,9 @@ terms:
       review's is kept beside it.
     see_also:
       - derivability checks
+    not: >-
+      A grade. A grade scores one section against its rubric, and a verdict is
+      the buildability review's conclusion on the whole set.
   - term: Derivability checks
     meaning: >-
       The eleven checks a buildability review runs to decide whether a backlog can
@@ -332,11 +336,12 @@ terms:
       problem and opportunity.
   - term: Approver
     meaning: >-
-      The one person who approves, approves with conditions, or rejects the whole
-      set for a release under TR-001: the sponsor, or the expert when no sponsor
-      exists. Each set names its approvers, by name and role, under FR-021, and
-      only a named approver's decision counts. A set approved with conditions
-      reads that way until the approver clears every condition.
+      A person the set names, by name and role under FR-021, who approves,
+      approves with conditions, or rejects the whole set for a release under
+      TR-001. A set names one or more approvers: the sponsor, or the expert when
+      no sponsor exists. Only a named approver's decision counts. A set approved
+      with conditions reads that way until the approver who stated each
+      condition clears it.
     see_also:
       - condition
       - root document
@@ -817,9 +822,8 @@ terms:
     see_also:
       - dependency
     not: >-
-      A sitting. An expert's working sitting, or an observed sitting in D-002,
-      is a stretch of time spent on the work, and one sitting can span more than
-      one session.
+      A sitting, which is a stretch of time spent on the work and can span more
+      than one session.
   - term: Change log
     meaning: >-
       Section 15, which records each version of the set with its date, its author,
@@ -890,9 +894,9 @@ terms:
       - state
       - gate
     not: >-
-      A set ready to be offered for approval. Ready describes one section. The
-      expert decides that the whole set is offered for approval, under TR-010.
-      Ready is also not a verdict of the buildability review.
+      Offered for approval. Ready describes one section. The expert decides,
+      under TR-010, whether the whole set may be offered for approval. Ready is
+      also not a verdict of the buildability review.
   - term: Capability
     meaning: >-
       The first part of a requirement: what one named user can do with the
@@ -900,6 +904,10 @@ terms:
     see_also:
       - requirement
       - outcome
+    not: >-
+      A capability the system needs, as the backbone's source uses the word. In
+      this set a capability belongs to one user, and the backbone is the journey
+      stages.
   - term: Outcome
     meaning: >-
       The second part of a requirement: what the user sees or has once the
@@ -932,8 +940,8 @@ terms:
       is a decision on the whole set.
   - term: Engagement
     meaning: >-
-      One piece of work in which one expert writes one set, from the first
-      question to the approval. TR-001 covers an engagement with no sponsor.
+      One piece of work in which one expert writes one set with this product,
+      from the first question to the approval. TR-001 covers an engagement with no sponsor.
     see_also:
       - expert
       - sponsor
@@ -986,6 +994,11 @@ terms:
       the person it names.
     see_also:
       - trust rule
+      - agent
+    not: >-
+      Decided by a person on someone else's behalf. A person who decides while
+      the decider is away does so under the rule's escalation, and that is not
+      delegation.
   - term: Definition of done
     meaning: >-
       The conditions every backlog item must meet before the team counts it as
@@ -1067,8 +1080,8 @@ terms:
   - term: Specification
     meaning: >-
       In the general sense only: a requirements document written without this
-      method, as section 1 and Q-001 use the word. This set calls its own
-      documents the set, or the PRD.
+      method, as section 1 and Q-001 use the word. This set calls itself a PRD,
+      and calls the documents that make it up the set.
     see_also:
       - prd
       - document set
@@ -1080,6 +1093,67 @@ terms:
       - engineering lead
       - delivery lead
       - engineer
+  - term: Offered for approval
+    meaning: >-
+      Said of a set the expert has decided, under TR-010 in stage ST-005, may go
+      to the approver, as its root document or an exported copy. A set offered
+      for approval reads as not approved until the approver decides.
+    see_also:
+      - ready
+      - approver
+      - exported copy
+    not: >-
+      Ready. Ready describes one section, and a set is offered for approval as a
+      whole.
+  - term: Sitting
+    meaning: >-
+      A stretch of time an expert spends on the work, such as one of the 6 to 9
+      working sittings per PRD in section 4, or one of D-002's ten observed
+      sittings. One sitting can span more than one session.
+    see_also:
+      - session
+    not: >-
+      A session. A session is the assistant conversation the product works
+      inside.
+  - term: Loop-back
+    meaning: >-
+      A return to an earlier section because a later one showed it was
+      incomplete, such as writing the requirements sending the expert back to
+      the journeys. ST-004 allows it, and Q-007 counts loop-backs in D-002's
+      observed sittings.
+    see_also:
+      - section
+      - sitting
+  - term: Experiment
+    meaning: >-
+      A release shipped while assumptions it depends on are still untested, and
+      said to be so. Section 13 names this as REL-001's course if D-002 or D-003
+      reports late, and Q-022 decides it.
+    see_also:
+      - release
+      - assumption
+    not: >-
+      A spike. A spike produces an answer, and an experiment ships a release.
+  - term: Agent
+    meaning: >-
+      Software that takes a decision section 10 marks as one an agent may
+      decide, such as TR-003's score and findings. In this set an agent only
+      proposes, and the person the rule names decides.
+    see_also:
+      - delegated
+      - trust rule
+    not: >-
+      A person. Every decider in section 10 is a person.
+  - term: Exported copy
+    meaning: >-
+      The set in a form the sponsor reads outside the product, in place of the
+      root document, as in ST-006.
+    see_also:
+      - root document
+      - offered for approval
+    not: >-
+      The set. The set is its documents, and an exported copy is one form of
+      them for reading.
   - term: Buildable
     meaning: >-
       Said of a set a development team can estimate and build from without
@@ -1137,7 +1211,15 @@ links:
 | Gate | The threshold |
 | Out of scope | A non-goal |
 | Outcome | A feeling |
-| Ready | A set ready to be offered for approval |
+| Ready | Offered for approval |
+| Offered for approval | Ready |
+| Sitting | A session |
+| Experiment | A spike |
+| Agent | A person |
+| Exported copy | The set |
+| Capability | A capability the system needs |
+| Delegated | A person deciding on someone's behalf |
+| Verdict | A grade |
 | Reviewer | A grading pass |
 | Approval | An override |
 | Engagement | A unit of work |

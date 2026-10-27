@@ -147,7 +147,7 @@ journeys:
         outputs:
           - A list of what is not buildable, and a set with each gap closed or
             owned
-        decision: Is this ready to be read by someone who will commit to it
+        decision: May the set be offered to someone who will commit to it
         handoff: >-
           Sponsor, who receives the set offered for approval as its root document
           or an exported copy.
@@ -331,7 +331,7 @@ nothing written. Stages ST-001 to ST-006.
 | ST-002 Taught a section, then interviewed | Domain expert | Have the questions reached the end of what they know |
 | ST-003 Reads the draft and its grade | Domain expert | Accept, correct, or refute the grade |
 | ST-004 Answers the one question that matters most | Domain expert | Is this section done enough to leave |
-| ST-005 Sees what a team could not build | Domain expert | Is it ready for someone who will commit |
+| ST-005 Sees what a team could not build | Domain expert | May the set be offered to someone who will commit |
 | ST-006 Sponsor approves for a release, outside the product | Sponsor | Approve, approve with conditions, or reject |
 
 ST-002 to ST-004 are a loop, run once per section. The loop is the whole

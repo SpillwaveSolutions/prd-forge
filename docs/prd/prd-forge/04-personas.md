@@ -42,7 +42,7 @@ personas:
       Decides what the product must do and what is out of scope; decides the
       domain's own terms; decides when a section's interview is finished and when
       a section may be left at draft; accepts or corrects a drafted section; sets
-      a section to final; accepts or refutes a grade; decides the set is ready to
+      a section to final; accepts or refutes a grade; decides whether the set may
       be offered for approval; and is the only one who may state a domain fact as
       true. May not
       approve the PRD for a release on their own where a sponsor exists.

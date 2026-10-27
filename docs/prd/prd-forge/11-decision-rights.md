@@ -32,7 +32,7 @@ decisions:
     acceptance:
       - >-
         Given a set with any blocking defect, when approval is sought, then the
-        approver is shown the defects and the set is not presented as ready.
+        approver is shown the defects and the set is not presented as fit to approve.
       - >-
         Given a set with no recorded approval, when anyone reads its state, then it
         reads as not approved, whatever its scores are.
@@ -204,14 +204,14 @@ decisions:
         chooses to move on, then it is written at `draft` and what was left behind
         is recorded as an open question or named plainly to them.
   - id: TR-010
-    decision: Decide the set is ready to be offered for approval
+    decision: Decide the set may be offered for approval
     stages: [ST-005]
     approver: PER-001
     delegable_to_agent: false
     never_delegated: true
     evidence_required: >-
       Every section's state and grade, every blocking defect, and the buildability
-      report's gaps with, for each, whether it is closed or owned.
+      review's gaps with, for each, whether it is closed or owned.
     escalation: >-
       None, and no substitute. The expert offers the set; nobody offers it for
       them.
@@ -329,7 +329,7 @@ links:
 | TR-007 | Decide the domain's own terms | PER-001 | no | yes |
 | TR-008 | Decide a section's interview is finished | PER-001 | no | yes |
 | TR-009 | Decide a section may be left at draft | PER-001 | no | yes |
-| TR-010 | Decide the set is ready to offer for approval | PER-001 | no | yes |
+| TR-010 | Decide the set may be offered for approval | PER-001 | no | yes |
 | TR-011 | Decide a backlog can be mapped | PER-004 | **yes** | no |
 | TR-012 | Decide which epics come first | PER-004 | no | yes |
 | TR-013 | Accept or correct a drafted section | PER-001 | no | yes |

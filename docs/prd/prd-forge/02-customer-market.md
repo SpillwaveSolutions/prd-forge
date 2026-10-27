@@ -39,12 +39,12 @@ segments:
       Not yet measured; see Q-004.
     size_unit: organizations
     willingness_to_pay: >-
-      Compared against contracting a product manager for the engagement. The day
+      Compared against contracting a product manager for the project. The day
       rate is Q-013.
     adoption_barriers:
       - We may trust a machine's grade less than our own review (Q-005).
       - Our engineering leads may send back a PRD that names no technology (A-003).
-      - We cannot circulate a PRD that cites a regulation nobody checked (FR-006).
+      - We cannot circulate a PRD that cites a regulation our own expert did not supply (FR-006).
 competitors:
   - name: ChatPRD, an AI tool that drafts PRDs from a chat
     kind: direct
@@ -70,18 +70,20 @@ competitors:
     offer: >-
       Fluent prose on any section, instantly, with no setup at all.
     our_edge: >-
-      Before approving, the sponsor sees which sections are not ready and the
-      quoted reason for each, so a well-written section that cannot be built is
-      not offered as ready. Writing that reads well is the failure P-003 names.
-  - name: Contracting a product manager without the domain for the engagement
+      Before buying, the buyer can open any set written with this product, such
+      as this one, and see which sections are not ready, with the quoted reason
+      for each. A general-purpose conversation
+      shows no such list. Writing that reads well is the failure P-003 names.
+  - name: Contracting a product manager without the domain for the project
     kind: indirect
     offer: >-
       Genuine product judgement, and someone accountable for the outcome.
     our_edge: >-
-      The PRD is written by the person who holds the domain knowledge, and each
-      fact they could not supply is listed as an open question rather than filled
-      in by someone without the domain. In S-001 the consultant already stands
-      between the client and the page. Any cost advantage is unproven until Q-013
+      The buyer gets a PRD whose domain facts come from the person who holds
+      them, and a list of each fact that person could not supply, with a named
+      decider and a date, rather than facts filled in by someone without the
+      domain. In S-001 the consultant already
+      stands between the client and the page. Any cost advantage is unproven until Q-013
       gives the day rate.
   - name: "The status quo: a smart practitioner, a document, and a willing engineer"
     kind: status-quo
@@ -93,8 +95,8 @@ competitors:
       with a named person and a date, so they can estimate without first
       interviewing the author.
 why_we_win: >-
-  "Before I approve the budget, I can see which parts of the PRD my team could
-  not build from."
+  What we expect the sponsor to say: "Before I approve the budget, I can see
+  which parts of the PRD my team could not build from."
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-problem-opportunity, kind: problem-opportunity, path: ./01-problem-opportunity.md, title: Problem and opportunity }
@@ -126,16 +128,15 @@ The id S-003 is not reused.
 
 ## Why we win
 
-"Before I approve the budget, I can see which parts of the PRD my team could not
-build from."
-
-The sponsor in either segment says this. In S-001 they weigh it against the
-consultant's billable hours, and in S-002 against contracting a product manager
-without the domain, whose day rate is Q-013.
+What we expect the sponsor in either segment to say: "Before I approve the
+budget, I can see which parts of the PRD my team could not build from." PER-003's
+basis is assumed, so this is our expectation, not a quotation. In S-001 the
+sponsor weighs it against the consultant's billable hours, and in S-002 against
+contracting a product manager without the domain, whose day rate is Q-013.
 
 In S-002 the organization works under regulation, so its PRDs may cite
-regulations. The set states no regulation the expert did not supply or that was
-not checked (FR-006, TR-005), which is what lets such a PRD be circulated.
+regulations. The set states no regulation the expert did not supply (FR-006,
+TR-005), which is what lets such a PRD be circulated.
 
 **Honest weakness.** Against a product manager who already holds the domain, we
 have no quality edge, only availability and cost. A skeptical buyer is right to

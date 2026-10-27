@@ -44,8 +44,7 @@ changes:
     date: 2026-10-27
     author: Richard Hightower
     summary: >-
-      Fixes the blocking defects that do not wait on evidence. The glossary
-      defines buildability review, finding, root document, approver, condition,
+      The glossary defines buildability review, finding, root document, approver, condition,
       constraint, objective, and baseline. SC-003 and SC-005 state outcomes a
       person can observe. The scope's OUT-003 row no longer names a component.
       Section 7 names the open question each waiting `must` requirement depends
@@ -55,8 +54,9 @@ changes:
       assumption A-005, and section 9 keeps only C-004; the ids C-001 to C-003
       are not reused. Segment S-003 leaves section 2 and becomes a non-goal in
       section 6. J-002 gains ST-009, in which the engineering lead records their
-      own verdict on the buildability report under TR-006, and REL-002 includes
-      it. References to the moved items are updated across the set.
+      own verdict on the buildability review under TR-006, and REL-002 includes
+      it. References to the moved items are updated across the set. Together
+      these fix the blocking defects that did not wait on evidence.
     sections:
       - 2
       - 4
@@ -101,14 +101,14 @@ changes:
     date: 2026-10-27
     author: Richard Hightower
     summary: >-
-      Adds the links the specification review asked for. Each problem names its
-      persona, and each objective names the problems it addresses and the open
-      question that will establish its baseline. Competitors have a kind, with the
-      status quo named. Each decision rule names the stages it governs. Scenarios
+      Each problem names its persona, and each objective names the problems it
+      addresses and the open question that will establish its baseline.
+      Competitors have a kind, with the status quo named. Each trust rule names
+      the stages it governs. Scenarios
       say where the user meets them, SC-001 names the stages it spans, and each
       screen or report scenario links its wireframes. The root's measure states
-      its target. Section 11 now says D-002 and D-003 fall on R1's target day, not
-      after it.
+      its target. Section 11 now says D-002 and D-003 fall on REL-001's target
+      day, not after it. A review of the set asked for these links.
     sections:
       - 1
       - 2
@@ -122,8 +122,9 @@ changes:
     summary: >-
       Every journey stage gains Given/When/Then acceptance. The scenarios
       document gains LC-001, the lifecycle of a section, and scenarios can link
-      their wireframes. Each persona gains a short name for diagrams. The set's
-      own version still read 0.4.0 when this shipped.
+      their wireframes. Each persona gains a short name, which the diagrams show
+      in place of its id. The set's own version still read 0.4.0 when this
+      shipped.
     sections:
       - 4
       - 5
@@ -228,11 +229,11 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence and sourced why-now claims; persona roles and frequencies; satisfaction scores; ST-006 outside the product; FR-019 and FR-020 split out; FR-014 rejection; TR-014 for accepting a score; LC-001 back to draft; C-004 out of section 9; single questions due before REL-001; sourced glossary terms with one meaning each; the versioning policy |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence and sourced why-now claims; persona roles and frequencies; satisfaction scores; ST-006 outside the product; FR-019 to FR-021 added; FR-014 rejection; TR-014 for accepting a score; LC-001 back to draft; C-004 out of section 9; single questions due before REL-001; sourced glossary terms with one meaning each; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
-| 0.6.0 | 2026-10-27 | Richard Hightower | Links from the specification review: problems, objectives, competitors, decision stages, and scenario views |
+| 0.6.0 | 2026-10-27 | Richard Hightower | Links between problems, personas, objectives, competitors, trust-rule stages, and scenario views |
 | 0.5.0 | 2026-10-26 | Richard Hightower | Given/When/Then acceptance on every stage; LC-001; scenario wireframe links; persona short names |
 | 0.4.0 | 2026-10-26 | Richard Hightower | Navigation and refresh requirements; wireframes rewritten from their grading |
 | 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for the requirements shown on a screen or in a report, and the term wireframe |
@@ -245,8 +246,8 @@ links:
   each why-now claim cites the General Assembly survey of product managers.
   Desired outcomes name no mechanism, and Q-018 asks for one counted cost per
   problem.
-- **Section 2:** ChatPRD is the direct competitor. Why-we-win is one sentence in
-  the sponsor's words, each buyer is PER-003, and "client contract" names the
+- **Section 2:** ChatPRD is the direct competitor. Why-we-win is one sentence we
+  expect the sponsor to say, each buyer is PER-003, and "client contract" names the
   contract where "engagement" did.
 - **Section 3:** O-001 counts the 5 pilot PRDs and defines a pass, O-002 counts
   the pilot PRDs with one journey, and O-003 counts a requirement testable when
@@ -279,7 +280,9 @@ links:
 - **Section 13:** REL-001 depends on D-002, D-003, Q-019, and Q-022.
 - **Section 14:** eight terms cite a verified source, and review, pass, refute,
   approval, and engagement each have one meaning. Session, buildable,
-  development team, and the general sense of specification are defined.
+  development team, and the general sense of specification are defined. Ready
+  describes one section, and offered for approval describes the set. Sitting,
+  loop-back, experiment, agent, and exported copy are defined.
 - **Section 15:** the versioning policy, a 0.5.0 entry, and the date the set is
   offered for approval, 2027-03-15.
 - **Section 7 and section 10:** on the expert's decision, FR-021, a `must`,
@@ -360,8 +363,8 @@ TR-001. A section reaches `final` when the expert sets it final, under TR-002.
 
 The set is offered for approval by 2027-03-15. Under FR-021 its one named
 approver is Richard Hightower, the owner of the place where this PRD is kept,
-in the sponsor's role, PER-003. He is also its author and owner, so this is a
-self-approval, and the entry will say so. When an outside reader reviews the
+in the sponsor's role, PER-003. Richard Hightower is also its author and
+owner, so this is a self-approval, and the entry will say so. When an outside reader reviews the
 set, their review is recorded beside the approval.
 
 Each approval is recorded with the version, the approver's name and role, the
@@ -369,3 +372,7 @@ date, and the decision. An approval with conditions records each condition as
 "conditional on <id> by <date>", where the id is the open question or
 requirement the condition depends on, as FR-014 requires. A rejection records
 its reason.
+
+At 0.9.0 the expert holds every other section to a score over 80, and accepts
+this section below 80 until the set is offered for approval on 2027-03-15, because its
+rubric cannot score approvals and conditions higher before an approval exists.
