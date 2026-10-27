@@ -8,9 +8,9 @@ updated: 2026-10-23
 domain: product management tooling
 section: 1
 order: 10
-score: 58
-blocking: 4
-graded: 2026-10-26
+score: 71
+blocking: 0
+graded: 2026-10-27
 problems:
   - id: P-001
     statement: >-

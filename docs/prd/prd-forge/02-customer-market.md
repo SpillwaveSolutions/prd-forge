@@ -8,8 +8,8 @@ updated: 2026-10-27
 domain: product management tooling
 section: 2
 order: 20
-score: 50
-blocking: 1
+score: 55
+blocking: 0
 graded: 2026-10-27
 segments:
   - id: S-001

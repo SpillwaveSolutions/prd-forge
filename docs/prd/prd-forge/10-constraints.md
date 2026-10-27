@@ -8,8 +8,8 @@ updated: 2026-10-27
 domain: product management tooling
 section: 9
 order: 100
-score: 30
-blocking: 2
+score: 100
+blocking: 0
 graded: 2026-10-27
 constraints: []
 links:

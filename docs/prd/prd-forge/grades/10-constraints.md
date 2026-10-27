@@ -1,32 +1,33 @@
 ---
 doc: ../10-constraints.md
-score: 30
-blocking: 2
+score: 100
+blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 35
+previous_score: 30
 ---
 
-# Why constraints scored 30
+# Why constraints scored 100
 
-The section now holds only C-004. C-001 to C-003 moved out at 0.8.1, and the same test now applies to C-004.
+The section holds no constraints. The guide allows this: "Write `constraints: []` and say so in the body." Three dimensions have nothing to score.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Named authority | 0 | "Professional liability. An expert circulating a PRD that cites a regulation incorrectly is exposed personally and professionally" names no regulation, clause, policy, or body. |
-| Non-negotiable | 1 | The statement is product behavior the team could change: "otherwise it is marked unverified or becomes an open question". TR-005 already records it as a decision. |
-| Verification | 2 | "Every citation in a set checked against its source before any section reaches final" says neither who checks nor what record proves it. |
-| Linkage | 2 | `applies_to` lists FR-009, which shows a grade and states no fact. No `nfr`, and section 8 has no citation requirement. |
-| Separation | 1 | The body says "it is the reason FR-006 exists": the constraint restates FR-006 and TR-005. |
+| Named authority | 4 | No entries. The body says "No rule imposed from outside the team binds prd-forge itself." |
+| Non-negotiable | 4 | Each former entry is named for what it is: "a decision of our own, a belief about customers, or the product's chosen response to a risk". |
+| Verification | 4 | No entries. |
+| Linkage | 4 | Every forwarding reference resolves: the non-goals in section 6, D-001 and A-005 in section 11, TR-005 in section 10, and FR-006 in section 7. |
+| Separation | 4 | The rule that C-004 held is now only TR-005 and FR-006, so nothing is repeated. |
 
 ## Blocking defects
 
-- C-004 has no real authority. "Professional liability" names no instrument and no body.
-- C-004 is a design choice listed as a constraint: it is the product's chosen response to a risk, and the set already holds it as TR-005 and FR-006.
+None.
 
 ## How to raise the grade
 
-- **Named authority (0 to 4):** Name the instrument the expert is bound by, such as a professional code clause, a client engagement-letter clause, or a firm policy by name. If none exists, C-004 is not a constraint: move it out as C-001 to C-003 were, and let TR-005 and FR-006 hold the rule. Section 9 may then be honestly empty. That is the expert's decision.
-- **Non-negotiable and separation (1 to 4):** State the outside rule itself, and leave the product's behavior in FR-006.
-- **Verification (2 to 4):** Name who checks the citations and what they produce.
-- **Linkage (2 to 4):** Scope `applies_to` to where facts are written, and add an accuracy requirement in section 8 linked by `nfr`.
+The score rests on one claim: no outside rule binds the product. Record who confirmed it, and when. Check whether the plugin marketplace's terms for published plugins, a license obligation, or a policy of the first customer firm binds what the product may do or ship. If one does, name it and its clause.
+
+## Notes
+
+- The body is mostly migration history, which repeats section 15. One sentence and a pointer would do the same job.
+- The 0.9.0 change-log entry does not say that the expert decided this move.

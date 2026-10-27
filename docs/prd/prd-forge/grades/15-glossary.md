@@ -1,36 +1,37 @@
 ---
 doc: ../15-glossary.md
-score: 55
-blocking: 6
+score: 65
+blocking: 4
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 60
+previous_score: 55
 ---
 
-# Why the glossary scored 55
-
-The seven terms 0.8.1 added now resolve their defects. The grader read every acceptance criterion again and found six more undefined words.
+# Why glossary scored 65
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 2 | Words used in acceptance criteria are missing, and so are the backlog terms ST-008 relies on. |
-| Author's voice | 3 | Some meanings read as notes about the set: "the set refers to 'test 5' by number". |
-| Disambiguation | 3 | The body table promises State against Threshold, and the State entry has no `not`. |
-| Consistency | 2 | "Document set" is defined and not used; "weakest dimension" and "weakest part", and "buildability review" and "buildability report", alternate. No entry has `avoid`. |
-| Authority | 1 | No entry has `source`, although MoSCoW and Spike have known origins. |
+| Coverage | 2 | "Interview", "dependency", "handed over", "backlog", "story", "epic", "story-mapping workshop", "out of scope", "sponsor", "expert", and "persona" have no entry. |
+| Author's voice | 4 | Definitions take positions, such as "A stage survives a redesign." |
+| Disambiguation | 3 | 27 of 46 entries carry `not`. Risk, State, and Requirement have none, although the body table lists "State \| Threshold". |
+| Consistency | 2 | The glossary says `pending`, and other sections say "not started" or "untouched". The weakest-part entry allows a synonym. No entry uses `avoid`. |
+| Authority | 2 | MoSCoW, RFC 2119, and Given/When/Then are named but not cited. No entry has a `source`. |
 
 ## Blocking defects
 
-- "requirement" is used in FR-012 and FR-014 and has no entry.
-- "acceptance criteria" is used in FR-012 and has no entry.
-- "gap" is used in FR-012 and has no entry.
-- "version" is used in FR-014 and has no entry.
-- "domain" is used in FR-001 and FR-003 and has no entry.
-- "reading order" is used in FR-017 and has no entry, and the set's file order and section order differ.
+- "Interview" is in FR-004's and FR-012's acceptance and has no entry. FR-012 cannot be judged without knowing who counts as "in the interview".
+- "Dependency" is in FR-012's acceptance ("then that dependency is reported") and has no entry. Section 11 uses the word for something outside the product, so the set gives it two meanings.
+- "Handed over" is in FR-007's acceptance and has no entry. Nothing says what event handover is, or to whom.
+- Definitions record storage and drawing format: "One directory of documents", "prefixed 01 to 16", "File prefixes and section numbers differ", and "drawn in characters".
 
 ## How to raise the grade
 
-- **Coverage (2 to 4):** Add the six terms, then backlog, feature, epic, story, story-mapping workshop, release, persona, segment, and pilot.
-- **Authority (1 to 4):** Add `source` to MoSCoW and Spike, and say what `wont` means.
-- **Consistency (2 to 4):** Pick one word of each pair and put the other in `avoid`.
-- **Disambiguation and voice (3 to 4):** Add the `not` fields the table promises, and remove notes about the set from meanings.
+- **Coverage (2 to 4):** Add Interview, Handover, and Dependency, and settle the one meaning of dependency. Add the backlog terms and the roles that definitions rely on.
+- **Exclusion list:** Restate Document set, Section, Reading order, and Wireframe without directories, file prefixes, or drawing format.
+- **Consistency (2 to 4):** Use one name for the first state everywhere, and add `avoid` entries.
+- **Authority (2 to 4):** Cite MoSCoW, RFC 2119, and Given/When/Then.
+
+## Notes
+
+- State says `final` needs an approval, and Approver says the expert decides each section's state. The two definitions do not say who moves one section to `final`.
+- The body refers to "The `not` column above", but the column is headed "Most often confused with".

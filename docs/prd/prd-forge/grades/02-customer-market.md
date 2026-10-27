@@ -1,36 +1,35 @@
 ---
 doc: ../02-customer-market.md
-score: 50
-blocking: 1
+score: 55
+blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 55
+previous_score: 50
 ---
 
-# Why target customer and market scored 50
-
-The template and assistant edges that 0.8.1 rewrote now pass, and S-003 is gone. The grader found a new defect in the status-quo edge.
+# Why customer and market scored 55
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Buyer vs user | 2 | No segment has `user_personas` or `buyer_persona`, and no buyer is a section 4 persona. S-002 lists the delivery lead as both buyer and user. |
-| Sizing | 1 | No segment has a size. S-001 still holds the template placeholder "`<count>` firms, per `<a named register, with its year>`". Q-004 owns the gap. |
-| Substitutes | 3 | The status quo and three substitutes are named, but none is direct or build-in-house. |
-| Honest edge | 2 | The template and assistant edges are checkable outcomes. The PM edge has no cost figure, and the status-quo edge states no outcome of this product. |
-| Why we win | 2 | It describes what the user sees, not what the buyer gets, and "No competitor above tells them that" conflicts with the PM row. |
+| Buyer vs user | 2 | Both roles are named, but no segment has `user_personas` or `buyer_persona`. S-002 puts the delivery lead on both sides: "The practitioner, plus the delivery lead who reviews what they write". |
+| Sizing | 1 | Neither segment has a size, source, date, method, or unit. S-001 still holds the guide's template slot, "`<count>` firms, per `<a named register, with its year>`". Q-004 owns the gap. |
+| Substitutes | 3 | The status quo is named and typed. No `direct` competitor is named, and the section does not say that none exists. |
+| Honest edge | 3 | Three of four edges are outcomes a buyer can check. The contracted-PM edge, "the expert keeps the understanding afterwards rather than renting it", is not. |
+| Why we win | 2 | The sentence is in the user's words, not the buyer's. S-001's buyer framing, "billable hours saved", is not in it. |
 
 ## Blocking defects
 
-- The status-quo competitor's `our_edge` states no outcome of prd-forge: "It works when the engineer is willing to re-derive the specification and is in the room. It fails on handover, on scale, and on anything the engineer cannot ask about."
+None. The status-quo edge now states an outcome of prd-forge.
 
 ## How to raise the grade
 
-- **Honest edge (2 to 4):** Rewrite the status-quo edge as what the engineer receives at handover without being in the room, and give the PM edge a cost or time comparison.
-- **Sizing (1 to 4):** Remove the placeholder, and give a count with its source, date, method, and unit, or say "unknown, see Q-004".
-- **Buyer vs user (2 to 4):** Add `user_personas` and `buyer_persona` to each segment, and say which persona buys.
-- **Why we win (2 to 4):** Say it in the buyer's terms.
-- **Substitutes (3 to 4):** Name a direct alternative, or say there is none, and consider build-in-house.
+- **Sizing (1 to 4):** Replace the template slot in S-001 with "Not yet measured; see Q-004", and give each segment a unit.
+- **Buyer vs user (2 to 4):** Add `user_personas` and `buyer_persona` to each segment.
+- **Why we win (2 to 4):** State it in the buyer's terms, with the figure the buyer compares against.
+- **Substitutes (3 to 4):** Name a direct competitor, or say that none exists.
 
 ## Notes
 
-- S-001's size has an em dash, and the body table's S-002 row drops the delivery lead.
+- The body says "No competitor above tells them that", but the section concedes a contracted PM offers "Genuine product judgement".
+- The S-002 row in the body table drops part of the buyer and the user from the front matter.
+- Neither segment records `adoption_barriers`.
