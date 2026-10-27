@@ -21,7 +21,8 @@ changes:
       ST-006 happens outside the product. New requirements FR-019 to FR-021, the
       last naming each approver. The expert accepts or refutes each score, and a
       section can go back to draft. Section 9 is empty, and the set states a
-      versioning policy. A minor version: new content, nothing structural.
+      versioning policy. A minor version: new content, nothing structural, as
+      Richard Hightower decided on 2026-10-27.
     sections:
       - 1
       - 2
@@ -108,7 +109,7 @@ changes:
       say where the user meets them, SC-001 names the stages it spans, and each
       screen or report scenario links its wireframes. The root's measure states
       its target. Section 11 now says D-002 and D-003 fall on REL-001's target
-      day, not after it. A review of the set asked for these links.
+      day, not after it.
     sections:
       - 1
       - 2
@@ -123,14 +124,10 @@ changes:
       Every journey stage gains Given/When/Then acceptance. The scenarios
       document gains LC-001, the lifecycle of a section, and scenarios can link
       their wireframes. Each persona gains a short name, which the diagrams show
-      in place of its id. The set's own version still read 0.4.0 when this
-      shipped.
+      in place of its id.
     sections:
       - 4
       - 5
-      - 10
-      - 12
-      - 13
   - version: 0.4.0
     date: 2026-10-26
     author: Richard Hightower
@@ -174,7 +171,7 @@ changes:
       set's own root document, which resolves its contradiction with OUT-003.
       NFR-006 and NFR-008 no longer name a component or the delivery mechanism, and
       NFR-010, NFR-011 and NFR-012 add the retention, availability and security
-      targets that were simply absent, with NFR-010 answering the half of C-003
+      targets that were simply absent, with NFR-010 answering the half of C-003 (now A-005, since 0.8.1)
       that no measurable requirement stood behind. TR-007 to TR-012 close the six
       stage decisions that had no rule, and every rule now says what happens when
       its approver is away, not only when they disagree. PER-001's authority is
@@ -289,10 +286,11 @@ links:
   lets the expert name each approver by name and role before offering the set.
   TR-001's decider stays the sponsor's role.
 
-None of this is structural under the policy. No stage is added, removed, or
-reordered, and the golden thread's goal and end state are unchanged. The
-release line's text now quotes the existing end state, and ST-006 stays in the
-release line, done outside the product.
+None of this is structural under the policy. Richard Hightower decided this on
+2026-10-27. ST-006 stays on the release line with the same goal and end state,
+and no stage is added, removed, or reordered. PER-001's new wording changes no
+stage. The release line's text now quotes the existing end state, and ST-006 is
+done outside the product.
 
 ## Versioning policy before 1.0
 
@@ -320,10 +318,7 @@ neither is reissued:
   policy it would have been the next minor version.
 - 0.2.0 changed the golden thread. Under this policy it takes the set to 1.0.
 
-Before 0.9.0, the set's version number lagged the product's. Set 0.3.0 shipped
-in product 0.4.0, set 0.4.0 in product 0.4.1, and the 0.5.0 changes to the set
-shipped in product 0.5.0 while the set still read 0.4.0. Product 0.5.1 changed
-only the product, so the log has no entry for it.
+Product 0.5.1 changed only the product, so the log has no entry for it.
 
 ## 0.2.0, what the grading changed
 

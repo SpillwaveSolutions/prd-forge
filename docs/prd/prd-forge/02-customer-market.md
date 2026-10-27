@@ -53,10 +53,10 @@ competitors:
       ChatPRD docs, https://www.chatprd.ai/docs/writing-your-first-prd, accessed
       2026-10-27.
     our_edge: >-
-      Before the budget is committed, the sponsor gets a list of each step in the
-      user's path that nothing in the PRD covers, and each requirement an
-      engineer could not test, quoted. The sponsor can ask for the same list
-      from a ChatPRD draft and compare.
+      Before the budget is committed, the sponsor gets a grade for each section
+      of the PRD, with every blocking defect named and the reason for each
+      score quoted from the document (FR-009). The sponsor can ask for the same
+      grades and reasons from a ChatPRD draft and compare.
   - name: A blank PRD template in the team's document tool
     kind: indirect
     offer: >-
@@ -80,23 +80,33 @@ competitors:
       Genuine product judgement, and someone accountable for the outcome.
     our_edge: >-
       The buyer gets a PRD whose domain facts come from the person who holds
-      them, and a list of each fact that person could not supply, with a named
-      decider and a date, rather than facts filled in by someone without the
-      domain. In S-001 the consultant already
-      stands between the client and the page. Any cost advantage is unproven until Q-013
-      gives the day rate.
+      them, rather than facts filled in by someone without the domain. Any cost
+      advantage is unproven until Q-013 gives the day rate. The buyer can check
+      the PRD for each fact the expert could not supply: each one has a named
+      decider and a date.
+  - name: Contracting a product manager who already holds the domain
+    kind: indirect
+    offer: >-
+      Product judgement and the domain in one person, accountable for the
+      outcome.
+    our_edge: >-
+      No quality edge. The buyer gets availability only: the work starts when
+      their own domain expert can start, with no search for a person who holds
+      both. Any cost advantage is unproven until Q-013 gives the day rate.
   - name: "The status quo: a smart practitioner, a document, and a willing engineer"
     kind: status-quo
     offer: >-
       No tool, no cost, no adoption, and it does sometimes work.
     our_edge: >-
-      At handover, an engineer who was not in the room gets a list of each step
-      in the user's path that nothing in the PRD covers, and each unknown fact
-      with a named person and a date, so they can estimate without first
-      interviewing the author.
+      At handover, an engineer who was not in the room gets each fact the PRD
+      does not yet know, with a named person and a date to settle it, so they
+      can estimate without first interviewing the author.
 why_we_win: >-
-  What we expect the sponsor to say: "Before I approve the budget, I can see
-  which parts of the PRD my team could not build from."
+  S-001, the consultancy partner: "Before we hand the PRD to the client's
+  engineers, I can see which parts they could not build from, and my senior
+  people bill fewer hours fixing it later." S-002, the director: "Before I
+  approve the budget, I can see which parts of the PRD my team could not build
+  from." The expert confirmed both as the sponsors' words on 2026-10-27.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-problem-opportunity, kind: problem-opportunity, path: ./01-problem-opportunity.md, title: Problem and opportunity }
@@ -119,25 +129,29 @@ count and its source.
 | A blank PRD template | Indirect |
 | A general-purpose assistant conversation | Indirect |
 | A product manager contracted without the domain | Indirect |
+| A product manager who already holds the domain | Indirect |
 | The status quo | Status quo |
 
-Product teams entering a domain they do not know were segment S-003 until 0.8.1.
+Product teams entering a domain they do not know are a non-goal in section 6.
 They already employ the product skill and want the domain, which this product
-does not supply, so section 6 records them as a non-goal.
-The id S-003 is not reused.
+does not supply.
 
 ## Why we win
 
-What we expect the sponsor in either segment to say: "Before I approve the
-budget, I can see which parts of the PRD my team could not build from." PER-003's
-basis is assumed, so this is our expectation, not a quotation. In S-001 the
-sponsor weighs it against the consultant's billable hours, and in S-002 against
-contracting a product manager without the domain, whose day rate is Q-013.
+The expert confirmed each sponsor's words on 2026-10-27.
+
+- **S-001, the consultancy partner:** "Before we hand the PRD to the client's
+  engineers, I can see which parts they could not build from, and my senior
+  people bill fewer hours fixing it later." The partner weighs it against the
+  consultant's billable hours.
+- **S-002, the director:** "Before I approve the budget, I can see which parts
+  of the PRD my team could not build from." The director weighs it against
+  contracting a product manager without the domain, whose day rate is Q-013.
 
 In S-002 the organization works under regulation, so its PRDs may cite
 regulations. The set states no regulation the expert did not supply (FR-006,
 TR-005), which is what lets such a PRD be circulated.
 
 **Honest weakness.** Against a product manager who already holds the domain, we
-have no quality edge, only availability and cost. A skeptical buyer is right to
-test that.
+have no quality edge, only availability. Any cost edge is unproven until Q-013.
+A skeptical buyer is right to test that.
