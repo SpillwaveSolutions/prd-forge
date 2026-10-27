@@ -2,13 +2,15 @@
 %%{init: {"flowchart": {"wrappingWidth": 280}}}%%
 flowchart TB
   start(["<b>Trigger</b><br/>The PRD has been approved for a release."])
+  ST009["<b>ST-009</b> Engineering lead records whether the set can be built from<br/><i>Engineering lead</i>"]
   ST007["<b>ST-007</b> Delivery lead checks the PRD can carry a backlog<br/><i>Delivery lead</i>"]
   ST008["<b>ST-008</b> Delivery lead derives features, epics and stories<br/><i>Delivery lead</i>"]
   done(["<b>End state</b><br/>Features, epics, stories and spikes exist for release 1, each naming the PRD requirement ids behind it, and no task or estimate has been invented yet."])
-  start --> ST007
+  start --> ST009
+  ST009 -->|"hand-off to Delivery lead"| ST007
   ST007 --> ST008
   ST008 --> done
   classDef stage fill:#F5F7FA,stroke:#8A94A6,color:#1F2430
   classDef ends fill:#FFFFFF,stroke:#8A94A6,color:#1F2430
-  class ST007,ST008 stage
+  class ST009,ST007,ST008 stage
   class start,done ends

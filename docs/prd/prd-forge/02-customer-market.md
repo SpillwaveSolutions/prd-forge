@@ -4,7 +4,7 @@ kind: customer-market
 schema: prd-forge/customer-market@1
 title: Target customer and market
 status: draft
-updated: 2026-10-23
+updated: 2026-10-27
 domain: product management tooling
 section: 2
 order: 20
@@ -30,31 +30,24 @@ segments:
       Not yet measured; see Q-004.
     willingness_to_pay: >-
       Compared against contracting a product manager for the engagement.
-  - id: S-003
-    name: Product teams entering a domain they do not know
-    buyer: Head of product
-    user: Product manager, interviewing practitioners
-    size: >-
-      Not yet measured; see Q-004.
-    willingness_to_pay: >-
-      Lowest of the three: they already employ the product skill and want the
-      domain, which this does not supply.
 competitors:
   - name: A blank PRD template in the team's document tool
     kind: indirect
     offer: >-
       The section headings, immediately, free, in a tool everyone already has.
     our_edge: >-
-      A heading asks a question the expert cannot answer; this teaches the section
-      first and then asks the questions that produce an answer.
+      After one engagement, each fact the expert could not supply is an open
+      question with a named decider and a date, and the set holds no figure or
+      citation that nobody can stand behind.
   - name: A general-purpose assistant conversation with no structure
     kind: indirect
     offer: >-
       Fluent prose on any section, instantly, with no setup at all.
     our_edge: >-
-      Fluency is the failure mode in P-003. The difference here is the grading:
-      the expert is told where the document is weak, against a stated rubric, by a
-      reviewer that did not write it.
+      Fluency is the failure mode in P-003. After one engagement, the buyer holds a
+      report, made before anyone has estimated, that names each release-line stage
+      no requirement covers and quotes each requirement an engineer could not write
+      a test from.
   - name: Contracting a product manager for the engagement
     kind: indirect
     offer: >-
@@ -87,12 +80,11 @@ links:
 | --- | --- | --- | --- |
 | S-001 | Consultancies specifying from client domain knowledge | Principal or practice lead | The consultant |
 | S-002 | Regulated-industry organisations where practitioners specify | Head of product or delivery | The practitioner |
-| S-003 | Product teams entering an unfamiliar domain | Head of product | Product manager |
 
-S-003 is listed last deliberately. That segment already has the product skill and
-wants domain knowledge, which this product does not supply — it supplies product
-management to someone who already has the domain. Treat S-003 as a weak fit until
-Q-004 says otherwise.
+Product teams entering a domain they do not know were segment S-003 until 0.8.1.
+They already employ the product skill and want the domain, which this product
+does not supply, so section 6 now records them as a non-goal for release 1. The
+id S-003 is not reused.
 
 ## Why we win
 

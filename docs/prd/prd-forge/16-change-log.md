@@ -4,7 +4,7 @@ kind: change-log
 schema: prd-forge/change-log@1
 title: Change log and approvals
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 15
 order: 160
@@ -12,6 +12,36 @@ score: 63
 blocking: 0
 graded: 2026-10-26
 changes:
+  - version: 0.8.1
+    date: 2026-10-27
+    author: Richard Hightower
+    summary: >-
+      Fixes the blocking defects that do not wait on evidence. The glossary
+      defines buildability review, finding, root document, approver, condition,
+      constraint, objective, and baseline. SC-003 and SC-005 state outcomes a
+      person can observe. The scope's OUT-003 row no longer names a component.
+      Section 7 names the open question each waiting `must` requirement depends
+      on. The template and assistant competitors state an edge a buyer can check
+      after one engagement. On the expert's decision, C-001 and C-002 move from
+      section 9 to section 6 as non-goals, C-003 moves to section 11 as
+      assumption A-005, and section 9 keeps only C-004; the ids C-001 to C-003
+      are not reused. Segment S-003 leaves section 2 and becomes a non-goal in
+      section 6. J-002 gains ST-009, in which the engineering lead records their
+      own verdict on the buildability report under TR-006, and REL-002 includes
+      it. References to the moved items are updated across the set.
+    sections:
+      - 2
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
   - version: 0.8.0
     date: 2026-10-27
     author: Richard Hightower
@@ -160,6 +190,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
 | 0.6.0 | 2026-10-27 | Richard Hightower | Links from the specification review: problems, objectives, competitors, decision stages, and scenario views |
@@ -192,7 +223,9 @@ forward:
    open question (Q-001 to Q-003). The targets are intentions, not commitments.
 2. **C-001 is the tension.** The product is delivered inside an assistant session.
    Naming that in a requirement would fail test 5, so it is recorded as a
-   constraint. A reviewer may fairly call it architecture.
+   constraint. A reviewer may fairly call it architecture. At 0.8.1 it moved to
+   section 6 as a non-goal, and the session it needs is dependency D-001 in
+   section 11.
 3. **R-003 is not closed.** Nothing in this product checks whether the product
    being specified should exist at all.
 

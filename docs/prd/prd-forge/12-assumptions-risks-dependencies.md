@@ -4,7 +4,7 @@ kind: assumptions-risks-dependencies
 schema: prd-forge/assumptions-risks-dependencies@1
 title: Assumptions, risks and dependencies
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 11
 order: 120
@@ -51,11 +51,25 @@ assumptions:
       Organisations will let a specification for their product be drafted inside an
       assistant session.
     if_false: >-
-      C-001 and C-003 are unacceptable as written and the delivery model has to
-      change, which invalidates most of section 7's assumptions about immediacy.
+      The separate-application non-goal in section 6 and A-005 are unacceptable
+      as written and the delivery model has to change, which invalidates most of
+      section 7's assumptions about immediacy.
     validated_by: >-
       The information security review of the first three customer engagements.
     owner: Richard Hightower
+  - id: A-005
+    assumption: >-
+      Organizations accept that the domain content an expert enters stays in the
+      expert's own session and in the documents. This product sends it nowhere
+      else and keeps it nowhere else.
+    if_false: >-
+      An organization whose information policy needs more than this cannot adopt
+      the product as written, and NFR-008, NFR-010, and NFR-012, which are
+      measured against this boundary, have to change.
+    owner: Richard Hightower
+    category: viability
+    evidence: none
+    validate_by: 2027-03-15
 risks:
   - id: R-001
     risk: >-
@@ -158,11 +172,16 @@ links:
 | A-001 | An expert will answer 50-100 questions across a few sittings | The method fails; sections 5-7 change completely |
 | A-002 | An expert will act on a grade they did not produce | The grading is decoration |
 | A-003 | An engineering lead accepts a PRD naming no technology | Test 5 becomes a liability |
-| A-004 | Organisations permit drafting inside an assistant session | C-001 and C-003 have to change |
+| A-004 | Organisations permit drafting inside an assistant session | Section 6's separate-application non-goal and A-005 have to change |
+| A-005 | Organizations accept that domain content stays in the session and the documents | NFR-008, NFR-010, and NFR-012 have to change |
 
 A-001 and A-002 are the two the product stands on, and neither has been tested.
 Both are validated by the same ten observed sessions (D-002), which makes D-002
 the single most load-bearing dependency in this PRD.
+
+A-005 was constraint C-003 in section 9 until 0.8.1. It moved here because it is
+a belief about what customers accept, which a customer can falsify, and not a
+rule imposed from outside.
 
 ## Risks
 

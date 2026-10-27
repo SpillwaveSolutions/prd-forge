@@ -4,7 +4,7 @@ kind: personas
 schema: prd-forge/personas@1
 title: Users and personas
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 4
 order: 40
@@ -113,7 +113,8 @@ up — see FR-015 and NFR-004.
 
 The assistant that delivers the teaching, the interview and the grading is not a
 user of this product. It is how the product reaches PER-001. Listing it here
-would put the delivery mechanism into the PRD, which section 9 keeps as a
-constraint instead. The same goes for the grading reviewers: a reviewer that
+would put the delivery mechanism into the PRD, which the set keeps out of the
+requirements: section 6 makes a separate application a non-goal, and section 11
+records the session as dependency D-001. The same goes for the grading reviewers: a reviewer that
 grades a section is a mechanism, and what matters to this PRD is that PER-001
 sees a grade they did not produce themselves.

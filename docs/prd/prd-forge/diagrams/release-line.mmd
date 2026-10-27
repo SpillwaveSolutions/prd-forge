@@ -20,9 +20,11 @@ flowchart LR
   subgraph REL002[" "]
     direction TB
     REL002head(["<b>REL-002</b><br/>Backlog derivation<br/>by 2027-06-30"])
-    REL002head --> ST007
+    REL002head --> ST009
+    ST009["<b>ST-009</b> Engineering lead records whether the set can be built from<br/><i>0 must requirements</i>"]
     ST007["<b>ST-007</b> Delivery lead checks the PRD can carry a backlog<br/><i>0 must requirements</i>"]
     ST008["<b>ST-008</b> Delivery lead derives features, epics and stories<br/><i>0 must requirements</i>"]
+    ST009 --> ST007
     ST007 --> ST008
   end
   subgraph REL003[" "]

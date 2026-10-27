@@ -4,7 +4,7 @@ kind: functional-requirements
 schema: prd-forge/functional-requirements@1
 title: Functional requirements
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 7
 order: 80
@@ -457,6 +457,12 @@ eight `should` requirements make the work faster or easier to follow, and the
 expert can still reach an approved set without them. The expert set this split
 at version 0.8.0.
 
+Six of the `must` requirements wait on an open question in section 12.
+FR-004, FR-009, FR-010, and FR-012 wait on Q-009, where the rubric and the
+derivability checks live and who owns them. FR-013 waits on Q-005, whether a
+sponsor accepts a specification that carries a grade. FR-014 waits on Q-011, how
+an approver records a decision.
+
 FR-015 and FR-016 were split out of FR-002 and FR-009 at version 0.2.0, because
 each has a failure mode of its own: a build could deliver perfect set-state
 visibility and still re-ask three answered questions, and could report a grade
@@ -472,11 +478,11 @@ specification is the product's subject, not its delivery technology, so these
 words name the artifact rather than the mechanism. What is deliberately absent
 everywhere: the assistant the product runs inside, how grading is performed, who
 or what reviews the set, and what the documents are stored as. Those are in
-section 9 as constraints, or nowhere.
+section 6 as non-goals, in section 11 as dependencies, or nowhere.
 
 FR-001, FR-009, FR-013 and FR-014 each read as more than one capability, and a
 reviewer has called them out for it. They are left whole deliberately: each is one
 act with several parts, and a build delivering half of one would be visibly
 unfinished rather than arguably done. FR-015 and FR-016 were split precisely
-because they were not like that — each had a failure mode the other half could
+because they were not like that, each had a failure mode the other half could
 hide.
