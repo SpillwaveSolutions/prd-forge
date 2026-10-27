@@ -8,8 +8,8 @@ updated: 2026-10-27
 domain: product management tooling
 section: 5
 order: 50
-score: 88
-blocking: 1
+score: 85
+blocking: 0
 graded: 2026-10-27
 journeys:
   - id: J-001

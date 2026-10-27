@@ -8,7 +8,7 @@ updated: 2026-10-27
 domain: product management tooling
 section: 2
 order: 20
-score: 70
+score: 65
 blocking: 0
 graded: 2026-10-27
 segments:

@@ -1,23 +1,17 @@
 ---
 doc: ../04-personas.md
-score: 79
+score: 89
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 68
+previous_score: 79
 ---
 
-# Why personas scored 79
+# Why personas scored 89
 
-| Dimension | Score | Why |
-| --- | --- | --- |
-| Role naming | 3 | PER-001 has no seniority or organization, and joins two roles. |
-| Goals | 4 | In each persona's voice. |
-| Pains | 3 | PER-002's pains are P-001's content, but it links only P-002. |
-| Frequency | 2 | Adjectives stand in for numbers, and population is per PRD, not per organization. |
-| Authority | 3 | The body table gives PER-001 "scores", which TR-003 makes delegable. |
-| External users | 3 | Explicit, but silent on where the delivery team sits in S-001. |
-| Count | 4 | Four personas, each in a journey. |
+## Weakest dimension
+
+Role naming: PER-001's name says senior product manager, and its proficiency says no familiarity with product terms. PER-001's session figures disagree with each other.
 
 ## Blocking defects
 
@@ -25,5 +19,5 @@ None.
 
 ## How to raise the grade
 
-- **Pains and authority (3 to 4):** Link PER-002 to P-001, and match the body table to the front matter.
-- **Frequency (2 to 4):** Give PRDs per organization and sessions per expert.
+- **Role naming (3 to 4):** Make PER-001's name and proficiency describe one person.
+- **Frequency (3 to 4):** Make PER-001's session count consistent with one to three weeks.

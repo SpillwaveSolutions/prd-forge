@@ -1,29 +1,25 @@
 ---
 doc: ../15-glossary.md
-score: 70
+score: 75
 blocking: 3
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 60
+previous_score: 70
 ---
 
-# Why glossary scored 70
+# Why glossary scored 75
 
-| Dimension | Score | Why |
-| --- | --- | --- |
-| Coverage | 3 | Adversarial grade, specification, sign off, indicative, and pass have no entry. |
-| Author's voice | 3 | Interview and The five tests run to several sentences. |
-| Disambiguation | 3 | Review carries three meanings with no `not`. |
-| Consistency | 2 | Other sections use reviewer, gate, feature, and sign off in senses the glossary rules out. |
-| Authority | 3 | Feature, Spike, and Story state departures with no reason. |
+## Weakest dimension
+
+Consistency: engagement and review are used in senses the glossary rules out.
 
 ## Blocking defects
 
-- Review holds three meanings in one entry: the state, the buildability review, and reading a draft.
-- "Pass" is in FR-005's acceptance and has no entry, and the glossary uses it in two senses.
-- Feature departs from its source without saying why.
+- FR-012 and ST-005 say "the review" for the buildability review, and the Review entry excludes that meaning.
+- Epic departs from its source and gives no reason.
+- Indicative names a front-matter field, `date_status`, which is how the set is stored.
 
 ## How to raise the grade
 
-- **Blocking:** Give each sense of review its own word, define pass, and give Feature's reason.
-- **Consistency (2 to 4):** Make the other sections use the defined terms.
+- **Blocking:** Say "buildability review" in FR-012 and ST-005, give Epic's reason, and drop the field name from Indicative.
+- **Consistency (2 to 4):** Use engagement in one sense across the set.

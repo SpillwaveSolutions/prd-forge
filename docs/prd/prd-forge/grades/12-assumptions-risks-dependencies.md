@@ -4,19 +4,14 @@ score: 88
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 75
+previous_score: 88
 ---
 
 # Why assumptions, risks, and dependencies scored 88
 
-| Dimension | Score | Why |
-| --- | --- | --- |
-| Assumptions surfaced | 3 | A-002's evidence is not stated, and A-004 has no date. |
-| if_false | 4 | Every entry names what changes. |
-| Risk scoring | 4 | Both high and high risks have dates. |
-| Risk ownership | 4 | One owner each. |
-| Dependency status | 3 | D-001 is delivered while A-004 has no evidence. |
-| Timing | 3 | D-002 and D-003 fall on REL-001's date. |
+## Weakest dimension
+
+D-001 is delivered on the author's own session. The security reviews behind A-004 and A-005 have no dependency entry or date.
 
 ## Blocking defects
 
@@ -24,4 +19,4 @@ None.
 
 ## How to raise the grade
 
-- **Timing (3 to 4):** Date D-002 and D-003 before REL-001. Only the expert can.
+- **Dependency status and timing (3 to 4):** Add the security reviews as a dependency with a date, and mark D-001 as confirmed only for the author.
