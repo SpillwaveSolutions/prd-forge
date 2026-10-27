@@ -4,14 +4,14 @@ score: 75
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 65
+previous_score: 75
 ---
 
 # Why customer and market scored 75
 
 ## Weakest dimension
 
-Sizing: no segment has a count. Two edges use the product's terms, which a sponsor cannot check unaided, and the why-we-win sentence is hard to read aloud.
+Sizing: no segment has a count. Two edge claims go past what the set supports, and why-we-win is asserted as the buyer's own words.
 
 ## Blocking defects
 
@@ -19,5 +19,5 @@ None.
 
 ## How to raise the grade
 
-- **Honest edge and why we win (3 to 4):** Put each edge and the why-we-win sentence in plain words a sponsor can check.
+- **Honest edge and why we win (3 to 4):** Drop "or that was not checked", make the assistant edge checkable before purchase, and present why-we-win as what the sponsor would say.
 - **Sizing (1 to 4):** Answer Q-004.

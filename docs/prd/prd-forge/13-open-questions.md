@@ -8,8 +8,8 @@ updated: 2026-10-27
 domain: product management tooling
 section: 12
 order: 130
-score: 88
-blocking: 1
+score: 83
+blocking: 0
 graded: 2026-10-27
 questions:
   - id: Q-001

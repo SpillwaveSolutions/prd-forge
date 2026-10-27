@@ -1,17 +1,17 @@
 ---
 doc: ../16-change-log.md
-score: 75
+score: 71
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
 previous_score: 75
 ---
 
-# Why change log scored 75
+# Why change log scored 71
 
 ## Weakest dimension
 
-Approvals and conditions: no approval exists yet, and the log does not say how a conditional approval will be recorded.
+Approvals, conditions, and versioning: no approval exists yet, and 0.2.0 and 0.8.1 broke the policy.
 
 ## Blocking defects
 
@@ -19,5 +19,5 @@ None.
 
 ## How to raise the grade
 
-- **Conditions (2 to 4):** State the form "conditional on <id> by <date>".
-- **Reader-facing (3 to 4):** Shorten the 0.9.0 summary, and say what changed in the product at 0.5.0.
+- **Approvals and conditions (2 to 4):** Record an approval decision.
+- **Reader-facing (3 to 4):** List FR-021 in the 0.9.0 table row.

@@ -1,17 +1,17 @@
 ---
 doc: ../14-release-plan.md
-score: 83
+score: 92
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
 previous_score: 83
 ---
 
-# Why release plan scored 83
+# Why release plan scored 92
 
 ## Weakest dimension
 
-REL-002 and REL-003 carry no requirements, and REL-001's exit criteria restate O-002 and O-003 loosely.
+REL-002 ships before REL-001's pilot can judge it, and REL-002 does not depend on Q-023.
 
 ## Blocking defects
 
@@ -19,4 +19,4 @@ None.
 
 ## How to raise the grade
 
-- **Traceability (2 to 4):** Make REL-001's exit criteria match O-002 and O-003, and add Q-009 to `depends_on`.
+- **Sequence and traceability (3 to 4):** Say why REL-002 ships before REL-001 exits, and add Q-023 to REL-002's `depends_on`.

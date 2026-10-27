@@ -1,17 +1,17 @@
 ---
 doc: ../12-assumptions-risks-dependencies.md
-score: 88
+score: 92
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
 previous_score: 88
 ---
 
-# Why assumptions, risks, and dependencies scored 88
+# Why assumptions, risks, and dependencies scored 92
 
 ## Weakest dimension
 
-D-001 is delivered on the author's own session. The security reviews behind A-004 and A-005 have no dependency entry or date.
+Dependency status: D-002 and D-003 are owed by groups, not by named parties.
 
 ## Blocking defects
 
@@ -19,4 +19,4 @@ None.
 
 ## How to raise the grade
 
-- **Dependency status and timing (3 to 4):** Add the security reviews as a dependency with a date, and mark D-001 as confirmed only for the author.
+- **Dependency status (3 to 4):** Name who is asked for D-002 and D-003.

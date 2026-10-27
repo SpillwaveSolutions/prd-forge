@@ -1,23 +1,22 @@
 ---
 doc: ../13-open-questions.md
-score: 88
-blocking: 1
+score: 83
+blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 79
+previous_score: 88
 ---
 
-# Why open questions scored 88
+# Why open questions scored 83
 
 ## Weakest dimension
 
-Blocks and hygiene: Q-015 blocks four `must` requirements that section 7 does not list, and Q-005 does not block PER-003, which cites it.
+Answerability: Q-005, Q-008, Q-014, Q-016, and Q-023 give no rule that turns the spike's result into an answer.
 
 ## Blocking defects
 
-- Q-015 blocks FR-004, FR-009, FR-010, and FR-012, which are `must`, and section 7 does not say that they wait on it.
+None.
 
 ## How to raise the grade
 
-- **Blocking:** State the wait on Q-015 in section 7.
-- **Answerability (3 to 4):** Give Q-019 and Q-007 a rule that turns the spike's result into an answer.
+- **Answerability (3 to 4):** Give each polling spike a threshold, such as two of three.
