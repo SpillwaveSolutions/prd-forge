@@ -53,6 +53,11 @@
               "minLength": 1
             },
             "description": "Synonyms not to use for this term."
+          },
+          "abbreviation": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The short form, when the domain uses one."
           }
         },
         "required": [

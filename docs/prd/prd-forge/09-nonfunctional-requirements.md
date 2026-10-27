@@ -6,11 +6,11 @@ title: Non-functional requirements
 status: draft
 updated: 2026-10-26
 domain: product management tooling
-score: 82
-blocking: 0
-graded: 2026-10-26
 section: 8
 order: 90
+score: 79
+blocking: 0
+graded: 2026-10-26
 requirements:
   - id: NFR-001
     category: performance

@@ -8,6 +8,9 @@ updated: 2026-10-26
 domain: product management tooling
 section: 13
 order: 140
+score: 88
+blocking: 0
+graded: 2026-10-26
 roadmap_link: none yet
 releases:
   - id: REL-001
@@ -52,7 +55,18 @@ releases:
       - O-001
       - O-002
       - O-003
+    exit_criteria:
+      - >-
+        At least 80% of the pilot PRDs pass the buildability review on first
+        submission (O-001).
+      - >-
+        The median pilot PRD reaches a recorded approval in under 5 working days
+        from the first interview question (O-002).
+      - >-
+        An engineer who was not in the interview judges 95% of the pilot PRDs'
+        `must` requirements testable as written (O-003).
     target_date: 2027-03-31
+    date_status: indicative
   - id: REL-002
     name: Backlog derivation
     outcomes:
@@ -67,7 +81,15 @@ releases:
       - ST-008
     objectives:
       - O-001
+    exit_criteria:
+      - >-
+        Every story derived from a pilot PRD names the requirement id it came
+        from.
+      - >-
+        A delivery lead runs a story-mapping workshop from a derived backlog
+        without re-deriving any feature from the PRD.
     target_date: 2027-06-30
+    date_status: indicative
   - id: REL-003
     name: More than one author
     outcomes:
@@ -106,6 +128,17 @@ derivation costs nothing; deferring what it needs would have cost a rewrite.
 REL-003 waits for evidence that one author's path works at all. Building for two
 authors before one is proven would be building on A-001 and A-002 before either is
 tested.
+
+## How you know each release worked
+
+REL-001 exits when the pilot PRDs meet the three objective targets in section 3:
+80% pass the buildability review on first submission, the median reaches
+approval in under 5 working days, and 95% of `must` requirements are testable as
+written. REL-002 exits when every derived story names its requirement and a
+delivery lead runs a workshop from the backlog without re-deriving it.
+
+Both target dates are indicative, not committed. The schedule problem below is
+the reason.
 
 ## The schedule problem, stated plainly
 

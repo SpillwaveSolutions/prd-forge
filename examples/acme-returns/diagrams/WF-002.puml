@@ -1,0 +1,13 @@
+@startsalt
+title WF-002 The returns decision
+{+
+  {/ <b>Return an item</b> }
+  May be returned until 2026-11-03 <1>
+  Reason: within the 30-day returns window
+  Refund: to the original card, $129.00 <2>
+  ==
+  Why did it come back? <3>
+  ^Wrong size^
+  [Complete the return]
+}
+@endsalt

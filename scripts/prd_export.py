@@ -428,7 +428,8 @@ def build_html(root, rest, title):
     if f.get("golden_thread"):
         meta.append(("Golden thread", f["golden_thread"]))
     if f.get("stakeholders"):
-        meta.append(("Stakeholders", "; ".join(f["stakeholders"])))
+        meta.append(("Stakeholders", "; ".join(
+            s if isinstance(s, str) else s.get("role", "") for s in f["stakeholders"])))
     cover_dl = "".join(f"<dt>{e(k)}</dt><dd>{e(v)}</dd>" for k, v in meta if v)
 
     summary = ""

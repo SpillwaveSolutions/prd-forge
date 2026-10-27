@@ -56,7 +56,7 @@ Two worked sets ship with the plugin:
   blocking counts in its front matter are real. Read this one to see what a full
   set looks like, including what a graded set looks like when it has not yet
   passed.
-- `examples/acme-returns/` — a five-document subset, small enough to read in one
+- `examples/acme-returns/` — a seven-document subset, small enough to read in one
   sitting. Read this one for the front matter, the link chain and the id
   references.
 
@@ -141,7 +141,10 @@ delivers exactly the release line, that lifecycles reach every state, that
 wireframe marks match their `shows` lines and drawings, and that `applies_to`,
 `depends_on`, and `resolves` name real ids. It warns about criteria that name a
 control, a section where more than 60% of requirements are `must`, a release
-with no exit criteria, and a synonym the glossary says to avoid. A field a guide requires at review,
+with no exit criteria, and a synonym the glossary says to avoid. It also warns
+about a Given that states a user action, an open question with more than one
+decider, an out-of-scope item with no `revisit`, and a problem with no cost of
+inaction. A field a guide requires at review,
 such as a requirement's `shown_in`, warns while its section is a draft and fails
 once the section is offered for review. It checks each document against its schema, the
 parent/prev/next/children graph, and every cross-section id — persona, stage,

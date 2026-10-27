@@ -122,6 +122,15 @@
             ],
             "additionalProperties": false,
             "description": "The happy-path step this alternate or exception branches from."
+          },
+          "situation": {
+            "type": "string",
+            "enum": [
+              "first-use",
+              "return",
+              "concurrent"
+            ],
+            "description": "Whether the person meets this for the first time, comes back to it, or meets it while someone else works on the same thing."
           }
         },
         "required": [

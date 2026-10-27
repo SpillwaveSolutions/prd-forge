@@ -6,11 +6,11 @@ title: Functional requirements
 status: draft
 updated: 2026-10-26
 domain: product management tooling
-score: 84
-blocking: 0
-graded: 2026-10-26
 section: 7
 order: 80
+score: 81
+blocking: 0
+graded: 2026-10-26
 requirements:
   - id: FR-001
     user: PER-001
@@ -54,7 +54,7 @@ requirements:
       - >-
         Given a set where no section has been started, when the expert asks where
         things stand, then every section is listed and shown as not started.
-    priority: must
+    priority: should
     shown_in: screen
     journey_stage: ST-001
     objective: O-002
@@ -120,7 +120,7 @@ requirements:
       - >-
         Given an expert who ends a section early, when they are told what was left
         behind, then the statement names the specific gap, not just a score.
-    priority: must
+    priority: should
     shown_in: conversation
     journey_stage: ST-002
     objective: O-002
@@ -187,7 +187,7 @@ requirements:
         Given a section whose readable form and machine-readable form disagree,
         when either is read, then the disagreement is reported to the expert
         rather than silently resolved.
-    priority: must
+    priority: should
     shown_in: screen
     journey_stage: ST-003
     objective: O-003
@@ -252,7 +252,7 @@ requirements:
         Given a section scoring 70 or more with no blocking defects, when it is
         re-graded, then the expert is offered the state `review`, and is told that
         `review` means the section is ready for someone else to read.
-    priority: must
+    priority: should
     shown_in: screen
     journey_stage: ST-004
     objective: O-003
@@ -350,7 +350,7 @@ requirements:
       - >-
         Given an expert who answered a question in a section before stopping, when
         they resume that section, then that question is not put to them again.
-    priority: must
+    priority: should
     shown_in: conversation
     journey_stage: ST-001
     objective: O-002
@@ -372,7 +372,7 @@ requirements:
       - >-
         Given a decision the expert reaffirmed after an objection, when the
         section is graded again, then the objection is not raised as a new finding.
-    priority: must
+    priority: should
     shown_in: conversation
     journey_stage: ST-003
     objective: O-001
@@ -397,7 +397,7 @@ requirements:
         Given they have moved through three views, a section, its grade, and its
         rubric, when they ask to go back three times, then they see the grade,
         then the section, then the view they started from.
-    priority: must
+    priority: should
     shown_in: screen
     journey_stage: ST-003
     objective: O-002
@@ -418,7 +418,7 @@ requirements:
       - >-
         Given no set existed when they looked, when a set is written and they ask
         to refresh, then every section of it is listed.
-    priority: must
+    priority: should
     shown_in: screen
     journey_stage: ST-003
     objective: O-002
@@ -433,27 +433,29 @@ links:
 | ID | User | Capability | Priority | Stage |
 | --- | --- | --- | --- | --- |
 | FR-001 | PER-001 | State the idea; establish the vocabulary once | must | ST-001 |
-| FR-002 | PER-001 | See the whole set's state at a glance | must | ST-001 |
+| FR-002 | PER-001 | See the whole set's state at a glance | should | ST-001 |
 | FR-003 | PER-001 | Be taught the section before being asked | must | ST-002 |
 | FR-004 | PER-001 | Be asked one or two questions at a time | must | ST-002 |
-| FR-005 | PER-001 | End a section and see what was left behind | must | ST-002 |
+| FR-005 | PER-001 | End a section and see what was left behind | should | ST-002 |
 | FR-006 | PER-001 | Unknown facts become open questions, never inventions | must | ST-002 |
 | FR-007 | PER-001 | Technology talk converted; preference preserved | must | ST-002 |
-| FR-008 | PER-001 | Read the draft as prose | must | ST-003 |
+| FR-008 | PER-001 | Read the draft as prose | should | ST-003 |
 | FR-009 | PER-001 | See score, blocking defects, weakest part | must | ST-003 |
 | FR-010 | PER-001 | Be asked one question, not twelve | must | ST-004 |
-| FR-011 | PER-001 | See the re-grade against the same standard | must | ST-004 |
+| FR-011 | PER-001 | See the re-grade against the same standard | should | ST-004 |
 | FR-012 | PER-001 | See what a team could not build from it | must | ST-005 |
 | FR-013 | PER-003 | See what is approved and what is open, on one page | must | ST-006 |
 | FR-014 | PER-003 | Approve, with conditions, against a version | must | ST-006 |
-| FR-015 | PER-001 | Stop and resume without being asked anything twice | must | ST-001 |
-| FR-016 | PER-001 | Refute a finding and have it withdrawn | must | ST-003 |
-| FR-017 | PER-001 | Move to any section without losing their place | must | ST-003 |
-| FR-018 | PER-001 | See the set as it now stands | must | ST-003 |
+| FR-015 | PER-001 | Stop and resume without being asked anything twice | should | ST-001 |
+| FR-016 | PER-001 | Refute a finding and have it withdrawn | should | ST-003 |
+| FR-017 | PER-001 | Move to any section without losing their place | should | ST-003 |
+| FR-018 | PER-001 | See the set as it now stands | should | ST-003 |
 
-Every release-line stage has at least one `must` requirement. There are no
-`should` or `could` requirements in R1: the release line is already the smallest
-path, and anything that could be dropped has been dropped into section 6.
+Every release-line stage has at least one `must` requirement. Ten of the 18
+are `must`: without any one of them, REL-001 does not do what it promises. The
+eight `should` requirements make the work faster or easier to follow, and the
+expert can still reach an approved set without them. The expert set this split
+at version 0.8.0.
 
 FR-015 and FR-016 were split out of FR-002 and FR-009 at version 0.2.0, because
 each has a failure mode of its own: a build could deliver perfect set-state

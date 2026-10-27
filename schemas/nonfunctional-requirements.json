@@ -37,7 +37,9 @@
               "observability",
               "usability",
               "localisation",
-              "supportability"
+              "supportability",
+              "accuracy",
+              "safety"
             ]
           },
           "statement": {
@@ -115,7 +117,9 @@
               "observability",
               "usability",
               "localisation",
-              "supportability"
+              "supportability",
+              "accuracy",
+              "safety"
             ]
           },
           "reason": {

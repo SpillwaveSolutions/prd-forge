@@ -74,6 +74,11 @@
               "acts"
             ],
             "description": "What an agent does for this decision."
+          },
+          "second_approver": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A second role that must also agree, for a four-eyes decision. Not the same as the approver."
           }
         },
         "required": [

@@ -40,6 +40,16 @@ release 1.
 - `stages`: for a scenario that runs across several stages, the stages it spans,
   in order. The golden thread's happy path should span the whole release line;
   the validator warns when none does.
+- `situation`: optional. `first-use`, `return`, or `concurrent`: whether the user
+  meets this for the first time, comes back to it, or meets it while someone else
+  works on the same thing.
+
+The validator warns when a scenario's stage is not in its journey, and when its
+persona is not a persona in section 4.
+
+An exception's `expected_outcome` says what the user still has after the
+failure: what is kept, what is safe, and what they can do next (Cockburn's
+minimal guarantee).
 
 `prd-diagrams.mjs` draws each scenario's views together: its flowchart, the
 lifecycles it moves through, and the wireframes it links.
@@ -105,6 +115,9 @@ step that starts "They see", "They read", or "They are" as what the product show
 10. "What states does it go through? What moves it from one to the next, who
     makes the move, and what must be true first?" Write the answers as a
     lifecycle.
+11. "Who keeps this running: who sets it up, changes its settings, or clears up
+    after someone leaves?" Each answer is a maintenance or administration
+    scenario.
 
 Questions 4 and 5 find the requirements teams discover late and expensively.
 

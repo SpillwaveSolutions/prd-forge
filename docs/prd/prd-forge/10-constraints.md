@@ -8,6 +8,9 @@ updated: 2026-10-23
 domain: product management tooling
 section: 9
 order: 100
+score: 35
+blocking: 4
+graded: 2026-10-26
 constraints:
   - id: C-001
     category: firm

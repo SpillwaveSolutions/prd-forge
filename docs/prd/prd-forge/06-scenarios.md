@@ -8,6 +8,9 @@ updated: 2026-10-26
 domain: product management tooling
 section: 5
 order: 60
+score: 75
+blocking: 2
+graded: 2026-10-26
 scenarios:
   - id: SC-001
     journey: J-001
@@ -15,6 +18,7 @@ scenarios:
     stages: [ST-002, ST-003, ST-004]
     persona: PER-001
     variant: happy
+    priority: must
     shown_in: screen
     lifecycles: [LC-001]
     wireframes: [WF-008]
@@ -44,6 +48,7 @@ scenarios:
     stage: ST-004
     persona: PER-001
     variant: alternate
+    priority: should
     shown_in: screen
     lifecycles: [LC-001]
     wireframes: [WF-010]
@@ -66,6 +71,7 @@ scenarios:
     stage: ST-002
     persona: PER-001
     variant: exception
+    priority: must
     shown_in: conversation
     context: >-
       A claims manager is answering questions about section 7. They have strong
@@ -90,6 +96,7 @@ scenarios:
     stage: ST-003
     persona: PER-001
     variant: exception
+    priority: should
     shown_in: conversation
     context: >-
       The grading reviewer has reported that a requirement names a component. The
@@ -112,6 +119,7 @@ scenarios:
     stage: ST-005
     persona: PER-001
     variant: exception
+    priority: must
     shown_in: report
     wireframes: [WF-009]
     context: >-
@@ -135,6 +143,7 @@ scenarios:
     stage: ST-002
     persona: PER-001
     variant: exception
+    priority: must
     shown_in: conversation
     context: >-
       The expert is on section 3 and does not know the current value of the metric
@@ -150,6 +159,39 @@ scenarios:
     expected_outcome: >-
       No baseline is invented, the objective carries an explicit unknown, and
       section 12 holds a question with a named decider and a date.
+  - id: SC-007
+    journey: J-001
+    stage: ST-001
+    stages: [ST-001, ST-002, ST-003, ST-004, ST-005, ST-006]
+    persona: PER-001
+    variant: happy
+    priority: must
+    shown_in: screen
+    lifecycles: [LC-001]
+    wireframes: [WF-007, WF-002, WF-001, WF-008, WF-005, WF-006]
+    context: >-
+      A freight operations manager has an idea for a tool that recovers late
+      loads. They have never written a PRD, and the quarterly planning meeting is
+      one week away.
+    trigger: They say they want to turn the idea into a specification.
+    course:
+      - They state the idea in their own words and name their domain, freight
+        operations
+      - They see every section of the new set, each marked as not started
+      - For each section, they are taught what it is for, then asked one or two
+        questions at a time
+      - After each section, they read the draft as prose and see its grade and
+        every blocking defect by name
+      - They answer the one question that most improves each weak section, and see
+        it re-graded
+      - With every section at review, they ask for the buildability review and see
+        that no release-line stage lacks a must requirement
+      - The sponsor reads the root document, sees what is still open and who owns
+        each open item, and approves the set at version 1.0.0
+    expected_outcome: >-
+      Every section is at final, every gap the buildability review found is closed
+      or owned by a named decider, and the change log records the sponsor's
+      approval against a named version.
 lifecycles:
   - id: LC-001
     subject: a section of the PRD
@@ -214,18 +256,38 @@ links:
 
 ![SC-006 scenario](diagrams/SC-006.svg)
 
-| ID | Stage | Variant | What it covers |
-| --- | --- | --- | --- |
-| SC-001 | ST-002 | happy | A section taught, interviewed, drafted, graded, improved |
-| SC-002 | ST-004 | alternate | Resuming after eight days away |
-| SC-003 | ST-002 | exception | The expert states a technology |
-| SC-004 | ST-003 | exception | The expert refutes a grading finding |
-| SC-005 | ST-005 | exception | Buildability review finds holes |
-| SC-006 | ST-002 | exception | The expert has no baseline for a metric |
+![SC-007 scenario](diagrams/SC-007.svg)
 
-SC-001 is the end-to-end acceptance test for release 1. SC-005 is the expert's
+![WF-007 drawing](diagrams/WF-007.svg)
+
+![WF-002 drawing](diagrams/WF-002.svg)
+
+![WF-001 drawing](diagrams/WF-001.svg)
+
+![WF-008 drawing](diagrams/WF-008.svg)
+
+![WF-005 drawing](diagrams/WF-005.svg)
+
+![WF-006 drawing](diagrams/WF-006.svg)
+
+| ID | Stage | Variant | Priority | What it covers |
+| --- | --- | --- | --- | --- |
+| SC-001 | ST-002 | happy | must | A section taught, interviewed, drafted, graded, improved |
+| SC-002 | ST-004 | alternate | should | Resuming after eight days away |
+| SC-003 | ST-002 | exception | must | The expert states a technology |
+| SC-004 | ST-003 | exception | should | The expert refutes a grading finding |
+| SC-005 | ST-005 | exception | must | Buildability review finds holes |
+| SC-006 | ST-002 | exception | must | The expert has no baseline for a metric |
+| SC-007 | ST-001 to ST-006 | happy | must | One idea, from the first sentence to an approved set |
+
+SC-007 is the end-to-end acceptance test for release 1: it follows the golden
+thread through every release-line stage. SC-001 is the same path inside one
+section. SC-005 is the expert's
 own run of the buildability review, which is why its persona is PER-001 and not
 the engineering lead: no engineering lead is in release 1 at all, per OUT-004.
+
+The priorities follow the requirements. SC-002 and SC-004 are `should`, because
+FR-015 and FR-016, which they exercise, are `should`.
 
 The four exceptions are the ones that decide whether this product is trustworthy.
 SC-003 and SC-006 are where a specification quietly acquires a technology choice

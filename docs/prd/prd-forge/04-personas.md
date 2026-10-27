@@ -8,6 +8,9 @@ updated: 2026-10-26
 domain: product management tooling
 section: 4
 order: 40
+score: 68
+blocking: 1
+graded: 2026-10-26
 personas:
   - id: PER-001
     name: Domain expert specifying software for their own field

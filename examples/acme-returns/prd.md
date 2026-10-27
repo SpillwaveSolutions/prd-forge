@@ -19,6 +19,7 @@ score: 78
 blocking: 0
 graded: 2026-10-23
 summary:
+  objective: O-001
   problem: >-
     Store associates cannot tell whether an item may be returned without calling
     the contact centre, so queues build and customers leave with the item.
@@ -36,15 +37,17 @@ summary:
 links:
   parent: null
   children:
+    - { id: acme-returns-objectives, kind: objectives-metrics, path: ./03-objectives-metrics.md, title: Business objectives and success metrics, section: 3, order: 30, status: draft }
     - { id: acme-returns-personas, kind: personas, path: ./04-personas.md, title: Users and personas, section: 4, order: 40, status: draft }
     - { id: acme-returns-journeys, kind: journeys, path: ./05-user-journeys.md, title: User journeys, section: 5, order: 50, status: draft }
     - { id: acme-returns-scope, kind: scope, path: ./07-scope.md, title: Scope, section: 6, order: 70, status: draft }
     - { id: acme-returns-frs, kind: functional-requirements, path: ./08-functional-requirements.md, title: Functional requirements, section: 7, order: 80, status: draft }
+    - { id: acme-returns-wireframes, kind: wireframes, path: ./08-wireframes.md, title: Wireframes, section: 7, order: 85, status: draft }
 ---
 
 # Acme Returns PRD
 
-This is a cut-down example set: four of the sixteen section documents, enough to
+This is a cut-down example set: six of the sixteen section documents, enough to
 show the front matter, the link graph and the cross-section id references that
 `scripts/prd-validate.mjs` checks. A real set has all sixteen.
 
@@ -62,7 +65,9 @@ escalation rises from today's 41%.
 
 | Section | Document |
 | --- | --- |
+| 3 | [Business objectives and success metrics](./03-objectives-metrics.md) |
 | 4 | [Users and personas](./04-personas.md) |
 | 5 | [User journeys](./05-user-journeys.md) |
 | 6 | [Scope](./07-scope.md) |
 | 7 | [Functional requirements](./08-functional-requirements.md) |
+| 7 | [Wireframes](./08-wireframes.md) |

@@ -1,11 +1,11 @@
-# Root document — the PRD index and executive summary
+# Root document, the PRD index and executive summary
 
 **Kind** `prd` · **Schema** `prd-forge/prd-root@1` · **File** `prd.md`
 
 ## What this is
 
 The front door. It names the product, the owner, the version, and the people who
-have to agree. It carries the executive summary — five sentences — and it links
+have to agree. It carries the executive summary, five sentences, and it links
 to every section document. A reader who opens only this file knows what is being
 built, for whom, why now, and how we will know it worked.
 
@@ -23,6 +23,8 @@ PRD has already failed: people will build from the summary.
 - `golden_thread`: the id of the one journey release 1 must deliver end to end.
 - `summary.objective`: the `O-nnn` the measure tracks, so the summary cannot drift
   from section 3.
+- `summary.not_building`: optional. One sentence on what the product will not do,
+  pointing to the non-goals in section 6.
 - `primary_persona`: the `PER-nnn` the product serves first.
 - `approvers`: the `PER-nnn` roles whose approval section 15 must record.
 - `stakeholders` may be objects with `role`, `interest`, and `influence` (high,
@@ -44,7 +46,7 @@ again at the end, when the sections have taught you what the product really is.
 1. "In one sentence a customer would recognise, what problem are we solving, and
    whose problem is it?"
 2. "Who uses this day to day? Name the roles, not the people."
-3. "Why now? What changed — a regulation, a cost, a competitor, a new capability?"
+3. "Why now? What changed, a regulation, a cost, a competitor, a new capability?"
 4. "If this works, what can those users do next year that they cannot do today?
    Say it without naming any software."
 5. "What one number tells us it worked, and what is that number today?"

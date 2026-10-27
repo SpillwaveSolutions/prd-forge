@@ -83,8 +83,32 @@
     "non_goals": {
       "type": "array",
       "items": {
-        "type": "string",
-        "minLength": 1
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "object",
+            "properties": {
+              "statement": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the product will not do."
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why not."
+              }
+            },
+            "required": [
+              "statement",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        ]
       },
       "minItems": 1,
       "description": "Things a reader would reasonably expect and we are not doing, with no plan to."

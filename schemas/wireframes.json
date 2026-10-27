@@ -63,6 +63,11 @@
               "minLength": 1
             },
             "description": "What each marked part of the sketch is for, in the order the marks appear."
+          },
+          "state_of": {
+            "type": "string",
+            "pattern": "^WF-\\d{3}$",
+            "description": "The screen or report this sketch is an empty, loading, or error state of."
           }
         },
         "required": [

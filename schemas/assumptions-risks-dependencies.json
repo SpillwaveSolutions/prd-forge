@@ -182,6 +182,11 @@
               "type": "string",
               "minLength": 1
             }
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The person on our side who chases it."
           }
         },
         "required": [

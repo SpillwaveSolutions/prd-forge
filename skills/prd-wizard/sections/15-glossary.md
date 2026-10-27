@@ -25,6 +25,7 @@ actually build the right thing.
 - `source`: the standard or authority that defines the term, with `unverified:
   true` when the source was checked and could not be confirmed.
 - `avoid`: synonyms not to use. The validator warns when a section uses one.
+- `abbreviation`: optional. The short form, when the domain uses one.
 
 ## What does not belong
 

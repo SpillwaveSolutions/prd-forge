@@ -1,0 +1,15 @@
+@startsalt
+title WF-003 An exception request
+{+
+  {/ <b>Exception request</b> }
+  Trail running shoe · bought 2026-08-21 · $129.00
+  Refused: outside the 30-day window by 12 days <1>
+  ==
+  Associate: "Customer was abroad; has the <2>
+  unworn shoe and the box."
+  ==
+  { () Approve | () Decline } <3>
+  { Reason for the customer: | "                    " }
+  [Send to the counter]
+}
+@endsalt

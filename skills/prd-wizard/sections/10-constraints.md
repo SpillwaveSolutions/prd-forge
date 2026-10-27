@@ -33,6 +33,14 @@ rule nobody has confirmed goes in section 11 as an assumption with an owner. A
 `firm` constraint is a binding rule of the organization, set outside the product
 team.
 
+An appetite, the time the business is willing to spend on this release, may be a
+`policy` constraint when the sponsor sets it (Shape Up). An appetite is a budget
+the business sets before the work, not an estimate of the work.
+
+A technology mandate the team must use goes in section 11 as a dependency, and on
+the list of candidate architecture decisions for the engineering lead. It never
+goes into a requirement.
+
 ## What does not belong
 
 - Preferences ("we prefer to keep data in one place").

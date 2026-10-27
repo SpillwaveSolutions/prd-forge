@@ -32,6 +32,9 @@ requirement that moves O-001 beats the one that moves nothing.
 - `measurement`: which record, who computes it, and how often. No tool names.
 - `baseline_as_of` and `baseline_source`: when the baseline was true, and where it
   comes from.
+- `primary`: optional, true on the one objective the root's `summary.objective`
+  names. The validator fails the set when more than one objective is primary, or
+  when the primary objective is not the one the root names.
 
 Add `guardrails` for the section: what must not get worse while the objectives
 move, each with a `metric`, a `threshold` with a number, and an `owner`. Ask:

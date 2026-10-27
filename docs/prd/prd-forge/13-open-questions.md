@@ -8,6 +8,9 @@ updated: 2026-10-26
 domain: product management tooling
 section: 12
 order: 130
+score: 79
+blocking: 1
+graded: 2026-10-26
 questions:
   - id: Q-001
     question: >-
@@ -59,7 +62,8 @@ questions:
     question: >-
       Will a sponsor accept a specification that carries a machine-produced grade,
       or does the grade reduce their confidence rather than raise it?
-    decider: Richard Hightower, with the first three sponsors
+    decider: Richard Hightower
+    consulted: the first three sponsors
     by: 2027-01-31
     blocks:
       - FR-013
@@ -142,7 +146,8 @@ questions:
     question: >-
       Does an engineering lead read a PRD that names no technology as disciplined
       or as incomplete?
-    decider: Richard Hightower, with the three leads from D-003
+    decider: Richard Hightower
+    consulted: the three engineering leads from D-003
     by: 2027-03-31
     blocks:
       - A-003
@@ -163,10 +168,10 @@ links:
 | Q-002 | Today's idea-to-approval elapsed time | R. Hightower | 2027-03-31 | O-002 |
 | Q-003 | Today's share of testable requirements | R. Hightower | 2027-03-31 | O-003 |
 | Q-004 | Segment sizes, and which converts | R. Hightower | 2027-06-30 | S-001..S-003 |
-| Q-005 | Will a sponsor accept a graded specification | R. Hightower + 3 sponsors | 2027-01-31 | FR-013, TR-001 |
+| Q-005 | Will a sponsor accept a graded specification | R. Hightower | 2027-01-31 | FR-013, TR-001 |
 | Q-006 | Sections completed per sitting, and where they stop | R. Hightower | 2027-03-31 | R-004, NFR-005 |
 | Q-007 | Is the working order right, and how does looping back feel | R. Hightower | 2027-03-31 | ST-004 |
-| Q-008 | Disciplined or incomplete, to an engineering lead | R. Hightower + 3 leads | 2027-03-31 | A-003 |
+| Q-008 | Disciplined or incomplete, to an engineering lead | R. Hightower | 2027-03-31 | A-003 |
 | Q-009 | Where the rubric and the checks live, and who owns them | R. Hightower | 2027-01-31 | FR-004, FR-009..FR-012, NFR-007 |
 | Q-010 | Where an answer lives before its section is drafted | R. Hightower | 2027-01-31 | FR-015, NFR-011 |
 | Q-011 | How an approver records a decision, and who owns NFR-006/012 | R. Hightower | 2027-02-28 | FR-014, NFR-006, NFR-012 |

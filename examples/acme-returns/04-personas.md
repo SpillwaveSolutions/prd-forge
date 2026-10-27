@@ -45,7 +45,7 @@ personas:
     proficiency: expert in the hub's process
 links:
   parent: { id: acme-returns, kind: prd, path: ./prd.md, title: Acme Returns PRD }
-  prev: { id: acme-returns, kind: prd, path: ./prd.md, title: Acme Returns PRD }
+  prev: { id: acme-returns-objectives, kind: objectives-metrics, path: ./03-objectives-metrics.md, title: Business objectives and success metrics }
   next: { id: acme-returns-journeys, kind: journeys, path: ./05-user-journeys.md, title: User journeys }
 ---
 

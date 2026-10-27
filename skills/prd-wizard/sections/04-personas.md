@@ -38,6 +38,10 @@ builds the approval rules on.
   hypothesis to test.
 - `problems`: the `P-nnn` problems in section 1 this persona has.
 
+Add `non_personas` for the section when it helps: the people this product is
+deliberately not for, each with a `name` and a `reason`. Ask: "Who might expect
+to use this, and should not?"
+
 ## What does not belong
 
 - Demographics, stock photos, favourite coffee. They do not change a requirement.
