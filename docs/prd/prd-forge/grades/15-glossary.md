@@ -1,37 +1,35 @@
 ---
 doc: ../15-glossary.md
 score: 65
-blocking: 4
+blocking: 2
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 55
+previous_score: 65
 ---
 
 # Why glossary scored 65
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 2 | "Interview", "dependency", "handed over", "backlog", "story", "epic", "story-mapping workshop", "out of scope", "sponsor", "expert", and "persona" have no entry. |
+| Coverage | 2 | Interview, Handover, and Dependency are now defined. Feature, epic, story, backlog, expert, sponsor, engineering lead, delivery lead, story-mapping workshop, backbone, buildability report, release, and engagement are not. |
 | Author's voice | 4 | Definitions take positions, such as "A stage survives a redesign." |
-| Disambiguation | 3 | 27 of 46 entries carry `not`. Risk, State, and Requirement have none, although the body table lists "State \| Threshold". |
-| Consistency | 2 | The glossary says `pending`, and other sections say "not started" or "untouched". The weakest-part entry allows a synonym. No entry uses `avoid`. |
-| Authority | 2 | MoSCoW, RFC 2119, and Given/When/Then are named but not cited. No entry has a `source`. |
+| Disambiguation | 3 | 25 of 48 entries carry `not`. State, Risk, and Scope have none, although the body table pairs State with Threshold. |
+| Consistency | 2 | The glossary says `pending`, and FR-002 says "untouched" and "not started". Handover says "buildability report", but the defined term is "Buildability review". State and Approver give "approval" two meanings. |
+| Authority | 2 | MoSCoW, RFC 2119, and Given/When/Then are named but not cited. |
 
 ## Blocking defects
 
-- "Interview" is in FR-004's and FR-012's acceptance and has no entry. FR-012 cannot be judged without knowing who counts as "in the interview".
-- "Dependency" is in FR-012's acceptance ("then that dependency is reported") and has no entry. Section 11 uses the word for something outside the product, so the set gives it two meanings.
-- "Handed over" is in FR-007's acceptance and has no entry. Nothing says what event handover is, or to whom.
-- Definitions record storage and drawing format: "One directory of documents", "prefixed 01 to 16", "File prefixes and section numbers differ", and "drawn in characters".
+- ST-008's acceptance uses "feature", "epics", and "story", and ST-007's acceptance uses "backlog". None has an entry, and the Acceptance criteria entry itself uses "story".
+- "Expert" is in almost every requirement's acceptance and has no entry. The Approver entry relies on "expert" and "sponsor", and neither is defined.
 
 ## How to raise the grade
 
-- **Coverage (2 to 4):** Add Interview, Handover, and Dependency, and settle the one meaning of dependency. Add the backlog terms and the roles that definitions rely on.
-- **Exclusion list:** Restate Document set, Section, Reading order, and Wireframe without directories, file prefixes, or drawing format.
-- **Consistency (2 to 4):** Use one name for the first state everywhere, and add `avoid` entries.
+- **Coverage (2 to 4):** Add Backlog, Feature, Epic, Story, Expert, and Sponsor, each from what the set already says. Add the other roles and terms listed above.
+- **Consistency (2 to 4):** Use one name for the first state and for the buildability review. Say which approval moves a section to `final`.
 - **Authority (2 to 4):** Cite MoSCoW, RFC 2119, and Given/When/Then.
 
 ## Notes
 
-- State says `final` needs an approval, and Approver says the expert decides each section's state. The two definitions do not say who moves one section to `final`.
 - The body refers to "The `not` column above", but the column is headed "Most often confused with".
+- The 0.2.0 history paragraph belongs in section 15.
+- The Unit of work entry never says what this set's own unit of work is.
