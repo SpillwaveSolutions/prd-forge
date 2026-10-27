@@ -8,8 +8,8 @@ updated: 2026-10-26
 domain: product management tooling
 section: 7
 order: 85
-score: 84
-blocking: 0
+score: 78
+blocking: 2
 graded: 2026-10-27
 wireframes:
   - id: WF-001

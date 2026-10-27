@@ -1,22 +1,22 @@
 ---
 doc: ../14-release-plan.md
-score: 88
+score: 83
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
 previous_score: 88
 ---
 
-# Why the release plan scored 88
+# Why release plan scored 83
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Outcomes | 3 | REL-002 now holds ST-009, and none of its outcomes is the engineering lead's. REL-003's "reviewer" is no persona. |
-| Sequence rationale | 4 | Each position is argued. |
-| Traceability | 2 | REL-002 and REL-003 have no requirements, and no release has `depends_on`. |
-| Release 1 | 4 | Matches the release line. |
-| No tasks | 4 | None. |
-| Dates | 4 | Both marked indicative. |
+| Outcomes | 3 | REL-002 completes ST-009 but names nothing the engineering lead can newly do. REL-003 names a reviewer who is not a persona. |
+| Sequence rationale | 3 | REL-002's place is defended only as cheap to defer. |
+| Traceability | 2 | REL-002 has no requirements, REL-003 has no stages, requirements, or exit criteria, and no release has `depends_on`. |
+| Release 1 | 4 | REL-001 matches the release line and carries every requirement. |
+| No tasks | 4 | No tasks, estimates, sizing, or assignments. |
+| Dates | 4 | Both dates are indicative, and the body says so. |
 
 ## Blocking defects
 
@@ -24,10 +24,9 @@ None.
 
 ## How to raise the grade
 
-- **Traceability (2 to 4):** Write requirements for ST-007 to ST-009 and list them under REL-002, give REL-003 stages or move it out of scope, and add `depends_on` to REL-001.
-- **Outcomes (3 to 4):** Add an engineering-lead outcome to REL-002, and name REL-003's reviewer as a persona.
+- **Traceability (2 to 4):** Give REL-002 requirements for ST-007 to ST-009, and record REL-001's dependencies in `depends_on`.
+- **Exit criteria:** Define "the pilot PRDs" and how many count.
 
 ## Notes
 
-- "the pilot PRDs" is never defined, so "80% of the pilot PRDs" has no denominator.
-- Two em dashes and one sentence that starts with "So".
+- The body has two em dashes and one sentence that starts with "So".

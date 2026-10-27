@@ -11,28 +11,24 @@ previous_score: 81
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Test 1, named user | 4 | Every requirement names PER-001 or PER-003. Two criteria have no actor: FR-014 "when the change is written" and FR-012 "then it has been checked against the document". |
-| Test 2, visible outcome | 3 | FR-013, FR-008, and FR-007 end on what the user thinks or feels. No `conversation` requirement has a sample dialog. |
-| Test 3, acceptance | 3 | FR-010 has no error case. FR-014 never tests a rejection. FR-004 and FR-012 each have a criterion that needs a judge, and FR-005 gives two ways to pass. |
-| Test 4, priority | 4 | 10 of 18 are `must`, and every release-line stage has one. |
-| Test 5, no technology | 2 | No technology is named, but FR-008's "table row under named column headings" and FR-017's "the view does not change" and "named above it" set the layout. |
-| Atomicity | 2 | FR-004's early stop, FR-008's check across the set, and FR-007's three parts are not in their capability lines, and the body does not defend them. |
-| Traceability | 4 | Every stage, objective, and open question resolves, and every screen or report requirement has a wireframe. |
+| Test 1, named user | 4 | All 20 requirements name PER-001 or PER-003. |
+| Test 2, visible outcome | 3 | FR-007, FR-008, FR-010, and FR-013 describe a state of mind. No `conversation` requirement has a sample dialog. |
+| Test 3, acceptance | 3 | FR-012's second criterion tests only the report's form. FR-010 has no case for a rejected premise, and FR-014 never tests a rejection. FR-020 does not say who reads which section. |
+| Test 4, priority | 4 | 10 of 20 are `must`, and every release-line stage has one. |
+| Test 5, no technology | 2 | FR-008, FR-017, and FR-018 fix layout or refresh behavior, and FR-011 uses a state value in code format. |
+| Atomicity | 2 | FR-007, FR-011, FR-012, and FR-017 hold more than one capability, and the body does not defend them. |
+| Traceability | 4 | Every stage, objective, open question, and wireframe resolves. |
 | Coverage | 4 | Every release-line stage from ST-001 to ST-006 has a `must`. |
 
 ## Blocking defects
 
-None. FR-008 no longer assumes two forms of an item.
+None.
 
 ## How to raise the grade
 
-- **Atomicity (2 to 4):** Split FR-004's early stop and FR-008's check across the set into their own requirements, each with its own priority. Only the expert can set those priorities.
-- **Test 5 (2 to 4):** Restate the layout phrases in FR-008 and FR-017 as what the expert needs.
-- **Test 3 (3 to 4):** Add a rejection criterion to FR-014 and an error case to FR-010.
-- **Test 2 (3 to 4):** Add a sample dialog for each `conversation` requirement.
+- **Test 3 (3 to 4):** Make FR-012 test that the review finds an untestable requirement. Add a rejection case to FR-014 and FR-010.
+- **Test 5 and atomicity (2 to 4):** State FR-008, FR-017, and FR-018 as needs, and split or defend FR-007, FR-011, FR-012, and FR-017.
 
 ## Notes
 
-- FR-015 is traced to ST-001, and resuming is not part of stating the idea.
-- WF-007 places FR-018 at ST-001, and WF-010 places FR-002 and FR-009 at ST-004. The requirements place them elsewhere.
-- FR-007's third criterion does not say where the expert's recorded decision lives.
+- FR-004 and FR-019 do not say which wins when a follow-up is due and the section would already pass.
