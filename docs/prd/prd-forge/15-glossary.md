@@ -9,7 +9,7 @@ domain: product management tooling
 section: 14
 order: 150
 score: 65
-blocking: 1
+blocking: 0
 graded: 2026-10-27
 terms:
   - term: PRD
