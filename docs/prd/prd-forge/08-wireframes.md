@@ -8,9 +8,9 @@ updated: 2026-10-26
 domain: product management tooling
 section: 7
 order: 85
-score: 88
+score: 84
 blocking: 0
-graded: 2026-10-26
+graded: 2026-10-27
 wireframes:
   - id: WF-001
     title: The set with one section open

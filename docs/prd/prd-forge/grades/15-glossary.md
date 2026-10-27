@@ -1,35 +1,34 @@
 ---
 doc: ../15-glossary.md
-score: 65
-blocking: 2
+score: 55
+blocking: 1
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
 previous_score: 65
 ---
 
-# Why glossary scored 65
+# Why glossary scored 55
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 2 | Interview, Handover, and Dependency are now defined. Feature, epic, story, backlog, expert, sponsor, engineering lead, delivery lead, story-mapping workshop, backbone, buildability report, release, and engagement are not. |
-| Author's voice | 4 | Definitions take positions, such as "A stage survives a redesign." |
-| Disambiguation | 3 | 25 of 48 entries carry `not`. State, Risk, and Scope have none, although the body table pairs State with Threshold. |
-| Consistency | 2 | The glossary says `pending`, and FR-002 says "untouched" and "not started". Handover says "buildability report", but the defined term is "Buildability review". State and Approver give "approval" two meanings. |
-| Authority | 2 | MoSCoW, RFC 2119, and Given/When/Then are named but not cited. |
+| Coverage | 2 | 54 entries. Persona, Scenario, Decision rule, Release, Story-mapping workshop, Backbone, and ID have no entry, and the glossary itself uses "persona". |
+| Author's voice | 3 | Most entries argue their point. Epic and Risk read like a dictionary. |
+| Disambiguation | 3 | 33 of 54 entries carry `not`. Epic, Requirement, Acceptance criteria, Risk, Wireframe, and Scope have none. |
+| Consistency | 2 | State names the first state `pending`, and FR-002, ST-001, and three other sections say "not started" or "untouched". State says `final` needs an approval, but TR-002 lets the expert set a section final with no approval. |
+| Authority | 1 | No entry has `source` or `unverified`. MoSCoW, spike, epic, story, and Given/When/Then come from recognized practice, and none is cited. |
 
 ## Blocking defects
 
-- ST-008's acceptance uses "feature", "epics", and "story", and ST-007's acceptance uses "backlog". None has an entry, and the Acceptance criteria entry itself uses "story".
-- "Expert" is in almost every requirement's acceptance and has no entry. The Approver entry relies on "expert" and "sponsor", and neither is defined.
+- FR-002's acceptance says "thirteen are untouched" and "shown as not started". The State entry defines `pending`, `draft`, `review`, and `final`, and no state is "not started". A tester cannot tell whether a display that shows `pending` passes FR-002.
 
 ## How to raise the grade
 
-- **Coverage (2 to 4):** Add Backlog, Feature, Epic, Story, Expert, and Sponsor, each from what the set already says. Add the other roles and terms listed above.
-- **Consistency (2 to 4):** Use one name for the first state and for the buildability review. Say which approval moves a section to `final`.
-- **Authority (2 to 4):** Cite MoSCoW, RFC 2119, and Given/When/Then.
+- **Consistency (2 to 4):** Use one name for the first state in every section. Say which act moves a section to `final`: the expert under TR-002, or the approver under TR-001.
+- **Authority (1 to 4):** Cite the source of MoSCoW, Given/When/Then, epic, story, and spike, and say what `wont` means.
+- **Coverage (2 to 4):** Add Persona, Scenario, Decision rule, Release, and ID.
+- **Disambiguation (3 to 4):** Add `not` to Epic, Requirement, Acceptance criteria, Risk, Wireframe, and Scope.
 
 ## Notes
 
-- The body refers to "The `not` column above", but the column is headed "Most often confused with".
-- The 0.2.0 history paragraph belongs in section 15.
-- The Unit of work entry never says what this set's own unit of work is.
+- FR-017 uses "ID" with no entry. A stricter grader can count it as a second blocking defect.
+- In common MoSCoW use, "won't" means "not this time". That is close to this set's "out of scope", not to "non-goal".
