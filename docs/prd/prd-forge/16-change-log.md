@@ -23,13 +23,18 @@ changes:
       FR-010 waits on Q-007, which blocks ST-004. The status-quo competitor's
       edge states what an engineer who was not in the room receives at
       handover. Each problem in section 1 has one counted case, with its
-      source and date. C-004 leaves section 9, which now holds no constraints.
+      source and date. On the expert's decision, C-004 leaves section 9, which now
+      holds no constraints.
       Its rule lives in TR-005 and FR-006, and its id is not reused. The
       constraints section may now be empty. After the 0.9.0 regrade, FR-008
       states the expert's need with no second form of a section, FR-012 reports
       a requirement's wait on an open question, and the glossary defines
       interview, handover, and dependency and names no storage or drawing
-      format. The set states its versioning policy before 1.0. This is a minor version because the policy
+      format. After the second regrade, FR-018 shows a changed section and a new
+      grade within 10 seconds of a request to refresh, FR-008 tests that every
+      item is shown in a sentence or a table row, and the glossary defines
+      backlog, feature, epic, story, expert, and sponsor. The set states its
+      versioning policy before 1.0. This is a minor version because the policy
       and the evidence are new content.
     sections:
       - 1
@@ -216,7 +221,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; the versioning policy |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
@@ -233,9 +238,9 @@ rules:
 
 - A patch, such as 0.9.0 to 0.9.1, is for fixes that add no content.
 - A minor version, such as 0.8 to 0.9, is for new content in the set or in the
-  plugin.
-- A change to the golden thread takes the set to the next major version. From
-  0.x, the next major version is 1.0.
+  product.
+- A change to the release line or to the golden thread takes the set to the
+  next major version. From 0.x, the next major version is 1.0.
 
 The expert set this policy at 0.9.0. Two earlier versions do not follow it, and
 neither is reissued:

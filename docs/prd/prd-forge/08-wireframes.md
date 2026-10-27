@@ -275,15 +275,15 @@ The expert reads this before anyone has estimated anything, while a fix is still
 │ …                                                    │
 ├──────────────────────────────────────────────────────┤
 │ Cannot write a test from <3>                         │
-│ 1. FR-018: "shown without them asking", no time      │
-│ 2. FR-008: "in sentences and short tables"           │
+│ 1. FR-004: "two ways differing in meaning", no judge │
+│ 2. FR-014: no test for a rejection                   │
 ├──────────────────────────────────────────────────────┤
 │ Blocked by an open question <4>                      │
 │ Q-009 blocks FR-012: where the rubric lives.         │
 │ Richard Hightower, by 2027-01-31                     │
 ├──────────────────────────────────────────────────────┤
 │ Ask for first <5>                                    │
-│ 1. A time limit for FR-018                           │
+│ 1. Who judges FR-004's two meanings                  │
 └──────────────────────────────────────────────────────┘
 ```
 

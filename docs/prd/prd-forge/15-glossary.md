@@ -440,8 +440,8 @@ terms:
       The point at which the approved set reaches the engineering lead who has to
       build from it. Journey J-002 starts there: its trigger is that the PRD has
       been approved for a release, and its first stage, ST-009, takes the approved
-      set and its buildability report. A set is handed over only once it is
-      approved.
+      set and the report of its buildability review. A set is handed over only
+      once it is approved.
     see_also:
       - approver
       - candidate architecture decision
@@ -457,6 +457,67 @@ terms:
       A requirement's wait on an open question. A requirement that waits on a
       question names the question, and the question lists the requirement in what
       it blocks.
+  - term: Backlog
+    meaning: >-
+      The features, epics and stories a delivery lead derives from an approved
+      set, in stages ST-007 and ST-008 of journey J-002. Every level of it names
+      the id it came from.
+    see_also:
+      - feature
+      - epic
+      - story
+    not: >-
+      The set. The set says what the product must do; the backlog is derived from
+      it once it is approved.
+  - term: Feature
+    meaning: >-
+      The backlog item for one journey stage, carrying the ids of the requirements
+      on that stage.
+    see_also:
+      - backlog
+      - stage
+    not: >-
+      A requirement. A feature holds every requirement of one stage.
+  - term: Epic
+    meaning: >-
+      A group of backlog items scoped by the release line.
+    see_also:
+      - backlog
+      - release line
+  - term: Story
+    meaning: >-
+      The backlog item for one requirement, in the persona's own words, with the
+      requirement's acceptance criteria as its own.
+    see_also:
+      - backlog
+      - requirement
+      - acceptance criteria
+    not: >-
+      A requirement. The requirement is in the set; the story is derived from it.
+  - term: Expert
+    meaning: >-
+      The person with the domain knowledge, persona PER-001, who answers the
+      interviews and owns the set. The expert decides what the product must do,
+      the domain's own terms and the state of each section, and is the only one
+      who may state a domain fact as true.
+    see_also:
+      - domain
+      - interview
+      - sponsor
+    not: >-
+      The approver. The expert approves their own set only when no sponsor
+      exists, under TR-001.
+  - term: Sponsor
+    meaning: >-
+      The person who commits budget and a date, persona PER-003, and who approves
+      the set for a release under TR-001. The sponsor may approve, approve with
+      conditions, or reject.
+    see_also:
+      - approver
+      - expert
+    not: >-
+      The expert. Where no sponsor exists, the expert approves their own set under
+      TR-001, and the change log records that no separate approver existed.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -491,6 +552,11 @@ links:
 | Baseline | A target |
 | Version | A release of the product |
 | Dependency | A requirement's wait on an open question |
+| Backlog | The set |
+| Feature | A requirement |
+| Story | A requirement |
+| Expert | The approver |
+| Sponsor | The expert |
 
 Seventeen terms were added at version 0.2.0. Five of them existed only as
 `see_also` pointers to nothing, which is this set's own named blocking defect; the

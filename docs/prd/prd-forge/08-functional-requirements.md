@@ -180,9 +180,9 @@ requirements:
       every id, priority and link the team builds from is the one they read.
     acceptance:
       - >-
-        Given a drafted section, when the expert reviews it, then what they are
-        shown reads as written English, in sentences and short tables, and they
-        can judge every item in the section from it alone.
+        Given a drafted section, when the expert reviews it, then every item is
+        shown in a sentence or in a table row under named column headings, and no
+        item is shown only as a bare list of names and values.
       - >-
         Given an item whose id, priority or link differs between what the team
         builds from and what the expert reads in the prose, when the section is
@@ -409,14 +409,15 @@ requirements:
       See the set as it now stands after it was changed outside the view in front
       of them
     outcome: >-
-      What they read is never older than the last change written to the set.
+      After they ask to refresh, what they read is the set as it now stands.
     acceptance:
       - >-
         Given a section changed after they opened the set, when they ask to
-        refresh, then that section shows its new text and its new state.
+        refresh, then within 10 seconds that section shows its new text and its
+        new state.
       - >-
-        Given a section that is graded again while the set is open, when the new
-        grade is written, then the new grade is shown without them asking.
+        Given a section that is graded again while the set is open, when they ask
+        to refresh, then within 10 seconds the new grade is shown.
       - >-
         Given no set existed when they looked, when a set is written and they ask
         to refresh, then every section of it is listed.
@@ -475,8 +476,8 @@ renumbered, so they sit at the end rather than in stage order.
 
 ## A judgement call worth challenging
 
-FR-002, FR-008 and FR-013 refer to "the set", "the section", "written English"
-and "the root document". A reviewer may read those as naming an output format and
+FR-002, FR-008 and FR-013 refer to "the set", "the section", "a table row" and
+"the root document". A reviewer may read those as naming an output format and
 therefore failing test 5. The judgement taken here is that a written
 specification is the product's subject, not its delivery technology, so these
 words name the artifact rather than the mechanism. What is deliberately absent
