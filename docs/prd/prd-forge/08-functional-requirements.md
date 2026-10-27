@@ -45,8 +45,8 @@ requirements:
     acceptance:
       - >-
         Given a set where four section documents are drafted and thirteen are
-        untouched, when the expert asks where things stand, then they see all
-        seventeen section documents with each one's state, and the untouched ones
+        pending, when the expert asks where things stand, then they see all
+        seventeen section documents with each one's state, and the pending ones
         are shown as not started rather than omitted.
       - >-
         Given a section that has been graded, when the expert sees the set's state,
@@ -177,17 +177,16 @@ requirements:
     capability: Read the drafted section as prose rather than as a filled-in form
     outcome: >-
       They can judge from the prose alone whether it says what they meant, and
-      every id, priority and link the team builds from is the one they read.
+      no id, priority or link is stated two different ways in the set.
     acceptance:
       - >-
         Given a drafted section, when the expert reviews it, then every item is
         shown in a sentence or in a table row under named column headings, and no
         item is shown only as a bare list of names and values.
       - >-
-        Given an item whose id, priority or link differs between what the team
-        builds from and what the expert reads in the prose, when the section is
-        read, then the expert is told of the difference rather than it being
-        silently resolved.
+        Given an id, priority or link that two places in the set state
+        differently, when the section is read, then the expert is told of the
+        difference rather than it being silently resolved.
     priority: should
     shown_in: screen
     journey_stage: ST-003

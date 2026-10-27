@@ -27,13 +27,17 @@ changes:
       holds no constraints.
       Its rule lives in TR-005 and FR-006, and its id is not reused. The
       constraints section may now be empty. After the 0.9.0 regrade, FR-008
-      states the expert's need with no second form of a section, FR-012 reports
+      states the expert's need, FR-012 reports
       a requirement's wait on an open question, and the glossary defines
       interview, handover, and dependency and names no storage or drawing
       format. After the second regrade, FR-018 shows a changed section and a new
       grade within 10 seconds of a request to refresh, FR-008 tests that every
       item is shown in a sentence or a table row, and the glossary defines
-      backlog, feature, epic, story, expert, and sponsor. The set states its
+      backlog, feature, epic, story, expert, and sponsor. After the third
+      regrade, FR-008 reports an id, priority or link that two places in the
+      set state differently, FR-002 calls the first state pending, and the
+      glossary says that the expert sets a section final under TR-002. The set
+      states its
       versioning policy before 1.0. This is a minor version because the policy
       and the evidence are new content.
     sections:
@@ -221,7 +225,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; the versioning policy |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; FR-008 checks the set for one item stated two ways; final set by the expert; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |

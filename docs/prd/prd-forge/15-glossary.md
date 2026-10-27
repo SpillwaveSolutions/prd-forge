@@ -202,9 +202,11 @@ terms:
   - term: State
     meaning: >-
       Where a section stands, one of four in this order: `pending` (not yet
-      interviewed), `draft` (written), `review` (ready for someone else to read),
-      `final` (approved). A section reaches `review` at a score of 70 or more with
-      no blocking defects, and `final` only with an approval recorded.
+      interviewed, and shown to the expert as not started), `draft` (written),
+      `review` (ready for someone else to read), `final` (decided by the expert).
+      A section reaches `review` at a score of 70 or more with no blocking
+      defects. It reaches `final` when the expert sets it final under TR-002.
+      Approval under TR-001 covers the whole set, not one section.
     see_also:
       - threshold
       - blocking defect
