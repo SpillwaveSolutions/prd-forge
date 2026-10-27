@@ -92,7 +92,7 @@ requirements:
         Given any section's interview, when the expert is asked for input, then at
         most two questions are put to them at once.
       - >-
-        Given an answer that leaves a field the section needs still unfillable, or
+        Given an answer that leaves something the section needs still unanswered, or
         that could be written into the section in two ways differing in meaning,
         when it is received, then a follow-up is asked about that answer before
         the next topic is opened.
@@ -390,9 +390,9 @@ requirements:
         previous section, then the section after or before it in reading order is
         shown, and at the first or the last section the view does not change.
       - >-
-        Given a section that cites an ID another section defines, such as Q-001,
-        when they follow that ID, then the section that defines it is shown and
-        the ID is named above it.
+        Given a section that cites an id another section defines, such as Q-001,
+        when they follow that id, then the section that defines it is shown and
+        the id is named above it.
       - >-
         Given they have moved from a section to three other things in the set, one
         after another, when they ask to go back three times, then they see each

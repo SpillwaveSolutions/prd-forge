@@ -520,6 +520,87 @@ terms:
     not: >-
       The expert. Where no sponsor exists, the expert approves their own set under
       TR-001, and the change log records that no separate approver existed.
+  - term: Engineering lead
+    meaning: >-
+      The person who has to build from the approved set, persona PER-002. The
+      engineering lead receives the set at handover, records their own verdict on
+      its buildability review in ST-009, and decides each candidate architecture
+      decision.
+    see_also:
+      - handover
+      - buildability review
+      - candidate architecture decision
+    not: >-
+      The expert. The engineering lead was not in the interview and builds from
+      what the set says, not from what the expert meant.
+  - term: Delivery lead
+    meaning: >-
+      The person who turns an approved set into a backlog and runs the
+      story-mapping workshop, persona PER-004, in stages ST-007 and ST-008.
+    see_also:
+      - backlog
+      - engineering lead
+    not: >-
+      The engineering lead. The delivery lead plans the work from the set, and
+      the engineering lead builds it.
+  - term: Persona
+    meaning: >-
+      A named role from section 4, such as PER-001, the expert. Every
+      requirement, journey, and decision rule names the persona it serves or who
+      acts.
+    see_also:
+      - expert
+      - journey
+  - term: Item
+    meaning: >-
+      One numbered entry in a section with its own id, such as a problem, a
+      persona, a stage, a requirement, or an open question. A section is made of
+      its items and the prose around them.
+    see_also:
+      - id
+      - section
+    not: >-
+      A line or a field of an entry. A requirement and all its acceptance
+      criteria are one item.
+  - term: Id
+    meaning: >-
+      The label that names one item, such as FR-008 or Q-001. Each id is unique
+      in the set, and ids are never renumbered or reused.
+    see_also:
+      - item
+      - link
+  - term: Link
+    meaning: >-
+      A reference from one item to another by its id, such as the journey stage a
+      requirement serves or the requirements an open question blocks.
+    see_also:
+      - id
+  - term: Priority
+    meaning: >-
+      How much a requirement or a scenario matters to a release, stated in MoSCoW
+      terms. Only the expert gives a priority.
+    see_also:
+      - moscow
+  - term: Teaching
+    meaning: >-
+      What the expert is told about a section before its interview: what it is,
+      why it matters, and what belongs in it, in no more than ten lines and with
+      an example from the expert's domain.
+    see_also:
+      - interview
+      - domain
+  - term: Decider
+    meaning: >-
+      The one named person who answers an open question by its date.
+    see_also:
+      - open question
+  - term: Release
+    meaning: >-
+      A numbered group of journey stages delivered together, such as REL-001,
+      with its exit criteria. The first release holds exactly the release line.
+    see_also:
+      - release line
+      - scope
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -559,6 +640,9 @@ links:
 | Story | A requirement |
 | Expert | The approver |
 | Sponsor | The expert |
+| Engineering lead | The expert |
+| Delivery lead | The engineering lead |
+| Item | A line or a field of an entry |
 
 Seventeen terms were added at version 0.2.0. Five of them existed only as
 `see_also` pointers to nothing, which is this set's own named blocking defect; the
