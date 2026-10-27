@@ -1,36 +1,34 @@
 ---
 doc: ../08-wireframes.md
-score: 78
-blocking: 2
+score: 81
+blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 84
+previous_score: 78
 ---
 
-# Why wireframes scored 78
+# Why wireframes scored 81
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 3 | FR-020 is listed on WF-001, but no mark draws it. |
-| Traceability | 3 | WF-010 draws navigation and refresh but lists only FR-002 and FR-009. |
-| The person's view | 3 | WF-003 mark 4 shows content no FR-009 criterion produces. WF-006 is a report that holds choices. |
-| Real content | 3 | WF-008 says "ten dimensions", and the journeys rubric has twelve. WF-001 shows old scores with no version label. |
-| Marks explained | 4 | Every sketch numbers its marks in order, with one `shows` line each. |
-| No design | 2 | The body names a drawing tool. |
+| Coverage | 4 | All ten `screen` and `report` requirements are drawn. FR-020 is mark 6 on WF-001. |
+| Traceability | 3 | WF-010 draws navigation and refresh but lists only FR-002 and FR-009. WF-001 mark 3 shows FR-009, which WF-001 does not list. |
+| The person's view | 3 | WF-003 mark 4 shows content no FR-009 criterion produces. WF-006 is a report that holds a choice. |
+| Real content | 2 | WF-008 says "ten dimensions", and the journeys rubric has twelve. WF-001 mark 6 is an example that cannot occur, because section 6 states no priorities. WF-005 and WF-006 show 0.4.0 with no snapshot label. |
+| Marks explained | 3 | WF-004's first `shows` line promises more than its mark shows. WF-001 mark 5 links to an id defined in the open section. |
+| No design | 4 | No tool, color, font, platform, or component library is named. |
 | States | 3 | WF-007, WF-009, and WF-010 are states with no `state_of`. |
 | Every control earns its place | 4 | Every control traces to a requirement. |
 
 ## Blocking defects
 
-- FR-020 is a `screen` requirement that no wireframe draws. WF-001 lists it, but no mark shows a difference between two statements of an id, priority, or link.
-- The body names a technology: "Each sketch is also drawn in PlantUML Salt for the printed PRD."
+None.
 
 ## How to raise the grade
 
-- **Coverage (3 to 4):** Draw FR-020: where the expert sees the difference, which two places, and which two values.
-- **No design (2 to 4):** Drop the tool name from the body.
-- **States (3 to 4):** Set `state_of` on WF-007, WF-009, and WF-010.
+- **Real content (2 to 4):** Draw a difference the set could hold, label old snapshots with their version, and correct the dimension count.
+- **Traceability and states (3 to 4):** Add the missing requirements to WF-010 and WF-001, and set `state_of` on WF-007, WF-009, and WF-010.
 
 ## Notes
 
-- WF-004 misquotes the functional requirements rubric.
+- WF-001 skips sections 2 to 4 with no ellipsis.
