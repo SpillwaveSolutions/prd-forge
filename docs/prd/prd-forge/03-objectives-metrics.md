@@ -75,7 +75,7 @@ links:
 ## Why there are no baselines
 
 All three baselines are unknown, and each has a matching open question with a
-decider and a date. That is deliberate and it is the honest state: this product
+decider and a date. This is deliberate and it is the honest state: this product
 has not run against a real engagement yet. The targets above are therefore
 intentions, not commitments, and section 15 should record the moment each
 baseline arrives and each target is either confirmed or changed.
@@ -87,4 +87,4 @@ than one with an admitted gap, because the invented one gets planned against.
 
 Worth asking, and recorded here because the answer is not nothing: a single
 experienced product manager embedded with the expert would move all three. The
-bet is on availability and cost, not on beating that person — see section 2.
+bet is on availability and cost, not on beating that person. See section 2.

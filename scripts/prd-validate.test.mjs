@@ -242,7 +242,7 @@ test('a criterion that names a control, or is not Given/When/Then, draws a warni
 })
 
 test('wireframe marks run 1 to n and match the drawing', () =>
-  failsWith('08-wireframes.md', t => t.replace('losing their place. See FR-009 › <5>', 'losing their place. See FR-009 › <6>'), /WF-001 has marks 1, 2, 3, 4, 6 for 5 shows lines/))
+  failsWith('08-wireframes.md', t => t.replace('losing their place. See FR-009 › <5>', 'losing their place. See FR-009 › <6>'), /WF-001 has marks 1, 2, 3, 4, 6 for 6 shows lines/))
 
 // A constraint with characters that YAML treats as special.
 const C_099 = `  - id: C-099

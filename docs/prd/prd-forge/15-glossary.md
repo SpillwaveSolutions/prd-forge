@@ -330,9 +330,7 @@ terms:
       conditions, or reject, and the decision is recorded in section 15 against a
       named version. An approver who approves with conditions approves the set
       on the conditions they state, and the set reads as approved with conditions
-      until that same approver clears every one. Section 10 uses the same word
-      for each trust rule's decider, so its Approver column names who decides
-      that one rule, not who approves the set.
+      until that same approver clears every one.
     see_also:
       - condition
       - root document
@@ -640,9 +638,15 @@ terms:
       - domain
   - term: Decider
     meaning: >-
-      The one named person who answers an open question by its date.
+      The one named person who makes one decision: who answers an open question
+      by its date, or who decides under one trust rule in section 10, whose table
+      names that person in its Decider column.
     see_also:
       - open question
+      - trust rule
+    not: >-
+      The approver. The approver decides only whether the whole set is approved
+      for a release, under TR-001, and is the decider of that one rule.
   - term: Release
     meaning: >-
       A numbered group of journey stages delivered together, such as REL-001,

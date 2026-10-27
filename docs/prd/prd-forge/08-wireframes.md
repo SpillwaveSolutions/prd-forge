@@ -24,6 +24,7 @@ wireframes:
       - Each section's grade and blocking count; opening it shows why
       - The section itself, as prose
       - An ID that another section defines opens that section
+      - Each place where the set states one id, priority, or link two ways, with both values, and each place can be followed
   - id: WF-002
     title: A new set, before the first interview
     type: screen
@@ -146,13 +147,13 @@ review that finds gaps, which SC-005 names; and the return after a week away,
 which SC-002 names.
 
 The numbered marks in each sketch are explained, in order, by its `shows` list.
-Each sketch is also drawn in PlantUML Salt for the printed PRD.
+Each sketch is also drawn for the printed PRD.
 
 ## WF-001 The set with one section open
 
 Illustration, not a design. Illustrates FR-002, FR-008, FR-017, FR-018, and FR-020. PER-001 sees it at ST-003.
 
-The expert reads a drafted section with the whole set beside it. Every graded section shows its score and its blocking count, so what is weak is visible without opening anything.
+The expert reads a drafted section with the whole set beside it. Every graded section shows its score and its blocking count, so what is weak is visible without opening anything. When two places in the set state one id, priority, or link differently, mark 6 lists each difference with both values. The difference drawn is an example, not a fact of this set.
 
 ```wireframe
 ┌─ prd-forge ──────────────────────────────────────────┐
@@ -172,6 +173,9 @@ The expert reads a drafted section with the whole set beside it. Every graded se
 │ in front of them to any other section without        │
 │ losing their place. See FR-009 › <5>                 │
 │ …                                                    │
+├──────────────────────────────────────────────────────┤
+│ Differs <6>                                          │
+│ FR-008 priority: should here, must in section 6 ›    │
 └──────────────────────────────────────────────────────┘
 ```
 

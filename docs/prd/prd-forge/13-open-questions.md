@@ -194,7 +194,7 @@ dated after the release it blocks until 0.2.0 moved it to 2027-01-31; it is a
 two-day question and there was no defence for asking it late. If showing
 a sponsor a grade reduces their confidence rather than raising it, then FR-013 is
 wrong and the grading becomes an author's private tool rather than part of the
-approval. That is a cheap two-day question and it should be asked early.
+approval. Q-005 is a cheap two-day question, and it should be asked early.
 
 **Q-008 tests test 5.** If engineering leads read the absence of technology as
 incompleteness, the discipline this whole product enforces is a liability, and

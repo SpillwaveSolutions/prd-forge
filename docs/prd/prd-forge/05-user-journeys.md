@@ -263,8 +263,9 @@ nothing written. Stages ST-001 to ST-006.
 | ST-005 Sees what a team could not build | Domain expert | Is it ready for someone who will commit |
 | ST-006 Approver approves for a release | Sponsor or approver | Approve, approve with conditions, or reject |
 
-ST-002 to ST-004 are a loop, run once per section. That is the whole product: the
-expert is taught, asked, shown a draft, shown a grade, and asked one more thing.
+ST-002 to ST-004 are a loop, run once per section. The loop is the whole
+product: the expert is taught, asked, shown a draft, shown a grade, and asked one
+more thing.
 
 End state: approved at a named version, every section graded with nothing
 blocking, every open question owned and dated, and no buildability gap left that

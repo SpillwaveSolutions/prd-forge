@@ -117,7 +117,7 @@ links:
 | --- | --- | --- | --- |
 | REL-001 | Single-expert PRD authoring | ST-001..ST-006 | 2027-03-31 |
 | REL-002 | Backlog derivation | ST-009, ST-007, ST-008 | 2027-06-30 |
-| REL-003 | More than one author | — | none |
+| REL-003 | More than one author | none | none |
 
 ## Why this order
 
@@ -125,7 +125,7 @@ REL-001 is exactly the release line in section 6. It is the smallest release in
 which anyone gets anything: an expert reaching an approved, reviewed PRD.
 
 REL-002 is deferred rather than cut because the PRD REL-001 produces already has
-to carry everything a backlog needs — FR-012 checks precisely that. Deferring the
+to carry everything a backlog needs, and FR-012 checks precisely that. Deferring the
 derivation costs nothing; deferring what it needs would have cost a rewrite.
 
 REL-003 waits for evidence that one author's path works at all. Building for two
@@ -145,11 +145,12 @@ the reason.
 
 ## The schedule problem, stated plainly
 
-REL-001 targets 2027-03-31. D-002 and D-003 in section 11 — the ten observed
-experts and the three engineering leads — are also dated 2027-03-31 and are only
-*requested*. So REL-001 ships at the same moment the assumptions beneath it are
-first tested, not after. Either REL-001 moves, or it ships knowingly as an
-experiment. That is a decision for the sponsor at TR-001 and it is not made here.
+REL-001 targets 2027-03-31. D-002 and D-003 in section 11, the ten observed
+experts and the three engineering leads, are also dated 2027-03-31 and are only
+*requested*. As a result, REL-001 ships at the same moment the assumptions
+beneath it are first tested, not after. Either REL-001 moves, or it ships
+knowingly as an experiment. The sponsor makes this decision under TR-001, and it
+is not made here.
 
 ## Not in this section, deliberately
 

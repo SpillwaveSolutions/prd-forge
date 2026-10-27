@@ -107,7 +107,7 @@ Everything is designed around someone with deep domain knowledge, no product
 training, and a burst of intense use followed by months away. Two consequences
 run through the rest of this PRD: nothing may assume prior knowledge of product
 vocabulary, and the work must survive being put down for a week and picked back
-up — see FR-015 and NFR-004.
+up. See FR-015 and NFR-004.
 
 ## Who is deliberately not a persona
 

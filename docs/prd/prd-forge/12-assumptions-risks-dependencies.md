@@ -195,7 +195,7 @@ rule imposed from outside.
 
 **R-003 is not closed.** The mitigations listed reduce it and do not solve it.
 Nothing in this product checks whether the product being specified should exist.
-That is stated here rather than hidden behind a mitigation that sounds adequate.
+This section states it rather than hide it behind a mitigation that sounds adequate.
 
 ## Dependencies
 
@@ -206,6 +206,6 @@ That is stated here rather than hidden behind a mitigation that sounds adequate.
 | D-003 | 3 engineering leads to read a set cold | Early customers | 2027-03-31 | requested |
 
 D-002 and D-003 are both merely requested, and both are dated on R1's target day in
-section 13. That is a real schedule problem: R1 ships on the day the assumptions
+section 13. This is a real schedule problem: R1 ships on the day the assumptions
 it rests on are due to be tested, so it cannot use the results. Recorded, not
 resolved.

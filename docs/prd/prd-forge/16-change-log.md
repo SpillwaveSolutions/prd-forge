@@ -49,7 +49,9 @@ changes:
       FR-008, both `should` on the expert's decision. The glossary cites a source
       for MoSCoW, Given/When/Then, story, epic, feature, story map, backbone, and
       spike, says `wont` means won't have this time, and defines segment, buyer,
-      status quo, delegated, and definition of done. The set states its
+      status quo, delegated, and definition of done. WF-001 draws FR-020's list
+      of differences, section 10 calls each rule's decider the Decider, and the
+      versioning policy applies from 0.9.0 onward. The set states its
       versioning policy before 1.0. This is a minor version because the policy
       and the evidence are new content.
     sections:
@@ -241,7 +243,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; FR-008 checks the set for one item stated two ways; final set by the expert; ten more glossary terms; FR-019 and FR-020 split out; sources cited for standard terms; the versioning policy |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; FR-008 checks the set for one item stated two ways; final set by the expert; ten more glossary terms; FR-019 and FR-020 split out; sources cited for standard terms; the versioning policy; FR-020 drawn in WF-001; Decider for trust rules |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
@@ -262,12 +264,16 @@ rules:
 - A change to the release line or to the golden thread takes the set to the
   next major version. From 0.x, the next major version is 1.0.
 
-The expert set this policy at 0.9.0. Two earlier versions do not follow it, and
+The expert set this policy at 0.9.0, and it applies from 0.9.0 onward. Earlier
+version numbers stay as recorded. Two earlier versions do not follow it, and
 neither is reissued:
 
 - 0.8.1 added stage ST-009 and moved items between sections. Under this
   policy it would have been the next minor version.
 - 0.2.0 changed the golden thread. Under this policy it takes the set to 1.0.
+
+Version 0.5.0 changed the product and not this PRD, so the log has no entry for
+it.
 
 ## 0.2.0, what the grading changed
 
@@ -302,4 +308,5 @@ forward:
 ## Approvals
 
 None sought. This set is at `draft` and has not been offered for approval. It
-cannot reach `final` without an approval recorded here, per TR-001.
+cannot be approved for a release without an approval recorded here, under
+TR-001. A section reaches `final` when the expert sets it final, under TR-002.

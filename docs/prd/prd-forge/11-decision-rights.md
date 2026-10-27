@@ -22,8 +22,8 @@ decisions:
       The summary, the scope, every section's state and grade, every blocking
       defect, and every open question with its decider and date.
     escalation: >-
-      No substitute approver, and approval waits. Where no sponsor exists at all —
-      a solo expert, or an internal tool with no PER-003 — the expert approves
+      No substitute approver, and approval waits. Where no sponsor exists at all,
+      such as a solo expert or an internal tool with no PER-003, the expert approves
       their own set under this rule, shown the same evidence, and the change log
       records that no separate approver existed. A set is never treated as approved
       because its score is high.
@@ -280,7 +280,7 @@ links:
 
 ![Who decides what](diagrams/decision-rights.svg)
 
-| ID | Decision | Approver | Agent may decide | Never delegated |
+| ID | Decision | Decider | Agent may decide | Never delegated |
 | --- | --- | --- | --- | --- |
 | TR-001 | Approve a PRD for a release | PER-003 | no | yes |
 | TR-002 | Set a section to final | PER-001 | no | yes |
@@ -299,8 +299,8 @@ links:
 Every decision named in a stage of section 5 appears here. TR-007 to TR-013 were
 added at version 0.2.0 to close that: five release-line stage decisions and both
 of J-002's had no rule, which meant gates an engineering team would have had to
-invent. TR-013 covers the one in the middle of the loop — the expert accepting
-that a draft says what they meant — which is distinct from scoring it (TR-003),
+invent. TR-013 covers the one in the middle of the loop, the expert accepting
+that a draft says what they meant, which is distinct from scoring it (TR-003),
 from leaving it at draft (TR-009) and from setting it final (TR-002).
 
 ## The shape of the trust boundary
@@ -311,12 +311,12 @@ TR-003 produces a document's score, TR-006 judges whether it can be built from, 
 judges whether a backlog can be mapped from it. All three produce evidence for a
 person. None changes a document, and none can set a state.
 
-Everything that commits anyone to anything — approving, finalising, choosing
-scope, asserting a fact — is never delegated. TR-005 is the strictest: a fact
+Everything that commits anyone to anything, such as approving, finalising,
+choosing scope, or asserting a fact, is never delegated. TR-005 is the strictest: a fact
 nobody can stand behind is not written at all, by anyone.
 
 The delegable assessments all carry the same two obligations: **quote the
 document for every claim**, and **drop any finding the document does not
 support**. An assessment that cannot be refuted by pointing at the text is not
-evidence, it is an assertion, and the expert will correctly stop believing it —
-see R-002 in section 11.
+evidence, it is an assertion, and the expert will correctly stop believing it.
+See R-002 in section 11.
