@@ -111,7 +111,7 @@ requirements:
     acceptance:
       - >-
         Given an expert who says they are done with a section, when the section
-        does not yet pass its rubric, then it is written anyway at draft, and what
+        does not yet meet the gate, then it is written anyway at draft, and what
         is missing is recorded as an open question or named plainly to them.
       - >-
         Given an expert who ends a section early, when they are told what was left
@@ -175,7 +175,7 @@ requirements:
       They can judge from the prose alone whether it says what they meant.
     acceptance:
       - >-
-        Given a drafted section, when the expert reviews it, then every item is
+        Given a drafted section, when the expert reads it, then every item is
         shown in a sentence or in a table row under named column headings, and no
         item is shown only as a bare list of names and values.
     priority: should
@@ -322,6 +322,10 @@ requirements:
         Given an approved set that is then changed, when the change is written,
         then a new version is recorded and the earlier approval is not represented
         as covering it.
+      - >-
+        Given an approver who rejects the set, when the expert records it, then
+        the rejection, its reason, the approver, and the date are recorded
+        against the version, and the set reads as not approved.
     priority: must
     shown_in: report
     journey_stage: ST-006
@@ -347,7 +351,7 @@ requirements:
         they resume that section, then that question is not put to them again.
     priority: should
     shown_in: conversation
-    journey_stage: ST-001
+    journey_stage: ST-004
     objective: O-002
   - id: FR-016
     user: PER-001
@@ -421,7 +425,7 @@ requirements:
     objective: O-002
   - id: FR-019
     user: PER-001
-    capability: Stop being asked once the section would already pass
+    capability: Stop being asked once the section would already meet the gate
     outcome: >-
       The interview ends when the section has what it needs, so they are not asked
       questions it no longer needs.
@@ -487,11 +491,11 @@ links:
 | FR-012 | PER-001 | See what a team could not build from it | must | ST-005 |
 | FR-013 | PER-003 | See what is approved and what is open, on one page | must | ST-006 |
 | FR-014 | PER-003 | Approve, with conditions, against a version | must | ST-006 |
-| FR-015 | PER-001 | Stop and resume without being asked anything twice | should | ST-001 |
+| FR-015 | PER-001 | Stop and resume without being asked anything twice | should | ST-004 |
 | FR-016 | PER-001 | Refute a finding and have it withdrawn | should | ST-003 |
 | FR-017 | PER-001 | Move to any section without losing their place | should | ST-003 |
 | FR-018 | PER-001 | See the set as it now stands | should | ST-003 |
-| FR-019 | PER-001 | Stop being asked once the section would pass | should | ST-002 |
+| FR-019 | PER-001 | Stop being asked once the section would meet the gate | should | ST-002 |
 | FR-020 | PER-001 | Be told when the set states one item two ways | should | ST-003 |
 
 Every release-line stage has at least one `must` requirement. Ten of the 20
@@ -523,7 +527,7 @@ mode of their own, and each needs its own priority. The expert set both to
 ## A judgement call worth challenging
 
 FR-002, FR-008 and FR-013 refer to "the set", "the section", "a table row" and
-"the root document". A reviewer may read those as naming an output format and
+"the root document". A reader may read those as naming an output format and
 therefore failing test 5. The judgement taken here is that a written
 PRD is the product's subject, not its delivery technology, so these
 words name the artifact rather than the mechanism. What is deliberately absent
@@ -532,7 +536,7 @@ or what reviews the set, and what the documents are stored as. Those are in
 section 6 as non-goals, in section 11 as dependencies, or nowhere.
 
 FR-001, FR-009, FR-013 and FR-014 each read as more than one capability, and a
-reviewer has called them out for it. They are left whole deliberately: each is one
+grading pass has called them out for it. They are left whole deliberately: each is one
 act with several parts, and a build delivering half of one would be visibly
 unfinished rather than arguably done. FR-015 and FR-016 were split precisely
 because they were not like that, each had a failure mode the other half could

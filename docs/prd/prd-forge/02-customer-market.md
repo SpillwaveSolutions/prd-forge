@@ -52,10 +52,10 @@ competitors:
       ChatPRD docs, https://www.chatprd.ai/docs/writing-your-first-prd, accessed
       2026-10-27.
     our_edge: >-
-      Each section is graded against a published rubric, and before anyone
-      estimates, the buyer holds a report that names each release-line stage no
-      requirement covers and quotes each requirement an engineer could not write
-      a test from.
+      Before anyone estimates, the buyer holds a report that names each
+      release-line stage no requirement covers and quotes each requirement an
+      engineer could not write a test from. The buyer can check a ChatPRD draft
+      for the same report.
   - name: A blank PRD template in the team's document tool
     kind: indirect
     offer: >-
@@ -69,19 +69,19 @@ competitors:
     offer: >-
       Fluent prose on any section, instantly, with no setup at all.
     our_edge: >-
-      Fluency is the failure mode in P-003. After one engagement, the buyer holds a
-      report, made before anyone has estimated, that names each release-line stage
-      no requirement covers and quotes each requirement an engineer could not write
-      a test from.
+      Fluency is the failure mode in P-003. After one engagement, the buyer sees a
+      grade and its blocking defects for each section, so a fluent section that
+      cannot be built is marked before approval.
   - name: Contracting a product manager without the domain for the engagement
     kind: indirect
     offer: >-
       Genuine product judgement, and someone accountable for the outcome.
     our_edge: >-
-      The PRD is written by the person who holds the domain knowledge, so no
-      domain fact passes through a second person, and the buyer sees each
-      section's grade and blocking defects before approving.
-  - name: The status quo - a smart practitioner, a document, and a willing engineer
+      The PRD is written by the person closest to the domain knowledge, and the
+      buyer sees each section's grade and blocking defects before approving. In
+      S-001 the consultant already stands between the client and the page, so
+      the edge there is availability and cost, not fewer hands.
+  - name: "The status quo: a smart practitioner, a document, and a willing engineer"
     kind: status-quo
     offer: >-
       No tool, no cost, no adoption, and it does sometimes work.
@@ -91,10 +91,12 @@ competitors:
       expert could not supply as an open question with a named decider and a
       date, so they can estimate without first interviewing the author.
 why_we_win: >-
-  Against the cost of contracting a product manager for the engagement, the buyer
-  gets a PRD written by the person who holds the domain knowledge, with every gap
-  an engineer could not build from named before anyone estimates. The day rate
-  that comparison rests on is Q-013.
+  For a consultancy, S-001, the consultant's billable hours on a PRD end in a set
+  an engineer can estimate from without coming back with questions. For a
+  regulated organization, S-002, the practitioner writes the PRD themselves
+  instead of the organization contracting a product manager without the domain.
+  In both, the buyer sees before approving which parts a team could not build
+  from. The day rate behind the S-002 comparison is Q-013.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-problem-opportunity, kind: problem-opportunity, path: ./01-problem-opportunity.md, title: Problem and opportunity }
@@ -121,15 +123,17 @@ count and its source.
 
 Product teams entering a domain they do not know were segment S-003 until 0.8.1.
 They already employ the product skill and want the domain, which this product
-does not supply, so section 6 now records them as out of scope for REL-001.
+does not supply, so section 6 records them as a non-goal.
 The id S-003 is not reused.
 
 ## Why we win
 
-Against the cost of contracting a product manager for the engagement, the buyer
-gets a PRD written by the person who holds the domain knowledge, with every gap
-an engineer could not build from named before anyone estimates. The day rate
-the comparison rests on is Q-013.
+For a consultancy, S-001, the consultant's billable hours on a PRD end in a set
+an engineer can estimate from without coming back with questions. For a
+regulated organization, S-002, the practitioner writes the PRD themselves instead
+of the organization contracting a product manager without the domain. In both,
+the buyer sees before approving which parts a team could not build from. The day
+rate behind the S-002 comparison is Q-013.
 
 **Honest weakness.** Against a product manager who already holds the domain, we
 have no quality edge, only availability and cost. A skeptical buyer is right to

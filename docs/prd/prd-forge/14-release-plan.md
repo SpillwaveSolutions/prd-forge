@@ -61,6 +61,7 @@ releases:
     depends_on:
       - D-002
       - D-003
+      - Q-019
     exit_criteria:
       - >-
         At least 4 of the 5 pilot PRDs, 80%, pass the buildability review on first
@@ -83,8 +84,8 @@ releases:
         A delivery lead can walk into a story-mapping workshop with features and a
         release line already derived from the approved PRD.
       - >-
-        Every story names the requirement id it came from, so nobody has to ask why
-        it exists.
+        A delivery lead sees every story name the requirement id it came from, so
+        nobody has to ask why it exists.
       - >-
         An engineering lead can record their own verdict on whether an approved set
         can be built from, with the report of its buildability review kept beside
@@ -137,7 +138,7 @@ links:
 ## Why this order
 
 REL-001 is exactly the release line in section 6. It is the smallest release in
-which anyone gets anything: an expert reaching an approved, reviewed PRD.
+which anyone gets anything: an expert reaching an approved PRD with its buildability review.
 
 REL-002 is deferred rather than cut because the PRD REL-001 produces already has
 to carry everything a backlog needs, and FR-012 checks precisely that. Deferring the
@@ -162,11 +163,11 @@ the reason.
 ## The schedule problem, stated plainly
 
 REL-001 targets 2027-03-31. D-002 and D-003 in section 11, the ten observed
-experts and the three engineering leads, are also dated 2027-03-31 and are only
-*requested*. As a result, REL-001 ships at the same moment the assumptions
-beneath it are first tested, not after. Either REL-001 moves, or it ships
-knowingly as an experiment. Q-019 asks which, and Richard Hightower decides it
-by 2027-01-31.
+experts and the three engineering leads, are due by 2027-01-31 and are only
+*requested*. The questions they answer are due by 2027-02-28, a month before
+REL-001, so REL-001 can use what they find. If either slips, REL-001 moves or
+ships knowingly as an experiment. Q-019 decides which, and Richard Hightower
+decides it by 2027-01-31.
 
 REL-002 carries no requirements yet. Section 7 holds none for ST-007, ST-008, or
 ST-009, and they are written when REL-002 is planned.

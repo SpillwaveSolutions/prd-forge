@@ -46,7 +46,7 @@ scenarios:
       defects, one journey is marked as the golden thread, and every stage names
       an actor and a decision.
   - id: SC-002
-    branches_from: { scenario: SC-007, step: 3 }
+    branches_from: { scenario: SC-007, step: 5 }
     journey: J-001
     stage: ST-004
     persona: PER-001
@@ -66,7 +66,7 @@ scenarios:
       - They see that section 7 is at draft with two blocking defects, both named
       - They are not asked any question they have already answered
       - They are asked the next question in section 7, in the vocabulary they
-        established in ST-001
+        gave when they began
     expected_outcome: >-
       Work resumes at the first section that is not yet at review, no earlier
       answer is requested again, and the domain vocabulary is unchanged.
@@ -160,9 +160,12 @@ scenarios:
       - They see the two stages that have no requirement behind them, named
       - They see three requirements an engineer could not write a test for, each
         quoted
-      - They see what the reviewer would ask for first, in order
-      - They fix two of them and record the third as an open question with a
-        decider and a date
+      - They see what the buildability review would ask for first, in order
+      - They write a requirement for one of the two stages, and record the other
+        as an open question with a decider and a date
+      - They fix two of the three requirements and record the third as an open
+        question with a decider and a date
+      - They see each section they changed go back to draft, to be graded again
     expected_outcome: >-
       Before anyone has estimated, the report names both release-line stages that
       have no `must` requirement and quotes all three requirements an engineer
@@ -219,15 +222,15 @@ scenarios:
         it re-graded
       - With every section at review, they ask for the buildability review and see
         that no release-line stage lacks a must requirement
-      - They set each section final under TR-002, after its grading pass shows no
-        blocking defect
+      - They set each section final, after its grading pass shows no blocking
+        defect
       - The sponsor reads the root document, sees what is still open and who
         decides each open item, and approves the set at version 1.0.0, which the
         expert records in section 15
     expected_outcome: >-
       Every section is at final, every gap the buildability review found is closed
-      or has a named decider, and the change log records the sponsor's approval
-      against a named version.
+      or has a named decider and a date, and the change log records the sponsor's
+      approval against a named version.
 lifecycles:
   - id: LC-001
     subject: a section of the PRD
@@ -343,11 +346,15 @@ the engineering lead: no engineering lead is in release 1 at all, per OUT-004.
 The priorities follow the requirements. SC-002, SC-004, and SC-008 are
 `should`, because FR-015 and FR-016, which they exercise, are `should`.
 
-SC-001 and SC-007 are first use, and SC-002 is a return after time away.
+SC-001 and SC-007 are first use, and SC-002 is a return after time away. No
+scenario has two experts on one set at once, which OUT-002 defers to a later
+release. A sponsor reading the set while the expert changes it is covered by
+FR-014: the change records a new version that the earlier approval does not
+cover.
 
 The five exceptions are the ones that decide whether this product is trustworthy.
 SC-003 and SC-006 are where a PRD quietly acquires a technology choice
 or an invented fact. SC-004 and SC-008 are where the grading either earns the
-expert's trust or loses it: a reviewer that cannot be refuted is a reviewer
+expert's trust or loses it: a grading pass that cannot be refuted is one
 nobody believes.
 SC-005 is the moment the product is supposed to pay for itself.

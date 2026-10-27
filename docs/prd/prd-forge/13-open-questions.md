@@ -58,47 +58,47 @@ questions:
       Name the register or source per segment, and count. Time-boxed to 3 days.
   - id: Q-005
     question: >-
-      Will a sponsor accept a PRD that carries a machine-produced grade,
-      or does the grade reduce their confidence rather than raise it?
+      Given what three sponsors say about a set shown with and without grades,
+      does FR-013 stay `must`, with each section's grade shown to the sponsor?
     decider: Richard Hightower
     consulted: the first three sponsors
     by: 2027-01-31
     blocks:
       - FR-013
       - TR-001
+      - OUT-003
     spike: >-
       Show three sponsors the same set with and without grades and ask which they
       would approve. Time-boxed to 2 days.
   - id: Q-006
     question: >-
-      How many sections will an expert complete in one sitting before stopping, and
-      which section do they stop at?
+      How many sections does an expert complete in one sitting before stopping?
     decider: Richard Hightower
-    by: 2027-03-31
+    by: 2027-02-28
     blocks:
       - R-004
       - NFR-005
     spike: >-
-      Count in the ten observed sessions from D-002. Time-boxed to 0 extra days,
-      because the sessions already exist.
+      Count in D-002's ten observed sessions, held by 2027-01-31. Time-boxed to 1
+      day after the sessions.
   - id: Q-007
     question: >-
       Does writing the requirements send an expert back to the journeys?
     decider: Richard Hightower
-    by: 2027-03-31
+    by: 2027-02-28
     blocks:
       - ST-004
       - FR-010
     spike: >-
-      Count loop-backs in the ten observed sessions from D-002. Time-boxed to 0
-      extra days, because the sessions already exist.
+      Count loop-backs in D-002's ten observed sessions, held by 2027-01-31.
+      Time-boxed to 1 day after the sessions.
   - id: Q-008
     question: >-
       Does an engineering lead read a PRD that names no technology as disciplined
       or as incomplete?
     decider: Richard Hightower
     consulted: the three engineering leads from D-003
-    by: 2027-03-31
+    by: 2027-02-28
     blocks:
       - A-003
     spike: >-
@@ -120,7 +120,7 @@ questions:
     spike: >-
       List the rubric dimensions of each section and the eleven checks as they
       stand, and have the decider approve that list as release 1's version.
-      Time-boxed to 1 day. Until it is answered, ST-003 and ST-004 can be
+      Time-boxed to 1 day. Until it is answered, ST-002 to ST-005 can be
       scaffolded and not finished.
   - id: Q-010
     question: >-
@@ -147,7 +147,7 @@ questions:
       - FR-014
     answer: >-
       Outside the product, in release 1. The sponsor reads the root document or
-      the exported PDF and gives a decision. The expert records it in section 15
+      an exported copy and gives a decision. The expert records it in section 15
       under FR-014, with the sponsor's name, role, and date. Section 6 records
       ST-006 as outside the product.
     answered: 2026-10-27
@@ -175,23 +175,27 @@ questions:
       Time-boxed to 1 day.
   - id: Q-014
     question: >-
-      Does looping back to the journeys feel like progress or like failure to the
-      expert?
+      Given how experts describe a loop-back in D-002's sessions, does ST-004
+      keep its step that sends the expert back to an earlier section?
     decider: Richard Hightower
-    by: 2027-03-31
+    by: 2027-02-28
     blocks:
       - ST-004
+      - FR-010
     spike: >-
-      Ask each expert after a loop-back, in the ten observed sessions from D-002.
-      Time-boxed to 0 extra days, because the sessions already exist.
+      Ask each expert after a loop-back, in D-002's ten observed sessions, held by
+      2027-01-31. Time-boxed to 1 day after the sessions.
   - id: Q-015
     question: >-
       Who owns the rubric and the eleven derivability checks?
     decider: Richard Hightower
     by: 2027-01-31
+    blocks:
+      - Q-009
     spike: >-
-      List each change the rubric and the checks have had in this set's change log,
-      and name who made each one. Time-boxed to 1 day.
+      Name the person accountable for the content of the rubric and the checks,
+      and confirm with that person that they accept it, before Q-009 fixes a
+      version. Time-boxed to 1 day.
   - id: Q-016
     question: >-
       Must a grade show which version of the rubric it was made against?
@@ -204,16 +208,15 @@ questions:
       readers whether they need to tell the two grades apart. Time-boxed to 1 day.
   - id: Q-017
     question: >-
-      Who owns NFR-006's accessibility and NFR-012's access control, which describe
-      things the non-goals in section 6 say we do not own?
+      Who owns NFR-006's accessibility, given that the product's output is read in
+      places the non-goals in section 6 say we do not own?
     decider: Richard Hightower
     by: 2027-02-28
     blocks:
       - NFR-006
-      - NFR-012
     spike: >-
-      Walk one approval end to end with a real sponsor and record every step they
-      take that the product does not provide. Time-boxed to 3 days.
+      List each place the product's output is read and who controls it, and
+      confirm the owner with that party. Time-boxed to 2 days.
   - id: Q-018
     question: >-
       What does each problem in section 1 cost, as one counted case per problem?
@@ -230,8 +233,8 @@ questions:
       approval. Time-boxed to 2 days.
   - id: Q-019
     question: >-
-      Does REL-001 move to after D-002 and D-003 report, or does it ship on
-      2027-03-31 as an experiment?
+      Does REL-001 keep 2027-03-31 if D-002 and D-003 report by 2027-01-31, and
+      does it move or ship as an experiment if they slip?
     decider: Richard Hightower
     by: 2027-01-31
     blocks:
@@ -239,6 +242,27 @@ questions:
     spike: >-
       Check the dates D-002 and D-003 commit to, and compare them with REL-001's
       target date. Time-boxed to 1 day.
+  - id: Q-020
+    question: >-
+      Which section do experts stop at most often?
+    decider: Richard Hightower
+    by: 2027-02-28
+    blocks:
+      - R-004
+    spike: >-
+      Note the section at each stop in D-002's ten observed sessions, held by
+      2027-01-31. Time-boxed to 1 day after the sessions.
+  - id: Q-021
+    question: >-
+      Who owns NFR-012's access control, given that a set is stored where the
+      organization already stores documents?
+    decider: Richard Hightower
+    by: 2027-02-28
+    blocks:
+      - NFR-012
+    spike: >-
+      List every path by which someone can read a set and who grants access to
+      it, and confirm the owner with that party. Time-boxed to 2 days.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-assumptions-risks-dependencies, kind: assumptions-risks-dependencies, path: ./12-assumptions-risks-dependencies.md, title: "Assumptions, risks and dependencies" }
@@ -253,21 +277,22 @@ links:
 | Q-002 | Today's days from the first question to an approval | R. Hightower | 2027-03-31 | O-002 |
 | Q-003 | Today's share of testable `must` requirements | R. Hightower | 2027-03-31 | O-003 |
 | Q-004 | How many organizations are in each segment | R. Hightower | 2027-06-30 | S-001, S-002 |
-| Q-005 | Will a sponsor accept a graded PRD | R. Hightower | 2027-01-31 | FR-013, TR-001 |
-| Q-006 | Sections completed per sitting, and where they stop | R. Hightower | 2027-03-31 | R-004, NFR-005 |
-| Q-007 | Does writing the requirements send an expert back to the journeys | R. Hightower | 2027-03-31 | ST-004, FR-010 |
-| Q-008 | Disciplined or incomplete, to an engineering lead | R. Hightower | 2027-03-31 | A-003 |
+| Q-005 | Does FR-013 stay `must`, given what sponsors say about grades | R. Hightower | 2027-01-31 | FR-013, TR-001, OUT-003 |
+| Q-006 | Sections completed per sitting | R. Hightower | 2027-02-28 | R-004, NFR-005 |
+| Q-007 | Does writing the requirements send an expert back to the journeys | R. Hightower | 2027-02-28 | ST-004, FR-010 |
+| Q-008 | Disciplined or incomplete, to an engineering lead | R. Hightower | 2027-02-28 | A-003 |
 | Q-009 | Which version of the rubric and the checks release 1 grades against | R. Hightower | 2027-01-31 | FR-004, FR-009, FR-010, FR-011, FR-012, FR-019 |
 | Q-010 | Must an answer survive the session before its section is drafted | R. Hightower | 2027-01-31 | FR-015, NFR-011 |
-| Q-011 | How an approver records a decision (answered) | R. Hightower | 2027-02-28 | FR-014 |
 | Q-012 | Which segment converts first | R. Hightower | 2027-06-30 | S-001, S-002 |
 | Q-013 | The day rate a buyer pays for a contracted product manager | R. Hightower | 2027-06-30 | S-002 |
-| Q-014 | Does looping back feel like progress or failure | R. Hightower | 2027-03-31 | ST-004 |
-| Q-015 | Who owns the rubric and the checks | R. Hightower | 2027-01-31 | none |
+| Q-014 | Does ST-004 keep its loop-back, given what experts say | R. Hightower | 2027-02-28 | ST-004, FR-010 |
+| Q-015 | Who owns the rubric and the checks | R. Hightower | 2027-01-31 | Q-009 |
 | Q-016 | Must a grade show the rubric version it was made against | R. Hightower | 2027-01-31 | NFR-007 |
-| Q-017 | Who owns NFR-006's accessibility and NFR-012's access control | R. Hightower | 2027-02-28 | NFR-006, NFR-012 |
+| Q-017 | Who owns NFR-006's accessibility | R. Hightower | 2027-02-28 | NFR-006 |
 | Q-018 | One counted cost per problem in section 1 | R. Hightower | 2027-01-31 | P-001 to P-004 |
-| Q-019 | Does REL-001 move, or ship as an experiment | R. Hightower | 2027-01-31 | REL-001 |
+| Q-019 | Does REL-001 keep its date, or move if D-002 and D-003 slip | R. Hightower | 2027-01-31 | REL-001 |
+| Q-020 | Which section experts stop at most | R. Hightower | 2027-02-28 | R-004 |
+| Q-021 | Who owns NFR-012's access control | R. Hightower | 2027-02-28 | NFR-012 |
 
 ## The ones that matter most
 
@@ -281,18 +306,14 @@ stages, ST-002 to ST-005, which can be scaffolded and not finished until Q-009
 is answered. Q-010 blocks FR-015, a `should`, and NFR-011. It is the one where
 guessing breaks assumption A-005 rather than costing rework.
 
-**Q-011 is answered.** In release 1 the sponsor records approval outside the
-product, through the expert, under FR-014. Q-017 asks who owns NFR-006 and
-NFR-012.
-
 **Q-005 is the one that could invalidate the product's central idea.** If showing
 a sponsor a grade reduces their confidence rather than raising it, then FR-013 is
 wrong and the grading becomes an author's private tool rather than part of the
 approval. It takes two days, and it should be asked early.
 
-**Q-019 is the schedule.** D-002 and D-003 are due on REL-001's own date, and
-REL-001 cannot use what they find. The decision is whether REL-001 moves or
-ships as an experiment.
+**Q-019 is the schedule.** D-002 and D-003 now report by 2027-01-31, and the
+questions they answer are due by 2027-02-28, a month before REL-001. Q-019
+decides what happens to REL-001 if they slip.
 
 **Q-008 tests test 5.** If engineering leads read the absence of technology as
 incompleteness, the discipline this whole product enforces is a liability, and

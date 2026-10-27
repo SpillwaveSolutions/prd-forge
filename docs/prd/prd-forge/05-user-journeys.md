@@ -53,10 +53,9 @@ journeys:
           - >-
             Given a section not yet interviewed, when the expert reads what it
             is for and answers its questions one or two at a time, then the
-            interview ends when the question list is finished, when the answers
-            would already score the section 70 or more with no blocking defect,
-            or when the expert says they have nothing more to add, and the
-            section is drafted.
+            interview ends when the question list is finished, when they are
+            told the section already meets the gate, or when they say they have
+            nothing more to add, and they see the section drafted.
         steps:
           - Reads what the section is, why it matters, and what belongs in it, in
             under ten lines, with an example from their own domain
@@ -96,6 +95,15 @@ journeys:
             Given one question about the weakest part of a section, when the
             expert answers it, then they see the section re-graded against the
             same rubric.
+          - >-
+            Given one question whose premise the expert says is wrong, when they
+            say why, then the finding behind the question is checked against the
+            document as a refutation under FR-016, and they see whether it was
+            dropped.
+          - >-
+            Given an expert returning after a break, when they say they want to
+            carry on, then they resume at the first section not yet at review,
+            and no question they already answered is put to them again.
         steps:
           - Reads a single question, not a list of twelve
           - Answers it, or says why the premise is wrong
@@ -128,18 +136,21 @@ journeys:
             then they see it recorded as an open question with a decider and a
             date.
         steps:
-          - Asks for the whole set to be reviewed as an engineer would read it
+          - Asks for a buildability review of the whole set, read as an engineer would
           - Sees what an engineer could not build, and what they would have to guess
           - Sees which release-line stages have no requirement behind them
           - Closes each gap, or records it as an open question with a decider and
             a date
+          - Offers the set to the sponsor for approval
         inputs:
           - Every section written at least once, so there is something to review
         outputs:
           - A list of what is not buildable, and a set with each gap closed or
             owned
         decision: Is this ready to be read by someone who will commit to it
-        handoff: Sponsor
+        handoff: >-
+          Sponsor, who receives the set offered for approval as its root document
+          or an exported copy.
       - id: ST-006
         name: Sponsor approves the PRD for a release
         actor: Sponsor
@@ -151,14 +162,14 @@ journeys:
             then the sponsor sees the decision, their name, their role, and the
             date recorded against the set's version.
         steps:
-          - Reads the root document or the exported PDF, outside the product
+          - Reads the root document or an exported copy, outside the product
           - Sees the summary, the scope, what is still open, each section's grade,
             and whether anything is still blocking
           - Approves, approves with conditions naming what the condition is, or
             rejects, and tells the expert
           - Sees the expert record the decision in section 15 against this version
         inputs:
-          - Their decision and any conditions
+          - The set offered for approval, as its root document or an exported copy
         outputs:
           - An approved PRD at a named version, with the approval recorded
         decision: Approve, approve with conditions, or reject
@@ -239,6 +250,10 @@ journeys:
             Given an approved set and the release it is mapped for, when the
             delivery lead checks it, then they see whether a golden-thread
             journey exists and what would block deriving a backlog.
+          - >-
+            Given an approved set with no journey, when the delivery lead checks
+            it, then they see a no-go, with the reason that a backlog cannot be
+            derived, and the workshop waits.
         steps:
           - Sees whether a journey exists and which one is the golden thread
           - Sees which release-line stages have requirements behind them
@@ -328,7 +343,7 @@ every section graded with nothing blocking, every open question with a decider
 and a date, and no buildability gap left that is neither closed nor owned.
 
 In release 1, ST-006 happens outside the product. The sponsor reads the root
-document or the exported PDF and gives a decision. The expert records it in
+document or an exported copy and gives a decision. The expert records it in
 section 15 under FR-014, with the sponsor's name, role, and date (section 6).
 
 ## How each stage feels today

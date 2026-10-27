@@ -16,63 +16,16 @@ changes:
     date: 2026-10-27
     author: Richard Hightower
     summary: >-
-      Section 1: each problem has one counted case, with its source and date,
-      each why-now claim cites the General Assembly survey of product managers,
-      P-004 states the condition the expert suffers, and Q-018 asks for one
-      counted cost per problem. Section 2: ChatPRD is the direct competitor, the
-      buyer's case is stated against the cost of a contracted product manager,
-      each segment names its personas, and the status-quo competitor's edge
-      states a prd-forge outcome. Section 3: O-001 counts the 5 pilot PRDs and
-      defines a pass between REL-001 and 2027-09-30, O-002 counts the pilot PRDs
-      with one journey, O-003 counts a requirement testable when two of three
-      engineering leads agree, and each target is provisional until its question
-      is answered. Section 4: on the expert's decision, PER-001 is the product
-      manager who is, or speaks for, the domain expert, PER-003 is the sponsor,
-      and each persona has a population, a basis, a context, and its problems.
-      Section 5: the first
-      state is pending, shown as not started; the expert refutes a grade; LC-001
-      makes final the expert's decision under TR-002, and on the expert's
-      decision lets a section at review or final go back to draft when the
-      expert changes it; each stage carries the
-      expert's satisfaction score, and each pain point names its stage; ST-006
-      happens outside the product; SC-004 is split into SC-004 and SC-008; and
-      each alternate and exception scenario names the step of SC-007 it leaves.
-      Section 6: the scope says "an engineer" for the person who builds from the
-      set, ST-006 is outside the product, the release line uses J-001's end
-      state, and product teams new to a domain move to OUT-005. Section 7: FR-019 and FR-020, both
-      `should` on the expert's decision, split the early stop out of FR-004 and
-      the check across the set out of FR-008, and an unclear answer gets its
-      follow-up before the early stop. FR-008 tests that every item is shown in
-      a sentence or a table row, FR-018 shows a change within 10 seconds of a
-      request to refresh, FR-009 asks the expert to accept or refute each grade,
-      FR-010 waits on Q-007, and FR-004 and FR-017 name no field and no view.
-      FR-011 offers review only in a set that checks clean. WF-001 draws FR-020 as
-      a requirement's stage stated two ways, WF-008 counts twelve dimensions,
-      WF-007, WF-009, and WF-010 name the screen they are a state of, and the
-      wireframes name no drawing tool. Section 8: NFR-001, NFR-002, and NFR-011
-      name what they time, NFR-004 and NFR-010 apply to the whole set, and NFR-010
-      and NFR-012 are measured in a test organization. Section 9:
-      on the expert's decision, C-004 leaves, its rule lives in TR-005 and
-      FR-006, and the section may be empty. Section 10: TR-003 only produces a
-      section's score, the new TR-014 has the expert accept or refute it, and
-      each rule's decider is called the Decider. Section 11: R-001 and R-002 are
-      mitigated by 2027-01-31, each risk has a trigger, a response, and a
-      status, each dependency has an owner, and D-001 is delivered. Section 12: Q-009 also blocks FR-019; Q-004, Q-007, Q-009, and
-      Q-011 are split into single questions; Q-011 is answered; Q-018 asks for
-      costs; Q-019 asks whether REL-001 moves; and the design choices inside
-      Q-009, Q-010, and Q-016 become candidate architecture decisions. Section 13:
-      REL-001 carries FR-019 and FR-020, its exit criteria use the pilot PRDs and
-      the defined pass, REL-001 and REL-003 name what they depend on, and REL-002
-      gives the engineering lead an outcome. Section 14: every
-      word in the requirements' acceptance has an entry, including refute and
-      approval; eight terms cite a verified source and state where the set
-      departs from it; `wont` means won't have this time; pilot PRD, first
-      submission, reviewer, iteration, review, and checks clean are defined.
-      Section 15: the
-      versioning policy before 1.0, which applies from 0.9.0 onward and defines
-      a change to the golden thread as structural. Across the set, "set" or
-      "PRD" replaces "specification" where it meant this set. This is a minor
-      version because the policy and the evidence are new content.
+      Adds counted evidence and sourced why-now claims, and a versioning policy.
+      Personas get named roles, populations, and frequencies, and every journey
+      stage gets the expert's satisfaction score. ST-006 happens outside the
+      product. FR-019 and FR-020 split out of FR-004 and FR-008, FR-014 records a
+      rejection, TR-014 has the expert accept or refute each score, and LC-001
+      lets a section go back to draft. C-004 leaves section 9, and teams without
+      the domain are a non-goal. Eight glossary terms cite a verified source, and
+      each defined word has one meaning. Open questions are single and due before
+      REL-001. The body lists the change by section. This is a minor version: new
+      content, with no structural change.
     sections:
       - 1
       - 2
@@ -192,9 +145,8 @@ changes:
       user meets the outcome, and the seven shown on a screen or in a report are
       illustrated by six text sketches: the set with a section open, the empty
       state, a grade explained, the rubric, the buildability review, and the
-      approval pack. Re-grades user journeys and non-functional requirements with
-      recorded reasons; their scores moved from 90 to 88 and from 79 to 82 with no
-      change to either document. Adds the term "wireframe" to the glossary.
+      approval pack. Re-grades user journeys and non-functional requirements and
+      records the reasons, with no change to either document. Adds the term "wireframe" to the glossary.
     sections:
       - 5
       - 7
@@ -236,7 +188,7 @@ changes:
     author: Richard Hightower
     summary: >-
       First draft of the whole set, written with prd-forge's own conventions as the
-      product's first real exercise. Sixteen sections drafted, the golden thread
+      product's first real exercise. Sixteen section documents across fifteen sections drafted, the golden thread
       J-001 set to the expert's path from idea to approved PRD, and the release line
       set to ST-001 through ST-006. All three objectives recorded with unknown
       baselines and matching open questions rather than invented figures. C-001
@@ -269,7 +221,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence; FR-019 and FR-020 split out; TR-014 for accepting a score; C-004 out of section 9; refute and approval defined; sourced glossary terms; satisfaction scores; ST-006 outside the product; ChatPRD; pilot PRDs; Q-011 answered; the versioning policy |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence and sourced why-now claims; persona roles and frequencies; satisfaction scores; ST-006 outside the product; FR-019 and FR-020 split out; FR-014 rejection; TR-014 for accepting a score; LC-001 back to draft; C-004 out of section 9; single questions due before REL-001; sourced glossary terms with one meaning each; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
@@ -277,7 +229,52 @@ links:
 | 0.4.0 | 2026-10-26 | Richard Hightower | Navigation and refresh requirements; wireframes rewritten from their grading |
 | 0.3.0 | 2026-10-26 | Richard Hightower | Wireframes for every screen and report, and recorded reasons for the grades |
 | 0.2.0 | 2026-10-26 | Richard Hightower | Every defect the grading and the buildability review found, over two rounds |
-| 0.1.0 | 2026-10-23 | Richard Hightower | First draft of all sixteen sections |
+| 0.1.0 | 2026-10-23 | Richard Hightower | First draft of sixteen section documents across fifteen sections |
+
+## 0.9.0, what changed
+
+- **Section 1:** each problem has one counted case with its source and date, and
+  each why-now claim cites the General Assembly survey of product managers.
+  Desired outcomes name no mechanism, and Q-018 asks for one counted cost per
+  problem.
+- **Section 2:** ChatPRD is the direct competitor. Why-we-win is stated per
+  segment in the buyer's terms, and each segment names its personas.
+- **Section 3:** O-001 counts the 5 pilot PRDs and defines a pass, O-002 counts
+  the pilot PRDs with one journey, and O-003 counts a requirement testable when
+  two of three engineering leads agree.
+- **Section 4:** on the expert's decision, PER-001 is a senior product manager
+  in a consultancy or an in-house product team who is, or speaks for, the
+  domain expert. Each persona has a population, a frequency per organization, a
+  basis, a context, and its problems, and no persona is external.
+- **Section 5:** each stage carries the expert's satisfaction score, and each
+  pain point names its stage. ST-006 happens outside the product. LC-001 makes
+  final the expert's decision under TR-002, and lets a section at review or
+  final go back to draft. SC-004 splits into SC-004 and SC-008.
+- **Section 6:** ST-006 is outside the product, and teams new to a domain are
+  covered by the first non-goal.
+- **Section 7:** FR-019 and FR-020, both `should`, split out of FR-004 and
+  FR-008. FR-014 records a rejection. FR-015 moves to ST-004. WF-001 draws
+  FR-020, and the wireframes name no tool.
+- **Section 8:** the NFRs name what they time, and NFR-010 and NFR-012 are
+  measured in a test organization.
+- **Section 9:** on the expert's decision, C-004 leaves, and the section may be
+  empty.
+- **Section 10:** TR-003 only produces a score, and TR-014 has the expert accept
+  or refute it. TR-001 covers a rejection. The three delegable rules propose and
+  never decide.
+- **Section 11:** R-001 and R-002 are mitigated by 2027-01-31, and D-002 and
+  D-003 report by 2027-01-31.
+- **Section 12:** each question is single, and those that block REL-001 are due
+  by 2027-02-28. Q-011 is answered.
+- **Section 13:** REL-001 depends on D-002, D-003, and Q-019.
+- **Section 14:** eight terms cite a verified source, and review, pass, refute,
+  and approval each have one meaning.
+- **Section 15:** the versioning policy.
+
+None of this is structural under the policy. No stage is added, removed, or
+reordered, and the golden thread's goal and end state are unchanged. The
+release line's text now quotes the existing end state, and ST-006 stays in the
+release line, done outside the product.
 
 ## Versioning policy before 1.0
 
@@ -340,4 +337,5 @@ forward:
 
 None sought. This set is at `draft` and has not been offered for approval. It
 cannot be approved for a release without an approval recorded here, under
-TR-001. A section reaches `final` when the expert sets it final, under TR-002.
+TR-001. When it is offered, the sponsor, PER-003, is the approver who will be
+asked. A section reaches `final` when the expert sets it final, under TR-002.

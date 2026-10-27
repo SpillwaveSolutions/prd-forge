@@ -26,7 +26,7 @@ assumptions:
     owner: Richard Hightower
     category: usability
     evidence: none
-    validate_by: 2027-03-31
+    validate_by: 2027-02-28
   - id: A-002
     assumption: >-
       An expert will act on a grade they did not produce, rather than dismissing it.
@@ -39,7 +39,7 @@ assumptions:
     owner: Richard Hightower
     category: value
     evidence: some
-    validate_by: 2027-03-31
+    validate_by: 2027-02-28
   - id: A-003
     assumption: >-
       An engineering lead will accept a PRD that names no technology, rather than
@@ -54,7 +54,7 @@ assumptions:
     owner: Richard Hightower
     category: usability
     evidence: none
-    validate_by: 2027-03-31
+    validate_by: 2027-02-28
   - id: A-004
     assumption: >-
       Organizations will let a PRD for their product be drafted inside an
@@ -128,7 +128,7 @@ risks:
     mitigation: >-
       Section 3 asks what would move the objectives without this product at all;
       section 1 requires evidence per problem and names what is unmeasured. Neither
-      is sufficient, and this risk is not closed. A reviewer should say so.
+      is sufficient, and this risk is not closed. A reader should say so.
     owner: Richard Hightower
     trigger: >-
       A sponsor or an engineering lead says that an approved set specifies the
@@ -144,12 +144,11 @@ risks:
     mitigation: >-
       FR-005 lets the expert end any section and records what was left; FR-015
       makes resumption cheap; the working order in the method, which Q-007 tests,
-      puts the sections that
-      unlock the others first, and an abandoned set is still useful.
+      puts the sections that unlock the others first, and an abandoned set is still useful.
     owner: Richard Hightower
     trigger: >-
       An expert stops a set with sections still pending and does not resume it
-      (Q-006 counts this).
+      (Q-006 and Q-020 count this).
     response: reduce
     status: open
   - id: R-005
@@ -183,7 +182,7 @@ dependencies:
     need: >-
       Ten first-time domain experts willing to be observed completing a PRD.
     from: Early customers and the professional network
-    by: 2027-03-31
+    by: 2027-01-31
     status: requested
     owner: Richard Hightower
     blocks:
@@ -195,7 +194,7 @@ dependencies:
       Three engineering leads willing to read a completed set cold and report what
       they would ask for first.
     from: Early customers
-    by: 2027-03-31
+    by: 2027-01-31
     status: requested
     owner: Richard Hightower
     blocks:
@@ -249,14 +248,13 @@ This section states it rather than hide it behind a mitigation that sounds adequ
 | ID | Need | From | By | Status | Owner |
 | --- | --- | --- | --- | --- | --- |
 | D-001 | An assistant session able to carry the interview | The assistant platform the customer already uses | 2027-01-31 | delivered | Richard Hightower |
-| D-002 | 10 observed first-time experts | Early customers | 2027-03-31 | requested | Richard Hightower |
-| D-003 | 3 engineering leads to read a set cold | Early customers | 2027-03-31 | requested | Richard Hightower |
+| D-002 | 10 observed first-time experts | Early customers and the professional network | 2027-01-31 | requested | Richard Hightower |
+| D-003 | 3 engineering leads to read a set cold | Early customers | 2027-01-31 | requested | Richard Hightower |
 
 D-001 is delivered: this PRD was written and graded with prd-forge inside an
 assistant session, which carried the interview and read and wrote the documents.
 
-D-002 and D-003 are both merely requested, and both are dated on REL-001's target
-day in section 13. This is a real schedule problem: REL-001 ships on the day the
-assumptions it rests on are due to be tested, and it cannot use the results.
-Q-019 asks whether REL-001 moves or ships as an experiment, decided by
-2027-01-31.
+D-002 and D-003 are both requested and both due by 2027-01-31, two months
+before REL-001's target in section 13. The questions they answer are due by
+2027-02-28, so REL-001 can use the results. Q-019 decides, by 2027-01-31, what
+happens to REL-001 if either slips.

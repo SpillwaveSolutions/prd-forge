@@ -64,11 +64,11 @@ wireframes:
     journey_stage: ST-005
     illustrates: [FR-012]
     shows:
-      - Which version of the set was reviewed, and the verdict
+      - Which version of the set the buildability review read, and the verdict
       - Each release-line stage, covered or a gap
       - Each requirement an engineer could not test, quoted
       - An open question that blocks a must, its decider and date
-      - What the reviewer would ask for first
+      - What the buildability review would ask for first
   - id: WF-006
     title: What the approver is asked to approve
     type: report

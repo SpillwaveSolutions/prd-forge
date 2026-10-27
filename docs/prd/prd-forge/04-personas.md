@@ -13,18 +13,19 @@ blocking: 0
 graded: 2026-10-27
 personas:
   - id: PER-001
-    name: "Product manager: the domain expert, or a proxy who speaks for one"
+    name: "Product manager (senior: manager to principal), in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one"
     short_name: DomainExpert
     primary: true
-    population: One per PRD.
+    population: >-
+      One per PRD. Per organization, 2 PRDs run at once and 6 start in a year.
     external: false
     problems: [P-001, P-004]
     basis: >-
       Assumed, not researched. Section 1's evidence note says the evidence comes
       from one engagement. The ten observed sessions in D-002 test it.
     context: >-
-      Works inside an assistant session they already use (D-001), in bursts
-      weeks apart (NFR-004).
+      Works inside the session they already use, as section 11 records (D-001),
+      in bursts weeks apart (NFR-004).
     goals:
       - Get what is in my head into a form the development team can build from
       - Stop being asked the same question by four different engineers
@@ -35,8 +36,8 @@ personas:
       - I reach for the names of software I have used, because that is the only
         requirements language I have
     frequency: >-
-      Intensively for one to three weeks per product, then almost never until the
-      next one.
+      Three working sessions a week of 1 to 2 hours each, for one to three weeks
+      per PRD, about 6 to 9 sessions per PRD, then rarely until the next one.
     authority: >-
       Decides what the product must do and what is out of scope; decides the
       domain's own terms; decides when a section's interview is finished and when
@@ -52,9 +53,11 @@ personas:
   - id: PER-002
     name: Engineering lead (staff or principal engineer) on the delivery team, who must build from the PRD
     short_name: EngineerLead
-    population: One or two per PRD.
+    population: >-
+      One or two per PRD, so 2 to 4 at once in an organization running 2 PRDs at
+      once.
     external: false
-    problems: [P-002]
+    problems: [P-001, P-002]
     basis: >-
       Assumed, not researched, as section 1's evidence note says. The three
       engineering leads in D-003 test it.
@@ -70,8 +73,8 @@ personas:
       - Requirements I cannot write a test for
       - Gaps between two requirements that both looked complete
     frequency: >-
-      Reads a given PRD a handful of times, intensively, at estimation and at each
-      release planning.
+      Reads each PRD at estimation and at each release planning, so at least 12
+      reads a year in an organization that starts 6 PRDs a year.
     authority: >-
       Decides how it is built. Judges whether a set can be built from and reports
       the gaps, under TR-006, and records a verdict that a set is not buildable
@@ -81,14 +84,15 @@ personas:
   - id: PER-003
     name: "Sponsor: the budget holder (director or partner), who is also the approver"
     short_name: Sponsor
-    population: One per PRD.
+    population: >-
+      One per PRD, and one organization starts 6 PRDs a year.
     external: false
     problems: [P-003]
     basis: >-
       Assumed, not researched, as section 1's evidence note says. Q-005 tests it
       with three sponsors.
     context: >-
-      Reads the root document or the exported PDF outside the product, once per
+      Reads the root document or an exported copy outside the product, once per
       version (ST-006).
     goals:
       - Be confident enough to commit budget and a date
@@ -96,7 +100,9 @@ personas:
     pains:
       - I can only judge whether it reads well
       - I find out it was not buildable after I have committed to the plan
-    frequency: Once per version, plus conditions.
+    frequency: >-
+      Once per version offered, about 6 versions a year per organization, plus
+      any conditions.
     authority: >-
       Approves the PRD for a release; may approve with conditions; may reject.
     proficiency: >-
@@ -104,7 +110,8 @@ personas:
   - id: PER-004
     name: Delivery lead (delivery manager or product owner) on the delivery team, who runs the story-mapping workshop
     short_name: DeliveryLead
-    population: One per PRD.
+    population: >-
+      One per PRD, and one organization starts 6 PRDs a year.
     external: false
     problems: [P-002]
     basis: >-
@@ -118,7 +125,9 @@ personas:
     pains:
       - No journey means no backbone, so the workshop invents one in the room
       - Stories that trace to nothing, so nobody can say why they exist
-    frequency: Once per release, plus refinement.
+    frequency: >-
+      Once per release, about 6 workshops a year per organization, plus
+      refinement.
     authority: >-
       Decides the backlog's shape and order, and decides whether a backlog can be
       mapped from a set at all; does not decide scope.
@@ -134,13 +143,15 @@ links:
 
 | ID | Role | Per PRD | Frequency | Decides |
 | --- | --- | --- | --- | --- |
-| PER-001 | Product manager: the domain expert, or a proxy who speaks for one | One | Weeks per product, then rarely | What the product must do, scope, the domain's terms, when an interview ends, drafts, section states, scores, domain facts, and when the set is offered; not the PRD itself where a sponsor exists |
-| PER-002 | Engineering lead (staff or principal engineer) on the delivery team | One or two | A handful of intensive reads | How it is built, and whether a set can be built from, with its gaps (TR-006) |
-| PER-003 | Sponsor: the budget holder (director or partner), who is also the approver | One | Once per version | Approves the PRD for a release, with or without conditions, or rejects it (TR-001) |
-| PER-004 | Delivery lead (delivery manager or product owner) on the delivery team | One | Once per release | The backlog's shape and order, and whether a backlog can be mapped at all |
+| PER-001 | Senior product manager in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one | One; 2 PRDs at once and 6 a year per organization | 3 sessions a week of 1 to 2 hours, for 1 to 3 weeks per PRD | What the product must do, scope, the domain's terms, when an interview ends, drafts, section states, whether to accept or refute a grade, domain facts, and when the set is offered; not the PRD itself where a sponsor exists |
+| PER-002 | Engineering lead (staff or principal engineer) on the delivery team | One or two | At estimation and at each release planning | How it is built, and whether a set can be built from, with its gaps (TR-006) |
+| PER-003 | Sponsor: the budget holder (director or partner), who is also the approver | One | Once per version, about 6 a year | Approves the PRD for a release, with or without conditions, or rejects it (TR-001) |
+| PER-004 | Delivery lead (delivery manager or product owner) on the delivery team | One | Once per release, about 6 a year | The backlog's shape and order, and whether a backlog can be mapped at all |
 
-No persona is external. In segment S-001 the client's staff supply domain
-knowledge to the expert, but they do not use the product.
+No persona is external. In a consultancy engagement, segment S-001, the
+sponsor, the engineering lead, and the delivery lead all work for the
+consultancy. The client's staff only supply domain knowledge to the expert, and
+they do not use the product.
 
 ## PER-001 is the primary persona
 
@@ -155,10 +166,8 @@ up. See FR-015 and NFR-004.
 
 ## Who is deliberately not a persona
 
-The assistant that delivers the teaching, the interview and the grading is not a
-user of this product. It is how the product reaches PER-001. Listing it here
-would put the delivery mechanism into the PRD, which the set keeps out of the
+No mechanism is a persona. Whatever delivers the teaching, the interview, and
+the grading is how the product reaches PER-001, and the set keeps it out of the
 requirements: section 6 makes a separate application a non-goal, and section 11
-records the session as dependency D-001. The same goes for the grading reviewers: a reviewer that
-grades a section is a mechanism, and what matters to this PRD is that PER-001
-sees a grade they did not produce themselves.
+records the session as dependency D-001. What matters to this PRD is that
+PER-001 sees a grade they did not produce themselves.

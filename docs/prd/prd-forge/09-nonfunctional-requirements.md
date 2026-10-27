@@ -52,7 +52,7 @@ requirements:
     statement: >-
       A set stays workable at the size real products reach.
     metric: >-
-      The size of one set at which every requirement in section 7 still passes its
+      The size of one set at which every requirement in section 7 still meets its
       acceptance criteria and every target in this section still holds.
     target: >-
       120 functional requirements, 10 journeys of 10 stages, and 200 glossary terms
@@ -241,7 +241,7 @@ and this paragraph goes.
 NFR-006 and NFR-012 set targets on things the non-goals in section 6 say we do not own: what
 the host renders, and where the customer keeps its documents. They are kept as
 `must` because a target nobody owns is how accessibility and access control get
-lost. Who owns them is Q-017.
+lost. Who owns them is Q-017 for NFR-006 and Q-021 for NFR-012.
 
 NFR-010, NFR-011 and NFR-012 were added at version 0.2.0. Retention, availability
 and security had simply not been reached, and C-003, now assumption A-005, stated

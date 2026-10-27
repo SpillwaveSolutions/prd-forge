@@ -26,7 +26,9 @@ decisions:
       such as a solo expert or an internal tool with no PER-003, the expert approves
       their own set under this rule, shown the same evidence, and the change log
       records that no separate approver existed. A set is never treated as approved
-      because its score is high.
+      because its score is high. A rejection goes back to the expert with its
+      reason, and the set reads as not approved until a later version is
+      approved.
     acceptance:
       - >-
         Given a set with any blocking defect, when approval is sought, then the
@@ -37,6 +39,9 @@ decisions:
       - >-
         Given an engagement with no sponsor, when the expert approves their own
         set, then the approval records that no separate approver existed.
+      - >-
+        Given an approver who rejects the set, when the decision is recorded, then
+        the rejection carries its reason, and the set reads as not approved.
       - >-
         Given an approver who approves with conditions, when the approval is
         recorded, then each condition names the open question or requirement it
@@ -68,6 +73,7 @@ decisions:
     approver: PER-001
     delegable_to_agent: true
     never_delegated: false
+    agent_role: proposes
     evidence_required: >-
       The rubric's dimensions and a quotation from the document for every score
       below full marks.
@@ -128,6 +134,7 @@ decisions:
     approver: PER-002
     delegable_to_agent: true
     never_delegated: false
+    agent_role: proposes
     evidence_required: >-
       The release line, the requirements covering each stage, and a quotation for
       every gap claimed.
@@ -222,17 +229,22 @@ decisions:
     approver: PER-004
     delegable_to_agent: true
     never_delegated: false
+    agent_role: proposes
     evidence_required: >-
       Whether a golden thread exists, and which release-line stages have
       requirements behind them.
     escalation: >-
-      The delivery lead's own judgement stands over any reported verdict; where
-      they are unavailable the workshop waits rather than proceeding without a
-      backbone.
+      The delivery lead's own judgement stands over any reported verdict, and an
+      override is recorded with its reason. Where they are unavailable the
+      workshop waits rather than proceeding without a backbone.
     acceptance:
       - >-
         Given a set with no journey, when the check runs, then it reports that a
         backlog cannot be derived, and names that as the reason.
+      - >-
+        Given a reported verdict the delivery lead disagrees with, when they
+        record their own, then their verdict stands and the override and its
+        reason are recorded beside the report.
   - id: TR-012
     decision: Decide which epics come first
     stages: [ST-008]

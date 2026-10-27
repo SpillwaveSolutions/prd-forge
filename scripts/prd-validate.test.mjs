@@ -161,7 +161,7 @@ test('a decision rule\'s approver and stages must exist', () => {
 
 test('a dependency that blocks a missing id, or is due after the release it blocks, fails', () => {
   failsWith('12-assumptions-risks-dependencies.md', t => t.replace('      - A-001\n', '      - A-099\n'), /blocks A-099, which does not exist/)
-  failsWith('12-assumptions-risks-dependencies.md', t => t.replace('    by: 2027-03-31\n    status: requested\n    owner: Richard Hightower\n    blocks:\n      - A-001\n', '    by: 2027-04-30\n    status: requested\n    owner: Richard Hightower\n    blocks:\n      - FR-001\n      - A-001\n'), /D-002 is due 2027-04-30, after REL-001's target/)
+  failsWith('12-assumptions-risks-dependencies.md', t => t.replace('    by: 2027-01-31\n    status: requested\n    owner: Richard Hightower\n    blocks:\n      - A-001\n', '    by: 2027-04-30\n    status: requested\n    owner: Richard Hightower\n    blocks:\n      - FR-001\n      - A-001\n'), /D-002 is due 2027-04-30, after REL-001's target/)
 })
 
 test('a glossary term may be defined once', () =>
@@ -218,7 +218,7 @@ test('every stage has a decision, and Gherkin capitals are accepted', () => {
 })
 
 test('a scenario branches from a step that exists', () =>
-  failsWith('06-scenarios.md', t => t.replace('  - id: SC-002\n    branches_from: { scenario: SC-007, step: 3 }\n', '  - id: SC-002\n    branches_from: { scenario: SC-001, step: 99 }\n'), /SC-002 branches from step 99 of SC-001/))
+  failsWith('06-scenarios.md', t => t.replace('  - id: SC-002\n    branches_from: { scenario: SC-007, step: 5 }\n', '  - id: SC-002\n    branches_from: { scenario: SC-001, step: 99 }\n'), /SC-002 branches from step 99 of SC-001/))
 
 test('a lifecycle state that cannot be reached, or a transition with no by, draws a warning', () => {
   const extra = t => t.replace('      - name: final\n', '      - name: archived\n        meaning: Kept for the record.\n      - name: final\n')

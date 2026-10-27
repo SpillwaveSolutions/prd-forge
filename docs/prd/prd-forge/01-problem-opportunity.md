@@ -21,7 +21,7 @@ problems:
     persona: PER-001
     evidence:
       - claim: >-
-          In this PRD at version 0.1.0, the adversarial grade found 2 of 14
+          In this PRD at version 0.1.0, the grading pass found 2 of 14
           functional requirements, FR-003 and FR-004, with no outcome a person
           could see. Both were fixed at version 0.2.0.
         source: >-
@@ -37,7 +37,7 @@ problems:
         been exposed to.
     why_now: >-
       In October 2025, 98% of 117 product managers surveyed said they use AI at
-      work (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025). A draft written with an assistant is fluent. Fluent and
+      work (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025), which means drafts written with AI help arrive fluent. Fluent and
       unbuildable is a worse failure than rough and unbuildable, because nobody
       queries it.
     cost_of_inaction: >-
@@ -63,7 +63,7 @@ problems:
         source: >-
           prd-forge repository, the commit messages of 5ba59cb (version 0.1.0)
           and 5d4d936 (version 0.2.0)
-        as_of: 2026-10-23
+        as_of: 2026-10-26
       - >-
         A specification with no user journey gives a story-mapping workshop no
         backbone, so features and epics cannot be derived from it at all.
@@ -72,8 +72,8 @@ problems:
         requirements that both looked complete.
     why_now: >-
       In the same survey, 44% of product managers use AI for backlog grooming and
-      QA support (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025). Backlog items now multiply faster than anyone checks the
-      path between them.
+      QA support (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025), which means more backlog items are written with AI
+      help, and each one needs the path through the product that it serves.
     cost_of_inaction: >-
       The release line is drawn across a feature list rather than a journey, and a
       release ships features that no user can complete anything with. Q-018 asks
@@ -82,21 +82,21 @@ problems:
       Gaps between requirements surface as questions in the middle of an
       iteration.
     desired_outcome: >-
-      Every release-line stage has a requirement behind it, and every gap is
-      closed or owned before build.
+      Every step a user must take to reach the goal is written down, and every
+      gap is closed or owned before build.
   - id: P-003
     statement: >-
       Nobody can tell a buildable specification from a readable one until the team
       has already started building from it.
-    who: Sponsor signing the PRD off
+    who: Sponsor approving the PRD
     persona: PER-003
     evidence:
       - claim: >-
           At version 0.8.0, this PRD passed every schema and cross-reference
-          check with 0 errors and 0 warnings. The adversarial grade found 23
+          check with 0 errors and 0 warnings. The grading pass found 23
           blocking defects in 8 of 18 documents.
         source: prd-forge repository, commit 6f77bc0 (version 0.8.0)
-        as_of: 2026-10-26
+        as_of: 2026-10-27
       - >-
         Approval is given on readability and completeness of headings, because
         those are the only properties an approver can assess unaided.
@@ -105,18 +105,19 @@ problems:
         estimates, which is after approval and after the plan was made.
     why_now: >-
       In the same survey, only 39% of product managers had received
-      comprehensive, job-specific AI training (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025). A fluent draft is no
+      comprehensive, job-specific AI training (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025), which means 61% of product
+      managers judge AI drafts without that training, and a fluent draft is no
       evidence that it can be built.
     cost_of_inaction: >-
       Plans and commitments are made on an approved document whose defects are
       found by the people asked to deliver against them. Q-018 asks for one
       counted cost.
     status_quo: >-
-      The sponsor signs off on readability, and buildability is first assessed
+      The sponsor approves on readability, and buildability is first assessed
       when an engineer estimates.
     desired_outcome: >-
-      The sponsor sees the grade, every blocking defect, and every open question
-      before deciding.
+      The sponsor knows, before deciding, which parts of the PRD a team could not
+      build from and what is still undecided.
   - id: P-004
     statement: >-
       An expert filling in a section of a PRD does not know what the section is
@@ -141,9 +142,9 @@ problems:
         neither is at hand at the moment the expert is typing.
     why_now: >-
       In the same survey, 47% of product managers want to prototype and validate
-      products without engineering, and 38% can (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025). More of the specifying
-      falls on the person with the domain knowledge, with no specialist between
-      them and the page.
+      products without engineering, and 38% can (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025), which means more of
+      the specifying falls on the person with the domain knowledge, with no
+      specialist between them and the page.
     cost_of_inaction: >-
       Each expert reinvents the form badly, and the organization's PRDs cannot be
       compared to one another or improved as a body of work. Q-018 asks for one
@@ -152,7 +153,7 @@ problems:
       The expert fills a template whose headings say what to write but not what
       makes an entry good.
     desired_outcome: >-
-      The expert is taught what each section is for before being asked about it.
+      The expert knows what each section is for when they write it.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
@@ -169,8 +170,10 @@ links:
 | P-004 | The expert does not know what a section is for, so they fill it badly | Product manager or domain expert |
 
 The four compound. P-004 means the expert does not know what good looks like;
-P-001 is what they produce as a result; P-002 is the specific gap that costs the
-most; and P-003 is why none of it is caught before it is expensive.
+P-001 is what they produce as a result; P-002 is the specific gap a build trips
+over; and P-003 is why none of it is caught before it is expensive. P-002 is the
+engineering lead's problem, and the delivery lead, PER-004, meets it too, at the
+story-mapping workshop.
 
 **Evidence note.** Each problem now has one counted case, with its source and
 date. The counts for P-001 to P-003 come from one engagement, this product's own

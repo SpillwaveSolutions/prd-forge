@@ -55,11 +55,10 @@ terms:
       A screen or a system step. A stage survives a redesign.
   - term: The five tests
     meaning: >-
-      The five numbered properties a statement must have to be a product
-      requirement. Test 1, it names a user or a stakeholder. Test 2, it states an
-      outcome a person can see. Test 3, it has a pass-or-fail acceptance test.
-      Test 4, it has a priority. Test 5, it does not name the component or the
-      technology that delivers it.
+      The five properties a statement must have to be a requirement, numbered 1
+      to 5 in this order: a named user, an outcome a person can see, a
+      pass-or-fail acceptance test, a priority, and no named component or
+      technology.
     see_also:
       - blocking defect
   - term: Rubric
@@ -95,14 +94,16 @@ terms:
   - term: Spike
     meaning: >-
       A piece of work, usually time-boxed, whose only output is an answer to an
-      open question, or a recorded decision.
+      open question, or a recorded decision. This set widens the source because
+      some of its open questions ask what people will accept, as Q-005 does, and
+      only work with those people answers them.
     see_also:
       - open question
     not: >-
       A piece of the product. A spike produces knowledge, not a feature. This set
       departs from the source, where a spike is a technical investigation. Here
-      a spike may be research with people, as in Q-005, and some take no extra
-      work beyond a dependency that already exists, as in Q-006 and Q-007.
+      a spike may be research with people, as in Q-005, and some run inside a
+      dependency's sessions, as Q-006 and Q-007 run in D-002's.
     source: >-
       Spike Solutions, The Art of Agile Development, 1st ed., James Shore and
       Shane Warden, 3 Jun 2010,
@@ -212,8 +213,7 @@ terms:
     meaning: >-
       Where a section stands: `pending`, shown to the expert as not started;
       `draft`, written; `review`, ready for someone else to read, reached through
-      the gate, a score of 70 or more with no blocking defect in a set that
-      checks clean; or `final`, set by the expert under TR-002. LC-001 in section
+      the gate; or `final`, set by the expert under TR-002. LC-001 in section
       5 shows each move.
     not: >-
       A threshold. The threshold is the score a gate needs. The state is where
@@ -388,7 +388,7 @@ terms:
       A statement of what one named user can do with the product and the outcome
       they can see, recorded in section 7 with its acceptance criteria, a
       priority, the journey stage it serves, and the objective it serves. A
-      statement is a requirement only when it passes the five tests.
+      statement is a requirement only when it meets the five tests.
     see_also:
       - the five tests
       - acceptance criteria
@@ -456,13 +456,10 @@ terms:
       - root document
   - term: Interview
     meaning: >-
-      The questions the expert answers about one section, in stage ST-002. It
-      starts after the expert reads what the section is for, puts one or two
-      questions at a time, and ends when the section has enough material to be
-      drafted, when the expert says they have nothing more to add, or when their
-      answers would already score the section 70 or more with no blocking defect.
-      Only the expert answers in it. An engineer who reads the set later was not
-      in the interview.
+      The questions the expert answers about one section in stage ST-002, after
+      reading what the section is for. It ends as the question list says. Only the
+      expert answers in it, so an engineer who reads the set later was not in the
+      interview.
     see_also:
       - section
       - candidate architecture decision
@@ -505,7 +502,8 @@ terms:
       The backlog item for one journey stage, carrying the ids of the requirements
       on that stage. The set departs from the source here: the source makes a
       feature any story big enough to be released, and this set makes it one
-      journey stage.
+      journey stage, so every story traces to the backbone, which in this set is
+      the journey stages.
     see_also:
       - backlog
       - stage
@@ -541,7 +539,8 @@ terms:
     not: >-
       A requirement. The requirement is in the set; the story is derived from it.
       This set departs from the source, where a story is anything a user wants.
-      Here each story is bound to exactly one requirement.
+      Here each story is bound to exactly one requirement, so every story carries
+      the requirement id it came from, which is J-002's need.
     source: >-
       Epics, Features and User Stories, Mountain Goat Software, updated 28 Apr
       2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
@@ -733,15 +732,16 @@ terms:
       updated 12 Apr 2023, https://www.jpattonassociates.com/the-new-backlog/
   - term: Question list
     meaning: >-
-      The questions an interview may put for one section. The interview ends
-      before the list does when the expert's answers would already pass the
-      section.
+      The questions an interview may put for one section. The interview ends when
+      the list is finished, when the expert says they have nothing more to add,
+      or earlier, when the expert's answers would already meet the gate.
     see_also:
       - interview
   - term: Gate
     meaning: >-
-      What a section must pass to move to its next state, such as a score of 70
-      or more with no blocking defect, in a set that checks clean, for `review`.
+      What a section must meet to move to its next state. For `review`, a score at
+      or above the threshold with no blocking defect, in a set that checks
+      clean.
       The expert may override a gate, and the override is recorded.
     see_also:
       - state
@@ -860,7 +860,7 @@ terms:
       - question list
   - term: Ready
     meaning: >-
-      At `review`: fit for someone else to read. A section is ready when it passes
+      At `review`: fit for someone else to read. A section is ready when it meets
       the gate and the expert accepts, or when the expert overrides the gate and
       the override is recorded.
     see_also:
@@ -987,16 +987,15 @@ terms:
       - release
   - term: First submission
     meaning: >-
-      The first time a PRD goes through the buildability review. A PRD passes on
-      first submission when that first verdict is a pass, with no gap fixed
-      between two reviews.
+      The first time a PRD goes through the buildability review. Only that first
+      verdict counts, so no gap fixed after it changes the result.
     see_also:
       - buildability review
       - pilot PRD
   - term: Reviewer
     meaning: >-
-      A person who reads a section and comments on it without being able to
-      change it, as REL-003 plans. No persona in release 1 is a reviewer.
+      A second reader who comments on a section without being able to change it,
+      as REL-003 plans. No persona in release 1 is a reviewer.
     see_also:
       - review
     not: >-
@@ -1009,13 +1008,39 @@ terms:
       - release
   - term: Review
     meaning: >-
-      A word with three uses in this set: the state `review`, a section ready for
-      someone else to read; the buildability review of the whole set at ST-005;
-      and the act of reading a draft, as in FR-008, when the expert reviews it.
+      The state `review`: a section ready for someone else to read.
     see_also:
       - state
       - buildability review
       - reviewer
+    not: >-
+      The buildability review, which is its own term, or the expert reading a
+      draft, which the set calls reading.
+  - term: Pass
+    meaning: >-
+      A PRD passes the buildability review when its verdict is `buildable`, or
+      `buildable with gaps` with every gap closed or owned, as O-001 defines.
+    see_also:
+      - buildability review
+      - verdict
+      - first submission
+    not: >-
+      Meeting the gate. A section meets the gate, and a PRD passes the
+      buildability review.
+  - term: Indicative
+    meaning: >-
+      Said of a release date the plan aims at and has not committed to, marked
+      `date_status: indicative` in section 13.
+    see_also:
+      - release
+  - term: Follow-up
+    meaning: >-
+      A further question about the answer just given, asked before the next topic
+      opens, when the answer leaves something the section needs unanswered or
+      could be written into the section in two ways.
+    see_also:
+      - interview
+      - topic
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -1058,6 +1083,7 @@ links:
 | Engineering lead | The expert |
 | Delivery lead | The engineering lead |
 | Item | A line or a field of an entry |
+| Pass | Meeting the gate |
 | Scenario | A journey |
 | Objection | A refuted finding the document does not support |
 | Refute | Showing a finding wrong |

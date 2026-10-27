@@ -108,7 +108,7 @@ with every gap closed or owned. For O-003, a `must` requirement counts as
 testable when at least two of three engineering leads, scoring independently,
 say a test can be written from it.
 
-A reviewer should push on this. An objective with an invented baseline is worse
+A reader should push on this. An objective with an invented baseline is worse
 than one with an admitted gap, because the invented one gets planned against.
 
 ## What would move these without this product
