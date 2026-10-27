@@ -42,7 +42,8 @@ changes:
       scenario, trust rule, story-mapping workshop, backbone, question list,
       gate, out of scope, objection, session, change log, target, exit
       criteria, non-functional requirement, summary, glossary, view, topic,
-      ready, capability, outcome, and problem, and FR-004 names no field. Journeys and the scope
+      ready, capability, outcome, problem, approval, engagement, lifecycle, and
+      handoff, and FR-004 names no field. Journeys and the scope
       say "an engineer" for the person who builds from the set. The set states its
       versioning policy before 1.0. This is a minor version because the policy
       and the evidence are new content.

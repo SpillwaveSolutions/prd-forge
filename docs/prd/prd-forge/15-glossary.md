@@ -8,7 +8,7 @@ updated: 2026-10-27
 domain: product management tooling
 section: 14
 order: 150
-score: 60
+score: 65
 blocking: 1
 graded: 2026-10-27
 terms:
@@ -177,8 +177,9 @@ terms:
       - section
   - term: Threshold
     meaning: >-
-      The score at or above which a section may advance, provided it also carries
-      no blocking defect. It is 70.
+      The score at or above which a section may advance: 70. A score at the
+      threshold is not enough on its own, because the gate also needs no blocking
+      defect.
     see_also:
       - score
       - blocking defect
@@ -227,7 +228,9 @@ terms:
   - term: Verdict
     meaning: >-
       What a buildability review concludes, one of three: `buildable`, `buildable
-      with gaps`, `not buildable`.
+      with gaps`, `not buildable`. In ST-009 the engineering lead may record their
+      own verdict, and where it differs, theirs is the verdict and the review's is
+      kept beside it.
     see_also:
       - derivability checks
   - term: Derivability checks
@@ -249,8 +252,8 @@ terms:
     not: A requirement. It is deliberately not one, because it would fail test 5.
   - term: Unit of work
     meaning: >-
-      What the expert's domain counts one piece of work as: an engagement, a load,
-      a claim, a case, a patient. Every question the expert is asked uses their
+      What the expert's domain counts one piece of work as: a load, a claim, a
+      case, a patient. Every question the expert is asked uses their
       word for it.
   - term: Unverified
     meaning: >-
@@ -777,8 +780,9 @@ terms:
       - question list
   - term: Ready
     meaning: >-
-      At `review`: a section that scores 70 or more with no blocking defect and is
-      fit for someone else to read.
+      At `review`: fit for someone else to read. A section is ready when it passes
+      the gate and the expert accepts, or when the expert overrides the gate and
+      the override is recorded.
     see_also:
       - state
       - gate
@@ -805,6 +809,47 @@ terms:
     see_also:
       - persona
       - objective
+  - term: Approval
+    meaning: >-
+      The approver's recorded decision on one version of the set: approve,
+      approve with conditions, or reject, with the approver, their role, the
+      date, and the version. A rejection is an approval record too. An approval
+      covers only the version it names, and a later change records a new
+      version that it does not cover.
+    see_also:
+      - approver
+      - condition
+      - version
+    not: >-
+      An override. An override moves one section past its gate, and an approval
+      is a decision on the whole set.
+  - term: Engagement
+    meaning: >-
+      One piece of work in which one expert writes one set, from the first
+      question to the approval. TR-001 covers an engagement with no sponsor.
+    see_also:
+      - expert
+      - sponsor
+    not: >-
+      A unit of work. The unit of work is what the expert's own domain counts.
+  - term: Lifecycle
+    meaning: >-
+      The states one thing passes through and the moves between them, with the
+      person who makes each move, recorded in section 5. LC-001 is the lifecycle
+      of a section of the set.
+    see_also:
+      - state
+      - scenario
+  - term: Handoff
+    meaning: >-
+      The point at which one stage's work passes to the next person or the next
+      stage, named on each journey stage.
+    see_also:
+      - stage
+      - handover
+    not: >-
+      The handover. The handover is the one handoff at which the approved set
+      reaches the engineering lead.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -852,6 +897,9 @@ links:
 | Gate | The threshold |
 | Out of scope | A non-goal |
 | Outcome | A feeling |
+| Approval | An override |
+| Engagement | A unit of work |
+| Handoff | The handover |
 
 Seventeen terms were added at version 0.2.0. Five of them existed only as
 `see_also` pointers to nothing, which is this set's own named blocking defect; the
