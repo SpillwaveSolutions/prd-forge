@@ -96,10 +96,6 @@ requirements:
         that could be written into the section in two ways differing in meaning,
         when it is received, then a follow-up is asked about that answer before
         the next topic is opened.
-      - >-
-        Given an expert whose answers would already score the section 70 or more
-        with no blocking defects, when further questions remain unasked on the
-        list, then the interview stops rather than continuing to the end of it.
     priority: must
     shown_in: conversation
     journey_stage: ST-002
@@ -176,17 +172,12 @@ requirements:
     user: PER-001
     capability: Read the drafted section as prose rather than as a filled-in form
     outcome: >-
-      They can judge from the prose alone whether it says what they meant, and
-      no id, priority or link is stated two different ways in the set.
+      They can judge from the prose alone whether it says what they meant.
     acceptance:
       - >-
         Given a drafted section, when the expert reviews it, then every item is
         shown in a sentence or in a table row under named column headings, and no
         item is shown only as a bare list of names and values.
-      - >-
-        Given an id, priority or link that two places in the set state
-        differently, when the section is read, then the expert is told of the
-        difference rather than it being silently resolved.
     priority: should
     shown_in: screen
     journey_stage: ST-003
@@ -424,6 +415,45 @@ requirements:
     shown_in: screen
     journey_stage: ST-003
     objective: O-002
+  - id: FR-019
+    user: PER-001
+    capability: Stop being asked once the section would already pass
+    outcome: >-
+      The interview ends when the section has what it needs, so they are not asked
+      questions it no longer needs.
+    acceptance:
+      - >-
+        Given an expert whose answers would already score the section 70 or more
+        with no blocking defects, when further questions remain unasked on the
+        question list, then the interview stops rather than continuing to the end
+        of it.
+      - >-
+        Given an expert whose answers would score the section under 70, or with a
+        blocking defect, when questions remain on the question list, then the next
+        question is put to them.
+    priority: should
+    shown_in: conversation
+    journey_stage: ST-002
+    objective: O-003
+  - id: FR-020
+    user: PER-001
+    capability: Be told when the set states one item two different ways
+    outcome: >-
+      They see every id, priority or link that two places in the set state
+      differently, before anyone builds from either.
+    acceptance:
+      - >-
+        Given an id, priority or link that two places in the set state
+        differently, when the section is read, then the expert is told of the
+        difference rather than it being silently resolved.
+      - >-
+        Given a set in which every id, priority and link is stated the same way
+        wherever it appears, when the section is read, then no difference is
+        reported.
+    priority: should
+    shown_in: screen
+    journey_stage: ST-003
+    objective: O-003
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-scope, kind: scope, path: ./07-scope.md, title: Scope }
@@ -452,10 +482,12 @@ links:
 | FR-016 | PER-001 | Refute a finding and have it withdrawn | should | ST-003 |
 | FR-017 | PER-001 | Move to any section without losing their place | should | ST-003 |
 | FR-018 | PER-001 | See the set as it now stands | should | ST-003 |
+| FR-019 | PER-001 | Stop being asked once the section would pass | should | ST-002 |
+| FR-020 | PER-001 | Be told when the set states one item two ways | should | ST-003 |
 
-Every release-line stage has at least one `must` requirement. Ten of the 18
+Every release-line stage has at least one `must` requirement. Ten of the 20
 are `must`: without any one of them, REL-001 does not do what it promises. The
-eight `should` requirements make the work faster or easier to follow, and the
+ten `should` requirements make the work faster or easier to follow, and the
 expert can still reach an approved set without them. The expert set this split
 at version 0.8.0.
 
@@ -472,6 +504,11 @@ each has a failure mode of its own: a build could deliver perfect set-state
 visibility and still re-ask three answered questions, and could report a grade
 perfectly and still defend a finding the document does not support. Ids are never
 renumbered, so they sit at the end rather than in stage order.
+
+FR-019 and FR-020 were split out of FR-004 and FR-008 at version 0.9.0, for the
+same reason. The early stop and the check across the set each have a failure
+mode of their own, and each needs its own priority. The expert set both to
+`should`. FR-019 also waits on Q-009, because the early stop applies the rubric.
 
 ## A judgement call worth challenging
 

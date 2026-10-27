@@ -45,7 +45,7 @@ At version 0.8.1, C-001 to C-003 left this section.
 At version 0.9.0, C-004 left this section.
 
 - C-004, no regulation, standard, clause, or statistic is stated as fact unless
-  the expert supplied it or it was checked against its source, is decision rule
+  the expert supplied it or it was checked against its source, is trust rule
   TR-005 in section 10 and requirement FR-006 in section 7. TR-005 makes the
   expert the only one who can state such a fact as true, and it is never
   delegated. FR-006 records a fact the expert does not know as an open question

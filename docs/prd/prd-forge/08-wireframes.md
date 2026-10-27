@@ -17,7 +17,7 @@ wireframes:
     type: screen
     persona: PER-001
     journey_stage: ST-003
-    illustrates: [FR-002, FR-008, FR-017, FR-018]
+    illustrates: [FR-002, FR-008, FR-017, FR-018, FR-020]
     shows:
       - Where they are in the set, the section's state, and its grade
       - Next, previous, refresh, and back to the view before
@@ -150,7 +150,7 @@ Each sketch is also drawn in PlantUML Salt for the printed PRD.
 
 ## WF-001 The set with one section open
 
-Illustration, not a design. Illustrates FR-002, FR-008, FR-017, and FR-018. PER-001 sees it at ST-003.
+Illustration, not a design. Illustrates FR-002, FR-008, FR-017, FR-018, and FR-020. PER-001 sees it at ST-003.
 
 The expert reads a drafted section with the whole set beside it. Every graded section shows its score and its blocking count, so what is weak is visible without opening anything.
 

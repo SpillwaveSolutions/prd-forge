@@ -44,14 +44,23 @@ changes:
       criteria, non-functional requirement, summary, glossary, view, topic,
       ready, capability, outcome, problem, approval, engagement, lifecycle, and
       handoff, and FR-004 names no field. Journeys and the scope
-      say "an engineer" for the person who builds from the set. The set states its
+      say "an engineer" for the person who builds from the set. FR-019 and FR-020
+      split the early stop out of FR-004 and the check across the set out of
+      FR-008, both `should` on the expert's decision. The glossary cites a source
+      for MoSCoW, Given/When/Then, story, epic, feature, story map, backbone, and
+      spike, says `wont` means won't have this time, and defines segment, buyer,
+      status quo, delegated, and definition of done. The set states its
       versioning policy before 1.0. This is a minor version because the policy
       and the evidence are new content.
     sections:
       - 1
       - 2
+      - 5
+      - 6
       - 7
       - 9
+      - 12
+      - 13
       - 14
       - 15
   - version: 0.8.1
@@ -232,7 +241,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; FR-008 checks the set for one item stated two ways; final set by the expert; ten more glossary terms; the versioning policy |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; FR-008 and FR-012 restated; interview, handover, and dependency defined; FR-018 on request within 10 seconds; backlog terms, expert, and sponsor defined; FR-008 checks the set for one item stated two ways; final set by the expert; ten more glossary terms; FR-019 and FR-020 split out; sources cited for standard terms; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |

@@ -162,3 +162,9 @@ _The figures, citations and organisations in this example are invented, to show 
 - Say "happy path", "alternate flow", "exception flow".
 - Write `expected_outcome` as an observable state, not as "the system handles it".
 - Keep Given/When/Then for acceptance criteria in section 7; scenarios are prose.
+
+## References
+
+These terms come from established practice. Cite them as `../reference/sources.md` says, and state any place where the set's meaning departs.
+
+- Given/When/Then: "Introducing BDD", Dan North, 20 Sep 2006, https://dannorth.net/blog/introducing-bdd/

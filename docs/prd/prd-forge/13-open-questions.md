@@ -82,6 +82,7 @@ questions:
       - FR-010
       - FR-011
       - FR-012
+      - FR-019
       - NFR-007
     spike: >-
       Decide whether they ship as documents of the product, name their owner, and
@@ -171,7 +172,7 @@ links:
 | Q-006 | Sections completed per sitting, and where they stop | R. Hightower | 2027-03-31 | R-004, NFR-005 |
 | Q-007 | Is the working order right, and how does looping back feel | R. Hightower | 2027-03-31 | ST-004 |
 | Q-008 | Disciplined or incomplete, to an engineering lead | R. Hightower | 2027-03-31 | A-003 |
-| Q-009 | Where the rubric and the checks live, and who owns them | R. Hightower | 2027-01-31 | FR-004, FR-009..FR-012, NFR-007 |
+| Q-009 | Where the rubric and the checks live, and who owns them | R. Hightower | 2027-01-31 | FR-004, FR-009..FR-012, FR-019, NFR-007 |
 | Q-010 | Where an answer lives before its section is drafted | R. Hightower | 2027-01-31 | FR-015, NFR-011 |
 | Q-011 | How an approver records a decision, and who owns NFR-006/012 | R. Hightower | 2027-02-28 | FR-014, NFR-006, NFR-012 |
 
@@ -182,7 +183,7 @@ answered, section 3's targets are intentions. Nothing should be committed to a
 plan on the strength of them.
 
 **Q-009, Q-010 and Q-011 came from the buildability review at 0.2.0**, and all
-three block `must` requirements on the release line. Q-009 is the largest: four
+three block `must` requirements on the release line. Q-009 is the largest: six
 requirements are written against a rubric whose shape the set defines but whose
 content it does not contain, so two of the six release-line stages can be
 scaffolded and not finished until it is answered. Q-010 is the one where guessing

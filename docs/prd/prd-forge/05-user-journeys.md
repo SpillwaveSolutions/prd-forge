@@ -172,19 +172,19 @@ journeys:
         actor: Engineering lead
         acceptance:
           - >-
-            Given an approved set and its buildability report, when the
-            engineering lead records a verdict that differs from the report's,
+            Given an approved set and the report of its buildability review,
+            when the engineering lead records a verdict that differs from the report's,
             then their judgement is recorded as the verdict and the report is
             kept alongside it.
           - >-
             Given a gap the engineering lead records, when it is stated, then the
             document is quoted for it.
         steps:
-          - Reads the buildability report, its verdict, and the gaps it quotes
+          - Reads the report of the buildability review, its verdict, and the gaps it quotes
           - Checks each reported gap against the document it quotes
           - Records their own verdict on whether the set can be built from
         inputs:
-          - An approved set and its buildability report
+          - An approved set and the report of its buildability review
         outputs:
           - The engineering lead's own recorded verdict, with the report kept
             alongside it
@@ -280,7 +280,7 @@ OUT-004, deferred to release 2 with J-002, where it is stage ST-009.
 ![J-002 journey diagram](diagrams/J-002.svg)
 
 Persona PER-004, stages ST-009, ST-007, and ST-008. In ST-009 the engineering
-lead, PER-002, reads the buildability report and records their own verdict under
+lead, PER-002, reads the report of the buildability review and records their own verdict under
 TR-006, before the delivery lead takes over. ST-009 was added at 0.8.1, after
 ST-008, and ids are never renumbered. Release 1 does not have to complete
 this journey (see section 6), but the PRD must carry what it needs, which is what

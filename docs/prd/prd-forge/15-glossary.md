@@ -101,6 +101,10 @@ terms:
       - open question
     not: >-
       A piece of the product. A spike produces knowledge, not a feature.
+    source: >-
+      Spike Solutions, The Art of Agile Development, 1st ed., James Shore and
+      Shane Warden, 3 Jun 2010,
+      https://www.jamesshore.com/v2/books/aoad1/spike_solutions
   - term: Open question
     meaning: >-
       Something not yet decided, recorded with the one person who decides it and
@@ -264,9 +268,15 @@ terms:
   - term: MoSCoW
     meaning: >-
       The priority scale this set uses: `must`, `should`, `could`, `wont`. This
-      set uses MoSCoW and not RFC 2119's MUST and SHOULD.
+      set uses MoSCoW and not RFC 2119's MUST and SHOULD. `wont` keeps the
+      source's meaning, won't have this time: a `wont` item is out of scope and
+      revisited later, not a non-goal.
     see_also:
       - the five tests
+      - out of scope
+    source: >-
+      What is MoSCoW Prioritization?, Agile Business Consortium, accessed
+      2026-10-27, https://www.agilebusiness.org/?p=1907
   - term: Wireframe
     meaning: >-
       A sketch of one screen a person works in or one report a person reads,
@@ -320,10 +330,13 @@ terms:
       conditions, or reject, and the decision is recorded in section 15 against a
       named version. An approver who approves with conditions approves the set
       on the conditions they state, and the set reads as approved with conditions
-      until that same approver clears every one.
+      until that same approver clears every one. Section 10 uses the same word
+      for each trust rule's decider, so its Approver column names who decides
+      that one rule, not who approves the set.
     see_also:
       - condition
       - root document
+      - trust rule
     not: >-
       The expert. The expert decides the state of each section; the approver
       decides on the whole set. They are one person only when no sponsor exists.
@@ -394,6 +407,12 @@ terms:
       - requirement
       - stage
       - the five tests
+    not: >-
+      Exit criteria. Acceptance criteria decide whether one requirement or stage
+      passes, and exit criteria decide whether a whole release is done.
+    source: >-
+      Introducing BDD, Dan North, 20 Sep 2006,
+      https://dannorth.net/blog/introducing-bdd/
   - term: Gap
     meaning: >-
       Something the set does not say that a team needs in order to build: most
@@ -484,18 +503,32 @@ terms:
   - term: Feature
     meaning: >-
       The backlog item for one journey stage, carrying the ids of the requirements
-      on that stage.
+      on that stage. The set departs from the source here: the source makes a
+      feature any story big enough to be released, and this set makes it one
+      journey stage.
     see_also:
       - backlog
       - stage
     not: >-
       A requirement. A feature holds every requirement of one stage.
+    source: >-
+      Epics, Features and User Stories, Mountain Goat Software, updated 28 Apr
+      2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
   - term: Epic
     meaning: >-
-      A group of backlog items scoped by the release line.
+      A group of backlog items scoped by the release line, so one epic holds the
+      items that one release delivers. The source defines an epic as a large
+      user story. This set keeps that it is large, and fixes its size by the
+      release line rather than by judgment.
     see_also:
       - backlog
       - release line
+    not: >-
+      A feature. A feature covers one journey stage, and an epic covers the
+      stages one release delivers.
+    source: >-
+      Epics, Features and User Stories, Mountain Goat Software, updated 28 Apr
+      2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
   - term: Story
     meaning: >-
       The backlog item for one requirement, in the persona's own words, with the
@@ -506,6 +539,9 @@ terms:
       - acceptance criteria
     not: >-
       A requirement. The requirement is in the set; the story is derived from it.
+    source: >-
+      Epics, Features and User Stories, Mountain Goat Software, updated 28 Apr
+      2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
   - term: Expert
     meaning: >-
       The person with the domain knowledge, persona PER-001, who answers the
@@ -561,6 +597,9 @@ terms:
     see_also:
       - expert
       - journey
+    not: >-
+      A user. Anyone who uses the product is a user, and a persona is one named
+      role with its own goals.
   - term: Item
     meaning: >-
       One numbered entry in a section with its own id, such as a problem, a
@@ -625,6 +664,9 @@ terms:
     see_also:
       - unit of work
       - domain
+    not: >-
+      The glossary. The vocabulary is the few words the expert states at the
+      start, and the glossary holds every domain term of the set.
   - term: Engineer
     meaning: >-
       Anyone on the team who builds from the set and was not in the interview.
@@ -663,6 +705,9 @@ terms:
       - backbone
       - backlog
       - delivery lead
+    source: >-
+      The New User Story Backlog is a Map, Jeff Patton & Associates, 8 Oct 2008,
+      updated 12 Apr 2023, https://www.jpattonassociates.com/the-new-backlog/
   - term: Backbone
     meaning: >-
       The ordered journey stages that a story-mapping workshop maps features
@@ -671,6 +716,9 @@ terms:
     see_also:
       - journey
       - story-mapping workshop
+    source: >-
+      The New User Story Backlog is a Map, Jeff Patton & Associates, 8 Oct 2008,
+      updated 12 Apr 2023, https://www.jpattonassociates.com/the-new-backlog/
   - term: Question list
     meaning: >-
       The questions an interview may put for one section. The interview ends
@@ -741,6 +789,9 @@ terms:
       in section 13.
     see_also:
       - release
+    not: >-
+      Acceptance criteria. Acceptance criteria decide one requirement or stage,
+      and exit criteria decide the whole release.
   - term: Non-functional requirement
     meaning: >-
       A quality the product must have, such as speed, accessibility, or retention,
@@ -850,6 +901,43 @@ terms:
     not: >-
       The handover. The handover is the one handoff at which the approved set
       reaches the engineering lead.
+  - term: Segment
+    meaning: >-
+      A group of organizations that would buy the product for the same reason,
+      recorded in section 2 with its buyer and its user, such as S-001.
+    see_also:
+      - buyer
+  - term: Buyer
+    meaning: >-
+      The person in a segment who decides to pay for the product, such as a
+      principal or a practice lead.
+    see_also:
+      - segment
+    not: >-
+      The user. The buyer pays, and the user is the person who works with the
+      product, such as the consultant with the domain knowledge.
+  - term: Status quo
+    meaning: >-
+      What a buyer does today with no product: a smart practitioner, a document,
+      and a willing engineer. Section 2 records it as a competitor, because every
+      buyer already has it.
+    see_also:
+      - segment
+  - term: Delegated
+    meaning: >-
+      Given to an agent to decide. Section 10 marks for each trust rule whether an
+      agent may decide it, and a rule that is never delegated is always decided by
+      the person it names.
+    see_also:
+      - trust rule
+  - term: Definition of done
+    meaning: >-
+      The conditions every backlog item must meet before the team counts it as
+      done. The delivery lead needs the set's constraints to arrive as items of
+      it, not as surprises, in J-002.
+    see_also:
+      - backlog
+      - constraint
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -872,7 +960,7 @@ links:
 | Non-goal | Out of scope |
 | Grade | Score |
 | State | Threshold |
-| Assumption | Open question, risk |
+| Assumption | An open question |
 | Candidate architecture decision | A requirement |
 | Buildability review | A grading pass |
 | Finding | A blocking defect |
@@ -900,16 +988,30 @@ links:
 | Approval | An override |
 | Engagement | A unit of work |
 | Handoff | The handover |
-
-Seventeen terms were added at version 0.2.0. Five of them existed only as
-`see_also` pointers to nothing, which is this set's own named blocking defect; the
-rest were load-bearing inside acceptance criteria while being defined nowhere:
-threshold, grade, grading pass, state, verdict, override, unit of work and the
-rest. The five tests are now numbered, because the set cites "test 5" by number
-five times.
+| Journey | A use case |
+| Step | A stage |
+| Override | An approval |
+| Release | The release line |
+| Non-functional requirement | A requirement in section 7 |
+| Acceptance criteria | Exit criteria |
+| Epic | A feature |
+| Vocabulary | The glossary |
+| Persona | A user |
+| Buyer | The user |
 
 The "Most often confused with" column above is the one that earns its keep. Every one of these has
 been confused in practice, and three of them, golden thread, blocking defect and
 score, carry a cost when confused: a team picks the wrong journey for release 1,
 ships a section with a known fault because the number looked good, or believes a
 well-written specification means a sound product.
+
+## References
+
+Eight terms come from established practice, and each entry's `source` names
+where. Where this set departs from the source, the entry says so.
+
+- MoSCoW: "What is MoSCoW Prioritization?", Agile Business Consortium, accessed 2026-10-27, https://www.agilebusiness.org/?p=1907
+- Given/When/Then: "Introducing BDD", Dan North, 20 Sep 2006, https://dannorth.net/blog/introducing-bdd/
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
+- Story map and backbone: "The New User Story Backlog is a Map", Jeff Patton & Associates, 8 Oct 2008, updated 12 Apr 2023, https://www.jpattonassociates.com/the-new-backlog/
+- Spike: "Spike Solutions", in The Art of Agile Development, 1st ed., James Shore and Shane Warden, 3 Jun 2010, https://www.jamesshore.com/v2/books/aoad1/spike_solutions

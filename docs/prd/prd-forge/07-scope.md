@@ -35,6 +35,7 @@ in_scope:
       - FR-003
       - FR-004
       - FR-005
+      - FR-019
   - id: IN-003
     summary: >-
       Never record an invented domain fact, and convert a stated technology into
@@ -52,6 +53,7 @@ in_scope:
       - FR-016
       - FR-017
       - FR-018
+      - FR-020
   - id: IN-005
     summary: Ask one question that most improves the section, and re-grade after it
     journey_stage: ST-004
@@ -86,7 +88,7 @@ out_of_scope:
       An engineering lead reading the set and recording their own confirmation that
       it can be built from
     revisit: >-
-      Release 2, with J-002. Release 1 gives the expert the buildability report
+      Release 2, with J-002. Release 1 gives the expert the buildability review
       (FR-012) so the gaps are found before anyone estimates; a named lead's own
       confirmation is a second person's time, which R1 does not ask for.
   - id: OUT-003
@@ -145,9 +147,9 @@ ST-001 through ST-006 for one expert, one PRD, one golden-thread journey.
 | ID | In scope | Stage | Requirements |
 | --- | --- | --- | --- |
 | IN-001 | Idea, domain, vocabulary, a visible empty set, and resumption | ST-001 | FR-001, FR-002, FR-015 |
-| IN-002 | Teach then interview, in their vocabulary | ST-002 | FR-003, FR-004, FR-005 |
+| IN-002 | Teach then interview, in their vocabulary | ST-002 | FR-003, FR-004, FR-005, FR-019 |
 | IN-003 | No invented facts; convert technology talk | ST-002 | FR-006, FR-007 |
-| IN-004 | Draft as prose, with grade, blocking defects, and refutable findings, reached from any section | ST-003 | FR-008, FR-009, FR-016, FR-017, FR-018 |
+| IN-004 | Draft as prose, with grade, blocking defects, and refutable findings, reached from any section | ST-003 | FR-008, FR-009, FR-016, FR-017, FR-018, FR-020 |
 | IN-005 | One question, then re-grade | ST-004 | FR-010, FR-011 |
 | IN-006 | Buildability review of the whole set | ST-005 | FR-012 |
 | IN-007 | Approval recorded against a version | ST-006 | FR-013, FR-014 |

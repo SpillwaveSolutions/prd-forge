@@ -1,4 +1,4 @@
-# Section 14 — Glossary
+# Section 14. Glossary
 
 **Kind** `glossary` · **Schema** `prd-forge/glossary@1` · **File** `15-glossary.md`
 
@@ -10,7 +10,7 @@ backlog uses these words, with these meanings.
 ## Why it matters
 
 Domain words carry different meanings for the expert, the engineer and the
-regulator. "Exception", "review", "approval", "load", "claim", "engagement" — each
+regulator. "Exception", "review", "approval", "load", "claim", "engagement". Each
 of those has cost a project months somewhere. The glossary is cheap insurance,
 and it is the section that most helps a developer who is new to the domain
 actually build the right thing.
@@ -42,6 +42,9 @@ would have to guess at, stop and ask:
 2. "Does anyone in your organisation use it differently?"
 3. "What would a newcomer wrongly think it means?"
 4. "Is there a regulator's or standard-setter's definition? Does yours match it?"
+   For a term listed in `../reference/sources.md`, such as MoSCoW, story, or
+   spike, take the entry's `source` from there and ask only whether the set's
+   meaning departs from it. Record any departure in `meaning` or `not`.
 
 Then read your own draft requirements back and flag every domain word that is
 not in here.
@@ -66,11 +69,11 @@ _The figures, citations and organisations in this example are invented, to show 
 
 | Dimension | 0 | 2 | 4 |
 | --- | --- | --- | --- |
-| Coverage | Absent or trivial | Main terms | Every domain word used in sections 1–13 |
+| Coverage | Absent or trivial | Main terms | Every domain word used in sections 1, 13 |
 | Author's voice | Dictionary definitions | Mixed | The expert's own words |
 | Disambiguation | No `not` fields | A few | `not` on every commonly confused term |
-| Consistency | Document uses other words | Mostly consistent | Sections 1–13 use exactly these terms |
-| Authority | None | Mentioned | Standard-setter definitions cited where they exist |
+| Consistency | Document uses other words | Mostly consistent | Sections 1, 13 use exactly these terms |
+| Authority | None | Mentioned | Standard-setter definitions cited in `source` where they exist, from `reference/sources.md` for the terms it lists, with each departure stated |
 
 ## Blocking defects
 
@@ -83,3 +86,13 @@ _The figures, citations and organisations in this example are invented, to show 
 - Define the term, then use only that term. Do not alternate synonyms.
 - Where the organisation and a standard disagree, give both and say which the PRD
   uses.
+
+## References
+
+These terms come from established practice. Cite them as `../reference/sources.md` says, and state any place where the set's meaning departs.
+
+- MoSCoW: "What is MoSCoW Prioritization?", Agile Business Consortium, https://www.agilebusiness.org/?p=1907
+- Given/When/Then: "Introducing BDD", Dan North, 20 Sep 2006, https://dannorth.net/blog/introducing-bdd/
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
+- Story map and backbone: "The New User Story Backlog is a Map", Jeff Patton & Associates, 8 Oct 2008, updated 12 Apr 2023, https://www.jpattonassociates.com/the-new-backlog/
+- Spike: "Spike Solutions", in The Art of Agile Development, 1st ed., James Shore and Shane Warden, 3 Jun 2010, https://www.jamesshore.com/v2/books/aoad1/spike_solutions

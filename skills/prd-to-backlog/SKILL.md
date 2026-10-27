@@ -112,3 +112,12 @@ node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-validate.mjs" <backlog set directory>
 - What you deliberately did not write: tasks, subtasks, estimates, and sizing.
   Say that the story-mapping workshop and iteration planning produce those, and
   who attends each — the table is in `backlog.md`.
+
+## References
+
+These terms come from established practice. Cite them as `../prd-wizard/reference/sources.md` says, and state any place where the set's meaning departs.
+
+- Given/When/Then: "Introducing BDD", Dan North, 20 Sep 2006, https://dannorth.net/blog/introducing-bdd/
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
+- Story map and backbone: "The New User Story Backlog is a Map", Jeff Patton & Associates, 8 Oct 2008, updated 12 Apr 2023, https://www.jpattonassociates.com/the-new-backlog/
+- Spike: "Spike Solutions", in The Art of Agile Development, 1st ed., James Shore and Shane Warden, 3 Jun 2010, https://www.jamesshore.com/v2/books/aoad1/spike_solutions
