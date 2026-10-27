@@ -17,7 +17,7 @@ segments:
     buyer: Principal or practice lead
     user: The consultant with the domain knowledge
     size: >-
-      `<count>` firms, per `<a named register, with its year>` — not yet measured;
+      `<count>` firms, per `<a named register, with its year>`, not yet measured;
       see Q-004.
     willingness_to_pay: >-
       Already pays for the consultant's time; the comparison is billable hours
@@ -61,9 +61,10 @@ competitors:
     offer: >-
       No tool, no cost, no adoption, and it does sometimes work.
     our_edge: >-
-      It works when the engineer is willing to re-derive the specification and is
-      in the room. It fails on handover, on scale, and on anything the engineer
-      cannot ask about.
+      At handover, an engineer who was not in the room receives a set that names
+      each release-line stage no requirement covers and holds each fact the
+      expert could not supply as an open question with a named decider and a
+      date, so they can estimate without first interviewing the author.
 why_we_win: >-
   The expert can see, before anyone starts building, which parts of their own
   specification a development team will not be able to build from, and what to

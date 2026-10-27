@@ -394,9 +394,10 @@ requirements:
         when they follow that ID, then the section that defines it is shown and
         the ID is named above it.
       - >-
-        Given they have moved through three views, a section, its grade, and its
-        rubric, when they ask to go back three times, then they see the grade,
-        then the section, then the view they started from.
+        Given they have moved from a section to three other things in the set, one
+        after another, when they ask to go back three times, then they see each
+        earlier thing again, the most recent first, and end at the section they
+        started from.
     priority: should
     shown_in: screen
     journey_stage: ST-003
@@ -459,7 +460,9 @@ at version 0.8.0.
 
 Six of the `must` requirements wait on an open question in section 12.
 FR-004, FR-009, FR-010, and FR-012 wait on Q-009, where the rubric and the
-derivability checks live and who owns them. FR-013 waits on Q-005, whether a
+derivability checks live and who owns them. FR-010 also waits on Q-007, whether
+the working order is right and how looping back to the journeys feels, because
+Q-007 blocks ST-004. FR-013 waits on Q-005, whether a
 sponsor accepts a specification that carries a grade. FR-014 waits on Q-011, how
 an approver records a decision.
 

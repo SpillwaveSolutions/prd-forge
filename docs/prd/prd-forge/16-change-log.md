@@ -12,6 +12,21 @@ score: 58
 blocking: 0
 graded: 2026-10-27
 changes:
+  - version: 0.8.2
+    date: 2026-10-27
+    author: Richard Hightower
+    summary: >-
+      Fixes the blocking defects the 0.8.1 grading found that do not wait on
+      the expert. The glossary defines requirement, acceptance criteria, gap,
+      version, domain, and reading order. FR-017's third criterion states what
+      the expert sees when they go back, and names no view. Section 7 says that
+      FR-010 waits on Q-007, which blocks ST-004. The status-quo competitor's
+      edge states what an engineer who was not in the room receives at
+      handover.
+    sections:
+      - 2
+      - 7
+      - 14
   - version: 0.8.1
     date: 2026-10-27
     author: Richard Hightower
@@ -190,6 +205,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.8.2 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |
@@ -199,7 +215,7 @@ links:
 | 0.2.0 | 2026-10-26 | Richard Hightower | Every defect the grading and the buildability review found, over two rounds |
 | 0.1.0 | 2026-10-23 | Richard Hightower | First draft of all sixteen sections |
 
-## 0.2.0 — what the grading changed
+## 0.2.0, what the grading changed
 
 The reviewers that graded 0.1.0 were the product's own, run against its own PRD.
 They found twelve blocking defects and four failed derivability checks. The
@@ -214,7 +230,7 @@ at the wrong document, and the claim that the section count was contradicted. Bo
 came from reading file numbers as section numbers. The references were right; the
 numbering was unexplained, which is now fixed in the root document.
 
-## 0.1.0 — what to know
+## 0.1.0, what to know
 
 Written as prd-forge's own first exercise. Three things a reader should carry
 forward:

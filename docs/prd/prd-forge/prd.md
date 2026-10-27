@@ -8,7 +8,7 @@ updated: 2026-10-27
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.8.1
+version: 0.8.2
 owner: Richard Hightower
 stakeholders:
   - Domain experts who must specify software for their own field

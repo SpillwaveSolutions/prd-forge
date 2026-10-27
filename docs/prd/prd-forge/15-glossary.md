@@ -372,6 +372,71 @@ terms:
     not: >-
       A target. The baseline is where the metric stands now; the target is where
       the objective says it will be by a date.
+  - term: Requirement
+    meaning: >-
+      A statement of what one named user can do with the product and the outcome
+      they can see, recorded in section 7 with its acceptance criteria, a
+      priority, the journey stage it serves, and the objective it serves. A
+      statement is a requirement only when it passes the five tests.
+    see_also:
+      - the five tests
+      - acceptance criteria
+      - objective
+  - term: Acceptance criteria
+    meaning: >-
+      The pass-or-fail statements on a requirement or a journey stage. Each is
+      written as Given a situation, When the person acts, Then what they see, and
+      each is one an engineer who was not in the interview could write a test
+      from. A story derived from a requirement takes the requirement's criteria
+      as its acceptance criteria.
+    see_also:
+      - requirement
+      - stage
+      - the five tests
+  - term: Gap
+    meaning: >-
+      Something the set does not say that a team needs in order to build: most
+      often a release-line stage that no requirement covers, as a buildability
+      review reports it. A gap is closed with a requirement, or owned as an open
+      question with a decider and a date.
+    see_also:
+      - buildability review
+      - release line
+      - open question
+  - term: Version
+    meaning: >-
+      A numbered state of the set, recorded in section 15 with its date, its
+      author, and the sections it changed. An approval names the one version it
+      covers, and a change written after an approval records a new version that
+      the approval does not cover.
+    see_also:
+      - approver
+      - condition
+    not: >-
+      A release of the product. The product's releases are numbered too, and a
+      set written by one release is read by later ones; a version of the set
+      counts changes to the set.
+  - term: Domain
+    meaning: >-
+      The field of work the expert specifies software for, such as freight. The
+      expert names it before the first section. It sets the unit of work, the
+      vocabulary every question uses, and the examples each section is taught
+      with. The expert supplies knowledge of the domain; the product does not.
+    see_also:
+      - unit of work
+  - term: Reading order
+    meaning: >-
+      The order in which the documents of a set are read: the root document, then
+      the section documents by section number, from section 1 to section 15.
+      Where a section holds two documents, journeys come before scenarios and
+      functional requirements come before wireframes. The next and the previous
+      section of any document follow this order.
+    see_also:
+      - section
+      - root document
+    not: >-
+      The file numbers. File prefixes and section numbers differ from section 5
+      onward, but both put the documents in the same order.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -406,6 +471,8 @@ links:
 | Constraint | A requirement |
 | Objective | A requirement |
 | Baseline | A target |
+| Version | A release of the product |
+| Reading order | The file numbers |
 
 Seventeen terms were added at version 0.2.0. Five of them existed only as
 `see_also` pointers to nothing, which is this set's own named blocking defect; the
