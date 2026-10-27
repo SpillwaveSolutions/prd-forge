@@ -3,4 +3,4 @@ __pycache__/
 .claude/
 
 # ArcKit hook telemetry
-.arckit/memory/
+**/.arckit/memory/
