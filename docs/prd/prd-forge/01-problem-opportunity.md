@@ -20,11 +20,18 @@ problems:
     who: Domain expert specifying software for their own field
     persona: PER-001
     evidence:
+      - claim: >-
+          In this PRD at version 0.1.0, the adversarial grade found 2 of 14
+          functional requirements, FR-003 and FR-004, with no outcome a person
+          could see. Both were fixed at version 0.2.0.
+        source: >-
+          prd-forge repository, commits 5ba59cb (version 0.1.0) and 5d4d936
+          (version 0.2.0)
+        as_of: 2026-10-23
       - >-
         Specifications arriving at delivery teams are commonly feature lists;
         teams report re-deriving the user and the acceptance criteria themselves
-        before they can estimate. Quantify this from your own intake before you
-        rely on it.
+        before they can estimate.
       - >-
         Experts asked to write requirements reach for the words of the software
         they have used, because that is the only requirements language they have
@@ -44,6 +51,13 @@ problems:
     who: Engineering lead building from the specification
     persona: PER-002
     evidence:
+      - claim: >-
+          At version 0.1.0, the buildability review of this PRD failed 4 of 11
+          derivability checks and named 4 gates an engineer would have to invent.
+        source: >-
+          prd-forge repository, the commit messages of 5ba59cb (version 0.1.0)
+          and 5d4d936 (version 0.2.0)
+        as_of: 2026-10-23
       - >-
         A specification with no user journey gives a story-mapping workshop no
         backbone, so features and epics cannot be derived from it at all.
@@ -63,6 +77,12 @@ problems:
     who: Sponsor or approver signing the specification off
     persona: PER-003
     evidence:
+      - claim: >-
+          At version 0.8.0, this PRD passed every schema and cross-reference
+          check with 0 errors and 0 warnings. The adversarial grade found 23
+          blocking defects in 8 of 18 documents.
+        source: prd-forge repository, commit 6f77bc0 (version 0.8.0)
+        as_of: 2026-10-26
       - >-
         Approval is given on readability and completeness of headings, because
         those are the only properties an approver can assess unaided.
@@ -82,9 +102,17 @@ problems:
     who: Domain expert specifying software for their own field
     persona: PER-001
     evidence:
-      - >-
-        Templates name the sections and not their purpose, so a heading like
-        "non-functional requirements" is filled with adjectives.
+      - claim: >-
+          Of 20 sections in two public PRD templates, all 20 say what to write,
+          and 0 say what makes an entry good or how a reader checks it. The Aha!
+          Agile PRD template has 6 sections, and the Product School PRD template
+          has 14.
+        source: >-
+          Aha! Agile PRD template,
+          https://www.aha.io/roadmapping/guide/requirements-management/what-is-a-good-product-requirements-document-template,
+          and Product School PRD template,
+          https://productschool.com/blog/product-strategy/product-template-requirements-document-prd
+        as_of: 2026-10-26
       - >-
         The craft exists in books and in experienced product managers, neither of
         which is available at the moment the expert is typing.
@@ -113,7 +141,10 @@ The four compound. P-004 means the expert does not know what good looks like;
 P-001 is what they produce as a result; P-002 is the specific gap that costs the
 most; and P-003 is why none of it is caught before it is expensive.
 
-**Evidence note.** The evidence above describes a pattern, not a measurement. No
-figure here is sourced, and three of the objectives in section 3 have no baseline
-for the same reason — see Q-001, Q-002 and Q-003. Measure your own intake before
-relying on any of it.
+**Evidence note.** Each problem now has one counted case, with its source and
+date. The counts for P-001 to P-003 come from one engagement, this product's own
+PRD, written and graded with prd-forge. The count for P-004 comes from two
+public templates. One engagement shows that each problem occurs. It does not
+show how often. The other evidence items describe a pattern and are not
+measured. Three of the objectives in section 3 still have no baseline. See
+Q-001, Q-002, and Q-003.

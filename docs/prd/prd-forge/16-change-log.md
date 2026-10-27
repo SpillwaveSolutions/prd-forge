@@ -22,11 +22,17 @@ changes:
       the expert sees when they go back, and names no view. Section 7 says that
       FR-010 waits on Q-007, which blocks ST-004. The status-quo competitor's
       edge states what an engineer who was not in the room receives at
-      handover. The set states its versioning policy before 1.0. This is a
-      minor version because the policy is new content.
+      handover. Each problem in section 1 has one counted case, with its
+      source and date. C-004 leaves section 9, which now holds no constraints.
+      Its rule lives in TR-005 and FR-006, and its id is not reused. The
+      plugin's constraints schema accepts an empty list. The set states its
+      versioning policy before 1.0. This is a minor version because the policy
+      and the evidence are new content.
     sections:
+      - 1
       - 2
       - 7
+      - 9
       - 14
       - 15
   - version: 0.8.1
@@ -207,7 +213,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; the versioning policy |
+| 0.9.0 | 2026-10-27 | Richard Hightower | Six glossary terms, FR-017 without view names, FR-010's wait on Q-007, the status-quo edge; counted evidence for P-001 to P-004; C-004 moved out of section 9; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
 | 0.7.0 | 2026-10-27 | Richard Hightower | Root objective, primary persona and approver; release id in scope; LC-001 rule |

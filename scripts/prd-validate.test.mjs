@@ -244,9 +244,22 @@ test('a criterion that names a control, or is not Given/When/Then, draws a warni
 test('wireframe marks run 1 to n and match the drawing', () =>
   failsWith('08-wireframes.md', t => t.replace('losing their place. See FR-009 › <5>', 'losing their place. See FR-009 › <6>'), /WF-001 has marks 1, 2, 3, 4, 6 for 5 shows lines/))
 
+// A constraint with characters that YAML treats as special.
+const C_099 = `  - id: C-099
+    category: legal
+    statement: "No figure (or [clause]) is stated; see #3 <here> and \\"quoted\\" text."
+    authority: "Example Act 2026, s. 4(1): retention; see #2"
+    verification: Checked once per release.
+`
+
 test('what an NFR or a constraint applies to exists', () => {
   failsWith('09-nonfunctional-requirements.md', t => t.replace('    applies_to:\n      - FR-004\n', '    applies_to:\n      - FR-099\n'), /applies_to names FR-099/)
-  failsWith('10-constraints.md', t => t.replace('      - FR-006\n', '      - FR-099\n'), /C-004 applies_to names FR-099/)
+  failsWith('10-constraints.md', t => t.replace('constraints: []\n', `constraints:\n${C_099}    applies_to:\n      - FR-099\n`), /C-099 applies_to names FR-099/)
+})
+
+test('section 9 can be empty, and a constraint with awkward characters validates', () => {
+  assert.deepEqual(validateEdited('10-constraints.md', t => t), [])
+  assert.deepEqual(validateEdited('10-constraints.md', t => t.replace('constraints: []\n', `constraints:\n${C_099}`)), [])
 })
 
 test('an agent role agrees with how the decision is delegated', () =>
