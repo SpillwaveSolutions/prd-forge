@@ -4,7 +4,7 @@ kind: scope
 schema: prd-forge/scope@1
 title: Scope
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 6
 order: 70
@@ -106,9 +106,27 @@ non_goals:
   - >-
     We are not generating a backlog's tasks, subtasks, estimates or sizing at any
     release. Those come from engineering design, not from a PRD.
-  - >-
-    We are not replacing the organisation's document store, issue tracker, or
-    approval system. The output is plain documents the organisation keeps itself.
+  - statement: >-
+      We are not replacing the organization's document store, issue tracker, or
+      approval system, and we are not the system of record for a PRD. The output
+      is plain text documents the organization stores wherever it already stores
+      documents.
+    reason: >-
+      A product decision by Richard Hightower, recorded at 0.1.0 as C-002 and
+      moved here from section 9 at 0.8.1.
+  - statement: >-
+      We are not building a separate application. The expert has nothing to open,
+      install, or log into beyond the session they are already working in.
+    reason: >-
+      A product decision by Richard Hightower, recorded at 0.1.0 as C-001 and
+      moved here from section 9 at 0.8.1. The session it needs is dependency
+      D-001 in section 11.
+  - statement: >-
+      We are not targeting product teams entering a domain they do not know in
+      release 1.
+    reason: >-
+      They already employ the product skill and want the domain, which prd-forge
+      does not supply. This was segment S-003 in section 2 until 0.8.1.
   - >-
     We are not certifying a PRD. A grade is evidence for the expert's judgement,
     never a warrant that the product will succeed.
@@ -140,12 +158,26 @@ ST-001 through ST-006 for one expert, one PRD, one golden-thread journey.
 | --- | --- | --- |
 | OUT-001 | Deriving the backlog (J-002) | R2; the PRD already carries what it needs |
 | OUT-002 | Two experts on one set at once | After three real engagements |
-| OUT-003 | Any view beyond the documents and a stepper beside the conversation | When an approver asks |
+| OUT-003 | Any view beyond reading the documents and stepping through them beside the conversation | When an approver asks |
 | OUT-004 | An engineering lead's own recorded confirmation | R2, with J-002 |
 
 ## Non-goals
+
+| Non-goal | Why not |
+| --- | --- |
+| Supplying domain knowledge | The expert has it; the product supplies product management |
+| Deciding scope, priority, or whether to build | The expert decides; the product shows the consequences |
+| A backlog's tasks, subtasks, estimates, or sizing | They come from engineering design, not from a PRD |
+| Replacing the document store, issue tracker, or approval system, or being the system of record | Product decision, 0.1.0 (was C-002) |
+| A separate application to open, install, or log into | Product decision, 0.1.0 (was C-001); the session is D-001 |
+| Product teams entering a domain they do not know, in release 1 | They want the domain, which prd-forge does not supply (was S-003) |
+| Certifying a PRD | A grade is evidence for the expert's judgement, never a warrant |
 
 The first is the one that defines the product: **we do not supply domain
 knowledge.** Someone without the domain is not served by this and should not buy
 it. The last is the one that protects its users: **a grade is evidence, not a
 warrant.** A high score on a PRD for the wrong product is still the wrong product.
+
+Three non-goals moved here at 0.8.1. The system-of-record and separate-application
+non-goals were constraints C-002 and C-001 in section 9, and the non-goal on
+product teams new to a domain was segment S-003 in section 2.

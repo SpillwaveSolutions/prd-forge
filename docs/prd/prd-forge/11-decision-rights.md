@@ -4,7 +4,7 @@ kind: decision-rights
 schema: prd-forge/decision-rights@1
 title: Decision rights and trust rules
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 10
 order: 110
@@ -124,6 +124,7 @@ decisions:
         reported, then it is marked unverified rather than stated as fact.
   - id: TR-006
     decision: Judge whether a set can be built from, and report the gaps
+    stages: [ST-009]
     approver: PER-002
     delegable_to_agent: true
     never_delegated: false

@@ -4,7 +4,7 @@ kind: release-plan
 schema: prd-forge/release-plan@1
 title: Release plan
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 13
 order: 140
@@ -77,6 +77,7 @@ releases:
         Every story names the requirement id it came from, so nobody has to ask why
         it exists.
     journey_stages:
+      - ST-009
       - ST-007
       - ST-008
     objectives:
@@ -113,7 +114,7 @@ links:
 | ID | Release | Stages | Target |
 | --- | --- | --- | --- |
 | REL-001 | Single-expert PRD authoring | ST-001..ST-006 | 2027-03-31 |
-| REL-002 | Backlog derivation | ST-007, ST-008 | 2027-06-30 |
+| REL-002 | Backlog derivation | ST-009, ST-007, ST-008 | 2027-06-30 |
 | REL-003 | More than one author | — | none |
 
 ## Why this order

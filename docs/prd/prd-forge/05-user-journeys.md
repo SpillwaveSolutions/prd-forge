@@ -4,7 +4,7 @@ kind: journeys
 schema: prd-forge/journeys@1
 title: User journeys
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 5
 order: 50
@@ -167,6 +167,29 @@ journeys:
       stated.
     trigger: The PRD has been approved for a release.
     stages:
+      - id: ST-009
+        name: Engineering lead records whether the set can be built from
+        actor: Engineering lead
+        acceptance:
+          - >-
+            Given an approved set and its buildability report, when the
+            engineering lead records a verdict that differs from the report's,
+            then their judgement is recorded as the verdict and the report is
+            kept alongside it.
+          - >-
+            Given a gap the engineering lead records, when it is stated, then the
+            document is quoted for it.
+        steps:
+          - Reads the buildability report, its verdict, and the gaps it quotes
+          - Checks each reported gap against the document it quotes
+          - Records their own verdict on whether the set can be built from
+        inputs:
+          - An approved set and its buildability report
+        outputs:
+          - The engineering lead's own recorded verdict, with the report kept
+            alongside it
+        decision: Can a team build from this set
+        handoff: The delivery lead, to check the PRD can carry a backlog
       - id: ST-007
         name: Delivery lead checks the PRD can carry a backlog
         actor: Delivery lead
@@ -250,14 +273,17 @@ is neither closed nor owned.
 The goal deliberately does not claim an engineering lead's confirmation. No stage
 in ST-001 to ST-006 puts one in the actor seat, so claiming it would promise
 something the release line cannot deliver. A lead's own recorded confirmation is
-OUT-004, deferred to release 2 with J-002.
+OUT-004, deferred to release 2 with J-002, where it is stage ST-009.
 
 ## J-002 - A delivery lead derives a backlog (not the golden thread)
 
 ![J-002 journey diagram](diagrams/J-002.svg)
 
-Persona PER-004, stages ST-007 and ST-008. Release 1 does not have to complete
-this journey — see section 6 — but the PRD must carry what it needs, which is what
+Persona PER-004, stages ST-009, ST-007, and ST-008. In ST-009 the engineering
+lead, PER-002, reads the buildability report and records their own verdict under
+TR-006, before the delivery lead takes over. ST-009 was added at 0.8.1, after
+ST-008, and ids are never renumbered. Release 1 does not have to complete
+this journey (see section 6), but the PRD must carry what it needs, which is what
 ST-007 checks.
 
 ## What these journeys deliberately do not say

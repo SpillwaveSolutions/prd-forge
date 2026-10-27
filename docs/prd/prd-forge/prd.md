@@ -8,7 +8,7 @@ updated: 2026-10-27
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.8.0
+version: 0.8.1
 owner: Richard Hightower
 stakeholders:
   - Domain experts who must specify software for their own field
@@ -114,10 +114,11 @@ this, so it is stated here rather than left to be inferred.
 ## A note on this PRD
 
 This is prd-forge's PRD, written with prd-forge's own conventions. Writing it
-surfaced one real tension, recorded as C-001: the product is delivered inside an
-assistant the expert already uses, and naming that delivery mechanism in a
-requirement would fail test 5. The platform is therefore a constraint, and the
-requirements in section 7 describe only what a person does and sees.
+surfaced one real tension: the product is delivered inside an assistant the
+expert already uses, and naming that delivery mechanism in a requirement would
+fail test 5. It was recorded as constraint C-001 until 0.8.1. It is now the
+separate-application non-goal in section 6 and dependency D-001 in section 11,
+and the requirements in section 7 describe only what a person does and sees.
 
 Grading it with its own adversarial reviewers found twelve blocking defects
 across four sections, and a buildability review found four failed derivability

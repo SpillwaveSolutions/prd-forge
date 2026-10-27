@@ -4,7 +4,7 @@ kind: glossary
 schema: prd-forge/glossary@1
 title: Glossary
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 14
 order: 150
@@ -196,7 +196,7 @@ terms:
   - term: Grade
     meaning: >-
       A section's score together with its blocking-defect count and its weakest
-      dimension — the rubric dimension that scored lowest, which the set also calls
+      dimension, the rubric dimension that scored lowest, which the set also calls
       the section's weakest part. A grade is what an expert is shown; a score is
       one number inside it.
     see_also:
@@ -274,6 +274,104 @@ terms:
       Every requirement shown in a screen or a report has one, in section 7.
     see_also:
       - the five tests
+  - term: Buildability review
+    meaning: >-
+      A reading of the whole set as the engineering lead who has to build it. It
+      runs the eleven derivability checks and reports a verdict and, for each
+      release-line stage, whether a requirement covers it or it is a gap.
+    see_also:
+      - verdict
+      - derivability checks
+      - finding
+    not: >-
+      A grading pass. A grading pass scores one section against its rubric; a
+      buildability review reads the whole set and asks whether a backlog can be
+      derived from it.
+  - term: Finding
+    meaning: >-
+      One fault that a grading pass or a buildability review reports, with the
+      document it is in quoted. A finding is checked against the document before
+      the expert sees it, and is dropped when the document does not support it.
+    see_also:
+      - blocking defect
+      - grading pass
+      - buildability review
+    not: >-
+      A blocking defect. A blocking defect is one kind of finding, the kind that
+      stops a section advancing. Every blocking defect is reported as a finding,
+      but most findings only lower a score or name a weak dimension.
+  - term: Root document
+    meaning: >-
+      The one document of a set that every other document names as its parent.
+      It carries the summary, the scope, every section's state and grade, and
+      every open question with its decider and date, and it is what an approver
+      reads.
+    see_also:
+      - document set
+      - approver
+    not: >-
+      Section 1. The root document has no section number; section 1 is the
+      problem and opportunity.
+  - term: Approver
+    meaning: >-
+      The one person who decides whether a set is approved for a release: the
+      sponsor, or the expert when no sponsor exists. They approve, approve with
+      conditions, or reject, and the decision is recorded in section 15 against a
+      named version. An approver who approves with conditions approves the set
+      on the conditions they state, and the set reads as approved with conditions
+      until that same approver clears every one.
+    see_also:
+      - condition
+      - root document
+    not: >-
+      The expert. The expert decides the state of each section; the approver
+      decides on the whole set. They are one person only when no sponsor exists.
+  - term: Condition
+    meaning: >-
+      What an approver who approves with conditions requires before the approval
+      is unconditional. Each condition names the open question or requirement it
+      depends on and a date, and only the approver who stated it clears it.
+    see_also:
+      - approver
+      - open question
+    not: >-
+      A constraint. A condition belongs to one approval and is cleared; a
+      constraint holds for the product and is never cleared.
+  - term: Constraint
+    meaning: >-
+      A rule the product must obey that the team cannot change by agreeing among
+      themselves, recorded in section 9 with its category, the authority that
+      imposes it by name, and how compliance is shown. A regulation or a standard
+      appears in a constraint only when the expert named it.
+    see_also:
+      - condition
+    not: >-
+      A requirement. A requirement states what a user can do and has a priority;
+      a constraint limits how every requirement it applies to may be met, and is
+      not prioritized or deferred.
+  - term: Objective
+    meaning: >-
+      A business result the product is expected to produce, recorded in section 3
+      with the problems it addresses, one metric, a baseline, a target with a
+      date, and one owner. If the product ships and the metric does not move, the
+      product did not work.
+    see_also:
+      - baseline
+    not: >-
+      A requirement. An objective says what the business gains; a requirement
+      says what a user can do, and names the objective it serves.
+  - term: Baseline
+    meaning: >-
+      The value an objective's metric has today, before the product. When it is
+      not known, the baseline says unknown and names the open question that will
+      establish it, and the target is an intention rather than a commitment until
+      the question is answered.
+    see_also:
+      - objective
+      - open question
+    not: >-
+      A target. The baseline is where the metric stands now; the target is where
+      the objective says it will be by a date.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -300,16 +398,24 @@ links:
 | Candidate architecture decision | A requirement |
 | Section | A file number |
 | Machine-readable form | A storage format |
+| Buildability review | A grading pass |
+| Finding | A blocking defect |
+| Root document | Section 1 |
+| Approver | The expert |
+| Condition | A constraint |
+| Constraint | A requirement |
+| Objective | A requirement |
+| Baseline | A target |
 
 Seventeen terms were added at version 0.2.0. Five of them existed only as
 `see_also` pointers to nothing, which is this set's own named blocking defect; the
-rest were load-bearing inside acceptance criteria while being defined nowhere —
+rest were load-bearing inside acceptance criteria while being defined nowhere:
 threshold, grade, grading pass, state, verdict, override, unit of work and the
 rest. The five tests are now numbered, because the set cites "test 5" by number
 five times.
 
 The `not` column above is the one that earns its keep. Every one of these has
-been confused in practice, and three of them — golden thread, blocking defect and
-score — carry a cost when confused: a team picks the wrong journey for release 1,
+been confused in practice, and three of them, golden thread, blocking defect and
+score, carry a cost when confused: a team picks the wrong journey for release 1,
 ships a section with a known fault because the number looked good, or believes a
 well-written specification means a sound product.

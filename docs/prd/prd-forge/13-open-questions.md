@@ -4,7 +4,7 @@ kind: open-questions
 schema: prd-forge/open-questions@1
 title: Open questions
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 12
 order: 130
@@ -54,7 +54,6 @@ questions:
     blocks:
       - S-001
       - S-002
-      - S-003
     spike: >-
       Name the register or source per segment and count; then compare against the
       first ten conversations. Time-boxed to 5 days.
@@ -92,8 +91,8 @@ questions:
   - id: Q-010
     question: >-
       Where does an answer live between the moment the expert gives it and the
-      moment the section is drafted, given that C-003 forbids retaining content
-      outside the documents and NFR-004 requires the set readable with no part of
+      moment the section is drafted, given A-005, that content is retained
+      nowhere outside the documents, and given that NFR-004 requires the set readable with no part of
       the product running?
     decider: Richard Hightower
     by: 2027-01-31
@@ -103,14 +102,14 @@ questions:
     spike: >-
       Decide whether an in-progress interview is itself a document of the set, or
       whether answers before a draft are not retained at all and FR-015 holds only
-      within a session. Time-boxed to 2 days. Guessing this one breaches a stated
-      policy constraint rather than merely costing rework.
+      within a session. Time-boxed to 2 days. Guessing this one breaks assumption
+      A-005, which customers rely on, rather than merely costing rework.
   - id: Q-011
     question: >-
-      How does an approver record a decision, given that C-001 puts the product
+      How does an approver record a decision, given that D-001 puts the product
       inside the expert's session and OUT-003 excludes any view of our own, and who
       owns NFR-006's accessibility and NFR-012's access control, which describe
-      things C-001 and C-002 say we do not own?
+      things the non-goals in section 6 say we do not own?
     decider: Richard Hightower
     by: 2027-02-28
     blocks:
@@ -167,7 +166,7 @@ links:
 | Q-001 | Today's first-pass buildability rate | R. Hightower | 2027-03-31 | O-001 |
 | Q-002 | Today's idea-to-approval elapsed time | R. Hightower | 2027-03-31 | O-002 |
 | Q-003 | Today's share of testable requirements | R. Hightower | 2027-03-31 | O-003 |
-| Q-004 | Segment sizes, and which converts | R. Hightower | 2027-06-30 | S-001..S-003 |
+| Q-004 | Segment sizes, and which converts | R. Hightower | 2027-06-30 | S-001, S-002 |
 | Q-005 | Will a sponsor accept a graded specification | R. Hightower | 2027-01-31 | FR-013, TR-001 |
 | Q-006 | Sections completed per sitting, and where they stop | R. Hightower | 2027-03-31 | R-004, NFR-005 |
 | Q-007 | Is the working order right, and how does looping back feel | R. Hightower | 2027-03-31 | ST-004 |
@@ -187,7 +186,7 @@ three block `must` requirements on the release line. Q-009 is the largest: four
 requirements are written against a rubric whose shape the set defines but whose
 content it does not contain, so two of the six release-line stages can be
 scaffolded and not finished until it is answered. Q-010 is the one where guessing
-breaches a stated constraint rather than costing rework.
+breaks assumption A-005 rather than costing rework.
 
 **Q-005 is the one that could invalidate the product's central idea.** It was
 dated after the release it blocks until 0.2.0 moved it to 2027-01-31; it is a

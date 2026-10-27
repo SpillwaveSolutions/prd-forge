@@ -4,7 +4,7 @@ kind: scenarios
 schema: prd-forge/scenarios@1
 title: Scenarios
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 5
 order: 60
@@ -88,9 +88,10 @@ scenarios:
         architecture decisions, to hand to the engineering lead
       - No argument is had about whether a notification is the right design
     expected_outcome: >-
-      The requirement names no technology, the user need is recorded, the expert's
-      preference is preserved for the architecture discussion, and the expert does
-      not feel overruled.
+      The recorded requirement names no technology, the adjuster's need to act on
+      the claim away from a desk is recorded, "push to the phone" appears on the
+      list of candidate architecture decisions, and the expert is not asked to
+      defend or withdraw it.
   - id: SC-004
     journey: J-001
     stage: ST-003
@@ -135,9 +136,10 @@ scenarios:
       - They fix two of them and record the third as an open question with a
         decider and a date
     expected_outcome: >-
-      The expert knows exactly what a builder cannot build before anyone has
-      estimated, and every gap is either closed or owned by a named decider with a
-      date.
+      Before anyone has estimated, the report names both release-line stages that
+      have no `must` requirement and quotes all three requirements an engineer
+      could not write a test for, and every gap is either closed or owned by a
+      named decider with a date.
   - id: SC-006
     journey: J-001
     stage: ST-002

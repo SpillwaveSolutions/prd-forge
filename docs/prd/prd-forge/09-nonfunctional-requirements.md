@@ -4,7 +4,7 @@ kind: nonfunctional-requirements
 schema: prd-forge/nonfunctional-requirements@1
 title: Non-functional requirements
 status: draft
-updated: 2026-10-26
+updated: 2026-10-27
 domain: product management tooling
 section: 8
 order: 90
@@ -121,10 +121,10 @@ requirements:
       What the expert says about their domain stays within whatever boundary their
       organisation already works in; this product adds no new place for it to go.
     metric: >-
-      Number of destinations set content reaches beyond the boundary C-001 names.
+      Number of destinations set content reaches beyond the boundary A-005 names.
     target: zero
     measurement: >-
-      Review of every outbound destination per release, recorded against C-003.
+      Review of every outbound destination per release, recorded against A-005.
     priority: must
   - id: NFR-009
     category: supportability
@@ -181,7 +181,8 @@ requirements:
     target: zero
     measurement: >-
       Enumerate every read path to a set per release and check each against the
-      organisation's own access rules; recorded against C-002 and C-003.
+      organisation's own access rules; recorded against the system-of-record
+      non-goal in section 6 and A-005.
     priority: must
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
@@ -225,19 +226,20 @@ NFR-006 covers the approver too, not only the expert: PER-003 reads this once an
 must not need a mouse to do it.
 
 There is no concurrency target, and that is a decision rather than an omission.
-Under C-001 the product reaches one expert inside a session they are already in,
+Under D-001 the product reaches one expert inside a session they are already in,
 so simultaneous users are the host's load and not ours; NFR-003 therefore reads
-scale as the size of one set, which is the dimension we do control. If C-001 ever
-changes, concurrency comes back and this paragraph goes.
+scale as the size of one set, which is the dimension we do control. If D-001 or the
+separate-application non-goal in section 6 ever changes, concurrency comes back
+and this paragraph goes.
 
-NFR-006 and NFR-012 set targets on things C-001 and C-002 say we do not own — what
+NFR-006 and NFR-012 set targets on things the non-goals in section 6 say we do not own: what
 the host renders, and where the customer keeps its documents. They are kept as
 `must` because a target nobody owns is how accessibility and access control get
 lost; who owns them is Q-011.
 
 NFR-010, NFR-011 and NFR-012 were added at version 0.2.0. Retention, availability
-and security had simply not been reached, and C-003 states a retention rule that
-no measurable requirement stood behind. NFR-010 is the one that answers C-003's
-second half: the product retains nothing of its own, so the only retention
+and security had simply not been reached, and C-003, now assumption A-005, stated
+a retention rule that no measurable requirement stood behind. NFR-010 is the one
+that answers A-005's second half: the product retains nothing of its own, so the only retention
 question is how long the organisation keeps the documents, and the answer must be
 that we impose no expiry on them.
