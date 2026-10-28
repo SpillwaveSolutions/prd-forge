@@ -1046,7 +1046,10 @@ function structural(docs, dir) {
     if (rc?.about && !allIds.has(rc.about)) errors.push(`review-comments: ${rc.id} is about ${rc.about}, which does not exist`)
     if (rc?.source && sources.has(rc.source)) errors.push(`review-comments: ${rc.id} repeats source ${rc.source}`)
     sources.add(rc?.source)
-    if (rc?.status === 'open' || !rc?.response) gate('review-comments', `review-comments: ${rc?.id} has no answer yet`)
+    // The set is offered when the root is, whatever the register's own status.
+    if (rc?.status === 'open' || !rc?.response) {
+      (atReview('prd') || atReview('review-comments') ? errors : warnings).push(`review-comments: ${rc?.id} has no answer yet`)
+    }
   }
 
   // gates

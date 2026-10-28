@@ -16,14 +16,14 @@ const REPO = join(dirname(fileURLToPath(import.meta.url)), '..')
 const hasUv = spawnSync('uv', ['--version']).status === 0
 
 /** A copy of the reference set with a review-comments document holding `comments`. */
-function withComments(comments, status = 'draft') {
+function withComments(comments, status = 'draft', rootStatus = 'draft') {
   const dir = join(mkdtempSync(join(tmpdir(), 'prd-comments-')), 'set')
   cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
   const link = '{ id: prd-forge-review-comments, kind: review-comments, path: ./17-review-comments.md, title: Review comments }'
   const log = join(dir, '16-change-log.md')
   writeFileSync(log, readFileSync(log, 'utf8').replace('  next: null\n', `  next: ${link}\n`))
   const root = join(dir, 'prd.md')
-  writeFileSync(root, readFileSync(root, 'utf8').replace(/(\n {4}- \{ id: prd-forge-change-log[^\n]*\n)/, `$1    - ${link.replace(' }', ', section: 15, order: 170, status: draft }')}\n`))
+  writeFileSync(root, readFileSync(root, 'utf8').replace(/^status: \w+$/m, `status: ${rootStatus}`).replace(/(\n {4}- \{ id: prd-forge-change-log[^\n]*\n)/, `$1    - ${link.replace(' }', ', section: 15, order: 170, status: draft }')}\n`))
   writeFileSync(join(dir, '17-review-comments.md'), [
     '---',
     'id: prd-forge-review-comments',
@@ -76,6 +76,8 @@ test('two comments from one source fail the set', () => {
 test('an open comment warns in a draft and fails at review', () => {
   assert.ok(withComments([{ id: 'RC-001', about: 'FR-003' }]).warnings.some(w => /RC-001 has no answer yet/.test(w)))
   assert.ok(withComments([{ id: 'RC-001', about: 'FR-003' }], 'review').errors.some(e => /RC-001 has no answer yet/.test(e)))
+  // A draft register still fails once the set itself is offered for review.
+  assert.ok(withComments([{ id: 'RC-001', about: 'FR-003' }], 'draft', 'review').errors.some(e => /RC-001 has no answer yet/.test(e)))
 })
 
 test('the next export prints each comment with its reply and its answer', { skip: !hasUv }, () => {
