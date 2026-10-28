@@ -1,0 +1,43 @@
++----------------------------------------------------------+
+| SC-002 alternate path, should                            |
+| Given: The same manager stopped mid-way through section  |
+| 7 eight days ago. They remember almost nothing about     |
+| where they were.                                         |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| When: They come back and say they want to carry on.      |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see which sections are done, which are        |
+| drafted, and which have not been started, with each      |
+| grade                                                    |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see that section 7 is at draft with two       |
+| blocking defects, both named                             |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They are not asked any question they have already  |
+| answered                                                 |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They are asked the next question in section 7, in  |
+| the vocabulary they gave when they began                 |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Then: Work resumes at the first section that is not yet  |
+| at review, no earlier answer is requested again, and the |
+| domain vocabulary is unchanged.                          |
++----------------------------------------------------------+

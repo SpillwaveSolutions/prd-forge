@@ -120,7 +120,7 @@ node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-diagrams.mjs" docs/prd/<slug> --check
 
 Each source is rendered to `.svg`, which the documents link to, and `.png`,
 which the Word and PDF export embeds. In the export, a wireframe's Salt drawing
-replaces its text sketch. The pane cannot show pictures, so it names each one.
+replaces its text sketch. The terminal pane cannot show pictures, so it draws each generated diagram as a text view, `diagrams/<id>.txt`, in plain ASCII no wider than 60 columns. A wireframe shows as its text sketch.
 The script needs `mmdc` (`npm install -g @mermaid-js/mermaid-cli`) and
 `plantuml` on the PATH. The validator fails the set when a wireframe has no
 drawing or a document links to an image that does not exist.

@@ -146,7 +146,8 @@ scenario (as a flowchart), each lifecycle (as a state diagram), the release
 line, and the decision rights, and a
 satisfaction curve for each journey whose stages the expert has all scored. It renders
 each wireframe's PlantUML Salt drawing. It writes all of them to
-`<set>/diagrams/` as source, `.svg`, and `.png`, and links each one from its
+`<set>/diagrams/` as source, `.svg`, and `.png`, with a plain-text view (`.txt`)
+that the terminal pane shows in place of the picture, and links each one from its
 document. It needs `mmdc` and `plantuml` on the PATH. Run it after you change
 journeys, scenarios, the release plan, decision rights, or wireframes.
 

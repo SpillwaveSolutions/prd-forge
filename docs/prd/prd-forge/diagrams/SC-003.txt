@@ -1,0 +1,52 @@
++----------------------------------------------------------+
+| SC-003 exception, must                                   |
+| Given: A claims manager is answering questions about     |
+| section 7. They have strong views about how it should be |
+| built.                                                   |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| When: They say "it should push the decision to the       |
+| adjuster's phone".                                       |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They are asked what the adjuster gets from that    |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: They say the adjuster is in the field and cannot   |
+| wait until they are back at a desk                       |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see a requirement recorded as the adjuster    |
+| being able to act on the claim away from their desk,     |
+| with criteria about what they can do and see             |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see that "push to the phone" was kept on a    |
+| list of candidate architecture decisions, to hand to the |
+| engineering lead                                         |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They are not asked to argue about whether a        |
+| notification is the right design                         |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Then: The recorded requirement names no technology, the  |
+| adjuster's need to act on the claim away from a desk is  |
+| recorded, "push to the phone" appears on the list of     |
+| candidate architecture decisions, and the expert is not  |
+| asked to defend or withdraw it.                          |
++----------------------------------------------------------+

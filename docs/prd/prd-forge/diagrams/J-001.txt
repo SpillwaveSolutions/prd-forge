@@ -1,0 +1,54 @@
++----------------------------------------------------------+
+| Trigger: The expert has been asked to specify a product, |
+| or has an idea they want built, and has nothing written  |
+| down.                                                    |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-001 Expert states the idea and their domain           |
+| Actor: Domain expert                                     |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-002 Expert is taught a section, then interviewed on   |
+| it                                                       |
+| Actor: Domain expert                                     |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-003 Expert reads the draft and its grade              |
+| Actor: Domain expert                                     |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-004 Expert answers the one question that improves it  |
+| most                                                     |
+| Actor: Domain expert                                     |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-005 Expert sees what a development team could not     |
+| build                                                    |
+| Actor: Domain expert                                     |
++----------------------------------------------------------+
+    |
+    | hand-off to Sponsor
+    v
++----------------------------------------------------------+
+| ST-006 Sponsor approves the PRD for a release            |
+| Actor: Sponsor                                           |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| End state: The set is approved, with or without recorded |
+| conditions, at a named version, every section has a      |
+| grade with no blocking defects, every open question has  |
+| a decider and a date, and the buildability review        |
+| reports no gap that is neither closed nor owned.         |
++----------------------------------------------------------+

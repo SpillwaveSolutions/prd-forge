@@ -77,7 +77,7 @@ A PRD is one directory, `<docs_dir>/<slug>/`, of markdown files. Each file has Y
 - The text sketch in a `wireframe` fence in `08-wireframes.md` is what the pane shows.
 - The hand-written PlantUML Salt drawing, `diagrams/WF-nnn.puml`, replaces the sketch in the export.
 
-The script renders every source to `.svg` and `.png` and writes the image links into the documents. It is idempotent. The export embeds each `.png`. Diagrams name a persona by its `short_name` (required, such as `DomainExpert`), never by its `PER-nnn` id. All Mermaid label text goes through `label()`, which escapes `#`, `;`, `"`, `<`, and `>` in one pass. Use it for any new label.
+The script renders every source to `.svg` and `.png` and writes the image links into the documents. Beside each generated source it writes a text view, `<id>.txt`, from `scripts/prd-ascii.mjs`: strict ASCII, at most 60 columns. The terminal pane draws that text in place of the image. It is idempotent. The export embeds each `.png`. Diagrams name a persona by its `short_name` (required, such as `DomainExpert`), never by its `PER-nnn` id. All Mermaid label text goes through `label()`, which escapes `#`, `;`, `"`, `<`, and `>` in one pass. Use it for any new label.
 
 ### The mod: the PRD pane
 

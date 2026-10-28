@@ -1,0 +1,42 @@
+LC-001 a section of the PRD
+States: pending, draft, review, final
+Starts at pending. Ends at final.
+
+pending --> draft
+  When: The expert finishes the section's interview and it
+        is written
+  Rule: The expert decides the interview is finished
+        (TR-008)
+  By: DomainExpert
+
+draft --> review
+  When: The expert accepts the offer of review
+  Rule: A grade of 70 or more, zero blocking defects, and a
+        set that checks clean, unless the expert overrides
+        the gate and the override is recorded in section 15
+  By: DomainExpert
+
+review --> final
+  When: The expert sets the section to final
+  Rule: The expert's decision under TR-002, after an
+        independent grading pass with zero blocking defects,
+        unless the expert overrides the gate and the
+        override is recorded in section 15. No other
+        approval is needed.
+  By: DomainExpert
+
+review --> draft
+  When: The expert changes the section, because a later
+        section shows it is incomplete
+  Rule: The expert's decision under TR-002. The section is
+        graded again before it returns to review.
+  By: DomainExpert
+
+final --> draft
+  When: The expert changes the section after it was set
+        final
+  Rule: The expert's decision under TR-002. If the set was
+        approved, the change records a new version that the
+        earlier approval does not cover (FR-014). A section
+        is never retired, because ids are never reused.
+  By: DomainExpert

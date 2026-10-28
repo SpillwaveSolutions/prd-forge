@@ -1,0 +1,32 @@
+Sponsor decides:
+  - TR-001 Approve a PRD for a release (never delegated)
+
+DomainExpert decides:
+  - TR-002 Set a section's state to final (never delegated)
+  - TR-003 Produce a section's score and findings against
+           its rubric (an agent may decide)
+  - TR-004 Decide what the product is for and what is out of
+           scope (never delegated)
+  - TR-005 State a domain fact, figure, regulation or
+           citation as true (never delegated)
+  - TR-007 Decide the domain's own terms, and what each one
+           means (never delegated)
+  - TR-008 Decide the interview on a section is finished
+           (never delegated)
+  - TR-009 Decide a section may be left at draft and moved
+           on from (never delegated)
+  - TR-010 Decide the set may be offered for approval (never
+           delegated)
+  - TR-013 Accept a drafted section as saying what the
+           expert meant, or correct it (never delegated)
+  - TR-014 Accept or refute a section's score (never
+           delegated)
+
+EngineerLead decides:
+  - TR-006 Judge whether a set can be built from, and report
+           the gaps (an agent may decide)
+
+DeliveryLead decides:
+  - TR-011 Decide a backlog can be mapped from the set (an
+           agent may decide)
+  - TR-012 Decide which epics come first (never delegated)
