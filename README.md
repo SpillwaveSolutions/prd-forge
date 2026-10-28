@@ -2,8 +2,8 @@
 
 An expert system for writing product requirements documents, for Claude Code.
 
-A domain expert, in auditing, freight, claims, clinical trials, whatever it is, 
-talks to it, and it teaches, interviews, drafts, grades and writes. What comes out
+A domain expert in any field, such as auditing, freight, claims, or clinical
+trials, talks to it, and it teaches, interviews, drafts, grades and writes. What comes out
 is a linked set of schema-checked markdown documents that a development team can
 derive a backlog from and build.
 
@@ -71,7 +71,7 @@ Say what you want to build. The wizard takes it from there:
 
 Or ask for it by name: "use the prd-wizard skill". It will establish your domain
 and vocabulary, create the set, and work the sections in the order that makes each
-one answerable, journeys before requirements, personas before journeys.
+one answerable: journeys before requirements, and personas before journeys.
 
 Commands the mod adds:
 
@@ -157,8 +157,8 @@ decider, an out-of-scope item with no `revisit`, and a problem with no cost of
 inaction. A field a guide requires at review,
 such as a requirement's `shown_in`, warns while its section is a draft and fails
 once the section is offered for review. It checks each document against its schema, the
-parent/prev/next/children graph, and every cross-section id, persona, stage,
-objective, requirement, plus the mechanically checkable parts of the five tests.
+parent/prev/next/children graph, and every cross-section id (persona, stage,
+objective, and requirement), plus the mechanically checkable parts of the five tests.
 
 ## Exporting
 
@@ -175,7 +175,7 @@ They carry a title page, the executive summary, a contents table with each
 section's grade and blocking count, and then every section in reading order: its
 prose, and the full detail of every requirement, journey, persona and constraint
 its front matter holds. `docs/prd/prd-forge/prd-forge-prd.pdf` is this plugin's
-own PRD exported that way, look at it before you run this on your own set.
+own PRD exported that way. Look at it before you run this on your own set.
 
 | Needs | For |
 | --- | --- |
@@ -217,7 +217,7 @@ renamed document left behind.
 
 ## What a PRD is here
 
-It says what to build, for whom, why, and how you know it works, and what not to
+It says what to build, for whom, why, and how you know it works. It also says what not to
 build. It never says how to build it. No technology or vendor choices, no names of
 existing systems or components, no module or service splits, no agent designs, no
 data models or API contracts, no tasks or estimates. Those belong in architecture
