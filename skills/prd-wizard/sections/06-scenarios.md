@@ -37,6 +37,13 @@ release 1.
   passes through.
 - `branches_from`: on an alternate or exception, the `scenario` and `step` it
   branches from, numbered from 1.
+- `rejoins`: on an alternate or exception, where the person goes after its
+  outcome: the stage of the journey they rejoin, or `end` when the journey stops
+  there. Ask the expert for it. Never infer it from the expected outcome.
+  `prd-diagrams.mjs` draws each journey's top five alternates and exceptions
+  (`must`, then `should`, then `could`, then by the stage where each branches)
+  on one overview, `J-nnn-overview`, as decisions off the main path. A
+  scenario with no `rejoins` ends at its outcome on that drawing.
 - `stages`: for a scenario that runs across several stages, the stages it spans,
   in order. The golden thread's happy path should span the whole release line;
   the validator warns when none does.

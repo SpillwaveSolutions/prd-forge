@@ -72,7 +72,7 @@ A PRD is one directory, `<docs_dir>/<slug>/`, of markdown files. Each file has Y
 
 ### Diagrams
 
-`prd-diagrams.mjs` generates Mermaid sources from the front matter for journeys (`J-nnn.mmd`), each journey's satisfaction curve (`J-nnn-satisfaction.mmd`, only when every stage has a `satisfaction` score), scenarios as flowcharts (`SC-nnn.mmd`), lifecycles as state diagrams (`LC-nnn.mmd`), `release-line.mmd`, and `decision-rights.mmd`. Never edit a generated `.mmd` file. Wireframes are different:
+`prd-diagrams.mjs` generates Mermaid sources from the front matter for journeys (`J-nnn.mmd`), each journey's satisfaction curve (`J-nnn-satisfaction.mmd`, only when every stage has a `satisfaction` score), each journey's overview with its top five alternates and exceptions as decisions (`J-nnn-overview.mmd`, only when one branches off it), scenarios as flowcharts (`SC-nnn.mmd`), lifecycles as state diagrams (`LC-nnn.mmd`), `release-line.mmd`, and `decision-rights.mmd`. Never edit a generated `.mmd` file. Wireframes are different:
 
 - The text sketch in a `wireframe` fence in `08-wireframes.md` is what the pane shows.
 - The hand-written PlantUML Salt drawing, `diagrams/WF-nnn.puml`, replaces the sketch in the export.

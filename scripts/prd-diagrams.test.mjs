@@ -11,7 +11,7 @@ import { cpSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, existsSy
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { decisionsMermaid, drawSet, journeyMermaid, lifecycleMermaid, releaseMermaid, satisfactionMermaid, scenarioMermaid } from './prd-diagrams.mjs'
+import { decisionsMermaid, drawSet, journeyMermaid, lifecycleMermaid, overviewMermaid, releaseMermaid, satisfactionMermaid, scenarioMermaid, topAlternates } from './prd-diagrams.mjs'
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -66,6 +66,29 @@ test('a journey renders with every awkward name at each hand-off', { skip: !hasM
   const stages = HOSTILE.map((actor, i) => ({ id: `ST-00${i + 1}`, name: `Step ${actor}`, actor }))
   const journey = { id: 'J-009', trigger: HOSTILE.join(' / '), end_state: HOSTILE[0], stages }
   assert.equal(renderError(journeyMermaid(journey)), '')
+})
+
+test('a journey overview draws its top five alternates as decisions, each to where it rejoins', { skip: !hasMmdc }, () => {
+  const stages = HOSTILE.map((actor, i) => ({ id: `ST-00${i + 1}`, name: `Step ${actor}`, actor }))
+  const journey = { id: 'J-009', trigger: HOSTILE[0], end_state: HOSTILE[1], stages }
+  const alt = (n, priority, stage, rejoins) => ({
+    id: `SC-00${n}`, journey: 'J-009', variant: 'exception', priority, stage, rejoins, trigger: HOSTILE[n % HOSTILE.length], expected_outcome: HOSTILE[(n + 1) % HOSTILE.length],
+  })
+  const scenarios = [
+    { id: 'SC-001', journey: 'J-009', variant: 'happy', priority: 'must', stage: 'ST-001' },
+    alt(2, 'should', 'ST-001', 'ST-002'), alt(3, 'must', 'ST-003', 'ST-001'), alt(4, 'must', 'ST-001', 'end'),
+    alt(5, 'could', 'ST-002', undefined), alt(6, 'should', 'ST-002', 'ST-003'), alt(7, 'could', 'ST-004', 'ST-004'),
+    alt(8, 'wont', 'ST-001', 'ST-002'),
+  ]
+  assert.deepEqual(topAlternates(journey, scenarios).map(sc => sc.id), ['SC-004', 'SC-003', 'SC-002', 'SC-006', 'SC-005'])
+  const mermaid = overviewMermaid(journey, scenarios)
+  assert.equal(renderError(mermaid), '')
+  assert.match(mermaid, /ST001 --> qSC004\n {2}qSC004 -->\|no\| qSC002\n {2}qSC002 -->\|no\| ST002/)
+  assert.match(mermaid, /SC004 --> stopped/)
+  assert.match(mermaid, /SC003 -\.->\|rejoins\| ST001/)
+  assert.doesNotMatch(mermaid, /^ {2}SC005 -/m, 'a branch with no rejoins ends at its outcome')
+  assert.doesNotMatch(mermaid, /SC007|SC008|SC001/)
+  assert.equal(overviewMermaid(journey, scenarios.slice(0, 1)), undefined)
 })
 
 test('a scenario renders as a flowchart: what the user sees slanted, what they do plain', { skip: !hasMmdc }, () => {

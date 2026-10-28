@@ -49,6 +49,7 @@ scenarios:
     branches_from: { scenario: SC-007, step: 5 }
     journey: J-001
     stage: ST-004
+    rejoins: ST-002
     persona: PER-001
     variant: alternate
     priority: should
@@ -74,6 +75,7 @@ scenarios:
     branches_from: { scenario: SC-007, step: 3 }
     journey: J-001
     stage: ST-002
+    rejoins: ST-003
     persona: PER-001
     variant: exception
     priority: must
@@ -101,6 +103,7 @@ scenarios:
     branches_from: { scenario: SC-007, step: 4 }
     journey: J-001
     stage: ST-003
+    rejoins: ST-004
     persona: PER-001
     variant: exception
     priority: should
@@ -124,6 +127,7 @@ scenarios:
     branches_from: { scenario: SC-007, step: 4 }
     journey: J-001
     stage: ST-003
+    rejoins: ST-004
     persona: PER-001
     variant: exception
     priority: should
@@ -146,6 +150,7 @@ scenarios:
     branches_from: { scenario: SC-007, step: 6 }
     journey: J-001
     stage: ST-005
+    rejoins: ST-003
     persona: PER-001
     variant: exception
     priority: must
@@ -175,6 +180,7 @@ scenarios:
     branches_from: { scenario: SC-007, step: 3 }
     journey: J-001
     stage: ST-002
+    rejoins: ST-003
     persona: PER-001
     variant: exception
     priority: must
@@ -445,6 +451,8 @@ Every item in this document, with each of its fields.
 - **Scenario:** SC-007
 - **Step:** 5
 
+**Rejoins:** ST-002
+
 #### SC-003
 
 **Context:** A claims manager is answering questions about section 7. They have strong views about how it should be built.
@@ -478,6 +486,8 @@ Every item in this document, with each of its fields.
 - **Scenario:** SC-007
 - **Step:** 3
 
+**Rejoins:** ST-003
+
 #### SC-004
 
 **Context:** A freight operations manager reads the grade of section 7. A finding says that a requirement names a component, "consignment".
@@ -510,6 +520,8 @@ Every item in this document, with each of its fields.
 - **Scenario:** SC-007
 - **Step:** 4
 
+**Rejoins:** ST-004
+
 #### SC-008
 
 **Context:** The same manager reads another finding on section 7: a requirement names "the dispatch database", which is a part of the product.
@@ -541,6 +553,8 @@ Every item in this document, with each of its fields.
 
 - **Scenario:** SC-007
 - **Step:** 4
+
+**Rejoins:** ST-004
 
 #### SC-005
 
@@ -579,6 +593,8 @@ Every item in this document, with each of its fields.
 - **Scenario:** SC-007
 - **Step:** 6
 
+**Rejoins:** ST-003
+
 #### SC-006
 
 **Context:** The expert is on section 3 of this PRD and has just named O-002's metric, the median working days from the first interview question to an approval. They do not know today's value.
@@ -610,6 +626,8 @@ Every item in this document, with each of its fields.
 
 - **Scenario:** SC-007
 - **Step:** 3
+
+**Rejoins:** ST-003
 
 #### SC-007
 
