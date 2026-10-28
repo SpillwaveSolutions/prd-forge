@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 12
 order: 130
-score: 83
+score: 88
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 questions:
   - id: Q-001
     question: >-
@@ -383,7 +383,7 @@ second person.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 ### Q-001
 
@@ -421,7 +421,9 @@ Generated from the front matter. Do not edit this block.
 
 **Spike:** Three engineering leads score the requirements of the same ten specifications from Q-001, independently. Time-boxed to 3 days.
 
-### Q-004 How many organizations are in each segment in section 2?
+### Q-004
+
+**Question:** How many organizations are in each segment in section 2?
 
 **Decider:** Richard Hightower
 
@@ -437,15 +439,17 @@ Generated from the front matter. Do not edit this block.
 
 **Decider:** Richard Hightower
 
-**Consulted:** the first three sponsors
-
 **By:** 2027-01-31
 
 **Blocks:** FR-013, TR-001, OUT-003, PER-003
 
 **Spike:** Show three sponsors the same set with and without grades and ask which they would approve. Time-boxed to 2 days.
 
-### Q-006 How many sections does an expert complete in one sitting before stopping?
+**Consulted:** the first three sponsors
+
+### Q-006
+
+**Question:** How many sections does an expert complete in one sitting before stopping?
 
 **Decider:** Richard Hightower
 
@@ -455,7 +459,9 @@ Generated from the front matter. Do not edit this block.
 
 **Spike:** Count in D-002's ten observed sittings, held by 2027-01-31. Time-boxed to 1 day after the sittings.
 
-### Q-007 Does writing the requirements send an expert back to the journeys?
+### Q-007
+
+**Question:** Does writing the requirements send an expert back to the journeys?
 
 **Decider:** Richard Hightower
 
@@ -471,13 +477,13 @@ Generated from the front matter. Do not edit this block.
 
 **Decider:** Richard Hightower
 
-**Consulted:** the three engineering leads from D-003
-
 **By:** 2027-02-28
 
 **Blocks:** A-003
 
 **Spike:** Ask each lead, after reading a set cold, whether anything was missing and whether they wanted a technology named. Time-boxed to 1 day.
+
+**Consulted:** the three engineering leads from D-003
 
 ### Q-009
 
@@ -517,7 +523,9 @@ Generated from the front matter. Do not edit this block.
 
 **Answered:** 2026-10-27
 
-### Q-012 Which segment in section 2 converts first?
+### Q-012
+
+**Question:** Which segment in section 2 converts first?
 
 **Decider:** Richard Hightower
 
@@ -527,7 +535,9 @@ Generated from the front matter. Do not edit this block.
 
 **Spike:** For the first ten buyers spoken to in each segment, count how many buy by 2027-06-30, and compare the two counts. Time-boxed to 1 day at that date.
 
-### Q-013 What day rate does a buyer pay to contract a product manager for the writing of one set?
+### Q-013
+
+**Question:** What day rate does a buyer pay to contract a product manager for the writing of one set?
 
 **Decider:** Richard Hightower
 
@@ -549,7 +559,9 @@ Generated from the front matter. Do not edit this block.
 
 **Spike:** Ask each expert after a loop-back, in D-002's ten observed sittings, held by 2027-01-31. Time-boxed to 1 day after the sittings.
 
-### Q-015 Who owns the rubric and the eleven derivability checks?
+### Q-015
+
+**Question:** Who owns the rubric and the eleven derivability checks?
 
 **Decider:** Richard Hightower
 
@@ -559,7 +571,9 @@ Generated from the front matter. Do not edit this block.
 
 **Spike:** Name the person accountable for the content of the rubric and the checks, and confirm with that person that they accept it, before Q-009 fixes a version. Time-boxed to 1 day.
 
-### Q-016 Must a grade show which version of the rubric it was made against?
+### Q-016
+
+**Question:** Must a grade show which version of the rubric it was made against?
 
 **Decider:** Richard Hightower
 
@@ -581,7 +595,9 @@ Generated from the front matter. Do not edit this block.
 
 **Spike:** List each place the product's output is read and who controls it, and get that party's written confirmation that they own it. The decider then records the owner. Time-boxed to 2 days.
 
-### Q-018 What does each problem in section 1 cost, as one counted case per problem?
+### Q-018
+
+**Question:** What does each problem in section 1 cost, as one counted case per problem?
 
 **Decider:** Richard Hightower
 
@@ -603,7 +619,9 @@ Generated from the front matter. Do not edit this block.
 
 **Spike:** Ask each party behind D-002 and D-003 for a written date. The answer is yes if both written dates are 2027-01-31 or earlier, and no otherwise, in which case Q-022 decides. Time-boxed to 1 day.
 
-### Q-020 Which section do experts stop at most often?
+### Q-020
+
+**Question:** Which section do experts stop at most often?
 
 **Decider:** Richard Hightower
 
@@ -625,7 +643,9 @@ Generated from the front matter. Do not edit this block.
 
 **Spike:** List every path by which someone can read a set and who grants access to it, and get that party's written confirmation that they own it. The decider then records the owner. Time-boxed to 2 days.
 
-### Q-022 If D-002 or D-003 reports after 2027-01-31, does REL-001 move or ship as an experiment?
+### Q-022
+
+**Question:** If D-002 or D-003 reports after 2027-01-31, does REL-001 move or ship as an experiment?
 
 **Decider:** Richard Hightower
 

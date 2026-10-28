@@ -61,9 +61,11 @@ links:
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### PER-001 Store associate, Acme retail store
+### PER-001
+
+**Name:** Store associate, Acme retail store
 
 **Short name:** StoreAssociate
 
@@ -83,7 +85,9 @@ Generated from the front matter. Do not edit this block.
 
 **Proficiency:** knows the shop floor; high turnover, so assume no training
 
-### PER-002 Contact-centre agent, returns queue
+### PER-002
+
+**Name:** Contact-centre agent, returns queue
 
 **Short name:** ContactAgent
 
@@ -103,7 +107,9 @@ Generated from the front matter. Do not edit this block.
 
 **Proficiency:** expert in policy, trained
 
-### PER-003 Returns-processing clerk, regional hub
+### PER-003
+
+**Name:** Returns-processing clerk, regional hub
 
 **Short name:** ReturnsClerk
 

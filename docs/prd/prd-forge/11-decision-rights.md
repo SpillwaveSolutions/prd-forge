@@ -10,7 +10,7 @@ section: 10
 order: 110
 score: 91
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 decisions:
   - id: TR-001
     decision: Approve a PRD for a release
@@ -370,9 +370,11 @@ See R-002 in section 11.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### TR-001 Approve a PRD for a release
+### TR-001
+
+**Decision:** Approve a PRD for a release
 
 **Stages:** ST-006
 
@@ -394,7 +396,9 @@ Generated from the front matter. Do not edit this block.
 4. Given an approver who rejects the set, when the decision is recorded, then the rejection carries its reason, and the set reads as not approved.
 5. Given an approver who approves with conditions, when the approval is recorded, then each condition names the open question or requirement it depends on and a date, and the set reads as approved-with-conditions until every condition is cleared by that same approver.
 
-### TR-002 Set a section's state to final
+### TR-002
+
+**Decision:** Set a section's state to final
 
 **Stages:** ST-004
 
@@ -413,7 +417,9 @@ Generated from the front matter. Do not edit this block.
 1. Given a section with one or more blocking defects, when final is requested, then it is not set without an explicit override from the expert.
 2. Given an override, when it is applied, then the change log records that it was an override and the score at the time.
 
-### TR-003 Produce a section's score and findings against its rubric
+### TR-003
+
+**Decision:** Produce a section's score and findings against its rubric
 
 **Stages:** ST-003
 
@@ -422,8 +428,6 @@ Generated from the front matter. Do not edit this block.
 **An agent may decide:** yes
 
 **Never delegated:** no
-
-**Agent role:** proposes
 
 **Evidence required:** The rubric's dimensions and a quotation from the document for every score below full marks.
 
@@ -434,7 +438,11 @@ Generated from the front matter. Do not edit this block.
 1. Given a section that has just been drafted, when the draft is written, then its score and findings are produced without anyone asking for them.
 2. Given a score below full marks on a dimension, when it is reported, then a quotation from the document is given for it.
 
-### TR-004 Decide what the product is for and what is out of scope
+**Agent role:** proposes
+
+### TR-004
+
+**Decision:** Decide what the product is for and what is out of scope
 
 **Stages:** ST-001
 
@@ -453,7 +461,9 @@ Generated from the front matter. Do not edit this block.
 1. Given an expert decision that leaves a release-line stage uncovered, when it is recorded, then the consequence is stated to the expert once and the decision stands.
 2. Given a decision the expert reaffirmed after an objection, when later grading passes run, then the objection is not raised again as a new finding.
 
-### TR-005 State a domain fact, figure, regulation or citation as true
+### TR-005
+
+**Decision:** State a domain fact, figure, regulation or citation as true
 
 **Approver:** PER-001
 
@@ -470,7 +480,9 @@ Generated from the front matter. Do not edit this block.
 1. Given a figure or citation the expert did not supply and that has not been verified, when a section is drafted, then it does not appear in the document.
 2. Given a citation that was checked and could not be confirmed, when it is reported, then it is marked unverified rather than stated as fact.
 
-### TR-006 Judge whether a set can be built from, and report the gaps
+### TR-006
+
+**Decision:** Judge whether a set can be built from, and report the gaps
 
 **Stages:** ST-009
 
@@ -479,8 +491,6 @@ Generated from the front matter. Do not edit this block.
 **An agent may decide:** yes
 
 **Never delegated:** no
-
-**Agent role:** proposes
 
 **Evidence required:** The release line, the requirements covering each stage, and a quotation for every gap claimed.
 
@@ -491,7 +501,11 @@ Generated from the front matter. Do not edit this block.
 1. Given a reported verdict, when the engineering lead disagrees, then their judgement is recorded as the verdict and the report is kept alongside it.
 2. Given a reported gap, when it is stated, then the document is quoted for it.
 
-### TR-007 Decide the domain's own terms, and what each one means
+**Agent role:** proposes
+
+### TR-007
+
+**Decision:** Decide the domain's own terms, and what each one means
 
 **Stages:** ST-001
 
@@ -510,7 +524,9 @@ Generated from the front matter. Do not edit this block.
 1. Given a term the expert has defined, when any later question or document uses that idea, then it uses the expert's word and not a synonym.
 2. Given a standard-setter's definition that differs, when the term is recorded, then both are stated and the expert says which the set uses.
 
-### TR-008 Decide the interview on a section is finished
+### TR-008
+
+**Decision:** Decide the interview on a section is finished
 
 **Stages:** ST-002
 
@@ -529,7 +545,9 @@ Generated from the front matter. Do not edit this block.
 1. Given an expert who says they have nothing more to add, when they say it, then no further question is put to them in that section.
 2. Given an interview ended early, when the section is written, then what is missing is named to the expert, not hidden behind a score.
 
-### TR-009 Decide a section may be left at draft and moved on from
+### TR-009
+
+**Decision:** Decide a section may be left at draft and moved on from
 
 **Stages:** ST-004
 
@@ -547,7 +565,9 @@ Generated from the front matter. Do not edit this block.
 
 1. Given a section below 70 or carrying a blocking defect, when the expert chooses to move on, then it is written at `draft` and what was left behind is recorded as an open question or named plainly to them.
 
-### TR-010 Decide the set may be offered for approval
+### TR-010
+
+**Decision:** Decide the set may be offered for approval
 
 **Stages:** ST-005
 
@@ -566,7 +586,9 @@ Generated from the front matter. Do not edit this block.
 1. Given a buildability gap that is neither closed nor given a decider and a date, when the expert offers the set for approval, then that gap is stated to them first.
 2. Given a set offered for approval, when the approver opens it, then what the expert was shown under this rule is what the approver sees.
 
-### TR-011 Decide a backlog can be mapped from the set
+### TR-011
+
+**Decision:** Decide a backlog can be mapped from the set
 
 **Stages:** ST-007
 
@@ -575,8 +597,6 @@ Generated from the front matter. Do not edit this block.
 **An agent may decide:** yes
 
 **Never delegated:** no
-
-**Agent role:** proposes
 
 **Evidence required:** Whether a golden thread exists, and which release-line stages have requirements behind them.
 
@@ -587,7 +607,11 @@ Generated from the front matter. Do not edit this block.
 1. Given a set with no journey, when the check runs, then it reports that a backlog cannot be derived, and names that as the reason.
 2. Given a reported verdict the delivery lead disagrees with, when they record their own, then their verdict stands and the override and its reason are recorded beside the report.
 
-### TR-012 Decide which epics come first
+**Agent role:** proposes
+
+### TR-012
+
+**Decision:** Decide which epics come first
 
 **Stages:** ST-008
 
@@ -605,7 +629,9 @@ Generated from the front matter. Do not edit this block.
 
 1. Given an ordering, when it is recorded, then each decision names whether value, dependency or the release line drove it.
 
-### TR-013 Accept a drafted section as saying what the expert meant, or correct it
+### TR-013
+
+**Decision:** Accept a drafted section as saying what the expert meant, or correct it
 
 **Stages:** ST-003
 
@@ -624,7 +650,9 @@ Generated from the front matter. Do not edit this block.
 1. Given a drafted section the expert has not accepted, when the set's state is read, then that section is not shown as ready for anyone else to read.
 2. Given an expert who corrects a drafted section, when the correction is applied, then it is their words that are kept, and the section is graded again before it advances.
 
-### TR-014 Accept or refute a section's score
+### TR-014
+
+**Decision:** Accept or refute a section's score
 
 **Stages:** ST-003
 

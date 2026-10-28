@@ -10,7 +10,7 @@ section: 6
 order: 70
 score: 92
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 release: REL-001, single-expert PRD authoring
 release_line: >-
   ST-001 through ST-006 for one expert writing one PRD with one golden-thread
@@ -216,7 +216,7 @@ non-goal: the product never supplies the domain.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 **Release:** REL-001, single-expert PRD authoring
 
@@ -227,15 +227,18 @@ Generated from the front matter. Do not edit this block.
 - We are not supplying domain knowledge. The expert has it; this product supplies product management. A user who lacks the domain is not served, including a product team entering a domain it does not know.
 - We are not deciding scope, priority, or whether the product should be built. The expert decides; the product makes the consequences visible.
 - We are not generating a backlog's tasks, subtasks, estimates or sizing at any release. Those come from engineering design, not from a PRD.
-- Statement: We are not replacing the organization's document store, issue tracker, or approval system, and we are not the system of record for a PRD. The output is plain text documents the organization stores wherever it already stores documents; Reason: The organization already stores and approves documents, and a PRD in plain text stays readable with no part of this product running (NFR-004)
-- Statement: We are not building a separate application. The expert has nothing to open, install, or log into beyond the session they are already working in; Reason: The expert works in short bursts weeks apart (section 4), and a second place to open would split that work in two. The session they already use is dependency D-001 in section 11
+- **Statement:** We are not replacing the organization's document store, issue tracker, or approval system, and we are not the system of record for a PRD. The output is plain text documents the organization stores wherever it already stores documents.
+  - **Reason:** The organization already stores and approves documents, and a PRD in plain text stays readable with no part of this product running (NFR-004).
+- **Statement:** We are not building a separate application. The expert has nothing to open, install, or log into beyond the session they are already working in.
+  - **Reason:** The expert works in short bursts weeks apart (section 4), and a second place to open would split that work in two. The session they already use is dependency D-001 in section 11.
 - We are not certifying a PRD. A grade is evidence for the expert's judgement, never a warrant that the product will succeed.
 
 **Outside product:**
 
-- Stage: ST-006; Workaround: The sponsor reads the root document or an exported copy and gives a decision. The expert records it in section 15 under FR-014, with the sponsor's name, role, and date
+- **Stage:** ST-006
+  - **Workaround:** The sponsor reads the root document or an exported copy and gives a decision. The expert records it in section 15 under FR-014, with the sponsor's name, role, and date.
 
-### In scope
+### In scope in detail
 
 #### IN-001
 
@@ -293,13 +296,17 @@ Generated from the front matter. Do not edit this block.
 
 **Requirements:** FR-013, FR-014, FR-021
 
-### Out of scope
+### Out of scope in detail
 
-#### OUT-001 Deriving features, epics and stories from the approved PRD - journey J-002
+#### OUT-001
+
+**Summary:** Deriving features, epics and stories from the approved PRD - journey J-002
 
 **Revisit:** REL-002. The PRD must already carry what J-002 needs, which FR-012 checks, and nothing is lost by deferring the derivation itself.
 
-#### OUT-002 More than one expert working on the same set at the same time
+#### OUT-002
+
+**Summary:** More than one expert working on the same set at the same time
 
 **Revisit:** Once the single-expert path is proven: three real engagements have each reached an approved set that passed the buildability review on first submission.
 

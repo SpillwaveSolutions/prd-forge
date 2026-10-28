@@ -138,9 +138,11 @@ screen, no service. Those are decisions for the architecture, not the PRD.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### FR-001 Identify the purchase from a receipt, an order number, or the payment card
+### FR-001
+
+**Capability:** Identify the purchase from a receipt, an order number, or the payment card
 
 **User:** PER-001
 
@@ -160,7 +162,9 @@ Generated from the front matter. Do not edit this block.
 
 **Shown in:** screen
 
-### FR-002 See whether the item may be returned, on what terms, and why
+### FR-002
+
+**Capability:** See whether the item may be returned, on what terms, and why
 
 **User:** PER-001
 
@@ -180,7 +184,9 @@ Generated from the front matter. Do not edit this block.
 
 **Shown in:** screen
 
-### FR-003 Decide an exception request, recording the reason
+### FR-003
+
+**Capability:** Decide an exception request, recording the reason
 
 **User:** PER-002
 
@@ -200,7 +206,9 @@ Generated from the front matter. Do not edit this block.
 
 **Shown in:** screen
 
-### FR-004 Complete the return, recording why the item came back
+### FR-004
+
+**Capability:** Complete the return, recording why the item came back
 
 **User:** PER-001
 
@@ -220,7 +228,9 @@ Generated from the front matter. Do not edit this block.
 
 **Shown in:** screen
 
-### FR-005 See the reasons recorded against items arriving at the hub
+### FR-005
+
+**Capability:** See the reasons recorded against items arriving at the hub
 
 **User:** PER-003
 

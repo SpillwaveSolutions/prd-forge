@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 3
 order: 30
-score: 83
+score: 88
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 objectives:
   - id: O-001
     objective: >-
@@ -121,7 +121,7 @@ bet is on availability and cost, not on beating that person. See section 2.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 ### O-001
 
@@ -145,7 +145,9 @@ Generated from the front matter. Do not edit this block.
 
 **Owner:** Richard Hightower
 
-### O-002 A domain expert, or a product manager who speaks for one, reaches an approved PRD in days.
+### O-002
+
+**Objective:** A domain expert, or a product manager who speaks for one, reaches an approved PRD in days.
 
 **Problems:** P-004
 

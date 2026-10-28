@@ -2,9 +2,9 @@
 doc: ../05-user-journeys.md
 score: 94
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 grader: prd-forge:prd-adversary
-previous_score: 85
+previous_score: 94
 ---
 
 # Why user journeys scored 94
@@ -12,33 +12,34 @@ previous_score: 85
 | Dimension | Score | Why |
 | --- | --- | --- |
 | One goal | 4 | Each journey has one goal, and its last stage reaches it. |
-| Ordered stages | 3 | J-002 has 3 stages. FR-021, naming the approvers, has no step in any stage. |
-| Person per stage | 4 | Every stage has a person as its actor. |
-| Decision per stage | 4 | Every stage has a decision. |
-| Stage acceptance | 3 | ST-004's refutation statement passes either way. ST-002 has three endings in one "then". ST-005 gives no test of the gap list. |
+| Ordered stages | 3 | J-002 has three stages. FR-021, naming each approver, has no step in ST-005. |
+| Person per stage | 4 | Every stage names a person. |
+| Decision per stage | 4 | All nine stages have a decision. |
+| Stage acceptance | 3 | ST-004 and ST-007 end in "whether", which cannot fail, and ST-005 does not say how complete the list must be. |
 | Inputs and outputs | 4 | Every stage has both. |
-| Handoffs | 3 | In ST-006 the work goes back to the expert with no handoff. |
-| No technology | 4 | None named. |
-| End state | 4 | Observable by the user. |
-| Satisfaction | 4 | All 9 stages scored by the expert, each low score with a pain and a need. |
+| Handoffs | 3 | ST-006 goes back to the expert with no handoff, and the stated handoff points into deferred J-002. |
+| No technology | 4 | No system, vendor, or component. |
+| End state | 4 | Observable. |
+| Satisfaction | 4 | All nine stages are scored by the expert, and each low score has a pain with a need. |
 | Golden thread | 4 | Only J-001, and it matches the release line. |
-| Steps outside the product | 4 | ST-006 and other people's work are included. |
-
-## Weakest dimension
-
-Stage acceptance: three statements cannot be judged pass or fail.
+| Steps outside the product | 4 | ST-006 is included. |
 
 ## Blocking defects
 
 None.
 
+## Weakest dimension
+
+Stage acceptance. The "then ... whether" wording passes whatever happens.
+
 ## How to raise the grade
 
-- **Ordered stages (3 to 4):** Add the FR-021 step, in which the expert names the approvers, to ST-005.
-- **Stage acceptance (3 to 4):** Make ST-004's refutation statement observable, split ST-002's endings, and say how the expert judges ST-005's gap list.
-- **Handoffs (3 to 4):** Add ST-006's handoff back to the expert.
+- **Stage acceptance (3 to 4):** Split ST-004's refutation and ST-007's first statement into two outcomes each, and give ST-005 a criterion the expert can check.
+- **Ordered stages (3 to 4):** Add an ST-005 step that names each approver, with an acceptance statement for FR-021's refusal.
+- **Handoffs (3 to 4):** Add the handoff from the sponsor back to the expert in ST-006, and say that the handoff to ST-009 applies from release 2.
 
-## Notes
+## The details block
 
-- Many steps are passive and do not start with the actor.
-- ST-003's "correct it" path has no acceptance statement.
+The generated details block contradicts nothing. It shows the front matter word for word, and it makes visible any place where the hand-written prose has drifted from it.
+
+- The prose trigger and the table's stage names are shorter than the front matter's, and the block shows both forms.

@@ -21,7 +21,7 @@ created: 2026-10-23
 golden_thread: J-001
 score: 83
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 primary_persona: PER-001
 approvers: [PER-003]
 summary:
@@ -138,7 +138,7 @@ requirements in section 7 describe only what a person does and sees, and section
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 **Version:** 0.9.0
 
@@ -161,11 +161,11 @@ Generated from the front matter. Do not edit this block.
 
 **Summary:**
 
-- Problem: A domain expert knows exactly what their product must do, but what they can write down is a feature list with no named users, no pass-or-fail criteria and the technology already chosen. The team cannot build from it, and the expert is asked the same questions again by each engineer who tries.
-- Users: Product managers who are, or speak for, the domain expert, the engineering leads who build from what they write, the sponsors who approve it, and the delivery leads who derive a backlog from it.
-- Why now: In October 2025, 98% of 117 product managers surveyed said they use AI at work, and only 39% had received job-specific AI training (General Assembly, 6 Nov 2025). A PRD that reads well but cannot be built from costs more than no PRD at all, because it is believed.
-- Bet: A domain expert, or a product manager who speaks for one, with no product management training, reaches an approved PRD in which every section is graded with no blocking defect and every buildability gap is closed or owned before anyone estimates.
-- Objective: O-001
-- Measure: Share of the 5 pilot PRDs that pass the buildability review on first submission, where a pass is the verdict `buildable`, or `buildable with gaps` with every gap closed or owned. The pilot PRDs are written between REL-001, on 2027-03-31, and 2027-09-30. Target: 80%, at least 4 of 5, by 2027-09-30, provisional until Q-001 sets the baseline, by 2027-02-28.
+- **Problem:** A domain expert knows exactly what their product must do, but what they can write down is a feature list with no named users, no pass-or-fail criteria and the technology already chosen. The team cannot build from it, and the expert is asked the same questions again by each engineer who tries.
+- **Users:** Product managers who are, or speak for, the domain expert, the engineering leads who build from what they write, the sponsors who approve it, and the delivery leads who derive a backlog from it.
+- **Why now:** In October 2025, 98% of 117 product managers surveyed said they use AI at work, and only 39% had received job-specific AI training (General Assembly, 6 Nov 2025). A PRD that reads well but cannot be built from costs more than no PRD at all, because it is believed.
+- **Bet:** A domain expert, or a product manager who speaks for one, with no product management training, reaches an approved PRD in which every section is graded with no blocking defect and every buildability gap is closed or owned before anyone estimates.
+- **Objective:** O-001
+- **Measure:** Share of the 5 pilot PRDs that pass the buildability review on first submission, where a pass is the verdict `buildable`, or `buildable with gaps` with every gap closed or owned. The pilot PRDs are written between REL-001, on 2027-03-31, and 2027-09-30. Target: 80%, at least 4 of 5, by 2027-09-30, provisional until Q-001 sets the baseline, by 2027-02-28.
 
 <!-- /prd-forge:details -->

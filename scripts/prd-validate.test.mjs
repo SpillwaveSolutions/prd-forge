@@ -344,9 +344,11 @@ test('the details block shows every field, is idempotent, and leaves the written
     }],
   }
   const block = detailsOf(front)
-  assert.match(block, /^### FR-001 Ann \(QA\) \[lead\] said "no"; see #3 <b>$/m)
+  assert.match(block, /^### FR-001$/m)
+  assert.match(block, /^\*\*Capability:\*\* Ann \(QA\) \[lead\] said "no"; see #3 <b>$/m)
   assert.match(block, /^1\. Given one, when two, then three$/m)
-  assert.match(block, /^- Claim: a claim; Source: a source$/m)
+  assert.match(block, /^- \*\*Claim:\*\* a claim\n {2}- \*\*Source:\*\* a source$/m)
+  assert.match(block, /^\*\*User:\*\* PER-001$/m)
   const body = '# Title\n\nWritten by a person.\n'
   const once = withDetails(body, front)
   assert.equal(withDetails(once, front), once)

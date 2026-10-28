@@ -80,7 +80,7 @@ decision.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 **Release:** R1, counter returns pilot
 
@@ -88,7 +88,8 @@ Generated from the front matter. Do not edit this block.
 
 **Outside product:**
 
-- Stage: ST-003; Workaround: The associate phones the contact centre, and an agent decides the exception on the call, as today
+- **Stage:** ST-003
+  - **Workaround:** The associate phones the contact centre, and an agent decides the exception on the call, as today.
 
 **Non-goals:**
 
@@ -96,37 +97,49 @@ Generated from the front matter. Do not edit this block.
 - We are not becoming the system of record for inventory disposition; the hub keeps that.
 - We are not automating the exception decision. A person decides every exception.
 
-### In scope
+### In scope in detail
 
-#### IN-001 Identify a purchase from a receipt, an order number, or the payment card
+#### IN-001
+
+**Summary:** Identify a purchase from a receipt, an order number, or the payment card
 
 **Journey stage:** ST-001
 
 **Requirements:** FR-001
 
-#### IN-002 Show the returns decision, its reason, and the refund method at the counter
+#### IN-002
+
+**Summary:** Show the returns decision, its reason, and the refund method at the counter
 
 **Journey stage:** ST-002
 
 **Requirements:** FR-002
 
-#### IN-004 Complete the return with the reason recorded for the hub
+#### IN-004
+
+**Summary:** Complete the return with the reason recorded for the hub
 
 **Journey stage:** ST-004
 
 **Requirements:** FR-004
 
-### Out of scope
+### Out of scope in detail
 
-#### OUT-001 Returns of items bought from Acme wholesale partners rather than in an Acme store
+#### OUT-001
+
+**Summary:** Returns of items bought from Acme wholesale partners rather than in an Acme store
 
 **Revisit:** Once the partner agreements name a returns service level, expected Q2 2027
 
-#### OUT-002 Returns initiated online and completed in store
+#### OUT-002
+
+**Summary:** Returns initiated online and completed in store
 
 **Revisit:** After the R1 pilot closes
 
-#### OUT-003 Requesting and deciding an exception in the product (FR-003)
+#### OUT-003
+
+**Summary:** Requesting and deciding an exception in the product (FR-003)
 
 **Revisit:** After the R1 pilot closes, if exceptions are still more than 1 in 10 returns
 

@@ -10,7 +10,7 @@ section: 8
 order: 90
 score: 86
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 requirements:
   - id: NFR-001
     category: performance
@@ -258,7 +258,7 @@ show the rubric version it was made against.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 ### NFR-001
 
@@ -276,7 +276,9 @@ Generated from the front matter. Do not edit this block.
 
 **Applies to:** FR-004, FR-010
 
-### NFR-002 A grading pass does not make the expert wait so long that they stop asking for one.
+### NFR-002
+
+**Statement:** A grading pass does not make the expert wait so long that they stop asking for one.
 
 **Category:** performance
 
@@ -290,7 +292,9 @@ Generated from the front matter. Do not edit this block.
 
 **Applies to:** FR-009, FR-011
 
-### NFR-003 A set stays workable at the size real products reach.
+### NFR-003
+
+**Statement:** A set stays workable at the size real products reach.
 
 **Category:** scale
 
@@ -302,7 +306,9 @@ Generated from the front matter. Do not edit this block.
 
 **Priority:** must
 
-### NFR-004 Work survives the expert stopping, and survives the tool they were using going away.
+### NFR-004
+
+**Statement:** Work survives the expert stopping, and survives the tool they were using going away.
 
 **Category:** durability
 
@@ -344,7 +350,9 @@ Generated from the front matter. Do not edit this block.
 
 **Priority:** must
 
-### NFR-007 An expert can tell why a section received the score it did, after the fact.
+### NFR-007
+
+**Statement:** An expert can tell why a section received the score it did, after the fact.
 
 **Category:** observability
 
@@ -372,7 +380,9 @@ Generated from the front matter. Do not edit this block.
 
 **Priority:** must
 
-### NFR-009 A set written by an earlier version is still readable and still gradable by a later one.
+### NFR-009
+
+**Statement:** A set written by an earlier version is still readable and still gradable by a later one.
 
 **Category:** supportability
 

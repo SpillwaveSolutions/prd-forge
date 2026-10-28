@@ -10,7 +10,7 @@ section: 5
 order: 50
 score: 94
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 journeys:
   - id: J-001
     persona: PER-001
@@ -391,7 +391,7 @@ person, what they do and see, and what they decide.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 ### J-001
 
@@ -405,9 +405,43 @@ Generated from the front matter. Do not edit this block.
 
 **Objectives:** O-001, O-002, O-003
 
+**Pain points:**
+
+- **Pain:** I do not know what the section is for, so I fill the heading with adjectives
+  - **Stage:** ST-002
+  - **Need:** Teach me the section before you ask me about it, in my own domain
+- **Pain:** Nobody tells me my requirements are untestable until a team tries to build them
+  - **Stage:** ST-005
+  - **Need:** Show me, before anyone builds, what an engineer cannot build
+- **Pain:** I reach for the names of software I have used
+  - **Stage:** ST-002
+  - **Need:** Convert my technology talk into the need underneath it, without arguing
+- **Pain:** I put this down for a week and cannot remember where I was
+  - **Stage:** ST-004
+  - **Need:** Let me stop and resume without starting over
+- **Pain:** I cannot tell whether what I have written is good
+  - **Stage:** ST-003
+  - **Need:** Tell me where it is weak, against a stated standard, and ask me one thing
+- **Pain:** As the sponsor, I can only judge whether it reads well
+  - **Stage:** ST-006
+  - **Need:** Show the sponsor each grade and every blocking defect before they decide
+
+**Needs:**
+
+- Teach me the section before you ask me about it, in my own domain
+- Tell me where it is weak, against a stated standard, and ask me one thing
+- Convert my technology talk into the need underneath it, without arguing
+- Let me stop and resume without starting over
+- Show me, before anyone builds, what an engineer cannot build
+- Show the sponsor each grade and every blocking defect before they decide
+
+**End state:** The set is approved, with or without recorded conditions, at a named version, every section has a grade with no blocking defects, every open question has a decider and a date, and the buildability review reports no gap that is neither closed nor owned.
+
 **Stages**
 
-#### ST-001 Expert states the idea and their domain
+#### ST-001
+
+**Name:** Expert states the idea and their domain
 
 **Actor:** Domain expert
 
@@ -430,7 +464,9 @@ Generated from the front matter. Do not edit this block.
 
 **Decision:** What this product is, and what the domain's own words are
 
-#### ST-002 Expert is taught a section, then interviewed on it
+#### ST-002
+
+**Name:** Expert is taught a section, then interviewed on it
 
 **Actor:** Domain expert
 
@@ -453,7 +489,9 @@ Generated from the front matter. Do not edit this block.
 
 **Decision:** Whether the questions have reached the end of what they know
 
-#### ST-003 Expert reads the draft and its grade
+#### ST-003
+
+**Name:** Expert reads the draft and its grade
 
 **Actor:** Domain expert
 
@@ -476,7 +514,9 @@ Generated from the front matter. Do not edit this block.
 
 **Decision:** Accept the draft, correct it, or refute the grade
 
-#### ST-004 Expert answers the one question that improves it most
+#### ST-004
+
+**Name:** Expert answers the one question that improves it most
 
 **Actor:** Domain expert
 
@@ -498,15 +538,15 @@ Generated from the front matter. Do not edit this block.
 
 **Inputs:** One answer
 
-**Outputs:**
-
-- A section at a grade the expert accepts, and a set that is one section further on
+**Outputs:** A section at a grade the expert accepts, and a set that is one section further on
 
 **Decision:** Whether this section is done enough to leave
 
 **Handoff:** Back into ST-002 for the next section, until every section has been through this loop.
 
-#### ST-005 Expert sees what a development team could not build
+#### ST-005
+
+**Name:** Expert sees what a development team could not build
 
 **Actor:** Domain expert
 
@@ -533,7 +573,9 @@ Generated from the front matter. Do not edit this block.
 
 **Handoff:** Sponsor, who receives the set offered for approval as its root document or an exported copy.
 
-#### ST-006 Sponsor approves the PRD for a release
+#### ST-006
+
+**Name:** Sponsor approves the PRD for a release
 
 **Actor:** Sponsor
 
@@ -558,27 +600,9 @@ Generated from the front matter. Do not edit this block.
 
 **Handoff:** Engineering lead, to record a verdict on the approved set in ST-009
 
-**Pain points:**
+### J-002
 
-- Pain: I do not know what the section is for, so I fill the heading with adjectives; Stage: ST-002; Need: Teach me the section before you ask me about it, in my own domain
-- Pain: Nobody tells me my requirements are untestable until a team tries to build them; Stage: ST-005; Need: Show me, before anyone builds, what an engineer cannot build
-- Pain: I reach for the names of software I have used; Stage: ST-002; Need: Convert my technology talk into the need underneath it, without arguing
-- Pain: I put this down for a week and cannot remember where I was; Stage: ST-004; Need: Let me stop and resume without starting over
-- Pain: I cannot tell whether what I have written is good; Stage: ST-003; Need: Tell me where it is weak, against a stated standard, and ask me one thing
-- Pain: As the sponsor, I can only judge whether it reads well; Stage: ST-006; Need: Show the sponsor each grade and every blocking defect before they decide
-
-**Needs:**
-
-- Teach me the section before you ask me about it, in my own domain
-- Tell me where it is weak, against a stated standard, and ask me one thing
-- Convert my technology talk into the need underneath it, without arguing
-- Let me stop and resume without starting over
-- Show me, before anyone builds, what an engineer cannot build
-- Show the sponsor each grade and every blocking defect before they decide
-
-**End state:** The set is approved, with or without recorded conditions, at a named version, every section has a grade with no blocking defects, every open question has a decider and a date, and the buildability review reports no gap that is neither closed nor owned.
-
-### J-002 A backlog whose every story traces to a requirement the expert actually stated.
+**Goal:** A backlog whose every story traces to a requirement the expert actually stated.
 
 **Persona:** PER-004
 
@@ -586,9 +610,35 @@ Generated from the front matter. Do not edit this block.
 
 **Objectives:** O-001
 
+**Pain points:**
+
+- **Pain:** The workshop invents a backbone in the room because the PRD has none
+  - **Stage:** ST-007
+  - **Need:** A journey to map against, agreed before the workshop
+- **Pain:** Stories trace to nothing, so nobody can say why they exist
+  - **Stage:** ST-008
+  - **Need:** Every story carrying the requirement id it came from
+- **Pain:** Non-functional requirements and constraints are forgotten until late
+  - **Stage:** ST-008
+  - **Need:** Constraints arriving as definition-of-done items, not as surprises
+- **Pain:** As the engineering lead, I find gaps between two requirements that both looked complete
+  - **Stage:** ST-009
+  - **Need:** Every gap quoted from the document, before the team estimates
+
+**Needs:**
+
+- A journey to map against, agreed before the workshop
+- Every story carrying the requirement id it came from
+- Constraints arriving as definition-of-done items, not as surprises
+- Every gap quoted from the document, before the team estimates
+
+**End state:** Features, epics, stories and spikes exist for release 1, each naming the PRD requirement ids behind it, and no task or estimate has been invented yet.
+
 **Stages**
 
-#### ST-009 Engineering lead records whether the set can be built from
+#### ST-009
+
+**Name:** Engineering lead records whether the set can be built from
 
 **Actor:** Engineering lead
 
@@ -614,7 +664,9 @@ Generated from the front matter. Do not edit this block.
 
 **Handoff:** The delivery lead, to check the PRD can carry a backlog
 
-#### ST-007 Delivery lead checks the PRD can carry a backlog
+#### ST-007
+
+**Name:** Delivery lead checks the PRD can carry a backlog
 
 **Actor:** Delivery lead
 
@@ -637,7 +689,9 @@ Generated from the front matter. Do not edit this block.
 
 **Decision:** Is there a backbone to map against
 
-#### ST-008 Delivery lead derives features, epics and stories
+#### ST-008
+
+**Name:** Delivery lead derives features, epics and stories
 
 **Actor:** Delivery lead
 
@@ -662,21 +716,5 @@ Generated from the front matter. Do not edit this block.
 **Decision:** Which epics come first, and why
 
 **Handoff:** The engineering team, for iteration planning
-
-**Pain points:**
-
-- Pain: The workshop invents a backbone in the room because the PRD has none; Stage: ST-007; Need: A journey to map against, agreed before the workshop
-- Pain: Stories trace to nothing, so nobody can say why they exist; Stage: ST-008; Need: Every story carrying the requirement id it came from
-- Pain: Non-functional requirements and constraints are forgotten until late; Stage: ST-008; Need: Constraints arriving as definition-of-done items, not as surprises
-- Pain: As the engineering lead, I find gaps between two requirements that both looked complete; Stage: ST-009; Need: Every gap quoted from the document, before the team estimates
-
-**Needs:**
-
-- A journey to map against, agreed before the workshop
-- Every story carrying the requirement id it came from
-- Constraints arriving as definition-of-done items, not as surprises
-- Every gap quoted from the document, before the team estimates
-
-**End state:** Features, epics, stories and spikes exist for release 1, each naming the PRD requirement ids behind it, and no task or estimate has been invented yet.
 
 <!-- /prd-forge:details -->

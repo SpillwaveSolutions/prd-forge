@@ -51,7 +51,7 @@ const SKIP = new Set([
 ])
 
 // Ordered lists: each entry is a step or a criterion that a reader counts.
-const NUMBERED = new Set(['acceptance', 'course', 'steps', 'exit_criteria'])
+const NUMBERED = new Set(['acceptance', 'course', 'steps', 'exit_criteria', 'shows'])
 
 // Keep in step with LABEL in prd_export.py.
 const LABEL = {
@@ -71,47 +71,57 @@ const text = value => String(value).replace(/\s+/g, ' ').trim()
 const isEmpty = value => value === undefined || value === null || (Array.isArray(value) && value.length === 0)
 const isItem = value => value !== null && typeof value === 'object' && !Array.isArray(value)
 
-/** A value on one line: a mapping becomes `Label: value; Label: value`. */
+/** A value on one line. */
 function inline(value) {
   if (typeof value === 'boolean') return value ? 'yes' : 'no'
   if (Array.isArray(value)) return value.map(inline).join(', ')
-  if (isItem(value)) {
-    return Object.entries(value).filter(([, v]) => !isEmpty(v)).map(([k, v]) => `${label(k)}: ${inline(v).replace(/\.$/, '')}`).join('; ')
-  }
   return text(value)
+}
+
+// An ID such as FR-001, a number, or `all`: a list of only these reads well on one line.
+const isToken = value => typeof value === 'number' || /^([A-Z]{1,4}-\d+|\d+|all)$/.test(String(value))
+const hasIds = list => list.every(v => isItem(v) && typeof v.id === 'string')
+
+/** The keys of a list's items, in the order they first appear, so every item prints alike. */
+const keysOf = list => [...new Set(list.flatMap(v => (isItem(v) ? Object.keys(v) : [])))]
+
+/** A mapping as a list entry: its first field on the bullet, the rest nested under it. */
+function entry(value, marker) {
+  const parts = Object.entries(value).filter(([, v]) => !isEmpty(v))
+  const [first, ...rest] = parts.map(([k, v]) => `**${label(k)}:** ${inline(v)}`)
+  return [`${marker} ${first ?? ''}`, ...rest.map(line => `  - ${line}`)]
 }
 
 /** One field as markdown paragraphs. `level` is the heading level for nested items. */
 function field(key, value, level) {
   if (isEmpty(value)) return []
   if (Array.isArray(value)) {
-    if (value.every(v => isItem(v) && typeof v.id === 'string')) {
-      return [`**${label(key)}**`, '', ...value.flatMap(v => item(v, 'name', undefined, level))]
+    if (hasIds(value)) {
+      const keys = [...new Set(['name', ...keysOf(value)])]
+      return [`**${label(key)}**`, '', ...value.flatMap(v => item(v, 'name', undefined, level, keys))]
     }
-    const short = !NUMBERED.has(key) && !value.some(isItem) && inline(value).length <= 80
-    if (short) return [`**${label(key)}:** ${inline(value)}`, '']
-    const marker = NUMBERED.has(key) ? (i => `${i + 1}.`) : () => '-'
-    return [`**${label(key)}:**`, '', ...value.map((v, i) => `${marker(i)} ${inline(v)}`), '']
+    if (!NUMBERED.has(key) && (value.every(isToken) || (value.length === 1 && !isItem(value[0])))) {
+      return [`**${label(key)}:** ${inline(value)}`, '']
+    }
+    const marker = i => (NUMBERED.has(key) ? `${i + 1}.` : '-')
+    return [`**${label(key)}:**`, '', ...value.flatMap((v, i) => (isItem(v) ? entry(v, marker(i)) : [`${marker(i)} ${inline(v)}`])), '']
   }
-  if (isItem(value)) {
-    const parts = Object.entries(value).filter(([, v]) => !isEmpty(v))
-    return [`**${label(key)}:**`, '', ...parts.map(([k, v]) => `- ${label(k)}: ${inline(v)}`), '']
-  }
+  if (isItem(value)) return [`**${label(key)}:**`, '', ...entry(value, '-').map(line => line.replace(/^ {2}/, '')), '']
   return [`**${label(key)}:** ${inline(value)}`, '']
 }
 
-/** One item: a heading, then each field. A long headline moves under the heading. */
-function item(one, headField, nameField, level) {
-  const headline = isEmpty(one[headField]) ? '' : inline(one[headField])
+/**
+ * One item: a heading that holds only its name, then each field in the list's
+ * key order. Nested items with ids come last, so the item's own fields never
+ * sit under the heading of its last nested item.
+ */
+function item(one, headField, nameField, level, keys) {
   const name = one.id ?? (nameField ? one[nameField] : undefined)
-  const short = headline.length <= 90
-  const heading = name === undefined ? headline : short ? `${name} ${headline}` : String(name)
+  const heading = name ?? one[headField] ?? ''
   const lines = [`${'#'.repeat(Math.min(level, 6))} ${text(heading)}`, '']
-  if (name !== undefined && !short) lines.push(...field(headField, one[headField], level + 1))
-  for (const [key, value] of Object.entries(one)) {
-    if (key === 'id' || key === headField || (key === nameField && name !== undefined)) continue
-    lines.push(...field(key, value, level + 1))
-  }
+  const shown = keys.filter(key => key !== 'id' && !(key === nameField && name !== undefined) && !(key === headField && name === undefined))
+  const nested = key => Array.isArray(one[key]) && one[key].length > 0 && hasIds(one[key])
+  for (const key of [...shown.filter(k => !nested(k)), ...shown.filter(nested)]) lines.push(...field(key, one[key], level + 1))
   return lines
 }
 
@@ -125,12 +135,14 @@ export function detailsOf(front) {
   }
   const level = groups.length > 1 ? 4 : 3
   for (const [key, headField, nameField] of groups) {
-    if (groups.length > 1) lines.push(`### ${label(key)}`, '')
-    for (const one of front[key]) if (isItem(one)) lines.push(...item(one, headField, nameField, level))
+    if (groups.length > 1) lines.push(`### ${label(key)} in detail`, '')
+    // The headline field comes first, after the heading.
+    const keys = [...new Set([headField, ...keysOf(front[key])])]
+    for (const one of front[key]) if (isItem(one)) lines.push(...item(one, headField, nameField, level, keys))
   }
   if (lines.length === 0) return ''
   while (lines.at(-1) === '') lines.pop()
-  return [START, '', '## Details', '', 'Generated from the front matter. Do not edit this block.', '', ...lines, '', END].join('\n')
+  return [START, '', '## Details', '', 'Every item in this document, with each of its fields.', '', ...lines, '', END].join('\n')
 }
 
 /** The body without its details block, as a person wrote it. */

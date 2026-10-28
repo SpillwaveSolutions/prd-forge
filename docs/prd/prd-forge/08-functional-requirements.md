@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 7
 order: 80
-score: 81
+score: 84
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 requirements:
   - id: FR-001
     user: PER-001
@@ -577,9 +577,11 @@ hide.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### FR-001 State the idea in their own words and establish the domain's vocabulary once
+### FR-001
+
+**Capability:** State the idea in their own words and establish the domain's vocabulary once
 
 **User:** PER-001
 
@@ -599,7 +601,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-003
 
-### FR-002 See every section of the set and what state each one is in, at any point
+### FR-002
+
+**Capability:** See every section of the set and what state each one is in, at any point
 
 **User:** PER-001
 
@@ -641,7 +645,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-003
 
-### FR-004 Be asked one or two questions at a time, never a questionnaire
+### FR-004
+
+**Capability:** Be asked one or two questions at a time, never a questionnaire
 
 **User:** PER-001
 
@@ -660,7 +666,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-003
 
-### FR-005 Say that they have nothing more to add, and have that end the section's interview
+### FR-005
+
+**Capability:** Say that they have nothing more to add, and have that end the section's interview
 
 **User:** PER-001
 
@@ -723,7 +731,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-001
 
-### FR-008 Read the drafted section as prose rather than as a filled-in form
+### FR-008
+
+**Capability:** Read the drafted section as prose rather than as a filled-in form
 
 **User:** PER-001
 
@@ -741,7 +751,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-003
 
-### FR-009 See a score, every blocking defect by name, and which part of the section is weakest
+### FR-009
+
+**Capability:** See a score, every blocking defect by name, and which part of the section is weakest
 
 **User:** PER-001
 
@@ -783,7 +795,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-003
 
-### FR-011 See the section re-graded against the same standard after answering
+### FR-011
+
+**Capability:** See the section re-graded against the same standard after answering
 
 **User:** PER-001
 
@@ -870,7 +884,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-001
 
-### FR-015 Stop in the middle of a set and resume days later without being asked anything twice
+### FR-015
+
+**Capability:** Stop in the middle of a set and resume days later without being asked anything twice
 
 **User:** PER-001
 
@@ -890,7 +906,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-002
 
-### FR-016 Refute a grading finding by pointing at the document, and have it withdrawn
+### FR-016
+
+**Capability:** Refute a grading finding by pointing at the document, and have it withdrawn
 
 **User:** PER-001
 
@@ -932,7 +950,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-002
 
-### FR-018 See the set as it now stands after it was changed outside the view in front of them
+### FR-018
+
+**Capability:** See the set as it now stands after it was changed outside the view in front of them
 
 **User:** PER-001
 
@@ -952,7 +972,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-002
 
-### FR-019 Stop being asked once the section would already meet the gate
+### FR-019
+
+**Capability:** Stop being asked once the section would already meet the gate
 
 **User:** PER-001
 
@@ -972,7 +994,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-003
 
-### FR-020 Be told when the set states one item two different ways
+### FR-020
+
+**Capability:** Be told when the set states one item two different ways
 
 **User:** PER-001
 
@@ -991,7 +1015,9 @@ Generated from the front matter. Do not edit this block.
 
 **Objective:** O-003
 
-### FR-021 Name each approver of a set, by name and role, before offering it for approval
+### FR-021
+
+**Capability:** Name each approver of a set, by name and role, before offering it for approval
 
 **User:** PER-001
 

@@ -10,7 +10,7 @@ section: 1
 order: 10
 score: 83
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 problems:
   - id: P-001
     statement: >-
@@ -189,7 +189,7 @@ Q-001, Q-002, and Q-003.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 ### P-001
 
@@ -201,7 +201,9 @@ Generated from the front matter. Do not edit this block.
 
 **Evidence:**
 
-- Claim: In this PRD at version 0.1.0, the grading pass found 2 of 14 functional requirements, FR-003 and FR-004, with no outcome a person could see. Both were fixed at version 0.2.0; Source: prd-forge repository, commits 5ba59cb (version 0.1.0) and 5d4d936 (version 0.2.0); As of: 2026-10-26
+- **Claim:** In this PRD at version 0.1.0, the grading pass found 2 of 14 functional requirements, FR-003 and FR-004, with no outcome a person could see. Both were fixed at version 0.2.0.
+  - **Source:** prd-forge repository, commits 5ba59cb (version 0.1.0) and 5d4d936 (version 0.2.0)
+  - **As of:** 2026-10-26
 - A team that receives a feature list re-derives the user and the acceptance criteria itself before it can estimate.
 - Experts asked to write requirements reach for the words of the software they have used, because that is the only requirements language they have been exposed to.
 
@@ -223,7 +225,9 @@ Generated from the front matter. Do not edit this block.
 
 **Evidence:**
 
-- Claim: At version 0.1.0, the buildability review of this PRD failed 4 of 11 derivability checks and named 4 gates an engineer would have to invent; Source: prd-forge repository, the commit messages of 5ba59cb (version 0.1.0) and 5d4d936 (version 0.2.0); As of: 2026-10-26
+- **Claim:** At version 0.1.0, the buildability review of this PRD failed 4 of 11 derivability checks and named 4 gates an engineer would have to invent.
+  - **Source:** prd-forge repository, the commit messages of 5ba59cb (version 0.1.0) and 5d4d936 (version 0.2.0)
+  - **As of:** 2026-10-26
 - A specification with no user journey gives a story-mapping workshop no backbone, so features and epics cannot be derived from it at all.
 - Gaps surface as mid-iteration questions about what happens between two requirements that both looked complete.
 
@@ -245,7 +249,9 @@ Generated from the front matter. Do not edit this block.
 
 **Evidence:**
 
-- Claim: At version 0.8.0, this PRD passed every schema and cross-reference check with 0 errors and 0 warnings. The grading pass found 23 blocking defects in 8 of 18 documents; Source: prd-forge repository, commit 6f77bc0 (version 0.8.0); As of: 2026-10-27
+- **Claim:** At version 0.8.0, this PRD passed every schema and cross-reference check with 0 errors and 0 warnings. The grading pass found 23 blocking defects in 8 of 18 documents.
+  - **Source:** prd-forge repository, commit 6f77bc0 (version 0.8.0)
+  - **As of:** 2026-10-27
 - Approval is given on readability and completeness of headings, because those are the only properties an approver can assess unaided.
 - The first real assessment of buildability happens when an engineer estimates, which is after approval and after the plan was made.
 
@@ -267,7 +273,9 @@ Generated from the front matter. Do not edit this block.
 
 **Evidence:**
 
-- Claim: Of 20 sections in two public PRD templates, all 20 say what to write, and 0 say what makes an entry good or how a reader checks it. The Aha! Agile PRD template has 6 sections, and the Product School PRD template has 14; Source: Aha! Agile PRD template, https://www.aha.io/roadmapping/guide/requirements-management/what-is-a-good-product-requirements-document-template, and Product School PRD template, https://productschool.com/blog/product-strategy/product-template-requirements-document-prd; As of: 2026-10-26
+- **Claim:** Of 20 sections in two public PRD templates, all 20 say what to write, and 0 say what makes an entry good or how a reader checks it. The Aha! Agile PRD template has 6 sections, and the Product School PRD template has 14.
+  - **Source:** Aha! Agile PRD template, https://www.aha.io/roadmapping/guide/requirements-management/what-is-a-good-product-requirements-document-template, and Product School PRD template, https://productschool.com/blog/product-strategy/product-template-requirements-document-prd
+  - **As of:** 2026-10-26
 - The craft exists in books and in experienced product managers, and neither is at hand at the moment the expert is typing.
 
 **Why now:** In the same survey, 47% of product managers want to prototype and validate products without engineering, and 38% can (General Assembly, "AI is everywhere in product management, but skills gaps and 'shadow AI' are holding teams back", 6 Nov 2025), which means more of the specifying falls on the person with the domain knowledge, with no specialist between them and the page.

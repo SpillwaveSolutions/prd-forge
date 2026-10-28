@@ -115,9 +115,11 @@ and the reason, and the return is recorded with its reason.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### J-001 A return resolved at the counter, with the customer told the outcome and the reason
+### J-001
+
+**Goal:** A return resolved at the counter, with the customer told the outcome and the reason
 
 **Persona:** PER-001
 
@@ -125,9 +127,25 @@ Generated from the front matter. Do not edit this block.
 
 **Golden thread:** yes
 
+**Pain points:**
+
+- Calling the contact centre with the customer watching
+- No visible policy for this item and this purchase date
+- Reasons are not recorded, so the hub cannot set disposition
+
+**Needs:**
+
+- A decision and its reason, visible at the counter
+- An exception path that does not require a phone call
+- The return reason captured once, where the hub can read it
+
+**End state:** The customer has left knowing the outcome and the reason, and the return is recorded with its reason.
+
 **Stages**
 
-#### ST-001 Associate identifies the purchase
+#### ST-001
+
+**Name:** Associate identifies the purchase
 
 **Actor:** Store associate
 
@@ -147,7 +165,9 @@ Generated from the front matter. Do not edit this block.
 
 **Decision:** Is this the purchase the customer means
 
-#### ST-002 Associate sees the returns decision
+#### ST-002
+
+**Name:** Associate sees the returns decision
 
 **Actor:** Store associate
 
@@ -167,7 +187,9 @@ Generated from the front matter. Do not edit this block.
 
 **Decision:** Accept, refuse, or escalate
 
-#### ST-003 Agent decides an exception
+#### ST-003
+
+**Name:** Agent decides an exception
 
 **Actor:** Contact-centre agent
 
@@ -188,7 +210,9 @@ Generated from the front matter. Do not edit this block.
 
 **Handoff:** Back to the store associate
 
-#### ST-004 Associate completes the return
+#### ST-004
+
+**Name:** Associate completes the return
 
 **Actor:** Store associate
 
@@ -207,19 +231,5 @@ Generated from the front matter. Do not edit this block.
 **Decision:** Which refund method
 
 **Handoff:** Returns-processing clerk at the hub
-
-**Pain points:**
-
-- Calling the contact centre with the customer watching
-- No visible policy for this item and this purchase date
-- Reasons are not recorded, so the hub cannot set disposition
-
-**Needs:**
-
-- A decision and its reason, visible at the counter
-- An exception path that does not require a phone call
-- The return reason captured once, where the hub can read it
-
-**End state:** The customer has left knowing the outcome and the reason, and the return is recorded with its reason.
 
 <!-- /prd-forge:details -->

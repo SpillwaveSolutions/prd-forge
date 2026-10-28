@@ -10,7 +10,7 @@ section: 4
 order: 40
 score: 89
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 personas:
   - id: PER-001
     name: "Product manager (senior: manager to principal), in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one"
@@ -176,7 +176,7 @@ PER-001 sees a grade they did not produce themselves.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 ### PER-001
 
@@ -248,7 +248,9 @@ Generated from the front matter. Do not edit this block.
 
 **Proficiency:** Expert in delivery, usually knows nothing about the expert's domain.
 
-### PER-003 Sponsor: the budget holder (director or partner), who is also the approver
+### PER-003
+
+**Name:** Sponsor: the budget holder (director or partner), who is also the approver
 
 **Short name:** Sponsor
 

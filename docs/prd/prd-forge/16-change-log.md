@@ -10,7 +10,7 @@ section: 15
 order: 160
 score: 71
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 changes:
   - version: 0.9.0
     date: 2026-10-27
@@ -376,7 +376,7 @@ rubric cannot score approvals and conditions higher before an approval exists.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 ### 0.9.0
 

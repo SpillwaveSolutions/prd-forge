@@ -10,7 +10,7 @@ section: 7
 order: 85
 score: 91
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 wireframes:
   - id: WF-001
     title: The set with one section open
@@ -427,9 +427,11 @@ SC-002 is the expert who returns after eight days and remembers nothing. The val
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### WF-001 The set with one section open
+### WF-001
+
+**Title:** The set with one section open
 
 **Type:** screen
 
@@ -441,14 +443,16 @@ Generated from the front matter. Do not edit this block.
 
 **Shows:**
 
-- Where they are in the set, the section's state, and its grade
-- Next, previous, refresh, and back to the view before
-- Each section's grade and blocking count; opening it shows why
-- The section itself, as prose
-- An ID that another section defines opens that section
-- Each place where the set states one id, priority, or link two ways, with both values, and each place can be followed
+1. Where they are in the set, the section's state, and its grade
+2. Next, previous, refresh, and back to the view before
+3. Each section's grade and blocking count; opening it shows why
+4. The section itself, as prose
+5. An ID that another section defines opens that section
+6. Each place where the set states one id, priority, or link two ways, with both values, and each place can be followed
 
-### WF-002 A new set, before the first interview
+### WF-002
+
+**Title:** A new set, before the first interview
 
 **Type:** screen
 
@@ -460,29 +464,13 @@ Generated from the front matter. Do not edit this block.
 
 **Shows:**
 
-- Where they are, and that nothing is started yet
-- Every section listed, each marked not started
-- What happens first
+1. Where they are, and that nothing is started yet
+2. Every section listed, each marked not started
+3. What happens first
 
-### WF-003 Why a section got its grade
+### WF-003
 
-**Type:** screen
-
-**Persona:** PER-001
-
-**Journey stage:** ST-003
-
-**Illustrates:** FR-009, FR-017
-
-**Shows:**
-
-- The score, and that the section is not ready
-- Each blocking defect, and where it is
-- The weakest part, and why, in three lines or fewer
-- Each dimension's score, with the evidence for it
-- The standard the grade was given against
-
-### WF-004 The standard a section is graded against
+**Title:** Why a section got its grade
 
 **Type:** screen
 
@@ -494,11 +482,33 @@ Generated from the front matter. Do not edit this block.
 
 **Shows:**
 
-- How a dimension becomes a grade
-- What 0, 2 and 4 look like for each dimension
-- What stops a section at any grade
+1. The score, and that the section is not ready
+2. Each blocking defect, and where it is
+3. The weakest part, and why, in three lines or fewer
+4. Each dimension's score, with the evidence for it
+5. The standard the grade was given against
 
-### WF-005 What a team could not build from this set
+### WF-004
+
+**Title:** The standard a section is graded against
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-003
+
+**Illustrates:** FR-009, FR-017
+
+**Shows:**
+
+1. How a dimension becomes a grade
+2. What 0, 2 and 4 look like for each dimension
+3. What stops a section at any grade
+
+### WF-005
+
+**Title:** What a team could not build from this set
 
 **Type:** report
 
@@ -510,13 +520,15 @@ Generated from the front matter. Do not edit this block.
 
 **Shows:**
 
-- Which version of the set the buildability review read, and the verdict
-- Each release-line stage, covered or a gap
-- Each requirement an engineer could not test, quoted
-- An open question that blocks a must, its decider and date
-- What the buildability review would ask for first
+1. Which version of the set the buildability review read, and the verdict
+2. Each release-line stage, covered or a gap
+3. Each requirement an engineer could not test, quoted
+4. An open question that blocks a must, its decider and date
+5. What the buildability review would ask for first
 
-### WF-006 What the approver is asked to approve
+### WF-006
+
+**Title:** What the approver is asked to approve
 
 **Type:** report
 
@@ -528,14 +540,16 @@ Generated from the front matter. Do not edit this block.
 
 **Shows:**
 
-- The version, its state, its owner, and what it is for
-- What release 1 covers
-- Every section with its state and grade, and what blocks
-- What is still undecided, who decides it, and by when
-- The decision, with any condition tied to a question
-- Who decided what, in which role, on which version
+1. The version, its state, its owner, and what it is for
+2. What release 1 covers
+3. Every section with its state and grade, and what blocks
+4. What is still undecided, who decides it, and by when
+5. The decision, with any condition tied to a question
+6. Who decided what, in which role, on which version
 
-### WF-007 Before any set exists
+### WF-007
+
+**Title:** Before any set exists
 
 **Type:** screen
 
@@ -543,13 +557,18 @@ Generated from the front matter. Do not edit this block.
 
 **Journey stage:** ST-001
 
-**State of:** WF-001
-
 **Illustrates:** FR-018
 
-**Shows:** That nothing has been started, Look again once a set exists
+**Shows:**
 
-### WF-008 A section re-graded after one answer
+1. That nothing has been started
+2. Look again once a set exists
+
+**State of:** WF-001
+
+### WF-008
+
+**Title:** A section re-graded after one answer
 
 **Type:** screen
 
@@ -561,12 +580,14 @@ Generated from the front matter. Do not edit this block.
 
 **Shows:**
 
-- The new score beside the old one
-- The same standard both times
-- What changed in the section
-- The offer of review, and what review means
+1. The new score beside the old one
+2. The same standard both times
+3. What changed in the section
+4. The offer of review, and what review means
 
-### WF-009 A buildability review that finds gaps
+### WF-009
+
+**Title:** A buildability review that finds gaps
 
 **Type:** report
 
@@ -574,17 +595,19 @@ Generated from the front matter. Do not edit this block.
 
 **Journey stage:** ST-005
 
-**State of:** WF-005
-
 **Illustrates:** FR-012
 
 **Shows:**
 
-- The verdict
-- The release-line stages with no requirement, named
-- That each gap must become a requirement or a question
+1. The verdict
+2. The release-line stages with no requirement, named
+3. That each gap must become a requirement or a question
 
-### WF-010 Resuming a set after a week away
+**State of:** WF-005
+
+### WF-010
+
+**Title:** Resuming a set after a week away
 
 **Type:** screen
 
@@ -592,15 +615,15 @@ Generated from the front matter. Do not edit this block.
 
 **Journey stage:** ST-004
 
-**State of:** WF-001
-
 **Illustrates:** FR-002, FR-009, FR-015, FR-017, FR-018
 
 **Shows:**
 
-- Where they stopped
-- Every section's grade and blocking count
-- Each blocking defect in the section, named
-- The next question, not one already answered
+1. Where they stopped
+2. Every section's grade and blocking count
+3. Each blocking defect in the section, named
+4. The next question, not one already answered
+
+**State of:** WF-001
 
 <!-- /prd-forge:details -->

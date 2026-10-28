@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 5
 order: 60
-score: 86
+score: 89
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 scenarios:
   - id: SC-001
     journey: J-001
@@ -363,9 +363,9 @@ SC-005 is the moment the product is supposed to pay for itself.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### Scenarios
+### Scenarios in detail
 
 #### SC-001
 
@@ -411,11 +411,6 @@ Generated from the front matter. Do not edit this block.
 
 **Context:** The same manager stopped mid-way through section 7 eight days ago. They remember almost nothing about where they were.
 
-**Branches from:**
-
-- Scenario: SC-007
-- Step: 5
-
 **Journey:** J-001
 
 **Stage:** ST-004
@@ -445,14 +440,14 @@ Generated from the front matter. Do not edit this block.
 
 **Expected outcome:** Work resumes at the first section that is not yet at review, no earlier answer is requested again, and the domain vocabulary is unchanged.
 
+**Branches from:**
+
+- **Scenario:** SC-007
+- **Step:** 5
+
 #### SC-003
 
 **Context:** A claims manager is answering questions about section 7. They have strong views about how it should be built.
-
-**Branches from:**
-
-- Scenario: SC-007
-- Step: 3
 
 **Journey:** J-001
 
@@ -478,14 +473,14 @@ Generated from the front matter. Do not edit this block.
 
 **Expected outcome:** The recorded requirement names no technology, the adjuster's need to act on the claim away from a desk is recorded, "push to the phone" appears on the list of candidate architecture decisions, and the expert is not asked to defend or withdraw it.
 
+**Branches from:**
+
+- **Scenario:** SC-007
+- **Step:** 3
+
 #### SC-004
 
 **Context:** A freight operations manager reads the grade of section 7. A finding says that a requirement names a component, "consignment".
-
-**Branches from:**
-
-- Scenario: SC-007
-- Step: 4
 
 **Journey:** J-001
 
@@ -510,14 +505,14 @@ Generated from the front matter. Do not edit this block.
 
 **Expected outcome:** The refuted finding, which the document does not support, is not in the report, the expert sees that it was dropped, and the grade no longer counts it.
 
+**Branches from:**
+
+- **Scenario:** SC-007
+- **Step:** 4
+
 #### SC-008
 
 **Context:** The same manager reads another finding on section 7: a requirement names "the dispatch database", which is a part of the product.
-
-**Branches from:**
-
-- Scenario: SC-007
-- Step: 4
 
 **Journey:** J-001
 
@@ -542,14 +537,14 @@ Generated from the front matter. Do not edit this block.
 
 **Expected outcome:** The objection and the expert's decision are recorded, the reason is stated only once, and the next grading pass does not raise the same finding as new.
 
+**Branches from:**
+
+- **Scenario:** SC-007
+- **Step:** 4
+
 #### SC-005
 
 **Context:** Every section is at `review`. The expert asks whether a team could build the set. Two release-line stages have no `must` requirement.
-
-**Branches from:**
-
-- Scenario: SC-007
-- Step: 6
 
 **Journey:** J-001
 
@@ -579,14 +574,14 @@ Generated from the front matter. Do not edit this block.
 
 **Expected outcome:** Before anyone has estimated, the report names both release-line stages that have no `must` requirement and quotes all three requirements an engineer could not write a test for, and every gap is either closed or owned by a named decider with a date.
 
+**Branches from:**
+
+- **Scenario:** SC-007
+- **Step:** 6
+
 #### SC-006
 
 **Context:** The expert is on section 3 of this PRD and has just named O-002's metric, the median working days from the first interview question to an approval. They do not know today's value.
-
-**Branches from:**
-
-- Scenario: SC-007
-- Step: 3
 
 **Journey:** J-001
 
@@ -610,6 +605,11 @@ Generated from the front matter. Do not edit this block.
 4. They see that the target is marked as provisional until the baseline arrives
 
 **Expected outcome:** No baseline is invented, O-002 carries an explicit unknown, and section 12 holds a question, Q-002, with a named decider and a date.
+
+**Branches from:**
+
+- **Scenario:** SC-007
+- **Step:** 3
 
 #### SC-007
 
@@ -650,16 +650,22 @@ Generated from the front matter. Do not edit this block.
 
 **Expected outcome:** Every section is at final, every gap the buildability review found is closed or has a named decider and a date, and the change log records the sponsor's approval against a named version.
 
-### Lifecycles
+### Lifecycles in detail
 
-#### LC-001 a section of the PRD
+#### LC-001
+
+**Subject:** a section of the PRD
 
 **States:**
 
-- Name: pending; Meaning: Listed in the set and not yet interviewed
-- Name: draft; Meaning: Interviewed and written, and graded or waiting for a grade
-- Name: review; Meaning: Ready for someone other than the expert to read
-- Name: final; Meaning: Set final by the expert under TR-002
+- **Name:** pending
+  - **Meaning:** Listed in the set and not yet interviewed.
+- **Name:** draft
+  - **Meaning:** Interviewed and written, and graded or waiting for a grade.
+- **Name:** review
+  - **Meaning:** Ready for someone other than the expert to read.
+- **Name:** final
+  - **Meaning:** Set final by the expert under TR-002.
 
 **Initial:** pending
 
@@ -667,10 +673,30 @@ Generated from the front matter. Do not edit this block.
 
 **Transitions:**
 
-- From: pending; To: draft; When: The expert finishes the section's interview and it is written; Rule: The expert decides the interview is finished (TR-008); By: PER-001
-- From: draft; To: review; When: The expert accepts the offer of review; Rule: A grade of 70 or more, zero blocking defects, and a set that checks clean, unless the expert overrides the gate and the override is recorded in section 15; By: PER-001
-- From: review; To: final; When: The expert sets the section to final; Rule: The expert's decision under TR-002, after an independent grading pass with zero blocking defects, unless the expert overrides the gate and the override is recorded in section 15. No other approval is needed; By: PER-001
-- From: review; To: draft; When: The expert changes the section, because a later section shows it is incomplete; Rule: The expert's decision under TR-002. The section is graded again before it returns to review; By: PER-001
-- From: final; To: draft; When: The expert changes the section after it was set final; Rule: The expert's decision under TR-002. If the set was approved, the change records a new version that the earlier approval does not cover (FR-014). A section is never retired, because ids are never reused; By: PER-001
+- **From:** pending
+  - **To:** draft
+  - **When:** The expert finishes the section's interview and it is written
+  - **Rule:** The expert decides the interview is finished (TR-008)
+  - **By:** PER-001
+- **From:** draft
+  - **To:** review
+  - **When:** The expert accepts the offer of review
+  - **Rule:** A grade of 70 or more, zero blocking defects, and a set that checks clean, unless the expert overrides the gate and the override is recorded in section 15
+  - **By:** PER-001
+- **From:** review
+  - **To:** final
+  - **When:** The expert sets the section to final
+  - **Rule:** The expert's decision under TR-002, after an independent grading pass with zero blocking defects, unless the expert overrides the gate and the override is recorded in section 15. No other approval is needed.
+  - **By:** PER-001
+- **From:** review
+  - **To:** draft
+  - **When:** The expert changes the section, because a later section shows it is incomplete
+  - **Rule:** The expert's decision under TR-002. The section is graded again before it returns to review.
+  - **By:** PER-001
+- **From:** final
+  - **To:** draft
+  - **When:** The expert changes the section after it was set final
+  - **Rule:** The expert's decision under TR-002. If the set was approved, the change records a new version that the earlier approval does not cover (FR-014). A section is never retired, because ids are never reused.
+  - **By:** PER-001
 
 <!-- /prd-forge:details -->

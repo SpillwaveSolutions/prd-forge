@@ -8,7 +8,7 @@
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs'
 import { join, dirname, resolve, basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { withDetails } from './prd-details.mjs'
+import { withDetails, withoutDetails } from './prd-details.mjs'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const SCHEMA_DIR = resolve(HERE, '..', 'schemas')
@@ -345,7 +345,8 @@ const SKETCH_COLUMNS = 60
 
 /** The lines of the `wireframe` fence under the body heading that names `id`. */
 function sketchOf(body, id) {
-  const lines = body.split('\n')
+  // The details block names each WF id again, with no sketch under it.
+  const lines = withoutDetails(body).split('\n')
   const head = lines.findIndex(line => /^#{2,4}\s/.test(line) && line.includes(id))
   if (head === -1) return undefined
   for (let i = head + 1; i < lines.length && !/^#{1,4}\s/.test(lines[i]); i++) {

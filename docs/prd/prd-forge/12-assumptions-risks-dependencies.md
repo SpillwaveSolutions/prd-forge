@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 11
 order: 120
-score: 92
+score: 96
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 assumptions:
   - id: A-001
     assumption: >-
@@ -264,9 +264,9 @@ slips.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### Assumptions
+### Assumptions in detail
 
 #### A-001
 
@@ -284,7 +284,9 @@ Generated from the front matter. Do not edit this block.
 
 **Validate by:** 2027-02-28
 
-#### A-002 An expert will act on a grade they did not produce, rather than dismissing it.
+#### A-002
+
+**Assumption:** An expert will act on a grade they did not produce, rather than dismissing it.
 
 **If false:** The grading is decoration, and O-001 to O-003 and FR-009 to FR-011 measure something nobody uses. The product reduces to a structured interview.
 
@@ -314,7 +316,9 @@ Generated from the front matter. Do not edit this block.
 
 **Validate by:** 2027-02-28
 
-#### A-004 Organizations will let a PRD for their product be drafted inside an assistant session.
+#### A-004
+
+**Assumption:** Organizations will let a PRD for their product be drafted inside an assistant session.
 
 **If false:** The separate-application non-goal in section 6 and A-005 are unacceptable as written and the delivery model has to change, which invalidates FR-002, FR-015, and FR-018, because each assumes the expert's own session.
 
@@ -342,7 +346,7 @@ Generated from the front matter. Do not edit this block.
 
 **Validate by:** 2027-03-15
 
-### Risks
+### Risks in detail
 
 #### R-001
 
@@ -438,7 +442,7 @@ Generated from the front matter. Do not edit this block.
 
 **Status:** open
 
-### Dependencies
+### Dependencies in detail
 
 #### D-001
 
@@ -454,7 +458,9 @@ Generated from the front matter. Do not edit this block.
 
 **Blocks:** ST-001, ST-002
 
-#### D-002 Ten first-time domain experts willing to be observed completing a PRD.
+#### D-002
+
+**Need:** Ten first-time domain experts willing to be observed completing a PRD.
 
 **From:** Early customers and the professional network
 

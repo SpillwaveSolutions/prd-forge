@@ -132,9 +132,11 @@ Illustration, not a design. Illustrates FR-005. PER-003 reads it at ST-004.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### WF-001 Finding the purchase
+### WF-001
+
+**Title:** Finding the purchase
 
 **Type:** screen
 
@@ -146,10 +148,12 @@ Generated from the front matter. Do not edit this block.
 
 **Shows:**
 
-- The three ways to find a purchase
-- The purchase found, with its date and the amount paid
+1. The three ways to find a purchase
+2. The purchase found, with its date and the amount paid
 
-### WF-002 The returns decision
+### WF-002
+
+**Title:** The returns decision
 
 **Type:** screen
 
@@ -161,11 +165,13 @@ Generated from the front matter. Do not edit this block.
 
 **Shows:**
 
-- The decision, the reason for it, and the deadline
-- The refund method to tell the customer
-- The reason the item came back, from the agreed list
+1. The decision, the reason for it, and the deadline
+2. The refund method to tell the customer
+3. The reason the item came back, from the agreed list
 
-### WF-003 An exception request
+### WF-003
+
+**Title:** An exception request
 
 **Type:** screen
 
@@ -177,11 +183,13 @@ Generated from the front matter. Do not edit this block.
 
 **Shows:**
 
-- The purchase and the policy that refused it
-- The associate's reason for asking
-- The decision and the reason the customer is told
+1. The purchase and the policy that refused it
+2. The associate's reason for asking
+3. The decision and the reason the customer is told
 
-### WF-004 Items arriving at the hub today
+### WF-004
+
+**Title:** Items arriving at the hub today
 
 **Type:** report
 
@@ -191,6 +199,8 @@ Generated from the front matter. Do not edit this block.
 
 **Illustrates:** FR-005
 
-**Shows:** Each item with the reason recorded at the counter
+**Shows:**
+
+1. Each item with the reason recorded at the counter
 
 <!-- /prd-forge:details -->

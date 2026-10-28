@@ -47,11 +47,13 @@ not rise above today's 3%.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
-### Objectives
+### Objectives in detail
 
-#### O-001 A store associate resolves a return at the counter without calling the contact centre.
+#### O-001
+
+**Objective:** A store associate resolves a return at the counter without calling the contact centre.
 
 **Metric:** Share of store returns completed at the counter with no call to the contact centre, counted per calendar month across the pilot stores.
 
@@ -67,7 +69,7 @@ Generated from the front matter. Do not edit this block.
 
 **Owner:** Head of Customer Operations
 
-### Guardrails
+### Guardrails in detail
 
 #### Share of completed returns later reversed by the hub as not eligible
 

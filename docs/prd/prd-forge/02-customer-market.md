@@ -10,7 +10,7 @@ section: 2
 order: 20
 score: 75
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 segments:
   - id: S-001
     name: Consultancies and advisory firms turning client domain knowledge into PRDs
@@ -160,13 +160,15 @@ A skeptical buyer is right to test that.
 
 ## Details
 
-Generated from the front matter. Do not edit this block.
+Every item in this document, with each of its fields.
 
 **Why we win:** S-001, the consultancy partner: "Before we hand the PRD to the client's engineers, I can see which parts they could not build from, and my senior people bill fewer hours fixing it later." S-002, the director: "Before I approve the budget, I can see which parts of the PRD my team could not build from." The expert confirmed both as the sponsors' words on 2026-10-27.
 
-### Segments
+### Segments in detail
 
-#### S-001 Consultancies and advisory firms turning client domain knowledge into PRDs
+#### S-001
+
+**Name:** Consultancies and advisory firms turning client domain knowledge into PRDs
 
 **Buyer:** Partner or director of the consultancy, the budget holder, as the sponsor
 
@@ -187,7 +189,9 @@ Generated from the front matter. Do not edit this block.
 - We may trust a machine's grade less than our own partner review (Q-005).
 - We must approve client knowledge going into the assistant session our consultants already use before anyone works that way (A-004).
 
-#### S-002 Regulated-industry organizations where practitioners specify their own internal software
+#### S-002
+
+**Name:** Regulated-industry organizations where practitioners specify their own internal software
 
 **Buyer:** Director of product or transformation, the budget holder, as the sponsor
 
@@ -209,7 +213,7 @@ Generated from the front matter. Do not edit this block.
 - Our engineering leads may send back a PRD that names no technology (A-003).
 - We cannot circulate a PRD that cites a regulation our own expert did not supply (FR-006).
 
-### Competitors
+### Competitors in detail
 
 #### ChatPRD, an AI tool that drafts PRDs from a chat
 
