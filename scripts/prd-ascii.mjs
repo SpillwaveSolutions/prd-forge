@@ -13,12 +13,16 @@ export const USER_SEES = /^(they|the [a-z -]+?) (see|sees|read|reads|are|is|get|
 
 export const VARIANT = { happy: 'happy path', alternate: 'alternate path', exception: 'exception' }
 
-const PLAIN = { '‘': "'", '’': "'", '“': '"', '”': '"', '–': '-', '—': '-', '…': '...', ' ': ' ', '→': '->', '←': '<-', '×': 'x' }
+const PLAIN = { '‘': "'", '’': "'", '“': '"', '”': '"', '–': '-', '—': '-', '…': '...', '→': '->', '←': '<-', '×': 'x' }
 
-/** Text in printable ASCII on one line: typographic marks become their plain forms. */
+/**
+ * Text in printable ASCII on one line: typographic marks become their plain
+ * forms, NFKD takes accents off letters and turns a no-break space into a space,
+ * and any other character becomes `?`.
+ */
 export const ascii = text =>
   String(text ?? '')
-    .replace(/[‘’“”–—… →←×]/g, c => PLAIN[c])
+    .replace(/[‘’“”–—…→←×]/g, c => PLAIN[c])
     .normalize('NFKD')
     .replace(/[̀-ͯ]/g, '')
     .replace(/[^\x20-\x7e]/g, '?')
