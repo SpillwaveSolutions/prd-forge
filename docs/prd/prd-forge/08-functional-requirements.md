@@ -4,7 +4,7 @@ kind: functional-requirements
 schema: prd-forge/functional-requirements@1
 title: Functional requirements
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 section: 7
 order: 80
@@ -497,8 +497,9 @@ requirements:
       Comment on an exported copy of the set without using the product, and see
       each comment answered in the next copy
     outcome: >-
-      A sponsor who never opens the product has every comment answered as
-      accepted, declined, or answered, and reads the answer in the next copy.
+      A sponsor who never opens the product has a response to every comment,
+      recorded as accepted, declined, or answered, and reads the response and
+      what changed in the next copy.
     acceptance:
       - >-
         Given a sponsor who comments on an item in an exported copy, when the
@@ -509,12 +510,17 @@ requirements:
         Given a copy whose comments were already brought in, when the expert
         brings it in again, then no comment is recorded twice.
       - >-
-        Given a comment with no answer, when the expert offers the set for
-        approval, then it is not offered, and they are told which comments have
-        no answer.
+        Given a comment that marks no text, when the expert brings the copy's
+        comments into the set, then it is recorded against the section it sits
+        in.
       - >-
-        Given a comment the team answered, when the sponsor reads the next
-        exported copy, then they see the comment, its status, and the reason.
+        Given a sponsor who approves while a comment has no response, when the
+        expert records the approval, then each such comment is recorded as a
+        condition on it, with the comment's id and a date.
+      - >-
+        Given a comment the expert responded to, when the sponsor reads the next
+        exported copy, then they see the comment, its status, the response, and
+        the ids it changed.
     priority: should
     shown_in: report
     journey_stage: ST-006
@@ -550,11 +556,11 @@ links:
 | FR-019 | PER-001 | Stop being asked once the section would meet the gate | should | ST-002 |
 | FR-020 | PER-001 | Be told when the set states one item two ways | should | ST-003 |
 | FR-021 | PER-001 | Name each approver before offering the set | must | ST-006 |
-| FR-022 | PER-003 | Comment on an exported copy, and see each comment answered | should | ST-006 |
+| FR-022 | PER-003 | Comment on an exported copy, and see each comment's response | should | ST-006 |
 
-Every release-line stage has at least one `must` requirement. Eleven of the 21
+Every release-line stage has at least one `must` requirement. Eleven of the 22
 are `must`: without any one of them, REL-001 does not do what it promises. The
-ten `should` requirements make the work faster or easier to follow, and the
+eleven `should` requirements make the work faster or easier to follow, and the
 expert can still reach an approved set without them. The expert set this split
 at version 0.8.0, and set FR-021 to `must` at version 0.9.0.
 
@@ -566,8 +572,8 @@ version until Q-015 names its owner. FR-010 also waits on Q-007 and Q-014, wheth
 the requirements sends the expert back to the journeys and how that feels,
 because both block ST-004. FR-013 waits on Q-005, whether a sponsor accepts a
 PRD that carries a grade. FR-014 no longer waits: Q-011 is answered, and in
-release 1 the expert records the sponsor's decision under FR-014. Two `should`
-requirements also wait: FR-011 on Q-009, and FR-015 on Q-010.
+release 1 the expert records the sponsor's decision under FR-014. Three `should`
+requirements also wait: FR-011 and FR-019 on Q-009, and FR-015 on Q-010.
 
 FR-015 and FR-016 were split out of FR-002 and FR-009 at version 0.2.0, because
 each has a failure mode of its own: a build could deliver perfect set-state
@@ -586,8 +592,10 @@ the sponsor's role in section 10.
 
 FR-022 was added at version 0.10.0 on the expert's decision, as a `should` in
 REL-001. A sponsor reads an exported copy outside the product at ST-006 and
-comments in it. FR-022 brings those comments back, and the next copy carries the
-answers. WF-011 shows that copy.
+comments in it. FR-022 brings those comments back, and the next copy carries
+each response and what it changed. WF-011 shows that copy. A comment still
+without a response when the sponsor approves does not block the approval: the
+expert records it as a condition under FR-014, as the expert decided.
 
 ## A judgement call worth challenging
 
@@ -1077,14 +1085,15 @@ Every item in this document, with each of its fields.
 
 **User:** PER-003
 
-**Outcome:** A sponsor who never opens the product has every comment answered as accepted, declined, or answered, and reads the answer in the next copy.
+**Outcome:** A sponsor who never opens the product has a response to every comment, recorded as accepted, declined, or answered, and reads the response and what changed in the next copy.
 
 **Acceptance:**
 
 1. Given a sponsor who comments on an item in an exported copy, when the expert brings the copy's comments into the set, then each comment is recorded against that item with the sponsor's name, the date, and the text they marked.
 2. Given a copy whose comments were already brought in, when the expert brings it in again, then no comment is recorded twice.
-3. Given a comment with no answer, when the expert offers the set for approval, then it is not offered, and they are told which comments have no answer.
-4. Given a comment the team answered, when the sponsor reads the next exported copy, then they see the comment, its status, and the reason.
+3. Given a comment that marks no text, when the expert brings the copy's comments into the set, then it is recorded against the section it sits in.
+4. Given a sponsor who approves while a comment has no response, when the expert records the approval, then each such comment is recorded as a condition on it, with the comment's id and a date.
+5. Given a comment the expert responded to, when the sponsor reads the next exported copy, then they see the comment, its status, the response, and the ids it changed.
 
 **Priority:** should
 

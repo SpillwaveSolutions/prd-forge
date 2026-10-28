@@ -4,7 +4,7 @@ kind: glossary
 schema: prd-forge/glossary@1
 title: Glossary
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 section: 14
 order: 150
@@ -1030,8 +1030,10 @@ terms:
       - pilot PRD
   - term: Reviewer
     meaning: >-
-      A person who comments on a section without being able to change it, as
-      REL-003 plans. No persona in release 1 is a reviewer.
+      A person who comments on a section inside the set without being able to
+      change it, as REL-003 plans. No persona in release 1 is a reviewer. In
+      release 1 a sponsor comments on an exported copy instead, as a review
+      comment.
     see_also:
       - review
     not: >-
@@ -1156,11 +1158,16 @@ terms:
       them for reading.
   - term: Review comment
     meaning: >-
-      A comment a reviewer leaves in an exported copy, which the expert brings
-      back into the set and the team answers as accepted, declined, or answered
-      (FR-022).
+      A comment the sponsor, or anyone else reading an exported copy, leaves in
+      that copy. The expert brings it back into the set and records a response
+      with one of three statuses: accepted, when the set changed because of it;
+      declined, when the set did not change, with the reason; or answered, when
+      it asked a question and the set did not need to change (FR-022).
     see_also:
       - exported copy
+      - sponsor
+      - finding
+      - reviewer
     not: >-
       A finding. A finding comes from a grading pass or a buildability review,
       and a review comment comes from a person reading a copy.
@@ -1227,6 +1234,7 @@ links:
 | Experiment | A spike |
 | Agent | A person |
 | Exported copy | The set |
+| Review comment | A finding |
 | Capability | A capability the system needs |
 | Delegated | A person deciding on someone's behalf |
 | Verdict | A grade |
@@ -2265,7 +2273,7 @@ Every item in this document, with each of its fields.
 
 ### Reviewer
 
-**Meaning:** A person who comments on a section without being able to change it, as REL-003 plans. No persona in release 1 is a reviewer.
+**Meaning:** A person who comments on a section inside the set without being able to change it, as REL-003 plans. No persona in release 1 is a reviewer. In release 1 a sponsor comments on an exported copy instead, as a review comment.
 
 **See also:** review
 
@@ -2399,9 +2407,14 @@ Every item in this document, with each of its fields.
 
 ### Review comment
 
-**Meaning:** A comment a reviewer leaves in an exported copy, which the expert brings back into the set and the team answers as accepted, declined, or answered (FR-022).
+**Meaning:** A comment the sponsor, or anyone else reading an exported copy, leaves in that copy. The expert brings it back into the set and records a response with one of three statuses: accepted, when the set changed because of it; declined, when the set did not change, with the reason; or answered, when it asked a question and the set did not need to change (FR-022).
 
-**See also:** exported copy
+**See also:**
+
+- exported copy
+- sponsor
+- finding
+- reviewer
 
 **Not:** A finding. A finding comes from a grading pass or a buildability review, and a review comment comes from a person reading a copy.
 

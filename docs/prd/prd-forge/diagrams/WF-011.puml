@@ -2,19 +2,19 @@
 title WF-011 Review comments answered in the next exported copy
 {+
   {/ <b>prd-forge PRD 0.10.0 · exported copy</b> }
-  Section 15 · Review comments <1>
+  Review comments <1>
   ==
   RC-001 about FR-013 · R. Hightower · 2026-11-03 <2>
-  Marked: “every blocking defect, with the section
-  it is in”
-  Comment: Can I see the blocking defects first?
+  Marked: “who owns each undecided thing”
+  Comment: Can I see each owner by name?
   Status: accepted <3>
-  Answer: the root lists them first. <4>
+  Response: each open question names its decider. <4>
   Changed: FR-013
   ==
   RC-002 about O-002 · R. Hightower · 2026-11-03
+  Marked: “to an approval recorded in section 15”
   Comment: Why days to approval, not hours?
   Status: answered
-  Answer: an approval waits on people, not the tool.
+  Response: an approval waits on people, not the tool.
 }
 @endsalt

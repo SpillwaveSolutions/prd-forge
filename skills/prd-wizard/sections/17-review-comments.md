@@ -24,8 +24,8 @@ ones changed the set and which ones were declined, and why.
    item or section it is on, and adds it here with `status: open`. A comment
    already imported, by its `source`, is skipped.
 4. The team answers each comment, as below.
-5. The next export prints each comment with its answer, so the reviewer sees
-   what happened.
+5. The next export prints each comment with its response and the ids it
+   changed, so the reviewer sees what happened.
 
 The first import creates this document. A set with no review comments has no
 `17-review-comments.md`.
@@ -77,8 +77,10 @@ Not graded. The validator holds the register to the rules below.
 
 - A comment whose `about` names an id that does not exist in the set.
 - Two comments with the same `source`.
-- A comment that is `open` or has no `response` when the set is at `review` or
-  `final`. While the set is a draft, this is a warning.
+An open comment, one with no `response`, is a warning, never a blocking defect.
+When the sponsor approves while a comment is open, record each open comment as a
+condition on the approval in the change log, "conditional on RC-nnn by
+<date>", as FR-022 says.
 
 ## Industry-standard wording
 

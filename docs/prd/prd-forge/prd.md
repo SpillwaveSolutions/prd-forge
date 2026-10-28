@@ -4,7 +4,7 @@ kind: prd
 schema: prd-forge/prd-root@1
 title: prd-forge PRD
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 product: prd-forge
 slug: prd-forge

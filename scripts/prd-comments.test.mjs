@@ -60,7 +60,7 @@ function withComments(comments, status = 'draft', rootStatus = 'draft') {
 test('an answered review comment on a real id leaves the set valid', () => {
   const report = withComments([{ id: 'RC-001', about: 'FR-003', status: 'answered', response: 'The expert decides, under TR-004.' }])
   assert.deepEqual(report.errors, [])
-  assert.ok(!report.warnings.some(w => /RC-001 has no answer/.test(w)), report.warnings.join('\n'))
+  assert.ok(!report.warnings.some(w => /RC-001 has no response/.test(w)), report.warnings.join('\n'))
 })
 
 test('a review comment on an id that does not exist fails the set', () => {
@@ -73,11 +73,12 @@ test('two comments from one source fail the set', () => {
   assert.ok(errors.some(e => /RC-002 repeats source a\.docx#1/.test(e)), errors.join('\n'))
 })
 
-test('an open comment warns in a draft and fails at review', () => {
-  assert.ok(withComments([{ id: 'RC-001', about: 'FR-003' }]).warnings.some(w => /RC-001 has no answer yet/.test(w)))
-  assert.ok(withComments([{ id: 'RC-001', about: 'FR-003' }], 'review').errors.some(e => /RC-001 has no answer yet/.test(e)))
-  // A draft register still fails once the set itself is offered for review.
-  assert.ok(withComments([{ id: 'RC-001', about: 'FR-003' }], 'draft', 'review').errors.some(e => /RC-001 has no answer yet/.test(e)))
+test('an open comment warns, even at review, and never blocks: FR-022 makes it a condition', () => {
+  assert.ok(withComments([{ id: 'RC-001', about: 'FR-003' }]).warnings.some(w => /RC-001 has no response yet/.test(w)))
+  for (const report of [withComments([{ id: 'RC-001', about: 'FR-003' }], 'review'), withComments([{ id: 'RC-001', about: 'FR-003' }], 'draft', 'review')]) {
+    assert.ok(!report.errors.some(e => /RC-001/.test(e)), report.errors.join('\n'))
+    assert.ok(report.warnings.some(w => /RC-001 has no response yet/.test(w)))
+  }
 })
 
 test('the next export prints each comment with its reply and its answer', { skip: !hasUv }, () => {
