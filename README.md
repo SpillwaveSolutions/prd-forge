@@ -103,6 +103,7 @@ Each set keeps its diagrams in `diagrams/`, beside the documents:
 | Diagram | Source | Made by |
 | --- | --- | --- |
 | Each journey, `J-nnn` | Mermaid flowchart, `J-nnn.mmd` | Generated from the journey's front matter. Do not edit |
+| Each journey's overview | Mermaid flowchart, `J-nnn-overview.mmd` | Generated when an alternate or exception branches off the journey. Its top five, by priority and then by stage, are decisions off the main path, each drawn to the stage it `rejoins`. Do not edit |
 | Each journey's satisfaction curve | Mermaid user journey, `J-nnn-satisfaction.mmd` | Generated when the expert has scored every stage from 1 to 5. Do not edit |
 | Each lifecycle, `LC-nnn` | Mermaid state diagram, `LC-nnn.mmd` | Generated from the lifecycles in the scenarios document: each state, and each transition with its rule and who makes it. Do not edit |
 | Each scenario, `SC-nnn` | Mermaid flowchart, `SC-nnn.mmd` | Generated from the scenario's front matter. What the user sees is a slanted box, and what the user does is a plain box. Do not edit |

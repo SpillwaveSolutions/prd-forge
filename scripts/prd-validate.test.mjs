@@ -295,7 +295,7 @@ test('one objective is primary, and it is the one the root names', () => {
 })
 
 test('a scenario stage outside its journey, or an unknown persona, draws a warning', () => {
-  warnsWith('06-scenarios.md', t => t.replace('    stage: ST-004\n    persona: PER-001\n    variant: alternate\n', '    stage: ST-007\n    persona: PER-001\n    variant: alternate\n'), /SC-002 stage ST-007 is not in its journey J-001/)
+  warnsWith('06-scenarios.md', t => t.replace('    stage: ST-004\n    rejoins: ST-004\n    persona: PER-001\n    variant: alternate\n', '    stage: ST-007\n    rejoins: ST-004\n    persona: PER-001\n    variant: alternate\n'), /SC-002 stage ST-007 is not in its journey J-001/)
   warnsWith('06-scenarios.md', t => t.replace(/(  - id: SC-003\n(?:.*\n)*?    persona: )PER-001/, '$1PER-099'), /SC-003 persona PER-099 is not a persona/)
 })
 
@@ -359,3 +359,6 @@ test('the details block shows every field, is idempotent, and leaves the written
 for (const set of ['docs/prd/prd-forge', 'examples/acme-returns']) {
   test(`every details block in ${set} is current`, () => assert.deepEqual(writeDetails(join(REPO, set), true), []))
 }
+
+test('a scenario that rejoins a stage outside its journey fails the set', () =>
+  failsWith('06-scenarios.md', t => t.replace('    rejoins: ST-004\n', '    rejoins: ST-009\n'), /SC-\d{3} rejoins ST-009, which is not a stage of J-001/))
