@@ -53,10 +53,10 @@ competitors:
       ChatPRD docs, https://www.chatprd.ai/docs/writing-your-first-prd, accessed
       2026-10-27.
     our_edge: >-
-      Before the budget is committed, the sponsor gets a grade for each section
-      of the PRD, with every blocking defect named and the reason for each
-      score quoted from the document (FR-009). The sponsor can ask for the same
-      grades and reasons from a ChatPRD draft and compare.
+      Before the budget is committed, the sponsor sees in one document each
+      section's grade and every blocking defect, with the section it is in
+      (FR-013). The sponsor can open any set written with this product and look
+      for the same list in a ChatPRD draft.
   - name: A blank PRD template in the team's document tool
     kind: indirect
     offer: >-
