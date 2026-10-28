@@ -28,8 +28,12 @@ node scripts/prd-diagrams.mjs docs/prd/prd-forge --check    # report gaps, write
 # Export to Word and PDF. python-docx is not installed globally, so run it through uv.
 uv run --with python-docx --with pyyaml python3 scripts/prd_export.py docs/prd/prd-forge
 
-# Read the comments in a reviewed Word export, as JSON
-uv run --with python-docx --with pyyaml python3 scripts/prd_comments.py docs/prd/prd-forge <reviewed.docx>
+# Read the comments in a reviewed Word export, as JSON; --import adds new ones to the set
+uv run --with python-docx --with pyyaml python3 scripts/prd_comments.py docs/prd/prd-forge <reviewed.docx> [--import]
+
+# End to end with Microsoft Word: export, Word comments, import, answer, export again.
+# Runs only on a Mac with Word; Word opens and closes one document.
+node --test scripts/prd-comments.e2e.mjs
 
 # Write the set as GitHub Wiki pages into a local clone of the wiki. It never pushes.
 node scripts/prd-wiki.mjs docs/prd/prd-forge <wiki clone directory>

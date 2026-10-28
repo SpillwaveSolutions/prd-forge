@@ -143,4 +143,14 @@ test('a reviewer comment maps to the item or section it marks, with its reply', 
   assert.equal(comments.find(c => c.comment === 'Is this true?').about, 'acme-returns')
   assert.ok(comments.every(c => /^reviewed\.docx#\d+$/.test(c.source)))
   assert.ok(readdirSync(out).includes('acme-returns-prd.docx'))
+
+  // --import adds both to a copy of the set once, links the register, and leaves it valid.
+  const set = join(out, 'set')
+  cpSync(join(REPO, 'examples/acme-returns'), set, { recursive: true })
+  const first = JSON.parse(uv(['scripts/prd_comments.py', set, join(out, 'reviewed.docx'), '--import']).stdout)
+  const again = JSON.parse(uv(['scripts/prd_comments.py', set, join(out, 'reviewed.docx'), '--import']).stdout)
+  assert.deepEqual([first.added.length, again.added.length, again.skipped.length], [2, 0, 2])
+  const report = validateSet(set)
+  assert.deepEqual(report.errors.filter(e => !/details block/.test(e)), [])
+  assert.equal(report.documents.length, 8)
 })

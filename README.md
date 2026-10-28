@@ -199,8 +199,12 @@ each one as accepted, declined, or answered, and the next export prints the
 comments with their answers. The reader needs python-docx:
 
 ```bash
-uv run --with python-docx --with pyyaml python3 "${CLAUDE_PLUGIN_ROOT}/scripts/prd_comments.py" docs/prd/<slug> <reviewed.docx>
+uv run --with python-docx --with pyyaml python3 "${CLAUDE_PLUGIN_ROOT}/scripts/prd_comments.py" docs/prd/<slug> <reviewed.docx> --import
 ```
+
+Without `--import`, it prints the comments as JSON and writes nothing.
+`scripts/prd-comments.e2e.mjs` runs the whole loop with Microsoft Word on a Mac:
+Word comments on an export, and the test imports, answers, and exports again.
 
 ### Publish the set to the GitHub Wiki
 
