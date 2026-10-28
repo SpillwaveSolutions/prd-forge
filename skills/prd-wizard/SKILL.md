@@ -140,7 +140,8 @@ After you write or change journeys or wireframes, draw the diagrams:
 node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-diagrams.mjs" <set directory>
 ```
 
-From the front matter it generates Mermaid diagrams of each journey, each
+From the front matter it generates Mermaid diagrams of each journey, each journey's
+overview with its top five alternates and exceptions as decisions, each
 scenario (as a flowchart), each lifecycle (as a state diagram), the release
 line, and the decision rights, and a
 satisfaction curve for each journey whose stages the expert has all scored. It renders

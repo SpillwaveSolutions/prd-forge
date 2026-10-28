@@ -854,7 +854,11 @@ function structural(docs, dir) {
 
   // scenarios: a branch starts from a real step; lifecycles reach every state,
   // end somewhere, and state each move's rule and who makes it
+  const stagesOf = new Map(journeys.map(j => [j?.id, new Set((j?.stages ?? []).map(st => st?.id))]))
   for (const sc of scenarios) {
+    if (sc?.rejoins && sc.rejoins !== 'end' && !stagesOf.get(sc.journey)?.has(sc.rejoins)) {
+      errors.push(`scenarios: ${sc.id} rejoins ${sc.rejoins}, which is not a stage of ${sc.journey}`)
+    }
     const from = sc?.branches_from
     if (from) {
       const base = scenarios.find(other => other?.id === from.scenario)

@@ -104,6 +104,11 @@
             },
             "description": "The lifecycles this scenario moves through, by id."
           },
+          "rejoins": {
+            "type": "string",
+            "pattern": "^(ST-\\d{3}|end)$",
+            "description": "Where an alternate or exception goes after its outcome: the stage of its journey it rejoins, or end when the journey stops there. Only the expert sets it."
+          },
           "branches_from": {
             "type": "object",
             "properties": {
