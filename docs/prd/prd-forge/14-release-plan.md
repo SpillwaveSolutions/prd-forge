@@ -55,6 +55,7 @@ releases:
       - FR-019
       - FR-020
       - FR-021
+      - FR-022
     objectives:
       - O-001
       - O-002
@@ -200,7 +201,7 @@ Every item in this document, with each of its fields.
 
 **Journey stages:** ST-001, ST-002, ST-003, ST-004, ST-005, ST-006
 
-**Requirements:** FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, FR-021
+**Requirements:** FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, FR-021, FR-022
 
 **Objectives:** O-001, O-002, O-003
 

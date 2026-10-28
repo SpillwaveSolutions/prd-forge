@@ -1154,6 +1154,16 @@ terms:
     not: >-
       The set. The set is its documents, and an exported copy is one form of
       them for reading.
+  - term: Review comment
+    meaning: >-
+      A comment a reviewer leaves in an exported copy, which the expert brings
+      back into the set and the team answers as accepted, declined, or answered
+      (FR-022).
+    see_also:
+      - exported copy
+    not: >-
+      A finding. A finding comes from a grading pass or a buildability review,
+      and a review comment comes from a person reading a copy.
   - term: Buildable
     meaning: >-
       Said of a set a development team can estimate and build from without
@@ -2386,6 +2396,14 @@ Every item in this document, with each of its fields.
 - offered for approval
 
 **Not:** The set. The set is its documents, and an exported copy is one form of them for reading.
+
+### Review comment
+
+**Meaning:** A comment a reviewer leaves in an exported copy, which the expert brings back into the set and the team answers as accepted, declined, or answered (FR-022).
+
+**See also:** exported copy
+
+**Not:** A finding. A finding comes from a grading pass or a buildability review, and a review comment comes from a person reading a copy.
 
 ### Buildable
 

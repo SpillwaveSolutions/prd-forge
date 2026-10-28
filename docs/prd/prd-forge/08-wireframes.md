@@ -126,6 +126,17 @@ wireframes:
       - Every section's grade and blocking count
       - Each blocking defect in the section, named
       - The next question, not one already answered
+  - id: WF-011
+    title: Review comments answered in the next exported copy
+    type: report
+    persona: PER-003
+    journey_stage: ST-006
+    illustrates: [FR-022]
+    shows:
+      - The section of the copy that holds the comments
+      - Each comment, with what it is about, who left it, when, and the text they marked
+      - Its status, accepted, declined, or answered
+      - The answer, and what changed because of it
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-functional-requirements, kind: functional-requirements, path: ./08-functional-requirements.md, title: Functional requirements }
@@ -423,6 +434,35 @@ SC-002 is the expert who returns after eight days and remembers nothing. The val
 
 ![WF-010 drawing](diagrams/WF-010.svg)
 
+## WF-011 Review comments answered in the next exported copy
+
+Illustration, not a design. Illustrates FR-022. PER-003 sees it at ST-006.
+
+The sponsor commented on an earlier copy, and this is the copy they read next.
+The comments and the dates are invented, to show the form. The ids are the set's
+own.
+
+```wireframe
+┌─ prd-forge PRD 0.10.0 · exported copy ───────────────┐
+│ Section 15 · Review comments <1>                     │
+├──────────────────────────────────────────────────────┤
+│ RC-001 about FR-013 · R. Hightower · 2026-11-03 <2>  │
+│ Marked: "every blocking defect, with the section     │
+│ it is in"                                            │
+│ Comment: Can I see the blocking defects first?       │
+│ Status: accepted <3>                                 │
+│ Answer: the root lists them first. <4>               │
+│ Changed: FR-013                                      │
+├──────────────────────────────────────────────────────┤
+│ RC-002 about O-002 · R. Hightower · 2026-11-03       │
+│ Comment: Why days to approval, not hours?            │
+│ Status: answered                                     │
+│ Answer: an approval waits on people, not the tool.   │
+└──────────────────────────────────────────────────────┘
+```
+
+![WF-011 drawing](diagrams/WF-011.svg)
+
 <!-- prd-forge:details -->
 
 ## Details
@@ -625,5 +665,24 @@ Every item in this document, with each of its fields.
 4. The next question, not one already answered
 
 **State of:** WF-001
+
+### WF-011
+
+**Title:** Review comments answered in the next exported copy
+
+**Type:** report
+
+**Persona:** PER-003
+
+**Journey stage:** ST-006
+
+**Illustrates:** FR-022
+
+**Shows:**
+
+1. The section of the copy that holds the comments
+2. Each comment, with what it is about, who left it, when, and the text they marked
+3. Its status, accepted, declined, or answered
+4. The answer, and what changed because of it
 
 <!-- /prd-forge:details -->

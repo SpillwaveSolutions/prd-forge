@@ -491,6 +491,34 @@ requirements:
     shown_in: conversation
     journey_stage: ST-006
     objective: O-002
+  - id: FR-022
+    user: PER-003
+    capability: >-
+      Comment on an exported copy of the set without using the product, and see
+      each comment answered in the next copy
+    outcome: >-
+      A sponsor who never opens the product has every comment answered as
+      accepted, declined, or answered, and reads the answer in the next copy.
+    acceptance:
+      - >-
+        Given a sponsor who comments on an item in an exported copy, when the
+        expert brings the copy's comments into the set, then each comment is
+        recorded against that item with the sponsor's name, the date, and the
+        text they marked.
+      - >-
+        Given a copy whose comments were already brought in, when the expert
+        brings it in again, then no comment is recorded twice.
+      - >-
+        Given a comment with no answer, when the expert offers the set for
+        approval, then it is not offered, and they are told which comments have
+        no answer.
+      - >-
+        Given a comment the team answered, when the sponsor reads the next
+        exported copy, then they see the comment, its status, and the reason.
+    priority: should
+    shown_in: report
+    journey_stage: ST-006
+    objective: O-002
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-scope, kind: scope, path: ./07-scope.md, title: Scope }
@@ -522,6 +550,7 @@ links:
 | FR-019 | PER-001 | Stop being asked once the section would meet the gate | should | ST-002 |
 | FR-020 | PER-001 | Be told when the set states one item two ways | should | ST-003 |
 | FR-021 | PER-001 | Name each approver before offering the set | must | ST-006 |
+| FR-022 | PER-003 | Comment on an exported copy, and see each comment answered | should | ST-006 |
 
 Every release-line stage has at least one `must` requirement. Eleven of the 21
 are `must`: without any one of them, REL-001 does not do what it promises. The
@@ -554,6 +583,11 @@ mode of their own, and each needs its own priority. The expert set both to
 FR-021 was added at version 0.9.0 on the expert's decision. A set records who
 will approve it before it is offered, so an approval names a person, not only
 the sponsor's role in section 10.
+
+FR-022 was added at version 0.10.0 on the expert's decision, as a `should` in
+REL-001. A sponsor reads an exported copy outside the product at ST-006 and
+comments in it. FR-022 brings those comments back, and the next copy carries the
+answers. WF-011 shows that copy.
 
 ## A judgement call worth challenging
 
@@ -1032,6 +1066,29 @@ Every item in this document, with each of its fields.
 **Priority:** must
 
 **Shown in:** conversation
+
+**Journey stage:** ST-006
+
+**Objective:** O-002
+
+### FR-022
+
+**Capability:** Comment on an exported copy of the set without using the product, and see each comment answered in the next copy
+
+**User:** PER-003
+
+**Outcome:** A sponsor who never opens the product has every comment answered as accepted, declined, or answered, and reads the answer in the next copy.
+
+**Acceptance:**
+
+1. Given a sponsor who comments on an item in an exported copy, when the expert brings the copy's comments into the set, then each comment is recorded against that item with the sponsor's name, the date, and the text they marked.
+2. Given a copy whose comments were already brought in, when the expert brings it in again, then no comment is recorded twice.
+3. Given a comment with no answer, when the expert offers the set for approval, then it is not offered, and they are told which comments have no answer.
+4. Given a comment the team answered, when the sponsor reads the next exported copy, then they see the comment, its status, and the reason.
+
+**Priority:** should
+
+**Shown in:** report
 
 **Journey stage:** ST-006
 

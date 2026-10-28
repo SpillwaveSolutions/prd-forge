@@ -12,6 +12,21 @@ score: 71
 blocking: 0
 graded: 2026-10-28
 changes:
+  - version: 0.10.0
+    date: 2026-10-28
+    author: Richard Hightower
+    summary: >-
+      FR-022 added as a should in REL-001: a sponsor comments on an exported copy
+      without using the product, and the next copy shows each comment answered.
+      WF-011 shows that copy. IN-007 and REL-001 include FR-022, and the glossary
+      defines a review comment. A minor version: new content, nothing structural,
+      as Richard Hightower decided on 2026-10-28.
+    sections:
+      - 6
+      - 7
+      - 13
+      - 14
+      - 15
   - version: 0.9.0
     date: 2026-10-27
     author: Richard Hightower
@@ -226,6 +241,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.10.0 | 2026-10-28 | Richard Hightower | FR-022 added: a sponsor's comments on an exported copy come back and are answered; WF-011 shows the answered copy; IN-007, REL-001, and the glossary include it |
 | 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence and sourced why-now claims; persona roles and frequencies; satisfaction scores; ST-006 outside the product; FR-019 to FR-021 added; FR-014 rejection; TR-014 for accepting a score; LC-001 back to draft; C-004 out of section 9; single questions due before REL-001; sourced glossary terms with one meaning each; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
@@ -377,6 +393,16 @@ rubric cannot score approvals and conditions higher before an approval exists.
 ## Details
 
 Every item in this document, with each of its fields.
+
+### 0.10.0
+
+**Summary:** FR-022 added as a should in REL-001: a sponsor comments on an exported copy without using the product, and the next copy shows each comment answered. WF-011 shows that copy. IN-007 and REL-001 include FR-022, and the glossary defines a review comment. A minor version: new content, nothing structural, as Richard Hightower decided on 2026-10-28.
+
+**Date:** 2026-10-28
+
+**Author:** Richard Hightower
+
+**Sections:** 6, 7, 13, 14, 15
 
 ### 0.9.0
 
