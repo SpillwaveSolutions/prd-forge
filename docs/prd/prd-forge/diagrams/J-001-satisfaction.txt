@@ -1,0 +1,11 @@
+J-001, how each stage feels today, from 1 to 5
+
+ST-001 [###  ] 3  Expert states the idea and their domain
+ST-002 [##   ] 2  Expert is taught a section, then
+                  interviewed on it
+ST-003 [##   ] 2  Expert reads the draft and its grade
+ST-004 [##   ] 2  Expert answers the one question that
+                  improves it most
+ST-005 [#    ] 1  Expert sees what a development team could
+                  not build
+ST-006 [##   ] 2  Sponsor approves the PRD for a release

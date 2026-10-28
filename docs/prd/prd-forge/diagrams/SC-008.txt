@@ -1,0 +1,42 @@
++----------------------------------------------------------+
+| SC-008 exception, should                                 |
+| Given: The same manager reads another finding on section |
+| 7: a requirement names "the dispatch database", which is |
+| a part of the product.                                   |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| When: They refute the finding and say the requirement    |
+| should keep the words.                                   |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see the finding checked against the document, |
+| and the document supports it                             |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see the reason stated once                    |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: They keep their decision, and see it recorded as   |
+| an objection                                             |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: At the next grading pass, they see no new finding  |
+| about the same words                                     |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Then: The objection and the expert's decision are        |
+| recorded, the reason is stated only once, and the next   |
+| grading pass does not raise the same finding as new.     |
++----------------------------------------------------------+

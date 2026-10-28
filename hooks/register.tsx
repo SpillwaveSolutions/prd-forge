@@ -364,8 +364,8 @@ export const register: Register = (on, options) => {
       const to = current.docs.findIndex(one => urlOf(cwd, one.path) === address)
       if (to !== -1) linker.go(to, id ?? current.docs[to]?.title ?? '')
     }
-    const draw = (md: string, key: string) => {
-      if (terminal !== undefined) return drawMarkdown(terminal, md, columns, linker, key)
+    const draw = (md: string, key: string, views: Record<string, string> = {}) => {
+      if (terminal !== undefined) return drawMarkdown(terminal, md, columns, linker, key, views)
       const text = linkIds(reflow(md), hrefOf)
       const ours = [...new Set(text.match(/file:\/\/[^)\s]+/g) ?? [])].slice(0, 256)
       return <Markdown key={key} text={text} onLinkPress={follow} pressableLinks={ours} />
@@ -419,7 +419,16 @@ export const register: Register = (on, options) => {
       const text = await $.fs.read(doc.path).catch(() => undefined)
       const body =
         typeof text === 'string' ? bodyOf(text).trim() : `_Could not read ${doc.path}._`
-      content = draw(body === '' ? '_This section is empty._' : body, 'body')
+      // The terminal cannot show a diagram, so read the text view that
+      // prd-diagrams.mjs writes beside each one: diagrams/J-001.txt.
+      const views: Record<string, string> = {}
+      if (terminal !== undefined) {
+        for (const [, path = ''] of body.matchAll(/^!\[[^\]]*\]\(([^)\s]+)\.svg\)\s*$/gm)) {
+          const view = await $.fs.read(`${dir}${path}.txt`).catch(() => undefined)
+          if (typeof view === 'string') views[`${path}.svg`] = view
+        }
+      }
+      content = draw(body === '' ? '_This section is empty._' : body, 'body', views)
     }
 
     return (

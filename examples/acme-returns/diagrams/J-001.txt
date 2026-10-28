@@ -1,0 +1,36 @@
++----------------------------------------------------------+
+| Trigger: A customer arrives at the counter with an item  |
+| and asks to return it                                    |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-001 Associate identifies the purchase                 |
+| Actor: Store associate                                   |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-002 Associate sees the returns decision               |
+| Actor: Store associate                                   |
++----------------------------------------------------------+
+    |
+    | hand-off to Contact-centre agent
+    v
++----------------------------------------------------------+
+| ST-003 Agent decides an exception                        |
+| Actor: Contact-centre agent                              |
++----------------------------------------------------------+
+    |
+    | hand-off to Store associate
+    v
++----------------------------------------------------------+
+| ST-004 Associate completes the return                    |
+| Actor: Store associate                                   |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| End state: The customer has left knowing the outcome and |
+| the reason, and the return is recorded with its reason.  |
++----------------------------------------------------------+

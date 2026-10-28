@@ -1,0 +1,30 @@
++----------------------------------------------------------+
+| Trigger: The PRD has been approved for a release.        |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-009 Engineering lead records whether the set can be   |
+| built from                                               |
+| Actor: Engineering lead                                  |
++----------------------------------------------------------+
+    |
+    | hand-off to Delivery lead
+    v
++----------------------------------------------------------+
+| ST-007 Delivery lead checks the PRD can carry a backlog  |
+| Actor: Delivery lead                                     |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-008 Delivery lead derives features, epics and stories |
+| Actor: Delivery lead                                     |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| End state: Features, epics, stories and spikes exist for |
+| release 1, each naming the PRD requirement ids behind    |
+| it, and no task or estimate has been invented yet.       |
++----------------------------------------------------------+

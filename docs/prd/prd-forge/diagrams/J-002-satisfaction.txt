@@ -1,0 +1,8 @@
+J-002, how each stage feels today, from 1 to 5
+
+ST-009 [##   ] 2  Engineering lead records whether the set
+                  can be built from
+ST-007 [#    ] 1  Delivery lead checks the PRD can carry a
+                  backlog
+ST-008 [##   ] 2  Delivery lead derives features, epics and
+                  stories

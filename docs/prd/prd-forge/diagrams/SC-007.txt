@@ -1,0 +1,71 @@
++----------------------------------------------------------+
+| SC-007 happy path, must                                  |
+| Given: A freight operations manager has an idea for a    |
+| tool that recovers late loads. They have never written a |
+| PRD, and the quarterly planning meeting is one week      |
+| away.                                                    |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| When: They say they want to turn the idea into a PRD.    |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: They state the idea in their own words and name    |
+| their domain, freight operations                         |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see every section of the new set, each marked |
+| as not started                                           |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: For each section, they are taught what it is for,  |
+| then asked one or two questions at a time                |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: After each section, they read the draft as prose   |
+| and see its grade and every blocking defect by name      |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: They answer the one question that most improves    |
+| each weak section, and see it re-graded                  |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: With every section at review, they ask for the     |
+| buildability review and see that no release-line stage   |
+| lacks a must requirement                                 |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: They set each section final, after its grading     |
+| pass shows no blocking defect                            |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: The sponsor reads the root document, sees what is  |
+| still open and who decides each open item, and approves  |
+| the set at version 1.0.0, which the expert records in    |
+| section 15                                               |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Then: Every section is at final, every gap the           |
+| buildability review found is closed or has a named       |
+| decider and a date, and the change log records the       |
+| sponsor's approval against a named version.              |
++----------------------------------------------------------+

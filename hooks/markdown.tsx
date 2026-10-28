@@ -82,7 +82,7 @@ type Block = { space: boolean } & (
   | { kind: 'item'; indent: number; marker: string; text: string }
   | { kind: 'code'; lang: string; lines: string[] }
   | { kind: 'rule' }
-  | { kind: 'image'; alt: string }
+  | { kind: 'image'; alt: string; path: string }
   | { kind: 'table'; head: string[]; rows: string[][] }
 )
 
@@ -123,9 +123,9 @@ const blocksOf = (md: string): Block[] => {
       blocks.push({ space: was, kind: 'table', head: cellsOf(line), rows })
       continue
     }
-    const image = /^!\[([^\]]*)\]\([^)]*\)\s*$/.exec(line)
+    const image = /^!\[([^\]]*)\]\(([^)]*)\)\s*$/.exec(line)
     if (image !== null) {
-      blocks.push({ space: was, kind: 'image', alt: image[1] ?? 'diagram' })
+      blocks.push({ space: was, kind: 'image', alt: image[1] ?? 'diagram', path: image[2] ?? '' })
       continue
     }
     const heading = /^(#{1,6})\s+(.*)$/.exec(line)
@@ -268,8 +268,12 @@ export const widthsOf = (head: string[], rows: string[][], columns: number): num
   return widths
 }
 
-/** Draws reflowed markdown as pane elements, `columns` wide. */
-export const drawMarkdown = (ui: Ui, md: string, columns: number, link: Linker, key: string) => {
+/**
+ * Draws reflowed markdown as pane elements, `columns` wide. `views` holds the
+ * text view of a diagram by the image path the markdown links, such as
+ * `diagrams/J-001.svg`.
+ */
+export const drawMarkdown = (ui: Ui, md: string, columns: number, link: Linker, key: string, views: Record<string, string> = {}) => {
   const { Box, Text } = ui
   const drawBlock = (block: Block, k: string) => {
     switch (block.kind) {
@@ -322,13 +326,28 @@ export const drawMarkdown = (ui: Ui, md: string, columns: number, link: Linker, 
             ))}
           </Box>
         )
-      case 'image':
-        // The terminal cannot draw the picture; say where it is drawn instead.
+      case 'image': {
+        // The terminal cannot draw the picture. Draw its text view, cut at the
+        // pane's edge like a wireframe, or say where the picture is drawn.
+        const view = views[block.path]
+        if (view !== undefined) {
+          return (
+            <Box key={k} flexDirection="column">
+              <Text dimColor>{`${block.alt} · text view`}</Text>
+              {view.replace(/\n+$/, '').split('\n').map((line, l) => (
+                <Text key={`${k}-${l}`} wrap="truncate-end">
+                  {line === '' ? ' ' : line}
+                </Text>
+              ))}
+            </Box>
+          )
+        }
         return (
           <Text key={k} dimColor>
             {`▣ ${block.alt}, drawn in the exported Word and PDF`}
           </Text>
         )
+      }
       case 'rule':
         return (
           <Text key={k} dimColor>

@@ -1,0 +1,72 @@
++----------------------------------------------------------+
+| J-001 trigger                                            |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-001 Expert states the idea and their domain           |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-002 Expert is taught a section, then interviewed on   |
+| it                                                       |
++----------------------------------------------------------+
+    |
+    |-- SC-003? yes: exception, must
+    |       They say "it should push the decision to the
+    |       adjuster's phone".
+    |       -> rejoins ST-002
+    | no
+    |
+    |-- SC-006? yes: exception, must
+    |       They are asked for the baseline and say they
+    |       would have to check.
+    |       -> rejoins ST-002
+    | no
+    |
+    v
++----------------------------------------------------------+
+| ST-003 Expert reads the draft and its grade              |
++----------------------------------------------------------+
+    |
+    |-- SC-004? yes: exception, should
+    |       They refute the finding: "consignment" is their
+    |       domain's word for one shipment, not a part of
+    |       the product.
+    |       -> rejoins ST-004
+    | no
+    |
+    |-- SC-008? yes: exception, should
+    |       They refute the finding and say the requirement
+    |       should keep the words.
+    |       -> rejoins ST-004
+    | no
+    |
+    v
++----------------------------------------------------------+
+| ST-004 Expert answers the one question that improves it  |
+| most                                                     |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| ST-005 Expert sees what a development team could not     |
+| build                                                    |
++----------------------------------------------------------+
+    |
+    |-- SC-005? yes: exception, must
+    |       They ask for the buildability review.
+    |       -> rejoins ST-003
+    | no
+    |
+    | hand-off to Sponsor
+    v
++----------------------------------------------------------+
+| ST-006 Sponsor approves the PRD for a release            |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| End state                                                |
++----------------------------------------------------------+

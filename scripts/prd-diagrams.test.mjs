@@ -11,6 +11,7 @@ import { cpSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, existsSy
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { WIDTH, decisionsText, journeyText, lifecycleText, overviewText, releaseText, satisfactionText, scenarioText } from './prd-ascii.mjs'
 import { decisionsMermaid, drawSet, journeyMermaid, lifecycleMermaid, overviewMermaid, releaseMermaid, satisfactionMermaid, scenarioMermaid, topAlternates } from './prd-diagrams.mjs'
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -91,6 +92,31 @@ test('a journey overview draws its top five alternates as decisions, each to whe
   assert.doesNotMatch(mermaid, /^ {2}SC005 -/m, 'a branch with no rejoins ends at its outcome')
   assert.doesNotMatch(mermaid, /SC007|SC008|SC001/)
   assert.equal(overviewMermaid(journey, scenarios.slice(0, 1)), undefined)
+})
+
+test('every text view fits the pane and holds only printable ASCII', () => {
+  const odd = [...HOSTILE, `“curly” — dash… café ${'x'.repeat(80)}`]
+  const stages = odd.map((name, i) => ({ id: `ST-00${i + 1}`, name, actor: i % 2 ? name : 'Expert', satisfaction: (i % 5) + 1 }))
+  const journey = { id: 'J-009', trigger: odd.join(' '), end_state: odd.at(-1), stages }
+  const branch = { id: 'SC-002', journey: 'J-009', variant: 'exception', priority: 'must', stage: 'ST-001', rejoins: 'end', trigger: odd.join(' ') }
+  const scenario = { id: 'SC-001', variant: 'happy', priority: 'must', context: odd.join(' '), trigger: odd[0], course: odd.map(n => `They see ${n}`), expected_outcome: odd.at(-1) }
+  const lifecycle = { id: 'LC-001', subject: odd[0], states: odd.map(name => ({ name })), initial: odd[0], final: [odd[1]], transitions: [{ from: odd[0], to: odd[1], when: odd.join(' '), rule: odd.at(-1), by: 'PER-001' }] }
+  const decisions = odd.map((decision, i) => ({ id: `TR-00${i + 1}`, decision, approver: i % 2 ? 'PER-001' : 'PER-002', never_delegated: i % 2 === 0 }))
+  const views = [
+    journeyText(journey), overviewText(journey, [branch]), scenarioText(scenario), satisfactionText(journey),
+    lifecycleText(lifecycle, { 'PER-001': odd[2] }), releaseText([{ id: 'REL-001', name: odd[3], journey_stages: ['ST-001'] }], [journey], []),
+    decisionsText(decisions, { 'PER-001': odd[4] }),
+  ]
+  for (const view of views) {
+    for (const line of view.split('\n')) {
+      assert.ok(line.length <= WIDTH, `wider than ${WIDTH}: ${line}`)
+      assert.match(line, /^[\x20-\x7e]*$/, `not printable ASCII: ${line}`)
+    }
+  }
+  assert.match(views[1], /\|-- SC-002\? yes: exception, must/)
+  assert.match(views[1], /-> the journey ends/)
+  assert.match(views[2], /Sees: They see/)
+  assert.match(views[0], /"curly" - dash\.\.\. cafe/)
 })
 
 test('a scenario renders as a flowchart: what the user sees slanted, what they do plain', { skip: !hasMmdc }, () => {

@@ -63,6 +63,8 @@ intentions, not commitments.
 | ID | Persona | Note |
 | --- | --- | --- |
 | J-001 | PER-001 | starts at the counter |
+
+![J-001 journey diagram](diagrams/J-001.svg)
 `
 
 const PERSONAS = `${front(`id: demo-personas
@@ -105,7 +107,15 @@ const RUBRIC = `# Journeys
 Not part of the rubric.
 `
 
+const J001_TEXT = `+----------------+
+| Trigger: walks |
++----------------+
+    |
+    v
+`
+
 const FILES: Record<string, string> = {
+  'docs/prd/diagrams/J-001.txt': J001_TEXT,
   'docs/prd/grades/05-user-journeys.md': NOTES,
   'skills/prd-wizard/sections/05-journeys.md': RUBRIC,
   'docs/prd/prd.md': ROOT,
@@ -279,6 +289,18 @@ test('the marker comments of the details block do not draw', async ($, on) => {
 
   expect(await ui.find({ type: 'Text', text: /Details/ })).toBeTruthy()
   expect(await ui.find({ text: /<!--/ })).toBeFalsy()
+  await ui.unmount()
+})
+
+test('in the terminal a diagram draws as its text view, line for line', async ($, on) => {
+  servesTheSet(on)
+  await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'go-demo-journeys' })
+
+  expect(await ui.find({ type: 'Text', text: 'J-001 journey diagram · text view' })).toBeTruthy()
+  expect(await ui.find({ type: 'Text', text: '| Trigger: walks |' })).toBeTruthy()
+  expect(await ui.find({ text: /drawn in the exported Word and PDF/ })).toBeFalsy()
   await ui.unmount()
 })
 

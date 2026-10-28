@@ -1,0 +1,42 @@
++----------------------------------------------------------+
+| SC-004 exception, should                                 |
+| Given: A freight operations manager reads the grade of   |
+| section 7. A finding says that a requirement names a     |
+| component, "consignment".                                |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| When: They refute the finding: "consignment" is their    |
+| domain's word for one shipment, not a part of the        |
+| product.                                                 |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see the finding checked against the document  |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see that the glossary defines "consignment"   |
+| as a domain term                                         |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see the finding dropped, and a line telling   |
+| them it was dropped                                      |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see the grade without that finding            |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Then: The refuted finding, which the document does not   |
+| support, is not in the report, the expert sees that it   |
+| was dropped, and the grade no longer counts it.          |
++----------------------------------------------------------+

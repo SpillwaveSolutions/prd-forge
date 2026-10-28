@@ -1,0 +1,62 @@
++----------------------------------------------------------+
+| SC-005 exception, must                                   |
+| Given: Every section is at `review`. The expert asks     |
+| whether a team could build the set. Two release-line     |
+| stages have no `must` requirement.                       |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| When: They ask for the buildability review.              |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see a verdict of buildable with gaps          |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see the two stages that have no requirement   |
+| behind them, named                                       |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see three requirements an engineer could not  |
+| write a test for, each quoted                            |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see what the buildability review would ask    |
+| for first, in order                                      |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: They write a requirement for one of the two        |
+| stages, and record the other as an open question with a  |
+| decider and a date                                       |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Does: They fix two of the three requirements and record  |
+| the third as an open question with a decider and a date  |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see each section they changed go back to      |
+| draft, to be graded again                                |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Then: Before anyone has estimated, the report names both |
+| release-line stages that have no `must` requirement and  |
+| quotes all three requirements an engineer could not      |
+| write a test for, and every gap is either closed or      |
+| owned by a named decider with a date.                    |
++----------------------------------------------------------+

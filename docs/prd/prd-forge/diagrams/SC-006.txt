@@ -1,0 +1,43 @@
++----------------------------------------------------------+
+| SC-006 exception, must                                   |
+| Given: The expert is on section 3 of this PRD and has    |
+| just named O-002's metric, the median working days from  |
+| the first interview question to an approval. They do not |
+| know today's value.                                      |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| When: They are asked for the baseline and say they would |
+| have to check.                                           |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They are not offered a plausible-looking number    |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They are asked who could find out, and by when     |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see an open question recorded with that       |
+| person and that date, as Q-002 is, and the objective     |
+| linked to it                                             |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Sees: They see that the target is marked as provisional  |
+| until the baseline arrives                               |
++----------------------------------------------------------+
+    |
+    v
++----------------------------------------------------------+
+| Then: No baseline is invented, O-002 carries an explicit |
+| unknown, and section 12 holds a question, Q-002, with a  |
+| named decider and a date.                                |
++----------------------------------------------------------+

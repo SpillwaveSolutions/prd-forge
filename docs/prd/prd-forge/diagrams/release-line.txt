@@ -1,0 +1,32 @@
++----------------------------------------------------------+
+| REL-001 Single-expert PRD authoring                      |
+| by 2027-03-31                                            |
++----------------------------------------------------------+
+  ST-001 Expert states the idea and their domain (1 must
+         requirement)
+  ST-002 Expert is taught a section, then interviewed on it
+         (4 must requirements)
+  ST-003 Expert reads the draft and its grade (1 must
+         requirement)
+  ST-004 Expert answers the one question that improves it
+         most (1 must requirement)
+  ST-005 Expert sees what a development team could not build
+         (1 must requirement)
+  ST-006 Sponsor approves the PRD for a release (3 must
+         requirements)
+
++----------------------------------------------------------+
+| REL-002 Backlog derivation                               |
+| by 2027-06-30                                            |
++----------------------------------------------------------+
+  ST-009 Engineering lead records whether the set can be
+         built from (0 must requirements)
+  ST-007 Delivery lead checks the PRD can carry a backlog (0
+         must requirements)
+  ST-008 Delivery lead derives features, epics and stories
+         (0 must requirements)
+
++----------------------------------------------------------+
+| REL-003 More than one author                             |
++----------------------------------------------------------+
+  Nothing planned yet

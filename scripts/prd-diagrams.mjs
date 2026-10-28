@@ -22,6 +22,9 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSy
 import { spawnSync } from 'node:child_process'
 import { join, resolve } from 'node:path'
 import { parseYaml, splitFrontMatter } from './prd-validate.mjs'
+import {
+  USER_SEES, VARIANT, decisionsText, journeyText, lifecycleText, overviewText, releaseText, satisfactionText, scenarioText,
+} from './prd-ascii.mjs'
 
 const ENTITY = { '#': '#35;', ';': '#59;', '"': '#quot;', '<': '#lt;', '>': '#gt;' }
 
@@ -200,12 +203,6 @@ const wrap = (text, width = 46) => {
   if (line !== '') out.push(line)
   return out.map(label).join('<br/>')
 }
-
-// A course step that is what the product shows the user, not what the user
-// does: "They see …", "They are asked …", "They read …".
-const USER_SEES = /^(they|the [a-z -]+?) (see|sees|read|reads|are|is|get|gets|hear|hears|find|finds|receive|receives)\b/i
-
-const VARIANT = { happy: 'happy path', alternate: 'alternate path', exception: 'exception' }
 
 /**
  * A scenario as a top-to-bottom flowchart: Given the context, When the trigger
@@ -423,11 +420,16 @@ function generatedBlock(body, links) {
   return lines.filter((line, i) => !(line.trim() === '' && i > 0 && lines[i - 1].trim() === '')).join('\n')
 }
 
-/** Writes a generated Mermaid source when it changed, then renders it. */
-function generate(out, id, mermaid, check) {
+/**
+ * Writes a generated Mermaid source when it changed, then renders it. With a
+ * text view, also writes <id>.txt for the terminal pane.
+ */
+function generate(out, id, mermaid, check, text) {
   const src = join(out, `${id}.mmd`)
   if (check) return
   if (!existsSync(src) || readFileSync(src, 'utf8') !== mermaid) writeFileSync(src, mermaid)
+  const txt = join(out, `${id}.txt`)
+  if (text !== undefined && (!existsSync(txt) || readFileSync(txt, 'utf8') !== text)) writeFileSync(txt, text)
   render(src, 'mmdc')
 }
 
@@ -454,16 +456,17 @@ export function drawSet(dir, { check = false } = {}) {
 
     if (front.kind === 'journeys') {
       for (const journey of journeys) {
-        generate(out, journey.id, journeyMermaid(journey), check)
+        generate(out, journey.id, journeyMermaid(journey), check, journeyText(journey))
         const links = [`![${journey.id} journey diagram](diagrams/${journey.id}.svg)`]
-        const overview = overviewMermaid(journey, ofKind('scenarios')?.front.scenarios ?? [])
+        const scenarios = ofKind('scenarios')?.front.scenarios ?? []
+        const overview = overviewMermaid(journey, scenarios)
         if (overview !== undefined) {
-          generate(out, `${journey.id}-overview`, overview, check)
+          generate(out, `${journey.id}-overview`, overview, check, overviewText(journey, topAlternates(journey, scenarios)))
           links.push(`![${journey.id} overview with its main alternate and exception paths](diagrams/${journey.id}-overview.svg)`)
         }
         const curve = satisfactionMermaid(journey)
         if (curve !== undefined) {
-          generate(out, `${journey.id}-satisfaction`, curve, check)
+          generate(out, `${journey.id}-satisfaction`, curve, check, satisfactionText(journey))
           links.push(`![${journey.id} satisfaction](diagrams/${journey.id}-satisfaction.svg)`)
         }
         doc.body = ensureLinks(doc.body, line => /^#{2,3}\s/.test(line) && line.includes(journey.id), links)
@@ -481,7 +484,7 @@ export function drawSet(dir, { check = false } = {}) {
       const placed = new Set()
       const links = []
       for (const scenario of front.scenarios ?? []) {
-        generate(out, scenario.id, scenarioMermaid(scenario), check)
+        generate(out, scenario.id, scenarioMermaid(scenario), check, scenarioText(scenario))
         links.push(`![${scenario.id} scenario](diagrams/${scenario.id}.svg)`)
         for (const id of scenario.lifecycles ?? []) {
           if (byId.has(id) && !placed.has(id)) links.push(lcLink(byId.get(id)))
@@ -490,19 +493,19 @@ export function drawSet(dir, { check = false } = {}) {
         for (const id of scenario.wireframes ?? []) links.push(`![${id} drawing](diagrams/${id}.svg)`)
       }
       for (const lifecycle of lifecycles) {
-        generate(out, lifecycle.id, lifecycleMermaid(lifecycle, roleNames), check)
+        generate(out, lifecycle.id, lifecycleMermaid(lifecycle, roleNames), check, lifecycleText(lifecycle, roleNames))
         if (!placed.has(lifecycle.id)) links.push(lcLink(lifecycle))
       }
       doc.body = generatedBlock(doc.body, links)
     }
 
     if (front.kind === 'release-plan' && (front.releases ?? []).length > 0) {
-      generate(out, 'release-line', releaseMermaid(front.releases, journeys, requirements), check)
+      generate(out, 'release-line', releaseMermaid(front.releases, journeys, requirements), check, releaseText(front.releases, journeys, requirements))
       doc.body = ensureLinks(doc.body, isTitle, ['![The release line](diagrams/release-line.svg)'])
     }
 
     if (front.kind === 'decision-rights' && (front.decisions ?? []).length > 0) {
-      generate(out, 'decision-rights', decisionsMermaid(front.decisions, roleNames), check)
+      generate(out, 'decision-rights', decisionsMermaid(front.decisions, roleNames), check, decisionsText(front.decisions, roleNames))
       doc.body = ensureLinks(doc.body, isTitle, ['![Who decides what](diagrams/decision-rights.svg)'])
     }
 
