@@ -40,3 +40,7 @@ Lifecycle and concurrency, tied at 3.
 The generated details block contradicts nothing. It shows the front matter word for word, and it makes visible any place where the hand-written prose has drifted from it.
 
 - Some course steps do not start with "They see" or "They are", so the generated flowcharts draw what the product shows as something the user does, in SC-007 and SC-008.
+
+## The rejoins values
+
+The second grade on 2026-10-28 checked each `rejoins` value against its scenario's course and LC-001. On that finding the expert changed three values the same day: SC-003 and SC-006 now rejoin ST-002, because the interview carries on, and SC-002 now rejoins ST-004, because section 7 is already at draft. SC-004, SC-005, and SC-008 were consistent and are unchanged.

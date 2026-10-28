@@ -29,12 +29,12 @@ flowchart TB
   qSC008 -->|no| ST004
   ST004 --> ST005
   ST005 --> qSC005
-  qSC005 -->|no| ST006
+  qSC005 -->|"no, hand-off to Sponsor"| ST006
   ST006 --> done
   qSC003 -->|yes| SC003
-  SC003 -.->|rejoins| ST003
+  SC003 -.->|rejoins| ST002
   qSC006 -->|yes| SC006
-  SC006 -.->|rejoins| ST003
+  SC006 -.->|rejoins| ST002
   qSC005 -->|yes| SC005
   SC005 -.->|rejoins| ST003
   qSC004 -->|yes| SC004

@@ -130,6 +130,9 @@ export function overviewMermaid(journey, scenarios) {
       from = `q${node(sc.id)}`
       edge = '|no|'
     }
+    const next = stages[i]
+    const handoff = here !== undefined && next !== undefined && here.actor !== next.actor
+    if (handoff) edge = `|"${edge === '' ? '' : 'no, '}hand-off to ${label(next.actor)}"|`
     lines.push(`  ${from} -->${edge} ${chain[i + 1]}`)
   }
   for (const sc of branches) {
@@ -456,7 +459,7 @@ export function drawSet(dir, { check = false } = {}) {
         const overview = overviewMermaid(journey, ofKind('scenarios')?.front.scenarios ?? [])
         if (overview !== undefined) {
           generate(out, `${journey.id}-overview`, overview, check)
-          links.push(`![${journey.id} overview with its main alternates](diagrams/${journey.id}-overview.svg)`)
+          links.push(`![${journey.id} overview with its main alternate and exception paths](diagrams/${journey.id}-overview.svg)`)
         }
         const curve = satisfactionMermaid(journey)
         if (curve !== undefined) {

@@ -320,7 +320,7 @@ links:
 
 ![J-001 journey diagram](diagrams/J-001.svg)
 
-![J-001 overview with its main alternates](diagrams/J-001-overview.svg)
+![J-001 overview with its main alternate and exception paths](diagrams/J-001-overview.svg)
 
 ![J-001 satisfaction](diagrams/J-001-satisfaction.svg)
 

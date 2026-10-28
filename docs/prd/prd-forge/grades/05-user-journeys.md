@@ -43,3 +43,10 @@ Stage acceptance. The "then ... whether" wording passes whatever happens.
 The generated details block contradicts nothing. It shows the front matter word for word, and it makes visible any place where the hand-written prose has drifted from it.
 
 - The prose trigger and the table's stage names are shorter than the front matter's, and the block shows both forms.
+
+## The overview diagram
+
+The second grade on 2026-10-28 checked `J-001-overview`. All five `rejoins` edges match the scenarios, and the five drawn are the right five by the ranking rule. Open findings:
+
+- The overview, like the J-001 diagram, draws ST-002 to ST-004 as a straight line, but the journey runs them once per section. No front-matter field records that loop yet.
+- SC-005's trigger, "They ask for the buildability review", is ST-005's own first step. What makes SC-005 an exception is that the review finds gaps. Only the expert can reword the trigger.

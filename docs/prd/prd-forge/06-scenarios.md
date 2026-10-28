@@ -49,7 +49,7 @@ scenarios:
     branches_from: { scenario: SC-007, step: 5 }
     journey: J-001
     stage: ST-004
-    rejoins: ST-002
+    rejoins: ST-004
     persona: PER-001
     variant: alternate
     priority: should
@@ -75,7 +75,7 @@ scenarios:
     branches_from: { scenario: SC-007, step: 3 }
     journey: J-001
     stage: ST-002
-    rejoins: ST-003
+    rejoins: ST-002
     persona: PER-001
     variant: exception
     priority: must
@@ -180,7 +180,7 @@ scenarios:
     branches_from: { scenario: SC-007, step: 3 }
     journey: J-001
     stage: ST-002
-    rejoins: ST-003
+    rejoins: ST-002
     persona: PER-001
     variant: exception
     priority: must
@@ -451,7 +451,7 @@ Every item in this document, with each of its fields.
 - **Scenario:** SC-007
 - **Step:** 5
 
-**Rejoins:** ST-002
+**Rejoins:** ST-004
 
 #### SC-003
 
@@ -486,7 +486,7 @@ Every item in this document, with each of its fields.
 - **Scenario:** SC-007
 - **Step:** 3
 
-**Rejoins:** ST-003
+**Rejoins:** ST-002
 
 #### SC-004
 
@@ -627,7 +627,7 @@ Every item in this document, with each of its fields.
 - **Scenario:** SC-007
 - **Step:** 3
 
-**Rejoins:** ST-003
+**Rejoins:** ST-002
 
 #### SC-007
 
