@@ -160,6 +160,10 @@ terms:
     see_also:
       - release line
       - non-goal
+    not: >-
+      The release line. The release line is the path of stages a release
+      completes, and scope is everything the release includes and leaves out
+      along it.
   - term: Assumption
     meaning: >-
       Something taken on faith that the product depends on, recorded with what
@@ -215,7 +219,9 @@ terms:
       Where a section stands: the state pending, shown to the expert as not started;
       `draft`, written; `review`, ready for someone else to read, reached through
       the gate; or `final`, set by the expert under TR-002. LC-001 in section
-      5 shows each move.
+      5 shows each move. The set as a whole reads as not yet approved, approved,
+      approved with conditions, or rejected, by the approval recorded in section
+      15.
     not: >-
       A threshold. The threshold is the score a gate needs. The state is where
       the section stands.
@@ -354,8 +360,9 @@ terms:
       What an approver who approves with conditions requires before the approval
       is unconditional. Each condition names the open question, requirement, or
       review comment it depends on and a date, and only the approver who stated
-      it clears it. A review comment with no response at approval becomes a
-      condition the expert records for the sponsor (FR-022).
+      it clears it. When the sponsor approves while a review comment has no
+      response, the sponsor states a condition on that comment, and the expert
+      records it (FR-022).
     see_also:
       - approver
       - open question
@@ -407,6 +414,9 @@ terms:
       - the five tests
       - acceptance criteria
       - objective
+    not: >-
+      A story or a feature. A requirement is stated in the PRD, and stories and
+      features are derived from requirements in the backlog.
   - term: Acceptance criteria
     meaning: >-
       The pass-or-fail statements on a requirement or a journey stage. Each is
@@ -723,8 +733,9 @@ terms:
   - term: Trust rule
     meaning: >-
       A rule in section 10 that names who decides one decision, at which stages,
-      on what evidence, and what happens when that person is away. A rule marked
-      never delegated is always decided by a person.
+      on what evidence, and what happens when that person is away. A person
+      decides every rule. A rule marked never delegated also has no agent
+      proposal behind it.
     see_also:
       - approver
       - override
@@ -860,6 +871,17 @@ terms:
       - target
     not: >-
       A requirement in section 7. A requirement names a user and what they can do.
+  - term: Bet
+    meaning: >-
+      The one outcome the product stakes itself on, stated in the root
+      document's summary: what the expert reaches with the product. The
+      summary's objective and measure say how anyone will know it happened.
+    see_also:
+      - summary
+      - objective
+    not: >-
+      An objective. An objective is measured, and the bet is the outcome the
+      objective measures.
   - term: Summary
     meaning: >-
       The opening of the root document, which states in a few sentences the
@@ -1164,7 +1186,8 @@ terms:
       release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response
       with one of three statuses: accepted, when the set changed because of it;
       declined, when the set did not change, with the reason; or answered, when
-      it asked a question and the set did not need to change (FR-022).
+      it asked a question and the set did not need to change (FR-022). Until it
+      has a response, it is open, which is not an open question in section 12.
     see_also:
       - exported copy
       - sponsor
@@ -1279,7 +1302,7 @@ links:
 | Review | The buildability review |
 | Exit criteria | Acceptance criteria |
 | Unit of work | An engagement |
-| Gap | A finding, a blocking defect |
+| Gap | A blocking defect |
 | Wireframe | A design |
 | Session | A sitting |
 
@@ -1463,6 +1486,8 @@ Every item in this document, with each of its fields.
 - release line
 - non-goal
 
+**Not:** The release line. The release line is the path of stages a release completes, and scope is everything the release includes and leaves out along it.
+
 ### Assumption
 
 **Meaning:** Something taken on faith that the product depends on, recorded with what would break if it turned out false.
@@ -1522,7 +1547,7 @@ Every item in this document, with each of its fields.
 
 ### State
 
-**Meaning:** Where a section stands: the state pending, shown to the expert as not started; `draft`, written; `review`, ready for someone else to read, reached through the gate; or `final`, set by the expert under TR-002. LC-001 in section 5 shows each move.
+**Meaning:** Where a section stands: the state pending, shown to the expert as not started; `draft`, written; `review`, ready for someone else to read, reached through the gate; or `final`, set by the expert under TR-002. LC-001 in section 5 shows each move. The set as a whole reads as not yet approved, approved, approved with conditions, or rejected, by the approval recorded in section 15.
 
 **See also:**
 
@@ -1647,7 +1672,7 @@ Every item in this document, with each of its fields.
 
 ### Condition
 
-**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question, requirement, or review comment it depends on and a date, and only the approver who stated it clears it. A review comment with no response at approval becomes a condition the expert records for the sponsor (FR-022).
+**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question, requirement, or review comment it depends on and a date, and only the approver who stated it clears it. When the sponsor approves while a review comment has no response, the sponsor states a condition on that comment, and the expert records it (FR-022).
 
 **See also:**
 
@@ -1692,6 +1717,8 @@ Every item in this document, with each of its fields.
 - the five tests
 - acceptance criteria
 - objective
+
+**Not:** A story or a feature. A requirement is stated in the PRD, and stories and features are derived from requirements in the backlog.
 
 ### Acceptance criteria
 
@@ -1982,7 +2009,7 @@ Every item in this document, with each of its fields.
 
 ### Trust rule
 
-**Meaning:** A rule in section 10 that names who decides one decision, at which stages, on what evidence, and what happens when that person is away. A rule marked never delegated is always decided by a person.
+**Meaning:** A rule in section 10 that names who decides one decision, at which stages, on what evidence, and what happens when that person is away. A person decides every rule. A rule marked never delegated also has no agent proposal behind it.
 
 **See also:**
 
@@ -2110,6 +2137,17 @@ Every item in this document, with each of its fields.
 - target
 
 **Not:** A requirement in section 7. A requirement names a user and what they can do.
+
+### Bet
+
+**Meaning:** The one outcome the product stakes itself on, stated in the root document's summary: what the expert reaches with the product. The summary's objective and measure say how anyone will know it happened.
+
+**See also:**
+
+- summary
+- objective
+
+**Not:** An objective. An objective is measured, and the bet is the outcome the objective measures.
 
 ### Summary
 
@@ -2429,7 +2467,7 @@ Every item in this document, with each of its fields.
 
 ### Review comment
 
-**Meaning:** A comment a person reading an exported copy leaves in that copy. In release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response with one of three statuses: accepted, when the set changed because of it; declined, when the set did not change, with the reason; or answered, when it asked a question and the set did not need to change (FR-022).
+**Meaning:** A comment a person reading an exported copy leaves in that copy. In release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response with one of three statuses: accepted, when the set changed because of it; declined, when the set did not change, with the reason; or answered, when it asked a question and the set did not need to change (FR-022). Until it has a response, it is open, which is not an open question in section 12.
 
 **See also:**
 
