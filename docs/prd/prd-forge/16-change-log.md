@@ -8,7 +8,7 @@ updated: 2026-10-28
 domain: product management tooling
 section: 15
 order: 160
-score: 71
+score: 75
 blocking: 0
 graded: 2026-10-28
 changes:
@@ -388,8 +388,8 @@ requirement, or review comment the condition depends on, as FR-014 and FR-022
 require. Only the approver who stated a condition clears it. A rejection records
 its reason.
 
-At 0.9.0 the expert holds every other section to a score over 80, and accepts
-this section below 80 until the set is offered for approval on 2027-03-15, because its
+At 0.9.0 the expert holds every other section to a score over 80, except
+section 2 until Q-004 and Q-005 are answered, and accepts this section below 80 until the set is offered for approval on 2027-03-15, because its
 rubric cannot score approvals and conditions higher before an approval exists.
 
 <!-- prd-forge:details -->

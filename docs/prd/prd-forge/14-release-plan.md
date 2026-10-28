@@ -8,7 +8,7 @@ updated: 2026-10-28
 domain: product management tooling
 section: 13
 order: 140
-score: 92
+score: 83
 blocking: 0
 graded: 2026-10-28
 roadmap_link: none yet

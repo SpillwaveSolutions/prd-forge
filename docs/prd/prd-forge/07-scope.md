@@ -8,7 +8,7 @@ updated: 2026-10-28
 domain: product management tooling
 section: 6
 order: 70
-score: 92
+score: 96
 blocking: 0
 graded: 2026-10-28
 release: REL-001, single-expert PRD authoring
