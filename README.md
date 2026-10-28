@@ -2,7 +2,7 @@
 
 An expert system for writing product requirements documents, for Claude Code.
 
-A domain expert — in auditing, freight, claims, clinical trials, whatever it is —
+A domain expert, in auditing, freight, claims, clinical trials, whatever it is, 
 talks to it, and it teaches, interviews, drafts, grades and writes. What comes out
 is a linked set of schema-checked markdown documents that a development team can
 derive a backlog from and build.
@@ -22,6 +22,7 @@ derive a backlog from and build.
 | `scripts/prd-details.mjs` | Writes every item and field from the front matter into a generated block at the end of each body, so the pane and GitHub show them. No dependencies |
 | `scripts/prd-diagrams.mjs` | Draws each journey as a Mermaid diagram from its front matter, renders each wireframe's PlantUML Salt drawing, and links them from the documents |
 | `scripts/prd_export.py` | Exports the whole set as one Word document and one PDF, formatted for reading and printing |
+| `scripts/prd-wiki.mjs` | Writes the set as GitHub Wiki pages, with a sidebar, the diagrams, and each ID linked to where it is defined. It writes into a local clone of the wiki and never pushes |
 
 ## The document set
 
@@ -52,12 +53,12 @@ docs/prd/<slug>/
 
 Two worked sets ship with the plugin:
 
-- `docs/prd/prd-forge/` — prd-forge's own PRD, all eighteen documents, written
+- `docs/prd/prd-forge/`, prd-forge's own PRD, all eighteen documents, written
   with these conventions and graded by the adversarial agents. The scores and
   blocking counts in its front matter are real. Read this one to see what a full
   set looks like, including what a graded set looks like when it has not yet
   passed.
-- `examples/acme-returns/` — a seven-document subset, small enough to read in one
+- `examples/acme-returns/`, a seven-document subset, small enough to read in one
   sitting. Read this one for the front matter, the link chain and the id
   references.
 
@@ -70,7 +71,7 @@ Say what you want to build. The wizard takes it from there:
 
 Or ask for it by name: "use the prd-wizard skill". It will establish your domain
 and vocabulary, create the set, and work the sections in the order that makes each
-one answerable — journeys before requirements, personas before journeys.
+one answerable, journeys before requirements, personas before journeys.
 
 Commands the mod adds:
 
@@ -156,8 +157,8 @@ decider, an out-of-scope item with no `revisit`, and a problem with no cost of
 inaction. A field a guide requires at review,
 such as a requirement's `shown_in`, warns while its section is a draft and fails
 once the section is offered for review. It checks each document against its schema, the
-parent/prev/next/children graph, and every cross-section id — persona, stage,
-objective, requirement — plus the mechanically checkable parts of the five tests.
+parent/prev/next/children graph, and every cross-section id, persona, stage,
+objective, requirement, plus the mechanically checkable parts of the five tests.
 
 ## Exporting
 
@@ -174,7 +175,7 @@ They carry a title page, the executive summary, a contents table with each
 section's grade and blocking count, and then every section in reading order: its
 prose, and the full detail of every requirement, journey, persona and constraint
 its front matter holds. `docs/prd/prd-forge/prd-forge-prd.pdf` is this plugin's
-own PRD exported that way — look at it before you run this on your own set.
+own PRD exported that way, look at it before you run this on your own set.
 
 | Needs | For |
 | --- | --- |
@@ -186,6 +187,28 @@ own PRD exported that way — look at it before you run this on your own set.
 Pass `--docx` or `--pdf` to produce only one of them, so a missing dependency for
 the other does not stop you.
 
+### Publish the set to the GitHub Wiki
+
+1. On GitHub, open the repository's **Wiki** tab and create any first page. The
+   wiki's own repository does not exist until then.
+2. Clone it: `git clone https://github.com/<owner>/<repo>.wiki.git`.
+3. Write the pages into the clone:
+
+   ```bash
+   node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-wiki.mjs" docs/prd/<slug> <wiki clone>
+   ```
+
+4. Review the pages, then commit and push with the `git` commands the script
+   prints. The script never pushes.
+
+The root becomes `Home`, and every other document becomes one page named by its
+section and title, such as `7-Functional-requirements`. `_Sidebar.md` lists them
+in reading order. Each diagram shows as its `.png`, copied into `<slug>/`, so run
+`prd-diagrams.mjs` first. Each item ID links to its heading in the details block
+of the page that defines it, so run `prd-details.mjs` first too. One wiki holds
+one set: a second set replaces `Home`. The script does not delete a page that a
+renamed document left behind.
+
 ## Configuration
 
 | Option | Default | What it is |
@@ -194,7 +217,7 @@ the other does not stop you.
 
 ## What a PRD is here
 
-It says what to build, for whom, why, and how you know it works — and what not to
+It says what to build, for whom, why, and how you know it works, and what not to
 build. It never says how to build it. No technology or vendor choices, no names of
 existing systems or components, no module or service splits, no agent designs, no
 data models or API contracts, no tasks or estimates. Those belong in architecture
@@ -210,7 +233,7 @@ is done, as the person acting in it can observe. The validator requires it, and
 
 ## Grading
 
-Each section has a rubric of five to ten dimensions scored 0–4, a blocking-defect
+Each section has a rubric of five to ten dimensions scored 0, 4, a blocking-defect
 list, and a list of industry-standard wording. The skill self-grades every
 section; the adversarial agents grade sections 5, 7, 8 and 10 always, anything
 below 70, and the whole set before it is circulated. Scores and blocking counts
@@ -232,7 +255,7 @@ recorded approval.
 ```bash
 claude plugin validate <this directory>
 claude plugin test <this directory>
-node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs
+node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs scripts/prd-wiki.test.mjs
 node scripts/prd-validate.mjs examples/acme-returns
 tsc -p <this directory>
 ```
@@ -244,6 +267,6 @@ reader sees each name exactly as written. Both need `python3` with PyYAML, and
 `mmdc`.
 
 The top-level `tsconfig.json` extends `.claude-plugin/types/tsconfig.json`, which
-Claude Code writes the first time it loads the mod — so in a fresh clone, run the
+Claude Code writes the first time it loads the mod, so in a fresh clone, run the
 mod once (`claude --plugin-dir <this directory>`) before `tsc`. That folder is
 generated and is not in the repository.

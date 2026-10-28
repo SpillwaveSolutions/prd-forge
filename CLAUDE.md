@@ -17,7 +17,7 @@ prd-forge is a Claude Code plugin that interviews a domain expert and writes a p
 ```bash
 claude plugin validate .                     # manifest and hooks module
 claude plugin test .                         # the pane tests, hooks/register.test.tsx
-node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs
+node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs scripts/prd-wiki.test.mjs
 node --test --test-name-pattern="the 0.4.1 bug" scripts/prd-diagrams.test.mjs   # one test
 
 node scripts/prd-details.mjs docs/prd/prd-forge             # write each body's details block from its front matter
@@ -27,6 +27,9 @@ node scripts/prd-diagrams.mjs docs/prd/prd-forge --check    # report gaps, write
 
 # Export to Word and PDF. python-docx is not installed globally, so run it through uv.
 uv run --with python-docx --with pyyaml python3 scripts/prd_export.py docs/prd/prd-forge
+
+# Write the set as GitHub Wiki pages into a local clone of the wiki. It never pushes.
+node scripts/prd-wiki.mjs docs/prd/prd-forge <wiki clone directory>
 ```
 
 The script tests need `python3` with PyYAML, `mmdc` (Mermaid CLI), and `plantuml` on the PATH. Without `mmdc`, the diagram tests skip, and a skip passes.
