@@ -190,6 +190,9 @@ reads. Keep them consistent — the body says the same things in prose and table
 Where they disagree, the front matter is authoritative and the grader will say so.
 
 - One `##` heading per item (`## FR-001 — ...`), so the body is linkable.
+- `prd-details.mjs` writes a generated details block at the end of each body,
+  with a heading per item and every field. Do not edit it, and do not copy its
+  fields by hand into the prose above it.
 - A summary table at the top of list-bearing sections.
 - No technology, in either place.
 

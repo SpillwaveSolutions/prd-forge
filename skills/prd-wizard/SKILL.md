@@ -122,6 +122,18 @@ It checks each document's front matter against its schema, the link graph, and
 the cross-section id references. Run it after writing each document. A document
 cannot reach `review` while it has validator errors.
 
+Before you validate, write each document's details block:
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-details.mjs" <set directory>
+```
+
+It copies every item and field from the front matter into a block at the end of
+the body, between `<!-- prd-forge:details -->` and `<!-- /prd-forge:details -->`,
+so a reader who sees only the body sees everything. Never edit the block. Change
+the front matter and run the script again. The validator warns about a stale
+block in a draft, and fails a document at `review` or `final` that has one.
+
 After you write or change journeys or wireframes, draw the diagrams:
 
 ```bash

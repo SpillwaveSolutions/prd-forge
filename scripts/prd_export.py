@@ -82,6 +82,14 @@ def split_front_matter(text):
     return front, "\n".join(lines[end + 1:])
 
 
+DETAILS = re.compile(r"\n*<!-- prd-forge:details -->.*?<!-- /prd-forge:details -->\n*", re.S)
+
+
+def without_details(body):
+    """The body without the block prd-details.mjs writes: render_items prints the same fields."""
+    return DETAILS.sub("\n", body)
+
+
 def read_set(directory):
     docs = []
     for name in sorted(os.listdir(directory)):
@@ -90,7 +98,7 @@ def read_set(directory):
         front, body = split_front_matter(open(os.path.join(directory, name), encoding="utf-8").read())
         if not isinstance(front, dict) or "kind" not in front:
             continue
-        docs.append({"file": name, "front": front, "body": body})
+        docs.append({"file": name, "front": front, "body": without_details(body)})
     root = next((d for d in docs if d["front"]["kind"] in ("prd", "backlog")), None)
     if root is None:
         sys.exit(f"prd_export: no root document (kind: prd) in {directory}")
@@ -215,6 +223,15 @@ def blocks(md):
                     and out[n + 1]["type"] == "image" and image_file(out[n + 1]["path"]))]
 
 
+def inline(value):
+    """A value on one line. A mapping in a mixed list reads `Label: value; Label: value`."""
+    if isinstance(value, dict):
+        return "; ".join(f"{label(k)}: {inline(v).rstrip('.')}" for k, v in value.items() if v not in (None, []))
+    if isinstance(value, list):
+        return ", ".join(inline(v) for v in value)
+    return str(value).strip()
+
+
 def flatten(value):
     """A front-matter value as (text, list_of_strings, nested_items)."""
     if isinstance(value, bool):
@@ -226,7 +243,7 @@ def flatten(value):
     if isinstance(value, list):
         if value and all(isinstance(v, dict) for v in value):
             return None, None, value
-        return None, [str(v).strip() for v in value], None
+        return None, [inline(v) for v in value], None
     if isinstance(value, dict):
         return None, None, [value]
     return str(value), None, None

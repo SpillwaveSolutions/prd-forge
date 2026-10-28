@@ -253,3 +253,181 @@ that we impose no expiry on them.
 NFR-011 waits on Q-010, whether an answer must survive the end of the session
 before its section is drafted, and NFR-007 waits on Q-016, whether a grade must
 show the rubric version it was made against.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Generated from the front matter. Do not edit this block.
+
+### NFR-001
+
+**Statement:** An expert answering a question does not lose their train of thought waiting for the next one.
+
+**Category:** performance
+
+**Metric:** 95th and 99th percentile elapsed time from the expert submitting an answer to the next question or the drafted section appearing.
+
+**Target:** under 20 seconds at p95, and under 60 seconds at p99
+
+**Measurement:** At least 300 timed observations per release, taken across five scripted runs of all seventeen section documents on a set already holding 60 requirements, from the expert's own side of the conversation rather than from inside the product.
+
+**Priority:** must
+
+**Applies to:** FR-004, FR-010
+
+### NFR-002 A grading pass does not make the expert wait so long that they stop asking for one.
+
+**Category:** performance
+
+**Metric:** 95th percentile elapsed time from the moment a section's draft is written to its grade being reported to the expert, measured from the expert's own side of the conversation, per grading pass on the section just drafted.
+
+**Target:** under 90 seconds at p95 for a single section
+
+**Measurement:** At least 200 grading passes per release, spread across all seventeen section documents and across sets of 20, 60 and 120 requirements.
+
+**Priority:** must
+
+**Applies to:** FR-009, FR-011
+
+### NFR-003 A set stays workable at the size real products reach.
+
+**Category:** scale
+
+**Metric:** The size of one set at which every requirement in section 7 still meets its acceptance criteria and every target in this section still holds.
+
+**Target:** 120 functional requirements, 10 journeys of 10 stages, and 200 glossary terms
+
+**Measurement:** A generated set at those sizes, run through every function in section 7, per release.
+
+**Priority:** must
+
+### NFR-004 Work survives the expert stopping, and survives the tool they were using going away.
+
+**Category:** durability
+
+**Metric:** Share of a set's content recoverable after the authoring session ends, with no part of the product running.
+
+**Target:** 100%, readable without this product
+
+**Measurement:** End a session mid-section, then read the whole set with nothing but a text editor, once per release.
+
+**Priority:** must
+
+**Applies to:** all
+
+### NFR-005
+
+**Statement:** An expert with no product management training can complete a section without asking anyone what a word means.
+
+**Category:** usability
+
+**Metric:** Share of sections a first-time expert completes without asking for the meaning of a product management term.
+
+**Target:** 90% of sections, measured over 10 first-time experts
+
+**Measurement:** Observed sittings with 10 first-time experts before release, questions to the observer counted and categorised.
+
+**Priority:** must
+
+### NFR-006
+
+**Statement:** Everything the expert and the approver read is usable with a screen reader and without a mouse.
+
+**Category:** accessibility
+
+**Metric:** Conformance to WCAG 2.2 AA of everything the product puts in front of the expert or the approver along the golden-thread journey.
+
+**Target:** zero level-A or level-AA violations on the golden-thread path
+
+**Measurement:** One manual screen-reader pass of the golden-thread journey per release, plus an automated check in the release pipeline of everything that journey shows.
+
+**Priority:** must
+
+### NFR-007 An expert can tell why a section received the score it did, after the fact.
+
+**Category:** observability
+
+**Metric:** Share of grades for which the score per rubric dimension and the quotation behind each can be recovered after the session.
+
+**Target:** 100% for any section at review or better
+
+**Measurement:** Re-read a graded set a week later and reconstruct every score, once per release.
+
+**Priority:** should
+
+**Applies to:** FR-009
+
+### NFR-008
+
+**Statement:** What the expert says about their domain stays within whatever boundary their organisation already works in; this product adds no new place for it to go.
+
+**Category:** privacy
+
+**Metric:** Number of destinations set content reaches beyond the boundary A-005 names.
+
+**Target:** zero
+
+**Measurement:** Review of every outbound destination per release, recorded against A-005.
+
+**Priority:** must
+
+### NFR-009 A set written by an earlier version is still readable and still gradable by a later one.
+
+**Category:** supportability
+
+**Metric:** Share of sets written by version N that version N+1 reads and grades without the expert rewriting anything.
+
+**Target:** 100% within a major version
+
+**Measurement:** Keep one set per released version and run the current version against all of them, per release.
+
+**Priority:** should
+
+### NFR-010
+
+**Statement:** A set remains readable and retrievable for as long as the organization keeps the PRDs it builds from, without this product being involved.
+
+**Category:** retention
+
+**Metric:** Share of a set retrievable and readable from the organization's own document store, with no part of this product present.
+
+**Target:** 100%, for as long as the organization retains the set; no expiry imposed by us
+
+**Measurement:** Retrieve a set written one release ago from the document store of a test organization, set up for the measurement because no customer organization exists at release, and read it with a text editor, once per release.
+
+**Priority:** must
+
+**Applies to:** all
+
+### NFR-011
+
+**Statement:** An interview in progress survives the product being unavailable; no session loses an answer the expert has already given.
+
+**Category:** availability
+
+**Metric:** Answers lost per interruption, and time to resume after one. An interruption is the product becoming unavailable in the middle of a section. The resume clock starts when the product is available again and the expert asks to carry on.
+
+**Target:** Zero answers lost, on every interruption; resume within 1 minute at p95 and within 3 minutes at p99
+
+**Measurement:** Interrupt a session mid-section 100 times per release, spread across all seventeen section documents, and count answers lost and seconds to resume.
+
+**Priority:** must
+
+**Applies to:** FR-015
+
+### NFR-012
+
+**Statement:** Nobody but the people the organization has already given access to its documents can read a set.
+
+**Category:** security
+
+**Metric:** Number of ways to read a set that the organization's own document access rules do not govern.
+
+**Target:** zero
+
+**Measurement:** Enumerate every read path to a set per release, in a test organization set up for the measurement because no customer organization exists at release, and check each against that organization's access rules. Recorded against the system-of-record non-goal in section 6 and A-005.
+
+**Priority:** must
+
+<!-- /prd-forge:details -->

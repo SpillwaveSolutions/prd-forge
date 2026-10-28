@@ -371,3 +371,113 @@ its reason.
 At 0.9.0 the expert holds every other section to a score over 80, and accepts
 this section below 80 until the set is offered for approval on 2027-03-15, because its
 rubric cannot score approvals and conditions higher before an approval exists.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Generated from the front matter. Do not edit this block.
+
+### 0.9.0
+
+**Summary:** Problems carry counted, sourced evidence. Personas have named roles and frequencies, and every journey stage has the expert's satisfaction score. ST-006 happens outside the product. New requirements FR-019 to FR-021, the last naming each approver. The expert accepts or refutes each score, and a section can go back to draft. Section 9 is empty, and the set states a versioning policy. A minor version: new content, nothing structural, as Richard Hightower decided on 2026-10-27.
+
+**Date:** 2026-10-27
+
+**Author:** Richard Hightower
+
+**Sections:** 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+
+**Resolves:** Q-011
+
+### 0.8.1
+
+**Summary:** The glossary defines buildability review, finding, root document, approver, condition, constraint, objective, and baseline. SC-003 and SC-005 state outcomes a person can observe. The scope's OUT-003 row no longer names a component. Section 7 names the open question each waiting `must` requirement depends on. The template and assistant competitors state an edge a buyer can check after one engagement. On the expert's decision, C-001 and C-002 move from section 9 to section 6 as non-goals, C-003 moves to section 11 as assumption A-005, and section 9 keeps only C-004; the ids C-001 to C-003 are not reused. Segment S-003 leaves section 2 and becomes a non-goal in section 6. J-002 gains ST-009, in which the engineering lead records their own verdict on the buildability review under TR-006, and REL-002 includes it. References to the moved items are updated across the set. Together these fix the blocking defects that did not wait on evidence.
+
+**Date:** 2026-10-27
+
+**Author:** Richard Hightower
+
+**Sections:** 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+
+### 0.8.0
+
+**Summary:** Sets the expert's priorities. Ten requirements stay must and eight become should; SC-002 and SC-004 become should with the requirements they exercise, and the other scenarios are must. Adds SC-007, the golden thread from the first sentence to an approved set. Gives REL-001 and REL-002 exit criteria from the objective targets, with indicative dates. Names one decider for Q-005 and Q-008, with the people they consult.
+
+**Date:** 2026-10-27
+
+**Author:** Richard Hightower
+
+**Sections:** 5, 7, 12, 13
+
+### 0.7.0
+
+**Summary:** Names the root's objective, primary persona, and approver, from section 3, the personas document, and TR-001. Marks PER-001 as the primary persona. Names release 1 by its id in the scope, and gives LC-001's first transition the rule TR-008 already states.
+
+**Date:** 2026-10-27
+
+**Author:** Richard Hightower
+
+**Sections:** 4, 5, 6
+
+### 0.6.0
+
+**Summary:** Each problem names its persona, and each objective names the problems it addresses and the open question that will establish its baseline. Competitors have a kind, with the status quo named. Each trust rule names the stages it governs. Scenarios say where the user meets them, SC-001 names the stages it spans, and each screen or report scenario links its wireframes. The root's measure states its target. Section 11 now says D-002 and D-003 fall on REL-001's target day, not after it.
+
+**Date:** 2026-10-27
+
+**Author:** Richard Hightower
+
+**Sections:** 1, 2, 3, 5, 10, 11
+
+### 0.5.0
+
+**Summary:** Every journey stage gains Given/When/Then acceptance. The scenarios document gains LC-001, the lifecycle of a section, and scenarios can link their wireframes. Each persona gains a short name, which the diagrams show in place of its id.
+
+**Date:** 2026-10-26
+
+**Author:** Richard Hightower
+
+**Sections:** 4, 5
+
+### 0.4.0
+
+**Summary:** Adds FR-017, moving between sections without losing one's place, and FR-018, seeing the set as it now stands, the requirements behind the navigation and refresh controls the wireframes drew. Rewrites the wireframes from the grading findings: no sketch names a part of the product, every stage matches what its sketch shows, and new sketches draw a new set, no set at all, a re-grade, a review with gaps, and the return after a week away. Corrects the count of section documents to seventeen wherever it appeared.
+
+**Date:** 2026-10-26
+
+**Author:** Richard Hightower
+
+**Sections:** 6, 7, 8, 13, 14
+
+### 0.3.0
+
+**Summary:** Adds wireframes to section 7. Each functional requirement now says where its user meets the outcome, and the seven shown on a screen or in a report are illustrated by six text sketches: the set with a section open, the empty state, a grade explained, the rubric, the buildability review, and the approval pack. Adds the term "wireframe" to the glossary.
+
+**Date:** 2026-10-26
+
+**Author:** Richard Hightower
+
+**Sections:** 7, 14
+
+### 0.2.0
+
+**Summary:** Fixes every defect the adversarial grading and the buildability review found in 0.1.0. J-001's goal no longer claims an engineering lead's confirmation, which no stage of the release line produced; that confirmation becomes OUT-004, deferred to release 2. FR-003 and FR-004 now state outcomes a person can see rather than internal mental states. FR-015 and FR-016 are split out of FR-002 and FR-009, each having a failure mode of its own. The threshold is stated as a number, 70, everywhere it is used. FR-013's approver page is the set's own root document, which resolves its contradiction with OUT-003. NFR-006 and NFR-008 no longer name a component or the delivery mechanism, and NFR-010, NFR-011 and NFR-012 add the retention, availability and security targets that were simply absent, with NFR-010 answering the half of C-003 (now A-005, since 0.8.1) that no measurable requirement stood behind. TR-007 to TR-012 close the six stage decisions that had no rule, and every rule now says what happens when its approver is away, not only when they disagree. PER-001's authority is widened to cover the decisions section 10 gives them. Seventeen glossary terms are added, five of which existed only as pointers to nothing, and the five tests are numbered because the set cites test 5 by number. The root document now states how the set is numbered, which three reviewers misread.
+
+**Date:** 2026-10-26
+
+**Author:** Richard Hightower
+
+**Sections:** 4, 5, 6, 7, 8, 10, 13, 14
+
+### 0.1.0
+
+**Summary:** First draft of the whole set, written with prd-forge's own conventions as the product's first real exercise. Sixteen section documents across fifteen sections drafted, the golden thread J-001 set to the expert's path from idea to approved PRD, and the release line set to ST-001 through ST-006. All three objectives recorded with unknown baselines and matching open questions rather than invented figures. C-001 records the one tension found while writing: the product is delivered inside an assistant, which would fail test 5 if named in a requirement, so it is a constraint instead.
+
+**Date:** 2026-10-23
+
+**Author:** Richard Hightower
+
+**Sections:** 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+
+<!-- /prd-forge:details -->

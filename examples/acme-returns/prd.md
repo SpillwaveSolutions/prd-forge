@@ -71,3 +71,30 @@ escalation rises from today's 41%.
 | 6 | [Scope](./07-scope.md) |
 | 7 | [Functional requirements](./08-functional-requirements.md) |
 | 7 | [Wireframes](./08-wireframes.md) |
+
+<!-- prd-forge:details -->
+
+## Details
+
+Generated from the front matter. Do not edit this block.
+
+**Version:** 0.1.0
+
+**Owner:** Dana Whitfield, Director of Product
+
+**Stakeholders:** Head of Customer Operations, VP Supply Chain
+
+**Created:** 2026-10-23
+
+**Golden thread:** J-001
+
+**Summary:**
+
+- Objective: O-001
+- Problem: Store associates cannot tell whether an item may be returned without calling the contact centre, so queues build and customers leave with the item.
+- Users: Store associates, contact-centre agents, and returns-processing staff at the regional hub.
+- Why now: Two of the three largest wholesale partners added returns-handling service levels to their 2026 agreements.
+- Bet: An associate can resolve any return at the counter in one conversation, and the customer leaves knowing the outcome and the reason for it.
+- Measure: Share of returns resolved at the counter without escalation; 41% today.
+
+<!-- /prd-forge:details -->

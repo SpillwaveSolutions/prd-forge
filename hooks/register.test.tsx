@@ -37,6 +37,12 @@ The root body.
 \`\`\`
 
 ![WF-001 drawing](diagrams/WF-001.svg)
+
+<!-- prd-forge:details -->
+
+## Details
+
+<!-- /prd-forge:details -->
 `
 
 const JOURNEYS = `${front(`id: demo-journeys
@@ -263,6 +269,16 @@ test('a wireframe fence draws as the sketch itself, line for line, under a capti
   expect(await ui.find({ text: /```/ })).toBeFalsy()
   expect(await ui.find({ type: 'Text', text: 'WF-001 drawing, drawn in the exported Word and PDF' })).toBeTruthy()
   expect(await ui.find({ text: /diagrams\// })).toBeFalsy()
+  await ui.unmount()
+})
+
+test('the marker comments of the details block do not draw', async ($, on) => {
+  servesTheSet(on)
+  await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+
+  expect(await ui.find({ type: 'Text', text: /Details/ })).toBeTruthy()
+  expect(await ui.find({ text: /<!--/ })).toBeFalsy()
   await ui.unmount()
 })
 

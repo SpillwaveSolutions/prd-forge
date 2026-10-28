@@ -12,6 +12,7 @@ import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseYaml, splitFrontMatter, validateSet } from './prd-validate.mjs'
+import { detailsOf, withDetails, withoutDetails, writeDetails } from './prd-details.mjs'
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..')
 const PYYAML = 'import json,sys,yaml; print(json.dumps(yaml.safe_load(sys.stdin.read()), default=str))'
@@ -325,3 +326,34 @@ test('an open question with more than one decider draws a warning', () =>
 
 test('a rejection with no note fails the set', () =>
   failsWith('16-change-log.md', t => t.replace('  - version: 0.7.0\n', '  - version: 0.7.0\n    approvals:\n      - { name: A Sponsor, role: Sponsor, date: 2026-10-26, decision: rejected }\n'), /0\.7\.0 rejection by A Sponsor has no note/))
+
+test('a front-matter change the details block does not show draws a warning in a draft', () =>
+  warnsWith('08-functional-requirements.md', t => t.replace('    objective: O-003\n', '    objective: O-001\n'), /08-functional-requirements\.md: the details block does not match/))
+
+test('a stale details block fails a section at review', () =>
+  failsWith('08-functional-requirements.md', t => t.replace('status: draft', 'status: review').replace('    objective: O-003\n', '    objective: O-001\n'), /08-functional-requirements\.md: the details block does not match/))
+
+test('the details block shows every field, is idempotent, and leaves the written body alone', () => {
+  const HOSTILE = 'Ann (QA) [lead] said "no"; see #3 <b>'
+  const front = {
+    kind: 'functional-requirements',
+    requirements: [{
+      id: 'FR-001', capability: HOSTILE, user: 'PER-001', shown_in: 'screen',
+      acceptance: ['Given one, when two, then three', 'Given four, when five, then six'],
+      evidence: ['plain', { claim: 'a claim', source: 'a source' }],
+    }],
+  }
+  const block = detailsOf(front)
+  assert.match(block, /^### FR-001 Ann \(QA\) \[lead\] said "no"; see #3 <b>$/m)
+  assert.match(block, /^1\. Given one, when two, then three$/m)
+  assert.match(block, /^- Claim: a claim; Source: a source$/m)
+  const body = '# Title\n\nWritten by a person.\n'
+  const once = withDetails(body, front)
+  assert.equal(withDetails(once, front), once)
+  assert.equal(withoutDetails(once), body)
+  assert.equal(detailsOf({ kind: 'constraints', constraints: [] }), '')
+})
+
+for (const set of ['docs/prd/prd-forge', 'examples/acme-returns']) {
+  test(`every details block in ${set} is current`, () => assert.deepEqual(writeDetails(join(REPO, set), true), []))
+}

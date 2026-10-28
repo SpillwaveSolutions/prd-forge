@@ -56,3 +56,65 @@ links:
 | PER-001 | Store associate | Several times per shift | Returns within policy |
 | PER-002 | Contact-centre agent | Continuous | Exceptions up to the value limit |
 | PER-003 | Returns-processing clerk | Daily | Disposition |
+
+<!-- prd-forge:details -->
+
+## Details
+
+Generated from the front matter. Do not edit this block.
+
+### PER-001 Store associate, Acme retail store
+
+**Short name:** StoreAssociate
+
+**Goals:**
+
+- Resolve the return in front of me without leaving the counter
+- Tell the customer the outcome and the reason, confidently
+
+**Pains:**
+
+- Has to call the contact centre and wait, with the customer watching
+- Cannot see what the policy is for this item and this purchase date
+
+**Frequency:** several times per shift
+
+**Authority:** may accept a return within policy; may not approve an exception
+
+**Proficiency:** knows the shop floor; high turnover, so assume no training
+
+### PER-002 Contact-centre agent, returns queue
+
+**Short name:** ContactAgent
+
+**Goals:**
+
+- Answer the associate's question once and correctly
+- Approve or refuse exceptions with a reason the customer can be told
+
+**Pains:**
+
+- Same question asked repeatedly for the same item
+- No record of what was told to whom
+
+**Frequency:** continuous during opening hours
+
+**Authority:** may approve an exception up to the stated value limit
+
+**Proficiency:** expert in policy, trained
+
+### PER-003 Returns-processing clerk, regional hub
+
+**Short name:** ReturnsClerk
+
+**Goals:** Know what is arriving and why it was returned
+
+**Pains:** Items arrive with no reason recorded, so disposition is guesswork
+
+**Frequency:** daily
+
+**Authority:** may set disposition
+
+**Proficiency:** expert in the hub's process
+
+<!-- /prd-forge:details -->

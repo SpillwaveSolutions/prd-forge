@@ -422,3 +422,185 @@ SC-002 is the expert who returns after eight days and remembers nothing. The val
 ```
 
 ![WF-010 drawing](diagrams/WF-010.svg)
+
+<!-- prd-forge:details -->
+
+## Details
+
+Generated from the front matter. Do not edit this block.
+
+### WF-001 The set with one section open
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-003
+
+**Illustrates:** FR-002, FR-008, FR-017, FR-018, FR-020
+
+**Shows:**
+
+- Where they are in the set, the section's state, and its grade
+- Next, previous, refresh, and back to the view before
+- Each section's grade and blocking count; opening it shows why
+- The section itself, as prose
+- An ID that another section defines opens that section
+- Each place where the set states one id, priority, or link two ways, with both values, and each place can be followed
+
+### WF-002 A new set, before the first interview
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-001
+
+**Illustrates:** FR-002, FR-017, FR-018
+
+**Shows:**
+
+- Where they are, and that nothing is started yet
+- Every section listed, each marked not started
+- What happens first
+
+### WF-003 Why a section got its grade
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-003
+
+**Illustrates:** FR-009, FR-017
+
+**Shows:**
+
+- The score, and that the section is not ready
+- Each blocking defect, and where it is
+- The weakest part, and why, in three lines or fewer
+- Each dimension's score, with the evidence for it
+- The standard the grade was given against
+
+### WF-004 The standard a section is graded against
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-003
+
+**Illustrates:** FR-009, FR-017
+
+**Shows:**
+
+- How a dimension becomes a grade
+- What 0, 2 and 4 look like for each dimension
+- What stops a section at any grade
+
+### WF-005 What a team could not build from this set
+
+**Type:** report
+
+**Persona:** PER-001
+
+**Journey stage:** ST-005
+
+**Illustrates:** FR-012
+
+**Shows:**
+
+- Which version of the set the buildability review read, and the verdict
+- Each release-line stage, covered or a gap
+- Each requirement an engineer could not test, quoted
+- An open question that blocks a must, its decider and date
+- What the buildability review would ask for first
+
+### WF-006 What the approver is asked to approve
+
+**Type:** report
+
+**Persona:** PER-003
+
+**Journey stage:** ST-006
+
+**Illustrates:** FR-013, FR-014
+
+**Shows:**
+
+- The version, its state, its owner, and what it is for
+- What release 1 covers
+- Every section with its state and grade, and what blocks
+- What is still undecided, who decides it, and by when
+- The decision, with any condition tied to a question
+- Who decided what, in which role, on which version
+
+### WF-007 Before any set exists
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-001
+
+**State of:** WF-001
+
+**Illustrates:** FR-018
+
+**Shows:** That nothing has been started, Look again once a set exists
+
+### WF-008 A section re-graded after one answer
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-004
+
+**Illustrates:** FR-011
+
+**Shows:**
+
+- The new score beside the old one
+- The same standard both times
+- What changed in the section
+- The offer of review, and what review means
+
+### WF-009 A buildability review that finds gaps
+
+**Type:** report
+
+**Persona:** PER-001
+
+**Journey stage:** ST-005
+
+**State of:** WF-005
+
+**Illustrates:** FR-012
+
+**Shows:**
+
+- The verdict
+- The release-line stages with no requirement, named
+- That each gap must become a requirement or a question
+
+### WF-010 Resuming a set after a week away
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-004
+
+**State of:** WF-001
+
+**Illustrates:** FR-002, FR-009, FR-015, FR-017, FR-018
+
+**Shows:**
+
+- Where they stopped
+- Every section's grade and blocking count
+- Each blocking defect in the section, named
+- The next question, not one already answered
+
+<!-- /prd-forge:details -->

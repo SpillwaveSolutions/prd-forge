@@ -179,3 +179,93 @@ ST-009, and they are written when REL-002 is planned.
 
 No tasks, no estimates, no sizing, no team assignments, and no technology
 milestone. Those come from engineering design and iteration planning.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Generated from the front matter. Do not edit this block.
+
+**Roadmap link:** none yet
+
+### REL-001 Single-expert PRD authoring
+
+**Outcomes:**
+
+- An expert with no product training, a domain expert or a product manager who speaks for one, can take one product idea to an approved PRD. Only the sponsor's decision at ST-006 happens outside the product.
+- The expert can see, before anyone estimates, which parts of their own PRD a development team could not build from.
+- A sponsor can see what they are approving, what is still open, and who decides each open question, in one document.
+
+**Journey stages:** ST-001, ST-002, ST-003, ST-004, ST-005, ST-006
+
+**Requirements:**
+
+- FR-001
+- FR-002
+- FR-003
+- FR-004
+- FR-005
+- FR-006
+- FR-007
+- FR-008
+- FR-009
+- FR-010
+- FR-011
+- FR-012
+- FR-013
+- FR-014
+- FR-015
+- FR-016
+- FR-017
+- FR-018
+- FR-019
+- FR-020
+- FR-021
+
+**Objectives:** O-001, O-002, O-003
+
+**Depends on:** D-002, D-003, Q-019, Q-022
+
+**Exit criteria:**
+
+1. At least 4 of the 5 pilot PRDs, 80%, pass the buildability review on first submission, where a pass is the verdict `buildable`, or `buildable with gaps` with every gap closed or owned (O-001). The pilot PRDs are as O-001 defines them: the first 5 PRDs written with release 1 by people other than the product's author, between 2027-03-31 and 2027-09-30.
+2. The median pilot PRD reaches a recorded approval in under 5 working days from the first interview question (O-002).
+3. An engineer who was not in the interview judges 95% of the pilot PRDs' `must` requirements testable as written (O-003).
+
+**Target date:** 2027-03-31
+
+**Date status:** indicative
+
+### REL-002 Backlog derivation
+
+**Outcomes:**
+
+- A delivery lead can walk into a story-mapping workshop with features and a release line already derived from the approved PRD.
+- A delivery lead sees every story name the requirement id it came from, so nobody has to ask why it exists.
+- An engineering lead can record their own verdict on whether an approved set can be built from, with the report of its buildability review kept beside it.
+
+**Journey stages:** ST-009, ST-007, ST-008
+
+**Objectives:** O-001
+
+**Exit criteria:**
+
+1. Every story derived from a pilot PRD names the requirement id it came from.
+2. A delivery lead runs a story-mapping workshop from a derived backlog without re-deriving any feature from the PRD.
+
+**Target date:** 2027-06-30
+
+**Date status:** indicative
+
+### REL-003 More than one author
+
+**Outcomes:**
+
+- Two experts can work on different sections of the same set without overwriting each other.
+- A reviewer, such as the engineering lead (PER-002), can comment on a section without being able to change it.
+
+**Objectives:** O-002
+
+**Depends on:** A-001, A-002
+
+<!-- /prd-forge:details -->

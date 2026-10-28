@@ -19,6 +19,7 @@ derive a backlog from and build.
 | The mod (a pane) | `/prd` opens a pane beside the chat that steps through the set, showing each section's text, status and grade |
 | `schemas/` | A JSON Schema per document kind, validating the YAML front matter |
 | `scripts/prd-validate.mjs` | Checks front matter, the link graph, and cross-section id references. No dependencies |
+| `scripts/prd-details.mjs` | Writes every item and field from the front matter into a generated block at the end of each body, so the pane and GitHub show them. No dependencies |
 | `scripts/prd-diagrams.mjs` | Draws each journey as a Mermaid diagram from its front matter, renders each wireframe's PlantUML Salt drawing, and links them from the documents |
 | `scripts/prd_export.py` | Exports the whole set as one Word document and one PDF, formatted for reading and printing |
 
@@ -122,6 +123,13 @@ replaces its text sketch. The pane cannot show pictures, so it names each one.
 The script needs `mmdc` (`npm install -g @mermaid-js/mermaid-cli`) and
 `plantuml` on the PATH. The validator fails the set when a wireframe has no
 drawing or a document links to an image that does not exist.
+
+Write the details block of every document, or check that each one is current:
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-details.mjs" docs/prd/<slug>
+node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-details.mjs" docs/prd/<slug> --check
+```
 
 Validate a set at any time:
 

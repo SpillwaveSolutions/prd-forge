@@ -20,6 +20,7 @@ claude plugin test .                         # the pane tests, hooks/register.te
 node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs
 node --test --test-name-pattern="the 0.4.1 bug" scripts/prd-diagrams.test.mjs   # one test
 
+node scripts/prd-details.mjs docs/prd/prd-forge             # write each body's details block from its front matter
 node scripts/prd-validate.mjs docs/prd/prd-forge            # validate a set; exit 1 on error
 node scripts/prd-diagrams.mjs docs/prd/prd-forge            # draw, render, and link diagrams
 node scripts/prd-diagrams.mjs docs/prd/prd-forge --check    # report gaps, write nothing
@@ -99,4 +100,5 @@ These rules are in `skills/prd-wizard/reference/boundaries.md`. A PRD never says
 - prd-forge's own PRD carries the plugin's version. When you bump `plugin.json`, set the same `version` in `docs/prd/prd-forge/prd.md` and add a matching entry to its change log. A test fails when they differ.
 - Before you open a PR, run every command in the commands section above. Test any changed script with awkward input, such as names that hold `(`, `[`, `"`, `;`, `#`, or `<`.
 - Look at rendered diagrams and PDF pages. A diagram can parse and still drop steps, print escape codes, or shrink below a readable size, and the visual check has found faults like these that no test caught.
+- After you change any front matter in a set, run `prd-details.mjs`. The block between `<!-- prd-forge:details -->` and `<!-- /prd-forge:details -->` is generated, so never edit it. The export drops it, because `render_items()` prints the same fields.
 - After you change journeys, scenarios, the release plan, decision rights, or wireframes in the reference set, run `prd-diagrams.mjs`, then the export, and commit the regenerated files.

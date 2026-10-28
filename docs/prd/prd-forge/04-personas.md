@@ -171,3 +171,143 @@ the grading is how the product reaches PER-001, and the set keeps it out of the
 requirements: section 6 makes a separate application a non-goal, and section 11
 records the session as dependency D-001. What matters to this PRD is that
 PER-001 sees a grade they did not produce themselves.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Generated from the front matter. Do not edit this block.
+
+### PER-001
+
+**Name:** Product manager (senior: manager to principal), in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one
+
+**Short name:** DomainExpert
+
+**Primary:** yes
+
+**Population:** One per PRD. Per organization, 2 PRDs run at once and 6 start in a year.
+
+**External:** no
+
+**Problems:** P-001, P-004
+
+**Basis:** Assumed, not researched. Section 1's evidence note says the evidence comes from one engagement. The ten observed sittings in D-002 test it.
+
+**Context:** Works inside the session they already use, as section 11 records (D-001), in bursts weeks apart (NFR-004).
+
+**Goals:**
+
+- Get what is in my head into a form the development team can build from
+- Stop being asked the same question by four different engineers
+- Not be the reason the project is late
+
+**Pains:**
+
+- I know what it must do, and I cannot write it the way they need it
+- I am told my requirements are not testable and I do not know what that means
+- I reach for the names of software I have used, because that is the only requirements language I have
+
+**Frequency:** Three working sittings a week of 1 to 2 hours each, for one to three weeks per PRD, about 6 to 9 sittings per PRD, then rarely until the next one.
+
+**Authority:** Decides what the product must do and what is out of scope; decides the domain's own terms; decides when a section's interview is finished and when a section may be left at draft; accepts or corrects a drafted section; sets a section to final; accepts or refutes a grade; decides whether the set may be offered for approval; and is the only one who may state a domain fact as true. May not approve the PRD for a release on their own where a sponsor exists.
+
+**Proficiency:** Either deep in the domain with no product management training, or a product manager who speaks for such an expert. The product assumes the first: no familiarity with MoSCoW, Given/When/Then, or the word "persona".
+
+### PER-002
+
+**Name:** Engineering lead (staff or principal engineer) on the development team, who must build from the PRD
+
+**Short name:** EngineerLead
+
+**Population:** One or two per PRD, so 2 to 4 at once in an organization running 2 PRDs at once.
+
+**External:** no
+
+**Problems:** P-001, P-002
+
+**Basis:** Assumed, not researched, as section 1's evidence note says. The three engineering leads in D-003 test it.
+
+**Context:** Reads the set cold at estimation and at each release planning, without having been in the interview.
+
+**Goals:**
+
+- Estimate without first interviewing the author
+- Know which decisions are mine and which have been made for me
+- Find out now, not in iteration three, what the document does not say
+
+**Pains:**
+
+- Specifications that name a technology and so pre-empt my decision badly
+- Requirements I cannot write a test for
+- Gaps between two requirements that both looked complete
+
+**Frequency:** Reads each PRD at estimation and at each release planning, so at least 12 reads a year in an organization that starts 6 PRDs a year.
+
+**Authority:** Decides how it is built. Judges whether a set can be built from and reports the gaps, under TR-006, and records a verdict that a set is not buildable when it is not.
+
+**Proficiency:** Expert in delivery, usually knows nothing about the expert's domain.
+
+### PER-003 Sponsor: the budget holder (director or partner), who is also the approver
+
+**Short name:** Sponsor
+
+**Population:** One per PRD, and one organization starts 6 PRDs a year.
+
+**External:** no
+
+**Problems:** P-003
+
+**Basis:** Assumed, not researched, as section 1's evidence note says. Q-005 tests it with three sponsors.
+
+**Context:** Reads the root document or an exported copy outside the product, once per version (ST-006).
+
+**Goals:**
+
+- Be confident enough to commit budget and a date
+- Know what is still undecided, and who is deciding it
+
+**Pains:**
+
+- I can only judge whether it reads well
+- I find out it was not buildable after I have committed to the plan
+
+**Frequency:** Once per version offered, about 6 versions a year per organization, plus any conditions.
+
+**Authority:** Approves the PRD for a release; may approve with conditions; may reject.
+
+**Proficiency:** Senior in the business, not in product or engineering.
+
+### PER-004
+
+**Name:** Delivery lead (delivery manager or product owner) on the development team, who runs the story-mapping workshop
+
+**Short name:** DeliveryLead
+
+**Population:** One per PRD, and one organization starts 6 PRDs a year.
+
+**External:** no
+
+**Problems:** P-002
+
+**Basis:** Assumed, not researched, as section 1's evidence note says. Q-023 tests it with three delivery leads.
+
+**Context:** Runs the story-mapping workshop from the approved set (ST-007, ST-008).
+
+**Goals:**
+
+- Walk into the workshop with a backbone already agreed
+- Trace every story back to something the expert actually said
+
+**Pains:**
+
+- No journey means no backbone, so the workshop invents one in the room
+- Stories that trace to nothing, so nobody can say why they exist
+
+**Frequency:** Once per release, about 6 workshops a year per organization, plus refinement.
+
+**Authority:** Decides the backlog's shape and order, and decides whether a backlog can be mapped from a set at all; does not decide scope.
+
+**Proficiency:** Expert in agile delivery; depends entirely on the PRD for the domain.
+
+<!-- /prd-forge:details -->

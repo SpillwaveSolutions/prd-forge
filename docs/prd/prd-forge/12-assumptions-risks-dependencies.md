@@ -259,3 +259,225 @@ before REL-001's target in section 13. The questions they answer are due by
 2027-02-28, so REL-001 can use the results. Q-019 and Q-022 decide, by
 2027-01-31, whether REL-001 keeps its date and what happens to it if either
 slips.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Generated from the front matter. Do not edit this block.
+
+### Assumptions
+
+#### A-001
+
+**Assumption:** A domain expert will answer fifty to a hundred questions about their own field across a few sittings, if each one is clearly worth answering.
+
+**If false:** The whole method fails. The product would have to produce a usable partial PRD from perhaps fifteen answers, which changes sections 5, 6 and 7 completely and makes the grading thresholds meaningless.
+
+**Validated by:** Observed sittings with 10 first-time experts, counting where they stop, the same sittings NFR-005 uses (D-002).
+
+**Owner:** Richard Hightower
+
+**Category:** usability
+
+**Evidence:** none
+
+**Validate by:** 2027-02-28
+
+#### A-002 An expert will act on a grade they did not produce, rather than dismissing it.
+
+**If false:** The grading is decoration, and O-001 to O-003 and FR-009 to FR-011 measure something nobody uses. The product reduces to a structured interview.
+
+**Validated by:** In the same observed sittings, whether the expert answers the one question or moves on regardless (D-002).
+
+**Owner:** Richard Hightower
+
+**Category:** value
+
+**Evidence:** some
+
+**Validate by:** 2027-02-28
+
+#### A-003
+
+**Assumption:** An engineering lead will accept a PRD that names no technology, rather than reading the absence as incompleteness.
+
+**If false:** Test 5 becomes a liability rather than a discipline, and the candidate architecture decisions list in FR-007 has to become a first-class output rather than a hand-over note.
+
+**Validated by:** Three engineering leads reading a completed set cold and saying what they would ask for first (D-003).
+
+**Owner:** Richard Hightower
+
+**Category:** usability
+
+**Evidence:** none
+
+**Validate by:** 2027-02-28
+
+#### A-004 Organizations will let a PRD for their product be drafted inside an assistant session.
+
+**If false:** The separate-application non-goal in section 6 and A-005 are unacceptable as written and the delivery model has to change, which invalidates FR-002, FR-015, and FR-018, because each assumes the expert's own session.
+
+**Validated by:** The information security review of the first three client contracts.
+
+**Owner:** Richard Hightower
+
+**Category:** viability
+
+**Evidence:** none
+
+#### A-005
+
+**Assumption:** Organizations accept that the domain content an expert enters stays in the expert's own session and in the documents. This product sends it nowhere else and keeps it nowhere else.
+
+**If false:** An organization whose information policy needs more than this cannot adopt the product as written, and NFR-008, NFR-010, and NFR-012, which are measured against this boundary, have to change.
+
+**Validated by:** The information security review of the first three client contracts, the same review that tests A-004.
+
+**Owner:** Richard Hightower
+
+**Category:** viability
+
+**Evidence:** none
+
+**Validate by:** 2027-03-15
+
+### Risks
+
+#### R-001
+
+**Risk:** The expert accepts a weak PRD because the score was high. The grade becomes false assurance, which is worse than no grade.
+
+**Likelihood:** high
+
+**Impact:** high
+
+**Mitigation:** Blocking defects are counted and reported separately from the score and no score clears them (FR-009); the non-goal in section 6 says explicitly that a grade is evidence, not a warrant; FR-012 puts a buildability verdict in front of the expert before approval.
+
+**Owner:** Richard Hightower
+
+**Trigger:** An expert approves a set with a high score while its buildability review still reports a gap that is neither closed nor owned.
+
+**Response:** reduce
+
+**Mitigation by:** 2027-01-31
+
+**Status:** open
+
+#### R-002
+
+**Risk:** The grading reports findings that are not in the document. The expert catches one, stops trusting all of them, and the grading becomes noise they skip.
+
+**Likelihood:** high
+
+**Impact:** high
+
+**Mitigation:** Every finding must quote the document, and anything unsupported is dropped before the expert sees it (FR-016, TR-003, TR-006); a refuted finding the document does not support is acknowledged as dropped rather than defended (SC-004).
+
+**Owner:** Richard Hightower
+
+**Trigger:** An expert refutes a finding and the document does not support it.
+
+**Response:** reduce
+
+**Mitigation by:** 2027-01-31
+
+**Status:** open
+
+#### R-003
+
+**Risk:** A fluent, well-structured, well-graded PRD is produced for the wrong product, and the structure makes the error harder to see rather than easier.
+
+**Likelihood:** medium
+
+**Impact:** high
+
+**Mitigation:** Section 3 asks what would move the objectives without this product at all; section 1 requires evidence per problem and names what is unmeasured. Neither is sufficient, and this risk is not closed. A reader should say so.
+
+**Owner:** Richard Hightower
+
+**Trigger:** A sponsor or an engineering lead says that an approved set specifies the wrong product.
+
+**Response:** reduce
+
+**Status:** open
+
+#### R-004
+
+**Risk:** The interview is too long to finish, so sets are abandoned half-written and the product is remembered as the thing that asked a hundred questions.
+
+**Likelihood:** medium
+
+**Impact:** medium
+
+**Mitigation:** FR-005 lets the expert end any section and records what was left; FR-015 makes resumption cheap; the working order in the method, which Q-007 tests, puts the sections that unlock the others first, and an abandoned set is still useful.
+
+**Owner:** Richard Hightower
+
+**Trigger:** An expert stops a set with sections still pending and does not resume it (Q-006 and Q-020 count this).
+
+**Response:** reduce
+
+**Status:** open
+
+#### R-005
+
+**Risk:** A set written by one version cannot be read or graded by a later one, and an expert loses weeks of thinking to an upgrade.
+
+**Likelihood:** low
+
+**Impact:** high
+
+**Mitigation:** NFR-004 makes every set readable with no part of the product running; NFR-009 requires older sets to stay gradable within a major version.
+
+**Owner:** Richard Hightower
+
+**Trigger:** A set written by one version fails to read or grade in a later version with the same major number.
+
+**Response:** avoid
+
+**Status:** open
+
+### Dependencies
+
+#### D-001
+
+**Need:** An assistant session the expert is already working in, able to carry a long interview and read and write the documents.
+
+**From:** The assistant platform the customer already uses
+
+**By:** 2027-01-31
+
+**Status:** delivered
+
+**Owner:** Richard Hightower
+
+**Blocks:** ST-001, ST-002
+
+#### D-002 Ten first-time domain experts willing to be observed completing a PRD.
+
+**From:** Early customers and the professional network
+
+**By:** 2027-01-31
+
+**Status:** requested
+
+**Owner:** Richard Hightower
+
+**Blocks:** A-001, A-002, NFR-005
+
+#### D-003
+
+**Need:** Three engineering leads willing to read a completed set cold and report what they would ask for first.
+
+**From:** Early customers
+
+**By:** 2027-01-31
+
+**Status:** requested
+
+**Owner:** Richard Hightower
+
+**Blocks:** A-003, O-001
+
+<!-- /prd-forge:details -->
