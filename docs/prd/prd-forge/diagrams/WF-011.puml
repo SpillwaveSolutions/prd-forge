@@ -1,5 +1,5 @@
 @startsalt
-title WF-011 Review comments answered in the next exported copy
+title WF-011 Review comments with their responses in the next exported copy
 {+
   {/ <b>prd-forge PRD 0.10.0 · exported copy</b> }
   Review comments <1>
@@ -8,7 +8,7 @@ title WF-011 Review comments answered in the next exported copy
   Marked: “who owns each undecided thing”
   Comment: Can I see each owner by name?
   Status: accepted <3>
-  Response: each open question names its decider. <4>
+  Response: each decider is now named, not a role. <4>
   Changed: FR-013
   ==
   RC-002 about O-002 · R. Hightower · 2026-11-03
@@ -16,5 +16,6 @@ title WF-011 Review comments answered in the next exported copy
   Comment: Why days to approval, not hours?
   Status: answered
   Response: an approval waits on people, not the tool.
+  Changed: none
 }
 @endsalt

@@ -312,8 +312,8 @@ requirements:
     acceptance:
       - >-
         Given an approver who approves with conditions, when they state the
-        conditions, then each condition names the open question or requirement it
-        depends on and a date.
+        conditions, then each condition names the open question, requirement, or
+        review comment it depends on and a date.
       - >-
         Given a recorded approval, when the set is read later, then the version
         approved, the approver, their role, the date and the decision are all
@@ -495,11 +495,11 @@ requirements:
     user: PER-003
     capability: >-
       Comment on an exported copy of the set without using the product, and see
-      each comment answered in the next copy
+      each comment's response in the next copy
     outcome: >-
-      A sponsor who never opens the product has a response to every comment,
-      recorded as accepted, declined, or answered, and reads the response and
-      what changed in the next copy.
+      A sponsor who never opens the product sees every comment they left in the
+      next copy: with its status, accepted, declined, or answered, its response,
+      and what changed, or marked open while it has no response.
     acceptance:
       - >-
         Given a sponsor who comments on an item in an exported copy, when the
@@ -516,11 +516,15 @@ requirements:
       - >-
         Given a sponsor who approves while a comment has no response, when the
         expert records the approval, then each such comment is recorded as a
-        condition on it, with the comment's id and a date.
+        condition on it, with the comment's id and the date it is due, and only
+        the sponsor clears it.
       - >-
         Given a comment the expert responded to, when the sponsor reads the next
         exported copy, then they see the comment, its status, the response, and
         the ids it changed.
+      - >-
+        Given a comment with no response yet, when the sponsor reads the next
+        exported copy, then they see the comment marked open.
     priority: should
     shown_in: report
     journey_stage: ST-006
@@ -913,7 +917,7 @@ Every item in this document, with each of its fields.
 
 **Acceptance:**
 
-1. Given an approver who approves with conditions, when they state the conditions, then each condition names the open question or requirement it depends on and a date.
+1. Given an approver who approves with conditions, when they state the conditions, then each condition names the open question, requirement, or review comment it depends on and a date.
 2. Given a recorded approval, when the set is read later, then the version approved, the approver, their role, the date and the decision are all present.
 3. Given an approved set that is then changed, when the change is written, then a new version is recorded and the earlier approval is not represented as covering it.
 4. Given an approver who rejects the set, when the expert records it, then the rejection, its reason, the approver, and the date are recorded against the version, and the set reads as not approved.
@@ -1081,19 +1085,20 @@ Every item in this document, with each of its fields.
 
 ### FR-022
 
-**Capability:** Comment on an exported copy of the set without using the product, and see each comment answered in the next copy
+**Capability:** Comment on an exported copy of the set without using the product, and see each comment's response in the next copy
 
 **User:** PER-003
 
-**Outcome:** A sponsor who never opens the product has a response to every comment, recorded as accepted, declined, or answered, and reads the response and what changed in the next copy.
+**Outcome:** A sponsor who never opens the product sees every comment they left in the next copy: with its status, accepted, declined, or answered, its response, and what changed, or marked open while it has no response.
 
 **Acceptance:**
 
 1. Given a sponsor who comments on an item in an exported copy, when the expert brings the copy's comments into the set, then each comment is recorded against that item with the sponsor's name, the date, and the text they marked.
 2. Given a copy whose comments were already brought in, when the expert brings it in again, then no comment is recorded twice.
 3. Given a comment that marks no text, when the expert brings the copy's comments into the set, then it is recorded against the section it sits in.
-4. Given a sponsor who approves while a comment has no response, when the expert records the approval, then each such comment is recorded as a condition on it, with the comment's id and a date.
+4. Given a sponsor who approves while a comment has no response, when the expert records the approval, then each such comment is recorded as a condition on it, with the comment's id and the date it is due, and only the sponsor clears it.
 5. Given a comment the expert responded to, when the sponsor reads the next exported copy, then they see the comment, its status, the response, and the ids it changed.
+6. Given a comment with no response yet, when the sponsor reads the next exported copy, then they see the comment marked open.
 
 **Priority:** should
 

@@ -173,7 +173,8 @@ section graded with no blocking defects, every open question with a decider and
 a date, and no buildability gap that is neither closed nor owned.
 
 ST-006 happens outside the product in REL-001. The sponsor reads the root
-document or an exported copy and gives a decision. The expert records it in
+document or an exported copy and gives a decision. Comments the sponsor leaves
+in an exported copy come back under FR-022. The expert records the decision in
 section 15 under FR-014, with the sponsor's name, role, and date.
 
 | ID | In scope | Stage | Requirements |

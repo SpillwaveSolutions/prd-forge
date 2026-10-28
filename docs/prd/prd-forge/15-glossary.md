@@ -246,7 +246,7 @@ terms:
   - term: Derivability checks
     meaning: >-
       The eleven checks a buildability review runs to decide whether a backlog can
-      be derived from a set. Q-009 asks which version of them release 1 grades
+      be derived from a set. Q-009 asks which edition of them release 1 grades
       against.
     see_also:
       - verdict
@@ -352,8 +352,10 @@ terms:
   - term: Condition
     meaning: >-
       What an approver who approves with conditions requires before the approval
-      is unconditional. Each condition names the open question or requirement it
-      depends on and a date, and only the approver who stated it clears it.
+      is unconditional. Each condition names the open question, requirement, or
+      review comment it depends on and a date, and only the approver who stated
+      it clears it. A review comment with no response at approval becomes a
+      condition the expert records for the sponsor (FR-022).
     see_also:
       - approver
       - open question
@@ -438,9 +440,9 @@ terms:
       - release line
       - open question
     not: >-
-      A finding or a blocking defect. A finding is anything a review reports,
-      and a blocking defect is a finding that stops a section moving on. A gap is
-      a thing the set leaves unsaid.
+      A blocking defect. A gap is a thing the set leaves unsaid, and the
+      buildability review reports each gap as a finding. A blocking defect is a
+      finding that stops a section moving on.
   - term: Version
     meaning: >-
       A numbered state of the set, recorded in section 15 with its date, its
@@ -989,9 +991,9 @@ terms:
       - segment
   - term: Delegated
     meaning: >-
-      Given to an agent to decide. Section 10 marks for each trust rule whether an
-      agent may decide it, and a rule that is never delegated is always decided by
-      the person it names.
+      Given to an agent to propose. Section 10 marks for each trust rule whether an
+      agent may propose its outcome, and the person the rule names still decides.
+      A rule that is never delegated has no agent proposal at all.
     see_also:
       - trust rule
       - agent
@@ -1138,9 +1140,9 @@ terms:
       A spike. A spike produces an answer, and an experiment ships a release.
   - term: Agent
     meaning: >-
-      Software that takes a decision section 10 marks as one an agent may
-      decide, such as TR-003's score and findings. In this set an agent only
-      proposes, and the person the rule names decides.
+      Software that proposes an outcome under a trust rule section 10 marks as
+      one an agent may decide, such as TR-003's score and findings. The person
+      the rule names accepts or refutes what it proposes.
     see_also:
       - delegated
       - trust rule
@@ -1158,8 +1160,8 @@ terms:
       them for reading.
   - term: Review comment
     meaning: >-
-      A comment the sponsor, or anyone else reading an exported copy, leaves in
-      that copy. The expert brings it back into the set and records a response
+      A comment a person reading an exported copy leaves in that copy. In
+      release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response
       with one of three statuses: accepted, when the set changed because of it;
       declined, when the set did not change, with the reason; or answered, when
       it asked a question and the set did not need to change (FR-022).
@@ -1179,6 +1181,26 @@ terms:
     see_also:
       - verdict
       - buildability review
+    not: >-
+      Buildable with gaps. A set that is buildable with gaps passes only when
+      every gap is closed or owned, and it is not buildable until then.
+  - term: Product manager
+    meaning: >-
+      A person who writes product requirements for a living. PER-001 is a
+      product manager who is, or speaks for, the domain expert, and the set
+      calls that person the expert.
+    see_also:
+      - expert
+    not: >-
+      The sponsor. A product manager writes the set, and the sponsor approves
+      it.
+  - term: Re-grade
+    meaning: >-
+      A later grading pass on the same section, against the same rubric, after
+      the section changed.
+    see_also:
+      - grading pass
+      - grade
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -1530,7 +1552,7 @@ Every item in this document, with each of its fields.
 
 ### Derivability checks
 
-**Meaning:** The eleven checks a buildability review runs to decide whether a backlog can be derived from a set. Q-009 asks which version of them release 1 grades against.
+**Meaning:** The eleven checks a buildability review runs to decide whether a backlog can be derived from a set. Q-009 asks which edition of them release 1 grades against.
 
 **See also:**
 
@@ -1625,7 +1647,7 @@ Every item in this document, with each of its fields.
 
 ### Condition
 
-**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question or requirement it depends on and a date, and only the approver who stated it clears it.
+**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question, requirement, or review comment it depends on and a date, and only the approver who stated it clears it. A review comment with no response at approval becomes a condition the expert records for the sponsor (FR-022).
 
 **See also:**
 
@@ -1695,7 +1717,7 @@ Every item in this document, with each of its fields.
 - release line
 - open question
 
-**Not:** A finding or a blocking defect. A finding is anything a review reports, and a blocking defect is a finding that stops a section moving on. A gap is a thing the set leaves unsaid.
+**Not:** A blocking defect. A gap is a thing the set leaves unsaid, and the buildability review reports each gap as a finding. A blocking defect is a finding that stops a section moving on.
 
 ### Version
 
@@ -2226,7 +2248,7 @@ Every item in this document, with each of its fields.
 
 ### Delegated
 
-**Meaning:** Given to an agent to decide. Section 10 marks for each trust rule whether an agent may decide it, and a rule that is never delegated is always decided by the person it names.
+**Meaning:** Given to an agent to propose. Section 10 marks for each trust rule whether an agent may propose its outcome, and the person the rule names still decides. A rule that is never delegated has no agent proposal at all.
 
 **See also:**
 
@@ -2385,7 +2407,7 @@ Every item in this document, with each of its fields.
 
 ### Agent
 
-**Meaning:** Software that takes a decision section 10 marks as one an agent may decide, such as TR-003's score and findings. In this set an agent only proposes, and the person the rule names decides.
+**Meaning:** Software that proposes an outcome under a trust rule section 10 marks as one an agent may decide, such as TR-003's score and findings. The person the rule names accepts or refutes what it proposes.
 
 **See also:**
 
@@ -2407,7 +2429,7 @@ Every item in this document, with each of its fields.
 
 ### Review comment
 
-**Meaning:** A comment the sponsor, or anyone else reading an exported copy, leaves in that copy. The expert brings it back into the set and records a response with one of three statuses: accepted, when the set changed because of it; declined, when the set did not change, with the reason; or answered, when it asked a question and the set did not need to change (FR-022).
+**Meaning:** A comment a person reading an exported copy leaves in that copy. In release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response with one of three statuses: accepted, when the set changed because of it; declined, when the set did not change, with the reason; or answered, when it asked a question and the set did not need to change (FR-022).
 
 **See also:**
 
@@ -2426,5 +2448,24 @@ Every item in this document, with each of its fields.
 
 - verdict
 - buildability review
+
+**Not:** Buildable with gaps. A set that is buildable with gaps passes only when every gap is closed or owned, and it is not buildable until then.
+
+### Product manager
+
+**Meaning:** A person who writes product requirements for a living. PER-001 is a product manager who is, or speaks for, the domain expert, and the set calls that person the expert.
+
+**See also:** expert
+
+**Not:** The sponsor. A product manager writes the set, and the sponsor approves it.
+
+### Re-grade
+
+**Meaning:** A later grading pass on the same section, against the same rubric, after the section changed.
+
+**See also:**
+
+- grading pass
+- grade
 
 <!-- /prd-forge:details -->

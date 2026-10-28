@@ -127,7 +127,7 @@ wireframes:
       - Each blocking defect in the section, named
       - The next question, not one already answered
   - id: WF-011
-    title: Review comments answered in the next exported copy
+    title: Review comments with their responses in the next exported copy
     type: report
     persona: PER-003
     journey_stage: ST-006
@@ -155,8 +155,8 @@ anything looks or how it is built.
 Five sketches follow the domain expert through the golden thread: a new set with
 nothing started, the set with a section open, why a section got its grade, the
 rubric behind it, and a re-grade. Two reports decide whether the set is
-buildable: the buildability review and the approval pack. A third, the answered
-review comments, is what the sponsor reads in the next exported copy. Three
+buildable: the buildability review and the approval pack. A third, the review
+comments with their responses, is what the sponsor reads in the next exported copy. Three
 smaller sketches
 draw the other states: no set at all, which FR-018's third criterion names; the
 review that finds gaps, which SC-005 names; and the return after a week away,
@@ -436,7 +436,7 @@ SC-002 is the expert who returns after eight days and remembers nothing. The val
 
 ![WF-010 drawing](diagrams/WF-010.svg)
 
-## WF-011 Review comments answered in the next exported copy
+## WF-011 Review comments with their responses in the next exported copy
 
 Illustration, not a design. Illustrates FR-022. PER-003 sees it at ST-006.
 
@@ -452,7 +452,7 @@ are invented, to show the form.
 │ Marked: "who owns each undecided thing"              │
 │ Comment: Can I see each owner by name?               │
 │ Status: accepted <3>                                 │
-│ Response: each open question names its decider. <4>  │
+│ Response: each decider is now named, not a role. <4> │
 │ Changed: FR-013                                      │
 ├──────────────────────────────────────────────────────┤
 │ RC-002 about O-002 · R. Hightower · 2026-11-03       │
@@ -460,6 +460,7 @@ are invented, to show the form.
 │ Comment: Why days to approval, not hours?            │
 │ Status: answered                                     │
 │ Response: an approval waits on people, not the tool. │
+│ Changed: none                                        │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -670,7 +671,7 @@ Every item in this document, with each of its fields.
 
 ### WF-011
 
-**Title:** Review comments answered in the next exported copy
+**Title:** Review comments with their responses in the next exported copy
 
 **Type:** report
 

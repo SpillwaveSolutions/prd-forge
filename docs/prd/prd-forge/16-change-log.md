@@ -28,6 +28,7 @@ changes:
       - 7
       - 13
       - 14
+      - 15
   - version: 0.9.0
     date: 2026-10-27
     author: Richard Hightower
@@ -242,7 +243,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.10.0 | 2026-10-28 | Richard Hightower | FR-022 added as a should: a sponsor's comments on an exported copy come back, each with a response, and an open one at approval becomes a condition; WF-011 shows the answered copy; IN-007, REL-001, REL-003, and the glossary include it |
+| 0.10.0 | 2026-10-28 | Richard Hightower | FR-022 added as a should: a sponsor's comments on an exported copy come back, each with a response, and an open one at approval becomes a condition; WF-011 shows the answered copy; IN-007, REL-001, and the glossary include it; REL-003 keeps comments inside the set |
 | 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence and sourced why-now claims; persona roles and frequencies; satisfaction scores; ST-006 outside the product; FR-019 to FR-021 added; FR-014 rejection; TR-014 for accepting a score; LC-001 back to draft; C-004 out of section 9; single questions due before REL-001; sourced glossary terms with one meaning each; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
@@ -381,8 +382,9 @@ set, their review is recorded beside the approval.
 
 Each approval is recorded with the version, the approver's name and role, the
 date, and the decision. An approval with conditions records each condition as
-"conditional on <id> by <date>", where the id is the open question or
-requirement the condition depends on, as FR-014 requires. A rejection records
+"conditional on <id> by <date>", where the id is the open question,
+requirement, or review comment the condition depends on, as FR-014 and FR-022
+require. Only the approver who stated a condition clears it. A rejection records
 its reason.
 
 At 0.9.0 the expert holds every other section to a score over 80, and accepts
@@ -403,7 +405,7 @@ Every item in this document, with each of its fields.
 
 **Author:** Richard Hightower
 
-**Sections:** 6, 7, 13, 14
+**Sections:** 6, 7, 13, 14, 15
 
 ### 0.9.0
 
