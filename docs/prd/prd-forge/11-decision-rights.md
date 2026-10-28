@@ -10,7 +10,7 @@ section: 10
 order: 110
 score: 91
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 decisions:
   - id: TR-001
     decision: Approve a PRD for a release
@@ -365,3 +365,311 @@ document for every claim**, and **drop any finding the document does not
 support**. An assessment that cannot be refuted by pointing at the text is not
 evidence, it is an assertion, and the expert will correctly stop believing it.
 See R-002 in section 11.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Every item in this document, with each of its fields.
+
+### TR-001
+
+**Decision:** Approve a PRD for a release
+
+**Stages:** ST-006
+
+**Approver:** PER-003
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** The summary, the scope, every section's state and grade, every blocking defect, and every open question with its decider and date.
+
+**Escalation:** No substitute approver, and approval waits. Where no sponsor exists at all, such as a solo expert or an internal tool with no PER-003, the expert approves their own set under this rule, shown the same evidence, and the change log records that no separate approver existed. A set is never treated as approved because its score is high. A rejection goes back to the expert with its reason, and the set reads as not approved until a later version is approved.
+
+**Acceptance:**
+
+1. Given a set with any blocking defect, when approval is sought, then the approver is shown the defects and the set is not presented as fit to approve.
+2. Given a set with no recorded approval, when anyone reads its state, then it reads as not approved, whatever its scores are.
+3. Given an engagement with no sponsor, when the expert approves their own set, then the approval records that no separate approver existed.
+4. Given an approver who rejects the set, when the decision is recorded, then the rejection carries its reason, and the set reads as not approved.
+5. Given an approver who approves with conditions, when the approval is recorded, then each condition names the open question or requirement it depends on and a date, and the set reads as approved-with-conditions until every condition is cleared by that same approver.
+
+### TR-002
+
+**Decision:** Set a section's state to final
+
+**Stages:** ST-004
+
+**Approver:** PER-001
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** The section's grade, its blocking defect count, and the result of validating it.
+
+**Escalation:** The expert may override the gate; the override and the score at the time are recorded in the change log. Nobody may set a section final on the expert's behalf while they are away: it waits.
+
+**Acceptance:**
+
+1. Given a section with one or more blocking defects, when final is requested, then it is not set without an explicit override from the expert.
+2. Given an override, when it is applied, then the change log records that it was an override and the score at the time.
+
+### TR-003
+
+**Decision:** Produce a section's score and findings against its rubric
+
+**Stages:** ST-003
+
+**Approver:** PER-001
+
+**An agent may decide:** yes
+
+**Never delegated:** no
+
+**Evidence required:** The rubric's dimensions and a quotation from the document for every score below full marks.
+
+**Escalation:** The score runs by itself after each draft, and nobody has to start it. The score does not count until the expert accepts it under TR-014, and a finding the document does not support is dropped (FR-016).
+
+**Acceptance:**
+
+1. Given a section that has just been drafted, when the draft is written, then its score and findings are produced without anyone asking for them.
+2. Given a score below full marks on a dimension, when it is reported, then a quotation from the document is given for it.
+
+**Agent role:** proposes
+
+### TR-004
+
+**Decision:** Decide what the product is for and what is out of scope
+
+**Stages:** ST-001
+
+**Approver:** PER-001
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** What the consequence of the choice is, including any release-line stage it would leave uncovered.
+
+**Escalation:** None, and no substitute. The expert decides; while they are away, scope does not change. Where the choice weakens the PRD the objection is stated once and the decision is recorded with the dissent noted.
+
+**Acceptance:**
+
+1. Given an expert decision that leaves a release-line stage uncovered, when it is recorded, then the consequence is stated to the expert once and the decision stands.
+2. Given a decision the expert reaffirmed after an objection, when later grading passes run, then the objection is not raised again as a new finding.
+
+### TR-005
+
+**Decision:** State a domain fact, figure, regulation or citation as true
+
+**Approver:** PER-001
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** The expert's own statement of it, or a source that has been checked.
+
+**Escalation:** Where neither exists the fact is not written at all; it becomes an open question with a decider and a date. Nobody may supply the fact on the expert's behalf while they are away.
+
+**Acceptance:**
+
+1. Given a figure or citation the expert did not supply and that has not been verified, when a section is drafted, then it does not appear in the document.
+2. Given a citation that was checked and could not be confirmed, when it is reported, then it is marked unverified rather than stated as fact.
+
+### TR-006
+
+**Decision:** Judge whether a set can be built from, and report the gaps
+
+**Stages:** ST-009
+
+**Approver:** PER-002
+
+**An agent may decide:** yes
+
+**Never delegated:** no
+
+**Evidence required:** The release line, the requirements covering each stage, and a quotation for every gap claimed.
+
+**Escalation:** The engineering lead's own judgement overrides any reported verdict; the report is evidence for them, not a substitute for them. In release 1 no engineering lead is in the loop, so the report goes to the expert, who decides what to do with it under TR-010.
+
+**Acceptance:**
+
+1. Given a reported verdict, when the engineering lead disagrees, then their judgement is recorded as the verdict and the report is kept alongside it.
+2. Given a reported gap, when it is stated, then the document is quoted for it.
+
+**Agent role:** proposes
+
+### TR-007
+
+**Decision:** Decide the domain's own terms, and what each one means
+
+**Stages:** ST-001
+
+**Approver:** PER-001
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** Where the term is already used in the set, and any standard-setter's definition that differs from the expert's.
+
+**Escalation:** None, and no substitute. Terms are the expert's; while they are away the vocabulary does not change.
+
+**Acceptance:**
+
+1. Given a term the expert has defined, when any later question or document uses that idea, then it uses the expert's word and not a synonym.
+2. Given a standard-setter's definition that differs, when the term is recorded, then both are stated and the expert says which the set uses.
+
+### TR-008
+
+**Decision:** Decide the interview on a section is finished
+
+**Stages:** ST-002
+
+**Approver:** PER-001
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** What the section would score as it stands, and what is still missing from it.
+
+**Escalation:** None. The expert ends the interview; nobody ends it for them, and no question list runs past the point they call it done.
+
+**Acceptance:**
+
+1. Given an expert who says they have nothing more to add, when they say it, then no further question is put to them in that section.
+2. Given an interview ended early, when the section is written, then what is missing is named to the expert, not hidden behind a score.
+
+### TR-009
+
+**Decision:** Decide a section may be left at draft and moved on from
+
+**Stages:** ST-004
+
+**Approver:** PER-001
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** The section's score, its blocking defects, and which later sections depend on what is missing.
+
+**Escalation:** None, and no substitute. While the expert is away the section stays where it is.
+
+**Acceptance:**
+
+1. Given a section below 70 or carrying a blocking defect, when the expert chooses to move on, then it is written at `draft` and what was left behind is recorded as an open question or named plainly to them.
+
+### TR-010
+
+**Decision:** Decide the set may be offered for approval
+
+**Stages:** ST-005
+
+**Approver:** PER-001
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** Every section's state and grade, every blocking defect, and the buildability review's gaps with, for each, whether it is closed or owned.
+
+**Escalation:** None, and no substitute. The expert offers the set; nobody offers it for them.
+
+**Acceptance:**
+
+1. Given a buildability gap that is neither closed nor given a decider and a date, when the expert offers the set for approval, then that gap is stated to them first.
+2. Given a set offered for approval, when the approver opens it, then what the expert was shown under this rule is what the approver sees.
+
+### TR-011
+
+**Decision:** Decide a backlog can be mapped from the set
+
+**Stages:** ST-007
+
+**Approver:** PER-004
+
+**An agent may decide:** yes
+
+**Never delegated:** no
+
+**Evidence required:** Whether a golden thread exists, and which release-line stages have requirements behind them.
+
+**Escalation:** The delivery lead's own judgement stands over any reported verdict, and an override is recorded with its reason. Where they are unavailable the workshop waits rather than proceeding without a backbone.
+
+**Acceptance:**
+
+1. Given a set with no journey, when the check runs, then it reports that a backlog cannot be derived, and names that as the reason.
+2. Given a reported verdict the delivery lead disagrees with, when they record their own, then their verdict stands and the override and its reason are recorded beside the report.
+
+**Agent role:** proposes
+
+### TR-012
+
+**Decision:** Decide which epics come first
+
+**Stages:** ST-008
+
+**Approver:** PER-004
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** The release line, the dependencies in section 11, and the objective each epic moves.
+
+**Escalation:** The delivery lead may re-order within the release line at any time; order never changes scope, which stays with TR-004. While they are away the order stands as last recorded, and nobody re-orders on their behalf.
+
+**Acceptance:**
+
+1. Given an ordering, when it is recorded, then each decision names whether value, dependency or the release line drove it.
+
+### TR-013
+
+**Decision:** Accept a drafted section as saying what the expert meant, or correct it
+
+**Stages:** ST-003
+
+**Approver:** PER-001
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** The drafted section in readable form, and its grade, so the expert judges the words and not the score.
+
+**Escalation:** None, and no substitute. An unaccepted draft stays at `draft`; nobody accepts a section's wording on the expert's behalf while they are away.
+
+**Acceptance:**
+
+1. Given a drafted section the expert has not accepted, when the set's state is read, then that section is not shown as ready for anyone else to read.
+2. Given an expert who corrects a drafted section, when the correction is applied, then it is their words that are kept, and the section is graded again before it advances.
+
+### TR-014
+
+**Decision:** Accept or refute a section's score
+
+**Stages:** ST-003
+
+**Approver:** PER-001
+
+**An agent may decide:** no
+
+**Never delegated:** yes
+
+**Evidence required:** The score, each finding with the quotation behind it, and the section's weakest part. The product asks as soon as the score is produced, so the expert's only action is to accept or to refute.
+
+**Escalation:** None, and no substitute. While the expert is away the score waits, unaccepted, and the section does not advance. Nobody accepts a score on the expert's behalf.
+
+**Acceptance:**
+
+1. Given a score that has just been produced, when the expert sees it, then they are asked whether they accept it or refute it, and need take no other action.
+2. Given an expert who accepts a score, when they accept it, then the acceptance is recorded and the section may advance on that score.
+3. Given an expert who refutes a finding, when they give their reason, then the refutation and the reason are recorded, and the finding is checked against the document under FR-016.
+
+<!-- /prd-forge:details -->

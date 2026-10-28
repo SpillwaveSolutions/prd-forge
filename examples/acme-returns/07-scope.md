@@ -75,3 +75,72 @@ ST-001 through ST-004, for purchases made in an Acme store in the last 12 months
 We are not replacing the point-of-sale system, we are not becoming the system of
 record for inventory disposition, and we are not automating the exception
 decision.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Every item in this document, with each of its fields.
+
+**Release:** R1, counter returns pilot
+
+**Release line:** ST-001 through ST-004 for purchases made in an Acme store in the last 12 months. An associate reaches a completed return, with a reason recorded, without calling the contact centre. An exception (ST-003) stays a phone call in R1.
+
+**Outside product:**
+
+- **Stage:** ST-003
+  - **Workaround:** The associate phones the contact centre, and an agent decides the exception on the call, as today.
+
+**Non-goals:**
+
+- We are not replacing the point-of-sale system.
+- We are not becoming the system of record for inventory disposition; the hub keeps that.
+- We are not automating the exception decision. A person decides every exception.
+
+### In scope in detail
+
+#### IN-001
+
+**Summary:** Identify a purchase from a receipt, an order number, or the payment card
+
+**Journey stage:** ST-001
+
+**Requirements:** FR-001
+
+#### IN-002
+
+**Summary:** Show the returns decision, its reason, and the refund method at the counter
+
+**Journey stage:** ST-002
+
+**Requirements:** FR-002
+
+#### IN-004
+
+**Summary:** Complete the return with the reason recorded for the hub
+
+**Journey stage:** ST-004
+
+**Requirements:** FR-004
+
+### Out of scope in detail
+
+#### OUT-001
+
+**Summary:** Returns of items bought from Acme wholesale partners rather than in an Acme store
+
+**Revisit:** Once the partner agreements name a returns service level, expected Q2 2027
+
+#### OUT-002
+
+**Summary:** Returns initiated online and completed in store
+
+**Revisit:** After the R1 pilot closes
+
+#### OUT-003
+
+**Summary:** Requesting and deciding an exception in the product (FR-003)
+
+**Revisit:** After the R1 pilot closes, if exceptions are still more than 1 in 10 returns
+
+<!-- /prd-forge:details -->

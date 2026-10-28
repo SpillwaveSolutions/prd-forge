@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 3
 order: 30
-score: 83
+score: 88
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 objectives:
   - id: O-001
     objective: >-
@@ -116,3 +116,77 @@ than one with an admitted gap, because the invented one gets planned against.
 Worth asking, and recorded here because the answer is not nothing: a single
 experienced product manager embedded with the expert would move all three. The
 bet is on availability and cost, not on beating that person. See section 2.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Every item in this document, with each of its fields.
+
+### O-001
+
+**Objective:** A PRD handed to a development team can be built from without the team re-deriving it first.
+
+**Problems:** P-001, P-002, P-003
+
+**Metric:** Share of the pilot PRDs that pass the buildability review, the eleven derivability checks, on first submission. The pilot PRDs are the first 5 PRDs written with release 1 by people other than the product's author, between REL-001, on 2027-03-31, and 2027-09-30. A PRD passes when the verdict is `buildable`, or `buildable with gaps` with every gap closed or owned.
+
+**Measurement:** The verdict of the buildability review on each pilot PRD at its first submission.
+
+**Indicator:** lagging
+
+**Baseline:** unknown - not measured; see Q-001.
+
+**Baseline question:** Q-001
+
+**Target:** 80% of the pilot PRDs, at least 4 of 5, pass on first submission. Provisional until Q-001 is answered, by 2027-02-28.
+
+**By:** 2027-09-30
+
+**Owner:** Richard Hightower
+
+### O-002
+
+**Objective:** A domain expert, or a product manager who speaks for one, reaches an approved PRD in days.
+
+**Problems:** P-004
+
+**Metric:** Median elapsed working days, across the pilot PRDs that have one journey, from the first interview question to an approval recorded in section 15.
+
+**Measurement:** The date of the first interview question and the date of the approval recorded in section 15, for each pilot PRD that has one journey.
+
+**Indicator:** lagging
+
+**Baseline:** unknown - not measured; see Q-002.
+
+**Baseline question:** Q-002
+
+**Target:** Under 5 working days for a single-journey product. Provisional until Q-002 is answered, by 2027-02-28.
+
+**By:** 2027-09-30
+
+**Owner:** Richard Hightower
+
+### O-003
+
+**Objective:** Requirements are testable as written, so a team can close them without asking the author what they meant.
+
+**Problems:** P-001, P-004
+
+**Metric:** Share of `must` functional requirements whose acceptance criteria an engineer who was not in the interview judges sufficient to write a test from.
+
+**Measurement:** Three engineering leads who were not in the interview score each `must` requirement of each pilot PRD independently, as Q-003 does. A requirement counts as testable when at least two of the three say a test can be written from its acceptance criteria.
+
+**Indicator:** leading
+
+**Baseline:** unknown - not measured; see Q-003.
+
+**Baseline question:** Q-003
+
+**Target:** 95% of `must` requirements. Provisional until Q-003 is answered, by 2027-02-28.
+
+**By:** 2027-09-30
+
+**Owner:** Richard Hightower
+
+<!-- /prd-forge:details -->

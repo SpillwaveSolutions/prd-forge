@@ -127,3 +127,80 @@ Illustration, not a design. Illustrates FR-005. PER-003 reads it at ST-004.
 ```
 
 ![WF-004 drawing](diagrams/WF-004.svg)
+
+<!-- prd-forge:details -->
+
+## Details
+
+Every item in this document, with each of its fields.
+
+### WF-001
+
+**Title:** Finding the purchase
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-001
+
+**Illustrates:** FR-001
+
+**Shows:**
+
+1. The three ways to find a purchase
+2. The purchase found, with its date and the amount paid
+
+### WF-002
+
+**Title:** The returns decision
+
+**Type:** screen
+
+**Persona:** PER-001
+
+**Journey stage:** ST-002
+
+**Illustrates:** FR-002, FR-004
+
+**Shows:**
+
+1. The decision, the reason for it, and the deadline
+2. The refund method to tell the customer
+3. The reason the item came back, from the agreed list
+
+### WF-003
+
+**Title:** An exception request
+
+**Type:** screen
+
+**Persona:** PER-002
+
+**Journey stage:** ST-003
+
+**Illustrates:** FR-003
+
+**Shows:**
+
+1. The purchase and the policy that refused it
+2. The associate's reason for asking
+3. The decision and the reason the customer is told
+
+### WF-004
+
+**Title:** Items arriving at the hub today
+
+**Type:** report
+
+**Persona:** PER-003
+
+**Journey stage:** ST-004
+
+**Illustrates:** FR-005
+
+**Shows:**
+
+1. Each item with the reason recorded at the counter
+
+<!-- /prd-forge:details -->

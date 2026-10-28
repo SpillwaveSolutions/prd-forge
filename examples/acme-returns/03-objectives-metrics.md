@@ -42,3 +42,37 @@ links:
 The guardrail keeps the pilot honest. A counter that accepts every return would
 raise O-001 and send ineligible items to the hub, so the hub's reversal rate must
 not rise above today's 3%.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Every item in this document, with each of its fields.
+
+### Objectives in detail
+
+#### O-001
+
+**Objective:** A store associate resolves a return at the counter without calling the contact centre.
+
+**Metric:** Share of store returns completed at the counter with no call to the contact centre, counted per calendar month across the pilot stores.
+
+**Baseline:** 41% of store returns, from the Q3 2026 store returns audit.
+
+**Baseline as of:** 2026-09-30
+
+**Baseline source:** Q3 2026 store returns audit
+
+**Target:** 75% of store returns in the pilot stores.
+
+**By:** 2027-06-30
+
+**Owner:** Head of Customer Operations
+
+### Guardrails in detail
+
+#### Share of completed returns later reversed by the hub as not eligible
+
+**Threshold:** No higher than the Q3 2026 rate of 3%.
+
+<!-- /prd-forge:details -->

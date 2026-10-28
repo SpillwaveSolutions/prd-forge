@@ -2,39 +2,39 @@
 doc: ../04-personas.md
 score: 89
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 grader: prd-forge:prd-adversary
-previous_score: 93
+previous_score: 89
 ---
 
-# Why personas scored 89
+# Why users and personas scored 89
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Role naming | 3 | PER-001's name says senior product manager, but its proficiency says it does not know the word "persona". PER-004 has no seniority. |
-| Goals | 4 | Every goal is in the first person and the persona's own words. |
-| Pains | 3 | PER-004's "Stories that trace to nothing" does not trace to P-002. |
-| Frequency | 3 | `population` counts PRDs, not people. The break length that NFR-004 rests on has three values: weeks, months, and a week. |
-| Authority | 4 | Stated for all four personas and matches section 10. |
+| Role naming | 3 | PER-001's name says a senior product manager, and its proficiency says someone who does not know the word "persona". PER-004 has no seniority. |
+| Goals | 4 | Every goal is in the persona's own words. |
+| Pains | 3 | PER-004's untraced-stories pain does not trace to P-002, its only problem. |
+| Frequency | 3 | "Three sittings a week for one to three weeks" gives 3 to 9 sittings, not 6 to 9. The break length has three values. |
+| Authority | 4 | Authority matches the approvers in section 10. |
 | External users | 4 | Considered, with a reason. |
-| Count | 4 | Four personas, each in section 5. |
-
-## Weakest dimension
-
-Role naming: the primary persona is two people under one name.
+| Count | 4 | Four personas, each in a journey. |
 
 ## Blocking defects
 
 None.
 
+## Weakest dimension
+
+Role naming. The primary persona is a senior product manager and also someone with no product training.
+
 ## How to raise the grade
 
-- **Role naming (3 to 4):** Make PER-001's proficiency match its name, and give PER-004 a seniority.
-- **Frequency (3 to 4):** Count people in `population`, and give one break length.
-- **Pains (3 to 4):** Link PER-004's untraced-stories pain to the right problem.
+- **Role naming (3 to 4):** Make PER-001's name and proficiency describe one person, and give PER-004 a seniority.
+- **Frequency (3 to 4):** Fix the sittings count, choose one break length, and give PER-001's population as people per organization.
+- **Pains (3 to 4):** Link PER-004's untraced-stories pain to a problem in section 1.
 
-## Notes
+## The details block
 
-- PER-001's basis says ten sittings; D-002 is ten experts.
-- PER-003's basis cites Q-005, which tests one requirement's priority.
-- PER-001's authority cites no TR ids.
+The generated details block contradicts nothing. It shows the front matter word for word, and it makes visible any place where the hand-written prose has drifted from it.
+
+- The block shows the third break length and the sittings count in the body, where only the front matter had them before.

@@ -104,6 +104,11 @@ const blocksOf = (md: string): Block[] => {
       space = blocks.length > 0
       continue
     }
+    // A marker comment, such as the edges of the generated details block.
+    if (/^\s*<!--.*-->\s*$/.test(line)) {
+      space = was
+      continue
+    }
     if (FENCE.test(line)) {
       const code: string[] = []
       while (++at < lines.length && !FENCE.test(lines[at] ?? '')) code.push(lines[at] ?? '')

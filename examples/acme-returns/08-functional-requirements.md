@@ -133,3 +133,119 @@ so the pilot can bring it back without writing it again.
 
 Note what is absent from every entry: no point-of-sale system, no database, no
 screen, no service. Those are decisions for the architecture, not the PRD.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Every item in this document, with each of its fields.
+
+### FR-001
+
+**Capability:** Identify the purchase from a receipt, an order number, or the payment card
+
+**User:** PER-001
+
+**Outcome:** The associate sees the purchase, its date and what was paid, and can confirm with the customer that it is the right one before going further.
+
+**Acceptance:**
+
+1. Given a purchase made in an Acme store in the last 12 months, when the associate enters the order number, then they see the item, the purchase date and the amount paid.
+2. Given a customer with no receipt and no order number, when the associate uses the payment card, then they see every purchase on that card in the last 12 months, most recent first.
+3. Given a purchase that cannot be found, when the associate has tried all three routes, then they see that it was not found and what to do next.
+
+**Priority:** must
+
+**Journey stage:** ST-001
+
+**Objective:** O-001
+
+**Shown in:** screen
+
+### FR-002
+
+**Capability:** See whether the item may be returned, on what terms, and why
+
+**User:** PER-001
+
+**Outcome:** The associate sees a decision, the reason for it, and the refund method, and can state all three to the customer without calling anyone.
+
+**Acceptance:**
+
+1. Given an item bought 20 days ago under a 30-day policy, when the associate views the decision, then they see "may be returned", the deadline date and the refund method.
+2. Given an item outside its returns window, when the associate views the decision, then they see "may not be returned", the specific reason, and the option to request an exception.
+3. Given an item whose policy depends on its condition, when the associate records the condition, then the decision and the reason update to match.
+
+**Priority:** must
+
+**Journey stage:** ST-002
+
+**Objective:** O-001
+
+**Shown in:** screen
+
+### FR-003
+
+**Capability:** Decide an exception request, recording the reason
+
+**User:** PER-002
+
+**Outcome:** The agent sees the purchase, the associate's reason for escalating, and the value at stake, and their decision reaches the associate with a reason the customer can be told.
+
+**Acceptance:**
+
+1. Given an exception request, when the agent opens it, then they see the purchase, the policy that refused it, the associate's reason, and the refund value.
+2. Given an open exception request, when the agent approves it with a reason, then the associate sees the approval and the reason at the counter.
+3. Given a request above the agent's value limit, when the agent opens it, then they see that it is above their limit and who may decide it.
+
+**Priority:** wont
+
+**Journey stage:** ST-003
+
+**Objective:** O-001
+
+**Shown in:** screen
+
+### FR-004
+
+**Capability:** Complete the return, recording why the item came back
+
+**User:** PER-001
+
+**Outcome:** The return is completed with its reason, the customer is told what happens next, and the hub clerk can read the reason when the item arrives.
+
+**Acceptance:**
+
+1. Given an accepted return, when the associate selects a reason from the agreed list and confirms, then the return is recorded with that reason and the refund method.
+2. Given a completed return, when the hub clerk views the incoming item, then they see the reason the associate recorded.
+3. Given an accepted return with no reason selected, when the associate tries to confirm, then they cannot complete the return until a reason is selected.
+
+**Priority:** must
+
+**Journey stage:** ST-004
+
+**Objective:** O-001
+
+**Shown in:** screen
+
+### FR-005
+
+**Capability:** See the reasons recorded against items arriving at the hub
+
+**User:** PER-003
+
+**Outcome:** The clerk can set disposition without guessing why an item came back.
+
+**Acceptance:**
+
+1. Given items arriving today, when the clerk opens the incoming list, then each item shows the reason recorded at the counter.
+
+**Priority:** should
+
+**Journey stage:** ST-004
+
+**Objective:** O-001
+
+**Shown in:** report
+
+<!-- /prd-forge:details -->

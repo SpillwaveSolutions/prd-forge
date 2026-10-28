@@ -8,9 +8,9 @@ updated: 2026-10-27
 domain: product management tooling
 section: 12
 order: 130
-score: 83
+score: 88
 blocking: 0
-graded: 2026-10-27
+graded: 2026-10-28
 questions:
   - id: Q-001
     question: >-
@@ -378,3 +378,293 @@ technology the expert names:
 Every decider here is the same person. For a one-person product that is accurate.
 For anything larger it is a defect, and the first thing to fix when there is a
 second person.
+
+<!-- prd-forge:details -->
+
+## Details
+
+Every item in this document, with each of its fields.
+
+### Q-001
+
+**Question:** What share of specifications reaching a development team today pass a buildability review on first submission?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** O-001
+
+**Spike:** Run the eleven derivability checks against ten specifications collected from real client projects done without this product, and count. Time-boxed to 3 days. It depends on Q-009, because the version of the checks must be fixed first.
+
+### Q-002
+
+**Question:** How many working days does it take today from the first question put to the domain expert about a product to an approved specification?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** O-002
+
+**Spike:** Reconstruct the timeline from the first question put to the expert to the approval, for five recent projects done without this product. Time-boxed to 2 days.
+
+### Q-003
+
+**Question:** What share of `must` functional requirements in today's specifications can an engineer who was not in the interview write a test from?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** O-003
+
+**Spike:** Three engineering leads score the requirements of the same ten specifications from Q-001, independently. Time-boxed to 3 days.
+
+### Q-004
+
+**Question:** How many organizations are in each segment in section 2?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-06-30
+
+**Blocks:** S-001, S-002
+
+**Spike:** Name the register or source per segment, and count. Time-boxed to 3 days.
+
+### Q-005
+
+**Question:** Given what three sponsors say about a set shown with and without grades, does FR-013 stay `must`, with each section's grade shown to the sponsor?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-01-31
+
+**Blocks:** FR-013, TR-001, OUT-003, PER-003
+
+**Spike:** Show three sponsors the same set with and without grades and ask which they would approve. Time-boxed to 2 days.
+
+**Consulted:** the first three sponsors
+
+### Q-006
+
+**Question:** How many sections does an expert complete in one sitting before stopping?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** R-004
+
+**Spike:** Count in D-002's ten observed sittings, held by 2027-01-31. Time-boxed to 1 day after the sittings.
+
+### Q-007
+
+**Question:** Does writing the requirements send an expert back to the journeys?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** ST-004, FR-010, R-004
+
+**Spike:** Count loop-backs in D-002's ten observed sittings, held by 2027-01-31. The answer is yes if at least 3 of the 10 sittings loop back. Time-boxed to 1 day after the sittings.
+
+### Q-008
+
+**Question:** Does an engineering lead read a PRD that names no technology as disciplined or as incomplete?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** A-003
+
+**Spike:** Ask each lead, after reading a set cold, whether anything was missing and whether they wanted a technology named. Time-boxed to 1 day.
+
+**Consulted:** the three engineering leads from D-003
+
+### Q-009
+
+**Question:** Which version of the rubric and the eleven derivability checks does release 1 grade against?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-01-31
+
+**Blocks:** FR-004, FR-009, FR-010, FR-011, FR-012, FR-019
+
+**Spike:** List the rubric dimensions of each section and the eleven checks as they stand, and have the decider approve that list as release 1's version. Time-boxed to 1 day. Until it is answered, ST-002 to ST-005 can be scaffolded and not finished.
+
+### Q-010
+
+**Question:** Must an answer the expert gave survive the end of the session before its section is drafted, given A-005, that domain content stays in the expert's own session and in the documents?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-01-31
+
+**Blocks:** FR-015, NFR-011
+
+**Spike:** List what an expert must find when they come back after a break (FR-015), and check each item against A-005's boundary. The answer is yes if any item the expert must find is an answer not yet drafted. Time-boxed to 2 days. Guessing this one breaks assumption A-005, which customers rely on, rather than merely costing rework.
+
+### Q-011
+
+**Question:** How does an approver record a decision, given that D-001 puts the product inside the expert's session and OUT-003 excludes any view of our own?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** FR-014
+
+**Answer:** Outside the product, in release 1. The sponsor reads the root document or an exported copy and gives a decision. The expert records it in section 15 under FR-014, with the sponsor's name, role, and date. Section 6 records ST-006 as outside the product.
+
+**Answered:** 2026-10-27
+
+### Q-012
+
+**Question:** Which segment in section 2 converts first?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-06-30
+
+**Blocks:** S-001, S-002
+
+**Spike:** For the first ten buyers spoken to in each segment, count how many buy by 2027-06-30, and compare the two counts. Time-boxed to 1 day at that date.
+
+### Q-013
+
+**Question:** What day rate does a buyer pay to contract a product manager for the writing of one set?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-06-30
+
+**Blocks:** S-002
+
+**Spike:** Ask the buyers in the first ten conversations what they paid the last time. Time-boxed to 1 day.
+
+### Q-014
+
+**Question:** Given how experts describe a loop-back in D-002's sittings, does ST-004 keep its step that sends the expert back to an earlier section?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** ST-004, FR-010
+
+**Spike:** Ask each expert after a loop-back, in D-002's ten observed sittings, held by 2027-01-31. Time-boxed to 1 day after the sittings.
+
+### Q-015
+
+**Question:** Who owns the rubric and the eleven derivability checks?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-01-15
+
+**Blocks:** FR-004, FR-009, FR-010, FR-011, FR-012, FR-019
+
+**Spike:** Name the person accountable for the content of the rubric and the checks, and confirm with that person that they accept it, before Q-009 fixes a version. Time-boxed to 1 day.
+
+### Q-016
+
+**Question:** Must a grade show which version of the rubric it was made against?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-01-31
+
+**Blocks:** NFR-007
+
+**Spike:** Regrade one section of this set against an earlier rubric, and ask three readers whether they need to tell the two grades apart. Time-boxed to 1 day.
+
+### Q-017
+
+**Question:** Whom does the decider record as owner of NFR-006's accessibility, given that the product's output is read in places the non-goals in section 6 say we do not own?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** NFR-006
+
+**Spike:** List each place the product's output is read and who controls it, and get that party's written confirmation that they own it. The decider then records the owner. Time-boxed to 2 days.
+
+### Q-018
+
+**Question:** What does each problem in section 1 cost, as one counted case per problem?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-01-31
+
+**Blocks:** P-001, P-002, P-003, P-004
+
+**Spike:** For one recent project done without this product, count the engineer days spent re-deriving the specification, the gaps found during build, and the plans changed after approval. Time-boxed to 2 days.
+
+### Q-019
+
+**Question:** Will both parties behind D-002 and D-003 commit in writing to report by 2027-01-31, so that REL-001 keeps 2027-03-31?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-01-31
+
+**Blocks:** REL-001
+
+**Spike:** Ask each party behind D-002 and D-003 for a written date. The answer is yes if both written dates are 2027-01-31 or earlier, and no otherwise, in which case Q-022 decides. Time-boxed to 1 day.
+
+### Q-020
+
+**Question:** Which section do experts stop at most often?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** R-004
+
+**Spike:** Note the section at each stop in D-002's ten observed sittings, held by 2027-01-31. Time-boxed to 1 day after the sittings.
+
+### Q-021
+
+**Question:** Whom does the decider record as owner of NFR-012's access control, given that a set is stored where the organization already stores documents?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-02-28
+
+**Blocks:** NFR-012
+
+**Spike:** List every path by which someone can read a set and who grants access to it, and get that party's written confirmation that they own it. The decider then records the owner. Time-boxed to 2 days.
+
+### Q-022
+
+**Question:** If D-002 or D-003 reports after 2027-01-31, does REL-001 move or ship as an experiment?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-01-31
+
+**Blocks:** REL-001
+
+**Spike:** For each outcome, list which of REL-001's exit criteria can still be judged with the late results, and choose the outcome that leaves more of them judgeable. Time-boxed to 1 day.
+
+### Q-023
+
+**Question:** Do delivery leads run a story-mapping workshop about once per release and want a backbone agreed before it, as PER-004 assumes?
+
+**Decider:** Richard Hightower
+
+**By:** 2027-05-31
+
+**Blocks:** PER-004
+
+**Spike:** Ask three delivery leads how often they run the workshop and what they need agreed before it. Time-boxed to 2 days.
+
+<!-- /prd-forge:details -->
