@@ -27,7 +27,7 @@ SECTION_OF_KIND = {
     "functional-requirements": 7, "wireframes": 7, "nonfunctional-requirements": 8,
     "constraints": 9, "decision-rights": 10,
     "assumptions-risks-dependencies": 11, "open-questions": 12,
-    "release-plan": 13, "glossary": 14, "change-log": 15,
+    "release-plan": 13, "glossary": 14, "change-log": 15, "review-comments": 15,
 }
 
 # per kind: the front-matter lists holding its items, and the field that heads each
@@ -49,6 +49,7 @@ ITEM_LISTS = {
     "release-plan": [("releases", "name")],
     "glossary": [("terms", "term")],
     "change-log": [("changes", "summary")],
+    "review-comments": [("comments", "comment")],
     "backlog": [], "features": [("features", "name")], "epics": [("epics", "goal")],
     "stories": [("stories", "capability")], "spikes": [("spikes", "question")],
 }
@@ -88,6 +89,13 @@ DETAILS = re.compile(r"\n*<!-- prd-forge:details -->.*?<!-- /prd-forge:details -
 def without_details(body):
     """The body without the block prd-details.mjs writes: render_items prints the same fields."""
     return DETAILS.sub("\n", body)
+
+
+def bookmark_name(ident):
+    """A Word bookmark name for an id: letters, digits and `_`, at most 40, starting with a letter.
+    prd_comments.py maps a reviewer's comment back to the id through the same rule."""
+    name = re.sub(r"[^A-Za-z0-9]", "_", str(ident))[:40]
+    return name if name[:1].isalpha() else f"x{name}"[:40]
 
 
 def read_set(directory):
@@ -552,6 +560,17 @@ def build_docx(root, rest, out_path, title):
             pr.append(bd)
         bd.append(xml(f"w:{edge}", val="single", sz=sz, space="4" if edge == "bottom" else "0", color=colour))
 
+    marks = iter(range(1, 1_000_000))
+
+    def bookmark(paragraph, ident):
+        """Marks the paragraph with the id, so a comment on what follows maps back to it."""
+        if not ident:
+            return
+        n = str(next(marks))
+        start = xml("w:bookmarkStart", id=n, name=bookmark_name(ident))
+        paragraph._p.insert(1 if paragraph._p.pPr is not None else 0, start)
+        paragraph._p.append(xml("w:bookmarkEnd", id=n))
+
     def shade(cell, fill):
         cell._tc.get_or_add_tcPr().append(xml("w:shd", val="clear", color="auto", fill=fill))
 
@@ -796,6 +815,7 @@ def build_docx(root, rest, out_path, title):
                 if inline or not ident:
                     r2 = p.add_run(headline)
                     r2.font.name, r2.font.size, r2.font.bold = UI_FONT, Pt(10), True
+                bookmark(p, ident)
                 fields = [(label(head_field), headline)] if (not inline and ident) else []
                 fields += [(label(k), v) for k, v in one.items()
                            if k not in ("id", head_field) and v is not None and v != []]
@@ -805,6 +825,7 @@ def build_docx(root, rest, out_path, title):
     f = root["front"]
     para("Product requirements document", caps=True, size=8.5, colour=FAINT, space_after=4)
     p = para(f.get("product", title), size=34, bold=True, font=UI_FONT, space_after=6)
+    bookmark(p, f.get("id"))
     p.paragraph_format.line_spacing = 1.0
     bet = str(f.get("summary", {}).get("bet", "")).strip()
     if bet:
@@ -847,6 +868,7 @@ def build_docx(root, rest, out_path, title):
         sec = df.get("section", SECTION_OF_KIND.get(df["kind"], ""))
         para(f"Section {sec}", caps=True, size=8.5, colour=FAINT, space_after=2)
         head = para(df.get("title", ""), style="Heading 1")
+        bookmark(head, df.get("id"))
         head.paragraph_format.space_before = Pt(0)
         border(head._p, "bottom", sz=14, colour="16181D")
         bits = [df.get("status", "draft")]

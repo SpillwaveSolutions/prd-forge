@@ -17,7 +17,7 @@ prd-forge is a Claude Code plugin that interviews a domain expert and writes a p
 ```bash
 claude plugin validate .                     # manifest and hooks module
 claude plugin test .                         # the pane tests, hooks/register.test.tsx
-node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs scripts/prd-wiki.test.mjs
+node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs scripts/prd-wiki.test.mjs scripts/prd-comments.test.mjs
 node --test --test-name-pattern="the 0.4.1 bug" scripts/prd-diagrams.test.mjs   # one test
 
 node scripts/prd-details.mjs docs/prd/prd-forge             # write each body's details block from its front matter
@@ -27,6 +27,9 @@ node scripts/prd-diagrams.mjs docs/prd/prd-forge --check    # report gaps, write
 
 # Export to Word and PDF. python-docx is not installed globally, so run it through uv.
 uv run --with python-docx --with pyyaml python3 scripts/prd_export.py docs/prd/prd-forge
+
+# Read the comments in a reviewed Word export, as JSON
+uv run --with python-docx --with pyyaml python3 scripts/prd_comments.py docs/prd/prd-forge <reviewed.docx>
 
 # Write the set as GitHub Wiki pages into a local clone of the wiki. It never pushes.
 node scripts/prd-wiki.mjs docs/prd/prd-forge <wiki clone directory>
@@ -71,7 +74,7 @@ A PRD is one directory, `<docs_dir>/<slug>/`, of markdown files. Each file has Y
 
 ### The YAML reader is a subset, and two scripts share it
 
-`parseYaml()` in `scripts/prd-validate.mjs` has no dependencies. `scripts/prd-diagrams.mjs` imports it. `prd-validate.test.mjs` compares its output with PyYAML for every shipped document. Keep that test green after any parser change. Inside `{ … }` link mappings, quote a `title` that holds a comma, a colon, or a `#`.
+`parseYaml()` in `scripts/prd-validate.mjs` has no dependencies. `scripts/prd-diagrams.mjs` imports it. `prd-validate.test.mjs` compares its output with PyYAML for every shipped document. Keep that test green after any parser change. Inside `{ … }` link mappings, quote a `title` that holds a comma, a colon, or a `#`. Never name a front-matter field `on`, `off`, `yes`, `no`, `y`, or `n`: PyYAML, which the export uses, reads each one as a boolean key, and the subset reads it as text, so the validator passes a set that the export cannot read.
 
 ### Diagrams
 
@@ -87,7 +90,8 @@ The script renders every source to `.svg` and `.png` and writes the image links 
 - `hooks/register.tsx` registers `/prd` and `/prd-step`, scans for a set, and rescans after a Write or Edit tool call under `docs_dir`. It draws the pane, which has three pages per document: `doc`, `grade`, and `rubric`. A `history` stack drives **Back**. The rubric page reads `skills/prd-wizard/sections/*.md` from `$.plugin.root`.
 - `hooks/markdown.tsx` is the terminal's own Markdown renderer. The terminal's `Markdown` element shows links as `text (url)` where the terminal has no OSC 8 hyperlinks, and it sizes tables to the window, not the pane. This renderer draws IDs as clickable blue text, tables as grids that fit the pane, and wireframe fences unwrapped. Other surfaces use the built-in `Markdown` element with `file:` links.
 - `types/index.d.ts` is the `$.state` contract. Bump the `shape` tag on the `set` atom whenever `PrdSet` changes.
-- A mod command cannot start a model turn. `/prd-q`, which continues an interview, is a prompt command in `commands/prd-q.md`.
+- A mod command cannot start a model turn. `/prd-q`, which continues an interview, is a prompt command in `commands/prd-q.md`. `/prd-comments`, which imports reviewers' Word comments, is one too.
+- The `review-comments` kind is optional: `/prd-comments` creates `17-review-comments.md` on the first import. The export bookmarks each section and item by its id through `bookmark_name()` in `prd_export.py`, and `prd_comments.py` maps each comment back through the same function.
 
 ### Validator rules follow the guides
 

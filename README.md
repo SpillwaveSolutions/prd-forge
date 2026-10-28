@@ -49,6 +49,7 @@ docs/prd/<slug>/
   14-release-plan.md                     section 13
   15-glossary.md                         section 14
   16-change-log.md                       section 15
+  17-review-comments.md                  section 15, only after /prd-comments
 ```
 
 Two worked sets ship with the plugin:
@@ -79,6 +80,7 @@ Commands the mod adds:
 | --- | --- |
 | `/prd [directory]` | Opens the stepper pane on a set, scanning for one if no directory is given |
 | `/prd-step [next\|prev\|first\|last\|<n>]` | Moves the pane to another section |
+| `/prd-comments <file.docx> [directory]` | Brings the comments reviewers left in an exported Word file into the set, each one on the item it marks, then answers them with you one at a time |
 | `/prd-q [directory]` | Continues the PRD: asks the questions still open, one at a time, and writes each answer into the set. Saying "continue the PRD" does the same |
 
 In the pane: `p` previous, `n` next, `r` refresh, `b` back, and a button per section.
@@ -187,6 +189,19 @@ own PRD exported that way. Look at it before you run this on your own set.
 Pass `--docx` or `--pdf` to produce only one of them, so a missing dependency for
 the other does not stop you.
 
+### Bring reviewers' comments back
+
+Each section and each item in the Word file carries a bookmark named by its id.
+When a reviewer comments on the file and sends it back, run
+`/prd-comments <the file>`. It adds each comment to `17-review-comments.md`, on
+the item or section it marks, and skips any comment already imported. You answer
+each one as accepted, declined, or answered, and the next export prints the
+comments with their answers. The reader needs python-docx:
+
+```bash
+uv run --with python-docx --with pyyaml python3 "${CLAUDE_PLUGIN_ROOT}/scripts/prd_comments.py" docs/prd/<slug> <reviewed.docx>
+```
+
 ### Publish the set to the GitHub Wiki
 
 1. On GitHub, open the repository's **Wiki** tab and create any first page. The
@@ -255,7 +270,7 @@ recorded approval.
 ```bash
 claude plugin validate <this directory>
 claude plugin test <this directory>
-node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs scripts/prd-wiki.test.mjs
+node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs scripts/prd-wiki.test.mjs scripts/prd-comments.test.mjs
 node scripts/prd-validate.mjs examples/acme-returns
 tsc -p <this directory>
 ```
