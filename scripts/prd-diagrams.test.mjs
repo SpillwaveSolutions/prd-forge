@@ -69,7 +69,8 @@ test('a journey renders with every awkward name at each hand-off', { skip: !hasM
 })
 
 test('a journey overview draws its top five alternates as decisions, each to where it rejoins', { skip: !hasMmdc }, () => {
-  const stages = HOSTILE.map((actor, i) => ({ id: `ST-00${i + 1}`, name: `Step ${actor}`, actor }))
+  // One actor throughout, except a hand-off into ST-004.
+  const stages = HOSTILE.map((name, i) => ({ id: `ST-00${i + 1}`, name: `Step ${name}`, actor: i === 3 ? HOSTILE[0] : 'Expert' }))
   const journey = { id: 'J-009', trigger: HOSTILE[0], end_state: HOSTILE[1], stages }
   const alt = (n, priority, stage, rejoins) => ({
     id: `SC-00${n}`, journey: 'J-009', variant: 'exception', priority, stage, rejoins, trigger: HOSTILE[n % HOSTILE.length], expected_outcome: HOSTILE[(n + 1) % HOSTILE.length],
@@ -85,6 +86,7 @@ test('a journey overview draws its top five alternates as decisions, each to whe
   assert.equal(renderError(mermaid), '')
   assert.match(mermaid, /ST001 --> qSC004\n {2}qSC004 -->\|no\| qSC002\n {2}qSC002 -->\|no\| ST002/)
   assert.match(mermaid, /SC004 --> stopped/)
+  assert.match(mermaid, /qSC003 -->\|"no, hand-off to [^"]+"\| ST004/)
   assert.match(mermaid, /SC003 -\.->\|rejoins\| ST001/)
   assert.doesNotMatch(mermaid, /^ {2}SC005 -/m, 'a branch with no rejoins ends at its outcome')
   assert.doesNotMatch(mermaid, /SC007|SC008|SC001/)
