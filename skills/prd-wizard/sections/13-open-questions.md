@@ -89,3 +89,10 @@ _The figures, citations and organisations in this example are invented, to show 
 - Say "open question", "decider", "spike", "architecture decision record (ADR)".
 - Write the question so a yes/no or a named value answers it.
 - Say "time-boxed to `<n>` days" on each spike.
+
+## References
+
+These terms come from established practice. Cite them as `../reference/sources.md` says, and state any place where the set's meaning departs.
+
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
+- Spike: "Spike Solutions", in The Art of Agile Development, 1st ed., James Shore and Shane Warden, 3 Jun 2010, https://www.jamesshore.com/v2/books/aoad1/spike_solutions

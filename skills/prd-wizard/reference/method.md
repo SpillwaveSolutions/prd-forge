@@ -116,3 +116,9 @@ The document set on disk is the state. On resume: read the root's
 `links.children`, read each section's front matter, report where things stand
 (`status`, `score`, `blocking` per section), and pick up at the first section
 that is not yet `review`. Never start the interview over.
+
+## References
+
+These terms come from established practice. Cite them as `sources.md` says, and state any place where the set's meaning departs.
+
+- Story map and backbone: "The New User Story Backlog is a Map", Jeff Patton & Associates, 8 Oct 2008, updated 12 Apr 2023, https://www.jpattonassociates.com/the-new-backlog/

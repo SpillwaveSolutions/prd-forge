@@ -93,3 +93,10 @@ _The figures, citations and organisations in this example are invented, to show 
 - Say "in scope", "out of scope", "non-goal", "release line".
 - Say "deferred" with a revisit condition, never "phase 2" with no definition.
 - Write non-goals as "We are not building X" followed by the reason.
+
+## References
+
+These terms come from established practice. Cite them as `../reference/sources.md` says, and state any place where the set's meaning departs.
+
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
+- Story map and backbone: "The New User Story Backlog is a Map", Jeff Patton & Associates, 8 Oct 2008, updated 12 Apr 2023, https://www.jpattonassociates.com/the-new-backlog/

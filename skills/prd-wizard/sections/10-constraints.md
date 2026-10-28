@@ -1,4 +1,4 @@
-# Section 9 — Constraints
+# Section 9. Constraints
 
 **Kind** `constraints` · **Schema** `prd-forge/constraints@1` · **File** `10-constraints.md`
 
@@ -19,7 +19,7 @@ requirement gets prioritised, deferred, and then discovered during an audit.
 - `id`: `C-nnn`.
 - `category`: legal, regulatory, contractual, policy, firm, standard.
 - `statement`: the rule.
-- `authority`: who imposes it — the regulation, the contract clause, the firm
+- `authority`: who imposes it, the regulation, the contract clause, the firm
   policy, by name. "Compliance said so" is not an authority.
 - `applies_to`: requirement, stage or journey ids; absent, or `all`, means
   everywhere. The ids must exist.
@@ -36,6 +36,11 @@ team.
 An appetite, the time the business is willing to spend on this release, may be a
 `policy` constraint when the sponsor sets it (Shape Up). An appetite is a budget
 the business sets before the work, not an estimate of the work.
+
+An empty section is honest when no rule from outside the team binds the product.
+Write `constraints: []` and say so in the body. Do not keep a constraint to fill
+the section: a decision of the team's own goes in section 10 as a decision rule,
+or in section 6 as a non-goal.
 
 A technology mandate the team must use goes in section 11 as a dependency, and on
 the list of candidate architecture decisions for the engineering lead. It never

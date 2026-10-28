@@ -1,6 +1,6 @@
 ---
 name: prd-wizard
-description: Interview a domain expert and turn a product idea into a usable, buildable PRD — a linked set of schema-checked markdown documents graded against rubrics by adversarial reviewers. Use when someone has a product idea, feature idea, or business problem and wants a PRD, product requirements document, product spec, or requirements written; when they ask to refine, review, or continue an existing PRD ("continue the PRD", "continue prd", "what questions are left", /prd-q); or when they need user journeys, personas, functional or non-functional requirements, scope, a release line, or decision rights written down so a development team can build from them. The expert supplies the domain — auditing, transportation, insurance, logistics, healthcare, anything — and this skill supplies the product management.
+description: Interview a domain expert and turn a product idea into a usable, buildable PRD, a linked set of schema-checked markdown documents graded against rubrics by adversarial reviewers. Use when someone has a product idea, feature idea, or business problem and wants a PRD, product requirements document, product spec, or requirements written; when they ask to refine, review, or continue an existing PRD ("continue the PRD", "continue prd", "what questions are left", /prd-q); or when they need user journeys, personas, functional or non-functional requirements, scope, a release line, or decision rights written down so a development team can build from them. The expert supplies the domain (auditing, transportation, insurance, logistics, healthcare, anything), and this skill supplies the product management.
 ---
 
 # PRD wizard
@@ -26,15 +26,15 @@ pane steps through them; `scripts/prd-validate.mjs` checks them.
    and resume at the first section that is not yet `review`. Never restart an
    interview.
 2. **If there is no set**, read `reference/method.md` and `reference/boundaries.md`
-   now. Then establish the domain and the vocabulary — the four questions are in
-   `method.md` — and agree the product name and slug.
+   now. Then establish the domain and the vocabulary (the four questions are in
+   `method.md`), and agree the product name and slug.
 3. **Create all eighteen files** at `status: pending`, with front matter, links,
    and a one-line body saying the section has not been interviewed. The layout,
    the file names, the link rules and worked front matter are in
    `reference/front-matter.md`. Tell the person the set exists and that
    `/prd` opens the stepper pane on it.
-4. **Then work the sections** in the order `method.md` gives — which is not the
-   reading order — one section per pass of the loop below.
+4. **Then work the sections** in the order `method.md` gives, which is not the
+   reading order, one section per pass of the loop below.
 
 ## Continue a PRD: ask the remaining questions
 
@@ -75,7 +75,7 @@ rubric, the blocking-defect list, and the standard wording for that section.
 - **Draft** the front matter and the body. Show the content as prose or a small
   table, not as raw YAML, unless they ask.
 - **Grade** against the rubric. Run the adversarial agents where
-  `reference/grading.md` says to — always for sections 5, 7, 8 and 10.
+  `reference/grading.md` says to, always for sections 5, 7, 8 and 10.
 - **Report** the score, the blocking defects, the weakest dimension, and **one**
   question that would most improve it.
 - **Fix**, re-grade, write the file, update the root's `links.children` status,
@@ -95,7 +95,7 @@ rubric, the blocking-defect list, and the standard wording for that section.
   The conversion table is in `boundaries.md`.
 - **One question at a time.** A wall of questions gets one-line answers.
 - **Push back once, then record.** Their product, their call; note the dissent.
-- **Keep the glossary live** — every domain word goes in as it first appears.
+- **Keep the glossary live.** Every domain word goes in as it first appears.
 - Write files with the Write tool, one document at a time, and run the validator
   after each. Do not batch eighteen writes and hope.
 
@@ -108,6 +108,7 @@ rubric, the blocking-defect list, and the standard wording for that section.
 | `reference/front-matter.md` | Before creating the set, and when writing any document |
 | `reference/grading.md` | Before the first grade, and before any adversarial pass |
 | `reference/backlog.md` | Before section 5 and before declaring the set done |
+| `reference/sources.md` | Before section 14, and whenever a section uses MoSCoW, Given/When/Then, story, epic, feature, story map, backbone, or spike |
 | `sections/00-root.md` … `sections/16-change-log.md` | Before each section's pass |
 | `sections/08-wireframes.md` | After section 7 is drafted, and whenever a requirement is `shown_in` a screen or a report |
 
@@ -151,8 +152,14 @@ journeys, scenarios, the release plan, decision rights, or wireframes.
   python3 "${CLAUDE_PLUGIN_ROOT}/scripts/prd_export.py" <set directory>
   ```
 
-  It writes one Word document and one PDF holding the whole set — a title page,
+  It writes one Word document and one PDF holding the whole set: a title page,
   the executive summary, a contents table carrying each section's grade and
   blocking count, then every section's prose and the full detail of its items.
   Offer it before an approval is sought, since PER-003 reads a handful of pages
   and will not read eighteen markdown files.
+
+## References
+
+These terms come from established practice. Cite them as `reference/sources.md` says, and state any place where the set's meaning departs.
+
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes

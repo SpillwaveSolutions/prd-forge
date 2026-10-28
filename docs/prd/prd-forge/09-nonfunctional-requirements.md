@@ -8,7 +8,7 @@ updated: 2026-10-27
 domain: product management tooling
 section: 8
 order: 90
-score: 82
+score: 86
 blocking: 0
 graded: 2026-10-27
 requirements:
@@ -18,8 +18,8 @@ requirements:
       An expert answering a question does not lose their train of thought waiting
       for the next one.
     metric: >-
-      95th percentile elapsed time from the expert submitting an answer to the next
-      question or the drafted section appearing.
+      95th and 99th percentile elapsed time from the expert submitting an answer
+      to the next question or the drafted section appearing.
     target: under 20 seconds at p95, and under 60 seconds at p99
     measurement: >-
       At least 300 timed observations per release, taken across five scripted runs
@@ -36,8 +36,9 @@ requirements:
       A grading pass does not make the expert wait so long that they stop asking
       for one.
     metric: >-
-      95th percentile elapsed time for one section's grade to be reported, measured
-      per grading pass on the section just drafted.
+      95th percentile elapsed time from the moment a section's draft is written to
+      its grade being reported to the expert, measured from the expert's own side
+      of the conversation, per grading pass on the section just drafted.
     target: under 90 seconds at p95 for a single section
     measurement: >-
       At least 200 grading passes per release, spread across all seventeen section
@@ -51,7 +52,7 @@ requirements:
     statement: >-
       A set stays workable at the size real products reach.
     metric: >-
-      The size of one set at which every requirement in section 7 still passes its
+      The size of one set at which every requirement in section 7 still meets its
       acceptance criteria and every target in this section still holds.
     target: >-
       120 functional requirements, 10 journeys of 10 stages, and 200 glossary terms
@@ -73,7 +74,7 @@ requirements:
       editor, once per release.
     priority: must
     applies_to:
-      - FR-015
+      - all
   - id: NFR-005
     category: usability
     statement: >-
@@ -85,7 +86,7 @@ requirements:
     target: >-
       90% of sections, measured over 10 first-time experts
     measurement: >-
-      Observed sessions with 10 first-time experts before release, questions to the
+      Observed sittings with 10 first-time experts before release, questions to the
       observer counted and categorised.
     priority: must
   - id: NFR-006
@@ -142,25 +143,29 @@ requirements:
   - id: NFR-010
     category: retention
     statement: >-
-      A set remains readable and retrievable for as long as the organisation keeps
-      the specifications it builds from, without this product being involved.
+      A set remains readable and retrievable for as long as the organization keeps
+      the PRDs it builds from, without this product being involved.
     metric: >-
-      Share of a set retrievable and readable from the organisation's own document
+      Share of a set retrievable and readable from the organization's own document
       store, with no part of this product present.
-    target: 100%, for as long as the organisation retains the set; no expiry imposed by us
+    target: 100%, for as long as the organization retains the set; no expiry imposed by us
     measurement: >-
-      Retrieve a set written one release ago from the organisation's own store and
-      read it with a text editor, once per release.
+      Retrieve a set written one release ago from the document store of a test
+      organization, set up for the measurement because no customer organization
+      exists at release, and read it with a text editor, once per release.
     priority: must
     applies_to:
-      - FR-014
+      - all
   - id: NFR-011
     category: availability
     statement: >-
       An interview in progress survives the product being unavailable; no session
       loses an answer the expert has already given.
     metric: >-
-      Answers lost per interruption, and time to resume after one.
+      Answers lost per interruption, and time to resume after one. An
+      interruption is the product becoming unavailable in the middle of a
+      section. The resume clock starts when the product is available again and
+      the expert asks to carry on.
     target: >-
       Zero answers lost, on every interruption; resume within 1 minute at p95 and
       within 3 minutes at p99
@@ -173,16 +178,17 @@ requirements:
   - id: NFR-012
     category: security
     statement: >-
-      Nobody but the people the organisation has already given access to its
+      Nobody but the people the organization has already given access to its
       documents can read a set.
     metric: >-
-      Number of ways to read a set that the organisation's own document access
+      Number of ways to read a set that the organization's own document access
       rules do not govern.
     target: zero
     measurement: >-
-      Enumerate every read path to a set per release and check each against the
-      organisation's own access rules; recorded against the system-of-record
-      non-goal in section 6 and A-005.
+      Enumerate every read path to a set per release, in a test organization set
+      up for the measurement because no customer organization exists at release,
+      and check each against that organization's access rules. Recorded against
+      the system-of-record non-goal in section 6 and A-005.
     priority: must
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
@@ -218,28 +224,32 @@ in bursts weeks apart. If the set is only readable through this product, then a
 version change, a tool change or an expired session destroys weeks of an expert's
 thinking. The target is deliberately absolute.
 
-NFR-005 is the only requirement here that needs people rather than instruments to
-measure, and it is the one most likely to be skipped. It is the direct test of
-whether P-004 was solved.
+NFR-005, NFR-006, NFR-007, NFR-008, and NFR-012 need people rather than
+instruments to measure. NFR-005 is the one most likely to be skipped, and it is
+the direct test of whether P-004 was solved.
 
 NFR-006 covers the approver too, not only the expert: PER-003 reads this once and
 must not need a mouse to do it.
 
 There is no concurrency target, and that is a decision rather than an omission.
 Under D-001 the product reaches one expert inside a session they are already in,
-so simultaneous users are the host's load and not ours; NFR-003 therefore reads
+so the session, not the product, carries simultaneous users; NFR-003 therefore reads
 scale as the size of one set, which is the dimension we do control. If D-001 or the
 separate-application non-goal in section 6 ever changes, concurrency comes back
 and this paragraph goes.
 
 NFR-006 and NFR-012 set targets on things the non-goals in section 6 say we do not own: what
-the host renders, and where the customer keeps its documents. They are kept as
+the session renders, and where the customer keeps its documents. They are kept as
 `must` because a target nobody owns is how accessibility and access control get
-lost; who owns them is Q-011.
+lost. Who owns them is Q-017 for NFR-006 and Q-021 for NFR-012.
 
 NFR-010, NFR-011 and NFR-012 were added at version 0.2.0. Retention, availability
 and security had simply not been reached, and C-003, now assumption A-005, stated
 a retention rule that no measurable requirement stood behind. NFR-010 is the one
 that answers A-005's second half: the product retains nothing of its own, so the only retention
-question is how long the organisation keeps the documents, and the answer must be
+question is how long the organization keeps the documents, and the answer must be
 that we impose no expiry on them.
+
+NFR-011 waits on Q-010, whether an answer must survive the end of the session
+before its section is drafted, and NFR-007 waits on Q-016, whether a grade must
+show the rubric version it was made against.

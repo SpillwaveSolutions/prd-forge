@@ -8,22 +8,23 @@ updated: 2026-10-26
 domain: product management tooling
 section: 7
 order: 85
-score: 88
+score: 91
 blocking: 0
-graded: 2026-10-26
+graded: 2026-10-27
 wireframes:
   - id: WF-001
     title: The set with one section open
     type: screen
     persona: PER-001
     journey_stage: ST-003
-    illustrates: [FR-002, FR-008, FR-017, FR-018]
+    illustrates: [FR-002, FR-008, FR-017, FR-018, FR-020]
     shows:
       - Where they are in the set, the section's state, and its grade
       - Next, previous, refresh, and back to the view before
       - Each section's grade and blocking count; opening it shows why
       - The section itself, as prose
       - An ID that another section defines opens that section
+      - Each place where the set states one id, priority, or link two ways, with both values, and each place can be followed
   - id: WF-002
     title: A new set, before the first interview
     type: screen
@@ -63,11 +64,11 @@ wireframes:
     journey_stage: ST-005
     illustrates: [FR-012]
     shows:
-      - Which version of the set was reviewed, and the verdict
+      - Which version of the set the buildability review read, and the verdict
       - Each release-line stage, covered or a gap
       - Each requirement an engineer could not test, quoted
       - An open question that blocks a must, its decider and date
-      - What the reviewer would ask for first
+      - What the buildability review would ask for first
   - id: WF-006
     title: What the approver is asked to approve
     type: report
@@ -86,6 +87,7 @@ wireframes:
     type: screen
     persona: PER-001
     journey_stage: ST-001
+    state_of: WF-001
     illustrates: [FR-018]
     shows:
       - That nothing has been started
@@ -106,6 +108,7 @@ wireframes:
     type: report
     persona: PER-001
     journey_stage: ST-005
+    state_of: WF-005
     illustrates: [FR-012]
     shows:
       - The verdict
@@ -116,7 +119,8 @@ wireframes:
     type: screen
     persona: PER-001
     journey_stage: ST-004
-    illustrates: [FR-002, FR-009]
+    state_of: WF-001
+    illustrates: [FR-002, FR-009, FR-015, FR-017, FR-018]
     shows:
       - Where they stopped
       - Every section's grade and blocking count
@@ -146,13 +150,13 @@ review that finds gaps, which SC-005 names; and the return after a week away,
 which SC-002 names.
 
 The numbered marks in each sketch are explained, in order, by its `shows` list.
-Each sketch is also drawn in PlantUML Salt for the printed PRD.
+Each sketch is also drawn for the printed PRD.
 
 ## WF-001 The set with one section open
 
-Illustration, not a design. Illustrates FR-002, FR-008, FR-017, and FR-018. PER-001 sees it at ST-003.
+Illustration, not a design. Illustrates FR-002, FR-008, FR-017, FR-018, and FR-020. PER-001 sees it at ST-003.
 
-The expert reads a drafted section with the whole set beside it. Every graded section shows its score and its blocking count, so what is weak is visible without opening anything.
+The expert reads a drafted section with the whole set beside it. Every graded section shows its score and its blocking count, so what is weak is visible without opening anything. When two places in the set state one id, priority, or link differently, mark 6 lists each difference with both values. The difference drawn is an example, not a fact of this set.
 
 ```wireframe
 ┌─ prd-forge ──────────────────────────────────────────┐
@@ -160,8 +164,10 @@ The expert reads a drafted section with the whole set beside it. Every graded se
 │ [ < Prev ] [ Next > ] [ Refresh ] [ Back ] <2>       │
 ├──────────────────────────────────────────────────────┤
 │   Problem and opportunity      draft                 │
+│   …                                                  │
 │   User journeys                88 · 0 blocking <3>   │
 │   Scenarios                    draft                 │
+│   Scope                        draft                 │
 │ > Functional requirements      84 · 0 blocking       │
 │   Wireframes                   84 · 0 blocking       │
 │   …                                                  │
@@ -170,8 +176,11 @@ The expert reads a drafted section with the whole set beside it. Every graded se
 │ ───────────────────────                              │
 │ FR-017. The domain expert can move from the section  │
 │ in front of them to any other section without        │
-│ losing their place. See FR-009 › <5>                 │
+│ losing their place. See Q-009 › <5>                  │
 │ …                                                    │
+├──────────────────────────────────────────────────────┤
+│ Differs <6>                                          │
+│ FR-020 stage: ST-003 here, ST-002 in section 6 ›     │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -262,7 +271,7 @@ A grade against a stated standard is only fair if the expert can read the standa
 
 Illustration, not a design. Illustrates FR-012. PER-001 sees it at ST-005.
 
-The expert reads this before anyone has estimated anything, while a fix is still a sentence. Every finding quotes the set, so the expert can check it rather than trust it.
+The values are prd-forge's own at version 0.4.0, a snapshot. The expert reads this before anyone has estimated anything, while a fix is still a sentence. Every finding quotes the set, so the expert can check it rather than trust it.
 
 ```wireframe
 ┌─ What a team could not build from this set ──────────┐
@@ -275,15 +284,15 @@ The expert reads this before anyone has estimated anything, while a fix is still
 │ …                                                    │
 ├──────────────────────────────────────────────────────┤
 │ Cannot write a test from <3>                         │
-│ 1. FR-018: "shown without them asking", no time      │
-│ 2. FR-008: "in sentences and short tables"           │
+│ 1. FR-004: "two ways differing in meaning", no judge │
+│ 2. FR-014: no test for a rejection                   │
 ├──────────────────────────────────────────────────────┤
 │ Blocked by an open question <4>                      │
-│ Q-009 blocks FR-012: where the rubric lives.         │
+│ Q-009 blocks FR-012: which rubric version applies.   │
 │ Richard Hightower, by 2027-01-31                     │
 ├──────────────────────────────────────────────────────┤
 │ Ask for first <5>                                    │
-│ 1. A time limit for FR-018                           │
+│ 1. Who judges FR-004's two meanings                  │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -293,7 +302,7 @@ The expert reads this before anyone has estimated anything, while a fix is still
 
 Illustration, not a design. Illustrates FR-013 and FR-014. PER-003 sees it at ST-006.
 
-The approver reads one document, not eighteen. It says what they are committing to, what is still open and who owns it, and where their decision is recorded.
+The values are prd-forge's own at version 0.4.0, a snapshot. The approver reads one document, not eighteen. It says what they are committing to, what is still open and who owns it, and where their decision is recorded.
 
 ```wireframe
 ┌─ prd-forge PRD ──────────────────────────────────────┐
@@ -350,7 +359,7 @@ After one answer the section is graded again against the same rubric. Both score
 ```wireframe
 ┌─ User journeys: re-graded ───────────────────────────┐
 │ 78  →  88 <1>                                        │
-│ Same rubric, ten dimensions <2>                      │
+│ Same rubric, twelve dimensions <2>                   │
 ├──────────────────────────────────────────────────────┤
 │ Changed: ST-003 now names its decision <3>           │
 ├──────────────────────────────────────────────────────┤
@@ -367,7 +376,7 @@ After one answer the section is graded again against the same rubric. Both score
 
 Illustration, not a design. Illustrates FR-012. PER-001 sees it at ST-005.
 
-SC-005 is the review that finds work missing: two release-line stages have no must requirement behind them. The gaps are named first, before anything else in the review.
+SC-005 is the buildability review that finds work missing: two release-line stages have no must requirement behind them. The gaps are named first, before anything else in the buildability review.
 
 ```wireframe
 ┌─ What a team could not build from this set ──────────┐
@@ -386,7 +395,7 @@ SC-005 is the review that finds work missing: two release-line stages have no mu
 
 ## WF-010 Resuming a set after a week away
 
-Illustration, not a design. Illustrates FR-002 and FR-009. PER-001 sees it at ST-004.
+Illustration, not a design. Illustrates FR-002, FR-009, FR-015, FR-017, and FR-018. PER-001 sees it at ST-004.
 
 SC-002 is the expert who returns after eight days and remembers nothing. The values are prd-forge's own at version 0.1.0, when section 7 scored 84 with two blocking defects: a grade of 70 or more that is still not offered as ready.
 

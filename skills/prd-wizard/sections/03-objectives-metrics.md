@@ -94,3 +94,9 @@ _The figures, citations and organisations in this example are invented, to show 
 - Say "baseline" and "target", not "current state" and "goal state".
 - Say "leading indicator" / "lagging indicator" where the distinction matters.
 - Write metrics as "median/95th percentile `<unit>` from `<event>` to `<event>`".
+
+## References
+
+These terms come from established practice. Cite them as `../reference/sources.md` says, and state any place where the set's meaning departs.
+
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes

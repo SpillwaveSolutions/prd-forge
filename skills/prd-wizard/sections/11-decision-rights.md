@@ -127,3 +127,10 @@ _The figures, citations and organisations in this example are invented, to show 
   otherwise it means nothing.
 - Say "four-eyes" or "segregation of duties" where the domain uses those terms.
 - Write rules as "`<role>` approves `<decision>`; `<role>` may not".
+
+## References
+
+These terms come from established practice. Cite them as `../reference/sources.md` says, and state any place where the set's meaning departs.
+
+- Given/When/Then: "Introducing BDD", Dan North, 20 Sep 2006, https://dannorth.net/blog/introducing-bdd/
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes

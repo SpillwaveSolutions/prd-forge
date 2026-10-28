@@ -1,25 +1,27 @@
 ---
 doc: ../04-personas.md
-score: 68
+score: 89
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 68
+previous_score: 93
 ---
 
-# Why users and personas scored 68
-
-The blocking defect is gone: PER-002 is now the actor of ST-009 in J-002.
+# Why personas scored 89
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Role naming | 2 | Job titles with no organization or seniority, and one joins two roles: "Sponsor or approver". |
-| Goals | 4 | In the persona's voice: "Stop being asked the same question by four different engineers". |
-| Pains | 3 | Specific, but no persona has `problems`, so the link to section 1 is never recorded. |
-| Frequency | 2 | "Reads a given PRD a handful of times, intensively"; no `population`. |
-| Authority | 3 | Stated for all four, but the body table contradicts the front matter on PER-001. |
-| External users | 1 | No persona has `external`, although segment S-001 works from "client domain knowledge". |
-| Count | 4 | Four personas, each in a journey. |
+| Role naming | 3 | PER-001's name says senior product manager, but its proficiency says it does not know the word "persona". PER-004 has no seniority. |
+| Goals | 4 | Every goal is in the first person and the persona's own words. |
+| Pains | 3 | PER-004's "Stories that trace to nothing" does not trace to P-002. |
+| Frequency | 3 | `population` counts PRDs, not people. The break length that NFR-004 rests on has three values: weeks, months, and a week. |
+| Authority | 4 | Stated for all four personas and matches section 10. |
+| External users | 4 | Considered, with a reason. |
+| Count | 4 | Four personas, each in section 5. |
+
+## Weakest dimension
+
+Role naming: the primary persona is two people under one name.
 
 ## Blocking defects
 
@@ -27,7 +29,12 @@ None.
 
 ## How to raise the grade
 
-- **External users (1 to 4):** Set `external` on every persona, and say which roles sit with the client in a consultancy engagement.
-- **Role naming and frequency (2 to 4):** Add organization and seniority, split "Sponsor or approver", and give counts and `population`.
-- **Pains (3 to 4):** Add `problems` and `basis` to each persona.
-- **Authority (3 to 4):** Make the body table match the front matter and TR-001.
+- **Role naming (3 to 4):** Make PER-001's proficiency match its name, and give PER-004 a seniority.
+- **Frequency (3 to 4):** Count people in `population`, and give one break length.
+- **Pains (3 to 4):** Link PER-004's untraced-stories pain to the right problem.
+
+## Notes
+
+- PER-001's basis says ten sittings; D-002 is ten experts.
+- PER-003's basis cites Q-005, which tests one requirement's priority.
+- PER-001's authority cites no TR ids.

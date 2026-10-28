@@ -137,3 +137,11 @@ service name.
 - Say `must` / `should` / `could` / `won't` (MoSCoW), or RFC 2119 MUST/SHOULD if
   your organisation already uses it — pick one and say which in the glossary.
 - One requirement, one sentence, one verb.
+
+## References
+
+These terms come from established practice. Cite them as `../reference/sources.md` says, and state any place where the set's meaning departs.
+
+- MoSCoW: "What is MoSCoW Prioritization?", Agile Business Consortium, https://www.agilebusiness.org/?p=1907
+- Given/When/Then: "Introducing BDD", Dan North, 20 Sep 2006, https://dannorth.net/blog/introducing-bdd/
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes

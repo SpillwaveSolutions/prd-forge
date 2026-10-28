@@ -8,43 +8,49 @@ updated: 2026-10-27
 domain: product management tooling
 section: 6
 order: 70
-score: 79
+score: 92
 blocking: 0
 graded: 2026-10-27
 release: REL-001, single-expert PRD authoring
 release_line: >-
   ST-001 through ST-006 for one expert writing one PRD with one golden-thread
-  journey. The expert reaches an approved set that a buildability review has
-  passed, without leaving the conversation they started in.
+  journey. The expert reaches J-001's end state: the set approved at a named
+  version, every section graded with no blocking defects, every open question
+  with a decider and a date, and no buildability gap that is neither closed nor
+  owned. ST-006 happens outside the product.
 in_scope:
   - id: IN-001
     summary: >-
-      State the idea, establish the domain and vocabulary, and create a set with
-      every section visible and honestly marked as not started
+      State the idea and the domain's vocabulary once, and see every section of
+      the set and its state
     journey_stage: ST-001
     requirements:
       - FR-001
       - FR-002
-      - FR-015
   - id: IN-002
     summary: >-
-      Teach a section, then interview on it one or two questions at a time, in the
-      expert's own vocabulary
+      Be taught each section before its interview, be asked one or two questions
+      at a time with follow-ups, end a section early with its gaps recorded, and
+      stop being asked once the section would meet the gate
     journey_stage: ST-002
     requirements:
       - FR-003
       - FR-004
       - FR-005
+      - FR-019
   - id: IN-003
     summary: >-
-      Never record an invented domain fact, and convert a stated technology into
-      the need beneath it
+      Record no invented domain fact, and convert a stated technology into the
+      need beneath it, kept for the engineering lead
     journey_stage: ST-002
     requirements:
       - FR-006
       - FR-007
   - id: IN-004
-    summary: Show the draft as prose, with its grade and every blocking defect named
+    summary: >-
+      Read the draft as prose with its grade and every blocking defect, refute a
+      finding, move to any section, refresh to see a change, and be told when the
+      set states one item two ways
     journey_stage: ST-003
     requirements:
       - FR-008
@@ -52,54 +58,72 @@ in_scope:
       - FR-016
       - FR-017
       - FR-018
+      - FR-020
   - id: IN-005
-    summary: Ask one question that most improves the section, and re-grade after it
+    summary: >-
+      Answer one question about the weakest part, see the section re-graded
+      against the same rubric, and resume after a break without repeating an
+      answer
     journey_stage: ST-004
     requirements:
       - FR-010
       - FR-011
+      - FR-015
   - id: IN-006
-    summary: Review the whole set as a builder would, and report what cannot be built
+    summary: >-
+      Get a buildability review of the whole set, read as an engineer would, and
+      see which release-line stages no requirement covers and which requirements
+      cannot be tested
     journey_stage: ST-005
     requirements:
       - FR-012
   - id: IN-007
-    summary: Record an approval, with conditions, against a named version
+    summary: >-
+      Let the expert name each approver, give the sponsor one document with the
+      summary, the scope, the grades, and the open questions, and let the expert
+      record the sponsor's decision, given outside the product, with any
+      conditions, against a named version
     journey_stage: ST-006
     requirements:
       - FR-013
       - FR-014
+      - FR-021
 out_of_scope:
   - id: OUT-001
     summary: >-
       Deriving features, epics and stories from the approved PRD - journey J-002
     revisit: >-
-      Release 2. The PRD must already carry what J-002 needs, which FR-012 checks,
-      so nothing is lost by deferring the derivation itself.
+      REL-002. The PRD must already carry what J-002 needs, which FR-012 checks,
+      and nothing is lost by deferring the derivation itself.
   - id: OUT-002
     summary: >-
       More than one expert working on the same set at the same time
     revisit: >-
-      Once a single expert's path is proven on three real engagements.
+      Once the single-expert path is proven: three real engagements have each
+      reached an approved set that passed the buildability review on first
+      submission.
   - id: OUT-004
     summary: >-
       An engineering lead reading the set and recording their own confirmation that
       it can be built from
     revisit: >-
-      Release 2, with J-002. Release 1 gives the expert the buildability report
-      (FR-012) so the gaps are found before anyone estimates; a named lead's own
-      confirmation is a second person's time, which R1 does not ask for.
+      REL-002, with J-002. REL-001 gives the expert the buildability review
+      (FR-012), and the gaps are found before anyone estimates. A named lead's own
+      confirmation is a second person's time, which REL-001 does not ask for.
   - id: OUT-003
     summary: >-
       Any view of the document set other than reading the documents themselves and
       stepping through them beside the conversation
     revisit: >-
-      When an approver asks for one; PER-003 reads a handful of pages, which the
-      documents already are.
+      When at least two of the three sponsors in Q-005's spike say the root
+      document is not enough to decide. Until then the sponsor reads one
+      document, the root document, which FR-013 says carries everything they
+      need.
 non_goals:
   - >-
     We are not supplying domain knowledge. The expert has it; this product
-    supplies product management. A user who lacks the domain is not served.
+    supplies product management. A user who lacks the domain is not served,
+    including a product team entering a domain it does not know.
   - >-
     We are not deciding scope, priority, or whether the product should be built.
     The expert decides; the product makes the consequences visible.
@@ -112,24 +136,24 @@ non_goals:
       is plain text documents the organization stores wherever it already stores
       documents.
     reason: >-
-      A product decision by Richard Hightower, recorded at 0.1.0 as C-002 and
-      moved here from section 9 at 0.8.1.
+      The organization already stores and approves documents, and a PRD in plain
+      text stays readable with no part of this product running (NFR-004).
   - statement: >-
       We are not building a separate application. The expert has nothing to open,
       install, or log into beyond the session they are already working in.
     reason: >-
-      A product decision by Richard Hightower, recorded at 0.1.0 as C-001 and
-      moved here from section 9 at 0.8.1. The session it needs is dependency
-      D-001 in section 11.
-  - statement: >-
-      We are not targeting product teams entering a domain they do not know in
-      release 1.
-    reason: >-
-      They already employ the product skill and want the domain, which prd-forge
-      does not supply. This was segment S-003 in section 2 until 0.8.1.
+      The expert works in short bursts weeks apart (section 4), and a second place
+      to open would split that work in two. The session they already use is
+      dependency D-001 in section 11.
   - >-
     We are not certifying a PRD. A grade is evidence for the expert's judgement,
     never a warrant that the product will succeed.
+outside_product:
+  - stage: ST-006
+    workaround: >-
+      The sponsor reads the root document or an exported copy and gives a
+      decision. The expert records it in section 15 under FR-014, with the
+      sponsor's name, role, and date.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-scenarios, kind: scenarios, path: ./06-scenarios.md, title: Scenarios }
@@ -140,26 +164,33 @@ links:
 
 ## Release line
 
-ST-001 through ST-006 for one expert, one PRD, one golden-thread journey.
+ST-001 through ST-006 for one expert, one PRD, one golden-thread journey. The
+expert reaches J-001's end state: the set approved at a named version, every
+section graded with no blocking defects, every open question with a decider and
+a date, and no buildability gap that is neither closed nor owned.
+
+ST-006 happens outside the product in REL-001. The sponsor reads the root
+document or an exported copy and gives a decision. The expert records it in
+section 15 under FR-014, with the sponsor's name, role, and date.
 
 | ID | In scope | Stage | Requirements |
 | --- | --- | --- | --- |
-| IN-001 | Idea, domain, vocabulary, a visible empty set, and resumption | ST-001 | FR-001, FR-002, FR-015 |
-| IN-002 | Teach then interview, in their vocabulary | ST-002 | FR-003, FR-004, FR-005 |
-| IN-003 | No invented facts; convert technology talk | ST-002 | FR-006, FR-007 |
-| IN-004 | Draft as prose, with grade, blocking defects, and refutable findings, reached from any section | ST-003 | FR-008, FR-009, FR-016, FR-017, FR-018 |
-| IN-005 | One question, then re-grade | ST-004 | FR-010, FR-011 |
-| IN-006 | Buildability review of the whole set | ST-005 | FR-012 |
-| IN-007 | Approval recorded against a version | ST-006 | FR-013, FR-014 |
+| IN-001 | State the idea and vocabulary once, and see every section and its state | ST-001 | FR-001, FR-002 |
+| IN-002 | Be taught each section, be asked one or two questions at a time, end early with gaps recorded, and stop once it would meet the gate | ST-002 | FR-003, FR-004, FR-005, FR-019 |
+| IN-003 | Record no invented fact, and convert a stated technology into the need beneath it | ST-002 | FR-006, FR-007 |
+| IN-004 | Read the draft with its grade, refute a finding, move to any section, refresh, and see one item stated two ways | ST-003 | FR-008, FR-009, FR-016, FR-017, FR-018, FR-020 |
+| IN-005 | Answer one question, see the section re-graded, and resume without repeating an answer | ST-004 | FR-010, FR-011, FR-015 |
+| IN-006 | See which release-line stages no requirement covers and which requirements cannot be tested | ST-005 | FR-012 |
+| IN-007 | Name each approver, give the sponsor one document, and let the expert record their decision against a named version | ST-006 | FR-013, FR-014, FR-021 |
 
-## Out of scope for R1
+## Out of scope for REL-001
 
 | ID | Out of scope | Revisit |
 | --- | --- | --- |
-| OUT-001 | Deriving the backlog (J-002) | R2; the PRD already carries what it needs |
-| OUT-002 | Two experts on one set at once | After three real engagements |
-| OUT-003 | Any view beyond reading the documents and stepping through them beside the conversation | When an approver asks |
-| OUT-004 | An engineering lead's own recorded confirmation | R2, with J-002 |
+| OUT-001 | Deriving the backlog (J-002) | REL-002; the PRD already carries what it needs |
+| OUT-002 | Two experts on one set at once | When three real engagements have each passed the buildability review on first submission |
+| OUT-003 | Any view beyond reading the documents and stepping through them beside the conversation | When two of the three sponsors in Q-005's spike say the root document is not enough |
+| OUT-004 | An engineering lead's own recorded confirmation | REL-002, with J-002 |
 
 ## Non-goals
 
@@ -168,9 +199,8 @@ ST-001 through ST-006 for one expert, one PRD, one golden-thread journey.
 | Supplying domain knowledge | The expert has it; the product supplies product management |
 | Deciding scope, priority, or whether to build | The expert decides; the product shows the consequences |
 | A backlog's tasks, subtasks, estimates, or sizing | They come from engineering design, not from a PRD |
-| Replacing the document store, issue tracker, or approval system, or being the system of record | Product decision, 0.1.0 (was C-002) |
-| A separate application to open, install, or log into | Product decision, 0.1.0 (was C-001); the session is D-001 |
-| Product teams entering a domain they do not know, in release 1 | They want the domain, which prd-forge does not supply (was S-003) |
+| Replacing the document store, issue tracker, or approval system, or being the system of record | The organization already stores and approves documents, and the PRD stays readable with no part of this product running (NFR-004) |
+| A separate application to open, install, or log into | The expert works in short bursts, and a second place to open would split the work (D-001) |
 | Certifying a PRD | A grade is evidence for the expert's judgement, never a warrant |
 
 The first is the one that defines the product: **we do not supply domain
@@ -178,6 +208,6 @@ knowledge.** Someone without the domain is not served by this and should not buy
 it. The last is the one that protects its users: **a grade is evidence, not a
 warrant.** A high score on a PRD for the wrong product is still the wrong product.
 
-Three non-goals moved here at 0.8.1. The system-of-record and separate-application
-non-goals were constraints C-002 and C-001 in section 9, and the non-goal on
-product teams new to a domain was segment S-003 in section 2.
+Two non-goals were constraints C-002 and C-001 in section 9 until 0.8.1. Product
+teams new to a domain, once segment S-003 in section 2, fall under the first
+non-goal: the product never supplies the domain.

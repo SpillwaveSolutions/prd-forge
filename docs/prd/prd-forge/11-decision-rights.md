@@ -8,7 +8,7 @@ updated: 2026-10-27
 domain: product management tooling
 section: 10
 order: 110
-score: 88
+score: 91
 blocking: 0
 graded: 2026-10-27
 decisions:
@@ -22,21 +22,26 @@ decisions:
       The summary, the scope, every section's state and grade, every blocking
       defect, and every open question with its decider and date.
     escalation: >-
-      No substitute approver, and approval waits. Where no sponsor exists at all —
-      a solo expert, or an internal tool with no PER-003 — the expert approves
+      No substitute approver, and approval waits. Where no sponsor exists at all,
+      such as a solo expert or an internal tool with no PER-003, the expert approves
       their own set under this rule, shown the same evidence, and the change log
       records that no separate approver existed. A set is never treated as approved
-      because its score is high.
+      because its score is high. A rejection goes back to the expert with its
+      reason, and the set reads as not approved until a later version is
+      approved.
     acceptance:
       - >-
         Given a set with any blocking defect, when approval is sought, then the
-        approver is shown the defects and the set is not presented as ready.
+        approver is shown the defects and the set is not presented as fit to approve.
       - >-
         Given a set with no recorded approval, when anyone reads its state, then it
         reads as not approved, whatever its scores are.
       - >-
         Given an engagement with no sponsor, when the expert approves their own
         set, then the approval records that no separate approver existed.
+      - >-
+        Given an approver who rejects the set, when the decision is recorded, then
+        the rejection carries its reason, and the set reads as not approved.
       - >-
         Given an approver who approves with conditions, when the approval is
         recorded, then each condition names the open question or requirement it
@@ -63,25 +68,26 @@ decisions:
         Given an override, when it is applied, then the change log records that it
         was an override and the score at the time.
   - id: TR-003
-    decision: Accept or refute a section's score against its rubric
+    decision: Produce a section's score and findings against its rubric
     stages: [ST-003]
     approver: PER-001
     delegable_to_agent: true
     never_delegated: false
+    agent_role: proposes
     evidence_required: >-
       The rubric's dimensions and a quotation from the document for every score
       below full marks.
     escalation: >-
-      The expert may refute any finding by pointing at the document; a finding the
-      document does not support is dropped (FR-016). While the expert is away a
-      grade stands unaccepted, and the section does not advance.
+      The score runs by itself after each draft, and nobody has to start it. The
+      score does not count until the expert accepts it under TR-014, and a finding
+      the document does not support is dropped (FR-016).
     acceptance:
+      - >-
+        Given a section that has just been drafted, when the draft is written,
+        then its score and findings are produced without anyone asking for them.
       - >-
         Given a score below full marks on a dimension, when it is reported, then a
         quotation from the document is given for it.
-      - >-
-        Given a finding the expert refutes and the document does not support, when
-        it is checked, then it is dropped and the expert is told it was dropped.
   - id: TR-004
     decision: Decide what the product is for and what is out of scope
     stages: [ST-001]
@@ -128,6 +134,7 @@ decisions:
     approver: PER-002
     delegable_to_agent: true
     never_delegated: false
+    agent_role: proposes
     evidence_required: >-
       The release line, the requirements covering each stage, and a quotation for
       every gap claimed.
@@ -197,20 +204,20 @@ decisions:
         chooses to move on, then it is written at `draft` and what was left behind
         is recorded as an open question or named plainly to them.
   - id: TR-010
-    decision: Decide the set is ready to be offered for approval
+    decision: Decide the set may be offered for approval
     stages: [ST-005]
     approver: PER-001
     delegable_to_agent: false
     never_delegated: true
     evidence_required: >-
       Every section's state and grade, every blocking defect, and the buildability
-      report's gaps with, for each, whether it is closed or owned.
+      review's gaps with, for each, whether it is closed or owned.
     escalation: >-
       None, and no substitute. The expert offers the set; nobody offers it for
       them.
     acceptance:
       - >-
-        Given a buildability gap that is neither closed nor given an owner and a
+        Given a buildability gap that is neither closed nor given a decider and a
         date, when the expert offers the set for approval, then that gap is stated
         to them first.
       - >-
@@ -222,17 +229,22 @@ decisions:
     approver: PER-004
     delegable_to_agent: true
     never_delegated: false
+    agent_role: proposes
     evidence_required: >-
       Whether a golden thread exists, and which release-line stages have
       requirements behind them.
     escalation: >-
-      The delivery lead's own judgement stands over any reported verdict; where
-      they are unavailable the workshop waits rather than proceeding without a
-      backbone.
+      The delivery lead's own judgement stands over any reported verdict, and an
+      override is recorded with its reason. Where they are unavailable the
+      workshop waits rather than proceeding without a backbone.
     acceptance:
       - >-
         Given a set with no journey, when the check runs, then it reports that a
         backlog cannot be derived, and names that as the reason.
+      - >-
+        Given a reported verdict the delivery lead disagrees with, when they
+        record their own, then their verdict stands and the override and its
+        reason are recorded beside the report.
   - id: TR-012
     decision: Decide which epics come first
     stages: [ST-008]
@@ -270,6 +282,32 @@ decisions:
         Given an expert who corrects a drafted section, when the correction is
         applied, then it is their words that are kept, and the section is graded
         again before it advances.
+  - id: TR-014
+    decision: Accept or refute a section's score
+    stages: [ST-003]
+    approver: PER-001
+    delegable_to_agent: false
+    never_delegated: true
+    evidence_required: >-
+      The score, each finding with the quotation behind it, and the section's
+      weakest part. The product asks as soon as the score is produced, so the
+      expert's only action is to accept or to refute.
+    escalation: >-
+      None, and no substitute. While the expert is away the score waits,
+      unaccepted, and the section does not advance. Nobody accepts a score on the
+      expert's behalf.
+    acceptance:
+      - >-
+        Given a score that has just been produced, when the expert sees it, then
+        they are asked whether they accept it or refute it, and need take no
+        other action.
+      - >-
+        Given an expert who accepts a score, when they accept it, then the
+        acceptance is recorded and the section may advance on that score.
+      - >-
+        Given an expert who refutes a finding, when they give their reason, then
+        the refutation and the reason are recorded, and the finding is checked
+        against the document under FR-016.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-constraints, kind: constraints, path: ./10-constraints.md, title: Constraints }
@@ -280,43 +318,50 @@ links:
 
 ![Who decides what](diagrams/decision-rights.svg)
 
-| ID | Decision | Approver | Agent may decide | Never delegated |
+| ID | Decision | Decider | Agent may decide | Never delegated |
 | --- | --- | --- | --- | --- |
 | TR-001 | Approve a PRD for a release | PER-003 | no | yes |
 | TR-002 | Set a section to final | PER-001 | no | yes |
-| TR-003 | Accept or refute a section's score | PER-001 | **yes** | no |
+| TR-003 | Produce a section's score and findings | PER-001 | **yes** | no |
 | TR-004 | Decide scope | PER-001 | no | yes |
 | TR-005 | State a domain fact as true | PER-001 | no | yes |
 | TR-006 | Judge buildability, and report the gaps | PER-002 | **yes** | no |
 | TR-007 | Decide the domain's own terms | PER-001 | no | yes |
 | TR-008 | Decide a section's interview is finished | PER-001 | no | yes |
 | TR-009 | Decide a section may be left at draft | PER-001 | no | yes |
-| TR-010 | Decide the set is ready to offer for approval | PER-001 | no | yes |
+| TR-010 | Decide the set may be offered for approval | PER-001 | no | yes |
 | TR-011 | Decide a backlog can be mapped | PER-004 | **yes** | no |
 | TR-012 | Decide which epics come first | PER-004 | no | yes |
 | TR-013 | Accept or correct a drafted section | PER-001 | no | yes |
+| TR-014 | Accept or refute a section's score | PER-001 | no | yes |
 
 Every decision named in a stage of section 5 appears here. TR-007 to TR-013 were
 added at version 0.2.0 to close that: five release-line stage decisions and both
 of J-002's had no rule, which meant gates an engineering team would have had to
-invent. TR-013 covers the one in the middle of the loop — the expert accepting
-that a draft says what they meant — which is distinct from scoring it (TR-003),
+invent. TR-013 covers the one in the middle of the loop, the expert accepting
+that a draft says what they meant, which is distinct from scoring it (TR-003),
+from accepting or refuting the score (TR-014),
 from leaving it at draft (TR-009) and from setting it final (TR-002).
+
+TR-001's decider is the sponsor's role, PER-003. FR-021 names the person: before
+a set is offered for approval, the expert names each approver by name and role,
+and only a named approver's decision counts as an approval.
 
 ## The shape of the trust boundary
 
-Only three of thirteen are delegable, and all three are **assessments**, not
+Only three of fourteen are delegable, and all three are **assessments**, not
 decisions:
-TR-003 produces a document's score, TR-006 judges whether it can be built from, and TR-011
+TR-003 produces a document's score, which the expert then accepts or refutes
+under TR-014, TR-006 judges whether it can be built from, and TR-011
 judges whether a backlog can be mapped from it. All three produce evidence for a
 person. None changes a document, and none can set a state.
 
-Everything that commits anyone to anything — approving, finalising, choosing
-scope, asserting a fact — is never delegated. TR-005 is the strictest: a fact
+Everything that commits anyone to anything, such as approving, finalising,
+choosing scope, or asserting a fact, is never delegated. TR-005 is the strictest: a fact
 nobody can stand behind is not written at all, by anyone.
 
 The delegable assessments all carry the same two obligations: **quote the
 document for every claim**, and **drop any finding the document does not
 support**. An assessment that cannot be refuted by pointing at the text is not
-evidence, it is an assertion, and the expert will correctly stop believing it —
-see R-002 in section 11.
+evidence, it is an assertion, and the expert will correctly stop believing it.
+See R-002 in section 11.

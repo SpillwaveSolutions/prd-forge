@@ -98,3 +98,10 @@ _The figures, citations and organisations in this example are invented, to show 
 - Score as "likelihood × impact", each low/medium/high; do not invent a 1–25 score
   unless your organisation governs one.
 - Say "blocked by" / "blocks", and name ids.
+
+## References
+
+These terms come from established practice. Cite them as `../reference/sources.md` says, and state any place where the set's meaning departs.
+
+- Story, epic, and feature: "Epics, Features and User Stories", Mountain Goat Software, last updated 28 Apr 2025, https://www.mountaingoatsoftware.com/blog/stories-epics-and-themes
+- Spike: "Spike Solutions", in The Art of Agile Development, 1st ed., James Shore and Shane Warden, 3 Jun 2010, https://www.jamesshore.com/v2/books/aoad1/spike_solutions

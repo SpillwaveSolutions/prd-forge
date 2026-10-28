@@ -1,36 +1,40 @@
 ---
 doc: ../02-customer-market.md
-score: 50
-blocking: 1
+score: 75
+blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 55
+previous_score: 75
 ---
 
-# Why target customer and market scored 50
-
-The template and assistant edges that 0.8.1 rewrote now pass, and S-003 is gone. The grader found a new defect in the status-quo edge.
+# Why customer and market scored 75
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Buyer vs user | 2 | No segment has `user_personas` or `buyer_persona`, and no buyer is a section 4 persona. S-002 lists the delivery lead as both buyer and user. |
-| Sizing | 1 | No segment has a size. S-001 still holds the template placeholder "`<count>` firms, per `<a named register, with its year>`". Q-004 owns the gap. |
-| Substitutes | 3 | The status quo and three substitutes are named, but none is direct or build-in-house. |
-| Honest edge | 2 | The template and assistant edges are checkable outcomes. The PM edge has no cost figure, and the status-quo edge states no outcome of this product. |
-| Why we win | 2 | It describes what the user sees, not what the buyer gets, and "No competitor above tells them that" conflicts with the PM row. |
+| Buyer vs user | 4 | Both segments name a buyer and a user, and both map to section 4. |
+| Sizing | 1 | "Not yet measured; see Q-004." No size, source, date, or method. Q-004 gives the gap a decider and a date. |
+| Substitutes | 4 | A named vendor with a dated source, the status quo, and three indirect substitutes. |
+| Honest edge | 3 | The ChatPRD edge cited FR-009, whose user is the expert, for the sponsor's view. The sponsor's view is FR-013. Three edges repeat one differentiator. |
+| Why we win | 3 | In the buyer's language, but the expert confirmed the words, not a sponsor. PER-003's basis is assumed until Q-005. |
+
+## Weakest dimension
+
+Sizing: neither segment has a count, an estimate, or a source.
 
 ## Blocking defects
 
-- The status-quo competitor's `our_edge` states no outcome of prd-forge: "It works when the engineer is willing to re-derive the specification and is in the room. It fails on handover, on scale, and on anything the engineer cannot ask about."
+None.
 
 ## How to raise the grade
 
-- **Honest edge (2 to 4):** Rewrite the status-quo edge as what the engineer receives at handover without being in the room, and give the PM edge a cost or time comparison.
-- **Sizing (1 to 4):** Remove the placeholder, and give a count with its source, date, method, and unit, or say "unknown, see Q-004".
-- **Buyer vs user (2 to 4):** Add `user_personas` and `buyer_persona` to each segment, and say which persona buys.
-- **Why we win (2 to 4):** Say it in the buyer's terms.
-- **Substitutes (3 to 4):** Name a direct alternative, or say there is none, and consider build-in-house.
+- **Sizing (1 to 4):** Answer Q-004, or give a bottom-up count with its source and date.
+- **Why we win (3 to 4):** Replace the confirmed words with words from the sponsor interviews in Q-005.
+- **Honest edge (3 to 4):** The FR-009 citation is now FR-013. Give each substitute its own differentiator.
+
+## Accepted below the merge bar
+
+On 2026-10-27 the expert accepted this section below 80 until Q-004 and Q-005 are answered, because its two lowest dimensions wait on them.
 
 ## Notes
 
-- S-001's size has an em dash, and the body table's S-002 row drops the delivery lead.
+- For a consultancy on time-and-materials work, fewer billable hours is less revenue. The S-001 quote holds on fixed-fee work.

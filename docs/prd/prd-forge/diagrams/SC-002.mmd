@@ -6,7 +6,7 @@ flowchart TB
   s0[/"They see which sections are done, which are drafted, and which have not been started, with each grade"/]
   s1[/"They see that section 7 is at draft with two blocking defects, both named"/]
   s2[/"They are not asked any question they have already answered"/]
-  s3[/"They are asked the next question in section 7, in the vocabulary they established in ST-001"/]
+  s3[/"They are asked the next question in section 7, in the vocabulary they gave when they began"/]
   done(["<b>Then</b> Work resumes at the first section that is not yet at review, no earlier answer is requested again, and the domain vocabulary is unchanged."])
   start --> trigger --> s0 --> s1 --> s2 --> s3 --> done
   classDef ends fill:#FFFFFF,stroke:#B7791F,stroke-width:2px,color:#1F2430

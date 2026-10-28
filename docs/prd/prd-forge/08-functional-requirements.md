@@ -8,8 +8,8 @@ updated: 2026-10-27
 domain: product management tooling
 section: 7
 order: 80
-score: 78
-blocking: 1
+score: 81
+blocking: 0
 graded: 2026-10-27
 requirements:
   - id: FR-001
@@ -45,8 +45,8 @@ requirements:
     acceptance:
       - >-
         Given a set where four section documents are drafted and thirteen are
-        untouched, when the expert asks where things stand, then they see all
-        seventeen section documents with each one's state, and the untouched ones
+        pending, when the expert asks where things stand, then they see all
+        seventeen section documents with each one's state, and the pending ones
         are shown as not started rather than omitted.
       - >-
         Given a section that has been graded, when the expert sees the set's state,
@@ -92,14 +92,10 @@ requirements:
         Given any section's interview, when the expert is asked for input, then at
         most two questions are put to them at once.
       - >-
-        Given an answer that leaves a field the section needs still unfillable, or
+        Given an answer that leaves something the section needs still unanswered, or
         that could be written into the section in two ways differing in meaning,
         when it is received, then a follow-up is asked about that answer before
         the next topic is opened.
-      - >-
-        Given an expert whose answers would already score the section 70 or more
-        with no blocking defects, when further questions remain unasked on the
-        list, then the interview stops rather than continuing to the end of it.
     priority: must
     shown_in: conversation
     journey_stage: ST-002
@@ -115,7 +111,7 @@ requirements:
     acceptance:
       - >-
         Given an expert who says they are done with a section, when the section
-        does not yet pass its rubric, then it is written anyway at draft, and what
+        does not yet meet the gate, then it is written anyway at draft, and what
         is missing is recorded as an open question or named plainly to them.
       - >-
         Given an expert who ends a section early, when they are told what was left
@@ -176,17 +172,12 @@ requirements:
     user: PER-001
     capability: Read the drafted section as prose rather than as a filled-in form
     outcome: >-
-      They can judge whether it says what they meant, without reading a structured
-      record they have no way to assess.
+      They can judge from the prose alone whether it says what they meant.
     acceptance:
       - >-
-        Given a drafted section, when the expert reviews it, then what they are
-        shown reads as written English, in sentences and short tables, and they
-        are not asked to read the section's machine-readable form to judge it.
-      - >-
-        Given a section whose readable form and machine-readable form disagree,
-        when either is read, then the disagreement is reported to the expert
-        rather than silently resolved.
+        Given a drafted section, when the expert reads it, then every item is
+        shown in a sentence or in a table row under named column headings, and no
+        item is shown only as a bare list of names and values.
     priority: should
     shown_in: screen
     journey_stage: ST-003
@@ -211,6 +202,9 @@ requirements:
       - >-
         Given a graded section, when the expert reads the grade, then the weakest
         part is named and why it is weak is stated in no more than three lines.
+      - >-
+        Given a grade that has just been reported, when the expert reads it, then
+        they are asked to accept it or refute it, under TR-014.
     priority: must
     shown_in: screen
     journey_stage: ST-003
@@ -249,8 +243,9 @@ requirements:
         Given a re-grade, when the score has risen, then the document has changed;
         a score never rises without a change to the document.
       - >-
-        Given a section scoring 70 or more with no blocking defects, when it is
-        re-graded, then the expert is offered the state `review`, and is told that
+        Given a section scoring 70 or more with no blocking defects, in a set that
+        checks clean, when it is re-graded, then the expert is offered the state
+        `review`, and is told that
         `review` means the section is ready for someone else to read.
     priority: should
     shown_in: screen
@@ -262,7 +257,7 @@ requirements:
       See what a development team would not be able to build from the set, before
       anyone has estimated it
     outcome: >-
-      They learn where their own specification fails while it is still cheap to
+      They learn where their own PRD fails while it is still cheap to
       fix, rather than at iteration three.
     acceptance:
       - >-
@@ -272,13 +267,13 @@ requirements:
         gap.
       - >-
         Given a requirement whose acceptance criteria an engineer who was not in
-        the interview judges insufficient to write a test from, when the review
-        reports it, then the requirement is named and the document is quoted.
+        the interview judges insufficient to write a test from, when the
+        buildability review reports it, then the requirement is named and the document is quoted.
       - >-
-        Given an open question that blocks a `must` requirement, when the review
-        runs, then that dependency is reported.
+        Given an open question that blocks a `must` requirement, when the
+        buildability review runs, then that requirement's wait on the question is reported.
       - >-
-        Given a review finding, when it is reported to the expert, then it has been
+        Given a buildability review finding, when it is reported to the expert, then it has been
         checked against the document and anything not supported by the document has
         been dropped.
     priority: must
@@ -327,6 +322,10 @@ requirements:
         Given an approved set that is then changed, when the change is written,
         then a new version is recorded and the earlier approval is not represented
         as covering it.
+      - >-
+        Given an approver who rejects the set, when the expert records it, then
+        the rejection, its reason, the approver, and the date are recorded
+        against the version, and the set reads as not approved.
     priority: must
     shown_in: report
     journey_stage: ST-006
@@ -352,7 +351,7 @@ requirements:
         they resume that section, then that question is not put to them again.
     priority: should
     shown_in: conversation
-    journey_stage: ST-001
+    journey_stage: ST-004
     objective: O-002
   - id: FR-016
     user: PER-001
@@ -367,7 +366,7 @@ requirements:
         document and the document does not support it, then it is dropped and the
         expert is told it was dropped.
       - >-
-        Given a finding the document does support, when the expert disputes it,
+        Given a finding the document does support, when the expert refutes it,
         then the reason is stated once and their decision is recorded.
       - >-
         Given a decision the expert reaffirmed after an objection, when the
@@ -390,13 +389,14 @@ requirements:
         previous section, then the section after or before it in reading order is
         shown, and at the first or the last section the view does not change.
       - >-
-        Given a section that cites an ID another section defines, such as Q-001,
-        when they follow that ID, then the section that defines it is shown and
-        the ID is named above it.
+        Given a section that cites an id another section defines, such as Q-001,
+        when they follow that id, then the section that defines it is shown and
+        the id is named above it.
       - >-
-        Given they have moved through three views, a section, its grade, and its
-        rubric, when they ask to go back three times, then they see the grade,
-        then the section, then the view they started from.
+        Given they have moved from a section to three other things in the set, one
+        after another, when they ask to go back three times, then they see each
+        earlier thing again, the most recent first, and end at the section they
+        started from.
     priority: should
     shown_in: screen
     journey_stage: ST-003
@@ -407,20 +407,89 @@ requirements:
       See the set as it now stands after it was changed outside the view in front
       of them
     outcome: >-
-      What they read is never older than the last change written to the set.
+      After they ask to refresh, what they read is the set as it now stands.
     acceptance:
       - >-
         Given a section changed after they opened the set, when they ask to
-        refresh, then that section shows its new text and its new state.
+        refresh, then within 10 seconds that section shows its new text and its
+        new state.
       - >-
-        Given a section that is graded again while the set is open, when the new
-        grade is written, then the new grade is shown without them asking.
+        Given a section that is graded again while the set is open, when they ask
+        to refresh, then within 10 seconds the new grade is shown.
       - >-
         Given no set existed when they looked, when a set is written and they ask
         to refresh, then every section of it is listed.
     priority: should
     shown_in: screen
     journey_stage: ST-003
+    objective: O-002
+  - id: FR-019
+    user: PER-001
+    capability: Stop being asked once the section would already meet the gate
+    outcome: >-
+      The interview ends when the section has what it needs, so they are not asked
+      questions it no longer needs.
+    acceptance:
+      - >-
+        Given an expert whose answers would already score the section 70 or more
+        with no blocking defects, when further questions remain unasked on the
+        question list, then the interview stops rather than continuing to the end
+        of it.
+      - >-
+        Given an expert whose answers would score the section under 70, or with a
+        blocking defect, when questions remain on the question list, then the next
+        question is put to them.
+      - >-
+        Given an answer that FR-004 says needs a follow-up, when the answers would
+        already score the section 70 or more with no blocking defects, then the
+        follow-up is asked first, and the interview stops only after it is
+        answered.
+    priority: should
+    shown_in: conversation
+    journey_stage: ST-002
+    objective: O-003
+  - id: FR-020
+    user: PER-001
+    capability: Be told when the set states one item two different ways
+    outcome: >-
+      They see every id, priority or link that two places in the set state
+      differently, before anyone builds from either.
+    acceptance:
+      - >-
+        Given an id, priority or link that two places in the set state
+        differently, when the section is read, then the expert is told of the
+        difference rather than it being silently resolved.
+      - >-
+        Given a set in which every id, priority and link is stated the same way
+        wherever it appears, when the section is read, then no difference is
+        reported.
+    priority: should
+    shown_in: screen
+    journey_stage: ST-003
+    objective: O-003
+  - id: FR-021
+    user: PER-001
+    capability: >-
+      Name each approver of a set, by name and role, before offering it for
+      approval
+    outcome: >-
+      The set records who will approve it, and nobody else's decision counts as
+      an approval.
+    acceptance:
+      - >-
+        Given a set the expert is about to offer for approval, when they name an
+        approver, then the set records that approver's name and role, and the
+        root document shows them.
+      - >-
+        Given a set with no approver named, when the expert asks to offer it for
+        approval, then it is not offered, and they are told an approver must be
+        named first.
+      - >-
+        Given a decision from someone the set does not name as an approver, when
+        the expert records it, then it is not recorded as an approval.
+    priority: must
+    shown_in: conversation
+    journey_stage: ST-006
     objective: O-002
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
@@ -446,22 +515,30 @@ links:
 | FR-012 | PER-001 | See what a team could not build from it | must | ST-005 |
 | FR-013 | PER-003 | See what is approved and what is open, on one page | must | ST-006 |
 | FR-014 | PER-003 | Approve, with conditions, against a version | must | ST-006 |
-| FR-015 | PER-001 | Stop and resume without being asked anything twice | should | ST-001 |
+| FR-015 | PER-001 | Stop and resume without being asked anything twice | should | ST-004 |
 | FR-016 | PER-001 | Refute a finding and have it withdrawn | should | ST-003 |
 | FR-017 | PER-001 | Move to any section without losing their place | should | ST-003 |
 | FR-018 | PER-001 | See the set as it now stands | should | ST-003 |
+| FR-019 | PER-001 | Stop being asked once the section would meet the gate | should | ST-002 |
+| FR-020 | PER-001 | Be told when the set states one item two ways | should | ST-003 |
+| FR-021 | PER-001 | Name each approver before offering the set | must | ST-006 |
 
-Every release-line stage has at least one `must` requirement. Ten of the 18
+Every release-line stage has at least one `must` requirement. Eleven of the 21
 are `must`: without any one of them, REL-001 does not do what it promises. The
-eight `should` requirements make the work faster or easier to follow, and the
+ten `should` requirements make the work faster or easier to follow, and the
 expert can still reach an approved set without them. The expert set this split
-at version 0.8.0.
+at version 0.8.0, and set FR-021 to `must` at version 0.9.0.
 
-Six of the `must` requirements wait on an open question in section 12.
-FR-004, FR-009, FR-010, and FR-012 wait on Q-009, where the rubric and the
-derivability checks live and who owns them. FR-013 waits on Q-005, whether a
-sponsor accepts a specification that carries a grade. FR-014 waits on Q-011, how
-an approver records a decision.
+Five of the `must` requirements wait on an open question in section 12.
+FR-004, FR-009, FR-010, and FR-012 wait on Q-009, which version of the rubric
+and the derivability checks release 1 grades against. The same four also wait
+on Q-015, who owns the rubric and the checks, because Q-009 cannot fix a
+version until Q-015 names its owner. FR-010 also waits on Q-007 and Q-014, whether writing
+the requirements sends the expert back to the journeys and how that feels,
+because both block ST-004. FR-013 waits on Q-005, whether a sponsor accepts a
+PRD that carries a grade. FR-014 no longer waits: Q-011 is answered, and in
+release 1 the expert records the sponsor's decision under FR-014. Two `should`
+requirements also wait: FR-011 on Q-009, and FR-015 on Q-010.
 
 FR-015 and FR-016 were split out of FR-002 and FR-009 at version 0.2.0, because
 each has a failure mode of its own: a build could deliver perfect set-state
@@ -469,19 +546,28 @@ visibility and still re-ask three answered questions, and could report a grade
 perfectly and still defend a finding the document does not support. Ids are never
 renumbered, so they sit at the end rather than in stage order.
 
+FR-019 and FR-020 were split out of FR-004 and FR-008 at version 0.9.0, for the
+same reason. The early stop and the check across the set each have a failure
+mode of their own, and each needs its own priority. The expert set both to
+`should`. FR-019 also waits on Q-009, because the early stop applies the rubric.
+
+FR-021 was added at version 0.9.0 on the expert's decision. A set records who
+will approve it before it is offered, so an approval names a person, not only
+the sponsor's role in section 10.
+
 ## A judgement call worth challenging
 
-FR-002, FR-008 and FR-013 refer to "the set", "the section", "written English"
-and "the root document". A reviewer may read those as naming an output format and
+FR-002, FR-008 and FR-013 refer to "the set", "the section", "a table row" and
+"the root document". A reader may read those as naming an output format and
 therefore failing test 5. The judgement taken here is that a written
-specification is the product's subject, not its delivery technology, so these
+PRD is the product's subject, not its delivery technology, so these
 words name the artifact rather than the mechanism. What is deliberately absent
 everywhere: the assistant the product runs inside, how grading is performed, who
 or what reviews the set, and what the documents are stored as. Those are in
 section 6 as non-goals, in section 11 as dependencies, or nowhere.
 
 FR-001, FR-009, FR-013 and FR-014 each read as more than one capability, and a
-reviewer has called them out for it. They are left whole deliberately: each is one
+grading pass has called them out for it. They are left whole deliberately: each is one
 act with several parts, and a build delivering half of one would be visibly
 unfinished rather than arguably done. FR-015 and FR-016 were split precisely
 because they were not like that, each had a failure mode the other half could

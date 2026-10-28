@@ -8,15 +8,18 @@ updated: 2026-10-27
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.8.1
+version: 0.9.0
 owner: Richard Hightower
 stakeholders:
-  - Domain experts who must specify software for their own field
+  - Product managers who are, or speak for, the domain expert
   - Engineering leads who build from the resulting PRD
+  - Sponsors who approve the PRD for a release. For this PRD the approver is
+    Richard Hightower, the owner of the place where it is kept, named under
+    FR-021.
   - Delivery leads who run story-mapping workshops
 created: 2026-10-23
 golden_thread: J-001
-score: 75
+score: 83
 blocking: 0
 graded: 2026-10-27
 primary_persona: PER-001
@@ -25,22 +28,29 @@ summary:
   problem: >-
     A domain expert knows exactly what their product must do, but what they can
     write down is a feature list with no named users, no pass-or-fail criteria and
-    the technology already chosen, so the team that has to build it cannot.
+    the technology already chosen. The team cannot build from it, and the expert
+    is asked the same questions again by each engineer who tries.
   users: >-
-    Domain experts specifying software for their own field, the engineering leads
-    who build from what they write, and the sponsors who approve it.
+    Product managers who are, or speak for, the domain expert, the engineering
+    leads who build from what they write, the sponsors who approve it, and the
+    delivery leads who derive a backlog from it.
   why_now: >-
-    Teams now expect to work from a written specification an assistant helped
-    produce, and a specification that reads well but cannot be built from costs
-    more than no specification at all, because it is believed.
+    In October 2025, 98% of 117 product managers surveyed said they use AI at
+    work, and only 39% had received job-specific AI training (General Assembly, 6 Nov 2025). A PRD that
+    reads well but cannot be built from costs more than no PRD at all, because it
+    is believed.
   bet: >-
-    A domain expert, with no product management training, can reach a PRD that an
-    engineering lead confirms is buildable, and can see for themselves where it is
-    still weak before anyone starts work.
+    A domain expert, or a product manager who speaks for one, with no product
+    management training, reaches an approved PRD in which every section is graded
+    with no blocking defect and every buildability gap is closed or owned before
+    anyone estimates.
   objective: O-001
   measure: >-
-    Share of PRDs that pass an engineering buildability review on the first
-    submission: 80% by 2027-09-30, from a baseline Q-001 will establish.
+    Share of the 5 pilot PRDs that pass the buildability review on first
+    submission, where a pass is the verdict `buildable`, or `buildable with gaps`
+    with every gap closed or owned. The pilot PRDs are written between REL-001,
+    on 2027-03-31, and 2027-09-30. Target: 80%, at least 4 of 5, by 2027-09-30,
+    provisional until Q-001 sets the baseline, by 2027-02-28.
 links:
   parent: null
   children:
@@ -67,16 +77,23 @@ links:
 
 A domain expert knows exactly what their product must do, but what they can write
 down is a feature list with no named users, no pass-or-fail criteria and the
-technology already chosen, so the team that has to build it cannot. The users are
-domain experts specifying software for their own field, the engineering leads who
-build from what they write, and the sponsors who approve it. Teams now expect to
-work from a written specification an assistant helped produce, and one that reads
-well but cannot be built from costs more than no specification at all, because it
-is believed. The bet is that a domain expert with no product management training
-can reach a PRD an engineering lead confirms is buildable, and can see for
-themselves where it is still weak before anyone starts work. We will know it
-worked from the share of PRDs that pass an engineering buildability review on the
-first submission.
+technology already chosen. The team cannot build from it, and the expert is asked
+the same questions again by each engineer who tries. The users are product
+managers who are, or speak for, the domain expert, the engineering leads who
+build from what they write, the sponsors who approve it, and the delivery leads
+who derive a backlog from it. In October 2025, 98%
+of 117 product managers surveyed said they use AI at work, and only 39% had
+received job-specific AI training (General Assembly, 6 Nov 2025). A PRD that reads well but cannot be
+built from costs more than no PRD at all, because it is believed.
+
+The bet is one outcome: the expert, with no product management training, reaches
+an approved PRD in which every section is graded with no blocking defect and
+every buildability gap is closed or owned before anyone estimates. We will know it
+worked when at least 4 of the 5 pilot PRDs, 80%, pass the buildability review on
+first submission by 2027-09-30. The pilot PRDs are the first 5 written with
+release 1, between REL-001 on 2027-03-31 and 2027-09-30, by people other than the
+product's author. The target is provisional until Q-001 sets the baseline, by
+2027-02-28.
 
 ## Contents
 
@@ -105,30 +122,14 @@ first submission.
 A PRD has **fifteen numbered sections** and this set has **seventeen section
 documents**, because section 5 holds two of them, journeys and scenarios, and
 section 7 holds two, functional requirements and wireframes. The two section 7
-files share the prefix `08`. So from
-section 5 onward the file prefix and the section number differ — `07-scope.md` is
-section 6, `16-change-log.md` is section 15. **Every cross-reference in this set
+files share the prefix `08`. From section 5 onward, the file prefix and the
+section number differ: `07-scope.md` is section 6, and `16-change-log.md` is
+section 15. **Every cross-reference in this set
 is by section number, never by file number.** Three independent reviewers misread
 this, so it is stated here rather than left to be inferred.
 
 ## A note on this PRD
 
-This is prd-forge's PRD, written with prd-forge's own conventions. Writing it
-surfaced one real tension: the product is delivered inside an assistant the
-expert already uses, and naming that delivery mechanism in a requirement would
-fail test 5. It was recorded as constraint C-001 until 0.8.1. It is now the
-separate-application non-goal in section 6 and dependency D-001 in section 11,
-and the requirements in section 7 describe only what a person does and sees.
-
-Grading it with its own adversarial reviewers found twelve blocking defects
-across four sections, and a buildability review found four failed derivability
-checks. Version 0.2.0 fixes them: every graded section is now at zero blocking
-defects, and nine of the eleven derivability checks pass. What that grading
-found, and what it changed, is in section 15.
-
-**On the scores in this set.** Each graded section carries the score from its last
-grading pass, with the date. Sections 5, 7 and 8 were graded before the second
-round of corrections, and section 10 before its last two, so each score is the
-last one measured and not a reading of the words as they now stand. Treat them as
-a floor. A score never rises without a change to the document, and never rises
-without a grading pass; the two gaps here are in the other direction.
+This is prd-forge's PRD, written with prd-forge's own conventions. The
+requirements in section 7 describe only what a person does and sees, and section
+15 records what each version changed.

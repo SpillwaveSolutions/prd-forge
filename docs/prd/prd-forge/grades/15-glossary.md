@@ -1,36 +1,38 @@
 ---
 doc: ../15-glossary.md
-score: 55
-blocking: 6
+score: 85
+blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 60
+previous_score: 80
 ---
 
-# Why the glossary scored 55
-
-The seven terms 0.8.1 added now resolve their defects. The grader read every acceptance criterion again and found six more undefined words.
+# Why glossary scored 85
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 2 | Words used in acceptance criteria are missing, and so are the backlog terms ST-008 relies on. |
-| Author's voice | 3 | Some meanings read as notes about the set: "the set refers to 'test 5' by number". |
-| Disambiguation | 3 | The body table promises State against Threshold, and the State entry has no `not`. |
-| Consistency | 2 | "Document set" is defined and not used; "weakest dimension" and "weakest part", and "buildability review" and "buildability report", alternate. No entry has `avoid`. |
-| Authority | 1 | No entry has `source`, although MoSCoW and Spike have known origins. |
+| Coverage | 3 | "Product manager" has no entry, but sections 1 and 13 rely on it. The states are defined only inside State. |
+| Author's voice | 4 | Entries take positions. |
+| Disambiguation | 3 | Buildable has no `not` against "buildable with gaps". Gap's `not` conflicts with Finding. |
+| Consistency | 3 | Agent says it "takes a decision" and then that it only proposes. Delegated says "Given to an agent to decide". Section 10 says the agent proposes. |
+| Authority | 4 | All sources in `reference/sources.md` are cited, and each departure is stated. |
+
+## Weakest dimension
+
+Consistency: three entries give three accounts of what an agent does.
 
 ## Blocking defects
 
-- "requirement" is used in FR-012 and FR-014 and has no entry.
-- "acceptance criteria" is used in FR-012 and has no entry.
-- "gap" is used in FR-012 and has no entry.
-- "version" is used in FR-014 and has no entry.
-- "domain" is used in FR-001 and FR-003 and has no entry.
-- "reading order" is used in FR-017 and has no entry, and the set's file order and section order differ.
+None.
 
 ## How to raise the grade
 
-- **Coverage (2 to 4):** Add the six terms, then backlog, feature, epic, story, story-mapping workshop, release, persona, segment, and pilot.
-- **Authority (1 to 4):** Add `source` to MoSCoW and Spike, and say what `wont` means.
-- **Consistency (2 to 4):** Pick one word of each pair and put the other in `avoid`.
-- **Disambiguation and voice (3 to 4):** Add the `not` fields the table promises, and remove notes about the set from meanings.
+- **Consistency (3 to 4):** Make Agent, Delegated, and Trust rule agree with section 10: an agent proposes, and the named person decides.
+- **Coverage (3 to 4):** Add Product manager.
+- **Disambiguation (3 to 4):** Add Buildable's `not`, and make Gap and Finding agree.
+
+## Notes
+
+- Threshold's second sentence takes back the first.
+- Gate does not say if `final` needs the threshold.
+- "pending" has no code formatting, unlike the other states.

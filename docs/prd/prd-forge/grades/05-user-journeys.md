@@ -1,28 +1,32 @@
 ---
 doc: ../05-user-journeys.md
-score: 77
+score: 94
 blocking: 0
 graded: 2026-10-27
 grader: prd-forge:prd-adversary
-previous_score: 75
+previous_score: 85
 ---
 
-# Why user journeys scored 77
+# Why user journeys scored 94
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| One goal | 3 | J-001's goal asks for "an owner and a date" and ST-005 asks only for "a decider". ST-009's decision serves the engineering lead, not J-002's backlog goal. |
-| Ordered stages | 2 | J-002 has three stages. Nothing covers clearing a condition, a rejection, or resuming after a break. |
-| Person per stage | 4 | Every actor is a person. |
-| Decision per stage | 4 | Every stage names a decision. |
-| Stage acceptance | 3 | ST-002's "then the section has enough material to be drafted" is not observable; ST-009 covers only a verdict that differs from the report. |
-| Inputs and outputs | 3 | ST-008 takes "the team's sizing of the stories" while the end state says no estimate exists. |
-| Handoffs | 3 | ST-006 hands off to the delivery lead, but J-002 now opens with the engineering lead. |
+| One goal | 4 | Each journey has one goal, and its last stage reaches it. |
+| Ordered stages | 3 | J-002 has 3 stages. FR-021, naming the approvers, has no step in any stage. |
+| Person per stage | 4 | Every stage has a person as its actor. |
+| Decision per stage | 4 | Every stage has a decision. |
+| Stage acceptance | 3 | ST-004's refutation statement passes either way. ST-002 has three endings in one "then". ST-005 gives no test of the gap list. |
+| Inputs and outputs | 4 | Every stage has both. |
+| Handoffs | 3 | In ST-006 the work goes back to the expert with no handoff. |
 | No technology | 4 | None named. |
-| End state | 4 | Observable. |
-| Satisfaction | 0 | No stage has a `satisfaction` score. |
-| Golden thread | 4 | Only J-001, matching the release line. |
-| Steps outside the product | 3 | The workshop and the deciders answering open questions have no stage. |
+| End state | 4 | Observable by the user. |
+| Satisfaction | 4 | All 9 stages scored by the expert, each low score with a pain and a need. |
+| Golden thread | 4 | Only J-001, and it matches the release line. |
+| Steps outside the product | 4 | ST-006 and other people's work are included. |
+
+## Weakest dimension
+
+Stage acceptance: three statements cannot be judged pass or fail.
 
 ## Blocking defects
 
@@ -30,7 +34,11 @@ None.
 
 ## How to raise the grade
 
-- **Satisfaction (0 to 4):** The expert scores every stage from 1 to 5. Never estimate them.
-- **Ordered stages (2 to 4):** Bring J-002 to five stages or give ST-009 its own journey, and add the condition, rejection, and resume paths to J-001.
-- **Handoffs (3 to 4):** Point ST-006's handoff at the engineering lead, or reorder J-002.
-- **One goal, acceptance, inputs (3 to 4):** Use one wording for owners and dates, make ST-002's outcome observable, and remove sizing from ST-008.
+- **Ordered stages (3 to 4):** Add the FR-021 step, in which the expert names the approvers, to ST-005.
+- **Stage acceptance (3 to 4):** Make ST-004's refutation statement observable, split ST-002's endings, and say how the expert judges ST-005's gap list.
+- **Handoffs (3 to 4):** Add ST-006's handoff back to the expert.
+
+## Notes
+
+- Many steps are passive and do not start with the actor.
+- ST-003's "correct it" path has no acceptance statement.
