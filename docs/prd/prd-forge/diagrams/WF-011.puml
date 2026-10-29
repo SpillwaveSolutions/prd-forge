@@ -17,5 +17,10 @@ title WF-011 Review comments with their responses in the next exported copy
   Status: answered
   Response: an approval waits on people, not the tool.
   Changed: none
+  ==
+  RC-003 about FR-021 · R. Hightower · 2026-11-04
+  Marked: “by name and role”
+  Comment: Can one person hold two approver roles?
+  Status: open, no response yet <5>
 }
 @endsalt

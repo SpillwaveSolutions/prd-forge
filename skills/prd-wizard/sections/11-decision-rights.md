@@ -1,11 +1,11 @@
-# Section 10 — Decision rights and trust rules
+# Section 10. Decision rights and trust rules
 
 **Kind** `decision-rights` · **Schema** `prd-forge/decision-rights@1` · **File** `11-decision-rights.md`
 
 ## What this section is
 
 Who can approve what, and what is never delegated to an agent. For any product
-where software proposes and a person disposes — and for every agentic product —
+where software proposes and a person disposes, and for every agentic product, 
 this section is where the trust boundary is written down.
 
 ## Why it matters
@@ -34,8 +34,8 @@ be automated confidently.
   so the person can see why it proposed and when not to trust it (Microsoft HAX
   guideline G11).
 - `escalation`: what happens when the approver is unavailable or disagrees.
-  Required when an agent may decide; `evidence_required` is required when the
-  decision is never delegated.
+  Required when the rule is delegable to an agent; `evidence_required` is
+  required when the decision is never delegated.
 - `acceptance`: Given/When/Then statements proving the rule holds.
 - `agent_role`: what an agent does: `none`, `proposes`,
   `acts-person-may-reverse`, or `acts`. The validator fails a never-delegated rule
@@ -110,7 +110,7 @@ _The figures, citations and organisations in this example are invented, to show 
 | Escalation | Absent | Partial | Stated, including the unavailable-approver case |
 | Testability | Prose | Some criteria | Given/When/Then per rule |
 | No design | Names models or thresholds | One leak | None |
-| Reversal | Not addressed | Override mentioned | Every rule an agent may decide says how a person sees the decision, overrides or reverses it, and that the override is recorded |
+| Reversal | Not addressed | Override mentioned | Every rule delegable to an agent says how a person sees the decision, overrides or reverses it, and that the override is recorded |
 
 ## Blocking defects
 

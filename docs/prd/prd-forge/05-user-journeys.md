@@ -4,7 +4,7 @@ kind: journeys
 schema: prd-forge/journeys@1
 title: User journeys
 status: draft
-updated: 2026-10-27
+updated: 2026-10-29
 domain: product management tooling
 section: 5
 order: 50
@@ -286,7 +286,7 @@ journeys:
         outputs:
           - A backlog whose every level names what it came from
         decision: Which epics come first, and why
-        handoff: The engineering team, for iteration planning
+        handoff: The development team, for iteration planning
     pain_points:
       - pain: The workshop invents a backbone in the room because the PRD has none
         stage: ST-007
@@ -717,6 +717,6 @@ Every item in this document, with each of its fields.
 
 **Decision:** Which epics come first, and why
 
-**Handoff:** The engineering team, for iteration planning
+**Handoff:** The development team, for iteration planning
 
 <!-- /prd-forge:details -->

@@ -4,13 +4,13 @@ kind: functional-requirements
 schema: prd-forge/functional-requirements@1
 title: Functional requirements
 status: draft
-updated: 2026-10-28
+updated: 2026-10-29
 domain: product management tooling
 section: 7
 order: 80
-score: 84
+score: 88
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-29
 requirements:
   - id: FR-001
     user: PER-001
@@ -326,6 +326,11 @@ requirements:
         Given an approver who rejects the set, when the expert records it, then
         the rejection, its reason, the approver, and the date are recorded
         against the version, and the set reads as not approved.
+      - >-
+        Given a sponsor who approves while a review comment has no response,
+        when the expert records the approval, then each such comment is recorded
+        as a condition on it, with the comment's id and the date the sponsor
+        sets for it, and only the sponsor clears it.
     priority: must
     shown_in: report
     journey_stage: ST-006
@@ -502,22 +507,9 @@ requirements:
       and what changed, or marked open while it has no response.
     acceptance:
       - >-
-        Given a sponsor who comments on an item in an exported copy, when the
-        expert brings the copy's comments into the set, then each comment is
-        recorded against that item with the sponsor's name, the date, and the
-        text they marked.
-      - >-
-        Given a copy whose comments were already brought in, when the expert
-        brings it in again, then no comment is recorded twice.
-      - >-
-        Given a comment that marks no text, when the expert brings the copy's
-        comments into the set, then it is recorded against the section it sits
-        in.
-      - >-
-        Given a sponsor who approves while a comment has no response, when the
-        expert records the approval, then each such comment is recorded as a
-        condition on it, with the comment's id and the date it is due, and only
-        the sponsor clears it.
+        Given a sponsor who comments on an item in an exported copy, when they
+        read the next exported copy, then they see the comment against that item
+        with their name, the date, and the text they marked.
       - >-
         Given a comment the expert responded to, when the sponsor reads the next
         exported copy, then they see the comment, its status, the response, and
@@ -527,6 +519,34 @@ requirements:
         exported copy, then they see the comment marked open.
     priority: should
     shown_in: report
+    journey_stage: ST-006
+    objective: O-002
+  - id: FR-023
+    user: PER-001
+    capability: >-
+      Bring the review comments in an exported copy into the set, and record a
+      response to each
+    outcome: >-
+      Every review comment left in an exported copy is in the set once, against
+      the item it marks, and none is lost in an inbox.
+    acceptance:
+      - >-
+        Given an exported copy with review comments, when the expert brings them
+        into the set, then each one is recorded against the item it marks, with
+        the name of the person who left it, the date, and the text they marked.
+      - >-
+        Given a copy whose comments were already brought in, when the expert
+        brings it in again, then no comment is recorded twice.
+      - >-
+        Given a comment that marks no text, when the expert brings the copy's
+        comments into the set, then it is recorded against the section it sits
+        in.
+      - >-
+        Given a comment in the set, when the expert records a response, then the
+        comment records its status, accepted, declined, or answered, the
+        response, and the ids that changed.
+    priority: should
+    shown_in: conversation
     journey_stage: ST-006
     objective: O-002
 links:
@@ -561,10 +581,11 @@ links:
 | FR-020 | PER-001 | Be told when the set states one item two ways | should | ST-003 |
 | FR-021 | PER-001 | Name each approver before offering the set | must | ST-006 |
 | FR-022 | PER-003 | Comment on an exported copy, and see each comment's response | should | ST-006 |
+| FR-023 | PER-001 | Bring an exported copy's review comments into the set, and respond to each | should | ST-006 |
 
-Every release-line stage has at least one `must` requirement. Eleven of the 22
+Every release-line stage has at least one `must` requirement. Eleven of the 23
 are `must`: without any one of them, REL-001 does not do what it promises. The
-eleven `should` requirements make the work faster or easier to follow, and the
+twelve `should` requirements make the work faster or easier to follow, and the
 expert can still reach an approved set without them. The expert set this split
 at version 0.8.0, and set FR-021 to `must` at version 0.9.0.
 
@@ -596,10 +617,17 @@ the sponsor's role in section 10.
 
 FR-022 was added at version 0.10.0 on the expert's decision, as a `should` in
 REL-001. A sponsor reads an exported copy outside the product at ST-006 and
-comments in it. FR-022 brings those comments back, and the next copy carries
-each response and what it changed. WF-011 shows that copy. A comment still
+comments in it. FR-023 brings those comments back, and under FR-022 the next
+copy carries each response and what it changed. WF-011 shows that copy. A comment still
 without a response when the sponsor approves does not block the approval: the
 expert records it as a condition under FR-014, as the expert decided.
+
+FR-023 was split out of FR-022 at version 0.11.0, as FR-015 and FR-016 were.
+FR-022 is what the sponsor sees, and FR-023 is what the expert does to bring the
+comments in and answer them. Each has a failure mode of its own: a build could
+import every comment and never show the sponsor a response, or show responses
+to comments it lost. The approval rule moved into FR-014, which records every
+condition, and the sponsor sets each condition's date.
 
 ## A judgement call worth challenging
 
@@ -921,6 +949,7 @@ Every item in this document, with each of its fields.
 2. Given a recorded approval, when the set is read later, then the version approved, the approver, their role, the date and the decision are all present.
 3. Given an approved set that is then changed, when the change is written, then a new version is recorded and the earlier approval is not represented as covering it.
 4. Given an approver who rejects the set, when the expert records it, then the rejection, its reason, the approver, and the date are recorded against the version, and the set reads as not approved.
+5. Given a sponsor who approves while a review comment has no response, when the expert records the approval, then each such comment is recorded as a condition on it, with the comment's id and the date the sponsor sets for it, and only the sponsor clears it.
 
 **Priority:** must
 
@@ -1093,16 +1122,36 @@ Every item in this document, with each of its fields.
 
 **Acceptance:**
 
-1. Given a sponsor who comments on an item in an exported copy, when the expert brings the copy's comments into the set, then each comment is recorded against that item with the sponsor's name, the date, and the text they marked.
-2. Given a copy whose comments were already brought in, when the expert brings it in again, then no comment is recorded twice.
-3. Given a comment that marks no text, when the expert brings the copy's comments into the set, then it is recorded against the section it sits in.
-4. Given a sponsor who approves while a comment has no response, when the expert records the approval, then each such comment is recorded as a condition on it, with the comment's id and the date it is due, and only the sponsor clears it.
-5. Given a comment the expert responded to, when the sponsor reads the next exported copy, then they see the comment, its status, the response, and the ids it changed.
-6. Given a comment with no response yet, when the sponsor reads the next exported copy, then they see the comment marked open.
+1. Given a sponsor who comments on an item in an exported copy, when they read the next exported copy, then they see the comment against that item with their name, the date, and the text they marked.
+2. Given a comment the expert responded to, when the sponsor reads the next exported copy, then they see the comment, its status, the response, and the ids it changed.
+3. Given a comment with no response yet, when the sponsor reads the next exported copy, then they see the comment marked open.
 
 **Priority:** should
 
 **Shown in:** report
+
+**Journey stage:** ST-006
+
+**Objective:** O-002
+
+### FR-023
+
+**Capability:** Bring the review comments in an exported copy into the set, and record a response to each
+
+**User:** PER-001
+
+**Outcome:** Every review comment left in an exported copy is in the set once, against the item it marks, and none is lost in an inbox.
+
+**Acceptance:**
+
+1. Given an exported copy with review comments, when the expert brings them into the set, then each one is recorded against the item it marks, with the name of the person who left it, the date, and the text they marked.
+2. Given a copy whose comments were already brought in, when the expert brings it in again, then no comment is recorded twice.
+3. Given a comment that marks no text, when the expert brings the copy's comments into the set, then it is recorded against the section it sits in.
+4. Given a comment in the set, when the expert records a response, then the comment records its status, accepted, declined, or answered, the response, and the ids that changed.
+
+**Priority:** should
+
+**Shown in:** conversation
 
 **Journey stage:** ST-006
 

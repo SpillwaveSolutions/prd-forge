@@ -80,7 +80,7 @@ Not graded. The validator holds the register to the rules below.
 An open comment, one with no `response`, is a warning, never a blocking defect.
 When the sponsor approves while a comment is open, record each open comment as a
 condition on the approval in the change log, "conditional on RC-nnn by
-<date>", as FR-022 says.
+<date>", as FR-014 says.
 
 ## Industry-standard wording
 

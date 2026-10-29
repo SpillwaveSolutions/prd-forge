@@ -4,7 +4,7 @@ Sponsor decides:
 DomainExpert decides:
   - TR-002 Set a section's state to final (never delegated)
   - TR-003 Produce a section's score and findings against
-           its rubric (an agent may decide)
+           its rubric (delegable to an agent)
   - TR-004 Decide what the product is for and what is out of
            scope (never delegated)
   - TR-005 State a domain fact, figure, regulation or
@@ -24,9 +24,9 @@ DomainExpert decides:
 
 EngineerLead decides:
   - TR-006 Judge whether a set can be built from, and report
-           the gaps (an agent may decide)
+           the gaps (delegable to an agent)
 
 DeliveryLead decides:
-  - TR-011 Decide a backlog can be mapped from the set (an
-           agent may decide)
+  - TR-011 Decide a backlog can be mapped from the set
+           (delegable to an agent)
   - TR-012 Decide which epics come first (never delegated)

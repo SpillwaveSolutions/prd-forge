@@ -2,25 +2,25 @@
 doc: ../08-wireframes.md
 score: 91
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-29
 grader: prd-forge:prd-adversary
 previous_score: 91
 ---
 
 # Why wireframes scored 91
 
-Graded at 0.10.0, after FR-022 was added, on the document's own merits.
+Graded at 0.11.0, after FR-023 was split out of FR-022, on the document's own merits.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 4 | All 11 screen and report requirements are illustrated, FR-022 by WF-011. |
+| Coverage | 4 | All 11 screen and report requirements are illustrated. |
 | Traceability | 4 | Every sketch names its requirements, persona, and stage. |
-| The person's view | 2 | WF-011 shows no open comment, WF-003 has no accept-or-refute ask, and WF-010 resumes at the wrong section by FR-015's rule. |
-| Real content | 3 | WF-011's comments are invented, and older snapshots cite Q-009 and a Q-001 date that differ from the set. |
-| Marks explained | 4 | Every sketch's marks match its shows list. |
+| The person's view | 3 | WF-006 gives the sponsor approval controls, but the decision happens outside the product, and WF-003 has no accept-or-refute ask. |
+| Real content | 3 | WF-011's comments are invented, and WF-001 cites a Q-009 that FR-017 does not. |
+| Marks explained | 4 | Every mark has one shows line, in order. |
 | No design | 4 | No colour, font, platform, or vendor. |
-| States | 4 | Every state a scenario or criterion names is drawn. |
-| Every control earns its place | 4 | Each control traces to a requirement. |
+| States | 4 | Every named state is drawn, including WF-011's open comment. |
+| Every control earns its place | 3 | WF-006's decision controls are for a sponsor who does not use the product in release 1. |
 
 ## Blocking defects
 
@@ -28,9 +28,9 @@ None.
 
 ## Weakest dimension
 
-The person's view. Three sketches show something other than the requirement they cite promises.
+The person's view. WF-006 draws an approval form that release 1 rules out.
 
 ## How to raise the grade
 
-- **The person's view (2 to 4):** Add an open comment to WF-011, the accept-or-refute ask to WF-003, and make WF-010 follow FR-015.
-- **Real content (3 to 4):** Use the ids FR-017 cites in WF-001, and correct the snapshot dates in WF-006.
+- **The person's view (3 to 4):** Make WF-006 show the decision as the expert recorded it, not choice controls, and add the accept-or-refute ask to WF-003.
+- **Real content (3 to 4):** Use an id FR-017 really cites in WF-001, and update WF-006's Q-001 date.

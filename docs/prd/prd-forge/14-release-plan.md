@@ -4,13 +4,13 @@ kind: release-plan
 schema: prd-forge/release-plan@1
 title: Release plan
 status: draft
-updated: 2026-10-28
+updated: 2026-10-29
 domain: product management tooling
 section: 13
 order: 140
-score: 83
+score: 88
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-29
 roadmap_link: none yet
 releases:
   - id: REL-001
@@ -57,6 +57,7 @@ releases:
       - FR-020
       - FR-021
       - FR-022
+      - FR-023
     objectives:
       - O-001
       - O-002
@@ -149,11 +150,13 @@ REL-002 is deferred rather than cut because the PRD REL-001 produces already has
 to carry everything a backlog needs, and FR-012 checks precisely that. Deferring the
 derivation costs nothing; deferring what it needs would have cost a rewrite.
 
-REL-003 waits for evidence that one author's path works at all. Building for two
+REL-003 waits for evidence that one author's path works at all. It starts when
+OUT-002's condition holds: three real engagements have each reached an approved
+set that passed the buildability review on first submission. Building for two
 authors before one is proven would be building on A-001 and A-002 before either is
 tested. A sponsor can already comment on an exported copy in REL-001, under
 FR-022. REL-003 adds comments inside the set, by a reviewer who does not hold the
-pen.
+pen, which OUT-005 defers.
 
 ## How you know each release worked
 
@@ -205,7 +208,7 @@ Every item in this document, with each of its fields.
 
 **Journey stages:** ST-001, ST-002, ST-003, ST-004, ST-005, ST-006
 
-**Requirements:** FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, FR-021, FR-022
+**Requirements:** FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, FR-021, FR-022, FR-023
 
 **Objectives:** O-001, O-002, O-003
 

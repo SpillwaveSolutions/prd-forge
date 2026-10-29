@@ -4,13 +4,13 @@ kind: glossary
 schema: prd-forge/glossary@1
 title: Glossary
 status: draft
-updated: 2026-10-28
+updated: 2026-10-29
 domain: product management tooling
 section: 14
 order: 150
 score: 85
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-29
 terms:
   - term: PRD
     meaning: >-
@@ -362,7 +362,7 @@ terms:
       review comment it depends on and a date, and only the approver who stated
       it clears it. When the sponsor approves while a review comment has no
       response, the sponsor states a condition on that comment, and the expert
-      records it (FR-022).
+      records it (FR-014).
     see_also:
       - approver
       - open question
@@ -911,9 +911,9 @@ terms:
       - question list
   - term: Ready
     meaning: >-
-      At `review`: fit for someone else to read. A section is ready when it meets
-      the gate and the expert accepts, or when the expert overrides the gate and
-      the override is recorded.
+      The condition a section meets before it moves to the state `review`: it
+      meets the gate and the expert accepts it, or the expert overrides the gate
+      and the override is recorded.
     see_also:
       - state
       - gate
@@ -1070,7 +1070,8 @@ terms:
       - release
   - term: Review
     meaning: >-
-      The state `review`: a section ready for someone else to read.
+      The state `review`, which a section enters once it is ready. In this state,
+      someone other than the expert may read it.
     see_also:
       - state
       - buildability review
@@ -1163,8 +1164,8 @@ terms:
   - term: Agent
     meaning: >-
       Software that proposes an outcome under a trust rule section 10 marks as
-      one an agent may decide, such as TR-003's score and findings. The person
-      the rule names accepts or refutes what it proposes.
+      delegable to an agent, such as TR-003's score and findings. The person the
+      rule names accepts or refutes what it proposes.
     see_also:
       - delegated
       - trust rule
@@ -1183,10 +1184,11 @@ terms:
   - term: Review comment
     meaning: >-
       A comment a person reading an exported copy leaves in that copy. In
-      release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response
+      release 1 that person is the sponsor (FR-022). The expert brings it back
+      into the set and records a response
       with one of three statuses: accepted, when the set changed because of it;
       declined, when the set did not change, with the reason; or answered, when
-      it asked a question and the set did not need to change (FR-022). Until it
+      it asked a question and the set did not need to change (FR-023). Until it
       has a response, it is open, which is not an open question in section 12.
     see_also:
       - exported copy
@@ -1205,8 +1207,8 @@ terms:
       - verdict
       - buildability review
     not: >-
-      Buildable with gaps. A set that is buildable with gaps passes only when
-      every gap is closed or owned, and it is not buildable until then.
+      A pass. A set with gaps can pass the buildability review when every gap is
+      closed or owned, and it is still not buildable while any gap is left.
   - term: Product manager
     meaning: >-
       A person who writes product requirements for a living. PER-001 is a
@@ -1224,6 +1226,36 @@ terms:
     see_also:
       - grading pass
       - grade
+  - term: Escalation
+    meaning: >-
+      What happens to a decision when its decider is away or disagrees, as each
+      trust rule in section 10 states.
+    see_also:
+      - trust rule
+      - decider
+    not: >-
+      An open question. An open question waits for an answer. An escalation
+      names who acts when the decider cannot.
+  - term: Satisfaction
+    meaning: >-
+      How one journey stage feels to the person today, from 1 (worst) to 5
+      (best), as the expert scores it in section 5. Only the expert gives it.
+    see_also:
+      - stage
+      - journey
+      - expert
+    not: >-
+      A measure of the product. The product never estimates it.
+  - term: Pain point
+    meaning: >-
+      What is hard for a person at one journey stage today, recorded in section 5
+      with the need that answers it.
+    see_also:
+      - stage
+      - problem
+    not: >-
+      The problem in section 1. The problem is the whole cost. A pain point is
+      one part of it at one stage.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -1271,6 +1303,9 @@ links:
 | Objection | A refuted finding the document does not support |
 | Refute | Showing a finding wrong |
 | Gate | The threshold |
+| Bet | An objective |
+| Buildable | A pass of the buildability review |
+| Product manager | The sponsor |
 | Out of scope | A non-goal |
 | Outcome | A feeling |
 | Ready | Offered for approval |
@@ -1279,6 +1314,9 @@ links:
 | Experiment | A spike |
 | Agent | A person |
 | Exported copy | The set |
+| Escalation | An open question |
+| Satisfaction | A measure of the product |
+| Pain point | The problem |
 | Review comment | A finding |
 | Capability | A capability the system needs |
 | Delegated | A person deciding on someone's behalf |
@@ -1672,7 +1710,7 @@ Every item in this document, with each of its fields.
 
 ### Condition
 
-**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question, requirement, or review comment it depends on and a date, and only the approver who stated it clears it. When the sponsor approves while a review comment has no response, the sponsor states a condition on that comment, and the expert records it (FR-022).
+**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question, requirement, or review comment it depends on and a date, and only the approver who stated it clears it. When the sponsor approves while a review comment has no response, the sponsor states a condition on that comment, and the expert records it (FR-014).
 
 **See also:**
 
@@ -2181,7 +2219,7 @@ Every item in this document, with each of its fields.
 
 ### Ready
 
-**Meaning:** At `review`: fit for someone else to read. A section is ready when it meets the gate and the expert accepts, or when the expert overrides the gate and the override is recorded.
+**Meaning:** The condition a section meets before it moves to the state `review`: it meets the gate and the expert accepts it, or the expert overrides the gate and the override is recorded.
 
 **See also:**
 
@@ -2347,7 +2385,7 @@ Every item in this document, with each of its fields.
 
 ### Review
 
-**Meaning:** The state `review`: a section ready for someone else to read.
+**Meaning:** The state `review`, which a section enters once it is ready. In this state, someone other than the expert may read it.
 
 **See also:**
 
@@ -2445,7 +2483,7 @@ Every item in this document, with each of its fields.
 
 ### Agent
 
-**Meaning:** Software that proposes an outcome under a trust rule section 10 marks as one an agent may decide, such as TR-003's score and findings. The person the rule names accepts or refutes what it proposes.
+**Meaning:** Software that proposes an outcome under a trust rule section 10 marks as delegable to an agent, such as TR-003's score and findings. The person the rule names accepts or refutes what it proposes.
 
 **See also:**
 
@@ -2467,7 +2505,7 @@ Every item in this document, with each of its fields.
 
 ### Review comment
 
-**Meaning:** A comment a person reading an exported copy leaves in that copy. In release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response with one of three statuses: accepted, when the set changed because of it; declined, when the set did not change, with the reason; or answered, when it asked a question and the set did not need to change (FR-022). Until it has a response, it is open, which is not an open question in section 12.
+**Meaning:** A comment a person reading an exported copy leaves in that copy. In release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response with one of three statuses: accepted, when the set changed because of it; declined, when the set did not change, with the reason; or answered, when it asked a question and the set did not need to change (FR-023). Until it has a response, it is open, which is not an open question in section 12.
 
 **See also:**
 
@@ -2487,7 +2525,7 @@ Every item in this document, with each of its fields.
 - verdict
 - buildability review
 
-**Not:** Buildable with gaps. A set that is buildable with gaps passes only when every gap is closed or owned, and it is not buildable until then.
+**Not:** A pass. A set with gaps can pass the buildability review when every gap is closed or owned, and it is still not buildable while any gap is left.
 
 ### Product manager
 
@@ -2505,5 +2543,39 @@ Every item in this document, with each of its fields.
 
 - grading pass
 - grade
+
+### Escalation
+
+**Meaning:** What happens to a decision when its decider is away or disagrees, as each trust rule in section 10 states.
+
+**See also:**
+
+- trust rule
+- decider
+
+**Not:** An open question. An open question waits for an answer. An escalation names who acts when the decider cannot.
+
+### Satisfaction
+
+**Meaning:** How one journey stage feels to the person today, from 1 (worst) to 5 (best), as the expert scores it in section 5. Only the expert gives it.
+
+**See also:**
+
+- stage
+- journey
+- expert
+
+**Not:** A measure of the product. The product never estimates it.
+
+### Pain point
+
+**Meaning:** What is hard for a person at one journey stage today, recorded in section 5 with the need that answers it.
+
+**See also:**
+
+- stage
+- problem
+
+**Not:** The problem in section 1. The problem is the whole cost. A pain point is one part of it at one stage.
 
 <!-- /prd-forge:details -->

@@ -4,14 +4,38 @@ kind: change-log
 schema: prd-forge/change-log@1
 title: Change log and approvals
 status: draft
-updated: 2026-10-28
+updated: 2026-10-29
 domain: product management tooling
 section: 15
 order: 160
 score: 75
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-29
 changes:
+  - version: 0.11.0
+    date: 2026-10-29
+    author: Richard Hightower
+    summary: >-
+      FR-023 split out of FR-022: FR-022 is what the sponsor sees in the next
+      copy, and FR-023 is how the expert brings the comments in and answers
+      each one. The approval rule for an open comment moved into FR-014, and the
+      sponsor sets each condition's date. OUT-005 defers comments inside the
+      set to REL-003, which starts when OUT-002's condition holds. WF-011 shows
+      an open comment. NFR-009 counts product releases, not versions of the
+      set. Section 5 hands ST-009 to the development team, and section 10's
+      table says "delegable to an agent" where it said "agent may decide". The
+      glossary adds escalation, satisfaction, and pain point, and separates
+      ready from review. A minor version under the versioning policy: new
+      content, nothing structural.
+    sections:
+      - 5
+      - 6
+      - 7
+      - 8
+      - 10
+      - 13
+      - 14
+      - 15
   - version: 0.10.0
     date: 2026-10-28
     author: Richard Hightower
@@ -244,6 +268,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.11.0 | 2026-10-29 | Richard Hightower | FR-023 split out of FR-022 for the expert's import and response; the open-comment approval rule moved into FR-014, and the sponsor sets each condition's date; OUT-005 defers comments inside the set to REL-003; WF-011 shows an open comment; NFR-009 counts product releases; ST-009 hands off to the development team; section 10 says "delegable to an agent"; the glossary adds escalation, satisfaction, and pain point, and separates ready from review |
 | 0.10.0 | 2026-10-28 | Richard Hightower | FR-022 added as a should: a sponsor's comments on an exported copy come back, each with a response, and an open one at approval becomes a condition; WF-011 shows the answered copy; IN-007, REL-001, TR-001, and the glossary include it; REL-003 keeps comments inside the set |
 | 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence and sourced why-now claims; persona roles and frequencies; satisfaction scores; ST-006 outside the product; FR-019 to FR-021 added; FR-014 rejection; TR-014 for accepting a score; LC-001 back to draft; C-004 out of section 9; single questions due before REL-001; sourced glossary terms with one meaning each; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
@@ -397,6 +422,16 @@ rubric cannot score approvals and conditions higher before an approval exists.
 ## Details
 
 Every item in this document, with each of its fields.
+
+### 0.11.0
+
+**Summary:** FR-023 split out of FR-022: FR-022 is what the sponsor sees in the next copy, and FR-023 is how the expert brings the comments in and answers each one. The approval rule for an open comment moved into FR-014, and the sponsor sets each condition's date. OUT-005 defers comments inside the set to REL-003, which starts when OUT-002's condition holds. WF-011 shows an open comment. NFR-009 counts product releases, not versions of the set. Section 5 hands ST-009 to the development team, and section 10's table says "delegable to an agent" where it said "agent may decide". The glossary adds escalation, satisfaction, and pain point, and separates ready from review. A minor version under the versioning policy: new content, nothing structural.
+
+**Date:** 2026-10-29
+
+**Author:** Richard Hightower
+
+**Sections:** 5, 6, 7, 8, 10, 13, 14, 15
 
 ### 0.10.0
 
