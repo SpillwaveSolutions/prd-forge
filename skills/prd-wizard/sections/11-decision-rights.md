@@ -5,7 +5,7 @@
 ## What this section is
 
 Who can approve what, and what is never delegated to an agent. For any product
-where software proposes and a person disposes, and for every agentic product, 
+where software proposes and a person disposes, and for every agentic product,
 this section is where the trust boundary is written down.
 
 ## Why it matters
