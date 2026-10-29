@@ -38,6 +38,7 @@ const ITEM_LISTS = {
   'release-plan': [['releases', 'name']],
   glossary: [['terms', 'term']],
   'change-log': [['changes', 'summary', 'version']],
+  'review-comments': [['comments', 'comment']],
   features: [['features', 'name']],
   epics: [['epics', 'goal']],
   stories: [['stories', 'capability']],

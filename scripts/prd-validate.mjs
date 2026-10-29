@@ -331,6 +331,7 @@ const SCHEMA_FILE = {
   'release-plan': 'release-plan.json',
   glossary: 'glossary.json',
   'change-log': 'change-log.json',
+  'review-comments': 'review-comments.json',
   backlog: 'backlog-root.json',
   features: 'features.json',
   epics: 'epics.json',
@@ -1035,6 +1036,19 @@ function structural(docs, dir) {
   for (const change of changes ?? []) {
     for (const approval of change?.approvals ?? []) {
       if (approval?.decision === 'rejected' && !approval?.note) errors.push(`change-log: ${change.version} rejection by ${approval.name} has no note`)
+    }
+  }
+
+  // section 15, review comments: each names a real id, came from one place in
+  // one Word file, and has an answer before the set is offered for review
+  const sources = new Set()
+  for (const rc of frontOf('review-comments')?.comments ?? []) {
+    if (rc?.about && !allIds.has(rc.about)) errors.push(`review-comments: ${rc.id} is about ${rc.about}, which does not exist`)
+    if (rc?.source && sources.has(rc.source)) errors.push(`review-comments: ${rc.id} repeats source ${rc.source}`)
+    sources.add(rc?.source)
+    // The set is offered when the root is, whatever the register's own status.
+    if (rc?.status === 'open' || !rc?.response) {
+      (atReview('prd') || atReview('review-comments') ? errors : warnings).push(`review-comments: ${rc?.id} has no answer yet`)
     }
   }
 

@@ -38,6 +38,10 @@ source (`.mmd` or `.puml`) with its rendered `.svg` and `.png`.
 | `14-release-plan.md` | `release-plan` | 13 | 140 |
 | `15-glossary.md` | `glossary` | 14 | 150 |
 | `16-change-log.md` | `change-log` | 15 | 160 |
+| `17-review-comments.md` | `review-comments` | 15 | 170 |
+
+`17-review-comments.md` is optional. `/prd-comments` creates it the first time
+it imports reviewers' Word comments, and it is not one of the eighteen.
 
 Create all eighteen at the start, each at `status: pending` with an empty body
 and a one-line note saying it has not been interviewed yet. The set is then

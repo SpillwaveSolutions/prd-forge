@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/review-comments.json",
+  "title": "Review comments (section 15)",
+  "description": "The comments reviewers left in an exported Word copy of the set, and the team's answer to each one. A register, not a graded section.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^RC-\\d{3}$"
+          },
+          "about": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The item or document the comment is anchored to, by id: FR-003, or a document's id when the comment is on its prose."
+          },
+          "reviewer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "date": {
+            "$ref": "common.json#/$defs/date"
+          },
+          "quote": {
+            "type": "string",
+            "description": "The text the reviewer marked."
+          },
+          "comment": {
+            "type": "string",
+            "minLength": 1
+          },
+          "replies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "reviewer": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "date": {
+                  "$ref": "common.json#/$defs/date"
+                },
+                "comment": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "reviewer",
+                "comment"
+              ],
+              "additionalProperties": false
+            },
+            "description": "Replies to the comment in the Word file, in order."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "accepted",
+              "declined",
+              "answered"
+            ],
+            "description": "open until the team responds. accepted: the set changed. declined: the set did not change, with the reason in the response. answered: the comment was a question."
+          },
+          "response": {
+            "type": "string",
+            "description": "The team's answer, in a sentence or two."
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "The ids the team changed because of the comment."
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The Word file and the comment's number in it, such as prd-forge-prd-reviewed.docx#4. An import skips a source the set already holds."
+          }
+        },
+        "required": [
+          "id",
+          "about",
+          "reviewer",
+          "comment",
+          "status",
+          "source"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "comments"
+  ]
+}

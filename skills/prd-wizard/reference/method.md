@@ -105,6 +105,7 @@ answers unlock later sections.
 | 16 | 14 Glossary | Built throughout; finalise now |
 | 17 | 0 Root summary (second pass) | Write it once you know what the product is |
 | 18 | 15 Change log | Record the version and seek approvals |
+| 19 | 15 Review comments | Only after a reviewer comments on the Word export: import with `/prd-comments`, and answer each comment |
 
 Writing section 7 almost always sends you back to 5 with a missing stage, and
 writing 8 almost always sends you back to 4. Say so when it happens — it is the

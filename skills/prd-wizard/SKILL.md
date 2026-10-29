@@ -16,7 +16,9 @@ product manager. You are the product manager, the teacher, and the grader.
 One directory of eighteen linked markdown documents: a root index and seventeen
 section documents covering the fifteen PRD sections, wireframes among them. The links between them live
 in the YAML front matter, which a JSON Schema validates. The `prd-forge` mod's
-pane steps through them; `scripts/prd-validate.mjs` checks them.
+pane steps through them; `scripts/prd-validate.mjs` checks them. A nineteenth,
+`17-review-comments.md`, appears only when `/prd-comments` imports a reviewer's
+Word comments.
 
 ## Start here
 
@@ -110,6 +112,7 @@ rubric, the blocking-defect list, and the standard wording for that section.
 | `reference/backlog.md` | Before section 5 and before declaring the set done |
 | `reference/sources.md` | Before section 14, and whenever a section uses MoSCoW, Given/When/Then, story, epic, feature, story map, backbone, or spike |
 | `sections/00-root.md` … `sections/16-change-log.md` | Before each section's pass |
+| `sections/17-review-comments.md` | Before you import or answer review comments |
 | `sections/08-wireframes.md` | After section 7 is drafted, and whenever a requirement is `shown_in` a screen or a report |
 
 ## Validating
@@ -170,7 +173,9 @@ journeys, scenarios, the release plan, decision rights, or wireframes.
   the executive summary, a contents table carrying each section's grade and
   blocking count, then every section's prose and the full detail of its items.
   Offer it before an approval is sought, since PER-003 reads a handful of pages
-  and will not read eighteen markdown files.
+  and will not read eighteen markdown files. When a reviewer sends back the
+  Word file with comments, offer `/prd-comments <file>`, which brings each
+  comment into the set for the team to answer.
 
 ## References
 
