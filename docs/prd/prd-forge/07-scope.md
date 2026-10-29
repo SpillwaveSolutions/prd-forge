@@ -4,13 +4,13 @@ kind: scope
 schema: prd-forge/scope@1
 title: Scope
 status: draft
-updated: 2026-10-28
+updated: 2026-10-29
 domain: product management tooling
 section: 6
 order: 70
-score: 96
+score: 88
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-29
 release: REL-001, single-expert PRD authoring
 release_line: >-
   ST-001 through ST-006 for one expert writing one PRD with one golden-thread
@@ -90,6 +90,7 @@ in_scope:
       - FR-014
       - FR-021
       - FR-022
+      - FR-023
 out_of_scope:
   - id: OUT-001
     summary: >-
@@ -121,6 +122,14 @@ out_of_scope:
       document is not enough to decide. Until then the sponsor reads one
       document, the root document, which FR-013 says carries everything they
       need.
+  - id: OUT-005
+    summary: >-
+      A reviewer commenting on a section inside the set, not on an exported copy
+    revisit: >-
+      REL-003, when OUT-002's condition holds: three real engagements have each
+      reached an approved set that passed the buildability review on first
+      submission. Until then, the sponsor comments on an exported copy, and the
+      comments come back under FR-022 and FR-023.
 non_goals:
   - >-
     We are not supplying domain knowledge. The expert has it; this product
@@ -155,7 +164,7 @@ outside_product:
     workaround: >-
       The sponsor reads the root document or an exported copy and gives a
       decision. Comments the sponsor leaves in an exported copy come back under
-      FR-022. The expert records the decision in section 15 under FR-014, with
+      FR-023. The expert records the decision in section 15 under FR-014, with
       the sponsor's name, role, and date.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
@@ -174,7 +183,7 @@ a date, and no buildability gap that is neither closed nor owned.
 
 ST-006 happens outside the product in REL-001. The sponsor reads the root
 document or an exported copy and gives a decision. Comments the sponsor leaves
-in an exported copy come back under FR-022. The expert records the decision in
+in an exported copy come back under FR-023. The expert records the decision in
 section 15 under FR-014, with the sponsor's name, role, and date.
 
 | ID | In scope | Stage | Requirements |
@@ -185,16 +194,17 @@ section 15 under FR-014, with the sponsor's name, role, and date.
 | IN-004 | Read the draft with its grade, refute a finding, move to any section, refresh, and see one item stated two ways | ST-003 | FR-008, FR-009, FR-016, FR-017, FR-018, FR-020 |
 | IN-005 | Answer one question, see the section re-graded, and resume without repeating an answer | ST-004 | FR-010, FR-011, FR-015 |
 | IN-006 | See which release-line stages no requirement covers and which requirements cannot be tested | ST-005 | FR-012 |
-| IN-007 | Name each approver, give the sponsor one document, bring back the sponsor's comments on it, and let the expert record their decision against a named version | ST-006 | FR-013, FR-014, FR-021, FR-022 |
+| IN-007 | Name each approver, give the sponsor one document, bring back the sponsor's comments on it, and let the expert record their decision against a named version | ST-006 | FR-013, FR-014, FR-021, FR-022, FR-023 |
 
 ## Out of scope for REL-001
 
 | ID | Out of scope | Revisit |
 | --- | --- | --- |
 | OUT-001 | Deriving the backlog (J-002) | REL-002; the PRD already carries what it needs |
-| OUT-002 | Two experts on one set at once | When three real engagements have each passed the buildability review on first submission |
+| OUT-002 | Two experts on one set at once | When three real engagements have each reached an approved set that passed the buildability review on first submission |
 | OUT-003 | Any view beyond reading the documents and stepping through them beside the conversation | When two of the three sponsors in Q-005's spike say the root document is not enough |
 | OUT-004 | An engineering lead's own recorded confirmation | REL-002, with J-002 |
+| OUT-005 | A reviewer's comments inside the set, not on an exported copy | REL-003, when OUT-002's condition holds; until then, comments come back from an exported copy under FR-022 and FR-023 |
 
 ## Non-goals
 
@@ -240,7 +250,7 @@ Every item in this document, with each of its fields.
 **Outside product:**
 
 - **Stage:** ST-006
-  - **Workaround:** The sponsor reads the root document or an exported copy and gives a decision. Comments the sponsor leaves in an exported copy come back under FR-022. The expert records the decision in section 15 under FR-014, with the sponsor's name, role, and date.
+  - **Workaround:** The sponsor reads the root document or an exported copy and gives a decision. Comments the sponsor leaves in an exported copy come back under FR-023. The expert records the decision in section 15 under FR-014, with the sponsor's name, role, and date.
 
 ### In scope in detail
 
@@ -298,7 +308,7 @@ Every item in this document, with each of its fields.
 
 **Journey stage:** ST-006
 
-**Requirements:** FR-013, FR-014, FR-021, FR-022
+**Requirements:** FR-013, FR-014, FR-021, FR-022, FR-023
 
 ### Out of scope in detail
 
@@ -325,5 +335,11 @@ Every item in this document, with each of its fields.
 **Summary:** Any view of the document set other than reading the documents themselves and stepping through them beside the conversation
 
 **Revisit:** When at least two of the three sponsors in Q-005's spike say the root document is not enough to decide. Until then the sponsor reads one document, the root document, which FR-013 says carries everything they need.
+
+#### OUT-005
+
+**Summary:** A reviewer commenting on a section inside the set, not on an exported copy
+
+**Revisit:** REL-003, when OUT-002's condition holds: three real engagements have each reached an approved set that passed the buildability review on first submission. Until then, the sponsor comments on an exported copy, and the comments come back under FR-022 and FR-023.
 
 <!-- /prd-forge:details -->

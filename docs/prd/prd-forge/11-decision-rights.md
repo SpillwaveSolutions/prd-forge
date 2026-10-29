@@ -4,13 +4,13 @@ kind: decision-rights
 schema: prd-forge/decision-rights@1
 title: Decision rights and trust rules
 status: draft
-updated: 2026-10-28
+updated: 2026-10-29
 domain: product management tooling
 section: 10
 order: 110
-score: 88
+score: 84
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-29
 decisions:
   - id: TR-001
     decision: Approve a PRD for a release
@@ -319,7 +319,7 @@ links:
 
 ![Who decides what](diagrams/decision-rights.svg)
 
-| ID | Decision | Decider | Agent may decide | Never delegated |
+| ID | Decision | Decider | Delegable to an agent | Never delegated |
 | --- | --- | --- | --- | --- |
 | TR-001 | Approve a PRD for a release | PER-003 | no | yes |
 | TR-002 | Set a section to final | PER-001 | no | yes |
@@ -338,7 +338,7 @@ links:
 
 Every decision named in a stage of section 5 appears here. TR-007 to TR-013 were
 added at version 0.2.0 to close that: five release-line stage decisions and both
-of J-002's had no rule, which meant gates an engineering team would have had to
+of J-002's had no rule, which meant gates a development team would have had to
 invent. TR-013 covers the one in the middle of the loop, the expert accepting
 that a draft says what they meant, which is distinct from scoring it (TR-003),
 from accepting or refuting the score (TR-014),
@@ -381,7 +381,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-003
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -405,7 +405,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -426,7 +426,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** yes
+**Delegable to an agent:** yes
 
 **Never delegated:** no
 
@@ -449,7 +449,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -468,7 +468,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -489,7 +489,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-002
 
-**An agent may decide:** yes
+**Delegable to an agent:** yes
 
 **Never delegated:** no
 
@@ -512,7 +512,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -533,7 +533,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -554,7 +554,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -574,7 +574,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -595,7 +595,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-004
 
-**An agent may decide:** yes
+**Delegable to an agent:** yes
 
 **Never delegated:** no
 
@@ -618,7 +618,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-004
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -638,7 +638,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 
@@ -659,7 +659,7 @@ Every item in this document, with each of its fields.
 
 **Approver:** PER-001
 
-**An agent may decide:** no
+**Delegable to an agent:** no
 
 **Never delegated:** yes
 

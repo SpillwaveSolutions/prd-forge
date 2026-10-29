@@ -4,13 +4,13 @@ kind: nonfunctional-requirements
 schema: prd-forge/nonfunctional-requirements@1
 title: Non-functional requirements
 status: draft
-updated: 2026-10-27
+updated: 2026-10-29
 domain: product management tooling
 section: 8
 order: 90
 score: 86
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-29
 requirements:
   - id: NFR-001
     category: performance
@@ -130,15 +130,15 @@ requirements:
   - id: NFR-009
     category: supportability
     statement: >-
-      A set written by an earlier version is still readable and still gradable by a
-      later one.
+      A set written by an earlier release of the product is still readable and
+      still gradable by a later release.
     metric: >-
-      Share of sets written by version N that version N+1 reads and grades without
-      the expert rewriting anything.
-    target: 100% within a major version
+      Share of sets written by product release N that product release N+1 reads
+      and grades without the expert rewriting anything.
+    target: 100% within a major product release
     measurement: >-
-      Keep one set per released version and run the current version against all of
-      them, per release.
+      Keep one set per product release and run the current product release
+      against all of them, per product release.
     priority: should
   - id: NFR-010
     category: retention
@@ -208,7 +208,7 @@ links:
 | NFR-006 | accessibility | Zero WCAG 2.2 AA violations on the golden-thread path |
 | NFR-007 | observability | 100% of grades reconstructable after the session |
 | NFR-008 | privacy | Zero destinations beyond the session the expert already uses |
-| NFR-009 | supportability | 100% of older sets readable within a major version |
+| NFR-009 | supportability | 100% of older sets readable and gradable within a major product release |
 | NFR-010 | retention | 100% retrievable from the organisation's own store, no expiry imposed by us |
 | NFR-011 | availability | Zero answers lost per interruption; resume within 1 minute |
 | NFR-012 | security | Zero read paths the organisation's own access rules do not govern |
@@ -382,15 +382,15 @@ Every item in this document, with each of its fields.
 
 ### NFR-009
 
-**Statement:** A set written by an earlier version is still readable and still gradable by a later one.
+**Statement:** A set written by an earlier release of the product is still readable and still gradable by a later release.
 
 **Category:** supportability
 
-**Metric:** Share of sets written by version N that version N+1 reads and grades without the expert rewriting anything.
+**Metric:** Share of sets written by product release N that product release N+1 reads and grades without the expert rewriting anything.
 
-**Target:** 100% within a major version
+**Target:** 100% within a major product release
 
-**Measurement:** Keep one set per released version and run the current version against all of them, per release.
+**Measurement:** Keep one set per product release and run the current product release against all of them, per product release.
 
 **Priority:** should
 

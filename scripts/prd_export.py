@@ -59,7 +59,7 @@ LABEL = {
     "end_state": "End state", "pain_points": "Pain points", "golden_thread": "Golden thread",
     "journey_stage": "Journey stage", "expected_outcome": "Expected outcome",
     "applies_to": "Applies to", "never_delegated": "Never delegated",
-    "delegable_to_agent": "An agent may decide", "evidence_required": "Evidence required",
+    "delegable_to_agent": "Delegable to an agent", "evidence_required": "Evidence required",
     "if_false": "If false", "validated_by": "Validated by", "see_also": "See also",
     "not": "Not", "target_date": "Target date", "willingness_to_pay": "Willingness to pay",
     "our_edge": "Our edge", "why_we_win": "Why we win", "release_line": "Release line",

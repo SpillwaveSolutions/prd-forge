@@ -4,13 +4,13 @@ kind: wireframes
 schema: prd-forge/wireframes@1
 title: Wireframes
 status: draft
-updated: 2026-10-28
+updated: 2026-10-29
 domain: product management tooling
 section: 7
 order: 85
 score: 91
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-29
 wireframes:
   - id: WF-001
     title: The set with one section open
@@ -137,6 +137,7 @@ wireframes:
       - Each comment, with what it is about, who left it, when, and the text they marked
       - Its status, accepted, declined, or answered
       - The response, and what changed because of it
+      - A comment with no response yet, marked open
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-functional-requirements, kind: functional-requirements, path: ./08-functional-requirements.md, title: Functional requirements }
@@ -461,6 +462,11 @@ are invented, to show the form.
 │ Status: answered                                     │
 │ Response: an approval waits on people, not the tool. │
 │ Changed: none                                        │
+├──────────────────────────────────────────────────────┤
+│ RC-003 about FR-021 · R. Hightower · 2026-11-04      │
+│ Marked: "by name and role"                           │
+│ Comment: Can one person hold two approver roles?     │
+│ Status: open, no response yet <5>                    │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -687,5 +693,6 @@ Every item in this document, with each of its fields.
 2. Each comment, with what it is about, who left it, when, and the text they marked
 3. Its status, accepted, declined, or answered
 4. The response, and what changed because of it
+5. A comment with no response yet, marked open
 
 <!-- /prd-forge:details -->

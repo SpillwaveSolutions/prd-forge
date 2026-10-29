@@ -173,7 +173,7 @@ export function decisionsText(decisions, roleNames = {}) {
     if (lines.length > 0) lines.push('')
     lines.push(...wrapText(`${ascii(roleNames[who] ?? who)} decides:`, WIDTH))
     for (const d of decisions.filter(one => String(one.approver ?? 'Unassigned') === who)) {
-      const tag = d.never_delegated === true ? 'never delegated' : d.delegable_to_agent === true ? 'an agent may decide' : 'delegable to a person'
+      const tag = d.never_delegated === true ? 'never delegated' : d.delegable_to_agent === true ? 'delegable to an agent' : 'delegable to a person'
       lines.push(...hang(`  - ${d.id} `, `${ascii(d.decision)} (${tag})`, '           '))
     }
   }

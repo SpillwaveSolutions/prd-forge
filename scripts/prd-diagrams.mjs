@@ -365,7 +365,7 @@ export function decisionsMermaid(decisions, roleNames = {}) {
     lines.push(`  A${nodeId(who)}(["<b>${label(roleNames[who] ?? who)}</b>"])`)
   }
   for (const d of decisions) {
-    const tag = d.never_delegated === true ? 'never delegated' : d.delegable_to_agent === true ? 'an agent may decide' : 'delegable to a person'
+    const tag = d.never_delegated === true ? 'never delegated' : d.delegable_to_agent === true ? 'delegable to an agent' : 'delegable to a person'
     lines.push(`  D${nodeId(d.id)}["<b>${label(d.id)}</b> ${label(d.decision)} <i>(${tag})</i>"]`)
     lines.push(`  A${nodeId(d.approver ?? 'Unassigned')} --> D${nodeId(d.id)}`)
   }
