@@ -4,11 +4,11 @@ kind: prd
 schema: prd-forge/prd-root@1
 title: prd-forge PRD
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.9.0
+version: 0.10.0
 owner: Richard Hightower
 stakeholders:
   - Product managers who are, or speak for, the domain expert
@@ -140,7 +140,7 @@ requirements in section 7 describe only what a person does and sees, and section
 
 Every item in this document, with each of its fields.
 
-**Version:** 0.9.0
+**Version:** 0.10.0
 
 **Owner:** Richard Hightower
 

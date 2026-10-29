@@ -4,11 +4,11 @@ kind: release-plan
 schema: prd-forge/release-plan@1
 title: Release plan
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 section: 13
 order: 140
-score: 92
+score: 83
 blocking: 0
 graded: 2026-10-28
 roadmap_link: none yet
@@ -19,7 +19,8 @@ releases:
       - >-
         An expert with no product training, a domain expert or a product manager
         who speaks for one, can take one product idea to an approved PRD. Only the
-        sponsor's decision at ST-006 happens outside the product.
+        sponsor's reading, comments, and decision at ST-006 happen outside the
+        product.
       - >-
         The expert can see, before anyone estimates, which parts of their own
         PRD a development team could not build from.
@@ -55,6 +56,7 @@ releases:
       - FR-019
       - FR-020
       - FR-021
+      - FR-022
     objectives:
       - O-001
       - O-002
@@ -115,7 +117,8 @@ releases:
         without overwriting each other.
       - >-
         A reviewer, such as the engineering lead (PER-002), can comment on a
-        section without being able to change it.
+        section inside the set, not on an exported copy, without being able to
+        change it.
     objectives:
       - O-002
     depends_on:
@@ -148,7 +151,9 @@ derivation costs nothing; deferring what it needs would have cost a rewrite.
 
 REL-003 waits for evidence that one author's path works at all. Building for two
 authors before one is proven would be building on A-001 and A-002 before either is
-tested.
+tested. A sponsor can already comment on an exported copy in REL-001, under
+FR-022. REL-003 adds comments inside the set, by a reviewer who does not hold the
+pen.
 
 ## How you know each release worked
 
@@ -194,13 +199,13 @@ Every item in this document, with each of its fields.
 
 **Outcomes:**
 
-- An expert with no product training, a domain expert or a product manager who speaks for one, can take one product idea to an approved PRD. Only the sponsor's decision at ST-006 happens outside the product.
+- An expert with no product training, a domain expert or a product manager who speaks for one, can take one product idea to an approved PRD. Only the sponsor's reading, comments, and decision at ST-006 happen outside the product.
 - The expert can see, before anyone estimates, which parts of their own PRD a development team could not build from.
 - A sponsor can see what they are approving, what is still open, and who decides each open question, in one document.
 
 **Journey stages:** ST-001, ST-002, ST-003, ST-004, ST-005, ST-006
 
-**Requirements:** FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, FR-021
+**Requirements:** FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, FR-021, FR-022
 
 **Objectives:** O-001, O-002, O-003
 
@@ -246,7 +251,7 @@ Every item in this document, with each of its fields.
 **Outcomes:**
 
 - Two experts can work on different sections of the same set without overwriting each other.
-- A reviewer, such as the engineering lead (PER-002), can comment on a section without being able to change it.
+- A reviewer, such as the engineering lead (PER-002), can comment on a section inside the set, not on an exported copy, without being able to change it.
 
 **Objectives:** O-002
 

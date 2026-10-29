@@ -4,11 +4,11 @@ kind: decision-rights
 schema: prd-forge/decision-rights@1
 title: Decision rights and trust rules
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 section: 10
 order: 110
-score: 91
+score: 88
 blocking: 0
 graded: 2026-10-28
 decisions:
@@ -44,9 +44,10 @@ decisions:
         the rejection carries its reason, and the set reads as not approved.
       - >-
         Given an approver who approves with conditions, when the approval is
-        recorded, then each condition names the open question or requirement it
-        depends on and a date, and the set reads as approved-with-conditions until
-        every condition is cleared by that same approver.
+        recorded, then each condition names the open question, requirement, or
+        review comment it depends on and a date, and the set reads as
+        approved-with-conditions until every condition is cleared by that same
+        approver.
   - id: TR-002
     decision: Set a section's state to final
     stages: [ST-004]
@@ -394,7 +395,7 @@ Every item in this document, with each of its fields.
 2. Given a set with no recorded approval, when anyone reads its state, then it reads as not approved, whatever its scores are.
 3. Given an engagement with no sponsor, when the expert approves their own set, then the approval records that no separate approver existed.
 4. Given an approver who rejects the set, when the decision is recorded, then the rejection carries its reason, and the set reads as not approved.
-5. Given an approver who approves with conditions, when the approval is recorded, then each condition names the open question or requirement it depends on and a date, and the set reads as approved-with-conditions until every condition is cleared by that same approver.
+5. Given an approver who approves with conditions, when the approval is recorded, then each condition names the open question, requirement, or review comment it depends on and a date, and the set reads as approved-with-conditions until every condition is cleared by that same approver.
 
 ### TR-002
 

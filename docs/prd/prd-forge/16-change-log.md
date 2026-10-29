@@ -4,14 +4,32 @@ kind: change-log
 schema: prd-forge/change-log@1
 title: Change log and approvals
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 section: 15
 order: 160
-score: 71
+score: 75
 blocking: 0
 graded: 2026-10-28
 changes:
+  - version: 0.10.0
+    date: 2026-10-28
+    author: Richard Hightower
+    summary: >-
+      FR-022 added as a should in REL-001: a sponsor comments on an exported copy
+      without using the product, and the next copy shows each comment's response
+      and what it changed. A comment with no response at approval becomes a
+      condition under FR-014. WF-011 shows that copy. IN-007 and REL-001 include
+      FR-022, REL-003 keeps comments inside the set, TR-001 lets a condition
+      name a review comment, and the glossary defines a review comment. A minor version: new content, nothing structural, as
+      Richard Hightower decided on 2026-10-28.
+    sections:
+      - 6
+      - 7
+      - 10
+      - 13
+      - 14
+      - 15
   - version: 0.9.0
     date: 2026-10-27
     author: Richard Hightower
@@ -226,6 +244,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.10.0 | 2026-10-28 | Richard Hightower | FR-022 added as a should: a sponsor's comments on an exported copy come back, each with a response, and an open one at approval becomes a condition; WF-011 shows the answered copy; IN-007, REL-001, TR-001, and the glossary include it; REL-003 keeps comments inside the set |
 | 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence and sourced why-now claims; persona roles and frequencies; satisfaction scores; ST-006 outside the product; FR-019 to FR-021 added; FR-014 rejection; TR-014 for accepting a score; LC-001 back to draft; C-004 out of section 9; single questions due before REL-001; sourced glossary terms with one meaning each; the versioning policy |
 | 0.8.1 | 2026-10-27 | Richard Hightower | Glossary terms, observable scenario outcomes, open questions named in section 7, competitor edges; C-001 to C-003 and S-003 moved; ST-009 for the engineering lead |
 | 0.8.0 | 2026-10-27 | Richard Hightower | Requirement and scenario priorities, SC-007, release exit criteria, single deciders |
@@ -364,12 +383,13 @@ set, their review is recorded beside the approval.
 
 Each approval is recorded with the version, the approver's name and role, the
 date, and the decision. An approval with conditions records each condition as
-"conditional on <id> by <date>", where the id is the open question or
-requirement the condition depends on, as FR-014 requires. A rejection records
+"conditional on <id> by <date>", where the id is the open question,
+requirement, or review comment the condition depends on, as FR-014 and FR-022
+require. Only the approver who stated a condition clears it. A rejection records
 its reason.
 
-At 0.9.0 the expert holds every other section to a score over 80, and accepts
-this section below 80 until the set is offered for approval on 2027-03-15, because its
+At 0.9.0 the expert holds every other section to a score over 80, except
+section 2 until Q-004 and Q-005 are answered, and accepts this section below 80 until the set is offered for approval on 2027-03-15, because its
 rubric cannot score approvals and conditions higher before an approval exists.
 
 <!-- prd-forge:details -->
@@ -377,6 +397,16 @@ rubric cannot score approvals and conditions higher before an approval exists.
 ## Details
 
 Every item in this document, with each of its fields.
+
+### 0.10.0
+
+**Summary:** FR-022 added as a should in REL-001: a sponsor comments on an exported copy without using the product, and the next copy shows each comment's response and what it changed. A comment with no response at approval becomes a condition under FR-014. WF-011 shows that copy. IN-007 and REL-001 include FR-022, REL-003 keeps comments inside the set, TR-001 lets a condition name a review comment, and the glossary defines a review comment. A minor version: new content, nothing structural, as Richard Hightower decided on 2026-10-28.
+
+**Date:** 2026-10-28
+
+**Author:** Richard Hightower
+
+**Sections:** 6, 7, 10, 13, 14, 15
 
 ### 0.9.0
 

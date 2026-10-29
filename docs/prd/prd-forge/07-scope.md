@@ -4,11 +4,11 @@ kind: scope
 schema: prd-forge/scope@1
 title: Scope
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 section: 6
 order: 70
-score: 92
+score: 96
 blocking: 0
 graded: 2026-10-28
 release: REL-001, single-expert PRD authoring
@@ -80,14 +80,16 @@ in_scope:
   - id: IN-007
     summary: >-
       Let the expert name each approver, give the sponsor one document with the
-      summary, the scope, the grades, and the open questions, and let the expert
-      record the sponsor's decision, given outside the product, with any
-      conditions, against a named version
+      summary, the scope, the grades, and the open questions, bring the
+      sponsor's comments on an exported copy back into the set with a response to
+      each, and let the expert record the sponsor's decision, given outside the
+      product, with any conditions, against a named version
     journey_stage: ST-006
     requirements:
       - FR-013
       - FR-014
       - FR-021
+      - FR-022
 out_of_scope:
   - id: OUT-001
     summary: >-
@@ -152,8 +154,9 @@ outside_product:
   - stage: ST-006
     workaround: >-
       The sponsor reads the root document or an exported copy and gives a
-      decision. The expert records it in section 15 under FR-014, with the
-      sponsor's name, role, and date.
+      decision. Comments the sponsor leaves in an exported copy come back under
+      FR-022. The expert records the decision in section 15 under FR-014, with
+      the sponsor's name, role, and date.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-scenarios, kind: scenarios, path: ./06-scenarios.md, title: Scenarios }
@@ -170,7 +173,8 @@ section graded with no blocking defects, every open question with a decider and
 a date, and no buildability gap that is neither closed nor owned.
 
 ST-006 happens outside the product in REL-001. The sponsor reads the root
-document or an exported copy and gives a decision. The expert records it in
+document or an exported copy and gives a decision. Comments the sponsor leaves
+in an exported copy come back under FR-022. The expert records the decision in
 section 15 under FR-014, with the sponsor's name, role, and date.
 
 | ID | In scope | Stage | Requirements |
@@ -181,7 +185,7 @@ section 15 under FR-014, with the sponsor's name, role, and date.
 | IN-004 | Read the draft with its grade, refute a finding, move to any section, refresh, and see one item stated two ways | ST-003 | FR-008, FR-009, FR-016, FR-017, FR-018, FR-020 |
 | IN-005 | Answer one question, see the section re-graded, and resume without repeating an answer | ST-004 | FR-010, FR-011, FR-015 |
 | IN-006 | See which release-line stages no requirement covers and which requirements cannot be tested | ST-005 | FR-012 |
-| IN-007 | Name each approver, give the sponsor one document, and let the expert record their decision against a named version | ST-006 | FR-013, FR-014, FR-021 |
+| IN-007 | Name each approver, give the sponsor one document, bring back the sponsor's comments on it, and let the expert record their decision against a named version | ST-006 | FR-013, FR-014, FR-021, FR-022 |
 
 ## Out of scope for REL-001
 
@@ -236,7 +240,7 @@ Every item in this document, with each of its fields.
 **Outside product:**
 
 - **Stage:** ST-006
-  - **Workaround:** The sponsor reads the root document or an exported copy and gives a decision. The expert records it in section 15 under FR-014, with the sponsor's name, role, and date.
+  - **Workaround:** The sponsor reads the root document or an exported copy and gives a decision. Comments the sponsor leaves in an exported copy come back under FR-022. The expert records the decision in section 15 under FR-014, with the sponsor's name, role, and date.
 
 ### In scope in detail
 
@@ -290,11 +294,11 @@ Every item in this document, with each of its fields.
 
 #### IN-007
 
-**Summary:** Let the expert name each approver, give the sponsor one document with the summary, the scope, the grades, and the open questions, and let the expert record the sponsor's decision, given outside the product, with any conditions, against a named version
+**Summary:** Let the expert name each approver, give the sponsor one document with the summary, the scope, the grades, and the open questions, bring the sponsor's comments on an exported copy back into the set with a response to each, and let the expert record the sponsor's decision, given outside the product, with any conditions, against a named version
 
 **Journey stage:** ST-006
 
-**Requirements:** FR-013, FR-014, FR-021
+**Requirements:** FR-013, FR-014, FR-021, FR-022
 
 ### Out of scope in detail
 

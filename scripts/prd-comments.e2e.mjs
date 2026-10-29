@@ -77,7 +77,7 @@ test('a reviewer comments in Word, and each comment comes back, is answered, and
   writeDetails(set)
   let report = validateSet(set)
   assert.deepEqual(report.errors, [])
-  assert.equal(report.warnings.filter(w => /has no answer yet/.test(w)).length, REVIEW.length)
+  assert.equal(report.warnings.filter(w => /has no response yet/.test(w)).length, REVIEW.length)
 
   // 5. The team answers each one.
   const register = join(set, '17-review-comments.md')

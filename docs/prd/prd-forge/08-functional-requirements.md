@@ -4,7 +4,7 @@ kind: functional-requirements
 schema: prd-forge/functional-requirements@1
 title: Functional requirements
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 section: 7
 order: 80
@@ -312,8 +312,8 @@ requirements:
     acceptance:
       - >-
         Given an approver who approves with conditions, when they state the
-        conditions, then each condition names the open question or requirement it
-        depends on and a date.
+        conditions, then each condition names the open question, requirement, or
+        review comment it depends on and a date.
       - >-
         Given a recorded approval, when the set is read later, then the version
         approved, the approver, their role, the date and the decision are all
@@ -491,6 +491,44 @@ requirements:
     shown_in: conversation
     journey_stage: ST-006
     objective: O-002
+  - id: FR-022
+    user: PER-003
+    capability: >-
+      Comment on an exported copy of the set without using the product, and see
+      each comment's response in the next copy
+    outcome: >-
+      A sponsor who never opens the product sees every comment they left in the
+      next copy: with its status, accepted, declined, or answered, its response,
+      and what changed, or marked open while it has no response.
+    acceptance:
+      - >-
+        Given a sponsor who comments on an item in an exported copy, when the
+        expert brings the copy's comments into the set, then each comment is
+        recorded against that item with the sponsor's name, the date, and the
+        text they marked.
+      - >-
+        Given a copy whose comments were already brought in, when the expert
+        brings it in again, then no comment is recorded twice.
+      - >-
+        Given a comment that marks no text, when the expert brings the copy's
+        comments into the set, then it is recorded against the section it sits
+        in.
+      - >-
+        Given a sponsor who approves while a comment has no response, when the
+        expert records the approval, then each such comment is recorded as a
+        condition on it, with the comment's id and the date it is due, and only
+        the sponsor clears it.
+      - >-
+        Given a comment the expert responded to, when the sponsor reads the next
+        exported copy, then they see the comment, its status, the response, and
+        the ids it changed.
+      - >-
+        Given a comment with no response yet, when the sponsor reads the next
+        exported copy, then they see the comment marked open.
+    priority: should
+    shown_in: report
+    journey_stage: ST-006
+    objective: O-002
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-scope, kind: scope, path: ./07-scope.md, title: Scope }
@@ -522,10 +560,11 @@ links:
 | FR-019 | PER-001 | Stop being asked once the section would meet the gate | should | ST-002 |
 | FR-020 | PER-001 | Be told when the set states one item two ways | should | ST-003 |
 | FR-021 | PER-001 | Name each approver before offering the set | must | ST-006 |
+| FR-022 | PER-003 | Comment on an exported copy, and see each comment's response | should | ST-006 |
 
-Every release-line stage has at least one `must` requirement. Eleven of the 21
+Every release-line stage has at least one `must` requirement. Eleven of the 22
 are `must`: without any one of them, REL-001 does not do what it promises. The
-ten `should` requirements make the work faster or easier to follow, and the
+eleven `should` requirements make the work faster or easier to follow, and the
 expert can still reach an approved set without them. The expert set this split
 at version 0.8.0, and set FR-021 to `must` at version 0.9.0.
 
@@ -537,8 +576,8 @@ version until Q-015 names its owner. FR-010 also waits on Q-007 and Q-014, wheth
 the requirements sends the expert back to the journeys and how that feels,
 because both block ST-004. FR-013 waits on Q-005, whether a sponsor accepts a
 PRD that carries a grade. FR-014 no longer waits: Q-011 is answered, and in
-release 1 the expert records the sponsor's decision under FR-014. Two `should`
-requirements also wait: FR-011 on Q-009, and FR-015 on Q-010.
+release 1 the expert records the sponsor's decision under FR-014. Three `should`
+requirements also wait: FR-011 and FR-019 on Q-009, and FR-015 on Q-010.
 
 FR-015 and FR-016 were split out of FR-002 and FR-009 at version 0.2.0, because
 each has a failure mode of its own: a build could deliver perfect set-state
@@ -554,6 +593,13 @@ mode of their own, and each needs its own priority. The expert set both to
 FR-021 was added at version 0.9.0 on the expert's decision. A set records who
 will approve it before it is offered, so an approval names a person, not only
 the sponsor's role in section 10.
+
+FR-022 was added at version 0.10.0 on the expert's decision, as a `should` in
+REL-001. A sponsor reads an exported copy outside the product at ST-006 and
+comments in it. FR-022 brings those comments back, and the next copy carries
+each response and what it changed. WF-011 shows that copy. A comment still
+without a response when the sponsor approves does not block the approval: the
+expert records it as a condition under FR-014, as the expert decided.
 
 ## A judgement call worth challenging
 
@@ -871,7 +917,7 @@ Every item in this document, with each of its fields.
 
 **Acceptance:**
 
-1. Given an approver who approves with conditions, when they state the conditions, then each condition names the open question or requirement it depends on and a date.
+1. Given an approver who approves with conditions, when they state the conditions, then each condition names the open question, requirement, or review comment it depends on and a date.
 2. Given a recorded approval, when the set is read later, then the version approved, the approver, their role, the date and the decision are all present.
 3. Given an approved set that is then changed, when the change is written, then a new version is recorded and the earlier approval is not represented as covering it.
 4. Given an approver who rejects the set, when the expert records it, then the rejection, its reason, the approver, and the date are recorded against the version, and the set reads as not approved.
@@ -1032,6 +1078,31 @@ Every item in this document, with each of its fields.
 **Priority:** must
 
 **Shown in:** conversation
+
+**Journey stage:** ST-006
+
+**Objective:** O-002
+
+### FR-022
+
+**Capability:** Comment on an exported copy of the set without using the product, and see each comment's response in the next copy
+
+**User:** PER-003
+
+**Outcome:** A sponsor who never opens the product sees every comment they left in the next copy: with its status, accepted, declined, or answered, its response, and what changed, or marked open while it has no response.
+
+**Acceptance:**
+
+1. Given a sponsor who comments on an item in an exported copy, when the expert brings the copy's comments into the set, then each comment is recorded against that item with the sponsor's name, the date, and the text they marked.
+2. Given a copy whose comments were already brought in, when the expert brings it in again, then no comment is recorded twice.
+3. Given a comment that marks no text, when the expert brings the copy's comments into the set, then it is recorded against the section it sits in.
+4. Given a sponsor who approves while a comment has no response, when the expert records the approval, then each such comment is recorded as a condition on it, with the comment's id and the date it is due, and only the sponsor clears it.
+5. Given a comment the expert responded to, when the sponsor reads the next exported copy, then they see the comment, its status, the response, and the ids it changed.
+6. Given a comment with no response yet, when the sponsor reads the next exported copy, then they see the comment marked open.
+
+**Priority:** should
+
+**Shown in:** report
 
 **Journey stage:** ST-006
 

@@ -4,7 +4,7 @@ kind: wireframes
 schema: prd-forge/wireframes@1
 title: Wireframes
 status: draft
-updated: 2026-10-26
+updated: 2026-10-28
 domain: product management tooling
 section: 7
 order: 85
@@ -126,6 +126,17 @@ wireframes:
       - Every section's grade and blocking count
       - Each blocking defect in the section, named
       - The next question, not one already answered
+  - id: WF-011
+    title: Review comments with their responses in the next exported copy
+    type: report
+    persona: PER-003
+    journey_stage: ST-006
+    illustrates: [FR-022]
+    shows:
+      - The comments, together in the copy
+      - Each comment, with what it is about, who left it, when, and the text they marked
+      - Its status, accepted, declined, or answered
+      - The response, and what changed because of it
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-functional-requirements, kind: functional-requirements, path: ./08-functional-requirements.md, title: Functional requirements }
@@ -144,7 +155,9 @@ anything looks or how it is built.
 Five sketches follow the domain expert through the golden thread: a new set with
 nothing started, the set with a section open, why a section got its grade, the
 rubric behind it, and a re-grade. Two reports decide whether the set is
-buildable: the buildability review and the approval pack. Three smaller sketches
+buildable: the buildability review and the approval pack. A third, the review
+comments with their responses, is what the sponsor reads in the next exported copy. Three
+smaller sketches
 draw the other states: no set at all, which FR-018's third criterion names; the
 review that finds gaps, which SC-005 names; and the return after a week away,
 which SC-002 names.
@@ -423,6 +436,36 @@ SC-002 is the expert who returns after eight days and remembers nothing. The val
 
 ![WF-010 drawing](diagrams/WF-010.svg)
 
+## WF-011 Review comments with their responses in the next exported copy
+
+Illustration, not a design. Illustrates FR-022. PER-003 sees it at ST-006.
+
+The sponsor commented on an earlier copy, and this is the copy they read next.
+Each marked text is the item's own wording. The comments, responses, and dates
+are invented, to show the form.
+
+```wireframe
+┌─ prd-forge PRD 0.10.0 · exported copy ───────────────┐
+│ Review comments <1>                                  │
+├──────────────────────────────────────────────────────┤
+│ RC-001 about FR-013 · R. Hightower · 2026-11-03 <2>  │
+│ Marked: "who owns each undecided thing"              │
+│ Comment: Can I see each owner by name?               │
+│ Status: accepted <3>                                 │
+│ Response: each decider is now named, not a role. <4> │
+│ Changed: FR-013                                      │
+├──────────────────────────────────────────────────────┤
+│ RC-002 about O-002 · R. Hightower · 2026-11-03       │
+│ Marked: "to an approval recorded in section 15"      │
+│ Comment: Why days to approval, not hours?            │
+│ Status: answered                                     │
+│ Response: an approval waits on people, not the tool. │
+│ Changed: none                                        │
+└──────────────────────────────────────────────────────┘
+```
+
+![WF-011 drawing](diagrams/WF-011.svg)
+
 <!-- prd-forge:details -->
 
 ## Details
@@ -625,5 +668,24 @@ Every item in this document, with each of its fields.
 4. The next question, not one already answered
 
 **State of:** WF-001
+
+### WF-011
+
+**Title:** Review comments with their responses in the next exported copy
+
+**Type:** report
+
+**Persona:** PER-003
+
+**Journey stage:** ST-006
+
+**Illustrates:** FR-022
+
+**Shows:**
+
+1. The comments, together in the copy
+2. Each comment, with what it is about, who left it, when, and the text they marked
+3. Its status, accepted, declined, or answered
+4. The response, and what changed because of it
 
 <!-- /prd-forge:details -->

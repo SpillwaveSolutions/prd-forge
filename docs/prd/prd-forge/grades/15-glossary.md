@@ -9,12 +9,14 @@ previous_score: 85
 
 # Why glossary scored 85
 
+Graded at 0.10.0, after FR-022 was added, on the document's own merits.
+
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Coverage | 3 | "Product manager" and "re-grade" are used and have no entry. |
+| Coverage | 3 | Escalation, satisfaction, and pain point are used across sections 5 and 10 with no entry. |
 | Author's voice | 4 | The entries take positions in the expert's words. |
-| Disambiguation | 3 | Buildable has no `not` against "buildable with gaps", and Gap's `not` clashes with Finding. |
-| Consistency | 3 | Agent, Delegated, and section 10 give three accounts of the agent's role. |
+| Disambiguation | 3 | Buildable's not borrows the verdict name not buildable, and three new nots have no row in the confused-with table. |
+| Consistency | 3 | Agent still says "may decide", as does section 10's table, while every decider is a person. Ready and Review define one idea twice. |
 | Authority | 4 | All five sources are cited, and each departure is stated. |
 
 ## Blocking defects
@@ -23,16 +25,10 @@ None.
 
 ## Weakest dimension
 
-Consistency. The agent's role has three accounts.
+Consistency. The agent's role still has two words.
 
 ## How to raise the grade
 
-- **Consistency (3 to 4):** Rewrite Agent and Delegated so that the agent proposes, which matches section 10.
-- **Coverage (3 to 4):** Add "Product manager" and "Re-grade".
-- **Disambiguation (3 to 4):** Give Buildable a `not`, and make Gap and Finding agree.
-
-## The details block
-
-The generated details block contradicts nothing. It shows the front matter word for word, and it makes visible any place where the hand-written prose has drifted from it.
-
-- Every `not` appears twice in the body: in the "Most often confused with" table, which paraphrases, and in the block.
+- **Consistency (3 to 4):** Choose "propose" for an agent across Agent and section 10's table, and separate Ready from Review.
+- **Coverage (3 to 4):** Add Escalation, Satisfaction, and Pain point.
+- **Disambiguation (3 to 4):** Reword Buildable's not, and add table rows for Bet, Buildable, and Product manager.

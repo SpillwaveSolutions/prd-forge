@@ -4,7 +4,7 @@ kind: glossary
 schema: prd-forge/glossary@1
 title: Glossary
 status: draft
-updated: 2026-10-27
+updated: 2026-10-28
 domain: product management tooling
 section: 14
 order: 150
@@ -160,6 +160,10 @@ terms:
     see_also:
       - release line
       - non-goal
+    not: >-
+      The release line. The release line is the path of stages a release
+      completes, and scope is everything the release includes and leaves out
+      along it.
   - term: Assumption
     meaning: >-
       Something taken on faith that the product depends on, recorded with what
@@ -215,7 +219,9 @@ terms:
       Where a section stands: the state pending, shown to the expert as not started;
       `draft`, written; `review`, ready for someone else to read, reached through
       the gate; or `final`, set by the expert under TR-002. LC-001 in section
-      5 shows each move.
+      5 shows each move. The set as a whole reads as not yet approved, approved,
+      approved with conditions, or rejected, by the approval recorded in section
+      15.
     not: >-
       A threshold. The threshold is the score a gate needs. The state is where
       the section stands.
@@ -246,7 +252,7 @@ terms:
   - term: Derivability checks
     meaning: >-
       The eleven checks a buildability review runs to decide whether a backlog can
-      be derived from a set. Q-009 asks which version of them release 1 grades
+      be derived from a set. Q-009 asks which edition of them release 1 grades
       against.
     see_also:
       - verdict
@@ -352,8 +358,11 @@ terms:
   - term: Condition
     meaning: >-
       What an approver who approves with conditions requires before the approval
-      is unconditional. Each condition names the open question or requirement it
-      depends on and a date, and only the approver who stated it clears it.
+      is unconditional. Each condition names the open question, requirement, or
+      review comment it depends on and a date, and only the approver who stated
+      it clears it. When the sponsor approves while a review comment has no
+      response, the sponsor states a condition on that comment, and the expert
+      records it (FR-022).
     see_also:
       - approver
       - open question
@@ -405,6 +414,9 @@ terms:
       - the five tests
       - acceptance criteria
       - objective
+    not: >-
+      A story or a feature. A requirement is stated in the PRD, and stories and
+      features are derived from requirements in the backlog.
   - term: Acceptance criteria
     meaning: >-
       The pass-or-fail statements on a requirement or a journey stage. Each is
@@ -438,9 +450,9 @@ terms:
       - release line
       - open question
     not: >-
-      A finding or a blocking defect. A finding is anything a review reports,
-      and a blocking defect is a finding that stops a section moving on. A gap is
-      a thing the set leaves unsaid.
+      A blocking defect. A gap is a thing the set leaves unsaid, and the
+      buildability review reports each gap as a finding. A blocking defect is a
+      finding that stops a section moving on.
   - term: Version
     meaning: >-
       A numbered state of the set, recorded in section 15 with its date, its
@@ -721,8 +733,9 @@ terms:
   - term: Trust rule
     meaning: >-
       A rule in section 10 that names who decides one decision, at which stages,
-      on what evidence, and what happens when that person is away. A rule marked
-      never delegated is always decided by a person.
+      on what evidence, and what happens when that person is away. A person
+      decides every rule. A rule marked never delegated also has no agent
+      proposal behind it.
     see_also:
       - approver
       - override
@@ -858,6 +871,17 @@ terms:
       - target
     not: >-
       A requirement in section 7. A requirement names a user and what they can do.
+  - term: Bet
+    meaning: >-
+      The one outcome the product stakes itself on, stated in the root
+      document's summary: what the expert reaches with the product. The
+      summary's objective and measure say how anyone will know it happened.
+    see_also:
+      - summary
+      - objective
+    not: >-
+      An objective. An objective is measured, and the bet is the outcome the
+      objective measures.
   - term: Summary
     meaning: >-
       The opening of the root document, which states in a few sentences the
@@ -989,9 +1013,9 @@ terms:
       - segment
   - term: Delegated
     meaning: >-
-      Given to an agent to decide. Section 10 marks for each trust rule whether an
-      agent may decide it, and a rule that is never delegated is always decided by
-      the person it names.
+      Given to an agent to propose. Section 10 marks for each trust rule whether an
+      agent may propose its outcome, and the person the rule names still decides.
+      A rule that is never delegated has no agent proposal at all.
     see_also:
       - trust rule
       - agent
@@ -1030,8 +1054,10 @@ terms:
       - pilot PRD
   - term: Reviewer
     meaning: >-
-      A person who comments on a section without being able to change it, as
-      REL-003 plans. No persona in release 1 is a reviewer.
+      A person who comments on a section inside the set without being able to
+      change it, as REL-003 plans. No persona in release 1 is a reviewer. In
+      release 1 a sponsor comments on an exported copy instead, as a review
+      comment.
     see_also:
       - review
     not: >-
@@ -1136,9 +1162,9 @@ terms:
       A spike. A spike produces an answer, and an experiment ships a release.
   - term: Agent
     meaning: >-
-      Software that takes a decision section 10 marks as one an agent may
-      decide, such as TR-003's score and findings. In this set an agent only
-      proposes, and the person the rule names decides.
+      Software that proposes an outcome under a trust rule section 10 marks as
+      one an agent may decide, such as TR-003's score and findings. The person
+      the rule names accepts or refutes what it proposes.
     see_also:
       - delegated
       - trust rule
@@ -1154,6 +1180,22 @@ terms:
     not: >-
       The set. The set is its documents, and an exported copy is one form of
       them for reading.
+  - term: Review comment
+    meaning: >-
+      A comment a person reading an exported copy leaves in that copy. In
+      release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response
+      with one of three statuses: accepted, when the set changed because of it;
+      declined, when the set did not change, with the reason; or answered, when
+      it asked a question and the set did not need to change (FR-022). Until it
+      has a response, it is open, which is not an open question in section 12.
+    see_also:
+      - exported copy
+      - sponsor
+      - finding
+      - reviewer
+    not: >-
+      A finding. A finding comes from a grading pass or a buildability review,
+      and a review comment comes from a person reading a copy.
   - term: Buildable
     meaning: >-
       Said of a set a development team can estimate and build from without
@@ -1162,6 +1204,26 @@ terms:
     see_also:
       - verdict
       - buildability review
+    not: >-
+      Buildable with gaps. A set that is buildable with gaps passes only when
+      every gap is closed or owned, and it is not buildable until then.
+  - term: Product manager
+    meaning: >-
+      A person who writes product requirements for a living. PER-001 is a
+      product manager who is, or speaks for, the domain expert, and the set
+      calls that person the expert.
+    see_also:
+      - expert
+    not: >-
+      The sponsor. A product manager writes the set, and the sponsor approves
+      it.
+  - term: Re-grade
+    meaning: >-
+      A later grading pass on the same section, against the same rubric, after
+      the section changed.
+    see_also:
+      - grading pass
+      - grade
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
@@ -1217,6 +1279,7 @@ links:
 | Experiment | A spike |
 | Agent | A person |
 | Exported copy | The set |
+| Review comment | A finding |
 | Capability | A capability the system needs |
 | Delegated | A person deciding on someone's behalf |
 | Verdict | A grade |
@@ -1239,7 +1302,7 @@ links:
 | Review | The buildability review |
 | Exit criteria | Acceptance criteria |
 | Unit of work | An engagement |
-| Gap | A finding, a blocking defect |
+| Gap | A blocking defect |
 | Wireframe | A design |
 | Session | A sitting |
 
@@ -1423,6 +1486,8 @@ Every item in this document, with each of its fields.
 - release line
 - non-goal
 
+**Not:** The release line. The release line is the path of stages a release completes, and scope is everything the release includes and leaves out along it.
+
 ### Assumption
 
 **Meaning:** Something taken on faith that the product depends on, recorded with what would break if it turned out false.
@@ -1482,7 +1547,7 @@ Every item in this document, with each of its fields.
 
 ### State
 
-**Meaning:** Where a section stands: the state pending, shown to the expert as not started; `draft`, written; `review`, ready for someone else to read, reached through the gate; or `final`, set by the expert under TR-002. LC-001 in section 5 shows each move.
+**Meaning:** Where a section stands: the state pending, shown to the expert as not started; `draft`, written; `review`, ready for someone else to read, reached through the gate; or `final`, set by the expert under TR-002. LC-001 in section 5 shows each move. The set as a whole reads as not yet approved, approved, approved with conditions, or rejected, by the approval recorded in section 15.
 
 **See also:**
 
@@ -1512,7 +1577,7 @@ Every item in this document, with each of its fields.
 
 ### Derivability checks
 
-**Meaning:** The eleven checks a buildability review runs to decide whether a backlog can be derived from a set. Q-009 asks which version of them release 1 grades against.
+**Meaning:** The eleven checks a buildability review runs to decide whether a backlog can be derived from a set. Q-009 asks which edition of them release 1 grades against.
 
 **See also:**
 
@@ -1607,7 +1672,7 @@ Every item in this document, with each of its fields.
 
 ### Condition
 
-**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question or requirement it depends on and a date, and only the approver who stated it clears it.
+**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question, requirement, or review comment it depends on and a date, and only the approver who stated it clears it. When the sponsor approves while a review comment has no response, the sponsor states a condition on that comment, and the expert records it (FR-022).
 
 **See also:**
 
@@ -1653,6 +1718,8 @@ Every item in this document, with each of its fields.
 - acceptance criteria
 - objective
 
+**Not:** A story or a feature. A requirement is stated in the PRD, and stories and features are derived from requirements in the backlog.
+
 ### Acceptance criteria
 
 **Meaning:** The pass-or-fail statements on a requirement or a journey stage. Each is written as Given a situation, When the person acts, Then what they see, and each is one an engineer who was not in the interview could write a test from. A story derived from a requirement takes the requirement's criteria as its acceptance criteria.
@@ -1677,7 +1744,7 @@ Every item in this document, with each of its fields.
 - release line
 - open question
 
-**Not:** A finding or a blocking defect. A finding is anything a review reports, and a blocking defect is a finding that stops a section moving on. A gap is a thing the set leaves unsaid.
+**Not:** A blocking defect. A gap is a thing the set leaves unsaid, and the buildability review reports each gap as a finding. A blocking defect is a finding that stops a section moving on.
 
 ### Version
 
@@ -1942,7 +2009,7 @@ Every item in this document, with each of its fields.
 
 ### Trust rule
 
-**Meaning:** A rule in section 10 that names who decides one decision, at which stages, on what evidence, and what happens when that person is away. A rule marked never delegated is always decided by a person.
+**Meaning:** A rule in section 10 that names who decides one decision, at which stages, on what evidence, and what happens when that person is away. A person decides every rule. A rule marked never delegated also has no agent proposal behind it.
 
 **See also:**
 
@@ -2070,6 +2137,17 @@ Every item in this document, with each of its fields.
 - target
 
 **Not:** A requirement in section 7. A requirement names a user and what they can do.
+
+### Bet
+
+**Meaning:** The one outcome the product stakes itself on, stated in the root document's summary: what the expert reaches with the product. The summary's objective and measure say how anyone will know it happened.
+
+**See also:**
+
+- summary
+- objective
+
+**Not:** An objective. An objective is measured, and the bet is the outcome the objective measures.
 
 ### Summary
 
@@ -2208,7 +2286,7 @@ Every item in this document, with each of its fields.
 
 ### Delegated
 
-**Meaning:** Given to an agent to decide. Section 10 marks for each trust rule whether an agent may decide it, and a rule that is never delegated is always decided by the person it names.
+**Meaning:** Given to an agent to propose. Section 10 marks for each trust rule whether an agent may propose its outcome, and the person the rule names still decides. A rule that is never delegated has no agent proposal at all.
 
 **See also:**
 
@@ -2255,7 +2333,7 @@ Every item in this document, with each of its fields.
 
 ### Reviewer
 
-**Meaning:** A person who comments on a section without being able to change it, as REL-003 plans. No persona in release 1 is a reviewer.
+**Meaning:** A person who comments on a section inside the set without being able to change it, as REL-003 plans. No persona in release 1 is a reviewer. In release 1 a sponsor comments on an exported copy instead, as a review comment.
 
 **See also:** review
 
@@ -2367,7 +2445,7 @@ Every item in this document, with each of its fields.
 
 ### Agent
 
-**Meaning:** Software that takes a decision section 10 marks as one an agent may decide, such as TR-003's score and findings. In this set an agent only proposes, and the person the rule names decides.
+**Meaning:** Software that proposes an outcome under a trust rule section 10 marks as one an agent may decide, such as TR-003's score and findings. The person the rule names accepts or refutes what it proposes.
 
 **See also:**
 
@@ -2387,6 +2465,19 @@ Every item in this document, with each of its fields.
 
 **Not:** The set. The set is its documents, and an exported copy is one form of them for reading.
 
+### Review comment
+
+**Meaning:** A comment a person reading an exported copy leaves in that copy. In release 1 that person is the sponsor (FR-022). The expert brings it back into the set and records a response with one of three statuses: accepted, when the set changed because of it; declined, when the set did not change, with the reason; or answered, when it asked a question and the set did not need to change (FR-022). Until it has a response, it is open, which is not an open question in section 12.
+
+**See also:**
+
+- exported copy
+- sponsor
+- finding
+- reviewer
+
+**Not:** A finding. A finding comes from a grading pass or a buildability review, and a review comment comes from a person reading a copy.
+
 ### Buildable
 
 **Meaning:** Said of a set a development team can estimate and build from without re-deriving it, which a buildability review reports as the verdict `buildable`.
@@ -2395,5 +2486,24 @@ Every item in this document, with each of its fields.
 
 - verdict
 - buildability review
+
+**Not:** Buildable with gaps. A set that is buildable with gaps passes only when every gap is closed or owned, and it is not buildable until then.
+
+### Product manager
+
+**Meaning:** A person who writes product requirements for a living. PER-001 is a product manager who is, or speaks for, the domain expert, and the set calls that person the expert.
+
+**See also:** expert
+
+**Not:** The sponsor. A product manager writes the set, and the sponsor approves it.
+
+### Re-grade
+
+**Meaning:** A later grading pass on the same section, against the same rubric, after the section changed.
+
+**See also:**
+
+- grading pass
+- grade
 
 <!-- /prd-forge:details -->
