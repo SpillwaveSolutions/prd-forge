@@ -4,13 +4,13 @@ kind: nonfunctional-requirements
 schema: prd-forge/nonfunctional-requirements@1
 title: Non-functional requirements
 status: draft
-updated: 2026-10-29
+updated: 2026-10-30
 domain: product management tooling
 section: 8
 order: 90
-score: 86
+score: 89
 blocking: 0
-graded: 2026-10-29
+graded: 2026-10-30
 requirements:
   - id: NFR-001
     category: performance
@@ -120,12 +120,20 @@ requirements:
     category: privacy
     statement: >-
       What the expert says about their domain stays within whatever boundary their
-      organisation already works in; this product adds no new place for it to go.
+      organization already works in; this product adds no new place for it to go.
+      The one outbound request is the domain check's research, on by default,
+      which carries only the names of standards, terms of art, and the domain.
+      An expert can turn it off for one set under TR-015, and an organization's
+      own policy can forbid it for every set.
     metric: >-
-      Number of destinations set content reaches beyond the boundary A-005 names.
+      Number of destinations beyond the boundary A-005 names that the set's
+      text or the expert's answers reach. An outbound query counts only when it
+      holds more than the names of standards, terms of art, and the domain.
     target: zero
     measurement: >-
-      Review of every outbound destination per release, recorded against A-005.
+      Review of every outbound destination per release, recorded against A-005,
+      and a review of the queries the domain check sent while grading the
+      reference set, per release.
     priority: must
   - id: NFR-009
     category: supportability
@@ -207,7 +215,7 @@ links:
 | NFR-005 | usability | 90% of sections completed without asking what a term means |
 | NFR-006 | accessibility | Zero WCAG 2.2 AA violations on the golden-thread path |
 | NFR-007 | observability | 100% of grades reconstructable after the session |
-| NFR-008 | privacy | Zero destinations beyond the session the expert already uses |
+| NFR-008 | privacy | Zero destinations for the set's text or the expert's answers; domain research sends only standard and term names, and can be turned off |
 | NFR-009 | supportability | 100% of older sets readable and gradable within a major product release |
 | NFR-010 | retention | 100% retrievable from the organisation's own store, no expiry imposed by us |
 | NFR-011 | availability | Zero answers lost per interruption; resume within 1 minute |
@@ -368,15 +376,15 @@ Every item in this document, with each of its fields.
 
 ### NFR-008
 
-**Statement:** What the expert says about their domain stays within whatever boundary their organisation already works in; this product adds no new place for it to go.
+**Statement:** What the expert says about their domain stays within whatever boundary their organization already works in; this product adds no new place for it to go. The one outbound request is the domain check's research, on by default, which carries only the names of standards, terms of art, and the domain. An expert can turn it off for one set under TR-015, and an organization's own policy can forbid it for every set.
 
 **Category:** privacy
 
-**Metric:** Number of destinations set content reaches beyond the boundary A-005 names.
+**Metric:** Number of destinations beyond the boundary A-005 names that the set's text or the expert's answers reach. An outbound query counts only when it holds more than the names of standards, terms of art, and the domain.
 
 **Target:** zero
 
-**Measurement:** Review of every outbound destination per release, recorded against A-005.
+**Measurement:** Review of every outbound destination per release, recorded against A-005, and a review of the queries the domain check sent while grading the reference set, per release.
 
 **Priority:** must
 

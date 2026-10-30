@@ -403,7 +403,33 @@ function structural(docs, dir) {
       else if (link.id !== undefined && found.front.id !== undefined && link.id !== found.front.id) {
         errors.push(`${doc.file}: links.${where} says id ${link.id}, but ${target} is ${found.front.id}`)
       }
+      // FR-020: the root's contents say what each document says of itself
+      if (found !== undefined && doc === root && where.startsWith('children')) {
+        for (const key of ['title', 'status']) {
+          if (link[key] !== undefined && found.front[key] !== undefined && String(link[key]) !== String(found.front[key])) {
+            warnings.push(`${doc.file}: links.${where} says ${key} "${link[key]}", but ${target} says "${found.front[key]}"`)
+          }
+        }
+      }
     }
+  }
+
+  // FR-020: an item is defined in one place only. Links name documents, so they
+  // are references, not definitions.
+  const definedIn = new Map()
+  const define = (node, file) => {
+    if (Array.isArray(node)) node.forEach(one => define(one, file))
+    else if (node !== null && typeof node === 'object') {
+      if (typeof node.id === 'string') {
+        const other = definedIn.get(node.id)
+        if (other !== undefined) errors.push(`${file}: ${node.id} is defined here and in ${other}`)
+        else definedIn.set(node.id, file)
+      }
+      for (const [key, value] of Object.entries(node)) if (key !== 'links') define(value, file)
+    }
+  }
+  for (const doc of docs) {
+    for (const [key, value] of Object.entries(doc.front)) if (key !== 'links' && key !== 'id') define(value, doc.file)
   }
 
   if (root !== undefined) {
@@ -632,7 +658,7 @@ function structural(docs, dir) {
 
   // the details block says what the front matter says
   for (const doc of docs) {
-    if (doc.body !== undefined && withDetails(doc.body, doc.front) !== doc.body) {
+    if (doc.body !== undefined && withDetails(doc.body, doc.front, docs.map(d => d.front)) !== doc.body) {
       gate(doc.front.kind, `${doc.file}: the details block does not match the front matter; run prd-details.mjs`)
     }
   }
@@ -810,9 +836,17 @@ function structural(docs, dir) {
   if (Array.isArray(changes) && root?.front?.version && !changes.some(c => String(c?.version) === String(root.front.version))) {
     errors.push(`change-log: the root's version ${root.front.version} has no change entry`)
   }
-  const approved = (changes ?? []).some(c => (c?.approvals ?? []).some(a => a?.decision === 'approved' || a?.decision === 'approved-with-conditions'))
+  // FR-014: an approval covers one version, and the latest decision on it wins,
+  // so a later rejection makes the set read as not approved.
+  const version = String(root?.front?.version ?? '')
+  const current = (changes ?? []).find(c => String(c?.version) === version)
+  const decisions = [...(current?.approvals ?? [])].sort((a, b) => String(a?.date ?? '').localeCompare(String(b?.date ?? '')))
+  const decision = decisions.at(-1)
+  const approved = decision?.decision === 'approved' || decision?.decision === 'approved-with-conditions'
   for (const doc of docs) {
-    if (doc.front.status === 'final' && !approved) errors.push(`${doc.file}: status final with no approval recorded in the change log`)
+    if (doc.front.status === 'final' && !approved) {
+      errors.push(`${doc.file}: status final with no approval of version ${version} recorded in the change log`)
+    }
   }
 
   // Checks from the 0.7.0 medium-priority review.
@@ -825,7 +859,16 @@ function structural(docs, dir) {
   // the root names a real objective, primary persona, and approvers
   mustExist([root?.front?.summary?.objective].filter(Boolean), objectiveIds, `${root?.file}: summary.objective`)
   mustExist([root?.front?.primary_persona].filter(Boolean), personas, `${root?.file}: primary_persona`)
-  mustExist(root?.front?.approvers, personas, `${root?.file}: approvers`)
+  // FR-021: each approver is a named person with a role; a bare persona id is
+  // the older form, which names a role but no person.
+  const approvers = root?.front?.approvers ?? []
+  mustExist(approvers.map(a => (typeof a === 'string' ? a : a?.persona)).filter(Boolean), personas, `${root?.file}: approvers`)
+  const namedApprovers = approvers.filter(a => typeof a === 'object' && a?.name)
+  if (root?.front?.kind === 'prd') {
+    if (namedApprovers.length === 0) gate('prd', `${root.file}: no approver is named; name each approver by name and role before the set is offered for approval`)
+    for (const a of approvers) if (typeof a === 'string') warnings.push(`${root.file}: approver ${a} has no name; give the person's name and role`)
+  }
+  const isApprover = a => namedApprovers.some(n => n.name === a?.name && n.role === a?.role)
 
   // sections 2 and 4: segments name real personas; one primary persona at most
   for (const segment of frontOf('customer-market')?.segments ?? []) {
@@ -1032,10 +1075,22 @@ function structural(docs, dir) {
     if (/\s(and|with|or)\s|[/&+]/.test(q?.decider ?? '')) warnings.push(`open-questions: ${q.id} decider "${q.decider}" names more than one person; name one, and put the rest in consulted`)
   }
 
-  // section 15: a rejection says why
+  // section 15: a rejection says why; a decision counts only from a named
+  // approver; each condition names what it depends on, and only its approver
+  // clears it
   for (const change of changes ?? []) {
     for (const approval of change?.approvals ?? []) {
       if (approval?.decision === 'rejected' && !approval?.note) errors.push(`change-log: ${change.version} rejection by ${approval.name} has no note`)
+      // An older set names no approver; its approvals stand, with the warning above.
+      if (root?.front?.kind === 'prd' && namedApprovers.length > 0 && !isApprover(approval)) {
+        errors.push(`change-log: ${change.version} decision by ${approval?.name} (${approval?.role}) is not from a named approver, so it is not an approval`)
+      }
+      for (const [i, c] of (approval?.conditions ?? []).entries()) {
+        const where = `change-log: ${change.version} condition ${i + 1} of ${approval?.name}`
+        if ((c?.depends_on ?? []).length === 0) errors.push(`${where} names nothing it depends on`)
+        for (const id of c?.depends_on ?? []) if (!allIds.has(id)) errors.push(`${where} depends on ${id}, which does not exist`)
+        if (c?.cleared === true && c?.cleared_by !== approval?.name) errors.push(`${where} is cleared by ${c?.cleared_by ?? 'nobody named'}; only ${approval?.name} clears it`)
+      }
     }
   }
 
@@ -1048,7 +1103,11 @@ function structural(docs, dir) {
     if (rc?.source && sources.has(rc.source)) errors.push(`review-comments: ${rc.id} repeats source ${rc.source}`)
     sources.add(rc?.source)
     if (rc?.status === 'open' || !rc?.response) {
-      warnings.push(`review-comments: ${rc?.id} has no response yet; at approval it becomes a condition under FR-014`)
+      // FR-014: once the current version is approved, an unanswered comment is
+      // a condition on that approval.
+      const asCondition = approved && (decision?.conditions ?? []).some(c => (c?.depends_on ?? []).includes(rc?.id))
+      if (approved && !asCondition) errors.push(`review-comments: ${rc?.id} has no response, and the approval of ${version} does not hold it as a condition`)
+      else if (!approved) warnings.push(`review-comments: ${rc?.id} has no response yet; at approval it becomes a condition under FR-014`)
     }
   }
 

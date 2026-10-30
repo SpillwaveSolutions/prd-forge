@@ -4,7 +4,7 @@ kind: change-log
 schema: prd-forge/change-log@1
 title: Change log and approvals
 status: draft
-updated: 2026-10-29
+updated: 2026-10-30
 domain: product management tooling
 section: 15
 order: 160
@@ -12,6 +12,24 @@ score: 75
 blocking: 0
 graded: 2026-10-29
 changes:
+  - version: 0.12.0
+    date: 2026-10-30
+    author: Richard Hightower
+    summary: >-
+      The root names its approver by name and role under FR-021, and its
+      details block now carries what FR-013 asks the approver to see: the
+      scope, each section's state and grade, every open question with its
+      decider and date, and where any blocking defect is. TR-015 settles the
+      domain check's research: on by default, carrying only the names of
+      standards, terms of art, and the domain. The expert turns it off for a
+      set, and PER-001's authority now includes that right. An organization's
+      own policy can forbid it for every set. NFR-008 and A-005 state that default. A minor version under
+      the versioning policy: new content, nothing structural.
+    sections:
+      - 4
+      - 8
+      - 10
+      - 11
   - version: 0.11.0
     date: 2026-10-29
     author: Richard Hightower
@@ -268,6 +286,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.12.0 | 2026-10-30 | Richard Hightower | The root names its approver by name and role (FR-021) and shows the approver the scope, each section's state and grade, the open questions, and any blocking defect (FR-013); TR-015 keeps the domain check's research on by default and lets the expert turn it off for a set, PER-001's authority includes that right, and an organization's own policy can forbid it; NFR-008 and A-005 state that default |
 | 0.11.0 | 2026-10-29 | Richard Hightower | FR-023 split out of FR-022 for the expert's import and response; the open-comment approval rule moved into FR-014, and the sponsor sets each condition's date; OUT-005 defers comments inside the set to REL-003; WF-011 shows an open comment; NFR-009 counts product releases; ST-009 hands off to the development team; section 10 says "delegable to an agent"; the glossary adds escalation, satisfaction, and pain point, and separates ready from review |
 | 0.10.0 | 2026-10-28 | Richard Hightower | FR-022 added as a should: a sponsor's comments on an exported copy come back, each with a response, and an open one at approval becomes a condition; WF-011 shows the answered copy; IN-007, REL-001, TR-001, and the glossary include it; REL-003 keeps comments inside the set |
 | 0.9.0 | 2026-10-27 | Richard Hightower | Counted evidence and sourced why-now claims; persona roles and frequencies; satisfaction scores; ST-006 outside the product; FR-019 to FR-021 added; FR-014 rejection; TR-014 for accepting a score; LC-001 back to draft; C-004 out of section 9; single questions due before REL-001; sourced glossary terms with one meaning each; the versioning policy |
@@ -422,6 +441,16 @@ rubric cannot score approvals and conditions higher before an approval exists.
 ## Details
 
 Every item in this document, with each of its fields.
+
+### 0.12.0
+
+**Summary:** The root names its approver by name and role under FR-021, and its details block now carries what FR-013 asks the approver to see: the scope, each section's state and grade, every open question with its decider and date, and where any blocking defect is. TR-015 settles the domain check's research: on by default, carrying only the names of standards, terms of art, and the domain. The expert turns it off for a set, and PER-001's authority now includes that right. An organization's own policy can forbid it for every set. NFR-008 and A-005 state that default. A minor version under the versioning policy: new content, nothing structural.
+
+**Date:** 2026-10-30
+
+**Author:** Richard Hightower
+
+**Sections:** 4, 8, 10, 11
 
 ### 0.11.0
 

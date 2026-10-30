@@ -123,6 +123,9 @@ summary:
     the customer leaves knowing the outcome and the reason.
   measure: >-
     Share of returns resolved at the counter without escalation; today 41%.
+approvers:
+  - { name: Dana Whitfield, role: Director of Product }
+web_research: true               # optional; false keeps the domain check in the session
 links:
   parent: null
   children:
@@ -134,6 +137,20 @@ links:
 
 Five-sentence summary in prose, then the contents table.
 ```
+
+`approvers` names each person whose decision counts as an approval, by `name`
+and `role`, with the `persona` whose role they hold (FR-021). The older form, a
+bare `PER-nnn`, still validates but draws a warning, and a set at `review` or
+`final` needs at least one named approver. A decision in the change log counts
+only when its `name` and `role` match a named approver.
+
+`web_research` is optional and `true` when absent. Set it to `false` to keep the
+domain voice reviewer's checks inside the session (TR-015).
+
+The details block of the root is generated from the whole set: the scope, each
+section's status and grade, every open question with no answer, with its decider
+and date, and the sections that hold a blocking defect (FR-013). Run
+`prd-details.mjs` after any section changes, or the root block goes stale.
 
 ## A section document
 

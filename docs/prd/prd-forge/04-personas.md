@@ -4,13 +4,13 @@ kind: personas
 schema: prd-forge/personas@1
 title: Users and personas
 status: draft
-updated: 2026-10-27
+updated: 2026-10-30
 domain: product management tooling
 section: 4
 order: 40
-score: 89
+score: 82
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-30
 personas:
   - id: PER-001
     name: "Product manager (senior: manager to principal), in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one"
@@ -43,8 +43,9 @@ personas:
       domain's own terms; decides when a section's interview is finished and when
       a section may be left at draft; accepts or corrects a drafted section; sets
       a section to final; accepts or refutes a grade; decides whether the set may
-      be offered for approval; and is the only one who may state a domain fact as
-      true. May not
+      be offered for approval; decides whether the domain check may research
+      the set's domain outside the session; and is the only one who may state a
+      domain fact as true. May not
       approve the PRD for a release on their own where a sponsor exists.
     proficiency: >-
       Either deep in the domain with no product management training, or a product
@@ -143,7 +144,7 @@ links:
 
 | ID | Role | Per PRD | Frequency | Decides |
 | --- | --- | --- | --- | --- |
-| PER-001 | Senior product manager in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one | One; 2 PRDs at once and 6 a year per organization | 3 working sittings a week of 1 to 2 hours, for 1 to 3 weeks per PRD | What the product must do, scope, the domain's terms, when an interview ends, drafts, section states, whether to accept or refute a grade, domain facts, and when the set is offered; not the PRD itself where a sponsor exists |
+| PER-001 | Senior product manager in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one | One; 2 PRDs at once and 6 a year per organization | 3 working sittings a week of 1 to 2 hours, for 1 to 3 weeks per PRD | What the product must do, scope, the domain's terms, when an interview ends, drafts, section states, whether to accept or refute a grade, domain facts, whether the domain check may research outside the session, and when the set is offered; not the PRD itself where a sponsor exists |
 | PER-002 | Engineering lead (staff or principal engineer) on the development team | One or two | At estimation and at each release planning | How it is built, and whether a set can be built from, with its gaps (TR-006) |
 | PER-003 | Sponsor: the budget holder (director or partner), who is also the approver | One | Once per version, about 6 a year | Approves the PRD for a release, with or without conditions, or rejects it (TR-001) |
 | PER-004 | Delivery lead (delivery manager or product owner) on the development team | One | Once per release, about 6 a year | The backlog's shape and order, and whether a backlog can be mapped at all |
@@ -210,7 +211,7 @@ Every item in this document, with each of its fields.
 
 **Frequency:** Three working sittings a week of 1 to 2 hours each, for one to three weeks per PRD, about 6 to 9 sittings per PRD, then rarely until the next one.
 
-**Authority:** Decides what the product must do and what is out of scope; decides the domain's own terms; decides when a section's interview is finished and when a section may be left at draft; accepts or corrects a drafted section; sets a section to final; accepts or refutes a grade; decides whether the set may be offered for approval; and is the only one who may state a domain fact as true. May not approve the PRD for a release on their own where a sponsor exists.
+**Authority:** Decides what the product must do and what is out of scope; decides the domain's own terms; decides when a section's interview is finished and when a section may be left at draft; accepts or corrects a drafted section; sets a section to final; accepts or refutes a grade; decides whether the set may be offered for approval; decides whether the domain check may research the set's domain outside the session; and is the only one who may state a domain fact as true. May not approve the PRD for a release on their own where a sponsor exists.
 
 **Proficiency:** Either deep in the domain with no product management training, or a product manager who speaks for such an expert. The product assumes the first: no familiarity with MoSCoW, Given/When/Then, or the word "persona".
 

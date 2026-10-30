@@ -15,7 +15,7 @@ derive a backlog from and build.
 | `prd-to-backlog` skill | Derives features, epics, stories and spikes from an approved PRD, with every level traced to a requirement id. Never tasks |
 | `prd-adversary` agent | Grades one section against its rubric, adversarially, read-only |
 | `prd-engineer-review` agent | Reads the whole set as the engineering lead who has to build it, and reports what cannot be built |
-| `prd-domain-voice` agent | Checks terminology and standard references against the stated domain, and flags invented citations |
+| `prd-domain-voice` agent | Checks terminology and standard references against the stated domain, and flags invented citations. It searches the web by default: set `web_research: false` in a set's root, or deny `WebSearch` and `WebFetch` in managed settings, to turn that off |
 | The mod (a pane) | `/prd` opens a pane beside the chat that steps through the set, showing each section's text, status and grade |
 | `schemas/` | A JSON Schema per document kind, validating the YAML front matter |
 | `scripts/prd-validate.mjs` | Checks front matter, the link graph, and cross-section id references. No dependencies |

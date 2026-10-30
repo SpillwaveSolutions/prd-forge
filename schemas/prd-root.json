@@ -128,10 +128,44 @@
     "approvers": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^PER-\\d{3}$"
+        "oneOf": [
+          {
+            "type": "string",
+            "pattern": "^PER-\\d{3}$",
+            "description": "The older form: a persona id, which names a role but no person."
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The approver's own name."
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Their role, as the change log records it."
+              },
+              "persona": {
+                "type": "string",
+                "pattern": "^PER-\\d{3}$",
+                "description": "The persona whose role they hold."
+              }
+            },
+            "required": [
+              "name",
+              "role"
+            ],
+            "additionalProperties": false
+          }
+        ]
       },
-      "description": "The roles whose approval section 15 must record before the set is final."
+      "description": "The people whose approval section 15 must record before the set is final, each by name and role (FR-021)."
+    },
+    "web_research": {
+      "type": "boolean",
+      "description": "Whether the domain voice reviewer may search the web for the domain's standards and terms. Absent means true. Set false to keep every check inside the session."
     }
   },
   "required": [

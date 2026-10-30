@@ -1,23 +1,28 @@
 ---
 doc: ../04-personas.md
-score: 89
+score: 82
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-30
 grader: prd-forge:prd-adversary
 previous_score: 89
 ---
 
-# Why users and personas scored 89
+# Why users and personas scored 82
+
+Graded at 0.12.0, after PER-001's authority began to include TR-015. The grade
+fell from 89 because this pass read section 2 against PER-002's `external` flag.
+The body table's PER-001 row, which left out the new right, was fixed in the
+same version.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Role naming | 3 | PER-001's name says a senior product manager, and its proficiency says someone who does not know the word "persona". PER-004 has no seniority. |
+| Role naming | 3 | PER-001 is a senior product manager who does not know the word "persona", and PER-004 has no seniority. |
 | Goals | 4 | Every goal is in the persona's own words. |
-| Pains | 3 | PER-004's untraced-stories pain does not trace to P-002, its only problem. |
-| Frequency | 3 | "Three sittings a week for one to three weeks" gives 3 to 9 sittings, not 6 to 9. The break length has three values. |
-| Authority | 4 | Authority matches the approvers in section 10. |
-| External users | 4 | Considered, with a reason. |
-| Count | 4 | Four personas, each in a journey. |
+| Pains | 3 | PER-004's pain about untraceable stories traces to no problem in section 1. |
+| Frequency | 3 | 3 sittings a week for 1 to 3 weeks gives 3 to 9 sittings, not 6 to 9, and the time away has three values. |
+| Authority | 4 | Every persona states authority, and section 10 uses it, TR-015 included. |
+| External users | 2 | Section 2's S-001 quote hands the PRD to the client's engineers, which makes PER-002 external. |
+| Count | 4 | Four personas, each in section 5. |
 
 ## Blocking defects
 
@@ -25,16 +30,12 @@ None.
 
 ## Weakest dimension
 
-Role naming. The primary persona is a senior product manager and also someone with no product training.
+External users. Section 2 says the client's engineers build from the set, and
+this section says no persona is external.
 
 ## How to raise the grade
 
-- **Role naming (3 to 4):** Make PER-001's name and proficiency describe one person, and give PER-004 a seniority.
-- **Frequency (3 to 4):** Fix the sittings count, choose one break length, and give PER-001's population as people per organization.
-- **Pains (3 to 4):** Link PER-004's untraced-stories pain to a problem in section 1.
-
-## The details block
-
-The generated details block contradicts nothing. It shows the front matter word for word, and it makes visible any place where the hand-written prose has drifted from it.
-
-- The block shows the third break length and the sittings count in the body, where only the front matter had them before.
+- Decide whether the engineering lead in a client contract is the consultancy's
+  or the client's. If it is the client's, set PER-002 to external.
+- Fix the sittings arithmetic, and use one value for the time away.
+- Trace PER-004's untraceable-stories pain to a problem in section 1.

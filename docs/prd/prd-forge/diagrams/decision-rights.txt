@@ -21,6 +21,8 @@ DomainExpert decides:
            expert meant, or correct it (never delegated)
   - TR-014 Accept or refute a section's score (never
            delegated)
+  - TR-015 Turn off a set's outbound domain research (never
+           delegated)
 
 EngineerLead decides:
   - TR-006 Judge whether a set can be built from, and report

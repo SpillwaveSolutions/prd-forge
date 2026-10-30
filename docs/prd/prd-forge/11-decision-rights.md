@@ -4,13 +4,13 @@ kind: decision-rights
 schema: prd-forge/decision-rights@1
 title: Decision rights and trust rules
 status: draft
-updated: 2026-10-29
+updated: 2026-10-30
 domain: product management tooling
 section: 10
 order: 110
 score: 84
 blocking: 0
-graded: 2026-10-29
+graded: 2026-10-30
 decisions:
   - id: TR-001
     decision: Approve a PRD for a release
@@ -309,6 +309,36 @@ decisions:
         Given an expert who refutes a finding, when they give their reason, then
         the refutation and the reason are recorded, and the finding is checked
         against the document under FR-016.
+  - id: TR-015
+    decision: Turn off a set's outbound domain research
+    stages: [ST-003]
+    approver: PER-001
+    delegable_to_agent: false
+    never_delegated: true
+    evidence_required: >-
+      What the domain check sends out by default: the names of standards, terms
+      of art, and the domain, and never the set's text or the expert's answers.
+    escalation: >-
+      While the expert has not decided, research stays on, carrying only the
+      names of standards, terms of art, and the domain. Nobody turns it off or
+      on for one set on the expert's behalf. An organization's own policy that
+      forbids outbound research is a rule from outside the product, not a
+      decision in it: the domain check obeys that rule for every set, and no
+      decision of the expert overrides it.
+    acceptance:
+      - >-
+        Given a set whose expert has turned off its outbound domain research,
+        when a section is graded, then the domain check makes no outbound
+        request, and marks each citation it cannot confirm from the set as
+        unverified.
+      - >-
+        Given a set whose expert has made no choice, when a section is graded,
+        then the domain check may research the domain's standards and terms,
+        and no query it sends holds the set's text or the expert's answers.
+      - >-
+        Given an organization whose policy forbids outbound research, when any
+        set is graded, then the domain check makes no outbound request, whatever
+        the expert has decided for the set.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-constraints, kind: constraints, path: ./10-constraints.md, title: Constraints }
@@ -335,6 +365,7 @@ links:
 | TR-012 | Decide which epics come first | PER-004 | no | yes |
 | TR-013 | Accept or correct a drafted section | PER-001 | no | yes |
 | TR-014 | Accept or refute a section's score | PER-001 | no | yes |
+| TR-015 | Turn off a set's outbound domain research | PER-001 | no | yes |
 
 Every decision named in a stage of section 5 appears here. TR-007 to TR-013 were
 added at version 0.2.0 to close that: five release-line stage decisions and both
@@ -344,13 +375,19 @@ that a draft says what they meant, which is distinct from scoring it (TR-003),
 from accepting or refuting the score (TR-014),
 from leaving it at draft (TR-009) and from setting it final (TR-002).
 
+TR-015 was added at version 0.12.0. It settles a conflict between the domain
+check and NFR-008: the domain check researches the domain by default, because a
+citation it cannot confirm is worth less to the expert. The expert can turn it
+off for one set, and an organization's own policy can forbid it for every set. NFR-008 and A-005 now state that
+default.
+
 TR-001's decider is the sponsor's role, PER-003. FR-021 names the person: before
 a set is offered for approval, the expert names each approver by name and role,
 and only a named approver's decision counts as an approval.
 
 ## The shape of the trust boundary
 
-Only three of fourteen are delegable, and all three are **assessments**, not
+Only three of fifteen are delegable, and all three are **assessments**, not
 decisions:
 TR-003 produces a document's score, which the expert then accepts or refutes
 under TR-014, TR-006 judges whether it can be built from, and TR-011
@@ -672,5 +709,27 @@ Every item in this document, with each of its fields.
 1. Given a score that has just been produced, when the expert sees it, then they are asked whether they accept it or refute it, and need take no other action.
 2. Given an expert who accepts a score, when they accept it, then the acceptance is recorded and the section may advance on that score.
 3. Given an expert who refutes a finding, when they give their reason, then the refutation and the reason are recorded, and the finding is checked against the document under FR-016.
+
+### TR-015
+
+**Decision:** Turn off a set's outbound domain research
+
+**Stages:** ST-003
+
+**Approver:** PER-001
+
+**Delegable to an agent:** no
+
+**Never delegated:** yes
+
+**Evidence required:** What the domain check sends out by default: the names of standards, terms of art, and the domain, and never the set's text or the expert's answers.
+
+**Escalation:** While the expert has not decided, research stays on, carrying only the names of standards, terms of art, and the domain. Nobody turns it off or on for one set on the expert's behalf. An organization's own policy that forbids outbound research is a rule from outside the product, not a decision in it: the domain check obeys that rule for every set, and no decision of the expert overrides it.
+
+**Acceptance:**
+
+1. Given a set whose expert has turned off its outbound domain research, when a section is graded, then the domain check makes no outbound request, and marks each citation it cannot confirm from the set as unverified.
+2. Given a set whose expert has made no choice, when a section is graded, then the domain check may research the domain's standards and terms, and no query it sends holds the set's text or the expert's answers.
+3. Given an organization whose policy forbids outbound research, when any set is graded, then the domain check makes no outbound request, whatever the expert has decided for the set.
 
 <!-- /prd-forge:details -->

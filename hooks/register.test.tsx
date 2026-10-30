@@ -127,7 +127,7 @@ const entry = (name: string) =>
   ({ name, kind: 'file', size: 100, mtimeMs: 1, isLink: false }) as const
 
 /** Serves the set above from `docs/prd`, and nothing anywhere else. */
-const servesTheSet = (on: On) => {
+const servesTheSet = (on: On, files: Record<string, string> = FILES) => {
   on('command.register', (_, e) => ({ value: { command: e.name } }))
   on('ui.open', () => ({ value: { isPlaced: true } }))
   on('session.start', (_, e) => ({ cwd: e.cwd }))
@@ -142,7 +142,7 @@ const servesTheSet = (on: On) => {
         : [],
   }))
   on('fs.read', (_, e) => {
-    const found = Object.entries(FILES).find(([path]) => e.path.endsWith(path))
+    const found = Object.entries(files).find(([path]) => e.path.endsWith(path))
     if (found === undefined) throw new Error(`no such file: ${e.path}`)
 
     return { value: found[1] }
@@ -315,5 +315,18 @@ test('a table too narrow for a grid draws one record per row, each cell under it
 
   expect(await ui.find({ type: 'Text', text: 'Persona: ' })).toBeTruthy()
   expect(await ui.find({ type: 'Text', text: 'Note: ' })).toBeTruthy()
+  await ui.unmount()
+})
+
+test('an ID that two documents define draws a notice, and links follow the first', async ($, on) => {
+  // The journeys document defines PER-001 too, which the personas document already does.
+  servesTheSet(on, {
+    ...FILES,
+    'docs/prd/05-user-journeys.md': JOURNEYS.replace('blocking: 0\n', 'blocking: 0\njourneys:\n  - id: PER-001\n'),
+  })
+  await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true })
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+
+  expect(await ui.find({ type: 'Text', text: /ID PER-001 is defined in two documents; links follow the first/ })).toBeTruthy()
   await ui.unmount()
 })

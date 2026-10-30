@@ -16,12 +16,13 @@ const REPO = join(dirname(fileURLToPath(import.meta.url)), '..')
 const hasUv = spawnSync('uv', ['--version']).status === 0
 
 /** A copy of the reference set with a review-comments document holding `comments`. */
-function withComments(comments, status = 'draft', rootStatus = 'draft') {
+function withComments(comments, status = 'draft', rootStatus = 'draft', approvals = []) {
   const dir = join(mkdtempSync(join(tmpdir(), 'prd-comments-')), 'set')
   cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
   const link = '{ id: prd-forge-review-comments, kind: review-comments, path: ./17-review-comments.md, title: Review comments }'
   const log = join(dir, '16-change-log.md')
-  writeFileSync(log, readFileSync(log, 'utf8').replace('  next: null\n', `  next: ${link}\n`))
+  writeFileSync(log, readFileSync(log, 'utf8').replace('  next: null\n', `  next: ${link}\n`)
+    .replace(/^ {2}- version: .+\n {4}date: /m, m => (approvals.length > 0 ? m.replace('    date: ', `    approvals:\n${approvals.join('\n')}\n    date: `) : m)))
   const root = join(dir, 'prd.md')
   writeFileSync(root, readFileSync(root, 'utf8').replace(/^status: \w+$/m, `status: ${rootStatus}`).replace(/(\n {4}- \{ id: prd-forge-change-log[^\n]*\n)/, `$1    - ${link.replace(' }', ', section: 15, order: 170, status: draft }')}\n`))
   writeFileSync(join(dir, '17-review-comments.md'), [
@@ -154,4 +155,15 @@ test('a reviewer comment maps to the item or section it marks, with its reply', 
   const report = validateSet(set)
   assert.deepEqual(report.errors.filter(e => !/details block/.test(e)), [])
   assert.equal(report.documents.length, 8)
+})
+
+test('once the version is approved, an unanswered comment must be a condition on it (FR-014)', () => {
+  const approval = dependsOn => [
+    '      - name: Richard Hightower', '        role: Sponsor', '        date: 2026-10-30', '        decision: approved-with-conditions',
+    '        conditions:', '          - condition: Answer the comment.', `            depends_on: [${dependsOn}]`, '            by: 2027-01-31',
+  ]
+  const held = withComments([{ id: 'RC-001', about: 'FR-003' }], 'draft', 'draft', approval('RC-001'))
+  assert.ok(!held.errors.some(e => /RC-001/.test(e)), held.errors.join('\n'))
+  const dropped = withComments([{ id: 'RC-001', about: 'FR-003' }], 'draft', 'draft', approval('Q-001'))
+  assert.ok(dropped.errors.some(e => /RC-001 has no response, and the approval of [\d.]+ does not hold it as a condition/.test(e)), dropped.errors.join('\n'))
 })
