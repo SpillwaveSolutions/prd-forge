@@ -328,7 +328,7 @@ export const drawMarkdown = (ui: Ui, md: string, columns: number, link: Linker, 
         )
       case 'image': {
         // The terminal cannot draw the picture. Draw its text view, cut at the
-        // pane's edge like a wireframe, or say where the picture is drawn.
+        // pane's edge like a wireframe, or nothing when it has none.
         const view = views[block.path]
         if (view !== undefined) {
           return (
@@ -342,11 +342,7 @@ export const drawMarkdown = (ui: Ui, md: string, columns: number, link: Linker, 
             </Box>
           )
         }
-        return (
-          <Text key={k} dimColor>
-            {`▣ ${block.alt}, drawn in the exported Word and PDF`}
-          </Text>
-        )
+        return null
       }
       case 'rule':
         return (
@@ -396,7 +392,7 @@ export const drawMarkdown = (ui: Ui, md: string, columns: number, link: Linker, 
   }
   return (
     <Box key={key} flexDirection="column">
-      {blocksOf(reflow(md)).map((block, b) => (
+      {blocksOf(reflow(md)).map((block, b) => block.kind === 'image' && views[block.path] === undefined ? null : (
         <Box key={`${key}-${b}`} flexDirection="column" marginTop={block.space ? 1 : 0}>
           {drawBlock(block, `${key}-${b}-x`)}
         </Box>

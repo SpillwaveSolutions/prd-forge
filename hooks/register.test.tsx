@@ -277,7 +277,7 @@ test('a wireframe fence draws as the sketch itself, line for line, under a capti
   expect(await ui.find({ type: 'Text', text: /illustration, not a design/ })).toBeTruthy()
   expect(await ui.find({ type: 'Text', text: '│ [ Accept ] <1> │' })).toBeTruthy()
   expect(await ui.find({ text: /```/ })).toBeFalsy()
-  expect(await ui.find({ type: 'Text', text: 'WF-001 drawing, drawn in the exported Word and PDF' })).toBeTruthy()
+  expect(await ui.find({ text: /WF-001 drawing/ })).toBeFalsy()
   expect(await ui.find({ text: /diagrams\// })).toBeFalsy()
   await ui.unmount()
 })
