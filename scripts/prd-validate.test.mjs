@@ -236,6 +236,12 @@ test('an approver whose name holds awkward characters is matched exactly (FR-021
   assert.ok(!ok.errors.some(e => /not from a named approver/.test(e)), ok.errors.join('\n'))
 })
 
+test('an older set with a bare persona approver keeps its recorded approvals (NFR-009)', () => {
+  const bare = t => t.replace('  - { name: Richard Hightower, role: Sponsor, persona: PER-003 }\n', '  - PER-003\n')
+  const { errors } = validateFiles({ 'prd.md': bare, '16-change-log.md': logged(VERSION, decided('approved')), '10-constraints.md': finalSection })
+  assert.ok(!errors.some(e => /not from a named approver|no approval of version/.test(e)), errors.join('\n'))
+})
+
 test('a set with no named approver warns at draft and fails at review (FR-021)', () => {
   const bare = t => t.replace('  - { name: Richard Hightower, role: Sponsor, persona: PER-003 }\n', '  - PER-003\n')
   const draft = validateFiles({ 'prd.md': bare })

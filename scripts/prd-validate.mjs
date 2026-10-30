@@ -1081,7 +1081,8 @@ function structural(docs, dir) {
   for (const change of changes ?? []) {
     for (const approval of change?.approvals ?? []) {
       if (approval?.decision === 'rejected' && !approval?.note) errors.push(`change-log: ${change.version} rejection by ${approval.name} has no note`)
-      if (root?.front?.kind === 'prd' && !isApprover(approval)) {
+      // An older set names no approver; its approvals stand, with the warning above.
+      if (root?.front?.kind === 'prd' && namedApprovers.length > 0 && !isApprover(approval)) {
         errors.push(`change-log: ${change.version} decision by ${approval?.name} (${approval?.role}) is not from a named approver, so it is not an approval`)
       }
       for (const [i, c] of (approval?.conditions ?? []).entries()) {
