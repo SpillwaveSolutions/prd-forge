@@ -4,13 +4,13 @@ kind: assumptions-risks-dependencies
 schema: prd-forge/assumptions-risks-dependencies@1
 title: Assumptions, risks and dependencies
 status: draft
-updated: 2026-10-27
+updated: 2026-10-30
 domain: product management tooling
 section: 11
 order: 120
 score: 96
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-30
 assumptions:
   - id: A-001
     assumption: >-
@@ -72,7 +72,9 @@ assumptions:
     assumption: >-
       Organizations accept that the domain content an expert enters stays in the
       expert's own session and in the documents. This product sends it nowhere
-      else and keeps it nowhere else.
+      else and keeps it nowhere else. They also accept the domain check's
+      research, on by default, which sends only the names of standards, terms
+      of art, and the domain, or they turn it off under TR-015.
     if_false: >-
       An organization whose information policy needs more than this cannot adopt
       the product as written, and NFR-008, NFR-010, and NFR-012, which are
@@ -332,7 +334,7 @@ Every item in this document, with each of its fields.
 
 #### A-005
 
-**Assumption:** Organizations accept that the domain content an expert enters stays in the expert's own session and in the documents. This product sends it nowhere else and keeps it nowhere else.
+**Assumption:** Organizations accept that the domain content an expert enters stays in the expert's own session and in the documents. This product sends it nowhere else and keeps it nowhere else. They also accept the domain check's research, on by default, which sends only the names of standards, terms of art, and the domain, or they turn it off under TR-015.
 
 **If false:** An organization whose information policy needs more than this cannot adopt the product as written, and NFR-008, NFR-010, and NFR-012, which are measured against this boundary, have to change.
 

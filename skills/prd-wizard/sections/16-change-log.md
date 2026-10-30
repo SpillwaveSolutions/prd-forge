@@ -18,18 +18,27 @@ domains this section is also evidence.
 - `version`, `date`, `author`, `summary`.
 - `sections`: which section numbers changed.
 - `approvals`: name, role, date, and decision (approved,
-  approved-with-conditions, rejected). An approval with conditions lists each in
-  `conditions`: the `condition`, what it `depends_on` (open questions or
-  requirements), the date it is due `by`, and whether it is `cleared`. Add a
-  `note` with the approver's reason. A rejection needs one; the validator fails
-  the set without it.
+  approved-with-conditions, rejected). Record a decision under the entry for the
+  version the approver read: an approval covers that version only. The name and
+  role must match one of the root's `approvers`; any other decision is not an
+  approval. An approval with conditions lists each in `conditions`: the
+  `condition`, what it `depends_on` (at least one open question, requirement, or
+  review comment, each an id that exists), the date it is due `by`, and whether
+  it is `cleared`. Only the approver who set a condition clears it: record them
+  in `cleared_by`. Add a `note` with the approver's reason. A rejection needs
+  one; the validator fails the set without it.
+- When the sponsor approves while a review comment has no response, record each
+  such comment as a condition that `depends_on` its `RC-nnn` id.
 
 Name the questions a change answers in `resolves`, and record each gate the
 expert overrode in `overrides`: the section, the status set, and the score and
 blocking count at the time.
 
 The validator fails the set when the root's version has no entry, or when a
-section is `final` with no approval recorded.
+section is `final` and the latest decision on the root's version is not an
+approval. A rejection recorded after an approval of the same version means the
+set is not approved. A change to an approved set is a new version, which needs
+its own approval.
 
 ## What does not belong
 

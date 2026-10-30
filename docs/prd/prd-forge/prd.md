@@ -8,7 +8,7 @@ updated: 2026-10-29
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.11.0
+version: 0.12.0
 owner: Richard Hightower
 stakeholders:
   - Product managers who are, or speak for, the domain expert
@@ -19,11 +19,12 @@ stakeholders:
   - Delivery leads who run story-mapping workshops
 created: 2026-10-23
 golden_thread: J-001
-score: 83
+score: 92
 blocking: 0
-graded: 2026-10-28
+graded: 2026-10-30
 primary_persona: PER-001
-approvers: [PER-003]
+approvers:
+  - { name: Richard Hightower, role: Sponsor, persona: PER-003 }
 summary:
   problem: >-
     A domain expert knows exactly what their product must do, but what they can
@@ -138,9 +139,80 @@ requirements in section 7 describe only what a person does and sees, and section
 
 ## Details
 
-Every item in this document, with each of its fields.
+What an approver needs from every section, then each field of this document.
 
-**Version:** 0.11.0
+### Scope
+
+**In scope:**
+
+- IN-001: State the idea and the domain's vocabulary once, and see every section of the set and its state
+- IN-002: Be taught each section before its interview, be asked one or two questions at a time with follow-ups, end a section early with its gaps recorded, and stop being asked once the section would meet the gate
+- IN-003: Record no invented domain fact, and convert a stated technology into the need beneath it, kept for the engineering lead
+- IN-004: Read the draft as prose with its grade and every blocking defect, refute a finding, move to any section, refresh to see a change, and be told when the set states one item two ways
+- IN-005: Answer one question about the weakest part, see the section re-graded against the same rubric, and resume after a break without repeating an answer
+- IN-006: Get a buildability review of the whole set, read as an engineer would, and see which release-line stages no requirement covers and which requirements cannot be tested
+- IN-007: Let the expert name each approver, give the sponsor one document with the summary, the scope, the grades, and the open questions, bring the sponsor's comments on an exported copy back into the set with a response to each, and let the expert record the sponsor's decision, given outside the product, with any conditions, against a named version
+
+**Out of scope:**
+
+- OUT-001: Deriving features, epics and stories from the approved PRD - journey J-002
+- OUT-002: More than one expert working on the same set at the same time
+- OUT-004: An engineering lead reading the set and recording their own confirmation that it can be built from
+- OUT-003: Any view of the document set other than reading the documents themselves and stepping through them beside the conversation
+- OUT-005: A reviewer commenting on a section inside the set, not on an exported copy
+
+### Sections
+
+| Section | Title | Status | Grade | Blocking |
+| --- | --- | --- | --- | --- |
+| 1 | Problem and opportunity | draft | 83/100 | — |
+| 2 | Target customer and market | draft | 75/100 | — |
+| 3 | Business objectives and success metrics | draft | 88/100 | — |
+| 4 | Users and personas | draft | 82/100 | — |
+| 5 | User journeys | draft | 94/100 | — |
+| 5 | Scenarios | draft | 89/100 | — |
+| 6 | Scope | draft | 88/100 | — |
+| 7 | Functional requirements | draft | 88/100 | — |
+| 7 | Wireframes | draft | 91/100 | — |
+| 8 | Non-functional requirements | draft | 89/100 | — |
+| 9 | Constraints | draft | 95/100 | — |
+| 10 | Decision rights and trust rules | draft | 84/100 | — |
+| 11 | Assumptions, risks and dependencies | draft | 96/100 | — |
+| 12 | Open questions | draft | 88/100 | — |
+| 13 | Release plan | draft | 88/100 | — |
+| 14 | Glossary | draft | 85/100 | — |
+| 15 | Change log and approvals | draft | 75/100 | — |
+
+### Undecided
+
+- Q-001: What share of specifications reaching a development team today pass a buildability review on first submission? Decider: Richard Hightower. By: 2027-02-28.
+- Q-002: How many working days does it take today from the first question put to the domain expert about a product to an approved specification? Decider: Richard Hightower. By: 2027-02-28.
+- Q-003: What share of `must` functional requirements in today's specifications can an engineer who was not in the interview write a test from? Decider: Richard Hightower. By: 2027-02-28.
+- Q-004: How many organizations are in each segment in section 2? Decider: Richard Hightower. By: 2027-06-30.
+- Q-005: Given what three sponsors say about a set shown with and without grades, does FR-013 stay `must`, with each section's grade shown to the sponsor? Decider: Richard Hightower. By: 2027-01-31.
+- Q-006: How many sections does an expert complete in one sitting before stopping? Decider: Richard Hightower. By: 2027-02-28.
+- Q-007: Does writing the requirements send an expert back to the journeys? Decider: Richard Hightower. By: 2027-02-28.
+- Q-008: Does an engineering lead read a PRD that names no technology as disciplined or as incomplete? Decider: Richard Hightower. By: 2027-02-28.
+- Q-009: Which version of the rubric and the eleven derivability checks does release 1 grade against? Decider: Richard Hightower. By: 2027-01-31.
+- Q-010: Must an answer the expert gave survive the end of the session before its section is drafted, given A-005, that domain content stays in the expert's own session and in the documents? Decider: Richard Hightower. By: 2027-01-31.
+- Q-012: Which segment in section 2 converts first? Decider: Richard Hightower. By: 2027-06-30.
+- Q-013: What day rate does a buyer pay to contract a product manager for the writing of one set? Decider: Richard Hightower. By: 2027-06-30.
+- Q-014: Given how experts describe a loop-back in D-002's sittings, does ST-004 keep its step that sends the expert back to an earlier section? Decider: Richard Hightower. By: 2027-02-28.
+- Q-015: Who owns the rubric and the eleven derivability checks? Decider: Richard Hightower. By: 2027-01-15.
+- Q-016: Must a grade show which version of the rubric it was made against? Decider: Richard Hightower. By: 2027-01-31.
+- Q-017: Whom does the decider record as owner of NFR-006's accessibility, given that the product's output is read in places the non-goals in section 6 say we do not own? Decider: Richard Hightower. By: 2027-02-28.
+- Q-018: What does each problem in section 1 cost, as one counted case per problem? Decider: Richard Hightower. By: 2027-01-31.
+- Q-019: Will both parties behind D-002 and D-003 commit in writing to report by 2027-01-31, so that REL-001 keeps 2027-03-31? Decider: Richard Hightower. By: 2027-01-31.
+- Q-020: Which section do experts stop at most often? Decider: Richard Hightower. By: 2027-02-28.
+- Q-021: Whom does the decider record as owner of NFR-012's access control, given that a set is stored where the organization already stores documents? Decider: Richard Hightower. By: 2027-02-28.
+- Q-022: If D-002 or D-003 reports after 2027-01-31, does REL-001 move or ship as an experiment? Decider: Richard Hightower. By: 2027-01-31.
+- Q-023: Do delivery leads run a story-mapping workshop about once per release and want a backbone agreed before it, as PER-004 assumes? Decider: Richard Hightower. By: 2027-05-31.
+
+### Blocking defects
+
+None.
+
+**Version:** 0.12.0
 
 **Owner:** Richard Hightower
 
@@ -157,7 +229,11 @@ Every item in this document, with each of its fields.
 
 **Primary persona:** PER-001
 
-**Approvers:** PER-003
+**Approvers:**
+
+- **Name:** Richard Hightower
+  - **Role:** Sponsor
+  - **Persona:** PER-003
 
 **Summary:**
 

@@ -897,7 +897,7 @@ The stakeholder analysis is `ARC-001-STKE-v1.0` [STKE-C1].
 
 **Priority**: COULD_HAVE (proposed; not in the PRD)
 
-**Implementation status**: Met, with a privacy conflict (CF-3)
+**Implementation status**: Met. CF-3 resolved at 0.12.0 under PRD TR-015
 
 **Implemented by**: `agents/prd-domain-voice.md`
 
@@ -1124,7 +1124,7 @@ The stakeholder analysis is `ARC-001-STKE-v1.0` [STKE-C1].
 
 **Priority**: MUST_HAVE (from the PRD)
 
-**Implementation status**: Conflict: prd-domain-voice has WebSearch and WebFetch (CF-3)
+**Implementation status**: Met. CF-3 resolved at 0.12.0: research is on by default with standard and term names only, and a set (`web_research: false`) or an organization (managed `permissions.deny`) turns it off
 
 **Implemented by**: `agents/prd-domain-voice.md`
 
@@ -1519,7 +1519,7 @@ The stakeholder analysis is `ARC-001-STKE-v1.0` [STKE-C1].
 
 **Acceptance Criteria**:
 
-- [ ] The product owner resolves CF-3 before this integration is used on customer content
+- [x] The product owner resolves CF-3 before this integration is used on customer content (resolved 2026-10-30, PRD TR-015)
 
 **Priority**: COULD_HAVE
 
@@ -1986,11 +1986,11 @@ The risk ids are the PRD's own (section 11).
 | **Option 2**: Search only for named public standards, never for the product's own terms | Standards still checked | Needs a rule the agent follows | Both partly satisfied |
 | **Option 3**: Ask the expert before each search | Expert decides | One more question | Both satisfied if the expert understands the trade |
 
-**Resolution Strategy**: PENDING
+**Resolution Strategy**: Option 2, on by default, with two switches to turn it off
 
-**Decision**: Not yet made. This conflict is new: the PRD does not record it.
+**Decision**: Made on 2026-10-30 by Richard Hightower and recorded in the PRD as TR-015 at 0.12.0. The domain check researches the domain on the web by default, for any domain. Its queries carry only standard names, terms of art, and the domain. A set turns research off with `web_research: false` in its root. An organization turns it off for every set by denying `WebSearch` and `WebFetch` in its managed settings, which Claude Code applies to subagents too. NFR-008 and A-005 now state this default.
 
-**Rationale**: Not decided.
+**Rationale**: A citation the reviewer cannot confirm is worth less to the expert, and most domains are public. An organization whose policy allows no outbound query has an enforced switch.
 
 **Decision Authority**: Product owner, for prd-forge's own design
 

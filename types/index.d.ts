@@ -45,6 +45,8 @@ export type PrdSet = {
   docs: PrdDocRef[]
   /** Each ID a document's front matter defines (`Q-001`), to that document's path. */
   ids: Record<string, string>
+  /** IDs that more than one document defines, which the set states two ways (FR-020). */
+  twice: string[]
 }
 
 declare module 'claude-code' {

@@ -26,7 +26,10 @@ PRD has already failed: people will build from the summary.
 - `summary.not_building`: optional. One sentence on what the product will not do,
   pointing to the non-goals in section 6.
 - `primary_persona`: the `PER-nnn` the product serves first.
-- `approvers`: the `PER-nnn` roles whose approval section 15 must record.
+- `approvers`: each person whose approval section 15 must record, as
+  `{ name, role, persona }`. Ask for the name: a role alone does not say whose
+  decision counts.
+- `web_research`: optional. `false` keeps the domain check inside the session.
 - `stakeholders` may be objects with `role`, `interest`, and `influence` (high,
   medium, or low), not only names.
 - `links.children`: every section document, in reading order.
@@ -34,7 +37,9 @@ PRD has already failed: people will build from the summary.
 
 ## What does not belong
 
-- Any detail that lives in a section. The summary points, it does not duplicate.
+- Any detail that lives in a section, written by hand. The generated details
+  block already gives the approver the scope, each section's state and grade,
+  the open questions, and the blocking defects. The prose does not repeat them.
 - A technology, a vendor, a system name, or an architecture sketch.
 - A date for anything but the release plan's own targets.
 

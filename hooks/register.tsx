@@ -8,7 +8,7 @@ const PANE = 'prd-forge'
 
 /** Bump the shape tag whenever PrdSet's fields change. */
 const set = atom({ plugin: 'prd-forge', key: 'set' } as const, null, {
-  shape: 'prd-set-3',
+  shape: 'prd-set-4',
 })
 const cursor = atom({ plugin: 'prd-forge', key: 'cursor' } as const, 0)
 const page = atom({ plugin: 'prd-forge', key: 'page' } as const, 'doc')
@@ -75,6 +75,7 @@ const scanDir = async ($: EngineInterface, dir: string): Promise<Scanned | undef
   const entries = await $.fs.list(dir).catch(() => [])
   const found: { doc: PrdDocRef; front: Front }[] = []
   const ids: Record<string, string> = {}
+  const twice = new Set<string>()
   let mtimeMs = 0
   for (const entry of entries) {
     if (entry.kind !== 'file' || !entry.name.endsWith('.md')) continue
@@ -83,7 +84,11 @@ const scanDir = async ($: EngineInterface, dir: string): Promise<Scanned | undef
     if (typeof text !== 'string') continue
     const front = frontMatterOf(text)
     found.push({ doc: docOf(path, front), front })
-    for (const id of idsOf(text)) ids[id] ??= path
+    // FR-020: keep the first definition, but say when another document defines it too.
+    for (const id of idsOf(text)) {
+      if (ids[id] !== undefined && ids[id] !== path) twice.add(id)
+      ids[id] ??= path
+    }
     mtimeMs = Math.max(mtimeMs, entry.mtimeMs)
   }
   const root = found.find(one => one.doc.kind === 'prd' || one.doc.kind === 'backlog')
@@ -99,6 +104,7 @@ const scanDir = async ($: EngineInterface, dir: string): Promise<Scanned | undef
       product: root.front.product ?? root.doc.title,
       docs: [root.doc, ...sections.map(one => one.doc)],
       ids,
+      twice: [...twice].sort(),
     },
   }
 }
@@ -183,7 +189,9 @@ async function rescan($: EngineInterface, dir: string): Promise<PrdSet | null> {
   await update($, notice, () =>
     found === null
       ? `No PRD set under ${dir}. Run the prd-wizard skill to write one.`
-      : `${found.dir}: ${statusOf(found.docs)}`,
+      : found.twice.length > 0
+        ? `${found.twice.length === 1 ? 'ID' : 'IDs'} ${found.twice.join(', ')} ${found.twice.length === 1 ? 'is' : 'are'} defined in two documents; links follow the first.`
+        : `${found.dir}: ${statusOf(found.docs)}`,
   )
   if (found !== null) {
     await update($, cursor, at => Math.min(Math.max(at, 0), found.docs.length - 1))

@@ -126,11 +126,50 @@ function item(one, headField, nameField, level, keys) {
   return lines
 }
 
-/** The block for one document, or '' when its front matter holds nothing to show. */
-export function detailsOf(front) {
+const cell = value => inline(value ?? '—').replaceAll('|', '\\|')
+
+/**
+ * FR-013: what an approver needs, drawn from the other documents of the set, so
+ * the root alone shows the scope, each section's state and grade, what is still
+ * undecided, and where any blocking defect is.
+ */
+function summaryOf(set) {
+  const of = kind => set.find(f => f?.kind === kind)
+  const sections = set.filter(f => f?.kind && f.kind !== 'prd').sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  const lines = []
+  const scope = of('scope')
+  if (scope) {
+    lines.push('### Scope', '')
+    for (const [key, name] of [['in_scope', 'In scope'], ['out_of_scope', 'Out of scope']]) {
+      const items = (scope[key] ?? []).filter(isItem)
+      if (items.length > 0) lines.push(`**${name}:**`, '', ...items.map(i => `- ${i.id ? `${i.id}: ` : ''}${text(i.summary ?? '')}`), '')
+    }
+  }
+  if (sections.length > 0) {
+    lines.push('### Sections', '', '| Section | Title | Status | Grade | Blocking |', '| --- | --- | --- | --- | --- |')
+    for (const f of sections) {
+      lines.push(`| ${cell(f.section)} | ${cell(f.title)} | ${cell(f.status)} | ${f.score === undefined ? '—' : `${f.score}/100`} | ${f.blocking ? f.blocking : '—'} |`)
+    }
+    lines.push('')
+  }
+  const open = (of('open-questions')?.questions ?? []).filter(q => isItem(q) && isEmpty(q.answer))
+  lines.push('### Undecided', '')
+  if (open.length === 0) lines.push('Nothing is undecided.', '')
+  else lines.push(...open.map(q => `- ${q.id}: ${text(q.question ?? '')} Decider: ${inline(q.decider ?? '—')}. By: ${inline(q.by ?? '—')}.`), '')
+  const blocked = sections.filter(f => (f.blocking ?? 0) > 0)
+  lines.push('### Blocking defects', '')
+  lines.push(blocked.length === 0 ? 'None.' : `Blocking defects in ${blocked.map(f => `section ${f.section} (${f.blocking})`).join(', ')}.`, '')
+  return lines
+}
+
+/**
+ * The block for one document, or '' when its front matter holds nothing to show.
+ * `set` holds the front matter of every document; the root's block summarizes it.
+ */
+export function detailsOf(front, set = []) {
   const groups = (ITEM_LISTS[front.kind] ?? []).filter(([key]) => Array.isArray(front[key]) && front[key].length > 0)
   const listed = new Set((ITEM_LISTS[front.kind] ?? []).map(([key]) => key))
-  const lines = []
+  const lines = front.kind === 'prd' && set.length > 0 ? summaryOf(set) : []
   for (const [key, value] of Object.entries(front)) {
     if (!SKIP.has(key) && !listed.has(key)) lines.push(...field(key, value, 3))
   }
@@ -143,7 +182,10 @@ export function detailsOf(front) {
   }
   if (lines.length === 0) return ''
   while (lines.at(-1) === '') lines.pop()
-  return [START, '', '## Details', '', 'Every item in this document, with each of its fields.', '', ...lines, '', END].join('\n')
+  const intro = front.kind === 'prd' && set.length > 0
+    ? 'What an approver needs from every section, then each field of this document.'
+    : 'Every item in this document, with each of its fields.'
+  return [START, '', '## Details', '', intro, '', ...lines, '', END].join('\n')
 }
 
 /** The body without its details block, as a person wrote it. */
@@ -155,22 +197,26 @@ export function withoutDetails(body) {
 }
 
 /** The body with its block written or replaced. */
-export function withDetails(body, front) {
-  const block = detailsOf(front)
+export function withDetails(body, front, set = []) {
+  const block = detailsOf(front, set)
   const own = withoutDetails(body).replace(/\n+$/, '')
   return block === '' ? `${own}\n` : `${own}\n\n${block}\n`
 }
 
 export function writeDetails(dir, check = false) {
   const stale = []
+  const docs = []
   for (const file of readdirSync(dir).filter(f => f.endsWith('.md')).sort()) {
-    const path = join(dir, file)
-    const source = readFileSync(path, 'utf8')
+    const source = readFileSync(join(dir, file), 'utf8')
     const { front: raw, rest } = splitFrontMatter(source)
     if (raw.trim() === '') continue
     const front = parseYaml(raw) ?? {}
-    if (front.kind === undefined) continue
-    const body = withDetails(rest, front)
+    if (front.kind !== undefined) docs.push({ file, source, rest, front })
+  }
+  const set = docs.map(d => d.front)
+  for (const { file, source, rest, front } of docs) {
+    const path = join(dir, file)
+    const body = withDetails(rest, front, set)
     if (body === rest) continue
     stale.push(file)
     if (!check) writeFileSync(path, source.slice(0, source.length - rest.length) + body)

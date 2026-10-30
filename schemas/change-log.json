@@ -80,17 +80,24 @@
                           "type": "string",
                           "pattern": "^[A-Z]{1,4}-\\d{3}$"
                         },
-                        "description": "The open questions or requirements the condition depends on."
+                        "description": "The open questions, requirements, or review comments the condition depends on.",
+                        "minItems": 1
                       },
                       "by": {
                         "$ref": "common.json#/$defs/date"
                       },
                       "cleared": {
                         "type": "boolean"
+                      },
+                      "cleared_by": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Who cleared the condition. Only the approver who set it clears it."
                       }
                     },
                     "required": [
                       "condition",
+                      "depends_on",
                       "by"
                     ],
                     "additionalProperties": false

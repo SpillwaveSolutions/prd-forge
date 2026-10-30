@@ -445,6 +445,31 @@ def h_items(front, kind):
     return f'<div class="items">{"".join(out)}</div>' if out else ""
 
 
+def approval_md(f, rest):
+    """FR-013: what the approver needs on the root page, as markdown. The export
+    drops the details block that carries the same view, so it prints it here."""
+    of = {d["front"]["kind"]: d["front"] for d in rest}
+    md = []
+    approvers = [a for a in f.get("approvers") or [] if isinstance(a, dict)]
+    if approvers:
+        md += ["# Approvers", ""] + [f'- {a.get("name", "")}, {a.get("role", "")}' for a in approvers] + [""]
+    scope = of.get("scope") or {}
+    for key, name in (("in_scope", "In scope"), ("out_of_scope", "Out of scope")):
+        items = [i for i in scope.get(key) or [] if isinstance(i, dict)]
+        if items:
+            md += [f"# {name}", ""] + [f'- {i.get("id", "")}: {inline(i.get("summary", ""))}' for i in items] + [""]
+    open_qs = [q for q in (of.get("open-questions") or {}).get("questions") or []
+               if isinstance(q, dict) and not q.get("answer")]
+    md += ["# Undecided", ""]
+    md += ([f'- {q.get("id", "")}: {inline(q.get("question", ""))} Decider: {q.get("decider", "—")}. By: {q.get("by", "—")}.'
+            for q in open_qs] or ["Nothing is undecided."]) + [""]
+    blocked = [d["front"] for d in rest if (d["front"].get("blocking") or 0) > 0]
+    md += ["# Blocking defects", "",
+           "Blocking defects in " + ", ".join(f'section {b.get("section", "")} ({b["blocking"]})' for b in blocked) + "."
+           if blocked else "None.", ""]
+    return "\n".join(md)
+
+
 def build_html(root, rest, title):
     f = root["front"]
     meta = [("Version", f.get("version")), ("Status", f.get("status")),
@@ -479,6 +504,7 @@ def build_html(root, rest, title):
     parts = [f"""<section class="front">
       {summary}
       {toc_table}
+      {h_blocks(blocks(approval_md(f, rest)), demote=1)}
       <h2>About this document</h2>
       {h_blocks(blocks(body_md), demote=2)}
     </section>"""]
@@ -856,6 +882,7 @@ def build_docx(root, rest, out_path, title):
                         f'{d["front"]["score"]}/100' if d["front"].get("score") is not None else "—",
                         str(d["front"]["blocking"]) if d["front"].get("blocking") else "—"]
                        for d in rest]})
+    render_blocks(blocks(approval_md(f, rest)), demote=1)
 
     body_md = re.sub(r"^#\s+.*$", "", root["body"], count=1, flags=re.M)
     para("About this document", style="Heading 2")

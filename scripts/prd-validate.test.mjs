@@ -170,7 +170,94 @@ test('a glossary term may be defined once', () =>
 
 test('the root version needs a change entry, and a final section an approval', () => {
   failsWith('prd.md', t => t.replace(/^version: .*$/m, 'version: 9.9.9'), /root's version 9.9.9 has no change entry/)
-  failsWith('10-constraints.md', t => t.replace('status: draft', 'status: final'), /status final with no approval recorded/)
+  failsWith('10-constraints.md', t => t.replace('status: draft', 'status: final'), new RegExp(`status final with no approval of version ${esc(VERSION)} recorded`))
+})
+
+/** Edits several files of a copy of the reference set; returns the report. */
+function validateFiles(edits) {
+  const dir = join(mkdtempSync(join(tmpdir(), 'prd-validate-')), 'set')
+  cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
+  for (const [file, edit] of Object.entries(edits)) writeFileSync(join(dir, file), edit(readFileSync(join(dir, file), 'utf8')))
+  return validateSet(dir)
+}
+
+// The reference set's version, and the one before it in its change log.
+const VERSION = /^version: (.+)$/m.exec(readFileSync(join(REPO, 'docs/prd/prd-forge/prd.md'), 'utf8'))[1]
+const EARLIER = [...readFileSync(join(REPO, 'docs/prd/prd-forge/16-change-log.md'), 'utf8').matchAll(/^  - version: (.+)$/gm)].map(m => m[1]).find(v => v !== VERSION)
+const esc = v => v.replaceAll('.', '\\.')
+
+// An approver whose name and role hold the characters a YAML subset trips on.
+const AWKWARD = '"O\'Brien (CFO); \\"Ops\\" #2 <lead>"'
+const NAMED = t => t.replace('  - { name: Richard Hightower, role: Sponsor, persona: PER-003 }\n',
+  `  - { name: Richard Hightower, role: Sponsor, persona: PER-003 }\n  - { name: ${AWKWARD}, role: "Finance, ops", persona: PER-003 }\n`)
+
+/** The change log with `approvals` (YAML lines) recorded against `version`. */
+const logged = (version, ...approvals) => t => t.replace(`  - version: ${version}\n    date: `, m => m.replace('    date: ', `    approvals:\n${approvals.join('\n')}\n    date: `))
+const decided = (decision, date = '2026-10-30', name = 'Richard Hightower', role = 'Sponsor', extra = []) =>
+  [`      - name: ${name}`, `        role: ${role}`, `        date: ${date}`, `        decision: ${decision}`, ...extra].join('\n')
+const finalSection = t => t.replace('status: draft', 'status: final')
+
+test('an approval covers only the version it names (FR-014)', () => {
+  const ok = validateFiles({ '16-change-log.md': logged(VERSION, decided('approved')), '10-constraints.md': finalSection })
+  assert.ok(!ok.errors.some(e => /no approval of version/.test(e)), ok.errors.join('\n'))
+  const old = validateFiles({ '16-change-log.md': logged(EARLIER, decided('approved')), '10-constraints.md': finalSection })
+  assert.ok(old.errors.some(e => e.includes(`status final with no approval of version ${VERSION}`)), old.errors.join('\n'))
+})
+
+test('a later rejection of the same version means the set is not approved (FR-014)', () => {
+  const { errors } = validateFiles({
+    '16-change-log.md': logged(VERSION, decided('approved', '2026-10-30'), decided('rejected', '2026-10-31', 'Richard Hightower', 'Sponsor', ['        note: The scope moved.'])),
+    '10-constraints.md': finalSection,
+  })
+  assert.ok(errors.some(e => e.includes(`no approval of version ${VERSION}`)), errors.join('\n'))
+})
+
+test('each condition names what it depends on, and that it exists (FR-014)', () => {
+  const cond = (...lines) => ['        conditions:', '          - condition: Q-001 is answered.', ...lines, '            by: 2027-01-31']
+  const none = validateFiles({ '16-change-log.md': logged(VERSION, decided('approved-with-conditions', undefined, undefined, undefined, cond())) })
+  assert.ok(none.errors.some(e => /depends_on: missing|names nothing it depends on/.test(e)), none.errors.join('\n'))
+  const missing = validateFiles({ '16-change-log.md': logged(VERSION, decided('approved-with-conditions', undefined, undefined, undefined, cond('            depends_on: [Q-999]'))) })
+  assert.ok(missing.errors.some(e => /depends on Q-999, which does not exist/.test(e)), missing.errors.join('\n'))
+})
+
+test('only the approver who set a condition clears it (FR-014)', () => {
+  const cond = ['        conditions:', '          - condition: Q-001 is answered.', '            depends_on: [Q-001]', '            by: 2027-01-31', '            cleared: true', '            cleared_by: Someone Else']
+  const { errors } = validateFiles({ '16-change-log.md': logged(VERSION, decided('approved-with-conditions', undefined, undefined, undefined, cond)) })
+  assert.ok(errors.some(e => /cleared by Someone Else; only Richard Hightower clears it/.test(e)), errors.join('\n'))
+})
+
+test('a decision from someone not named as an approver is not an approval (FR-021)', () => {
+  const { errors } = validateFiles({ '16-change-log.md': logged(VERSION, decided('approved', undefined, 'Pat Doe', 'Sponsor')) })
+  assert.ok(errors.some(e => /decision by Pat Doe \(Sponsor\) is not from a named approver/.test(e)), errors.join('\n'))
+})
+
+test('an approver whose name holds awkward characters is matched exactly (FR-021)', () => {
+  const ok = validateFiles({ 'prd.md': NAMED, '16-change-log.md': logged(VERSION, decided('approved', undefined, AWKWARD, '"Finance, ops"')) })
+  assert.ok(!ok.errors.some(e => /not from a named approver/.test(e)), ok.errors.join('\n'))
+})
+
+test('a set with no named approver warns at draft and fails at review (FR-021)', () => {
+  const bare = t => t.replace('  - { name: Richard Hightower, role: Sponsor, persona: PER-003 }\n', '  - PER-003\n')
+  const draft = validateFiles({ 'prd.md': bare })
+  assert.deepEqual(draft.errors, [])
+  assert.ok(draft.warnings.some(w => /no approver is named/.test(w)), draft.warnings.join('\n'))
+  assert.ok(draft.warnings.some(w => /approver PER-003 has no name/.test(w)), draft.warnings.join('\n'))
+  failsWith('prd.md', t => bare(t).replace(/^status: draft$/m, 'status: review'), /no approver is named/)
+})
+
+test('an item defined in two documents fails the set and names both (FR-020)', () => {
+  failsWith('13-open-questions.md', t => t.replace('  - id: Q-023\n', '  - id: FR-007\n'), /13-open-questions\.md: FR-007 is defined here and in 08-functional-requirements\.md/)
+})
+
+test('the root contents differing from a document warns (FR-020)', () => {
+  const warnings = warningsEdited('10-constraints.md', t => t.replace('status: draft', 'status: review'))
+  assert.ok(warnings.some(w => /links\.children\[\d+\] says status "draft", but 10-constraints\.md says "review"/.test(w)), warnings.join('\n'))
+})
+
+test('web_research is a boolean', () => {
+  const ok = validateFiles({ 'prd.md': t => t.replace(/^approvers:$/m, 'web_research: false\napprovers:') })
+  assert.deepEqual(ok.errors, [])
+  failsWith('prd.md', t => t.replace(/^approvers:$/m, 'web_research: maybe\napprovers:'), /web_research/)
 })
 
 test('a requirement missing shown_in warns at draft and fails at review', () => {
@@ -197,7 +284,7 @@ const warnsWith = (file, edit, pattern) => {
 test('the root names a real objective, primary persona, and approvers', () => {
   failsWith('prd.md', t => t.replace('  objective: O-001\n', '  objective: O-099\n'), /summary\.objective names O-099/)
   failsWith('prd.md', t => t.replace('primary_persona: PER-001', 'primary_persona: PER-099'), /primary_persona names PER-099/)
-  failsWith('prd.md', t => t.replace('approvers: [PER-003]', 'approvers: [PER-099]'), /approvers names PER-099/)
+  failsWith('prd.md', t => t.replace('persona: PER-003 }', 'persona: PER-099 }'), /approvers names PER-099/)
 })
 
 test('segments name real personas, and only one persona is primary', () => {
@@ -362,3 +449,23 @@ for (const set of ['docs/prd/prd-forge', 'examples/acme-returns']) {
 
 test('a scenario that rejoins a stage outside its journey fails the set', () =>
   failsWith('06-scenarios.md', t => t.replace('    rejoins: ST-004\n', '    rejoins: ST-009\n'), /SC-\d{3} rejoins ST-009, which is not a stage of J-001/))
+
+test('the root block shows the approver what the set holds (FR-013)', () => {
+  const set = [
+    { kind: 'prd', approvers: [{ name: '"Ops" <lead> #2', role: 'Sponsor; CFO' }] },
+    { kind: 'scope', section: 6, order: 70, title: 'Scope', status: 'review', score: 88, in_scope: [{ id: 'IN-001', summary: 'Pick | choose' }], out_of_scope: [{ id: 'OUT-001', summary: 'Teams' }] },
+    { kind: 'open-questions', section: 12, order: 130, title: 'Open questions', status: 'draft', blocking: 2, questions: [{ id: 'Q-001', question: 'Who decides?', decider: 'Ann Lee', by: '2027-01-31' }, { id: 'Q-002', question: 'Done?', answer: 'Yes.' }] },
+  ]
+  const block = detailsOf(set[0], set)
+  assert.match(block, /IN-001: Pick \| choose/)
+  assert.match(block, /OUT-001: Teams/)
+  assert.match(block, /\| 6 \| Scope \| review \| 88\/100 \| — \|/)
+  assert.match(block, /Q-001: Who decides\? Decider: Ann Lee\. By: 2027-01-31\./)
+  assert.doesNotMatch(block, /Q-002/)
+  assert.match(block, /Blocking defects in section 12 \(2\)\./)
+  assert.match(block, /"Ops" <lead> #2/)
+  assert.equal(withDetails(withDetails('# Root\n', set[0], set), set[0], set), withDetails('# Root\n', set[0], set))
+})
+
+test('a section change makes the root block stale (FR-013)', () =>
+  warnsWith('10-constraints.md', t => t.replace('score: 95', 'score: 60'), /prd\.md: the details block does not match/))

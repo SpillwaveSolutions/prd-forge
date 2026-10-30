@@ -76,7 +76,40 @@ escalation rises from today's 41%.
 
 ## Details
 
-Every item in this document, with each of its fields.
+What an approver needs from every section, then each field of this document.
+
+### Scope
+
+**In scope:**
+
+- IN-001: Identify a purchase from a receipt, an order number, or the payment card
+- IN-002: Show the returns decision, its reason, and the refund method at the counter
+- IN-004: Complete the return with the reason recorded for the hub
+
+**Out of scope:**
+
+- OUT-001: Returns of items bought from Acme wholesale partners rather than in an Acme store
+- OUT-002: Returns initiated online and completed in store
+- OUT-003: Requesting and deciding an exception in the product (FR-003)
+
+### Sections
+
+| Section | Title | Status | Grade | Blocking |
+| --- | --- | --- | --- | --- |
+| 3 | Business objectives and success metrics | draft | — | — |
+| 4 | Users and personas | draft | — | — |
+| 5 | User journeys | draft | — | — |
+| 6 | Scope | draft | — | — |
+| 7 | Functional requirements | draft | — | — |
+| 7 | Wireframes | draft | — | — |
+
+### Undecided
+
+Nothing is undecided.
+
+### Blocking defects
+
+None.
 
 **Version:** 0.1.0
 

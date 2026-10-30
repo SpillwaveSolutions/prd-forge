@@ -172,6 +172,9 @@ journeys, scenarios, the release plan, decision rights, or wireframes.
   It writes one Word document and one PDF holding the whole set: a title page,
   the executive summary, a contents table carrying each section's grade and
   blocking count, then every section's prose and the full detail of its items.
+  Before you offer a set for approval, check that the root's `approvers` names
+  at least one person by name and role. If none is named, do not offer it: ask
+  the expert who will approve it, and record that person first (FR-021).
   Offer it before an approval is sought, since PER-003 reads a handful of pages
   and will not read eighteen markdown files. When a reviewer sends back the
   Word file with comments, offer `/prd-comments <file>`, which brings each

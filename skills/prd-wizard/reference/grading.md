@@ -88,6 +88,22 @@ All three are read-only: they report, they never edit the document.
 
 Dispatch them in parallel when more than one applies, they are independent.
 
+### Web research by the domain voice reviewer
+
+`prd-domain-voice` searches the web for the domain's standards and terms by
+default, whatever the domain is. Its queries carry only standard names, terms of
+art, and the domain, never set text or the expert's answers. Two switches turn
+it off:
+
+- **The set:** `web_research: false` in the root's front matter. When you brief
+  the agent for such a set, add "Make no web calls." to the brief.
+- **The organization:** deny `WebSearch` and `WebFetch` under
+  `permissions.deny` in its managed settings. Claude Code applies a deny rule to
+  subagents too, so the agent cannot search, whatever the set says.
+
+With research off, the agent marks each citation it cannot confirm from the set
+as `unverified`.
+
 ### Briefing them
 
 Give each agent the **document and the rubric file paths**, the domain, and
