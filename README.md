@@ -7,6 +7,9 @@ trials, talks to it, and it teaches, interviews, drafts, grades and writes. What
 is a linked set of schema-checked markdown documents that a development team can
 derive a backlog from and build.
 
+Do you already use Anthropic's product-management plugin? Read
+[Why use prd-forge and not Anthropic's product-management plugin?](docs/faq.md#why-use-prd-forge-and-not-anthropics-product-management-plugin)
+
 ## What is in it
 
 | Component | What it does |
