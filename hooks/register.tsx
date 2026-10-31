@@ -565,7 +565,7 @@ export const register: Register = (on, options) => {
           {current.pair !== null && (
             <Button
               key="switch"
-              label={doc.kind === 'backlog' || current.docs[0]?.kind === 'backlog' ? 'PRD' : 'Backlog'}
+              label={current.docs[0]?.kind === 'backlog' ? 'PRD' : 'Backlog'}
               hotkey="s"
               onPress={() => void swap($)}
             />
