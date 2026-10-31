@@ -3,8 +3,8 @@
 version: 1
 
 project:
-  key: PROJ
-  name: "My Project"
+  key: PRDF
+  name: "prd-forge"
 
 ticketing:
   system: github               # github | gitlab | jira | ado | linear | codecatalyst | other | none
