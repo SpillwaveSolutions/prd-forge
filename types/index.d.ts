@@ -47,6 +47,8 @@ export type PrdSet = {
   ids: Record<string, string>
   /** IDs that more than one document defines, which the set states two ways (FR-020). */
   twice: string[]
+  /** The directory of the set paired with this one: a PRD's backlog, or a backlog's PRD (#22). */
+  pair: string | null
 }
 
 declare module 'claude-code' {

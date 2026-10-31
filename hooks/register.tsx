@@ -8,7 +8,7 @@ const PANE = 'prd-forge'
 
 /** Bump the shape tag whenever PrdSet's fields change. */
 const set = atom({ plugin: 'prd-forge', key: 'set' } as const, null, {
-  shape: 'prd-set-4',
+  shape: 'prd-set-5',
 })
 const cursor = atom({ plugin: 'prd-forge', key: 'cursor' } as const, 0)
 const page = atom({ plugin: 'prd-forge', key: 'page' } as const, 'doc')
@@ -68,6 +68,36 @@ const idsOf = (text: string): string[] => {
   return [...head.matchAll(/^\s*(?:-\s+)?id:\s*([A-Z]+-\d+)\s*$/gm)].map(m => m[1] ?? '')
 }
 
+/** Every ID a document's front matter names, defined there or cited. */
+const refsOf = (text: string): string[] => {
+  const end = text.startsWith('---') ? text.indexOf('\n---', 3) : -1
+  return [...new Set(end === -1 ? [] : text.slice(3, end).match(/\b[A-Z]{1,4}-\d+\b/g) ?? [])]
+}
+
+/** `a/b/../c` as `a/c`. */
+const normal = (path: string): string => {
+  const parts: string[] = []
+  for (const part of path.split('/')) {
+    if (part === '..' && parts.length > 0 && parts[parts.length - 1] !== '..') parts.pop()
+    else if (part !== '.' && part !== '') parts.push(part)
+  }
+  return `${path.startsWith('/') ? '/' : ''}${parts.join('/')}`
+}
+
+/**
+ * The set paired with this one (#22). A backlog root names its PRD root in
+ * `prd`. A PRD set's backlog is where prd-to-backlog writes it,
+ * `<dir>-backlog/backlog.md`.
+ */
+const pairOf = async ($: EngineInterface, dir: string, root: { doc: PrdDocRef; front: Front }): Promise<string | null> => {
+  if (root.doc.kind === 'backlog') {
+    const prd = root.front.prd
+    return prd === undefined ? null : normal(`${dir}/${prd}`).replace(/\/[^/]*$/, '')
+  }
+  const backlog = await $.fs.read(`${dir}-backlog/backlog.md`).catch(() => undefined)
+  return typeof backlog === 'string' ? `${dir}-backlog` : null
+}
+
 type Scanned = { set: PrdSet; mtimeMs: number }
 
 /** Reads one directory as a PRD set; undefined when it holds no `kind: prd`. */
@@ -105,6 +135,7 @@ const scanDir = async ($: EngineInterface, dir: string): Promise<Scanned | undef
       docs: [root.doc, ...sections.map(one => one.doc)],
       ids,
       twice: [...twice].sort(),
+      pair: await pairOf($, dir, root),
     },
   }
 }
@@ -200,6 +231,56 @@ async function rescan($: EngineInterface, dir: string): Promise<PrdSet | null> {
   return found
 }
 
+/**
+ * Opens the set paired with the one shown (#22), at the first document that
+ * shares an ID with the document now shown: the backlog item that traces to a
+ * PRD item, or the PRD document that defines what a backlog item traces to.
+ * The root when none does. Back history belongs to one set, so it is cleared.
+ */
+async function swap($: EngineInterface): Promise<string> {
+  const current = await read($, set)
+  if (current === null) return 'No PRD set loaded. Run /prd first.'
+  const from = current.docs[Math.min(Math.max(await read($, cursor), 0), current.docs.length - 1)]
+  if (current.pair === null) {
+    return current.docs[0]?.kind === 'backlog'
+      ? 'This backlog names no PRD: its root has no prd field.'
+      : `No backlog found for this PRD. The prd-to-backlog skill writes one to ${current.dir}-backlog.`
+  }
+  const text = from === undefined ? '' : await $.fs.read(from.path).catch(() => '')
+  const mine = refsOf(typeof text === 'string' ? text : '')
+  const found = await rescan($, current.pair)
+  if (found === null) return `No set found under ${current.pair}.`
+  let at = 0
+  if (found.docs[0]?.kind === 'prd') {
+    const id = mine.find(one => found.ids[one] !== undefined)
+    if (id !== undefined) at = Math.max(found.docs.findIndex(one => one.path === found.ids[id]), 0)
+  } else {
+    for (const [index, one] of found.docs.entries()) {
+      if (index === 0) continue
+      const other = await $.fs.read(one.path).catch(() => '')
+      if (refsOf(typeof other === 'string' ? other : '').some(id => mine.includes(id))) {
+        at = index
+        break
+      }
+    }
+  }
+  await update($, history, () => [])
+  await update($, cursor, () => at)
+  await update($, page, () => 'doc')
+  const doc = found.docs[at]
+  await update($, notice, () => `${found.product}: ${doc?.title ?? ''}`)
+  return `PRD pane on ${found.dir}: ${doc?.title ?? ''}, ${doc?.path ?? ''}`
+}
+
+/**
+ * Rescans the set on screen when a written file belongs to it, so a backlog
+ * shown in the pane stays shown; else the newest set under `home`.
+ */
+async function rescanFor($: EngineInterface, path: string, home: string): Promise<void> {
+  const shown = (await read($, set))?.dir
+  await rescan($, shown !== undefined && path.includes(`${shown}/`) ? shown : home)
+}
+
 /** Shows document `at` on `to`, and keeps the screen left behind for Back. */
 async function go($: EngineInterface, at: number, to: PrdPage): Promise<void> {
   const current = await read($, set)
@@ -233,6 +314,10 @@ export const register: Register = (on, options) => {
       argumentHint: '[directory]',
     })
     await $.command.register({
+      name: 'prd-switch',
+      description: 'Switch the PRD pane between a PRD set and its backlog, at the matching document',
+    })
+    await $.command.register({
       name: 'prd-step',
       description: 'Move the PRD stepper pane to another section',
       argumentHint: '[next|prev|first|last|<n>]',
@@ -254,6 +339,13 @@ export const register: Register = (on, options) => {
           ? `No PRD set found under ${dir === '' ? home : dir}. Ask for the prd-wizard skill to interview you and write one.`
           : `PRD pane open on ${found.dir}: ${found.product}, ${statusOf(found.docs)}.`,
     }
+  })
+
+  on('command.run', { command: 'prd-switch' }, async $ => {
+    const text = await swap($)
+    await $.ui.open({ id: PANE, title: 'PRD' })
+
+    return { text }
   })
 
   on('command.run', { command: 'prd-step' }, async ($, e) => {
@@ -290,7 +382,7 @@ export const register: Register = (on, options) => {
   on('tool.call', { tool: 'Write' }, async ($, e, next) => {
     const ran = await next(e)
     if (isOfTheSet(e.file_path, home) && ran.deny === undefined && ran.isError !== true) {
-      await rescan($, home)
+      await rescanFor($, e.file_path, home)
     }
 
     return ran
@@ -299,7 +391,7 @@ export const register: Register = (on, options) => {
   on('tool.call', { tool: 'Edit' }, async ($, e, next) => {
     const ran = await next(e)
     if (isOfTheSet(e.file_path, home) && ran.deny === undefined && ran.isError !== true) {
-      await rescan($, home)
+      await rescanFor($, e.file_path, home)
     }
 
     return ran
@@ -469,7 +561,15 @@ export const register: Register = (on, options) => {
             variant="primary"
             onPress={() => void go($, at + 1, 'doc')}
           />
-          <Button key="rescan" label="Refresh" hotkey="r" onPress={() => void rescan($, home)} />
+          <Button key="rescan" label="Refresh" hotkey="r" onPress={() => void rescan($, current.dir)} />
+          {current.pair !== null && (
+            <Button
+              key="switch"
+              label={doc.kind === 'backlog' || current.docs[0]?.kind === 'backlog' ? 'PRD' : 'Backlog'}
+              hotkey="s"
+              onPress={() => void swap($)}
+            />
+          )}
           <Button
             key="back"
             label="Back"

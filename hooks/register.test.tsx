@@ -114,6 +114,44 @@ const J001_TEXT = `+----------------+
     v
 `
 
+// A backlog derived from the demo PRD, as prd-to-backlog writes it: beside the
+// PRD set, in a folder named after it.
+const BACKLOG = `${front(`id: demo-backlog
+kind: backlog
+schema: prd-forge/backlog-root@1
+title: Demo backlog
+status: draft
+updated: 2026-10-30
+product: Demo Returns
+slug: demo-backlog
+prd: ../prd/prd.md
+order: 0`)}
+# Demo backlog
+
+The backlog root.
+`
+
+const STORIES = `${front(`id: demo-stories
+kind: stories
+schema: prd-forge/stories@1
+title: Stories
+status: draft
+updated: 2026-10-30
+order: 30
+stories:
+  - id: STY-001
+    persona: PER-001
+    requirements: [PER-001]`)}
+# Stories
+
+The associate checks a return at the counter.
+`
+
+const WITH_BACKLOG: Record<string, string> = {
+  'docs/prd-backlog/backlog.md': BACKLOG,
+  'docs/prd-backlog/03-stories.md': STORIES,
+}
+
 const FILES: Record<string, string> = {
   'docs/prd/diagrams/J-001.txt': J001_TEXT,
   'docs/prd/grades/05-user-journeys.md': NOTES,
@@ -137,6 +175,8 @@ const servesTheSet = (on: On, files: Record<string, string> = FILES) => {
   on('fs.list', (_, e) => ({
     value: e.path.endsWith('docs/prd')
       ? [entry('prd.md'), entry('04-personas.md'), entry('05-user-journeys.md')]
+      : e.path.endsWith('docs/prd-backlog') && files['docs/prd-backlog/backlog.md'] !== undefined
+        ? [entry('backlog.md'), entry('03-stories.md')]
       : e.path.endsWith('skills/prd-wizard/sections')
         ? [entry('05-journeys.md')]
         : [],
@@ -328,5 +368,31 @@ test('an ID that two documents define draws a notice, and links follow the first
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
 
   expect(await ui.find({ type: 'Text', text: /ID PER-001 is defined in two documents; links follow the first/ })).toBeTruthy()
+  await ui.unmount()
+})
+
+test('a PRD with a backlog switches to the story that traces to the document shown, and back', async ($, on) => {
+  servesTheSet(on, { ...FILES, ...WITH_BACKLOG })
+  await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true })
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+
+  await ui.press({ key: 'go-demo-personas' })
+  expect(await ui.find({ type: 'Button', text: 'Backlog' })).toBeTruthy()
+  await ui.press({ key: 'switch' })
+  expect(await ui.find({ type: 'Text', text: /The associate checks a return/ })).toBeTruthy()
+
+  expect(await ui.find({ type: 'Button', text: 'PRD' })).toBeTruthy()
+  await ui.press({ key: 'switch' })
+  expect(await ui.find({ type: 'Text', text: /Not interviewed yet/ })).toBeTruthy()
+  await ui.unmount()
+})
+
+test('a PRD with no backlog draws no switch button', async ($, on) => {
+  servesTheSet(on)
+  await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true })
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+
+  expect(await ui.find({ type: 'Text', text: /The root body/ })).toBeTruthy()
+  expect(await ui.find({ type: 'Button', text: 'Backlog' })).toBeFalsy()
   await ui.unmount()
 })
