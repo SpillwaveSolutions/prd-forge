@@ -7,6 +7,9 @@ trials, talks to it, and it teaches, interviews, drafts, grades and writes. What
 is a linked set of schema-checked markdown documents that a development team can
 derive a backlog from and build.
 
+Do you already use Anthropic's product-management plugin? Read
+[Why use prd-forge and not Anthropic's product-management plugin?](docs/faq.md#why-use-prd-forge-and-not-anthropics-product-management-plugin)
+
 ## What is in it
 
 | Component | What it does |
@@ -80,10 +83,11 @@ Commands the mod adds:
 | --- | --- |
 | `/prd [directory]` | Opens the stepper pane on a set, scanning for one if no directory is given |
 | `/prd-step [next\|prev\|first\|last\|<n>]` | Moves the pane to another section |
+| `/prd-switch` | Switches the pane between a PRD set and its backlog. It opens the document that shares an ID with the one shown: the story that traces to a requirement, or the requirement a story traces to |
 | `/prd-comments <file.docx> [directory]` | Brings the comments reviewers left in an exported Word file into the set, each one on the item it marks, then answers them with you one at a time |
 | `/prd-q [directory]` | Continues the PRD: asks the questions still open, one at a time, and writes each answer into the set. Saying "continue the PRD" does the same |
 
-In the pane: `p` previous, `n` next, `r` refresh, `b` back, and a button per section.
+In the pane: `p` previous, `n` next, `r` refresh, `b` back, `s` switch to the backlog or the PRD (when the set has one), and a button per section.
 IDs such as `Q-001` and links to other sections are blue: click one to open that
 document. Click a grade to see why the section got it and how to raise it, and
 follow its link to the section's rubric. A wireframe draws as the sketch itself.

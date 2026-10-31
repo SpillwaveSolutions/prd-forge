@@ -101,7 +101,7 @@ chain is the trace, and the validator checks it:
 node "${CLAUDE_PLUGIN_ROOT}/scripts/prd-validate.mjs" <backlog set directory>
 ```
 
-`/prd <backlog set directory>` steps the pane through it.
+`/prd <backlog set directory>` steps the pane through it. `/prd-switch`, or `s` in the pane, moves between the backlog and the PRD it traces to, at the matching document.
 
 ## Report back
 
