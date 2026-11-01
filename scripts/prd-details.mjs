@@ -39,6 +39,7 @@ const ITEM_LISTS = {
   glossary: [['terms', 'term']],
   'change-log': [['changes', 'summary', 'version']],
   'review-comments': [['comments', 'comment']],
+  roadmap: [['items', 'title'], ['changes', 'change', 'date']],
   features: [['features', 'name']],
   epics: [['epics', 'goal']],
   stories: [['stories', 'capability']],

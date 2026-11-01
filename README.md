@@ -53,12 +53,13 @@ docs/prd/<slug>/
   15-glossary.md                         section 14
   16-change-log.md                       section 15
   17-review-comments.md                  section 15, only after /prd-comments
+  18-roadmap.md                          section 13, optional: read after the release plan
 ```
 
 Two worked sets ship with the plugin:
 
-- `docs/prd/prd-forge/`, prd-forge's own PRD, all eighteen documents, written
-  with these conventions and graded by the adversarial agents. The scores and
+- `docs/prd/prd-forge/`, prd-forge's own PRD, all eighteen documents and its
+  roadmap, written with these conventions and graded by the adversarial agents. The scores and
   blocking counts in its front matter are real. Read this one to see what a full
   set looks like, including what a graded set looks like when it has not yet
   passed.

@@ -39,9 +39,16 @@ source (`.mmd` or `.puml`) with its rendered `.svg` and `.png`.
 | `15-glossary.md` | `glossary` | 14 | 150 |
 | `16-change-log.md` | `change-log` | 15 | 160 |
 | `17-review-comments.md` | `review-comments` | 15 | 170 |
+| `18-roadmap.md` | `roadmap` | 13 | 145 |
 
 `17-review-comments.md` is optional. `/prd-comments` creates it the first time
-it imports reviewers' Word comments, and it is not one of the eighteen.
+it imports reviewers' Word comments, and it is not one of the eighteen. It goes
+after the change log, the last document in reading order.
+
+`18-roadmap.md` is optional too, and it is not one of the eighteen. Write it
+when the expert wants a roadmap, and link it between the release plan and the
+glossary, as `08-wireframes.md` sits in section 7. Then set the release plan's `roadmap_link` to
+`./18-roadmap.md`: the validator fails the set when the link names another file.
 
 Create all eighteen at the start, each at `status: pending` with an empty body
 and a one-line note saying it has not been interviewed yet. The set is then

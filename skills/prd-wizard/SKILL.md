@@ -16,9 +16,10 @@ product manager. You are the product manager, the teacher, and the grader.
 One directory of eighteen linked markdown documents: a root index and seventeen
 section documents covering the fifteen PRD sections, wireframes among them. The links between them live
 in the YAML front matter, which a JSON Schema validates. The `prd-forge` mod's
-pane steps through them; `scripts/prd-validate.mjs` checks them. A nineteenth,
-`17-review-comments.md`, appears only when `/prd-comments` imports a reviewer's
-Word comments.
+pane steps through them; `scripts/prd-validate.mjs` checks them. Two more are
+optional. `17-review-comments.md` appears only when `/prd-comments` imports a
+reviewer's Word comments. `18-roadmap.md` appears only when the expert wants a
+roadmap.
 
 ## Start here
 
@@ -113,6 +114,7 @@ rubric, the blocking-defect list, and the standard wording for that section.
 | `reference/sources.md` | Before section 14, and whenever a section uses MoSCoW, Given/When/Then, story, epic, feature, story map, backbone, or spike |
 | `sections/00-root.md` … `sections/16-change-log.md` | Before each section's pass |
 | `sections/17-review-comments.md` | Before you import or answer review comments |
+| `sections/18-roadmap.md` | Before you write or change a roadmap |
 | `sections/08-wireframes.md` | After section 7 is drafted, and whenever a requirement is `shown_in` a screen or a report |
 
 ## Validating

@@ -11,8 +11,8 @@ import { cpSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, existsSy
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { WIDTH, decisionsText, journeyText, lifecycleText, overviewText, releaseText, satisfactionText, scenarioText } from './prd-ascii.mjs'
-import { decisionsMermaid, drawSet, journeyMermaid, lifecycleMermaid, overviewMermaid, releaseMermaid, satisfactionMermaid, scenarioMermaid, topAlternates } from './prd-diagrams.mjs'
+import { WIDTH, decisionsText, journeyText, lanesOf, lifecycleText, overviewText, releaseText, roadmapText, satisfactionText, scenarioText } from './prd-ascii.mjs'
+import { decisionsMermaid, drawSet, journeyMermaid, lifecycleMermaid, overviewMermaid, releaseMermaid, roadmapMermaid, satisfactionMermaid, scenarioMermaid, topAlternates } from './prd-diagrams.mjs'
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -106,6 +106,7 @@ test('every text view fits the pane and holds only printable ASCII', () => {
     journeyText(journey), overviewText(journey, [branch]), scenarioText(scenario), satisfactionText(journey),
     lifecycleText(lifecycle, { 'PER-001': odd[2] }), releaseText([{ id: 'REL-001', name: odd[3], journey_stages: ['ST-001'] }], [journey], []),
     decisionsText(decisions, { 'PER-001': odd[4] }),
+    roadmapText(odd.map((title, i) => ({ id: `RM-00${i + 1}`, title, horizon: ['now', 'next', 'later'][i % 3], status: 'on-track', releases: ['REL-001'] }))),
   ]
   for (const view of views) {
     for (const line of view.split('\n')) {
@@ -203,6 +204,7 @@ test('every awkward name reads exactly as written in each kind of diagram', { sk
     shown(render(journeyMermaid({ id: 'J-009', trigger: 't', end_state: 'e', stages }))),
     shown(render(releaseMermaid([{ id: 'REL-001', name: 'R', journey_stages: stages.map(s => s.id) }], [{ id: 'J-009', stages }], []))),
     shown(render(decisionsMermaid(decisions, {}))),
+    shown(render(roadmapMermaid(HOSTILE.map((title, i) => ({ id: `RM-00${i + 1}`, title, horizon: 'now', status: 'blocked' }))))),
   ]
   for (const text of drawn) {
     for (const name of HOSTILE) assert.ok(text.includes(name), `"${name}" is missing from: ${text.slice(0, 300)}`)
@@ -249,4 +251,22 @@ test('each scenario is followed by its lifecycles and wireframes, and no lifecyc
   const images = readFileSync(join(dir, '06-scenarios.md'), 'utf8').match(/^!\[([A-Z]{2}-\d{3})/gm).map(m => m.slice(2))
   assert.deepEqual(images.slice(0, 5), ['SC-001', 'LC-001', 'WF-008', 'SC-002', 'WF-010'])
   assert.equal(images.filter(id => id === 'LC-001').length, 1)
+})
+
+test('the roadmap lays its horizons out now, next, each quarter in order, then later', () => {
+  const items = [
+    { id: 'RM-004', title: 'd', horizon: 'later', status: 'not-started' },
+    { id: 'RM-003', title: 'c', horizon: '2027-Q3', status: 'on-track' },
+    { id: 'RM-002', title: 'b', horizon: '2027-Q1', status: 'at-risk' },
+    { id: 'RM-001', title: 'a', horizon: 'now', status: 'on-track', releases: ['REL-001'] },
+  ]
+  assert.deepEqual(lanesOf(items), ['now', '2027-Q1', '2027-Q3', 'later'])
+  const mermaid = roadmapMermaid(items)
+  assert.match(mermaid, /class RM002 trouble/)
+  assert.doesNotMatch(mermaid, /Next/)
+  assert.match(roadmapText(items), /RM-001 a \(on-track, REL-001\)/)
+})
+
+test('the roadmap renders', { skip: !hasMmdc }, () => {
+  assert.equal(renderError(roadmapMermaid([{ id: 'RM-001', title: 'a', horizon: 'now', status: 'blocked', releases: ['REL-001'] }])), '')
 })

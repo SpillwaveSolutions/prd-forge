@@ -475,3 +475,33 @@ test('the root block shows the approver what the set holds (FR-013)', () => {
 
 test('a section change makes the root block stale (FR-013)', () =>
   warnsWith('10-constraints.md', t => t.replace('score: 95', 'score: 60'), /prd\.md: the details block does not match/))
+
+test('a roadmap item names a real objective and real releases (#24)', () => {
+  failsWith('18-roadmap.md', t => t.replace('    objectives: [O-001]\n', '    objectives: []\n'), /roadmap: RM-002 names no objective/)
+  failsWith('18-roadmap.md', t => t.replace('    releases: [REL-002]\n', '    releases: [REL-099]\n'), /roadmap: RM-002 names REL-099, which does not exist/)
+  failsWith('18-roadmap.md', t => t.replace('    objectives: [O-002]\n', '    objectives: [O-099]\n'), /roadmap: RM-003 names O-099, which does not exist/)
+  failsWith('18-roadmap.md', t => t.replace('    depends_on: [A-001, A-002]\n', '    depends_on: [D-099]\n'), /roadmap: RM-003 depends on D-099, which does not exist/)
+})
+
+test('a later roadmap item has no committed date (#24)', () =>
+  failsWith('18-roadmap.md', t => t.replace('    depends_on: [A-001, A-002]\n', '    depends_on: [A-001, A-002]\n    target_date: 2028-01-31\n    date_status: committed\n'), /RM-003 is later, so its date cannot be committed/))
+
+test('an at-risk or blocked roadmap item says what blocks it and what is done (#24)', () => {
+  failsWith('18-roadmap.md', t => t.replace(/    mitigation: >-\n(?: {6}.*\n)+/, ''), /RM-001 is at-risk with no mitigation/)
+  failsWith('18-roadmap.md', t => t.replace("    status: not-started\n    releases: [REL-002]", "    status: blocked\n    releases: [REL-002]"), /RM-002 is blocked with no blocker/)
+})
+
+test('a now roadmap item needs a release with exit criteria, and now holds one release (#24)', () => {
+  failsWith('14-release-plan.md', t => t.replace(/    exit_criteria:\n(?:      - >-\n(?: {8}.*\n)+)+    target_date: 2027-03-31\n/, '    target_date: 2027-03-31\n'), /RM-001 is now, but REL-001 has no exit_criteria/)
+  const warnings = warningsEdited('18-roadmap.md', t => t.replace("    horizon: next\n", "    horizon: now\n"))
+  assert.ok(warnings.some(w => /now holds 2 releases \(REL-001, REL-002\)/.test(w)), warnings.join('\n'))
+})
+
+test('a stored roadmap score that its inputs do not give draws a warning (#24)', () => {
+  const rice = score => t => t.replace('    priority: { method: moscow, moscow: should }\n', `    priority: { method: rice, reach: 500, impact: 2, confidence: 0.8, effort: 3, score: ${score} }\n`)
+  assert.ok(!warningsEdited('18-roadmap.md', rice(266.67)).some(w => /RM-002 stores/.test(w)))
+  assert.ok(warningsEdited('18-roadmap.md', rice(400)).some(w => /RM-002 stores a rice score of 400, but its inputs give 266\.67/.test(w)))
+})
+
+test('the release plan links the roadmap the set holds (#24)', () =>
+  failsWith('14-release-plan.md', t => t.replace('roadmap_link: ./18-roadmap.md\n', 'roadmap_link: none yet\n'), /roadmap_link is "none yet", but the set's roadmap is 18-roadmap\.md/))

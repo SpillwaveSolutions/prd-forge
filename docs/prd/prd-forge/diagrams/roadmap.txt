@@ -1,0 +1,17 @@
++----------------------------------------------------------+
+| Now                                                      |
++----------------------------------------------------------+
+  RM-001 One expert takes one product idea to an approved
+         PRD (at-risk, REL-001)
+
++----------------------------------------------------------+
+| Next                                                     |
++----------------------------------------------------------+
+  RM-002 A delivery lead derives a traceable backlog from
+         the approved PRD (not-started, REL-002)
+
++----------------------------------------------------------+
+| Later                                                    |
++----------------------------------------------------------+
+  RM-003 Two experts work on different sections of one set
+         (not-started, REL-003)

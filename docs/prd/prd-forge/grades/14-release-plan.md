@@ -1,24 +1,24 @@
 ---
 doc: ../14-release-plan.md
-score: 88
+score: 92
 blocking: 0
-graded: 2026-10-29
+graded: 2026-11-01
 grader: prd-forge:prd-adversary
-previous_score: 83
+previous_score: 88
 ---
 
-# Why release plan scored 88
+# Why the release plan scored 92
 
-Graded at 0.11.0, after FR-023 was split out of FR-022, on the document's own merits.
+Graded at 0.13.0, after `roadmap_link` began to point at the roadmap.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Outcomes | 3 | REL-001's first outcome says "no product training", which PER-001, a senior product manager, contradicts. |
-| Sequence rationale | 4 | REL-003 now starts when OUT-002's condition holds, and OUT-005 defers comments inside the set. |
-| Traceability | 3 | REL-001's exit criteria differ from O-002 and O-003, and REL-002 lacks Q-023. |
-| Release 1 | 4 | ST-001 to ST-006 matches the release line, with FR-001 to FR-023. |
-| No tasks | 4 | None. |
-| Dates | 3 | Both dates are indicative, but the first exit criterion fixes the pilot window. |
+| Outcomes | 4 | Every release says what a named user can newly do. |
+| Sequence rationale | 3 | The plan does not say whether REL-002 waits for REL-001's exit. |
+| Traceability | 3 | REL-002 carries no requirements, and REL-003 has no stage. |
+| Release 1 | 4 | Its stages are the release line in section 6. |
+| No tasks | 4 | No tasks, estimates, or team assignments. |
+| Dates | 4 | Both dates are marked indicative, and REL-003 has none. |
 
 ## Blocking defects
 
@@ -26,10 +26,10 @@ None.
 
 ## Weakest dimension
 
-Traceability. Two exit criteria do not match the objectives they cite.
+Traceability. REL-003 has no stage, no requirement, and no exit criterion.
 
 ## How to raise the grade
 
-- **Traceability (3 to 4):** Copy O-002's single-journey condition and O-003's three-lead rule into REL-001's exit criteria, and add Q-023 to REL-002.
-- **Outcomes (3 to 4):** Make REL-001's first outcome agree with PER-001.
-- **Dates (3 to 4):** Ask the expert whether the pilot window moves with REL-001's ship date.
+- Give REL-002 an exit criterion for the engineering lead's verdict (ST-009).
+- Give REL-003 exit criteria.
+- Name the questions due by 2027-02-28 by id.

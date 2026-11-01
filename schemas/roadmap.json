@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.prd-forge.dev/roadmap.json",
+  "title": "Roadmap (section 13)",
+  "description": "What the product will do now, next, and later, each item tied to a release and an objective. Optional: one roadmap per PRD set. Effort and capacity live here only; the rest of the set holds no estimate.",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/base"
+    },
+    {
+      "$ref": "common.json#/$defs/section"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "format": {
+      "type": "string",
+      "enum": [
+        "now-next-later",
+        "quarterly-themes",
+        "okr",
+        "timeline"
+      ],
+      "description": "How the roadmap is laid out. now-next-later is the default."
+    },
+    "period": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The span the roadmap covers, such as 2027-H1."
+    },
+    "capacity": {
+      "type": "object",
+      "properties": {
+        "planned": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percent of capacity for roadmap items."
+        },
+        "technical_health": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percent for technical health."
+        },
+        "unplanned": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percent held back for unplanned work."
+        }
+      },
+      "additionalProperties": false,
+      "description": "How capacity is split. Defaults are 70, 20, and 10 percent."
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^RM-\\d{3}$",
+            "description": "Stable identifier; never reused or renumbered."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "horizon": {
+            "type": "string",
+            "pattern": "^(now|next|later|\\d{4}-Q[1-4])$",
+            "description": "now, next, later, or a quarter such as 2027-Q1."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "not-started",
+              "on-track",
+              "at-risk",
+              "blocked",
+              "done",
+              "cut"
+            ]
+          },
+          "releases": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^REL-\\d{3}$"
+            },
+            "description": "The releases in the release plan that deliver the item."
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^O-\\d{3}$"
+            },
+            "description": "The objectives the item moves."
+          },
+          "theme": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "description": "One person or one persona id."
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^(A|D|R|Q)-\\d{3}$"
+            },
+            "description": "The assumptions, dependencies, risks, and questions the item waits on."
+          },
+          "target_date": {
+            "$ref": "common.json#/$defs/date"
+          },
+          "date_status": {
+            "type": "string",
+            "enum": [
+              "committed",
+              "indicative"
+            ],
+            "description": "Whether the target date is a commitment. A later item has no committed date."
+          },
+          "blocker": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "What stops the item. Required when the status is at-risk or blocked."
+          },
+          "mitigation": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "What is done about the blocker. Required when the status is at-risk or blocked."
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Where the item came from: pasted text, or a tracker and its key."
+          },
+          "priority": {
+            "type": "object",
+            "properties": {
+              "method": {
+                "type": "string",
+                "enum": [
+                  "rice",
+                  "ice",
+                  "moscow",
+                  "value-effort"
+                ]
+              },
+              "reach": {
+                "type": "number",
+                "minimum": 0,
+                "description": "RICE: people or events per period."
+              },
+              "impact": {
+                "type": "number",
+                "minimum": 0,
+                "description": "RICE: 0.25 to 3. ICE: 1 to 10."
+              },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "description": "RICE: 0 to 1. ICE: 1 to 10."
+              },
+              "effort": {
+                "type": "number",
+                "minimum": 0,
+                "description": "RICE: person-months, more than 0."
+              },
+              "ease": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 10,
+                "description": "ICE: 1 to 10."
+              },
+              "moscow": {
+                "$ref": "common.json#/$defs/priority"
+              },
+              "quadrant": {
+                "type": "string",
+                "enum": [
+                  "quick-win",
+                  "big-bet",
+                  "fill-in",
+                  "money-pit"
+                ],
+                "description": "Value against effort."
+              },
+              "score": {
+                "type": "number",
+                "minimum": 0,
+                "description": "The computed RICE or ICE score. The validator recomputes it."
+              }
+            },
+            "required": [
+              "method"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "horizon",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "$ref": "common.json#/$defs/date"
+          },
+          "change": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "date",
+          "change",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "description": "Each change to the roadmap, with its reason."
+    }
+  },
+  "required": [
+    "format",
+    "items"
+  ]
+}
