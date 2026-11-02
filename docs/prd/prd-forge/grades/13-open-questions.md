@@ -1,22 +1,24 @@
 ---
 doc: ../13-open-questions.md
-score: 88
+score: 83
 blocking: 0
-graded: 2026-10-28
+graded: 2026-11-02
 grader: prd-forge:prd-adversary
-previous_score: 83
+previous_score: 88
 ---
 
-# Why open questions scored 88
+# Why open questions scored 83
+
+Graded at 0.13.0, after the 2026-11-02 change: Q-019 is answered yes, D-002 and D-003 are committed, and RM-001 is on track.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Decider | 3 | Several questions are settled by other people's behavior, and Q-008 restates assumption A-003. |
+| Decider | 3 | One person decides all questions, including Q-008 and Q-023, which other people's behavior settles. |
 | Date | 4 | Every `by` falls before what it blocks. |
-| Blocks | 3 | The body table omits PER-003 from Q-005's blocks. |
-| Answerability | 3 | Five polling spikes end in "ask" with no rule that turns the result into an answer. |
-| Honesty | 4 | The hedges in sections 1 to 11 trace here. |
-| Hygiene | 4 | Q-011 is answered and recorded. |
+| Blocks | 3 | The table dropped PER-003 from Q-005. |
+| Answerability | 3 | Q-005, Q-008, Q-014, Q-016, and Q-023 collect opinions with no counted rule. |
+| Honesty | 4 | The hedges in the other sections trace here. |
+| Hygiene | 3 | Q-019 is answered, but one paragraph still treated it as open. |
 
 ## Blocking defects
 
@@ -24,17 +26,13 @@ None.
 
 ## Weakest dimension
 
-Answerability. Q-005, Q-008, Q-014, Q-016, and Q-023 have no decision rule.
+Answerability. Q-005, which could invalidate FR-013, has no rule for what result keeps FR-013 a `must`.
 
 ## How to raise the grade
 
-- **Answerability (3 to 4):** Give each polling spike a decision rule, as Q-007 does.
-- **Blocks (3 to 4):** Add PER-003 to Q-005's row in the body table.
-- **Decider (3 to 4):** Reword the questions the decider cannot decide, or move Q-008 and Q-023 to section 11 as validations.
+- Give Q-005, Q-008, Q-014, Q-016, and Q-023 a counted rule, as Q-007 has.
+- Recast Q-008 and Q-023 as decisions the decider makes from evidence.
 
-## The details block
+## Fixed after this grade
 
-The generated details block contradicts nothing. It shows the front matter word for word, and it makes visible any place where the hand-written prose has drifted from it.
-
-- The block shows Q-005's blocks with PER-003, and the prose table does not.
-- The block lists 23 entries with answered Q-011, and the summary table lists 22.
+After this grade, the stale paragraph was rewritten for the answered Q-019, and PER-003 was added to Q-005's row. These fixes address the Hygiene and Blocks findings.

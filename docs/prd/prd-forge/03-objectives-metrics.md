@@ -192,12 +192,12 @@ Every item in this document, with each of its fields.
 ### On the roadmap
 
 - O-001:
-  - RM-001 One expert takes one product idea to an approved PRD (now, at-risk)
+  - RM-001 One expert takes one product idea to an approved PRD (now, on-track)
   - RM-002 A delivery lead derives a traceable backlog from the approved PRD (next, not-started)
 - O-002:
-  - RM-001 One expert takes one product idea to an approved PRD (now, at-risk)
+  - RM-001 One expert takes one product idea to an approved PRD (now, on-track)
   - RM-003 Two experts work on different sections of one set (later, not-started)
 - O-003:
-  - RM-001 One expert takes one product idea to an approved PRD (now, at-risk)
+  - RM-001 One expert takes one product idea to an approved PRD (now, on-track)
 
 <!-- /prd-forge:details -->

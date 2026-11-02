@@ -4,13 +4,13 @@ kind: release-plan
 schema: prd-forge/release-plan@1
 title: Release plan
 status: draft
-updated: 2026-11-01
+updated: 2026-11-02
 domain: product management tooling
 section: 13
 order: 140
-score: 92
+score: 83
 blocking: 0
-graded: 2026-11-01
+graded: 2026-11-02
 roadmap_link: ./18-roadmap.md
 releases:
   - id: REL-001
@@ -65,7 +65,6 @@ releases:
     depends_on:
       - D-002
       - D-003
-      - Q-019
       - Q-022
     exit_criteria:
       - >-
@@ -167,18 +166,18 @@ approval in under 5 working days, and 95% of `must` requirements are testable as
 written. REL-002 exits when every derived story names its requirement and a
 delivery lead runs a workshop from the backlog without re-deriving it.
 
-Both target dates are indicative, not committed. The schedule problem below is
-the reason.
+Both target dates are indicative, not committed. D-002 and D-003 have not
+reported yet, and Q-022 is still open. The schedule problem below says why.
 
 ## The schedule problem, stated plainly
 
 REL-001 targets 2027-03-31. D-002 and D-003 in section 11, the ten observed
-experts and the three engineering leads, are due by 2027-01-31 and are only
-*requested*. The questions they answer are due by 2027-02-28, a month before
-REL-001, so REL-001 can use what they find. If either slips, REL-001 moves or
-ships knowingly as an experiment. Q-019 decides whether the date holds, Q-022
-decides what happens if it does not, and Richard Hightower decides both by
-2027-01-31.
+experts and the three engineering leads, are due by 2027-01-31. Both are
+*committed*: on 2026-11-02 their parties committed in writing, which answers
+Q-019. The questions they answer are due by 2027-02-28, a month before
+REL-001, so REL-001 can use what they find. If either reports late, REL-001
+moves or ships knowingly as an experiment. Q-022 decides which, and Richard
+Hightower decides it by 2027-01-31.
 
 REL-002 carries no requirements yet. Section 7 holds none for ST-007, ST-008, or
 ST-009, and they are written when REL-002 is planned.
@@ -212,7 +211,7 @@ Every item in this document, with each of its fields.
 
 **Objectives:** O-001, O-002, O-003
 
-**Depends on:** D-002, D-003, Q-019, Q-022
+**Depends on:** D-002, D-003, Q-022
 
 **Exit criteria:**
 
@@ -263,7 +262,7 @@ Every item in this document, with each of its fields.
 ### On the roadmap
 
 - REL-001:
-  - RM-001 One expert takes one product idea to an approved PRD (now, at-risk)
+  - RM-001 One expert takes one product idea to an approved PRD (now, on-track)
 - REL-002:
   - RM-002 A delivery lead derives a traceable backlog from the approved PRD (next, not-started)
 - REL-003:

@@ -4,7 +4,7 @@ kind: change-log
 schema: prd-forge/change-log@1
 title: Change log and approvals
 status: draft
-updated: 2026-11-01
+updated: 2026-11-02
 domain: product management tooling
 section: 15
 order: 160
@@ -21,9 +21,16 @@ changes:
       because REL-001's pilot evidence has no written commitment yet; RM-002
       next; RM-003 later, with no date. The release plan's roadmap_link points
       to it. No release, requirement, or objective changed. A minor version
-      under the versioning policy: new content, nothing structural.
+      under the versioning policy: new content, nothing structural. On
+      2026-11-02, RM-001 moved from at risk to on track: the parties behind
+      D-002 and D-003 committed in writing to report by 2027-01-31, which
+      answers Q-019 yes. D-002 and D-003 are committed in section 11.
     sections:
+      - 11
+      - 12
       - 13
+    resolves:
+      - Q-019
   - version: 0.12.0
     date: 2026-10-30
     author: Richard Hightower
@@ -298,7 +305,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
-| 0.13.0 | 2026-11-01 | Richard Hightower | The set gains a roadmap beside the release plan, one item for each release; the release plan's roadmap_link points to it; no release, requirement, or objective changed |
+| 0.13.0 | 2026-11-01 | Richard Hightower | The set gains a roadmap beside the release plan, one item for each release; the release plan's roadmap_link points to it; no release, requirement, or objective changed. On 2026-11-02, Q-019 is answered yes, D-002 and D-003 are committed, and RM-001 moves to on track |
 | 0.12.0 | 2026-10-30 | Richard Hightower | The root names its approver by name and role (FR-021) and shows the approver the scope, each section's state and grade, the open questions, and any blocking defect (FR-013); TR-015 keeps the domain check's research on by default and lets the expert turn it off for a set, PER-001's authority includes that right, and an organization's own policy can forbid it; NFR-008 and A-005 state that default |
 | 0.11.0 | 2026-10-29 | Richard Hightower | FR-023 split out of FR-022 for the expert's import and response; the open-comment approval rule moved into FR-014, and the sponsor sets each condition's date; OUT-005 defers comments inside the set to REL-003; WF-011 shows an open comment; NFR-009 counts product releases; ST-009 hands off to the development team; section 10 says "delegable to an agent"; the glossary adds escalation, satisfaction, and pain point, and separates ready from review |
 | 0.10.0 | 2026-10-28 | Richard Hightower | FR-022 added as a should: a sponsor's comments on an exported copy come back, each with a response, and an open one at approval becomes a condition; WF-011 shows the answered copy; IN-007, REL-001, TR-001, and the glossary include it; REL-003 keeps comments inside the set |
@@ -457,13 +464,15 @@ Every item in this document, with each of its fields.
 
 ### 0.13.0
 
-**Summary:** The set gains a roadmap, 18-roadmap.md, beside the release plan in section 13. It holds one item for each release: RM-001 now and at risk, because REL-001's pilot evidence has no written commitment yet; RM-002 next; RM-003 later, with no date. The release plan's roadmap_link points to it. No release, requirement, or objective changed. A minor version under the versioning policy: new content, nothing structural.
+**Summary:** The set gains a roadmap, 18-roadmap.md, beside the release plan in section 13. It holds one item for each release: RM-001 now and at risk, because REL-001's pilot evidence has no written commitment yet; RM-002 next; RM-003 later, with no date. The release plan's roadmap_link points to it. No release, requirement, or objective changed. A minor version under the versioning policy: new content, nothing structural. On 2026-11-02, RM-001 moved from at risk to on track: the parties behind D-002 and D-003 committed in writing to report by 2027-01-31, which answers Q-019 yes. D-002 and D-003 are committed in section 11.
 
 **Date:** 2026-11-01
 
 **Author:** Richard Hightower
 
-**Sections:** 13
+**Sections:** 11, 12, 13
+
+**Resolves:** Q-019
 
 ### 0.12.0
 

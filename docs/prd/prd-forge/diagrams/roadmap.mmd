@@ -4,7 +4,7 @@ flowchart LR
   subgraph Hnow[" "]
     direction TB
     Hnowhead(["<b>Now</b>"])
-    RM001["<b>RM-001</b> One expert takes one product idea to an approved PRD<br/><i>at-risk, REL-001</i>"]
+    RM001["<b>RM-001</b> One expert takes one product idea to an approved PRD<br/><i>on-track, REL-001</i>"]
     Hnowhead --> RM001
   end
   subgraph Hnext[" "]
@@ -24,4 +24,3 @@ flowchart LR
   classDef head fill:#FFFFFF,stroke:#8A94A6,color:#1F2430
   classDef trouble fill:#FFFFFF,stroke:#1F2430,stroke-width:3px,color:#1F2430
   class Hnowhead,Hnexthead,Hlaterhead head
-  class RM001 trouble
