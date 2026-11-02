@@ -2,16 +2,17 @@
 doc: ../prd.md
 score: 92
 blocking: 0
-graded: 2026-10-30
+graded: 2026-11-01
 grader: prd-forge:prd-adversary
-previous_score: 83
+previous_score: 92
 ---
 
 # Why the root document scored 92
 
-Graded at 0.12.0, after the root named its approver by name and role and its
-details block began to show the approver the scope, each section's state and
-grade, the open questions, and any blocking defect.
+Graded at 0.13.0, after the roadmap joined the set. A first pass at 0.13.0
+scored 83, because the roadmap was listed after section 15. It now follows the
+release plan in section 13, and the front-matter measure names who writes the
+pilot PRDs.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
@@ -34,5 +35,3 @@ decides the result.
 ## How to raise the grade
 
 - Answer Q-001, so the measure has today's value.
-- State in the front-matter measure, as O-001 does, that the pilot PRDs are
-  written by people other than the product's author.

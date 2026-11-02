@@ -4,11 +4,11 @@ kind: prd
 schema: prd-forge/prd-root@1
 title: prd-forge PRD
 status: draft
-updated: 2026-10-29
+updated: 2026-11-01
 domain: product management tooling
 product: prd-forge
 slug: prd-forge
-version: 0.12.0
+version: 0.13.0
 owner: Richard Hightower
 stakeholders:
   - Product managers who are, or speak for, the domain expert
@@ -21,7 +21,7 @@ created: 2026-10-23
 golden_thread: J-001
 score: 92
 blocking: 0
-graded: 2026-10-30
+graded: 2026-11-01
 primary_persona: PER-001
 approvers:
   - { name: Richard Hightower, role: Sponsor, persona: PER-003 }
@@ -49,8 +49,9 @@ summary:
   measure: >-
     Share of the 5 pilot PRDs that pass the buildability review on first
     submission, where a pass is the verdict `buildable`, or `buildable with gaps`
-    with every gap closed or owned. The pilot PRDs are written between REL-001,
-    on 2027-03-31, and 2027-09-30. Target: 80%, at least 4 of 5, by 2027-09-30,
+    with every gap closed or owned. The pilot PRDs are the first 5 written with
+    release 1 by people other than the product's author, between REL-001, on
+    2027-03-31, and 2027-09-30. Target: 80%, at least 4 of 5, by 2027-09-30,
     provisional until Q-001 sets the baseline, by 2027-02-28.
 links:
   parent: null
@@ -70,6 +71,7 @@ links:
     - { id: prd-forge-assumptions-risks-dependencies, kind: assumptions-risks-dependencies, path: ./12-assumptions-risks-dependencies.md, title: "Assumptions, risks and dependencies", section: 11, order: 120, status: draft }
     - { id: prd-forge-open-questions, kind: open-questions, path: ./13-open-questions.md, title: Open questions, section: 12, order: 130, status: draft }
     - { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan, section: 13, order: 140, status: draft }
+    - { id: prd-forge-roadmap, kind: roadmap, path: ./18-roadmap.md, title: Roadmap, section: 13, order: 145, status: draft }
     - { id: prd-forge-glossary, kind: glossary, path: ./15-glossary.md, title: Glossary, section: 14, order: 150, status: draft }
     - { id: prd-forge-change-log, kind: change-log, path: ./16-change-log.md, title: Change log and approvals, section: 15, order: 160, status: draft }
 ---
@@ -115,15 +117,18 @@ product's author. The target is provisional until Q-001 sets the baseline, by
 | 11 | [Assumptions, risks and dependencies](./12-assumptions-risks-dependencies.md) |
 | 12 | [Open questions](./13-open-questions.md) |
 | 13 | [Release plan](./14-release-plan.md) |
+| 13 | [Roadmap](./18-roadmap.md) |
 | 14 | [Glossary](./15-glossary.md) |
 | 15 | [Change log and approvals](./16-change-log.md) |
 
 ## How this document set is numbered
 
-A PRD has **fifteen numbered sections** and this set has **seventeen section
-documents**, because section 5 holds two of them, journeys and scenarios, and
-section 7 holds two, functional requirements and wireframes. The two section 7
-files share the prefix `08`. From section 5 onward, the file prefix and the
+A PRD has **fifteen numbered sections** and this set has **eighteen section
+documents**, because section 5 holds two of them, journeys and scenarios,
+section 7 holds two, functional requirements and wireframes, and section 13
+holds two, the release plan and the roadmap. The two section 7 files share the
+prefix `08`. The roadmap is `18-roadmap.md`, but it is read after the release
+plan, in section 13. From section 5 onward, the file prefix and the
 section number differ: `07-scope.md` is section 6, and `16-change-log.md` is
 section 15. **Every cross-reference in this set
 is by section number, never by file number.** Three independent reviewers misread
@@ -179,7 +184,8 @@ What an approver needs from every section, then each field of this document.
 | 10 | Decision rights and trust rules | draft | 84/100 | — |
 | 11 | Assumptions, risks and dependencies | draft | 96/100 | — |
 | 12 | Open questions | draft | 88/100 | — |
-| 13 | Release plan | draft | 88/100 | — |
+| 13 | Release plan | draft | 92/100 | — |
+| 13 | Roadmap | draft | 92/100 | — |
 | 14 | Glossary | draft | 85/100 | — |
 | 15 | Change log and approvals | draft | 75/100 | — |
 
@@ -212,7 +218,7 @@ What an approver needs from every section, then each field of this document.
 
 None.
 
-**Version:** 0.12.0
+**Version:** 0.13.0
 
 **Owner:** Richard Hightower
 
@@ -242,6 +248,6 @@ None.
 - **Why now:** In October 2025, 98% of 117 product managers surveyed said they use AI at work, and only 39% had received job-specific AI training (General Assembly, 6 Nov 2025). A PRD that reads well but cannot be built from costs more than no PRD at all, because it is believed.
 - **Bet:** A domain expert, or a product manager who speaks for one, with no product management training, reaches an approved PRD in which every section is graded with no blocking defect and every buildability gap is closed or owned before anyone estimates.
 - **Objective:** O-001
-- **Measure:** Share of the 5 pilot PRDs that pass the buildability review on first submission, where a pass is the verdict `buildable`, or `buildable with gaps` with every gap closed or owned. The pilot PRDs are written between REL-001, on 2027-03-31, and 2027-09-30. Target: 80%, at least 4 of 5, by 2027-09-30, provisional until Q-001 sets the baseline, by 2027-02-28.
+- **Measure:** Share of the 5 pilot PRDs that pass the buildability review on first submission, where a pass is the verdict `buildable`, or `buildable with gaps` with every gap closed or owned. The pilot PRDs are the first 5 written with release 1 by people other than the product's author, between REL-001, on 2027-03-31, and 2027-09-30. Target: 80%, at least 4 of 5, by 2027-09-30, provisional until Q-001 sets the baseline, by 2027-02-28.
 
 <!-- /prd-forge:details -->

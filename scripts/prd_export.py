@@ -27,7 +27,7 @@ SECTION_OF_KIND = {
     "functional-requirements": 7, "wireframes": 7, "nonfunctional-requirements": 8,
     "constraints": 9, "decision-rights": 10,
     "assumptions-risks-dependencies": 11, "open-questions": 12,
-    "release-plan": 13, "glossary": 14, "change-log": 15, "review-comments": 15,
+    "release-plan": 13, "glossary": 14, "change-log": 15, "review-comments": 15, "roadmap": 13,
 }
 
 # per kind: the front-matter lists holding its items, and the field that heads each
@@ -50,6 +50,7 @@ ITEM_LISTS = {
     "glossary": [("terms", "term")],
     "change-log": [("changes", "summary")],
     "review-comments": [("comments", "comment")],
+    "roadmap": [("items", "title"), ("changes", "change")],
     "backlog": [], "features": [("features", "name")], "epics": [("epics", "goal")],
     "stories": [("stories", "capability")], "spikes": [("spikes", "question")],
 }

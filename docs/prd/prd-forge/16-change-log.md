@@ -4,7 +4,7 @@ kind: change-log
 schema: prd-forge/change-log@1
 title: Change log and approvals
 status: draft
-updated: 2026-10-30
+updated: 2026-11-01
 domain: product management tooling
 section: 15
 order: 160
@@ -12,6 +12,18 @@ score: 75
 blocking: 0
 graded: 2026-10-29
 changes:
+  - version: 0.13.0
+    date: 2026-11-01
+    author: Richard Hightower
+    summary: >-
+      The set gains a roadmap, 18-roadmap.md, beside the release plan in
+      section 13. It holds one item for each release: RM-001 now and at risk,
+      because REL-001's pilot evidence has no written commitment yet; RM-002
+      next; RM-003 later, with no date. The release plan's roadmap_link points
+      to it. No release, requirement, or objective changed. A minor version
+      under the versioning policy: new content, nothing structural.
+    sections:
+      - 13
   - version: 0.12.0
     date: 2026-10-30
     author: Richard Hightower
@@ -286,6 +298,7 @@ links:
 
 | Version | Date | Author | What changed |
 | --- | --- | --- | --- |
+| 0.13.0 | 2026-11-01 | Richard Hightower | The set gains a roadmap beside the release plan, one item for each release; the release plan's roadmap_link points to it; no release, requirement, or objective changed |
 | 0.12.0 | 2026-10-30 | Richard Hightower | The root names its approver by name and role (FR-021) and shows the approver the scope, each section's state and grade, the open questions, and any blocking defect (FR-013); TR-015 keeps the domain check's research on by default and lets the expert turn it off for a set, PER-001's authority includes that right, and an organization's own policy can forbid it; NFR-008 and A-005 state that default |
 | 0.11.0 | 2026-10-29 | Richard Hightower | FR-023 split out of FR-022 for the expert's import and response; the open-comment approval rule moved into FR-014, and the sponsor sets each condition's date; OUT-005 defers comments inside the set to REL-003; WF-011 shows an open comment; NFR-009 counts product releases; ST-009 hands off to the development team; section 10 says "delegable to an agent"; the glossary adds escalation, satisfaction, and pain point, and separates ready from review |
 | 0.10.0 | 2026-10-28 | Richard Hightower | FR-022 added as a should: a sponsor's comments on an exported copy come back, each with a response, and an open one at approval becomes a condition; WF-011 shows the answered copy; IN-007, REL-001, TR-001, and the glossary include it; REL-003 keeps comments inside the set |
@@ -441,6 +454,16 @@ rubric cannot score approvals and conditions higher before an approval exists.
 ## Details
 
 Every item in this document, with each of its fields.
+
+### 0.13.0
+
+**Summary:** The set gains a roadmap, 18-roadmap.md, beside the release plan in section 13. It holds one item for each release: RM-001 now and at risk, because REL-001's pilot evidence has no written commitment yet; RM-002 next; RM-003 later, with no date. The release plan's roadmap_link points to it. No release, requirement, or objective changed. A minor version under the versioning policy: new content, nothing structural.
+
+**Date:** 2026-11-01
+
+**Author:** Richard Hightower
+
+**Sections:** 13
 
 ### 0.12.0
 

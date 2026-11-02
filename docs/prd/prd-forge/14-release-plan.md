@@ -4,14 +4,14 @@ kind: release-plan
 schema: prd-forge/release-plan@1
 title: Release plan
 status: draft
-updated: 2026-10-29
+updated: 2026-11-01
 domain: product management tooling
 section: 13
 order: 140
-score: 88
+score: 92
 blocking: 0
-graded: 2026-10-29
-roadmap_link: none yet
+graded: 2026-11-01
+roadmap_link: ./18-roadmap.md
 releases:
   - id: REL-001
     name: Single-expert PRD authoring
@@ -128,7 +128,7 @@ releases:
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-open-questions, kind: open-questions, path: ./13-open-questions.md, title: Open questions }
-  next: { id: prd-forge-glossary, kind: glossary, path: ./15-glossary.md, title: Glossary }
+  next: { id: prd-forge-roadmap, kind: roadmap, path: ./18-roadmap.md, title: Roadmap }
 ---
 
 # Release plan
@@ -194,7 +194,7 @@ milestone. Those come from engineering design and iteration planning.
 
 Every item in this document, with each of its fields.
 
-**Roadmap link:** none yet
+**Roadmap link:** ./18-roadmap.md
 
 ### REL-001
 

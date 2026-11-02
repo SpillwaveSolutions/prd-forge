@@ -102,6 +102,7 @@ answers unlock later sections.
 | 13 | 11 Assumptions, risks, dependencies | Collected throughout; consolidate now |
 | 14 | 12 Open questions | Collected throughout; consolidate now |
 | 15 | 13 Release plan | Needs scope and requirements |
+| 15a | 13 Roadmap | Optional. Only when the expert wants one: needs the release plan and the objectives |
 | 16 | 14 Glossary | Built throughout; finalise now |
 | 17 | 0 Root summary (second pass) | Write it once you know what the product is |
 | 18 | 15 Change log | Record the version and seek approvals |

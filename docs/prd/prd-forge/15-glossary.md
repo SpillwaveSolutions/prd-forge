@@ -1258,7 +1258,7 @@ terms:
       one part of it at one stage.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
-  prev: { id: prd-forge-release-plan, kind: release-plan, path: ./14-release-plan.md, title: Release plan }
+  prev: { id: prd-forge-roadmap, kind: roadmap, path: ./18-roadmap.md, title: Roadmap }
   next: { id: prd-forge-change-log, kind: change-log, path: ./16-change-log.md, title: Change log and approvals }
 ---
 

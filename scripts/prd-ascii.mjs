@@ -165,6 +165,28 @@ export function releaseText(releases, journeys, requirements) {
   return done(lines)
 }
 
+/** A roadmap's horizons in reading order: now, next, each quarter, later. */
+export function lanesOf(items) {
+  const quarters = [...new Set(items.map(i => i.horizon).filter(h => /^\d{4}-Q[1-4]$/.test(String(h))))].sort()
+  return ['now', 'next', ...quarters, 'later'].filter(h => items.some(i => i.horizon === h))
+}
+
+/** A roadmap item's status and releases, on one line. */
+export const roadmapTag = item => [item.status, ...(item.releases ?? [])].filter(Boolean).join(', ')
+
+/** The roadmap: each horizon, then its items. */
+export function roadmapText(items) {
+  const lines = []
+  for (const lane of lanesOf(items)) {
+    if (lines.length > 0) lines.push('')
+    lines.push(...box(lane === 'now' ? 'Now' : lane === 'next' ? 'Next' : lane === 'later' ? 'Later' : lane))
+    for (const item of items.filter(i => i.horizon === lane)) {
+      lines.push(...hang(`  ${item.id} `, `${ascii(item.title)} (${ascii(roadmapTag(item))})`, '         '))
+    }
+  }
+  return done(lines)
+}
+
 /** Decision rights: each approver, then the decisions they own. */
 export function decisionsText(decisions, roleNames = {}) {
   const approvers = [...new Set(decisions.map(d => String(d.approver ?? 'Unassigned')))]

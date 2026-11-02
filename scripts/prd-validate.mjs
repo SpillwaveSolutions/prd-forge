@@ -332,6 +332,7 @@ const SCHEMA_FILE = {
   glossary: 'glossary.json',
   'change-log': 'change-log.json',
   'review-comments': 'review-comments.json',
+  roadmap: 'roadmap.json',
   backlog: 'backlog-root.json',
   features: 'features.json',
   epics: 'epics.json',
@@ -1073,6 +1074,47 @@ function structural(docs, dir) {
   // section 12: one person decides
   for (const q of frontOf('open-questions')?.questions ?? []) {
     if (/\s(and|with|or)\s|[/&+]/.test(q?.decider ?? '')) warnings.push(`open-questions: ${q.id} decider "${q.decider}" names more than one person; name one, and put the rest in consulted`)
+  }
+
+  // section 13, the roadmap (#24): each item names a real objective and real
+  // releases; a date on a later item is never a commitment; a troubled item
+  // says what blocks it and what is done about it; a stored score matches its
+  // inputs.
+  const roadmapDoc = docs.find(d => d.front.kind === 'roadmap')
+  if (roadmapDoc !== undefined) {
+    const link = String(frontOf('release-plan')?.roadmap_link ?? '')
+    if (frontOf('release-plan') !== undefined && basename(link) !== roadmapDoc.file) {
+      errors.push(`release-plan: roadmap_link is "${link}", but the set's roadmap is ${roadmapDoc.file}`)
+    }
+    const byRelease = new Map(releases.map(rel => [rel?.id, rel]))
+    const nowReleases = new Set()
+    for (const item of roadmapDoc.front.items ?? []) {
+      const where = `roadmap: ${item?.id}`
+      if ((item?.objectives ?? []).length === 0) errors.push(`${where} names no objective`)
+      mustExist(item?.objectives, objectiveIds, where)
+      mustExist(item?.releases, releaseIds, where)
+      for (const id of item?.depends_on ?? []) if (!allIds.has(id)) errors.push(`${where} depends on ${id}, which does not exist`)
+      if (item?.horizon === 'later' && item?.date_status === 'committed') errors.push(`${where} is later, so its date cannot be committed`)
+      if (['at-risk', 'blocked'].includes(item?.status)) {
+        if (!item?.blocker) errors.push(`${where} is ${item.status} with no blocker`)
+        if (!item?.mitigation) errors.push(`${where} is ${item.status} with no mitigation`)
+      }
+      if (item?.horizon === 'now') {
+        for (const id of item?.releases ?? []) {
+          nowReleases.add(id)
+          const rel = byRelease.get(id)
+          if (rel !== undefined && (rel.exit_criteria ?? []).length === 0) errors.push(`${where} is now, but ${id} has no exit_criteria`)
+        }
+      }
+      const p = item?.priority
+      const computed = p?.method === 'rice' && p.effort > 0 ? (p.reach * p.impact * p.confidence) / p.effort
+        : p?.method === 'ice' ? p.impact * p.confidence * p.ease
+          : undefined
+      if (computed !== undefined && Number.isFinite(computed) && p.score !== undefined && Math.abs(p.score - computed) > 0.01) {
+        warnings.push(`${where} stores a ${p.method} score of ${p.score}, but its inputs give ${Math.round(computed * 100) / 100}`)
+      }
+    }
+    if (nowReleases.size > 1) warnings.push(`roadmap: now holds ${nowReleases.size} releases (${[...nowReleases].join(', ')}); keep now to one`)
   }
 
   // section 15: a rejection says why; a decision counts only from a named
