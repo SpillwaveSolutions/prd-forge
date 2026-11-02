@@ -260,4 +260,13 @@ Every item in this document, with each of its fields.
 
 **Depends on:** A-001, A-002
 
+### On the roadmap
+
+- REL-001:
+  - RM-001 One expert takes one product idea to an approved PRD (now, at-risk)
+- REL-002:
+  - RM-002 A delivery lead derives a traceable backlog from the approved PRD (next, not-started)
+- REL-003:
+  - RM-003 Two experts work on different sections of one set (later, not-started)
+
 <!-- /prd-forge:details -->

@@ -85,6 +85,7 @@ Commands the mod adds:
 | `/prd [directory]` | Opens the stepper pane on a set, scanning for one if no directory is given |
 | `/prd-step [next\|prev\|first\|last\|<n>]` | Moves the pane to another section |
 | `/prd-switch` | Switches the pane between a PRD set and its backlog. It opens the document that shares an ID with the one shown: the story that traces to a requirement, or the requirement a story traces to |
+| `/prd-roadmap <create\|add\|status\|reprioritize\|move> [directory]` | Creates or changes the set's roadmap, `18-roadmap.md`, from your notes or a project tracker. It reads a tracker and never writes to one. Each change goes in the roadmap's history and the change log |
 | `/prd-comments <file.docx> [directory]` | Brings the comments reviewers left in an exported Word file into the set, each one on the item it marks, then answers them with you one at a time |
 | `/prd-q [directory]` | Continues the PRD: asks the questions still open, one at a time, and writes each answer into the set. Saying "continue the PRD" does the same |
 

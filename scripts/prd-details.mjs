@@ -163,6 +163,22 @@ function summaryOf(set) {
   return lines
 }
 
+// The list in this kind's front matter that a roadmap item cites by the same key.
+const ROADMAP_CITES = { 'release-plan': 'releases', 'objectives-metrics': 'objectives' }
+
+/** #24: each release or objective, with the roadmap items that name it, so the pane links back. */
+function onRoadmap(front, set) {
+  const key = ROADMAP_CITES[front.kind]
+  const items = (set.find(f => f?.kind === 'roadmap')?.items ?? []).filter(isItem)
+  if (!key || items.length === 0) return []
+  const lines = []
+  for (const own of (front[key] ?? []).filter(o => isItem(o) && o.id)) {
+    const on = items.filter(i => Array.isArray(i[key]) && i[key].includes(own.id))
+    if (on.length > 0) lines.push(`- ${own.id}:`, ...on.map(i => `  - ${i.id} ${text(i.title ?? '')} (${i.horizon}, ${i.status})`))
+  }
+  return lines.length === 0 ? [] : ['### On the roadmap', '', ...lines, '']
+}
+
 /**
  * The block for one document, or '' when its front matter holds nothing to show.
  * `set` holds the front matter of every document; the root's block summarizes it.
@@ -181,6 +197,7 @@ export function detailsOf(front, set = []) {
     const keys = [...new Set([headField, ...keysOf(front[key])])]
     for (const one of front[key]) if (isItem(one)) lines.push(...item(one, headField, nameField, level, keys))
   }
+  lines.push(...onRoadmap(front, set))
   if (lines.length === 0) return ''
   while (lines.at(-1) === '') lines.pop()
   const intro = front.kind === 'prd' && set.length > 0

@@ -115,3 +115,10 @@ Never copy a number from it into a real PRD._
 - Say RICE (reach, impact, confidence, effort) and ICE (impact, confidence,
   ease) by name.
 - Avoid "phase 2" with no definition. Name the item and its horizon.
+
+## Change the roadmap
+
+Use `/prd-roadmap` with one of five operations: `create`, `add`, `status`,
+`reprioritize`, or `move`. Each change adds an entry to `changes` and to the
+change log. The release plan and the objectives list, in their details blocks,
+the roadmap items that name each release and each objective.

@@ -19,7 +19,7 @@ in the YAML front matter, which a JSON Schema validates. The `prd-forge` mod's
 pane steps through them; `scripts/prd-validate.mjs` checks them. Two more are
 optional. `17-review-comments.md` appears only when `/prd-comments` imports a
 reviewer's Word comments. `18-roadmap.md` appears only when the expert wants a
-roadmap.
+roadmap. `/prd-roadmap` creates and changes it.
 
 ## Start here
 
