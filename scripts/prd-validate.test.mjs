@@ -473,6 +473,20 @@ test('the root block shows the approver what the set holds (FR-013)', () => {
   assert.equal(withDetails(withDetails('# Root\n', set[0], set), set[0], set), withDetails('# Root\n', set[0], set))
 })
 
+test('each release and objective lists the roadmap items that name it (#24)', () => {
+  const roadmap = { kind: 'roadmap', items: [
+    { id: 'RM-001', title: 'O\'Brien (CFO); "Ops" #2 <lead>', horizon: 'now', status: 'at-risk', releases: ['REL-001'], objectives: ['O-001'] },
+    { id: 'RM-002', title: 'Later [maybe]', horizon: 'later', status: 'not-started', objectives: ['O-001'] },
+  ] }
+  const plan = { kind: 'release-plan', releases: [{ id: 'REL-001', name: 'Pilot' }, { id: 'REL-002', name: 'Wide' }] }
+  const block = detailsOf(plan, [plan, roadmap])
+  assert.match(block, /### On the roadmap\n\n- REL-001:\n  - RM-001 O'Brien \(CFO\); "Ops" #2 <lead> \(now, at-risk\)\n\n/)
+  assert.doesNotMatch(block, /- REL-002:/)
+  const goals = { kind: 'objectives-metrics', objectives: [{ id: 'O-001', objective: 'Faster' }] }
+  assert.match(detailsOf(goals, [goals, roadmap]), /- O-001:\n  - RM-001 .*\n  - RM-002 Later \[maybe\] \(later, not-started\)/)
+  assert.doesNotMatch(detailsOf(plan, [plan]), /On the roadmap/)
+})
+
 test('a section change makes the root block stale (FR-013)', () =>
   warnsWith('10-constraints.md', t => t.replace('score: 95', 'score: 60'), /prd\.md: the details block does not match/))
 
