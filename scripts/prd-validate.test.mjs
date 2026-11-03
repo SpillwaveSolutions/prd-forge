@@ -327,7 +327,7 @@ test('the scope names a real release, and outside-product stages exist', () => {
 
 test('the first release delivers exactly the release line, and names real objectives and waits', () => {
   failsWith('14-release-plan.md', t => t.replace(/(journey_stages:\n(?: +- ST-00\d\n)*?) +- ST-006\n/, '$1'), /REL-001's stages differ from the release line/)
-  failsWith('14-release-plan.md', t => t.replace('  - id: REL-002\n', '  - id: REL-002\n    depends_on: [Q-099]\n'), /REL-002 depends_on names Q-099/)
+  failsWith('14-release-plan.md', t => t.replace('    depends_on:\n      - Q-023\n', '    depends_on:\n      - Q-099\n'), /REL-002 depends_on names Q-099/)
 })
 
 test('a criterion that names a control, or is not Given/When/Then, draws a warning', () => {

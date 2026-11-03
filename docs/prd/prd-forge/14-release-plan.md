@@ -10,7 +10,7 @@ section: 13
 order: 140
 score: 83
 blocking: 0
-graded: 2026-11-02
+graded: 2026-11-03
 roadmap_link: ./18-roadmap.md
 releases:
   - id: REL-001
@@ -66,6 +66,8 @@ releases:
       - D-002
       - D-003
       - Q-022
+      - R-001
+      - R-002
     exit_criteria:
       - >-
         At least 4 of the 5 pilot PRDs, 80%, pass the buildability review on first
@@ -100,6 +102,8 @@ releases:
       - ST-008
     objectives:
       - O-001
+    depends_on:
+      - Q-023
     exit_criteria:
       - >-
         Every story derived from a pilot PRD names the requirement id it came
@@ -107,6 +111,12 @@ releases:
       - >-
         A delivery lead runs a story-mapping workshop from a derived backlog
         without re-deriving any feature from the PRD.
+      - >-
+        For at least 2 of the first 3 approved pilot PRDs, the delivery lead
+        accepts the derived backlog within 2 working days of the approval.
+      - >-
+        An engineering lead records a verdict on each of the first 3 approved
+        pilot PRDs, with its buildability review kept beside it.
     target_date: 2027-06-30
     date_status: indicative
   - id: REL-003
@@ -121,6 +131,11 @@ releases:
         change it.
     objectives:
       - O-002
+    exit_criteria:
+      - >-
+        The median of the first 3 sets written by two experts reaches a
+        recorded approval within 10 working days of the first interview
+        question.
     depends_on:
       - A-001
       - A-002
@@ -148,6 +163,17 @@ which anyone gets anything: an expert reaching an approved PRD with its buildabi
 REL-002 is deferred rather than cut because the PRD REL-001 produces already has
 to carry everything a backlog needs, and FR-012 checks precisely that. Deferring the
 derivation costs nothing; deferring what it needs would have cost a rewrite.
+REL-002 does not wait for REL-001's exit thresholds, which the pilots can
+take until 2027-09-30 to show. It starts when the first pilot PRD written with
+REL-001 is approved, because the derivation needs one real approved PRD as its
+input. Richard Hightower decided this on 2026-11-02.
+
+REL-002 links to O-001 and REL-003 to O-002, but neither release can move
+those numbers as section 3 measures them. O-001 is judged before a backlog
+exists, and O-002 counts single-journey pilot PRDs written with REL-001. The
+exit criteria of REL-002 and REL-003 carry their own targets for now. Each
+becomes an objective in section 3 when its release has requirements that can
+reference it.
 
 REL-003 waits for evidence that one author's path works at all. It starts when
 OUT-002's condition holds: three real engagements have each reached an approved
@@ -163,8 +189,12 @@ REL-001 exits when the pilot PRDs meet the three objective targets in section 3:
 at least 4 of the 5 pilot PRDs, 80%, pass the buildability review on first
 submission, the median reaches
 approval in under 5 working days, and 95% of `must` requirements are testable as
-written. REL-002 exits when every derived story names its requirement and a
-delivery lead runs a workshop from the backlog without re-deriving it.
+written. REL-002 exits when every derived story names its requirement, a
+delivery lead runs a workshop from the backlog without re-deriving it, the
+delivery lead accepts the derived backlog within 2 working days for at least 2
+of the first 3 approved pilot PRDs, and an engineering lead records a verdict
+on each of those 3. REL-003 exits when the median of the first 3 sets written
+by two experts reaches approval within 10 working days.
 
 Both target dates are indicative, not committed. D-002 and D-003 have not
 reported yet, and Q-022 is still open. The schedule problem below says why.
@@ -211,7 +241,7 @@ Every item in this document, with each of its fields.
 
 **Objectives:** O-001, O-002, O-003
 
-**Depends on:** D-002, D-003, Q-022
+**Depends on:** D-002, D-003, Q-022, R-001, R-002
 
 **Exit criteria:**
 
@@ -237,10 +267,14 @@ Every item in this document, with each of its fields.
 
 **Objectives:** O-001
 
+**Depends on:** Q-023
+
 **Exit criteria:**
 
 1. Every story derived from a pilot PRD names the requirement id it came from.
 2. A delivery lead runs a story-mapping workshop from a derived backlog without re-deriving any feature from the PRD.
+3. For at least 2 of the first 3 approved pilot PRDs, the delivery lead accepts the derived backlog within 2 working days of the approval.
+4. An engineering lead records a verdict on each of the first 3 approved pilot PRDs, with its buildability review kept beside it.
 
 **Target date:** 2027-06-30
 
@@ -258,6 +292,10 @@ Every item in this document, with each of its fields.
 **Objectives:** O-002
 
 **Depends on:** A-001, A-002
+
+**Exit criteria:**
+
+1. The median of the first 3 sets written by two experts reaches a recorded approval within 10 working days of the first interview question.
 
 ### On the roadmap
 

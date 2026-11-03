@@ -8,9 +8,9 @@ updated: 2026-11-02
 domain: product management tooling
 section: 12
 order: 130
-score: 83
+score: 88
 blocking: 0
-graded: 2026-11-02
+graded: 2026-11-03
 questions:
   - id: Q-001
     question: >-
@@ -70,7 +70,9 @@ questions:
       - PER-003
     spike: >-
       Show three sponsors the same set with and without grades and ask which they
-      would approve. Time-boxed to 2 days.
+      would approve. FR-013 stays `must` if at least 2 of the 3 approve the
+      graded set at least as readily as the ungraded one. Otherwise FR-013
+      becomes `should`. Time-boxed to 2 days.
   - id: Q-006
     question: >-
       How many sections does an expert complete in one sitting before stopping?
@@ -105,7 +107,8 @@ questions:
       - A-003
     spike: >-
       Ask each lead, after reading a set cold, whether anything was missing and
-      whether they wanted a technology named. Time-boxed to 1 day.
+      whether they wanted a technology named. A-003 holds if no more than 1 of
+      the 3 leads says a named technology was missing. Time-boxed to 1 day.
   - id: Q-009
     question: >-
       Which version of the rubric and the eleven derivability checks does release
@@ -186,7 +189,8 @@ questions:
       - FR-010
     spike: >-
       Ask each expert after a loop-back, in D-002's ten observed sittings, held by
-      2027-01-31. Time-boxed to 1 day after the sittings.
+      2027-01-31. ST-004 keeps the step if at least half of the experts who
+      loop back say it helped. Time-boxed to 1 day after the sittings.
   - id: Q-015
     question: >-
       Who owns the rubric and the eleven derivability checks?
@@ -212,7 +216,8 @@ questions:
       - NFR-007
     spike: >-
       Regrade one section of this set against an earlier rubric, and ask three
-      readers whether they need to tell the two grades apart. Time-boxed to 1 day.
+      readers whether they need to tell the two grades apart. The answer is yes
+      if at least 2 of the 3 say they need to. Time-boxed to 1 day.
   - id: Q-017
     question: >-
       Whom does the decider record as owner of NFR-006's accessibility, given that
@@ -301,7 +306,9 @@ questions:
       - PER-004
     spike: >-
       Ask three delivery leads how often they run the workshop and what they need
-      agreed before it. Time-boxed to 2 days.
+      agreed before it. PER-004 holds if at least 2 of the 3 run the workshop
+      about once per release and want a backbone agreed before it.
+      Time-boxed to 2 days.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-assumptions-risks-dependencies, kind: assumptions-risks-dependencies, path: ./12-assumptions-risks-dependencies.md, title: "Assumptions, risks and dependencies" }
@@ -448,7 +455,7 @@ Every item in this document, with each of its fields.
 
 **Blocks:** FR-013, TR-001, OUT-003, PER-003
 
-**Spike:** Show three sponsors the same set with and without grades and ask which they would approve. Time-boxed to 2 days.
+**Spike:** Show three sponsors the same set with and without grades and ask which they would approve. FR-013 stays `must` if at least 2 of the 3 approve the graded set at least as readily as the ungraded one. Otherwise FR-013 becomes `should`. Time-boxed to 2 days.
 
 **Consulted:** the first three sponsors
 
@@ -486,7 +493,7 @@ Every item in this document, with each of its fields.
 
 **Blocks:** A-003
 
-**Spike:** Ask each lead, after reading a set cold, whether anything was missing and whether they wanted a technology named. Time-boxed to 1 day.
+**Spike:** Ask each lead, after reading a set cold, whether anything was missing and whether they wanted a technology named. A-003 holds if no more than 1 of the 3 leads says a named technology was missing. Time-boxed to 1 day.
 
 **Consulted:** the three engineering leads from D-003
 
@@ -562,7 +569,7 @@ Every item in this document, with each of its fields.
 
 **Blocks:** ST-004, FR-010
 
-**Spike:** Ask each expert after a loop-back, in D-002's ten observed sittings, held by 2027-01-31. Time-boxed to 1 day after the sittings.
+**Spike:** Ask each expert after a loop-back, in D-002's ten observed sittings, held by 2027-01-31. ST-004 keeps the step if at least half of the experts who loop back say it helped. Time-boxed to 1 day after the sittings.
 
 ### Q-015
 
@@ -586,7 +593,7 @@ Every item in this document, with each of its fields.
 
 **Blocks:** NFR-007
 
-**Spike:** Regrade one section of this set against an earlier rubric, and ask three readers whether they need to tell the two grades apart. Time-boxed to 1 day.
+**Spike:** Regrade one section of this set against an earlier rubric, and ask three readers whether they need to tell the two grades apart. The answer is yes if at least 2 of the 3 say they need to. Time-boxed to 1 day.
 
 ### Q-017
 
@@ -674,6 +681,6 @@ Every item in this document, with each of its fields.
 
 **Blocks:** PER-004
 
-**Spike:** Ask three delivery leads how often they run the workshop and what they need agreed before it. Time-boxed to 2 days.
+**Spike:** Ask three delivery leads how often they run the workshop and what they need agreed before it. PER-004 holds if at least 2 of the 3 run the workshop about once per release and want a backbone agreed before it. Time-boxed to 2 days.
 
 <!-- /prd-forge:details -->

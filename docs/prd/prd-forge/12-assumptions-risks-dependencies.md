@@ -10,7 +10,7 @@ section: 11
 order: 120
 score: 96
 blocking: 0
-graded: 2026-11-02
+graded: 2026-11-03
 assumptions:
   - id: A-001
     assumption: >-
@@ -191,6 +191,7 @@ dependencies:
       - A-001
       - A-002
       - NFR-005
+      - REL-001
   - id: D-003
     need: >-
       Three engineering leads willing to read a completed set cold and report what
@@ -202,6 +203,7 @@ dependencies:
     blocks:
       - A-003
       - O-001
+      - REL-001
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-decision-rights, kind: decision-rights, path: ./11-decision-rights.md, title: Decision rights and trust rules }
@@ -258,7 +260,9 @@ assistant session, which carried the interview and read and wrote the documents.
 
 D-002 and D-003 are both committed and both due by 2027-01-31, two months
 before REL-001's target in section 13. On 2026-11-02, the parties behind both
-committed in writing to report by that date, which answers Q-019. The questions
+committed in writing to report by that date, which answers Q-019. Richard
+Hightower, the owner of both, holds the written commitments. The set does not
+name the parties. The questions
 they answer are due by 2027-02-28, so REL-001 can use the results. Q-022
 decides what happens to REL-001 if either party reports late.
 
@@ -472,7 +476,7 @@ Every item in this document, with each of its fields.
 
 **Owner:** Richard Hightower
 
-**Blocks:** A-001, A-002, NFR-005
+**Blocks:** A-001, A-002, NFR-005, REL-001
 
 #### D-003
 
@@ -486,6 +490,6 @@ Every item in this document, with each of its fields.
 
 **Owner:** Richard Hightower
 
-**Blocks:** A-003, O-001
+**Blocks:** A-003, O-001, REL-001
 
 <!-- /prd-forge:details -->

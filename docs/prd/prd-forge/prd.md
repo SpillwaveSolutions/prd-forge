@@ -183,9 +183,9 @@ What an approver needs from every section, then each field of this document.
 | 9 | Constraints | draft | 95/100 | — |
 | 10 | Decision rights and trust rules | draft | 84/100 | — |
 | 11 | Assumptions, risks and dependencies | draft | 96/100 | — |
-| 12 | Open questions | draft | 83/100 | — |
+| 12 | Open questions | draft | 88/100 | — |
 | 13 | Release plan | draft | 83/100 | — |
-| 13 | Roadmap | draft | 88/100 | — |
+| 13 | Roadmap | draft | 92/100 | — |
 | 14 | Glossary | draft | 85/100 | — |
 | 15 | Change log and approvals | draft | 75/100 | — |
 
