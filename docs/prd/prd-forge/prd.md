@@ -184,7 +184,7 @@ What an approver needs from every section, then each field of this document.
 | 10 | Decision rights and trust rules | draft | 84/100 | — |
 | 11 | Assumptions, risks and dependencies | draft | 96/100 | — |
 | 12 | Open questions | draft | 88/100 | — |
-| 13 | Release plan | draft | 92/100 | — |
+| 13 | Release plan | draft | 83/100 | — |
 | 13 | Roadmap | draft | 92/100 | — |
 | 14 | Glossary | draft | 85/100 | — |
 | 15 | Change log and approvals | draft | 75/100 | — |
@@ -208,7 +208,6 @@ What an approver needs from every section, then each field of this document.
 - Q-016: Must a grade show which version of the rubric it was made against? Decider: Richard Hightower. By: 2027-01-31.
 - Q-017: Whom does the decider record as owner of NFR-006's accessibility, given that the product's output is read in places the non-goals in section 6 say we do not own? Decider: Richard Hightower. By: 2027-02-28.
 - Q-018: What does each problem in section 1 cost, as one counted case per problem? Decider: Richard Hightower. By: 2027-01-31.
-- Q-019: Will both parties behind D-002 and D-003 commit in writing to report by 2027-01-31, so that REL-001 keeps 2027-03-31? Decider: Richard Hightower. By: 2027-01-31.
 - Q-020: Which section do experts stop at most often? Decider: Richard Hightower. By: 2027-02-28.
 - Q-021: Whom does the decider record as owner of NFR-012's access control, given that a set is stored where the organization already stores documents? Decider: Richard Hightower. By: 2027-02-28.
 - Q-022: If D-002 or D-003 reports after 2027-01-31, does REL-001 move or ship as an experiment? Decider: Richard Hightower. By: 2027-01-31.

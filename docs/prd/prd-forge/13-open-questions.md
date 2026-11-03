@@ -4,13 +4,13 @@ kind: open-questions
 schema: prd-forge/open-questions@1
 title: Open questions
 status: draft
-updated: 2026-10-27
+updated: 2026-11-02
 domain: product management tooling
 section: 12
 order: 130
 score: 88
 blocking: 0
-graded: 2026-10-28
+graded: 2026-11-03
 questions:
   - id: Q-001
     question: >-
@@ -70,7 +70,9 @@ questions:
       - PER-003
     spike: >-
       Show three sponsors the same set with and without grades and ask which they
-      would approve. Time-boxed to 2 days.
+      would approve. FR-013 stays `must` if at least 2 of the 3 approve the
+      graded set at least as readily as the ungraded one. Otherwise FR-013
+      becomes `should`. Time-boxed to 2 days.
   - id: Q-006
     question: >-
       How many sections does an expert complete in one sitting before stopping?
@@ -105,7 +107,8 @@ questions:
       - A-003
     spike: >-
       Ask each lead, after reading a set cold, whether anything was missing and
-      whether they wanted a technology named. Time-boxed to 1 day.
+      whether they wanted a technology named. A-003 holds if no more than 1 of
+      the 3 leads says a named technology was missing. Time-boxed to 1 day.
   - id: Q-009
     question: >-
       Which version of the rubric and the eleven derivability checks does release
@@ -186,7 +189,8 @@ questions:
       - FR-010
     spike: >-
       Ask each expert after a loop-back, in D-002's ten observed sittings, held by
-      2027-01-31. Time-boxed to 1 day after the sittings.
+      2027-01-31. ST-004 keeps the step if at least half of the experts who
+      loop back say it helped. Time-boxed to 1 day after the sittings.
   - id: Q-015
     question: >-
       Who owns the rubric and the eleven derivability checks?
@@ -212,7 +216,8 @@ questions:
       - NFR-007
     spike: >-
       Regrade one section of this set against an earlier rubric, and ask three
-      readers whether they need to tell the two grades apart. Time-boxed to 1 day.
+      readers whether they need to tell the two grades apart. The answer is yes
+      if at least 2 of the 3 say they need to. Time-boxed to 1 day.
   - id: Q-017
     question: >-
       Whom does the decider record as owner of NFR-006's accessibility, given that
@@ -252,6 +257,11 @@ questions:
       Ask each party behind D-002 and D-003 for a written date. The answer is yes
       if both written dates are 2027-01-31 or earlier, and no otherwise, in which
       case Q-022 decides. Time-boxed to 1 day.
+    answer: >-
+      Yes. The parties behind D-002 and D-003 both committed in writing to
+      report by 2027-01-31, so REL-001 keeps 2027-03-31. Q-022 still decides
+      what happens if either reports late.
+    answered: 2026-11-02
   - id: Q-020
     question: >-
       Which section do experts stop at most often?
@@ -296,7 +306,9 @@ questions:
       - PER-004
     spike: >-
       Ask three delivery leads how often they run the workshop and what they need
-      agreed before it. Time-boxed to 2 days.
+      agreed before it. PER-004 holds if at least 2 of the 3 run the workshop
+      about once per release and want a backbone agreed before it.
+      Time-boxed to 2 days.
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-assumptions-risks-dependencies, kind: assumptions-risks-dependencies, path: ./12-assumptions-risks-dependencies.md, title: "Assumptions, risks and dependencies" }
@@ -311,7 +323,7 @@ links:
 | Q-002 | Today's days from the first question to an approval | R. Hightower | 2027-02-28 | O-002 |
 | Q-003 | Today's share of testable `must` requirements | R. Hightower | 2027-02-28 | O-003 |
 | Q-004 | How many organizations are in each segment | R. Hightower | 2027-06-30 | S-001, S-002 |
-| Q-005 | Does FR-013 stay `must`, given what sponsors say about grades | R. Hightower | 2027-01-31 | FR-013, TR-001, OUT-003 |
+| Q-005 | Does FR-013 stay `must`, given what sponsors say about grades | R. Hightower | 2027-01-31 | FR-013, TR-001, OUT-003, PER-003 |
 | Q-006 | Sections completed per sitting | R. Hightower | 2027-02-28 | R-004 |
 | Q-007 | Does writing the requirements send an expert back to the journeys | R. Hightower | 2027-02-28 | ST-004, FR-010, R-004 |
 | Q-008 | Disciplined or incomplete, to an engineering lead | R. Hightower | 2027-02-28 | A-003 |
@@ -324,7 +336,6 @@ links:
 | Q-016 | Must a grade show the rubric version it was made against | R. Hightower | 2027-01-31 | NFR-007 |
 | Q-017 | Who owns NFR-006's accessibility | R. Hightower | 2027-02-28 | NFR-006 |
 | Q-018 | One counted cost per problem in section 1 | R. Hightower | 2027-01-31 | P-001 to P-004 |
-| Q-019 | Will D-002 and D-003 commit in writing to report by 2027-01-31 | R. Hightower | 2027-01-31 | REL-001 |
 | Q-020 | Which section experts stop at most | R. Hightower | 2027-02-28 | R-004 |
 | Q-021 | Who owns NFR-012's access control | R. Hightower | 2027-02-28 | NFR-012 |
 | Q-022 | Does REL-001 move or ship as an experiment if D-002 or D-003 is late | R. Hightower | 2027-01-31 | REL-001 |
@@ -350,10 +361,11 @@ a sponsor a grade reduces their confidence rather than raising it, then FR-013 i
 wrong and the grading becomes an author's private tool rather than part of the
 approval. It takes two days, and it should be asked early.
 
-**Q-019 and Q-022 are the schedule.** D-002 and D-003 report by 2027-01-31, and
-the questions they answer are due by 2027-02-28, a month before REL-001. Q-019
-decides whether REL-001 keeps its date, and Q-022 decides what happens if either
-dependency is late.
+**Q-022 is the schedule.** D-002 and D-003 report by 2027-01-31, and the
+questions they answer are due by 2027-02-28, a month before REL-001. Q-019 is
+answered: on 2026-11-02 both parties committed in writing, so REL-001 keeps
+2027-03-31. Q-022 is now the only open question on REL-001's date. It decides
+what happens if either dependency reports late.
 
 **Q-008 tests the fifth of the five tests in the glossary: a requirement names no technology.** If engineering leads read the absence of technology as
 incompleteness, the discipline this whole product enforces is a liability, and
@@ -443,7 +455,7 @@ Every item in this document, with each of its fields.
 
 **Blocks:** FR-013, TR-001, OUT-003, PER-003
 
-**Spike:** Show three sponsors the same set with and without grades and ask which they would approve. Time-boxed to 2 days.
+**Spike:** Show three sponsors the same set with and without grades and ask which they would approve. FR-013 stays `must` if at least 2 of the 3 approve the graded set at least as readily as the ungraded one. Otherwise FR-013 becomes `should`. Time-boxed to 2 days.
 
 **Consulted:** the first three sponsors
 
@@ -481,7 +493,7 @@ Every item in this document, with each of its fields.
 
 **Blocks:** A-003
 
-**Spike:** Ask each lead, after reading a set cold, whether anything was missing and whether they wanted a technology named. Time-boxed to 1 day.
+**Spike:** Ask each lead, after reading a set cold, whether anything was missing and whether they wanted a technology named. A-003 holds if no more than 1 of the 3 leads says a named technology was missing. Time-boxed to 1 day.
 
 **Consulted:** the three engineering leads from D-003
 
@@ -557,7 +569,7 @@ Every item in this document, with each of its fields.
 
 **Blocks:** ST-004, FR-010
 
-**Spike:** Ask each expert after a loop-back, in D-002's ten observed sittings, held by 2027-01-31. Time-boxed to 1 day after the sittings.
+**Spike:** Ask each expert after a loop-back, in D-002's ten observed sittings, held by 2027-01-31. ST-004 keeps the step if at least half of the experts who loop back say it helped. Time-boxed to 1 day after the sittings.
 
 ### Q-015
 
@@ -581,7 +593,7 @@ Every item in this document, with each of its fields.
 
 **Blocks:** NFR-007
 
-**Spike:** Regrade one section of this set against an earlier rubric, and ask three readers whether they need to tell the two grades apart. Time-boxed to 1 day.
+**Spike:** Regrade one section of this set against an earlier rubric, and ask three readers whether they need to tell the two grades apart. The answer is yes if at least 2 of the 3 say they need to. Time-boxed to 1 day.
 
 ### Q-017
 
@@ -618,6 +630,10 @@ Every item in this document, with each of its fields.
 **Blocks:** REL-001
 
 **Spike:** Ask each party behind D-002 and D-003 for a written date. The answer is yes if both written dates are 2027-01-31 or earlier, and no otherwise, in which case Q-022 decides. Time-boxed to 1 day.
+
+**Answer:** Yes. The parties behind D-002 and D-003 both committed in writing to report by 2027-01-31, so REL-001 keeps 2027-03-31. Q-022 still decides what happens if either reports late.
+
+**Answered:** 2026-11-02
 
 ### Q-020
 
@@ -665,6 +681,6 @@ Every item in this document, with each of its fields.
 
 **Blocks:** PER-004
 
-**Spike:** Ask three delivery leads how often they run the workshop and what they need agreed before it. Time-boxed to 2 days.
+**Spike:** Ask three delivery leads how often they run the workshop and what they need agreed before it. PER-004 holds if at least 2 of the 3 run the workshop about once per release and want a backbone agreed before it. Time-boxed to 2 days.
 
 <!-- /prd-forge:details -->

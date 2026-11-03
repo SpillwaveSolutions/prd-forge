@@ -2,7 +2,7 @@
 | Now                                                      |
 +----------------------------------------------------------+
   RM-001 One expert takes one product idea to an approved
-         PRD (at-risk, REL-001)
+         PRD (on-track, REL-001)
 
 +----------------------------------------------------------+
 | Next                                                     |

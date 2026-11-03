@@ -2,21 +2,23 @@
 doc: ../13-open-questions.md
 score: 88
 blocking: 0
-graded: 2026-10-28
+graded: 2026-11-03
 grader: prd-forge:prd-adversary
 previous_score: 83
 ---
 
 # Why open questions scored 88
 
+Graded at 0.13.0, after the decisions of 2026-11-02: Q-019 is answered, RM-001 is on track, and the waits, exit criteria, and counted rules that follow from it are in the set.
+
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Decider | 3 | Several questions are settled by other people's behavior, and Q-008 restates assumption A-003. |
+| Decider | 3 | Q-014, Q-016, and Q-023 rely on other people's views and have no `consulted` field. |
 | Date | 4 | Every `by` falls before what it blocks. |
-| Blocks | 3 | The body table omits PER-003 from Q-005's blocks. |
-| Answerability | 3 | Five polling spikes end in "ask" with no rule that turns the result into an answer. |
-| Honesty | 4 | The hedges in sections 1 to 11 trace here. |
-| Hygiene | 4 | Q-011 is answered and recorded. |
+| Blocks | 3 | Q-009's spike names ST-002 to ST-005, which its `blocks` leaves out. Q-005's rule decides only FR-013. |
+| Answerability | 3 | The five counted rules are real, but Q-003, Q-014, Q-018, Q-022, and Q-023 still have gaps. |
+| Honesty | 4 | The hedges in the other sections trace here. |
+| Hygiene | 4 | Q-011 and Q-019 carry their answers, and the change log resolves both. |
 
 ## Blocking defects
 
@@ -24,17 +26,10 @@ None.
 
 ## Weakest dimension
 
-Answerability. Q-005, Q-008, Q-014, Q-016, and Q-023 have no decision rule.
+Answerability. Q-005 blocks FR-013, TR-001, and OUT-003, but its rule decides only FR-013.
 
 ## How to raise the grade
 
-- **Answerability (3 to 4):** Give each polling spike a decision rule, as Q-007 does.
-- **Blocks (3 to 4):** Add PER-003 to Q-005's row in the body table.
-- **Decider (3 to 4):** Reword the questions the decider cannot decide, or move Q-008 and Q-023 to section 11 as validations.
-
-## The details block
-
-The generated details block contradicts nothing. It shows the front matter word for word, and it makes visible any place where the hand-written prose has drifted from it.
-
-- The block shows Q-005's blocks with PER-003, and the prose table does not.
-- The block lists 23 entries with answered Q-011, and the summary table lists 22.
+- Give Q-005 outcomes for OUT-003 and TR-001.
+- Tie Q-014 to Q-007, give Q-003 a rule that combines the three scores, map Q-018 to all four problems, and give Q-022 a tie rule.
+- Add ST-002 to ST-005 to Q-009's `blocks`, and add `consulted` to Q-014, Q-016, and Q-023.

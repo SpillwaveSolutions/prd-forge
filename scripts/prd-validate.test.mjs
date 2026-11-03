@@ -162,7 +162,7 @@ test('a decision rule\'s approver and stages must exist', () => {
 
 test('a dependency that blocks a missing id, or is due after the release it blocks, fails', () => {
   failsWith('12-assumptions-risks-dependencies.md', t => t.replace('      - A-001\n', '      - A-099\n'), /blocks A-099, which does not exist/)
-  failsWith('12-assumptions-risks-dependencies.md', t => t.replace('    by: 2027-01-31\n    status: requested\n    owner: Richard Hightower\n    blocks:\n      - A-001\n', '    by: 2027-04-30\n    status: requested\n    owner: Richard Hightower\n    blocks:\n      - FR-001\n      - A-001\n'), /D-002 is due 2027-04-30, after REL-001's target/)
+  failsWith('12-assumptions-risks-dependencies.md', t => t.replace('    by: 2027-01-31\n    status: committed\n    owner: Richard Hightower\n    blocks:\n      - A-001\n', '    by: 2027-04-30\n    status: committed\n    owner: Richard Hightower\n    blocks:\n      - FR-001\n      - A-001\n'), /D-002 is due 2027-04-30, after REL-001's target/)
 })
 
 test('a glossary term may be defined once', () =>
@@ -327,7 +327,7 @@ test('the scope names a real release, and outside-product stages exist', () => {
 
 test('the first release delivers exactly the release line, and names real objectives and waits', () => {
   failsWith('14-release-plan.md', t => t.replace(/(journey_stages:\n(?: +- ST-00\d\n)*?) +- ST-006\n/, '$1'), /REL-001's stages differ from the release line/)
-  failsWith('14-release-plan.md', t => t.replace('  - id: REL-002\n', '  - id: REL-002\n    depends_on: [Q-099]\n'), /REL-002 depends_on names Q-099/)
+  failsWith('14-release-plan.md', t => t.replace('    depends_on:\n      - Q-023\n', '    depends_on:\n      - Q-099\n'), /REL-002 depends_on names Q-099/)
 })
 
 test('a criterion that names a control, or is not Given/When/Then, draws a warning', () => {
@@ -501,7 +501,7 @@ test('a later roadmap item has no committed date (#24)', () =>
   failsWith('18-roadmap.md', t => t.replace('    depends_on: [A-001, A-002]\n', '    depends_on: [A-001, A-002]\n    target_date: 2028-01-31\n    date_status: committed\n'), /RM-003 is later, so its date cannot be committed/))
 
 test('an at-risk or blocked roadmap item says what blocks it and what is done (#24)', () => {
-  failsWith('18-roadmap.md', t => t.replace(/    mitigation: >-\n(?: {6}.*\n)+/, ''), /RM-001 is at-risk with no mitigation/)
+  failsWith('18-roadmap.md', t => t.replace('    status: on-track\n', "    status: at-risk\n    blocker: O'Brien's \"Ops\" #2 <lead>; late\n"), /RM-001 is at-risk with no mitigation/)
   failsWith('18-roadmap.md', t => t.replace("    status: not-started\n    releases: [REL-002]", "    status: blocked\n    releases: [REL-002]"), /RM-002 is blocked with no blocker/)
 })
 

@@ -4,13 +4,13 @@ kind: assumptions-risks-dependencies
 schema: prd-forge/assumptions-risks-dependencies@1
 title: Assumptions, risks and dependencies
 status: draft
-updated: 2026-10-30
+updated: 2026-11-02
 domain: product management tooling
 section: 11
 order: 120
 score: 96
 blocking: 0
-graded: 2026-10-30
+graded: 2026-11-03
 assumptions:
   - id: A-001
     assumption: >-
@@ -185,23 +185,25 @@ dependencies:
       Ten first-time domain experts willing to be observed completing a PRD.
     from: Early customers and the professional network
     by: 2027-01-31
-    status: requested
+    status: committed
     owner: Richard Hightower
     blocks:
       - A-001
       - A-002
       - NFR-005
+      - REL-001
   - id: D-003
     need: >-
       Three engineering leads willing to read a completed set cold and report what
       they would ask for first.
     from: Early customers
     by: 2027-01-31
-    status: requested
+    status: committed
     owner: Richard Hightower
     blocks:
       - A-003
       - O-001
+      - REL-001
 links:
   parent: { id: prd-forge, kind: prd, path: ./prd.md, title: prd-forge PRD }
   prev: { id: prd-forge-decision-rights, kind: decision-rights, path: ./11-decision-rights.md, title: Decision rights and trust rules }
@@ -250,17 +252,19 @@ This section states it rather than hide it behind a mitigation that sounds adequ
 | ID | Need | From | By | Status | Owner |
 | --- | --- | --- | --- | --- | --- |
 | D-001 | An assistant session able to carry the interview | The assistant platform the customer already uses | 2027-01-31 | delivered | Richard Hightower |
-| D-002 | 10 observed first-time experts | Early customers and the professional network | 2027-01-31 | requested | Richard Hightower |
-| D-003 | 3 engineering leads to read a set cold | Early customers | 2027-01-31 | requested | Richard Hightower |
+| D-002 | 10 observed first-time experts | Early customers and the professional network | 2027-01-31 | committed | Richard Hightower |
+| D-003 | 3 engineering leads to read a set cold | Early customers | 2027-01-31 | committed | Richard Hightower |
 
 D-001 is delivered: this PRD was written and graded with prd-forge inside an
 assistant session, which carried the interview and read and wrote the documents.
 
-D-002 and D-003 are both requested and both due by 2027-01-31, two months
-before REL-001's target in section 13. The questions they answer are due by
-2027-02-28, so REL-001 can use the results. Q-019 and Q-022 decide, by
-2027-01-31, whether REL-001 keeps its date and what happens to it if either
-slips.
+D-002 and D-003 are both committed and both due by 2027-01-31, two months
+before REL-001's target in section 13. On 2026-11-02, the parties behind both
+committed in writing to report by that date, which answers Q-019. Richard
+Hightower, the owner of both, holds the written commitments. The set does not
+name the parties. The questions
+they answer are due by 2027-02-28, so REL-001 can use the results. Q-022
+decides what happens to REL-001 if either party reports late.
 
 <!-- prd-forge:details -->
 
@@ -468,11 +472,11 @@ Every item in this document, with each of its fields.
 
 **By:** 2027-01-31
 
-**Status:** requested
+**Status:** committed
 
 **Owner:** Richard Hightower
 
-**Blocks:** A-001, A-002, NFR-005
+**Blocks:** A-001, A-002, NFR-005, REL-001
 
 #### D-003
 
@@ -482,10 +486,10 @@ Every item in this document, with each of its fields.
 
 **By:** 2027-01-31
 
-**Status:** requested
+**Status:** committed
 
 **Owner:** Richard Hightower
 
-**Blocks:** A-003, O-001
+**Blocks:** A-003, O-001, REL-001
 
 <!-- /prd-forge:details -->
