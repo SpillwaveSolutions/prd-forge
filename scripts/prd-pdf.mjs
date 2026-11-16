@@ -53,7 +53,7 @@ const findChromium = () => {
 const footer = `<div style="width:100%;font:8pt Inter,Helvetica,Arial,sans-serif;color:#8b93a1;
   padding:0 20mm;display:flex;align-items:center">
   <span style="flex:1;text-align:left">${title.replace(/[<>&"]/g, '')}</span>
-  <span style="flex:1;text-align:right"><span class="pageNumber"></span> of
+  <span style="flex:1;text-align:right">Page <span class="pageNumber"></span> of
   <span class="totalPages"></span></span></div>`
 
 const playwright = findPlaywright()

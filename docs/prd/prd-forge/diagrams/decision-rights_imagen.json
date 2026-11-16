@@ -1,0 +1,44 @@
+{
+  "source": "decision-rights.mmd",
+  "theme": "extracted/prd-forge",
+  "density": "article",
+  "hash": "7f82acdd6c13c8277ffc0117be4d01eb701ebabd3c6e1915cc905bee0915c31f",
+  "kind_of_diagram": "flowchart",
+  "language": "mermaid",
+  "nodes": [
+    "b>Sponsor</b",
+    "b>DomainExpert</b",
+    "b>EngineerLead</b",
+    "b>DeliveryLead</b",
+    "b>TR-001</b> Approve a PRD for a release <i>(never delegated)</i",
+    "b>TR-002</b> Set a section's state to final <i>(never delegated)</i",
+    "b>TR-003</b> Produce a section's score and findings against its rubric <i>(delegable to an agent)</i",
+    "b>TR-004</b> Decide what the product is for and what is out of scope <i>(never delegated)</i",
+    "b>TR-005</b> State a domain fact, figure, regulation or citation as true <i>(never delegated)</i",
+    "b>TR-006</b> Judge whether a set can be built from, and report the gaps <i>(delegable to an agent)</i",
+    "b>TR-007</b> Decide the domain's own terms, and what each one means <i>(never delegated)</i",
+    "b>TR-008</b> Decide the interview on a section is finished <i>(never delegated)</i",
+    "b>TR-009</b> Decide a section may be left at draft and moved on from <i>(never delegated)</i",
+    "b>TR-010</b> Decide the set may be offered for approval <i>(never delegated)</i",
+    "b>TR-011</b> Decide a backlog can be mapped from the set <i>(delegable to an agent)</i",
+    "b>TR-012</b> Decide which epics come first <i>(never delegated)</i",
+    "b>TR-013</b> Accept a drafted section as saying what the expert meant, or correct it <i>(never delegated)</i",
+    "b>TR-014</b> Accept or refute a section's score <i>(never delegated)</i",
+    "b>TR-015</b> Turn off a set's outbound domain research <i>(never delegated)</i"
+  ],
+  "edges": 15,
+  "png": "decision-rights_imagen.png",
+  "prompt": "decision-rights_imagen.prompt.txt",
+  "kind": "cover",
+  "aspect": "3:4",
+  "engine_hint": "auto",
+  "backend": "imagen",
+  "policy": "imagen-cli-bracket",
+  "model": "gemini-3-pro-image",
+  "attempts": [
+    {
+      "backend": "imagen",
+      "exit_code": 0
+    }
+  ]
+}

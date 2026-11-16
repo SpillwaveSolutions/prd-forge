@@ -1,0 +1,49 @@
+id: prd-forge
+name: PRD Forge print
+version: 1
+source:
+  kind: project
+  ref: scripts/prd_export.py (the CSS palette of the Word and PDF export)
+aspect_default: "4:3"
+style:
+  summary: >
+    Calm engineering print style for a product requirements document.
+    White paper, deep navy accents, soft blue-gray node fills, ink text,
+    thin gray connectors with clear arrowheads. Flat shapes, no gradients,
+    no shadows, no texture. Generous white space. Horizontal labels.
+  label_min_px: 22
+  arrow_px: [2, 3]
+  text_orientation: horizontal
+  contrast_min: 4.5
+palette:
+  background: "#FFFFFF"
+  surface: "#F2F5F9"
+  primary: "#1F4E79"
+  primary_fg: "#FFFFFF"
+  accent: "#E8EEF6"
+  accent_2: "#B7791F"
+  success: "#1F6B36"
+  ink: "#16181D"
+  muted: "#5C6370"
+roles:
+  title: { bg: background, fg: ink }
+  node_default: { bg: surface, fg: ink }
+  node_emphasis: { bg: primary, fg: primary_fg }
+  node_success: { bg: success, fg: primary_fg }
+  node_decision: { bg: accent, fg: ink }
+  subgraph: { bg: background, fg: muted }
+  arrow: { stroke: muted }
+negatives:
+  - gradients, glow, or drop shadows
+  - mermaid or plantuml source syntax
+  - ASCII art
+  - tiny labels
+  - watermarks or logos
+  - node IDs invented or changed
+  - decorative icons or clip art
+  - colors outside the palette
+svg:
+  label_px: [16, 24]
+  max_kb: 40
+  max_kb_small: 20
+  small_node_threshold: 8

@@ -16,6 +16,9 @@ domains this section is also evidence.
 ## What belongs in each entry
 
 - `version`, `date`, `author`, `summary`.
+- `title`: a short name for the version, at most 60 characters, such as
+  "Wireframes" or "Fixes from the first grading". The export heads the entry
+  with the version and this name, so a reader knows what the version was about.
 - `sections`: which section numbers changed.
 - `approvals`: name, role, date, and decision (approved,
   approved-with-conditions, rejected). Record a decision under the entry for the

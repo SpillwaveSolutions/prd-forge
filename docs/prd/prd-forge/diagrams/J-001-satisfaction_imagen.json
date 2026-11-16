@@ -1,0 +1,24 @@
+{
+  "source": "J-001-satisfaction.mmd",
+  "theme": "extracted/prd-forge",
+  "density": "article",
+  "hash": "fdd14e2a847057369ffbfa70f4cc59198f96374865ecba0ac0e9457214730c53",
+  "kind_of_diagram": "other",
+  "language": "unknown",
+  "nodes": [],
+  "edges": 0,
+  "png": "J-001-satisfaction_imagen.png",
+  "prompt": "J-001-satisfaction_imagen.prompt.txt",
+  "kind": "cover",
+  "aspect": "16:9",
+  "engine_hint": "auto",
+  "backend": "imagen",
+  "policy": "imagen-cli-bracket",
+  "model": "gemini-3-pro-image",
+  "attempts": [
+    {
+      "backend": "imagen",
+      "exit_code": 0
+    }
+  ]
+}

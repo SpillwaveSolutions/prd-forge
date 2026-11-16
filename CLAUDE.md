@@ -89,6 +89,8 @@ A PRD is one directory, `<docs_dir>/<slug>/`, of markdown files. Each file has Y
 
 The script renders every source to `.svg` and `.png` and writes the image links into the documents. Beside each generated source it writes a text view, `<id>.txt`, from `scripts/prd-ascii.mjs`: strict ASCII, at most 60 columns. The terminal pane draws that text in place of the image. It is idempotent. The export embeds each `.png`. Diagrams name a persona by its `short_name` (required, such as `DomainExpert`), never by its `PER-nnn` id. All Mermaid label text goes through `label()`, which escapes `#`, `;`, `"`, `<`, and `>` in one pass. Use it for any new label.
 
+Every Mermaid diagram is drawn with `scripts/mermaid-theme.json`, the export's palette. A change to that file redraws every diagram on the next run. A designed figure, `diagrams/<id>_imagen.png`, comes from the `imagen-diagrams` skill with the theme in `.imagen-diagrams/`. The export uses it in place of the Mermaid PNG only while the `hash` in `<id>_imagen.json` matches the current `<id>.mmd`. A stale figure is skipped with a warning, so render it again after the source changes.
+
 ### The mod: the PRD pane
 
 - `hooks/register.tsx` registers `/prd` and `/prd-step`, scans for a set, and rescans after a Write or Edit tool call under `docs_dir`. It draws the pane, which has three pages per document: `doc`, `grade`, and `rubric`. A `history` stack drives **Back**. The rubric page reads `skills/prd-wizard/sections/*.md` from `$.plugin.root`.

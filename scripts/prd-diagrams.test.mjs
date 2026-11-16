@@ -270,3 +270,62 @@ test('the roadmap lays its horizons out now, next, each quarter in order, then l
 test('the roadmap renders', { skip: !hasMmdc }, () => {
   assert.equal(renderError(roadmapMermaid([{ id: 'RM-001', title: 'a', horizon: 'now', status: 'blocked', releases: ['REL-001'] }])), '')
 })
+
+// ---- the export's choice of figure, its title case, and its change-log entries
+
+const hasUv = spawnSync('uv', ['--version']).status === 0
+
+/** Runs Python with prd_export imported as `x`; returns { out, err, status }. */
+const exportPy = code => {
+  const run = spawnSync('uv', ['run', '-q', '--with', 'pyyaml', 'python3', '-c', `import prd_export as x\n${code}`],
+    { encoding: 'utf8', cwd: join(REPO, 'scripts') })
+  return { out: run.stdout.trim(), err: run.stderr, status: run.status }
+}
+
+test('the export uses a designed figure only while its sidecar matches the diagram source', { skip: !hasUv }, () => {
+  const dir = join(mkdtempSync(join(tmpdir(), 'prd-set-')), 'set')
+  cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
+  const diagrams = join(dir, 'diagrams')
+  writeFileSync(join(diagrams, 'J-002_imagen.png'), readFileSync(join(diagrams, 'J-002.png')))
+  const sidecar = hash => writeFileSync(join(diagrams, 'J-002_imagen.json'), JSON.stringify({ hash }))
+  const pick = `x.SET_DIR = ${JSON.stringify(dir)}\nprint(x.image_file("diagrams/J-002.svg"))`
+  const source = readFileSync(join(diagrams, 'J-002.mmd'), 'utf8')
+  const sha = spawnSync('python3', ['-c', 'import hashlib,sys; print(hashlib.sha256(sys.stdin.read().encode()).hexdigest())'],
+    { input: source, encoding: 'utf8' }).stdout.trim()
+
+  sidecar(sha)
+  const current = exportPy(pick)
+  assert.equal(current.status, 0, current.err)
+  assert.match(current.out, /J-002_imagen\.png$/)
+
+  sidecar('0'.repeat(64))
+  const stale = exportPy(pick)
+  assert.match(stale.out, /J-002\.png$/)
+  assert.match(stale.err, /J-002_imagen\.png is older than J-002\.mmd/)
+})
+
+test('the export shows an all-lowercase product name in title case, and keeps a cased one', { skip: !hasUv }, () => {
+  const names = ['prd-forge', 'prd-forge PRD', 'Acme returns PRD', 'iPhone app', 'acme_returns api', 'a (b) [c] "d"; #e <f>']
+  const run = exportPy(`import json\nprint(json.dumps([x.display_name(n) for n in ${JSON.stringify(names)}]))`)
+  assert.equal(run.status, 0, run.err)
+  assert.deepEqual(JSON.parse(run.out),
+    ['PRD Forge', 'PRD Forge PRD', 'Acme returns PRD', 'iPhone app', 'Acme Returns API', 'A (b) [c] "d"; #e <f>'])
+})
+
+test('a change-log entry is headed by its version and title, with section titles and the author role', { skip: !hasUv }, () => {
+  const run = exportPy([
+    'import json',
+    'x.SECTION_TITLES.update({4: "Users and personas", 5: "User journeys and scenarios"})',
+    'x.ROLES["Ann (QA) [lead]"] = "Owner and Sponsor"',
+    'entry = {"version": "0.12.0", "title": "Approver details", "author": "Ann (QA) [lead]", "sections": [4, 5, 9], "summary": "x" * 200}',
+    'print(json.dumps(x.item_view("change-log", entry, "summary")))',
+  ].join('\n'))
+  assert.equal(run.status, 0, run.err)
+  const [ident, headline, fields] = JSON.parse(run.out)
+  assert.equal(ident, '0.12.0')
+  assert.equal(headline, 'Approver details')
+  const field = Object.fromEntries(fields)
+  assert.equal(field.author, 'Ann (QA) [lead], Owner and Sponsor')
+  assert.deepEqual(field.sections, ['4 Users and personas', '5 User journeys and scenarios', '9'])
+  assert.equal(field.summary.length, 200, 'a long summary is kept whole, never cut')
+})
