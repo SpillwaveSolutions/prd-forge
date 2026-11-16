@@ -1,0 +1,34 @@
+{
+  "source": "LC-001.mmd",
+  "theme": "extracted/prd-forge",
+  "density": "article",
+  "hash": "4a5ec8036a62ed6c6434d0009b5553526689e27b71bd6998ff0171cbf4e05e74",
+  "kind_of_diagram": "state",
+  "language": "mermaid",
+  "nodes": [
+    "*",
+    "The expert decides the interview is finished (TR-008",
+    "A grade of 70 or more, zero blocking defects, and a set that checks clean, unless the expert overrides the gate and the override is recorded in section 15",
+    "The expert's decision under TR-002, after an independent grading pass with zero blocking defects, unless the expert overrides the gate and the override is recorded in section 15. No other approval is needed.",
+    "The expert's decision under TR-002. The section is graded again before it returns to review.",
+    "s0",
+    "s1",
+    "s2"
+  ],
+  "edges": 5,
+  "png": "LC-001_imagen.png",
+  "prompt": "LC-001_imagen.prompt.txt",
+  "kind": "cover",
+  "aspect": "16:9",
+  "engine_hint": "auto",
+  "backend": "imagen",
+  "policy": "imagen-cli-bracket",
+  "model": "gemini-3-pro-image",
+  "attempts": [
+    {
+      "backend": "imagen",
+      "exit_code": 0
+    }
+  ],
+  "note": "The first retry's image, with its two '[*]' start and end marks painted out by hand; the second retry garbled a label. The prompt file holds the second retry's prompt."
+}

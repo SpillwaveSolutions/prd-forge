@@ -1,0 +1,42 @@
+{
+  "source": "release-line.mmd",
+  "theme": "extracted/prd-forge",
+  "density": "article",
+  "hash": "95f1530d0ffa82d01637e13b83306bd3e3c74062766a9afd640888b99dbef4a9",
+  "kind_of_diagram": "flowchart",
+  "language": "mermaid",
+  "nodes": [
+    "REL001",
+    "b>REL-001</b><br/>Single-expert PRD authoring<br/>by 2027-03-31",
+    "b>ST-001</b> Expert states the idea and their domain<br/><i>1 must requirement</i",
+    "b>ST-002</b> Expert is taught a section, then interviewed on it<br/><i>4 must requirements</i",
+    "b>ST-003</b> Expert reads the draft and its grade<br/><i>1 must requirement</i",
+    "b>ST-004</b> Expert answers the one question that improves it most<br/><i>1 must requirement</i",
+    "b>ST-005</b> Expert sees what a development team could not build<br/><i>1 must requirement</i",
+    "b>ST-006</b> Sponsor approves the PRD for a release<br/><i>3 must requirements</i",
+    "REL002",
+    "b>REL-002</b><br/>Backlog derivation<br/>by 2027-06-30",
+    "b>ST-009</b> Engineering lead records whether the set can be built from<br/><i>0 must requirements</i",
+    "b>ST-007</b> Delivery lead checks the PRD can carry a backlog<br/><i>0 must requirements</i",
+    "b>ST-008</b> Delivery lead derives features, epics and stories<br/><i>0 must requirements</i",
+    "REL003",
+    "b>REL-003</b><br/>More than one author",
+    "Nothing planned yet"
+  ],
+  "edges": 10,
+  "png": "release-line_imagen.png",
+  "prompt": "release-line_imagen.prompt.txt",
+  "kind": "cover",
+  "aspect": "4:3",
+  "engine_hint": "auto",
+  "backend": "imagen",
+  "policy": "imagen-cli-bracket",
+  "model": "gemini-3-pro-image",
+  "attempts": [
+    {
+      "backend": "imagen",
+      "exit_code": 0
+    }
+  ],
+  "note": "Two stray frame lines under REL-002 and REL-003 painted out by hand."
+}

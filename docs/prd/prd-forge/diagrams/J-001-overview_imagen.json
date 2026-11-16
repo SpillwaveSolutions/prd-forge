@@ -1,0 +1,43 @@
+{
+  "source": "J-001-overview.mmd",
+  "theme": "extracted/prd-forge",
+  "density": "article",
+  "hash": "22aefcc52623c81020cbe9ed8c6ef778e779c792368cb93ea600bf1a120452e4",
+  "kind_of_diagram": "flowchart",
+  "language": "mermaid",
+  "nodes": [
+    "b>J-001</b> trigger",
+    "b>ST-001</b> Expert states the idea and their domain",
+    "b>ST-002</b> Expert is taught a section, then interviewed on it",
+    "b>ST-003</b> Expert reads the draft and its grade",
+    "b>ST-004</b> Expert answers the one question that improves it most",
+    "b>ST-005</b> Expert sees what a development team could not build",
+    "b>ST-006</b> Sponsor approves the PRD for a release",
+    "End state",
+    "SC-003?",
+    "/\"<b>SC-003</b> exception, must<br/>They say #quot;it should push the decision to the adjuster's phone#quot;.\"/",
+    "SC-006?",
+    "/\"<b>SC-006</b> exception, must<br/>They are asked for the baseline and say they would have to check.\"/",
+    "SC-005?",
+    "/\"<b>SC-005</b> exception, must<br/>They ask for the buildability review.\"/",
+    "SC-004?",
+    "/\"<b>SC-004</b> exception, should<br/>They refute the finding: #quot;consignment#quot; is their domain's word for one shipment, not a part of the product.\"/",
+    "SC-008?",
+    "/\"<b>SC-008</b> exception, should<br/>They refute the finding and say the requirement should keep the words.\"/"
+  ],
+  "edges": 22,
+  "png": "J-001-overview_imagen.png",
+  "prompt": "J-001-overview_imagen.prompt.txt",
+  "kind": "cover",
+  "aspect": "3:4",
+  "engine_hint": "auto",
+  "backend": "imagen",
+  "policy": "imagen-cli-bracket",
+  "model": "gemini-3-pro-image",
+  "attempts": [
+    {
+      "backend": "imagen",
+      "exit_code": 0
+    }
+  ]
+}

@@ -22,6 +22,12 @@
             "type": "string",
             "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
           },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60,
+            "description": "A short name for the version, so a reader knows what it was about."
+          },
           "date": {
             "$ref": "common.json#/$defs/date"
           },

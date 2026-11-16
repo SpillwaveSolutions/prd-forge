@@ -1,0 +1,30 @@
+{
+  "source": "J-002.mmd",
+  "theme": "extracted/prd-forge",
+  "density": "article",
+  "hash": "435475564e123f224f7694641d0d8cb9a20718297f1a44b0d37d65cb972d68a5",
+  "kind_of_diagram": "flowchart",
+  "language": "mermaid",
+  "nodes": [
+    "b>Trigger</b><br/>The PRD has been approved for a release.",
+    "b>ST-009</b> Engineering lead records whether the set can be built from<br/><i>Engineering lead</i",
+    "b>ST-007</b> Delivery lead checks the PRD can carry a backlog<br/><i>Delivery lead</i",
+    "b>ST-008</b> Delivery lead derives features, epics and stories<br/><i>Delivery lead</i",
+    "b>End state</b><br/>Features, epics, stories and spikes exist for release 1, each naming the PRD requirement ids behind it, and no task or estimate has been invented yet."
+  ],
+  "edges": 4,
+  "png": "J-002_imagen.png",
+  "prompt": "J-002_imagen.prompt.txt",
+  "kind": "cover",
+  "aspect": "16:9",
+  "engine_hint": "auto",
+  "backend": "imagen",
+  "policy": "imagen-cli-bracket",
+  "model": "gemini-3-pro-image",
+  "attempts": [
+    {
+      "backend": "imagen",
+      "exit_code": 0
+    }
+  ]
+}
