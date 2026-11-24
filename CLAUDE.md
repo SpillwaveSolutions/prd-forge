@@ -17,7 +17,7 @@ prd-forge is a Claude Code plugin that interviews a domain expert and writes a p
 ```bash
 claude plugin validate .                     # manifest and hooks module
 claude plugin test .                         # the pane tests, hooks/register.test.tsx
-node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs scripts/prd-wiki.test.mjs scripts/prd-comments.test.mjs
+node --test scripts/*.test.mjs
 node --test --test-name-pattern="the 0.4.1 bug" scripts/prd-diagrams.test.mjs   # one test
 
 node scripts/prd-details.mjs docs/prd/prd-forge             # write each body's details block from its front matter

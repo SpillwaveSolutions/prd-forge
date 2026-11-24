@@ -1168,7 +1168,7 @@ def build_docx(root, rest, out_path, title):
 
     para("Contents", style="Heading 2")
     toc = doc.add_paragraph()
-    field(toc, 'TOC \\o "1-1" \\h \\z \\u', "Open this document in Word and choose Update Field to list the page numbers.")
+    field(toc, 'TOC \\o "1-2" \\h \\z \\u', "Open this document in Word and choose Update Field to list the page numbers.")
     para("Section grades", style="Heading 3")
     md_table({"header": ["§", "Section", "Status", "Grade", "Blocking"],
               "rows": [[str(d["front"].get("section", SECTION_OF_KIND.get(d["front"]["kind"], ""))),
@@ -1296,7 +1296,7 @@ def main():
                                 capture_output=True, text=True)
         if result.returncode != 0:
             print(result.stdout + result.stderr, file=sys.stderr)
-            sys.exit("prd_export: the PDF step failed (is Chromium available?)")
+            sys.exit("prd_export: the PDF step failed (requires Playwright and Chromium)")
         made.append(pdf_path)
         if not args.keep_html:
             os.remove(html_path)

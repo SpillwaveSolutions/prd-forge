@@ -189,7 +189,7 @@ own PRD exported that way. Look at it before you run this on your own set.
 | --- | --- |
 | PyYAML | Both. `pip install pyyaml` |
 | python-docx | The Word file. `pip install python-docx` |
-| Chromium, or Playwright | The PDF. Playwright also puts page numbers in the footer |
+| Playwright and Chromium | PDF export, including page numbers in the footer. Run `npm install --no-save playwright` and `npx playwright install chromium` from this repository, or use `CHROME_PATH` to point Playwright at an existing Chrome executable. Word-only export needs neither. |
 | `prd-diagrams.mjs`, run first | The diagrams. Without it, wireframes print as text sketches |
 
 Pass `--docx` or `--pdf` to produce only one of them, so a missing dependency for
