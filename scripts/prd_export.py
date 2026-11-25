@@ -125,13 +125,17 @@ def image_file(path):
 
     A designed figure, `<id>_imagen.png`, wins when its sidecar's hash matches
     the diagram's current source. A stale one is skipped with a warning, so a
-    reader never sees a figure of an older diagram. Otherwise the link's own
-    file, or its .png twin.
+    reader never sees a figure of an older diagram. A journey overview always
+    uses its drawn figure: an image model reroutes its rejoin arrows (#37), and
+    a wrong rejoin step misstates the journey. Otherwise the link's own file,
+    or its .png twin.
     """
     full = os.path.join(SET_DIR, path)
     stem = re.sub(r"\.(svg|png)$", "", full)
     designed, sidecar = stem + "_imagen.png", stem + "_imagen.json"
     source = next((stem + ext for ext in (".mmd", ".puml") if os.path.exists(stem + ext)), None)
+    if stem.endswith("-overview"):
+        source = None
     if os.path.exists(designed) and os.path.exists(sidecar) and source:
         import hashlib, json
         try:
@@ -151,20 +155,27 @@ ACRONYMS = {"prd", "ai", "api", "ui", "ux", "id", "url", "pdf"}
 
 
 def display_name(name):
-    """A product or document name as a reader sees it.
+    """A product name as a reader sees it.
 
-    A name with any capital letter is kept: its author chose that case. An
-    all-lowercase name, like a slug, becomes title case with known acronyms in
-    capitals, so `prd-forge` reads PRD Forge.
+    A name with any capital letter is kept whole: its author chose that case,
+    as in `Acme pay-as-you-go`. An all-lowercase name, like a slug, becomes
+    title case with known acronyms in capitals, so `prd-forge` reads PRD Forge.
     """
     name = str(name or "").strip()
-    title = lambda slug: " ".join(w.upper() if w in ACRONYMS else w[:1].upper() + w[1:]
-                                  for w in re.split(r"[_-]+", slug) if w)
-    if name == name.lower():
-        return " ".join(title(w) for w in name.split())
-    # Mixed case: only a slug inside it changes, as in `prd-forge PRD`.
-    return " ".join(title(w) if w == w.lower() and re.search(r"[a-z][_-][a-z]", w) else w
-                    for w in name.split())
+    if name != name.lower():
+        return name
+    return " ".join(w.upper() if w in ACRONYMS else w[:1].upper() + w[1:]
+                    for w in re.split(r"[\s_-]+", name) if w)
+
+
+def display_title(title, product):
+    """The document title: the product name inside it is shown as display_name
+    shows it, and the rest of the title is kept, so `prd-forge PRD` reads
+    PRD Forge PRD and `Acme pay-as-you-go PRD` does not change."""
+    title, product = str(title or "").strip(), str(product or "").strip()
+    if product and product in title:
+        return title.replace(product, display_name(product), 1)
+    return display_name(title)
 
 
 INLINE = re.compile(r"(\*\*.+?\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|_[^_]+_|\*[^*\s][^*]*?\*)")
@@ -481,17 +492,33 @@ def h_figure(b):
             f'<figcaption>{e(b["alt"])}</figcaption></figure>')
 
 
+HALF_COLUMN_PX = 288  # 3 inches: a Word half column, and less than a PDF one
+
+
 def paired(bs):
-    """Two upright figures in a row share the width, so neither stands alone on a page."""
-    def upright(b):
+    """Two upright figures in a row share the width, so neither stands alone on a page.
+
+    An upright figure also pairs with a narrow neighbor that fits half the
+    column at its own size. Alone, a tall figure that misses the end of a page
+    leaves most of that page blank (#37).
+    """
+    def drawn(b):
         found = b["type"] == "image" and image_file(b["path"])
         if not found or found.endswith("_imagen.png"):  # a designed figure fills the width
-            return False
-        w, h = png_size(found)
+            return None
+        return found
+    def upright(b):
+        found = drawn(b)
+        w, h = png_size(found) if found else (0, 0)
         return bool(w and h and w / h < 1.3)
+    def narrow(b):
+        found = drawn(b)
+        return bool(found and (figure_width(found) or 10 ** 6) <= HALF_COLUMN_PX)
+    def fits(a, b):
+        return (upright(a) and (upright(b) or narrow(b))) or (narrow(a) and upright(b))
     out, i = [], 0
     while i < len(bs):
-        if i + 1 < len(bs) and upright(bs[i]) and upright(bs[i + 1]):
+        if i + 1 < len(bs) and fits(bs[i], bs[i + 1]):
             out.append({"type": "figrow", "images": [bs[i], bs[i + 1]]})
             i += 2
         else:
@@ -1277,7 +1304,7 @@ def main():
     out_dir = os.path.abspath(args.out or directory)
     os.makedirs(out_dir, exist_ok=True)
     stem = root["front"].get("slug") or os.path.basename(directory)
-    title = display_name(root["front"].get("title", stem))
+    title = display_title(root["front"].get("title", stem), root["front"].get("product"))
     made = []
 
     if want_docx:
