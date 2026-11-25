@@ -181,7 +181,7 @@ What an approver needs from every section, then each field of this document.
 | 7 | Wireframes | draft | 91/100 | — |
 | 8 | Non-functional requirements | draft | 89/100 | — |
 | 9 | Constraints | draft | 95/100 | — |
-| 10 | Decision rights and trust rules | draft | 84/100 | — |
+| 10 | Decision rights and trust rules | draft | 94/100 | — |
 | 11 | Assumptions, risks and dependencies | draft | 96/100 | — |
 | 12 | Open questions | draft | 88/100 | — |
 | 13 | Release plan | draft | 83/100 | — |

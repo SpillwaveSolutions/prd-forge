@@ -220,10 +220,45 @@ test('each condition names what it depends on, and that it exists (FR-014)', () 
   assert.ok(missing.errors.some(e => /depends on Q-999, which does not exist/.test(e)), missing.errors.join('\n'))
 })
 
-test('only the approver who set a condition clears it (FR-014)', () => {
-  const cond = ['        conditions:', '          - condition: Q-001 is answered.', '            depends_on: [Q-001]', '            by: 2027-01-31', '            cleared: true', '            cleared_by: Someone Else']
-  const { errors } = validateFiles({ '16-change-log.md': logged(VERSION, decided('approved-with-conditions', undefined, undefined, undefined, cond)) })
-  assert.ok(errors.some(e => /cleared by Someone Else; only Richard Hightower clears it/.test(e)), errors.join('\n'))
+function clearedCondition(name, successor = []) {
+  return ['        conditions:', '          - condition: Q-001 is answered.',
+    '            depends_on: [Q-001]', '            by: 2027-01-31', '            cleared: true',
+    `            cleared_by: ${name}`, ...successor]
+}
+
+function conditionErrors(lines) {
+  return validateFiles({
+    '16-change-log.md': logged(VERSION, decided('approved-with-conditions', undefined, undefined, undefined, lines)),
+  }).errors
+}
+
+test('the original approver can still clear a condition without a successor (FR-014)', () => {
+  assert.deepEqual(conditionErrors(clearedCondition('Richard Hightower')), [])
+  assert.match(conditionErrors(clearedCondition('Someone Else')).join('\n'), /cleared by Someone Else/)
+})
+
+test('only the person named on this condition can clear it as successor (TR-001)', () => {
+  const name = '"Pat [Acting] #2"'
+  for (const record of ['https://github.com/org/repo/issues/15', 'https://github.com/org/repo/pull/8#issuecomment-32']) {
+    const successor = ['            successor:', `              name: ${name}`, `              record: ${record}`]
+    assert.deepEqual(conditionErrors(clearedCondition(name, successor)), [])
+    const second = clearedCondition(name).slice(1)
+    const errors = conditionErrors([...clearedCondition(name, successor), ...second])
+    assert.equal(errors.length, 1, errors.join('\n'))
+    assert.match(errors[0], /condition 2 .*cleared by Pat \[Acting\] #2/)
+  }
+})
+
+test('a successor needs a name and an issue or PR record for the handoff (TR-001)', () => {
+  const successor = ['            successor:', '              name: Pat Doe']
+  const entries = [
+    [successor, /missing record/],
+    [[...successor, '              record: https://github.com/org/repo'], /record: .*does not match/],
+    [['            successor:', '              record: https://github.com/org/repo/issues/2'], /missing name/],
+  ]
+  for (const [fields, expected] of entries) {
+    assert.match(conditionErrors(clearedCondition('Pat Doe', fields)).join('\n'), expected)
+  }
 })
 
 test('a decision from someone not named as an approver is not an approval (FR-021)', () => {

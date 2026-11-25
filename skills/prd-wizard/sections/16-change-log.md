@@ -27,8 +27,17 @@ domains this section is also evidence.
   approval. An approval with conditions lists each in `conditions`: the
   `condition`, what it `depends_on` (at least one open question, requirement, or
   review comment, each an id that exists), the date it is due `by`, and whether
-  it is `cleared`. Only the approver who set a condition clears it: record them
-  in `cleared_by`. Add a `note` with the approver's reason. A rejection needs
+  it is `cleared`. Record the person who cleared it in `cleared_by`. Normally
+  this is the approver who set it. If they are unavailable, record the
+  designated person's name in that condition's `successor.name` and the URL
+  of the GitHub issue or pull request in `successor.record`. Record both the
+  designation for this condition and the decision to clear it in that thread.
+  Copy the successor's exact name into `cleared_by` only after they clear it.
+  With no recorded successor or decision, leave the condition open. This
+  handoff applies to one condition of one version. Release approval still
+  requires a named approver. Forge checks the local entry against the schema.
+  The linked thread is the approval record.
+  Add a `note` with the approver's reason. A rejection needs
   one; the validator fails the set without it.
 - When the sponsor approves while a review comment has no response, record each
   such comment as a condition that `depends_on` its `RC-nnn` id.

@@ -8,9 +8,9 @@ updated: 2026-10-30
 domain: product management tooling
 section: 10
 order: 110
-score: 84
+score: 94
 blocking: 0
-graded: 2026-10-30
+graded: 2026-11-24
 decisions:
   - id: TR-001
     decision: Approve a PRD for a release
@@ -22,13 +22,17 @@ decisions:
       The summary, the scope, every section's state and grade, every blocking
       defect, and every open question with its decider and date.
     escalation: >-
-      No substitute approver, and approval waits. Where no sponsor exists at all,
+      Release approval waits for its named approver. Where no sponsor exists at all,
       such as a solo expert or an internal tool with no PER-003, the expert approves
       their own set under this rule, shown the same evidence, and the change log
       records that no separate approver existed. A set is never treated as approved
       because its score is high. A rejection goes back to the expert with its
       reason, and the set reads as not approved until a later version is
-      approved.
+      approved. If the person who set a condition is unavailable, only the
+      person named as their successor for that condition in the approval record
+      may clear it. The expert records the designation and the clearance against
+      the original version and condition. While either is missing, the condition
+      stays open. Succession gives no authority to approve a release.
     acceptance:
       - >-
         Given a set with any blocking defect, when approval is sought, then the
@@ -46,8 +50,12 @@ decisions:
         Given an approver who approves with conditions, when the approval is
         recorded, then each condition names the open question, requirement, or
         review comment it depends on and a date, and the set reads as
-        approved-with-conditions until every condition is cleared by that same
-        approver.
+        approved-with-conditions until every condition is cleared.
+      - >-
+        Given an unavailable sponsor and two open conditions, when the successor
+        recorded for the first clears it, then that clearance names the successor
+        and the approval stays conditional on the second. With no successor
+        recorded for the second, it stays open.
   - id: TR-002
     decision: Set a section's state to final
     stages: [ST-004]
@@ -424,7 +432,7 @@ Every item in this document, with each of its fields.
 
 **Evidence required:** The summary, the scope, every section's state and grade, every blocking defect, and every open question with its decider and date.
 
-**Escalation:** No substitute approver, and approval waits. Where no sponsor exists at all, such as a solo expert or an internal tool with no PER-003, the expert approves their own set under this rule, shown the same evidence, and the change log records that no separate approver existed. A set is never treated as approved because its score is high. A rejection goes back to the expert with its reason, and the set reads as not approved until a later version is approved.
+**Escalation:** Release approval waits for its named approver. Where no sponsor exists at all, such as a solo expert or an internal tool with no PER-003, the expert approves their own set under this rule, shown the same evidence, and the change log records that no separate approver existed. A set is never treated as approved because its score is high. A rejection goes back to the expert with its reason, and the set reads as not approved until a later version is approved. If the person who set a condition is unavailable, only the person named as their successor for that condition in the approval record may clear it. The expert records the designation and the clearance against the original version and condition. While either is missing, the condition stays open. Succession gives no authority to approve a release.
 
 **Acceptance:**
 
@@ -432,7 +440,8 @@ Every item in this document, with each of its fields.
 2. Given a set with no recorded approval, when anyone reads its state, then it reads as not approved, whatever its scores are.
 3. Given an engagement with no sponsor, when the expert approves their own set, then the approval records that no separate approver existed.
 4. Given an approver who rejects the set, when the decision is recorded, then the rejection carries its reason, and the set reads as not approved.
-5. Given an approver who approves with conditions, when the approval is recorded, then each condition names the open question, requirement, or review comment it depends on and a date, and the set reads as approved-with-conditions until every condition is cleared by that same approver.
+5. Given an approver who approves with conditions, when the approval is recorded, then each condition names the open question, requirement, or review comment it depends on and a date, and the set reads as approved-with-conditions until every condition is cleared.
+6. Given an unavailable sponsor and two open conditions, when the successor recorded for the first clears it, then that clearance names the successor and the approval stays conditional on the second. With no successor recorded for the second, it stays open.
 
 ### TR-002
 

@@ -346,8 +346,8 @@ terms:
       approves with conditions, or rejects the whole set for a release under
       TR-001. A set names one or more approvers: the sponsor, or the expert when
       no sponsor exists. Only a named approver's decision counts. A set approved
-      with conditions reads that way until the approver who stated each
-      condition clears it.
+      with conditions reads that way until each condition has been cleared under
+      TR-001.
     see_also:
       - condition
       - root document
@@ -359,8 +359,9 @@ terms:
     meaning: >-
       What an approver who approves with conditions requires before the approval
       is unconditional. Each condition names the open question, requirement, or
-      review comment it depends on and a date, and only the approver who stated
-      it clears it. When the sponsor approves while a review comment has no
+      review comment it depends on and a date. The original approver clears it
+      or, when unavailable, the successor named for that condition in the
+      approval record. When the sponsor approves while a review comment has no
       response, the sponsor states a condition on that comment, and the expert
       records it (FR-014).
     see_also:
@@ -1698,7 +1699,7 @@ Every item in this document, with each of its fields.
 
 ### Approver
 
-**Meaning:** A person the set names, by name and role under FR-021, who approves, approves with conditions, or rejects the whole set for a release under TR-001. A set names one or more approvers: the sponsor, or the expert when no sponsor exists. Only a named approver's decision counts. A set approved with conditions reads that way until the approver who stated each condition clears it.
+**Meaning:** A person the set names, by name and role under FR-021, who approves, approves with conditions, or rejects the whole set for a release under TR-001. A set names one or more approvers: the sponsor, or the expert when no sponsor exists. Only a named approver's decision counts. A set approved with conditions reads that way until each condition has been cleared under TR-001.
 
 **See also:**
 
@@ -1710,7 +1711,7 @@ Every item in this document, with each of its fields.
 
 ### Condition
 
-**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question, requirement, or review comment it depends on and a date, and only the approver who stated it clears it. When the sponsor approves while a review comment has no response, the sponsor states a condition on that comment, and the expert records it (FR-014).
+**Meaning:** What an approver who approves with conditions requires before the approval is unconditional. Each condition names the open question, requirement, or review comment it depends on and a date. The original approver clears it or, when unavailable, the successor named for that condition in the approval record. When the sponsor approves while a review comment has no response, the sponsor states a condition on that comment, and the expert records it (FR-014).
 
 **See also:**
 

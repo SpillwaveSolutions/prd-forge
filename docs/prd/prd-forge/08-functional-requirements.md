@@ -330,7 +330,8 @@ requirements:
         Given a sponsor who approves while a review comment has no response,
         when the expert records the approval, then each such comment is recorded
         as a condition on it, with the comment's id and the date the sponsor
-        sets for it, and only the sponsor clears it.
+        sets for it. The sponsor clears it, or their recorded successor clears that
+        condition under TR-001 when the sponsor is unavailable.
     priority: must
     shown_in: report
     journey_stage: ST-006
@@ -949,7 +950,7 @@ Every item in this document, with each of its fields.
 2. Given a recorded approval, when the set is read later, then the version approved, the approver, their role, the date and the decision are all present.
 3. Given an approved set that is then changed, when the change is written, then a new version is recorded and the earlier approval is not represented as covering it.
 4. Given an approver who rejects the set, when the expert records it, then the rejection, its reason, the approver, and the date are recorded against the version, and the set reads as not approved.
-5. Given a sponsor who approves while a review comment has no response, when the expert records the approval, then each such comment is recorded as a condition on it, with the comment's id and the date the sponsor sets for it, and only the sponsor clears it.
+5. Given a sponsor who approves while a review comment has no response, when the expert records the approval, then each such comment is recorded as a condition on it, with the comment's id and the date the sponsor sets for it. The sponsor clears it, or their recorded successor clears that condition under TR-001 when the sponsor is unavailable.
 
 **Priority:** must
 
