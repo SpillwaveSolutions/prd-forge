@@ -8,7 +8,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { cpSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs'
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -315,11 +315,13 @@ test('the export shows an all-lowercase product name in title case, and keeps a 
 
 test('the export title changes only the product name inside it, and keeps a cased product', { skip: !hasUv }, () => {
   const pairs = [['prd-forge PRD', 'prd-forge'], ['Acme pay-as-you-go PRD', 'Acme pay-as-you-go'],
-    ['acme returns', 'acme returns'], ['Returns (v2) PRD', 'acme'], ['prd-forge PRD', null]]
+    ['acme returns', 'acme returns'], ['Returns (v2) PRD', 'acme'], ['prd-forge PRD', null],
+    ['Retail Services PRD', 'ai'], ['ai-kit and the ai PRD', 'ai'], ['my-prd-forge PRD', 'prd-forge']]
   const run = exportPy(`import json\nprint(json.dumps([x.display_title(t, p) for t, p in ${JSON.stringify(pairs).replace(/null/g, 'None')}]))`)
   assert.equal(run.status, 0, run.err)
   assert.deepEqual(JSON.parse(run.out),
-    ['PRD Forge PRD', 'Acme pay-as-you-go PRD', 'Acme Returns', 'Returns (v2) PRD', 'prd-forge PRD'])
+    ['PRD Forge PRD', 'Acme pay-as-you-go PRD', 'Acme Returns', 'Returns (v2) PRD', 'prd-forge PRD',
+      'Retail Services PRD', 'ai-kit and the AI PRD', 'my-prd-forge PRD'])
 })
 
 test('a journey overview exports its drawn figure, never a designed one, so each rejoin lands where the source says', { skip: !hasUv }, () => {
@@ -332,6 +334,25 @@ test('a journey overview exports its drawn figure, never a designed one, so each
   const run = exportPy(`x.SET_DIR = ${JSON.stringify(dir)}\nprint(x.image_file("diagrams/J-001-overview.svg"))`)
   assert.equal(run.status, 0, run.err)
   assert.match(run.out, /J-001-overview\.png$/)
+})
+
+test('only a journey overview gives up its designed figure; other diagrams keep the hash rule', { skip: !hasUv }, () => {
+  const dir = mkdtempSync(join(tmpdir(), 'prd-set-'))
+  const diagrams = join(dir, 'diagrams')
+  mkdirSync(diagrams)
+  cpSync(join(REPO, 'docs/prd/prd-forge/diagrams/J-002.png'), join(diagrams, 'x.png'))
+  for (const stem of ['architecture-overview', 'architecture-detail', 'J-001-overview']) {
+    const source = `flowchart LR\n  a --> b %% ${stem}\n`
+    writeFileSync(join(diagrams, `${stem}.mmd`), source)
+    for (const png of [`${stem}.png`, `${stem}_imagen.png`]) cpSync(join(diagrams, 'x.png'), join(diagrams, png))
+    writeFileSync(join(diagrams, `${stem}_imagen.json`), JSON.stringify({ hash: createHash('sha256').update(source).digest('hex') }))
+  }
+  const run = exportPy(`x.SET_DIR = ${JSON.stringify(dir)}\nfor s in ("architecture-overview", "architecture-detail", "J-001-overview"): print(x.image_file(f"diagrams/{s}.svg"))`)
+  assert.equal(run.status, 0, run.err)
+  const picked = run.out.split('\n')
+  assert.match(picked[0], /architecture-overview_imagen\.png$/)
+  assert.match(picked[1], /architecture-detail_imagen\.png$/)
+  assert.match(picked[2], /J-001-overview\.png$/)
 })
 
 test('a tall figure shares its row with a narrow neighbor, so it never stands alone on a mostly blank page', { skip: !hasUv }, () => {

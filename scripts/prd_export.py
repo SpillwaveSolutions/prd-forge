@@ -134,7 +134,7 @@ def image_file(path):
     stem = re.sub(r"\.(svg|png)$", "", full)
     designed, sidecar = stem + "_imagen.png", stem + "_imagen.json"
     source = next((stem + ext for ext in (".mmd", ".puml") if os.path.exists(stem + ext)), None)
-    if stem.endswith("-overview"):
+    if re.fullmatch(r"J-\d+-overview", os.path.basename(stem)):
         source = None
     if os.path.exists(designed) and os.path.exists(sidecar) and source:
         import hashlib, json
@@ -169,12 +169,14 @@ def display_name(name):
 
 
 def display_title(title, product):
-    """The document title: the product name inside it is shown as display_name
-    shows it, and the rest of the title is kept, so `prd-forge PRD` reads
-    PRD Forge PRD and `Acme pay-as-you-go PRD` does not change."""
+    """The document title: the product name, where it stands as a whole word or
+    phrase in the title, is shown as display_name shows it, and the rest of the
+    title is kept. `prd-forge PRD` reads PRD Forge PRD, `Acme pay-as-you-go PRD`
+    does not change, and product `ai` leaves `Retail Services PRD` alone."""
     title, product = str(title or "").strip(), str(product or "").strip()
-    if product and product in title:
-        return title.replace(product, display_name(product), 1)
+    whole = product and re.search(r"(?<![\w-])" + re.escape(product) + r"(?![\w-])", title)
+    if whole:
+        return title[:whole.start()] + display_name(product) + title[whole.end():]
     return display_name(title)
 
 
