@@ -4,13 +4,13 @@ kind: personas
 schema: prd-forge/personas@1
 title: Users and personas
 status: draft
-updated: 2026-10-30
+updated: 2026-11-25
 domain: product management tooling
 section: 4
 order: 40
-score: 82
+score: 86
 blocking: 0
-graded: 2026-10-30
+graded: 2026-11-25
 personas:
   - id: PER-001
     name: "Product manager (senior: manager to principal), in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one"
@@ -55,9 +55,11 @@ personas:
     name: Engineering lead (staff or principal engineer) on the development team, who must build from the PRD
     short_name: EngineerLead
     population: >-
-      One or two per PRD, so 2 to 4 at once in an organization running 2 PRDs at
-      once.
-    external: false
+      One or two per PRD, or 2 to 4 across two concurrent PRDs. On a client
+      contract (S-001), count the lead from the consultancy or the client,
+      according to who will build from the PRD. On an in-house team (S-002),
+      count the organization's own lead.
+    external: varies by engagement
     problems: [P-001, P-002]
     basis: >-
       Assumed, not researched, as section 1's evidence note says. The three
@@ -145,14 +147,18 @@ links:
 | ID | Role | Per PRD | Frequency | Decides |
 | --- | --- | --- | --- | --- |
 | PER-001 | Senior product manager in a consultancy or an in-house product team: the domain expert, or a proxy who speaks for one | One; 2 PRDs at once and 6 a year per organization | 3 working sittings a week of 1 to 2 hours, for 1 to 3 weeks per PRD | What the product must do, scope, the domain's terms, when an interview ends, drafts, section states, whether to accept or refute a grade, domain facts, whether the domain check may research outside the session, and when the set is offered; not the PRD itself where a sponsor exists |
-| PER-002 | Engineering lead (staff or principal engineer) on the development team | One or two | At estimation and at each release planning | How it is built, and whether a set can be built from, with its gaps (TR-006) |
+| PER-002 | Engineering lead (staff or principal engineer) on the team that will build from the PRD | One or two | At estimation and at each release planning | How it is built, and whether a set can be built from, with its gaps (TR-006) |
 | PER-003 | Sponsor: the budget holder (director or partner), who is also the approver | One | Once per version, about 6 a year | Approves the PRD for a release, with or without conditions, or rejects it (TR-001) |
 | PER-004 | Delivery lead (delivery manager or product owner) on the development team | One | Once per release, about 6 a year | The backlog's shape and order, and whether a backlog can be mapped at all |
 
-No persona is external. Under a client contract, in segment S-001, the
-sponsor, the engineering lead, and the delivery lead all work for the
-consultancy. The client's staff only supply domain knowledge to the expert, and
-they do not use the product.
+On a client contract (S-001), the engineering lead (PER-002) can work for the
+consultancy or for the client. A client lead who reads the set cold and records
+the buildability verdict is an external user. In ST-009 the lead records that
+verdict under TR-006, whichever organization employs them. The document owner's
+existing access rules govern which lead can read the set (NFR-012).
+Client staff who only supply domain knowledge remain contributors to the
+expert's interview. The sponsor and delivery lead work for the consultancy.
+In an in-house engagement (S-002), the engineering lead is internal.
 
 ## PER-001 is the primary persona
 
@@ -221,9 +227,9 @@ Every item in this document, with each of its fields.
 
 **Short name:** EngineerLead
 
-**Population:** One or two per PRD, so 2 to 4 at once in an organization running 2 PRDs at once.
+**Population:** One or two per PRD, or 2 to 4 across two concurrent PRDs. On a client contract (S-001), count the lead from the consultancy or the client, according to who will build from the PRD. On an in-house team (S-002), count the organization's own lead.
 
-**External:** no
+**External:** varies by engagement
 
 **Problems:** P-001, P-002
 

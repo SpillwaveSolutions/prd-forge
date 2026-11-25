@@ -173,7 +173,7 @@ What an approver needs from every section, then each field of this document.
 | 1 | Problem and opportunity | draft | 83/100 | — |
 | 2 | Target customer and market | draft | 75/100 | — |
 | 3 | Business objectives and success metrics | draft | 88/100 | — |
-| 4 | Users and personas | draft | 82/100 | — |
+| 4 | Users and personas | draft | 86/100 | — |
 | 5 | User journeys | draft | 94/100 | — |
 | 5 | Scenarios | draft | 89/100 | — |
 | 6 | Scope | draft | 88/100 | — |

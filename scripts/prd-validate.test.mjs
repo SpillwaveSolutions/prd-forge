@@ -113,6 +113,16 @@ test('a scenario that names a lifecycle that does not exist fails the set', () =
   assert.ok(errors.some(e => /names lifecycle LC-009, which does not exist/.test(e)), errors.join('\n'))
 })
 
+test('a persona may be internal, external, or vary by engagement', () => {
+  const file = '04-personas.md'
+  const setExternal = value => text => text.replace('external: varies by engagement', 'external: ' + value)
+  for (const value of ['false', 'true', 'varies by engagement']) {
+    assert.deepEqual(validateEdited(file, setExternal(value)), [])
+  }
+  failsWith(file, setExternal('"false"'), /external.*is not one of/)
+  failsWith(file, setExternal('unknown'), /external.*is not one of/)
+})
+
 test('a persona short name with a space, or used twice, fails the set', () => {
   const spaced = validateEdited('04-personas.md', text => text.replace('short_name: Sponsor\n', 'short_name: The Sponsor\n'))
   assert.ok(spaced.some(e => /short_name.*does not match/.test(e)), spaced.join('\n'))
