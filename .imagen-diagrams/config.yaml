@@ -1,0 +1,6 @@
+# imagen-diagrams settings for this repository. The theme file lives beside
+# this one; copy it into the skill's themes/extracted/ folder before a render,
+# because the skill loads themes only from its own folder.
+theme: extracted/prd-forge
+density: article
+aspect: "4:3"

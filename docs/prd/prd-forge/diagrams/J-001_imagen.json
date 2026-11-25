@@ -1,0 +1,33 @@
+{
+  "source": "J-001.mmd",
+  "theme": "extracted/prd-forge",
+  "density": "article",
+  "hash": "4aa7cb93322a7f8431a0622430442deb8ca44dc2d060b5aa69978a23e994cf94",
+  "kind_of_diagram": "flowchart",
+  "language": "mermaid",
+  "nodes": [
+    "b>Trigger</b><br/>The expert has been asked to specify a product, or has an idea they want built, and has nothing written down.",
+    "b>ST-001</b> Expert states the idea and their domain<br/><i>Domain expert</i",
+    "b>ST-002</b> Expert is taught a section, then interviewed on it<br/><i>Domain expert</i",
+    "b>ST-003</b> Expert reads the draft and its grade<br/><i>Domain expert</i",
+    "b>ST-004</b> Expert answers the one question that improves it most<br/><i>Domain expert</i",
+    "b>ST-005</b> Expert sees what a development team could not build<br/><i>Domain expert</i",
+    "b>ST-006</b> Sponsor approves the PRD for a release<br/><i>Sponsor</i",
+    "b>End state</b><br/>The set is approved, with or without recorded conditions, at a named version, every section has a grade with no blocking defects, every open question has a decider and a date, and the buildability review reports no gap that is neither closed nor owned."
+  ],
+  "edges": 7,
+  "png": "J-001_imagen.png",
+  "prompt": "J-001_imagen.prompt.txt",
+  "kind": "cover",
+  "aspect": "3:4",
+  "engine_hint": "auto",
+  "backend": "imagen",
+  "policy": "imagen-cli-bracket",
+  "model": "gemini-3-pro-image",
+  "attempts": [
+    {
+      "backend": "imagen",
+      "exit_code": 0
+    }
+  ]
+}

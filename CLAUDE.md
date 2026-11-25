@@ -17,7 +17,7 @@ prd-forge is a Claude Code plugin that interviews a domain expert and writes a p
 ```bash
 claude plugin validate .                     # manifest and hooks module
 claude plugin test .                         # the pane tests, hooks/register.test.tsx
-node --test scripts/prd-validate.test.mjs scripts/prd-diagrams.test.mjs scripts/prd-wiki.test.mjs scripts/prd-comments.test.mjs
+node --test scripts/*.test.mjs
 node --test --test-name-pattern="the 0.4.1 bug" scripts/prd-diagrams.test.mjs   # one test
 
 node scripts/prd-details.mjs docs/prd/prd-forge             # write each body's details block from its front matter
@@ -88,6 +88,8 @@ A PRD is one directory, `<docs_dir>/<slug>/`, of markdown files. Each file has Y
 - The hand-written PlantUML Salt drawing, `diagrams/WF-nnn.puml`, replaces the sketch in the export.
 
 The script renders every source to `.svg` and `.png` and writes the image links into the documents. Beside each generated source it writes a text view, `<id>.txt`, from `scripts/prd-ascii.mjs`: strict ASCII, at most 60 columns. The terminal pane draws that text in place of the image. It is idempotent. The export embeds each `.png`. Diagrams name a persona by its `short_name` (required, such as `DomainExpert`), never by its `PER-nnn` id. All Mermaid label text goes through `label()`, which escapes `#`, `;`, `"`, `<`, and `>` in one pass. Use it for any new label.
+
+Every Mermaid diagram is drawn with `scripts/mermaid-theme.json`, the export's palette. A change to that file redraws every diagram on the next run. A designed figure, `diagrams/<id>_imagen.png`, comes from the `imagen-diagrams` skill with the theme in `.imagen-diagrams/`. The export uses it in place of the Mermaid PNG only while the `hash` in `<id>_imagen.json` matches the current `<id>.mmd`. A stale figure is skipped with a warning, so render it again after the source changes.
 
 ### The mod: the PRD pane
 

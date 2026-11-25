@@ -14,6 +14,7 @@ graded: 2026-10-29
 changes:
   - version: 0.14.0
     date: 2026-11-02
+    title: Roadmap item RM-001 back on track
     author: Richard Hightower
     summary: >-
       RM-001 moves from at risk to on track: the parties behind D-002 and
@@ -34,6 +35,7 @@ changes:
       - Q-019
   - version: 0.13.0
     date: 2026-11-01
+    title: A roadmap beside the release plan
     author: Richard Hightower
     summary: >-
       The set gains a roadmap, 18-roadmap.md, beside the release plan in
@@ -46,6 +48,7 @@ changes:
       - 13
   - version: 0.12.0
     date: 2026-10-30
+    title: Approver details and domain research
     author: Richard Hightower
     summary: >-
       The root names its approver by name and role under FR-021, and its
@@ -64,6 +67,7 @@ changes:
       - 11
   - version: 0.11.0
     date: 2026-10-29
+    title: Answering a sponsor's comments
     author: Richard Hightower
     summary: >-
       FR-023 split out of FR-022: FR-022 is what the sponsor sees in the next
@@ -88,6 +92,7 @@ changes:
       - 15
   - version: 0.10.0
     date: 2026-10-28
+    title: Sponsor comments on an exported copy
     author: Richard Hightower
     summary: >-
       FR-022 added as a should in REL-001: a sponsor comments on an exported copy
@@ -106,6 +111,7 @@ changes:
       - 15
   - version: 0.9.0
     date: 2026-10-27
+    title: Evidence, satisfaction scores, and approvers
     author: Richard Hightower
     summary: >-
       Problems carry counted, sourced evidence. Personas have named roles and
@@ -135,6 +141,7 @@ changes:
       - Q-011
   - version: 0.8.1
     date: 2026-10-27
+    title: Glossary terms and observable outcomes
     author: Richard Hightower
     summary: >-
       The glossary defines buildability review, finding, root document, approver, condition,
@@ -165,6 +172,7 @@ changes:
       - 14
   - version: 0.8.0
     date: 2026-10-27
+    title: The expert's priorities
     author: Richard Hightower
     summary: >-
       Sets the expert's priorities. Ten requirements stay must and eight become
@@ -180,6 +188,7 @@ changes:
       - 13
   - version: 0.7.0
     date: 2026-10-27
+    title: Objective, primary persona, and approver
     author: Richard Hightower
     summary: >-
       Names the root's objective, primary persona, and approver, from section 3,
@@ -192,6 +201,7 @@ changes:
       - 6
   - version: 0.6.0
     date: 2026-10-27
+    title: Links between problems, objectives, and rules
     author: Richard Hightower
     summary: >-
       Each problem names its persona, and each objective names the problems it
@@ -211,6 +221,7 @@ changes:
       - 11
   - version: 0.5.0
     date: 2026-10-26
+    title: Stage acceptance and the section lifecycle
     author: Richard Hightower
     summary: >-
       Every journey stage gains Given/When/Then acceptance. The scenarios
@@ -222,6 +233,7 @@ changes:
       - 5
   - version: 0.4.0
     date: 2026-10-26
+    title: Navigation and refresh requirements
     author: Richard Hightower
     summary: >-
       Adds FR-017, moving between sections without losing one's place, and FR-018,
@@ -239,6 +251,7 @@ changes:
       - 14
   - version: 0.3.0
     date: 2026-10-26
+    title: Wireframes
     author: Richard Hightower
     summary: >-
       Adds wireframes to section 7. Each functional requirement now says where its
@@ -251,6 +264,7 @@ changes:
       - 14
   - version: 0.2.0
     date: 2026-10-26
+    title: Fixes from the first grading
     author: Richard Hightower
     summary: >-
       Fixes every defect the adversarial grading and the buildability review found
@@ -282,6 +296,7 @@ changes:
       - 14
   - version: 0.1.0
     date: 2026-10-23
+    title: First draft
     author: Richard Hightower
     summary: >-
       First draft of the whole set, written with prd-forge's own conventions as the
@@ -482,6 +497,8 @@ Every item in this document, with each of its fields.
 
 **Date:** 2026-11-02
 
+**Title:** Roadmap item RM-001 back on track
+
 **Author:** Richard Hightower
 
 **Sections:** 11, 12, 13
@@ -494,6 +511,8 @@ Every item in this document, with each of its fields.
 
 **Date:** 2026-11-01
 
+**Title:** A roadmap beside the release plan
+
 **Author:** Richard Hightower
 
 **Sections:** 13
@@ -503,6 +522,8 @@ Every item in this document, with each of its fields.
 **Summary:** The root names its approver by name and role under FR-021, and its details block now carries what FR-013 asks the approver to see: the scope, each section's state and grade, every open question with its decider and date, and where any blocking defect is. TR-015 settles the domain check's research: on by default, carrying only the names of standards, terms of art, and the domain. The expert turns it off for a set, and PER-001's authority now includes that right. An organization's own policy can forbid it for every set. NFR-008 and A-005 state that default. A minor version under the versioning policy: new content, nothing structural.
 
 **Date:** 2026-10-30
+
+**Title:** Approver details and domain research
 
 **Author:** Richard Hightower
 
@@ -514,6 +535,8 @@ Every item in this document, with each of its fields.
 
 **Date:** 2026-10-29
 
+**Title:** Answering a sponsor's comments
+
 **Author:** Richard Hightower
 
 **Sections:** 5, 6, 7, 8, 10, 13, 14, 15
@@ -524,6 +547,8 @@ Every item in this document, with each of its fields.
 
 **Date:** 2026-10-28
 
+**Title:** Sponsor comments on an exported copy
+
 **Author:** Richard Hightower
 
 **Sections:** 6, 7, 10, 13, 14, 15
@@ -533,6 +558,8 @@ Every item in this document, with each of its fields.
 **Summary:** Problems carry counted, sourced evidence. Personas have named roles and frequencies, and every journey stage has the expert's satisfaction score. ST-006 happens outside the product. New requirements FR-019 to FR-021, the last naming each approver. The expert accepts or refutes each score, and a section can go back to draft. Section 9 is empty, and the set states a versioning policy. A minor version: new content, nothing structural, as Richard Hightower decided on 2026-10-27.
 
 **Date:** 2026-10-27
+
+**Title:** Evidence, satisfaction scores, and approvers
 
 **Author:** Richard Hightower
 
@@ -546,6 +573,8 @@ Every item in this document, with each of its fields.
 
 **Date:** 2026-10-27
 
+**Title:** Glossary terms and observable outcomes
+
 **Author:** Richard Hightower
 
 **Sections:** 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
@@ -555,6 +584,8 @@ Every item in this document, with each of its fields.
 **Summary:** Sets the expert's priorities. Ten requirements stay must and eight become should; SC-002 and SC-004 become should with the requirements they exercise, and the other scenarios are must. Adds SC-007, the golden thread from the first sentence to an approved set. Gives REL-001 and REL-002 exit criteria from the objective targets, with indicative dates. Names one decider for Q-005 and Q-008, with the people they consult.
 
 **Date:** 2026-10-27
+
+**Title:** The expert's priorities
 
 **Author:** Richard Hightower
 
@@ -566,6 +597,8 @@ Every item in this document, with each of its fields.
 
 **Date:** 2026-10-27
 
+**Title:** Objective, primary persona, and approver
+
 **Author:** Richard Hightower
 
 **Sections:** 4, 5, 6
@@ -575,6 +608,8 @@ Every item in this document, with each of its fields.
 **Summary:** Each problem names its persona, and each objective names the problems it addresses and the open question that will establish its baseline. Competitors have a kind, with the status quo named. Each trust rule names the stages it governs. Scenarios say where the user meets them, SC-001 names the stages it spans, and each screen or report scenario links its wireframes. The root's measure states its target. Section 11 now says D-002 and D-003 fall on REL-001's target day, not after it.
 
 **Date:** 2026-10-27
+
+**Title:** Links between problems, objectives, and rules
 
 **Author:** Richard Hightower
 
@@ -586,6 +621,8 @@ Every item in this document, with each of its fields.
 
 **Date:** 2026-10-26
 
+**Title:** Stage acceptance and the section lifecycle
+
 **Author:** Richard Hightower
 
 **Sections:** 4, 5
@@ -595,6 +632,8 @@ Every item in this document, with each of its fields.
 **Summary:** Adds FR-017, moving between sections without losing one's place, and FR-018, seeing the set as it now stands, the requirements behind the navigation and refresh controls the wireframes drew. Rewrites the wireframes from the grading findings: no sketch names a part of the product, every stage matches what its sketch shows, and new sketches draw a new set, no set at all, a re-grade, a review with gaps, and the return after a week away. Corrects the count of section documents to seventeen wherever it appeared.
 
 **Date:** 2026-10-26
+
+**Title:** Navigation and refresh requirements
 
 **Author:** Richard Hightower
 
@@ -606,6 +645,8 @@ Every item in this document, with each of its fields.
 
 **Date:** 2026-10-26
 
+**Title:** Wireframes
+
 **Author:** Richard Hightower
 
 **Sections:** 7, 14
@@ -616,6 +657,8 @@ Every item in this document, with each of its fields.
 
 **Date:** 2026-10-26
 
+**Title:** Fixes from the first grading
+
 **Author:** Richard Hightower
 
 **Sections:** 4, 5, 6, 7, 8, 10, 13, 14
@@ -625,6 +668,8 @@ Every item in this document, with each of its fields.
 **Summary:** First draft of the whole set, written with prd-forge's own conventions as the product's first real exercise. Sixteen section documents across fifteen sections drafted, the golden thread J-001 set to the expert's path from idea to approved PRD, and the release line set to ST-001 through ST-006. All three objectives recorded with unknown baselines and matching open questions rather than invented figures. C-001 records the one tension found while writing: the product is delivered inside an assistant, which would fail test 5 if named in a requirement, so it is a constraint instead.
 
 **Date:** 2026-10-23
+
+**Title:** First draft
 
 **Author:** Richard Hightower
 

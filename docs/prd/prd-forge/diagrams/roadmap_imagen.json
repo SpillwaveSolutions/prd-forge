@@ -1,0 +1,34 @@
+{
+  "source": "roadmap.mmd",
+  "theme": "extracted/prd-forge",
+  "density": "article",
+  "hash": "1e82ff2ce97a32eaabda3a973f2c5b8f6fc0aabe67a5b36adf980831476a1ea4",
+  "kind_of_diagram": "flowchart",
+  "language": "mermaid",
+  "nodes": [
+    "Hnow",
+    "b>Now</b",
+    "b>RM-001</b> One expert takes one product idea to an approved PRD<br/><i>on-track, REL-001</i",
+    "Hnext",
+    "b>Next</b",
+    "b>RM-002</b> A delivery lead derives a traceable backlog from the approved PRD<br/><i>not-started, REL-002</i",
+    "Hlater",
+    "b>Later</b",
+    "b>RM-003</b> Two experts work on different sections of one set<br/><i>not-started, REL-003</i"
+  ],
+  "edges": 3,
+  "png": "roadmap_imagen.png",
+  "prompt": "roadmap_imagen.prompt.txt",
+  "kind": "cover",
+  "aspect": "16:9",
+  "engine_hint": "auto",
+  "backend": "imagen",
+  "policy": "imagen-cli-bracket",
+  "model": "gemini-3-pro-image",
+  "attempts": [
+    {
+      "backend": "imagen",
+      "exit_code": 0
+    }
+  ]
+}
