@@ -4,13 +4,13 @@ kind: nonfunctional-requirements
 schema: prd-forge/nonfunctional-requirements@1
 title: Non-functional requirements
 status: draft
-updated: 2026-10-30
+updated: 2026-11-25
 domain: product management tooling
 section: 8
 order: 90
-score: 89
+score: 86
 blocking: 0
-graded: 2026-10-30
+graded: 2026-11-25
 requirements:
   - id: NFR-001
     category: performance
@@ -20,7 +20,10 @@ requirements:
     metric: >-
       95th and 99th percentile elapsed time from the expert submitting an answer
       to the next question or the drafted section appearing.
-    target: under 20 seconds at p95, and under 60 seconds at p99
+    target: at most 5 seconds at p95, and under 60 seconds at p99
+    source: >-
+      Rick's expert answer on Forge issue 27, November 24, 2026, supports the
+      five-second target. The p99 limit comes from the previous NFR-001.
     measurement: >-
       At least 300 timed observations per release, taken across five scripted runs
       of all seventeen section documents on a set already holding 60 requirements,
@@ -208,7 +211,7 @@ links:
 
 | ID | Category | Target |
 | --- | --- | --- |
-| NFR-001 | performance | Next question under 20s at p95 |
+| NFR-001 | performance | Next question or drafted section within 5s at p95 and under 60s at p99 |
 | NFR-002 | performance | Section grade under 90s at p95 |
 | NFR-003 | scale | 120 requirements, 10 journeys x 10 stages, 200 terms |
 | NFR-004 | durability | 100% of a set readable with no part of the product running |
@@ -223,9 +226,16 @@ links:
 
 ## Where these came from
 
-NFR-001 and NFR-002 come from PER-001's frequency: a burst of intense use. A
-20-second wait is tolerable once; across 60 questions it is 20 minutes of dead
-time and the expert stops.
+PER-001 answers many questions in a one- to two-hour sitting. If each of 60
+answers takes five seconds to bring up the next question, the expert spends
+five minutes waiting. At 20 seconds each, the wait adds up to 20 minutes.
+Rick described five seconds as tolerable, so NFR-001 targets five seconds or
+less at p95. He left the exact wait that would end a sitting unspecified. The
+existing p99 limit still bounds occasional long waits. [Expert answer on Forge
+issue 27](https://github.com/SpillwaveSolutions/prd-forge/issues/27#issuecomment-7152489818)
+
+NFR-002 measures a different wait during PER-001's burst of use, from a
+completed section draft to its grade.
 
 NFR-004 is the one that matters most and is cheapest to get wrong. PER-001 works
 in bursts weeks apart. If the set is only readable through this product, then a
@@ -276,7 +286,9 @@ Every item in this document, with each of its fields.
 
 **Metric:** 95th and 99th percentile elapsed time from the expert submitting an answer to the next question or the drafted section appearing.
 
-**Target:** under 20 seconds at p95, and under 60 seconds at p99
+**Target:** at most 5 seconds at p95, and under 60 seconds at p99
+
+**Source:** Rick's expert answer on Forge issue 27, November 24, 2026, supports the five-second target. The p99 limit comes from the previous NFR-001.
 
 **Measurement:** At least 300 timed observations per release, taken across five scripted runs of all seventeen section documents on a set already holding 60 requirements, from the expert's own side of the conversation rather than from inside the product.
 
