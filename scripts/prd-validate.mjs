@@ -1118,8 +1118,8 @@ function structural(docs, dir) {
   }
 
   // section 15: a rejection says why; a decision counts only from a named
-  // approver; each condition names what it depends on, and only its approver
-  // clears it
+  // approver; clearance belongs to the condition's original approver or its
+  // recorded successor. The schema checks the successor's name and record.
   for (const change of changes ?? []) {
     for (const approval of change?.approvals ?? []) {
       if (approval?.decision === 'rejected' && !approval?.note) errors.push(`change-log: ${change.version} rejection by ${approval.name} has no note`)
@@ -1131,7 +1131,12 @@ function structural(docs, dir) {
         const where = `change-log: ${change.version} condition ${i + 1} of ${approval?.name}`
         if ((c?.depends_on ?? []).length === 0) errors.push(`${where} names nothing it depends on`)
         for (const id of c?.depends_on ?? []) if (!allIds.has(id)) errors.push(`${where} depends on ${id}, which does not exist`)
-        if (c?.cleared === true && c?.cleared_by !== approval?.name) errors.push(`${where} is cleared by ${c?.cleared_by ?? 'nobody named'}; only ${approval?.name} clears it`)
+        if (c?.cleared === true) {
+          const clearer = c.cleared_by
+          if (!clearer || (clearer !== approval.name && clearer !== c.successor?.name)) {
+            errors.push(`${where} is cleared by ${clearer ?? 'nobody named'}; expected ${approval.name} or the successor recorded for this condition`)
+          }
+        }
       }
     }
   }

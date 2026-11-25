@@ -478,8 +478,10 @@ Each approval is recorded with the version, the approver's name and role, the
 date, and the decision. An approval with conditions records each condition as
 "conditional on <id> by <date>", where the id is the open question,
 requirement, or review comment the condition depends on, as FR-014 and FR-022
-require. Only the approver who stated a condition clears it. A rejection records
-its reason.
+require. The approver who stated a condition clears it. If they are
+unavailable, record the successor named for that condition and link its
+designation and clearance in the GitHub issue or pull request. Until that
+decision is recorded, the condition stays open. A rejection records its reason.
 
 At 0.9.0 the expert holds every other section to a score over 80, except
 section 2 until Q-004 and Q-005 are answered, and accepts this section below 80 until the set is offered for approval on 2027-03-15, because its

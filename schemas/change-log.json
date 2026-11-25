@@ -95,10 +95,27 @@
                       "cleared": {
                         "type": "boolean"
                       },
+                      "successor": {
+                        "type": "object",
+                        "description": "The person designated for this condition when its original approver is unavailable.",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "\\S"
+                          },
+                          "record": {
+                            "type": "string",
+                            "description": "The GitHub issue or pull request that records the designation and clearance.",
+                            "pattern": "^https://github\\.com/[A-Za-z0-9-]+/[A-Za-z0-9_.-]+/(issues|pull)/[1-9][0-9]*/?(#[A-Za-z0-9_-]+)?$"
+                          }
+                        },
+                        "required": ["name", "record"],
+                        "additionalProperties": false
+                      },
                       "cleared_by": {
                         "type": "string",
                         "minLength": 1,
-                        "description": "Who cleared the condition. Only the approver who set it clears it."
+                        "description": "The original approver or the recorded successor who cleared this condition."
                       }
                     },
                     "required": [
