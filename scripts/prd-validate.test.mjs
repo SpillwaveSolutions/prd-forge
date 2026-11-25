@@ -564,3 +564,9 @@ test('a stored roadmap score that its inputs do not give draws a warning (#24)',
 
 test('the release plan links the roadmap the set holds (#24)', () =>
   failsWith('14-release-plan.md', t => t.replace('roadmap_link: ./18-roadmap.md\n', 'roadmap_link: none yet\n'), /roadmap_link is "none yet", but the set's roadmap is 18-roadmap\.md/))
+
+test('a change-log title longer than 60 characters fails the set, and one of 60 passes', () => {
+  const title = n => t => t.replace('    title: Roadmap item RM-001 back on track\n', `    title: ${'x'.repeat(n)}\n`)
+  failsWith('16-change-log.md', title(61), /changes\[0\]\.title: longer than 60 characters/)
+  assert.ok(!validateEdited('16-change-log.md', title(60)).some(e => /title/.test(e)))
+})

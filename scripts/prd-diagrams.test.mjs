@@ -7,6 +7,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
 import { cpSync, mkdtempSync, readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
@@ -305,11 +306,43 @@ test('the export uses a designed figure only while its sidecar matches the diagr
 })
 
 test('the export shows an all-lowercase product name in title case, and keeps a cased one', { skip: !hasUv }, () => {
-  const names = ['prd-forge', 'prd-forge PRD', 'Acme returns PRD', 'iPhone app', 'acme_returns api', 'a (b) [c] "d"; #e <f>']
+  const names = ['prd-forge', 'Acme pay-as-you-go', 'Acme returns PRD', 'iPhone app', 'acme_returns api', 'a (b) [c] "d"; #e <f>']
   const run = exportPy(`import json\nprint(json.dumps([x.display_name(n) for n in ${JSON.stringify(names)}]))`)
   assert.equal(run.status, 0, run.err)
   assert.deepEqual(JSON.parse(run.out),
-    ['PRD Forge', 'PRD Forge PRD', 'Acme returns PRD', 'iPhone app', 'Acme Returns API', 'A (b) [c] "d"; #e <f>'])
+    ['PRD Forge', 'Acme pay-as-you-go', 'Acme returns PRD', 'iPhone app', 'Acme Returns API', 'A (b) [c] "d"; #e <f>'])
+})
+
+test('the export title changes only the product name inside it, and keeps a cased product', { skip: !hasUv }, () => {
+  const pairs = [['prd-forge PRD', 'prd-forge'], ['Acme pay-as-you-go PRD', 'Acme pay-as-you-go'],
+    ['acme returns', 'acme returns'], ['Returns (v2) PRD', 'acme'], ['prd-forge PRD', null]]
+  const run = exportPy(`import json\nprint(json.dumps([x.display_title(t, p) for t, p in ${JSON.stringify(pairs).replace(/null/g, 'None')}]))`)
+  assert.equal(run.status, 0, run.err)
+  assert.deepEqual(JSON.parse(run.out),
+    ['PRD Forge PRD', 'Acme pay-as-you-go PRD', 'Acme Returns', 'Returns (v2) PRD', 'prd-forge PRD'])
+})
+
+test('a journey overview exports its drawn figure, never a designed one, so each rejoin lands where the source says', { skip: !hasUv }, () => {
+  const dir = join(mkdtempSync(join(tmpdir(), 'prd-set-')), 'set')
+  cpSync(join(REPO, 'docs/prd/prd-forge'), dir, { recursive: true })
+  const diagrams = join(dir, 'diagrams')
+  writeFileSync(join(diagrams, 'J-001-overview_imagen.png'), readFileSync(join(diagrams, 'J-001-overview.png')))
+  const hash = createHash('sha256').update(readFileSync(join(diagrams, 'J-001-overview.mmd'), 'utf8')).digest('hex')
+  writeFileSync(join(diagrams, 'J-001-overview_imagen.json'), JSON.stringify({ hash }))
+  const run = exportPy(`x.SET_DIR = ${JSON.stringify(dir)}\nprint(x.image_file("diagrams/J-001-overview.svg"))`)
+  assert.equal(run.status, 0, run.err)
+  assert.match(run.out, /J-001-overview\.png$/)
+})
+
+test('a tall figure shares its row with a narrow neighbor, so it never stands alone on a mostly blank page', { skip: !hasUv }, () => {
+  const run = exportPy([
+    'import json',
+    'x.SET_DIR = ' + JSON.stringify(join(REPO, 'docs/prd/prd-forge')),
+    'img = lambda n: {"type": "image", "path": f"diagrams/{n}.svg", "alt": n}',
+    'print(json.dumps([b["type"] for b in x.paired([img("SC-007"), img("WF-007"), img("decision-rights")])]))',
+  ].join('\n'))
+  assert.equal(run.status, 0, run.err)
+  assert.deepEqual(JSON.parse(run.out), ['figrow', 'image'])
 })
 
 test('a change-log entry is headed by its version and title, with section titles and the author role', { skip: !hasUv }, () => {

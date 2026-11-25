@@ -35,6 +35,40 @@ function checkPdfFooters(path, title) {
   return pages.length
 }
 
+/**
+ * Pages whose content area is more than `limit` blank, skipping the last page of
+ * each section, which may end anywhere. The blank share is measured from the
+ * lowest inked row down to the bottom margin, so a figure counts as content.
+ */
+function mostlyBlankPages(path, limit = 0.5) {
+  const starts = new Set([...run('pdfinfo', ['-dests', path]).matchAll(/^\s*(\d+) \[/gm)].map(m => Number(m[1])))
+  const count = Number(run('pdfinfo', [path]).match(/^Pages:\s+(\d+)/m)[1])
+  const blank = []
+  for (let page = 2; page < count; page++) {
+    if (starts.has(page + 1)) continue
+    const r = spawnSync('pdftoppm', ['-gray', '-r', '20', '-f', String(page), '-l', String(page), path])
+    assert.ifError(r.error)
+    const [, size] = r.stdout.subarray(0, 40).toString('latin1').split('\n')
+    const [width, height] = size.split(' ').map(Number)
+    const pixels = r.stdout.subarray(r.stdout.length - width * height)
+    const mm = 279.4 / height
+    const top = Math.floor(18 / mm), bottom = Math.floor(259.4 / mm)
+    let last = top
+    for (let y = top; y < bottom; y++) {
+      if (pixels.subarray(y * width, (y + 1) * width).some(v => v < 240)) last = y
+    }
+    const share = (bottom - last) / (bottom - top)
+    if (share > limit) blank.push(`page ${page} is ${Math.round(share * 100)}% blank`)
+  }
+  return blank
+}
+
+test('no page of the tracked PDF is mostly blank in the middle of a section', {
+  skip: !available('pdftoppm') && 'requires Poppler pdftoppm and pdfinfo',
+}, () => {
+  assert.deepEqual(mostlyBlankPages(reference + '.pdf'), [])
+})
+
 test('the tracked PDF has a title/version and the correct page number on every page', {
   skip: !available('pdftotext') && 'requires Poppler pdftotext',
 }, () => {
