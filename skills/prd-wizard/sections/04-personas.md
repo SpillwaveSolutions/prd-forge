@@ -28,8 +28,10 @@ builds the approval rules on.
 - `authority`: what they may approve or sign. Feeds section 10.
 - `proficiency`: how expert they are in the domain and in software.
 - `primary`: true on the one persona the product serves first.
-- `external`: true when the persona is outside the organization that owns the
-  product.
+- `external`: use `true` for a role outside the organization that owns the
+  product and `false` for an internal role. Use `varies by engagement` when
+  either organization may supply the same role. Describe the cases in
+  `population` and name who performs the role in the journey.
 - `population`: how many people hold this role, per organization. With
   `frequency`, it sizes the load requirements in section 8.
 - `context`: the conditions of use, such as interruptions or noise. No device or

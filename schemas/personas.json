@@ -65,8 +65,8 @@
             "description": "The persona the product serves first. At most one."
           },
           "external": {
-            "type": "boolean",
-            "description": "Outside the organization that owns the product."
+            "enum": [true, false, "varies by engagement"],
+            "description": "Whether the role is outside the organization that owns the product. When its employer varies, explain the cases in population."
           },
           "population": {
             "type": "string",

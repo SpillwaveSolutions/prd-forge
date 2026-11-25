@@ -4,7 +4,7 @@ kind: customer-market
 schema: prd-forge/customer-market@1
 title: Target customer and market
 status: draft
-updated: 2026-10-27
+updated: 2026-11-25
 domain: product management tooling
 section: 2
 order: 20
@@ -16,9 +16,10 @@ segments:
     name: Consultancies and advisory firms turning client domain knowledge into PRDs
     buyer: Partner or director of the consultancy, the budget holder, as the sponsor
     buyer_persona: PER-003
-    user: The consultant with the domain knowledge, as the product manager
+    user: The consultant who writes the PRD and the consultancy or client engineering lead who judges whether it can be built from
     user_personas:
       - PER-001
+      - PER-002
     size: >-
       Not yet measured; see Q-004.
     size_unit: organizations
@@ -32,9 +33,10 @@ segments:
     name: Regulated-industry organizations where practitioners specify their own internal software
     buyer: Director of product or transformation, the budget holder, as the sponsor
     buyer_persona: PER-003
-    user: The practitioner, as the product manager or domain expert
+    user: The practitioner who writes the PRD and the in-house engineering lead who judges whether the team can build from it
     user_personas:
       - PER-001
+      - PER-002
     size: >-
       Not yet measured; see Q-004.
     size_unit: organizations
@@ -117,8 +119,8 @@ links:
 
 | ID | Segment | Buyer | User |
 | --- | --- | --- | --- |
-| S-001 | Consultancies and advisory firms turning client domain knowledge into PRDs | Partner or director of the consultancy, the budget holder, as the sponsor | The consultant with the domain knowledge, as the product manager |
-| S-002 | Regulated-industry organizations where practitioners specify their own internal software | Director of product or transformation, the budget holder, as the sponsor | The practitioner, as the product manager or domain expert |
+| S-001 | Consultancies and advisory firms turning client domain knowledge into PRDs | Partner or director of the consultancy, the budget holder, as the sponsor | The consultant writes the PRD. An engineering lead from the consultancy or the client judges whether the team can build from it. |
+| S-002 | Regulated-industry organizations where practitioners specify their own internal software | Director of product or transformation, the budget holder, as the sponsor | The practitioner writes the PRD. The organization's own engineering lead judges whether the team can build from it. |
 
 Neither segment is sized yet. Both count organizations, and Q-004 asks for the
 count and its source.
@@ -143,7 +145,8 @@ The expert confirmed each sponsor's words on 2026-10-27.
 - **S-001, the consultancy partner:** "Before we hand the PRD to the client's
   engineers, I can see which parts they could not build from, and my senior
   people bill fewer hours fixing it later." The partner weighs it against the
-  consultant's billable hours.
+  consultant's billable hours. This describes a client handoff. On contracts where
+  the consultancy supplies the engineering lead, its own lead gives the verdict.
 - **S-002, the director:** "Before I approve the budget, I can see which parts
   of the PRD my team could not build from." The director weighs it against
   contracting a product manager without the domain, whose day rate is Q-013.
@@ -174,9 +177,9 @@ Every item in this document, with each of its fields.
 
 **Buyer persona:** PER-003
 
-**User:** The consultant with the domain knowledge, as the product manager
+**User:** The consultant who writes the PRD and the consultancy or client engineering lead who judges whether it can be built from
 
-**User personas:** PER-001
+**User personas:** PER-001, PER-002
 
 **Size:** Not yet measured; see Q-004.
 
@@ -197,9 +200,9 @@ Every item in this document, with each of its fields.
 
 **Buyer persona:** PER-003
 
-**User:** The practitioner, as the product manager or domain expert
+**User:** The practitioner who writes the PRD and the in-house engineering lead who judges whether the team can build from it
 
-**User personas:** PER-001
+**User personas:** PER-001, PER-002
 
 **Size:** Not yet measured; see Q-004.
 
