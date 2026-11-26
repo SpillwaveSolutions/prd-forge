@@ -1,41 +1,36 @@
 ---
 doc: ../09-nonfunctional-requirements.md
-score: 89
+score: 86
 blocking: 0
-graded: 2026-10-30
+graded: 2026-11-25
 grader: prd-forge:prd-adversary
 previous_score: 86
 ---
 
-# Why non-functional requirements scored 89
+# Why non-functional requirements scored 86
 
-Graded at 0.12.0, after NFR-008 began to name the domain check's research. The
-grade's two NFR-008 findings, a metric that the default would fail and a
-switch credited to TR-015 that TR-015 leaves outside the product, were fixed
-in the same version.
+The independent grading pass awarded 24 of 28 points. The requirement
+separates question latency from draft latency. The largest uncertainty is
+the workload either customer segment actually needs.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Numbers | 4 | Every target has a quantity and a unit. |
-| Percentiles | 4 | Latency is given at p95 and p99. |
-| Measurement | 3 | NFR-008's query review had no pass rule. |
-| Category coverage | 4 | All eight core categories, and no concurrency target by decision. |
-| Derivation | 2 | No entry has a `source`, and NFR-001's rationale argues against its own target. |
-| No technology | 4 | No platform, vendor, or technology. |
-| Scope | 4 | `applies_to` where a requirement is narrower than the set. |
+| Numbers | 4 | All twelve targets have a quantity. NFR-012 counts read paths outside the organization’s access rules and sets a target of zero. |
+| Percentiles | 4 | NFR-001 requires “Next question at most 5 seconds at p95” and “Section draft at most 20 seconds at p95.” Each outcome has its own p99 check. Grading and recovery also have percentile targets. |
+| Measurement | 3 | NFR-001 defines both clocks and reporting groups. NFR-005 calls for “Observed sittings with 10 first-time experts” but leaves open whether an abandoned section counts in the denominator. |
+| Category coverage | 4 | All eight core categories have entries. The scale rationale assigns concurrent use to the session. |
+| Derivation | 2 | NFR-001 traces the question ceiling to the expert and records why the draft ceiling is provisional. NFR-003 gives “120 functional requirements, 10 journeys of 10 stages, and 200 glossary terms” without an observed set or expert source for those quantities. |
+| No technology | 4 | NFR-006 sets an accessibility conformance target. The requirements prescribe no platform or vendor. |
+| Scope | 3 | NFR-007 applies to “FR-009” and promises reconstruction of grades for “any section at review or better.” FR-011 also produces grades when the expert requests re-grading. |
 
 ## Blocking defects
 
-None.
-
-## Weakest dimension
-
-Derivation. A team cannot tell which numbers are firm and which are guesses.
+None. All targets have a quantity and a runnable measurement. NFR-006
+covers accessibility and NFR-010 covers retention. The requirements
+prescribe no implementation technology.
 
 ## How to raise the grade
 
-- Give each entry a `source`, and trace NFR-003, NFR-009, and NFR-011 to a
-  persona's frequency or a segment's size.
-- Reconcile NFR-001's 20 seconds with the note that 20 seconds across 60
-  questions makes the expert stop.
-- Name WCAG2ICT in NFR-006, since the product is not a web page.
+- **Derivation (2 to 4).** Compare NFR-003 with the largest PRD either customer segment has actually produced. Record its requirements, journeys, stages per journey and glossary terms.
+- **Measurement (3 to 4).** Specify how abandoned sections contribute to NFR-005’s completion rate.
+- **Scope (3 to 4).** Account for grades produced by FR-011 in NFR-007.
