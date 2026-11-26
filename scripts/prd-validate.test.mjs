@@ -134,6 +134,16 @@ test('the specification-review checks hold on prd-forge\'s own set', () => {
   assert.deepEqual(validateSet(join(REPO, 'docs/prd/prd-forge')).errors, [])
 })
 
+test('the reference interview has separate p95 ceilings for questions and section drafts', () => {
+  const file = join(REPO, 'docs/prd/prd-forge/09-nonfunctional-requirements.md')
+  const { front } = splitFrontMatter(readFileSync(file, 'utf8'))
+  const timing = parseYaml(front).requirements.find(requirement => requirement.id === 'NFR-001')
+  assert.match(timing.target, /next question at most 5 seconds at p95/i)
+  assert.match(timing.target, /section draft at most 20 seconds at p95/i)
+  assert.match(timing.target, /each outcome under 60 seconds at p99/i)
+  assert.ok(timing.applies_to.includes('FR-008'), 'the timing covers reading the section draft')
+})
+
 test('the root measure needs a number', () =>
   failsWith('prd.md', t => t.replace(/  measure: >-\n(?: {4}.*\n)+/, '  measure: Share of the pilot PRDs that pass.\n'), /summary\.measure has no number/))
 
@@ -452,7 +462,7 @@ test('a state sketch belongs to another sketch that exists', () => {
 })
 
 test('a target that holds only a standard\'s version names no quantity', () =>
-  failsWith('09-nonfunctional-requirements.md', t => t.replace('    target: under 20 seconds at p95, and under 60 seconds at p99\n', '    target: conforms to WCAG 2.2 AA\n'), /target "conforms to WCAG 2\.2 AA" names no quantity/))
+  failsWith('09-nonfunctional-requirements.md', t => t.replace(/(  - id: NFR-001\n[\s\S]*?\n    target: )[^\n]+/, '$1conforms to WCAG 2.2 AA'), /target "conforms to WCAG 2\.2 AA" names no quantity/))
 
 test('a second approver is a persona, and not the first approver', () => {
   failsWith('11-decision-rights.md', t => t.replace('approver: PER-003', 'approver: PER-003\n    second_approver: PER-003'), /TR-001 second_approver is the approver/)

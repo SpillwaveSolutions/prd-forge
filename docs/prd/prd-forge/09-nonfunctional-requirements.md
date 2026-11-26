@@ -4,31 +4,39 @@ kind: nonfunctional-requirements
 schema: prd-forge/nonfunctional-requirements@1
 title: Non-functional requirements
 status: draft
-updated: 2026-10-30
+updated: 2026-11-25
 domain: product management tooling
 section: 8
 order: 90
-score: 89
+score: 86
 blocking: 0
-graded: 2026-10-30
+graded: 2026-11-25
 requirements:
   - id: NFR-001
     category: performance
     statement: >-
-      An expert answering a question does not lose their train of thought waiting
-      for the next one.
+      The expert can keep answering questions without losing their train of
+      thought and can read a completed section draft promptly.
     metric: >-
-      95th and 99th percentile elapsed time from the expert submitting an answer
-      to the next question or the drafted section appearing.
-    target: under 20 seconds at p95, and under 60 seconds at p99
+      Time from submitting an answer to seeing the next question, and time from
+      submitting the final answer for a section to seeing its completed draft.
+      Report the sample count, p95 and p99 for each outcome separately.
+    target: Next question at most 5 seconds at p95. Section draft at most 20 seconds at p95. Each outcome under 60 seconds at p99.
+    source: >-
+      Rick's timing decision on Forge issue 27, November 25, 2026, sets the
+      five-second question ceiling and retains the 20-second draft ceiling
+      pending separate draft measurements. The p99 limit comes from the prior NFR-001.
     measurement: >-
-      At least 300 timed observations per release, taken across five scripted runs
-      of all seventeen section documents on a set already holding 60 requirements,
-      from the expert's own side of the conversation rather than from inside the
-      product.
+      For each release, time at least 300 answers from the expert's side across
+      five scripted runs of all seventeen section documents on a set already
+      holding 60 requirements. For each answer that leads to a question, stop
+      the clock when the question is readable. For each answer that completes
+      a section, stop when its draft is readable. Calculate both percentiles
+      within each group. Both groups must meet their own limits.
     priority: must
     applies_to:
       - FR-004
+      - FR-008
       - FR-010
   - id: NFR-002
     category: performance
@@ -208,7 +216,7 @@ links:
 
 | ID | Category | Target |
 | --- | --- | --- |
-| NFR-001 | performance | Next question under 20s at p95 |
+| NFR-001 | performance | Next question within 5s at p95. Section draft within 20s at p95. Each under 60s at p99. |
 | NFR-002 | performance | Section grade under 90s at p95 |
 | NFR-003 | scale | 120 requirements, 10 journeys x 10 stages, 200 terms |
 | NFR-004 | durability | 100% of a set readable with no part of the product running |
@@ -223,9 +231,17 @@ links:
 
 ## Where these came from
 
-NFR-001 and NFR-002 come from PER-001's frequency: a burst of intense use. A
-20-second wait is tolerable once; across 60 questions it is 20 minutes of dead
-time and the expert stops.
+PER-001 answers many questions in a one- to two-hour sitting. If each of 60
+answers takes five seconds to bring up the next question, the expert spends
+five minutes waiting. At 20 seconds each, the wait adds up to 20 minutes.
+Rick set five seconds as the p95 ceiling for the next question. He left the
+exact wait that would end a sitting unspecified. The section draft appears
+once the expert finishes answering for that section. Its p95 ceiling stays
+at 20 seconds pending separate timing evidence. Each outcome must also stay
+under 60 seconds at p99. [Interview frequency and wait](https://github.com/SpillwaveSolutions/prd-forge/issues/27#issuecomment-7152489818) · [Decision on the two p95 ceilings](https://github.com/SpillwaveSolutions/prd-forge/issues/27#issuecomment-7177790669)
+
+NFR-002 measures a different wait during PER-001's burst of use, from a
+completed section draft to its grade.
 
 NFR-004 is the one that matters most and is cheapest to get wrong. PER-001 works
 in bursts weeks apart. If the set is only readable through this product, then a
@@ -270,19 +286,21 @@ Every item in this document, with each of its fields.
 
 ### NFR-001
 
-**Statement:** An expert answering a question does not lose their train of thought waiting for the next one.
+**Statement:** The expert can keep answering questions without losing their train of thought and can read a completed section draft promptly.
 
 **Category:** performance
 
-**Metric:** 95th and 99th percentile elapsed time from the expert submitting an answer to the next question or the drafted section appearing.
+**Metric:** Time from submitting an answer to seeing the next question, and time from submitting the final answer for a section to seeing its completed draft. Report the sample count, p95 and p99 for each outcome separately.
 
-**Target:** under 20 seconds at p95, and under 60 seconds at p99
+**Target:** Next question at most 5 seconds at p95. Section draft at most 20 seconds at p95. Each outcome under 60 seconds at p99.
 
-**Measurement:** At least 300 timed observations per release, taken across five scripted runs of all seventeen section documents on a set already holding 60 requirements, from the expert's own side of the conversation rather than from inside the product.
+**Source:** Rick's timing decision on Forge issue 27, November 25, 2026, sets the five-second question ceiling and retains the 20-second draft ceiling pending separate draft measurements. The p99 limit comes from the prior NFR-001.
+
+**Measurement:** For each release, time at least 300 answers from the expert's side across five scripted runs of all seventeen section documents on a set already holding 60 requirements. For each answer that leads to a question, stop the clock when the question is readable. For each answer that completes a section, stop when its draft is readable. Calculate both percentiles within each group. Both groups must meet their own limits.
 
 **Priority:** must
 
-**Applies to:** FR-004, FR-010
+**Applies to:** FR-004, FR-008, FR-010
 
 ### NFR-002
 
