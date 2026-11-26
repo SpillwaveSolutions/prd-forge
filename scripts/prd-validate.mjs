@@ -285,6 +285,9 @@ function check(value, schema, root, path, out) {
     if (schema.minLength !== undefined && value.length < schema.minLength) {
       out.push(`${path}: shorter than ${schema.minLength} characters`)
     }
+    if (schema.maxLength !== undefined && [...value].length > schema.maxLength) {
+      out.push(`${path}: longer than ${schema.maxLength} characters`)
+    }
   }
   if (typeof value === 'number') {
     if (schema.minimum !== undefined && value < schema.minimum) out.push(`${path}: below ${schema.minimum}`)
