@@ -4,33 +4,33 @@ score: 86
 blocking: 0
 graded: 2026-11-25
 grader: prd-forge:prd-adversary
-previous_score: 89
+previous_score: 86
 ---
 
 # Why non-functional requirements scored 86
 
-The independent adversarial grade was 24 of 28 points. NFR-001 now gives the
-expert's evidence for a five-second p95 wait. The main uncertainty across the
-section is the size of the workload a real customer needs.
+The independent grading pass awarded 24 of 28 points. The requirement
+separates question latency from draft latency. The largest uncertainty is
+the workload either customer segment actually needs.
 
 | Dimension | Score | Why |
 | --- | --- | --- |
-| Numbers | 4 | All twelve entries give quantities. For NFR-012, the metric counts “ways to read a set” and the target is zero. |
-| Percentiles | 4 | NFR-001 specifies “at most 5 seconds at p95, and under 60 seconds at p99.” NFR-002 specifies p95 for grading and NFR-011 gives both percentiles for resumption. |
-| Measurement | 3 | NFR-001 defines the clock, observation point, sample and release window. NFR-003 promises that “every target in this section still holds,” but running the large set “through every function in section 7” leaves the quality checks to repeat unspecified. |
-| Category coverage | 4 | All eight required categories have entries. NFR-006 covers the golden-thread path and NFR-010 covers the full period the organization keeps a set. |
-| Derivation | 2 | “Rick described five seconds as tolerable” supports NFR-001's p95. The previous requirement supplies the p99 limit. NFR-003 gives “120 functional requirements, 10 journeys of 10 stages, and 200 glossary terms” without identifying a customer set of that size. |
-| No technology | 4 | “WCAG 2.2 AA” is an acceptance standard. A screen reader and a text editor are generic measurement tools. |
-| Scope | 3 | NFR-001 measures “the next question or the drafted section appearing,” but its functional references cover questions and omit FR-008 for reading the draft. NFR-006 names “the golden-thread path” only in its prose and target. |
+| Numbers | 4 | All twelve targets have a quantity. NFR-012 counts read paths outside the organization’s access rules and sets a target of zero. |
+| Percentiles | 4 | NFR-001 requires “Next question at most 5 seconds at p95” and “Section draft at most 20 seconds at p95.” Each outcome has its own p99 check. Grading and recovery also have percentile targets. |
+| Measurement | 3 | NFR-001 defines both clocks and reporting groups. NFR-005 calls for “Observed sittings with 10 first-time experts” but leaves open whether an abandoned section counts in the denominator. |
+| Category coverage | 4 | All eight core categories have entries. The scale rationale assigns concurrent use to the session. |
+| Derivation | 2 | NFR-001 traces the question ceiling to the expert and records why the draft ceiling is provisional. NFR-003 gives “120 functional requirements, 10 journeys of 10 stages, and 200 glossary terms” without an observed set or expert source for those quantities. |
+| No technology | 4 | NFR-006 sets an accessibility conformance target. The requirements prescribe no platform or vendor. |
+| Scope | 3 | NFR-007 applies to “FR-009” and promises reconstruction of grades for “any section at review or better.” FR-011 also produces grades when the expert requests re-grading. |
 
 ## Blocking defects
 
-None. Every target gives a quantity, every measurement describes a procedure
-someone can run, and NFR-006 and NFR-010 cover accessibility and retention.
-No requirement selects a technology, platform or vendor.
+None. All targets have a quantity and a runnable measurement. NFR-006
+covers accessibility and NFR-010 covers retention. The requirements
+prescribe no implementation technology.
 
 ## How to raise the grade
 
-- **Derivation (2 to 4).** Ask which actual PRD represents the largest set either customer segment needs, then use its counts to justify NFR-003.
-- **Measurement (3 to 4).** Name the quality checks and observations to repeat at that scale.
-- **Scope (3 to 4).** Link NFR-001 to the draft-reading capability and identify the golden-thread scope in NFR-006's structured references.
+- **Derivation (2 to 4).** Compare NFR-003 with the largest PRD either customer segment has actually produced. Record its requirements, journeys, stages per journey and glossary terms.
+- **Measurement (3 to 4).** Specify how abandoned sections contribute to NFR-005’s completion rate.
+- **Scope (3 to 4).** Account for grades produced by FR-011 in NFR-007.

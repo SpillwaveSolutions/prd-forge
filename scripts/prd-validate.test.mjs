@@ -134,6 +134,16 @@ test('the specification-review checks hold on prd-forge\'s own set', () => {
   assert.deepEqual(validateSet(join(REPO, 'docs/prd/prd-forge')).errors, [])
 })
 
+test('the reference interview has separate p95 ceilings for questions and section drafts', () => {
+  const file = join(REPO, 'docs/prd/prd-forge/09-nonfunctional-requirements.md')
+  const { front } = splitFrontMatter(readFileSync(file, 'utf8'))
+  const timing = parseYaml(front).requirements.find(requirement => requirement.id === 'NFR-001')
+  assert.match(timing.target, /next question at most 5 seconds at p95/i)
+  assert.match(timing.target, /section draft at most 20 seconds at p95/i)
+  assert.match(timing.target, /each outcome under 60 seconds at p99/i)
+  assert.ok(timing.applies_to.includes('FR-008'), 'the timing covers reading the section draft')
+})
+
 test('the root measure needs a number', () =>
   failsWith('prd.md', t => t.replace(/  measure: >-\n(?: {4}.*\n)+/, '  measure: Share of the pilot PRDs that pass.\n'), /summary\.measure has no number/))
 
